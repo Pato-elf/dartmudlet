@@ -3,7 +3,7 @@
 **<p bold align="center">A [Mudlet](https://www.mudlet.org/) package for playing [DartMUD](http://dartmud.com).</p>**
 
 ## Motivation
-Returning to DartMUD after a 10 year absence, I found people were using Mudlet and discovered the excellent DartMUD LUA Scripts by missionz3r0. The game has changed a bit since they were last updated so I've picked them up to tweak patterns, fix typos, extend functionality and use GitHub's release feature to deliver the installable package.
+Returning to DartMUD after a 10 year absence, I found people were using Mudlet and discovered the excellent DartMUD LUA Scripts available on GitHub. The game has changed a bit since they were last updated by missionz3r0 so I've picked them up to tweak patterns, fix typos, extend functionality and use GitHub's release feature to deliver them as a package installable with Mudlet's package manager.
 
 ## Screenshots
 Screenshot soon....
@@ -23,7 +23,7 @@ Aside from the automatic features described above, there are a few things you ca
 ```
 /setup - Initialize variables, customize the display, start improve tracking database.
 /unsetup - Remove timers and triggers, deactivate display customizations.
-/resetup - Remove then reinitialize timers, triggers, etc.  Makes changes to DartMUDLet active.
+/resetup - Remove then reinitialize timers, etc.  Use to make updated DartMUDLet code active.
 ```
 Some of the rest are:
 ```
@@ -35,8 +35,8 @@ Some of the rest are:
 /antispam on|off - suppress repeated lines
 ```
 ```
-/block   - Block any new commands from being sent to the MUD, queue them to be sent later.
-           DartMUDlet usually does this for you when it detects the start of interuptable actions.
+/block   - Start blocking new commands from being sent to the MUD, queue them to be sent later.
+           Typically blocking is initiated automatically when you begin an interruptable action.
 /unblock - Resume sending commands to the MUD starting with any that were queued while blocking.
            For when you MUST interrupt your previous action (e.g. to run from that dragon NOW).
 ```
@@ -71,6 +71,6 @@ Some of the rest are:
 Feel free to fork and submit pull requests to my [DartMUDlet repository](https://github.com/daviesow/dartmudlet).
 
 ## Credits
-This is a fork of the excellent DartMUD LUA scripts for Mudlet published on github by missionz3r0, based on older zMUD scripts from Tk.
+The core of this package began as zMud scripts authord by Gaborn and shared with the player community.  Special thanks to Ogma for providing the detailed date/time logic behind the several in-game date/time systems.  The zMud scripts were converted to a Mudlet package by Gaborn and shared as DartMUDlet.  These were exensively refactored into modular LUA and brought to GitHub by missionz3r0.
 ## License
 MIT © [Owen Davies](https://github.com/daviesow)

@@ -6,11 +6,20 @@ local isVerbose = false
 
 local function announce(args)
   local skill_name = args["skill_name"]
+  local name = args["name"]
   if(isAnnounce) then
     if(isVerbose) then
-      send("ooc "..skill_name.."+")
+      if name == Status.name then
+        send("ooc "..skill_name.."+")
+      else
+        send("ooc "..name.."'s "..skill_name.."+")
+      end
     else
-      send("ooc +")
+      if name == Status.name then
+        send("ooc +")
+      else
+        send("ooc "..name.." +")
+      end
     end
   end
 end

@@ -25,7 +25,7 @@ local function setAura(args)
   Status.aura = args["aura"]
 end
 
-local function setEncumberance(args)
+local function setEncumbrance(args)
   Status.encumbrance = args["encumbrance"]
 end
 

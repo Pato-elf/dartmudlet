@@ -1,4 +1,4 @@
-local Encumberance = {}
+local Encumbrance = {}
 
 local triggers = {}
 
@@ -6,7 +6,7 @@ local function setup(args)
   local tempTriggers = {}
 
   tempTriggers.Encumbrance =
-    tempRegexTrigger("^(?:> )?Encumbrance: (.+)"
+    tempRegexTrigger("^(?:> )?Encumbrance   : (.+)"
                      ,[[
                         local encumbrance = matches[2]
                         local arguments = {encumbrance = encumbrance}
@@ -29,10 +29,10 @@ local function resetup(args)
   setup(args)
 end
 
-Encumberance = {
+Encumbrance = {
   setup = setup
   ,unsetup = unsetup
   ,resetup = resetup
 }
 
-return Encumberance
+return Encumbrance

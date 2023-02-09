@@ -3,7 +3,7 @@ local Blocking = {}
 local triggers = {}
 local textToUnBlock = {
   "You have written"
-  ,"The scroll writhes and disappears\\."
+  ,"Your scroll writhes and disappears\\."
   ,"A glowing rune appears on the"
   ,"Your aura is too weak\\."
   ,"corpse isn't here!"
@@ -18,10 +18,14 @@ local textToUnBlock = {
   ,"The book is already obfuscated\\."
   ,"No target specified."
   ,"You need to be holding a blank scroll to inscribe\\."
-  ,"You don't have any \\.*!"
+  ,"You don't have any .*!"
   ,"You finish editing"
   ,"You finish studying the book\\."
   ,"You try to touch [A-Za-z]+, but you miss\\."
+  ,"You stop hunting\\."
+  ,"You come face to face with the .*!"
+  ,"Submitted\\.  Thank you!"
+  ,"Subject line too long\\.  Please limit it to 30 characters\\."
 }
 
 local function setup(args)

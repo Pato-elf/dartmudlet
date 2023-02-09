@@ -44,7 +44,7 @@ local function createUIConsole()
   setBorderRight(rightWidth)
 
   local height = topBorder - 4
-  local fontSize = 10
+  local fontSize = 8
   local fontWidth = calcFontSize(fontSize)
   local wrap = topLeftWidth/fontWidth
   local y = 5
@@ -175,7 +175,7 @@ local function createUIConsole()
 
   local name = "ChatBox"
   local height = topBorder - 4
-  local fontSize = 10
+  local fontSize = 8
   local fontWidth = calcFontSize(fontSize)
   local wrap = rightWidth/fontWidth
 
@@ -196,7 +196,7 @@ local function createUIConsole()
   windows_ByPosition["topLeft"][name] = window
 
   local height = y-topBorder - tabSize
-  local fontSize = 10
+  local fontSize = 8
   local fontWidth = calcFontSize(fontSize)
   local wrap = rightWidth/fontWidth
 
@@ -349,7 +349,7 @@ local function updateDisplay(args)
     end
 
     local height = topBorder - 4
-    local fontSize = 10
+    local fontSize = 8
     local fontWidth = calcFontSize(fontSize)
     local topLeftWrap = topLeftWidth/fontWidth
 

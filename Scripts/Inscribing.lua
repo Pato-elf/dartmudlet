@@ -12,7 +12,6 @@ end
 
 local function invoke(args)
   send("invoke "..currentSpell.." !")
-  raiseEvent("blockEvent", {})
 end
 
 local function inscribeSetup(args)

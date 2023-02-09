@@ -6,7 +6,7 @@ local function setup(args)
   local tempTriggers = {}
 
     tempTriggers.BEBT =
-      tempRegexTrigger("^(?:> )?(?:Concentration: )?(You're bright-eyed and bushy-tailed\\.)"
+      tempRegexTrigger("^(?:> )?(?:Concentration : )?(You're bright-eyed and bushy-tailed\\.)"
                        ,[[
                           local conc = matches[2]
                           local arguments  = {conc = conc}
@@ -15,7 +15,7 @@ local function setup(args)
                           Events.raiseEvent("concEvent", arguments)
                         ]])
     tempTriggers.BOB =
-      tempRegexTrigger("^(?:> )?(?:Concentration: )?(You're a bit off balance\\.)"
+      tempRegexTrigger("^(?:> )?(?:Concentration : )?(You're a bit off balance\\.)"
                        ,[[
                           local conc = matches[2]
                           local arguments  = {conc = conc}
@@ -24,7 +24,7 @@ local function setup(args)
                           Events.raiseEvent("concEvent", arguments)
                         ]])
     tempTriggers.SD =
-      tempRegexTrigger("^(?:> )?(?:Concentration: )?(You're somewhat distracted\\.)"
+      tempRegexTrigger("^(?:> )?(?:Concentration : )?(You're somewhat distracted\\.)"
                        ,[[
                           local conc = matches[2]
                           local arguments  = {conc = conc}
@@ -33,7 +33,7 @@ local function setup(args)
                           Events.raiseEvent("concEvent", arguments)
                         ]])
     tempTriggers.QD =
-      tempRegexTrigger("^(?:> )?(?:Concentration: )?(You're quite distracted\\.)"
+      tempRegexTrigger("^(?:> )?(?:Concentration : )?(You're quite distracted\\.)"
                        ,[[
                           local conc = matches[2]
                           local arguments  = {conc = conc}
@@ -42,7 +42,7 @@ local function setup(args)
                           Events.raiseEvent("concEvent", arguments)
                         ]])
     tempTriggers.OB =
-      tempRegexTrigger("^(?:> )?(?:Concentration: )?(You're off balance\\.)"
+      tempRegexTrigger("^(?:> )?(?:Concentration : )?(You're off balance\\.)"
                        ,[[
                           local conc = matches[2]
                           local arguments  = {conc = conc}
@@ -51,7 +51,7 @@ local function setup(args)
                           Events.raiseEvent("concEvent", arguments)
                         ]])
     tempTriggers.DAOB =
-      tempRegexTrigger("^(?:> )?(?:Concentration: )?(You're distracted and off balance\\.)"
+      tempRegexTrigger("^(?:> )?(?:Concentration : )?(You're distracted and off balance\\.)"
                        ,[[
                           local conc = matches[2]
                           local arguments  = {conc = conc}
@@ -60,7 +60,7 @@ local function setup(args)
                           Events.raiseEvent("concEvent", arguments)
                         ]])
     tempTriggers.SHOT =
-      tempRegexTrigger("^(?:> )?(?:Concentration: )?(Your concentration is shot to hell\\.)"
+      tempRegexTrigger("^(?:> )?(?:Concentration : )?(Your concentration is shot to hell\\.)"
                        ,[[
                           local conc = matches[2]
                           local arguments  = {conc = conc}
@@ -69,7 +69,7 @@ local function setup(args)
                           Events.raiseEvent("concEvent", arguments)
                         ]])
     tempTriggers.TCTRN =
-      tempRegexTrigger("^(?:> )?(?:Concentration: )?(You're too confused to remember your name\\.)"
+      tempRegexTrigger("^(?:> )?(?:Concentration : )?(You're too confused to remember your name\\.)"
                        ,[[
                           local conc = matches[2]
                           local arguments  = {conc = conc}

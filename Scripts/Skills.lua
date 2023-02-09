@@ -135,34 +135,37 @@ local function increaseSkill(args)
 	end
 
 
-  --Show skill
-  shownSkill =
-    tempRegexTrigger("^(?:> )?([A-Za-z'\\-_# ]+):\\s+([A-Za-z ]+)\\.$"
-                    ,[[
-                      local skill_name = string.lower(matches[2])
-                      local skill_level = string.lower(matches[3])
+  --Check skill level reported by the mud (if imp is for the character; mud doesn't report pet skill levels)
+  if name == Status.name then
+    shownSkill =
+      tempRegexTrigger("^(?:> )?([A-Za-z'\\-_# ]+):\\s+([A-Za-z ]+)\\.$"
+                      ,[[
+                        local skill_name = string.lower(matches[2])
+                        local skill_level = string.lower(matches[3])
+  
+                        local isStupidOoc = string.find(matches[1], "(ooc)")
+                        local _s, spaces = string.gsub(skill_name, " ", " ")
+                        spaces = spaces or 0
+                        -- collection of possible false triggers due to the common pattern used in show skills output
+                        -- if there is more than 1 space its a false positive
+                        if skill_name == "concentration" or
+                            skill_name == "encumbrance" or
+                            skill_name == "held" or
+                            skill_name == "worn" or
+                            spaces > 1 or
+                            not isStupidOoc == nil then
+                                return
+                        end
+  
+                        args = {skill_name = skill_name, skill_level = skill_level}
+                        Events.raiseEvent("shownSkillEvent", args)
+                      ]])
 
-                      local isStupidOoc = string.find(matches[1], "(ooc)")
-                      local _s, spaces = string.gsub(skill_name, " ", " ")
-                      spaces = spaces or 0
-                      -- collection of possible false triggers due to the common pattern used in show skills output
-                      -- if there is more than 1 space its a false positive
-                      if skill_name == "concentration" or
-                          skill_name == "encumbrance" or
-                          skill_name == "held" or
-                          skill_name == "worn" or
-                          spaces > 1 or
-                          not isStupidOoc == nil then
-                              return
-                      end
+    send("show skills: "..skill_name)
 
-                      args = {skill_name = skill_name, skill_level = skill_level}
-                      Events.raiseEvent("shownSkillEvent", args)
-                    ]])
+    tempTimer(15, [[disableTrigger(]]..shownSkill..[[)]])
 
-  send("show skills: "..skill_name)
-
-  tempTimer(15, [[disableTrigger(]]..shownSkill..[[)]])
+  end
 
 	return count
 end

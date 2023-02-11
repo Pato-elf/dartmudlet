@@ -7,7 +7,7 @@ local function setup(args)
   local tempTriggers = {}
 
   tempTriggers.inscriptionFinish =
-    tempRegexTrigger("^(?:> )?As you inscribe the last word, power infuses the scroll!"
+    tempRegexTrigger("^(?:> )*As you inscribe the last word, power infuses the scroll!"
                      ,[[
                         local arguments = {}
                         Events.raiseEvent("finishedInscriptionEvent", arguments)
@@ -15,7 +15,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.invocationFinish =
-    tempRegexTrigger("^(?:> )?As you finish reading, the last words disappear\\."
+    tempRegexTrigger("^(?:> )*As you finish reading, the last words disappear\\."
                      ,[[
                         local arguments = {}
                         Events.raiseEvent("finishedInvokingEvent", arguments)

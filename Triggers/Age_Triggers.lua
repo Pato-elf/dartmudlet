@@ -6,7 +6,7 @@ local function setup(args)
   local tempTriggers = {}
 
   tempTriggers.Youthfullness =
-    tempRegexTrigger("^(?:> )?You are (?:\\w+) the (?:\\w+)?\\.  You are a ([\\s\\S]+)\\."
+    tempRegexTrigger("^(?:> )*You are (?:\\w+) the (?:\\w+)?\\.  You are a ([\\s\\S]+)\\."
                      ,[[
                         local age =  matches[2]
                         local arguments = { age = age }

@@ -6,7 +6,7 @@ local function setup(args)
   local tempTriggers = {}
 
   tempTriggers.Encumbrance =
-    tempRegexTrigger("^(?:> )?Encumbrance   : (.+)"
+    tempRegexTrigger("^(?:> )*Encumbrance   : (.+)"
                      ,[[
                         local encumbrance = matches[2]
                         local arguments = {encumbrance = encumbrance}

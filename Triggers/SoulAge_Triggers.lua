@@ -5,7 +5,7 @@ local triggers = {}
 local function setup(args)
   local tempTriggers = {}
   tempTriggers.SoulAge =
-    tempRegexTrigger("^(?:> )?Your soul's age is: (\\d+) years(?:, (\\d+) months?)? by the (Common|Thorpian) Reckoning"
+    tempRegexTrigger("^(?:> )*Your soul's age is: (\\d+) years(?:, (\\d+) months?)? by the (Common|Thorpian) Reckoning"
                      ,[[
                         local years = matches[2]
                         local months = matches[3]

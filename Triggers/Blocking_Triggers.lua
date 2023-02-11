@@ -2,7 +2,9 @@ local Blocking = {}
 
 local triggers = {}
 local textToUnBlock = {
-  "You have written"
+  "Your message is borne away on a gentle breeze."
+  ,"A gentle breeze stirs briefly, but nothing more."
+  ,"You have written"
   ,"Your scroll writhes and disappears\\."
   ,"A glowing rune appears on the"
   ,"Your aura is too weak\\."
@@ -21,11 +23,15 @@ local textToUnBlock = {
   ,"You don't have any .*!"
   ,"You finish editing"
   ,"You finish studying the book\\."
+  ,"You can only learn .* from this book"
   ,"You try to touch [A-Za-z]+, but you miss\\."
   ,"You stop hunting\\."
   ,"You come face to face with the .*!"
   ,"Submitted\\.  Thank you!"
   ,"Subject line too long\\.  Please limit it to 30 characters\\."
+  ,"You finish the incantation and the spell fades from your scroll\\."
+  ,"A suit of .* Starplate armor materializes around you!"
+  ,"Your mind is isolated, you cannot send a message\\."
 }
 
 local function setup(args)
@@ -33,7 +39,7 @@ local function setup(args)
 
   for i,v in ipairs(textToUnBlock) do
     tempTriggers[i] =
-      tempRegexTrigger("^(?:> )?"..v.."[\\s\\S]*"
+      tempRegexTrigger("^(?:> )*"..v.."[\\s\\S]*"
                        ,[[
                           local arguments = {}
                           Events.raiseEvent("unblockEvent", arguments)

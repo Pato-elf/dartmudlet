@@ -9,7 +9,8 @@ local previous_skill_value = {}
 
 
 levels = {}
-levels.leggy      = {name = "legendary",      abbr = "leggy",	  	min = "1700",	  max = "9999",  next_level = nil}
+levels.mythic     = {name = "mythic",         abbr = "mythic",    min = "10000",  max = "99999", next_level = nil}
+levels.leggy      = {name = "legendary",      abbr = "leggy",	  	min = "1700",	  max = "9999",  next_level = levels.mythic}
 levels.gm         = {name = "a grand master", abbr = "gm",			  min = "1400",	  max = "1699",  next_level = levels.leggy}
 levels.virtuoso   = {name = "a virtuoso",     abbr = "virtuoso",	min = "1200",  	max = "1399",  next_level = levels.gm}
 levels.consummate = {name = "consummate",     abbr = "consummate",min = "1050", 	max = "1199",  next_level = levels.virtuoso}
@@ -138,7 +139,7 @@ local function increaseSkill(args)
   --Check skill level reported by the mud (if imp is for the character; mud doesn't report pet skill levels)
   if name == Status.name then
     shownSkill =
-      tempRegexTrigger("^(?:> )?([A-Za-z'\\-_# ]+):\\s+([A-Za-z ]+)\\.$"
+      tempRegexTrigger("^(?:> )*([A-Za-z'\\-_# ]+):\\s+([A-Za-z ]+)\\.$"
                       ,[[
                         local skill_name = string.lower(matches[2])
                         local skill_level = string.lower(matches[3])

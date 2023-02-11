@@ -6,7 +6,7 @@ local function setup(args)
   local tempTriggers = {}
 
   tempTriggers.finishPracticing =
-    tempRegexTrigger("^(?:> )?You finish practicing\\."
+    tempRegexTrigger("^(?:> )*You finish practicing\\."
                      ,[[
                         arguments = {}
                         Events.raiseEvent("finishPracticingEvent", arguments)

@@ -7,7 +7,7 @@ local function setup(args)
   local tempTriggers = {}
 
   tempTriggers.None =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?(None)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?(None)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -17,7 +17,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.VeryDimRed =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (very dim red)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (very dim red)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -27,7 +27,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.DimRed =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (dim red)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (dim red)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -37,7 +37,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Red =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (red)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (red)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -47,7 +47,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.OrangishRed =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (orangish-red)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (orangish-red)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -57,7 +57,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.ReddishOrange =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (reddish-orange)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (reddish-orange)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -67,7 +67,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Orange =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (orange)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (orange)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -77,7 +77,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.YellowishOrange =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (yellowish-orange)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (yellowish-orange)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -87,7 +87,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.OrangishYellow =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (orangish-yellow)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (orangish-yellow)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -97,7 +97,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Yellow =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (yellow)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (yellow)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -107,7 +107,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.GreenishYellow =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (greenish-yellow)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (greenish-yellow)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -117,7 +117,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.YellowishGreen =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (yellowish-green)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (yellowish-green)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -127,7 +127,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Green =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (green)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (green)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -137,7 +137,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.BluishGreen =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (bluish-green)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (bluish-green)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -147,7 +147,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.GreenishBlue =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (greenish-blue)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (greenish-blue)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -157,7 +157,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Blue =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (blue)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (blue)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -167,7 +167,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.IntenseBlue =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (intense blue)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (intense blue)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -177,7 +177,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.DimIndigo =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (dim indigo)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (dim indigo)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -187,7 +187,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Indigo =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (indigo)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (indigo)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -197,7 +197,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.IntenseIndigo =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (intense indigo)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (intense indigo)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -207,7 +207,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.DimViolet =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (dim violet)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (dim violet)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -217,7 +217,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Violet =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (violet)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (violet)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -227,7 +227,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.IntenseViolet =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (intense violet)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (intense violet)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -237,7 +237,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.DimOctarine =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (dim octarine)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (dim octarine)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -247,7 +247,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Octarine =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (octarine)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (octarine)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -257,7 +257,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.IntenseOctarine =
-      tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (intense octarine)\\."
+      tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (intense octarine)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}
@@ -267,7 +267,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Scintilating =
-    tempRegexTrigger("^(?:> )?(?:Aura          : )?Your aura appears to be (scintillating)\\."
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (scintillating)\\."
                      ,[[
                         local aura = matches[2]
                         local arguments  = {aura = aura}

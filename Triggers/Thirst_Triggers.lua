@@ -9,7 +9,7 @@ local function setup(args)
 
 
   tempTriggers.NotThirsty =
-    tempRegexTrigger("^(?:> )?You are (not thirsty)\\."
+    tempRegexTrigger("^(?:> )*You are (not thirsty)\\."
                      ,[[
                         local thirst = matches[2]
                         local arguments = {thirst = thirst}
@@ -18,7 +18,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.SlightlyThirsty =
-    tempRegexTrigger("^(?:> )?You are (slightly thirsty)\\."
+    tempRegexTrigger("^(?:> )*You are (slightly thirsty)\\."
                      ,[[
                         local thirst = matches[2]
                         local arguments = {thirst = thirst}
@@ -27,7 +27,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Thirsty =
-    tempRegexTrigger("^(?:> )?You are (thirsty)\\."
+    tempRegexTrigger("^(?:> )*You are (thirsty)\\."
                      ,[[
                         local thirst = matches[2]
                         local arguments = {thirst = thirst}
@@ -36,7 +36,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Parched =
-    tempRegexTrigger("^(?:> )?You are (parched)\\."
+    tempRegexTrigger("^(?:> )*You are (parched)\\."
                      ,[[
                         local thirst = matches[2]
                         local arguments = {thirst = thirst}
@@ -45,7 +45,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.FaintFromThirst =
-    tempRegexTrigger("^(?:> )?You are (faint from thirst)\\."
+    tempRegexTrigger("^(?:> )*You are (faint from thirst)\\."
                      ,[[
                         local thirst = matches[2]
                         local arguments = {thirst = thirst}
@@ -54,7 +54,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.CompletelyDehydrated =
-    tempRegexTrigger("^(?:> )?You are (completely dehydrated)\\."
+    tempRegexTrigger("^(?:> )*You are (completely dehydrated)\\."
                      ,[[
                         local thirst = matches[2]
                         local arguments = {thirst = thirst}
@@ -63,7 +63,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.DyingOfThirst =
-    tempRegexTrigger("^(?:> )?You are (dying of thirst)\\."
+    tempRegexTrigger("^(?:> )*You are (dying of thirst)\\."
                      ,[[
                         local thirst = matches[2]
                         local arguments = {thirst = thirst}

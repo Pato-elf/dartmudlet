@@ -11,7 +11,7 @@ local function setup(args)
   local tempTriggers = {}
 
   tempTriggers.MovementLongTrek =
-  tempRegexTrigger("^(?:> )?(?:Movement      : )?(Ready for a long trek\\.)"
+  tempRegexTrigger("^(?:> )*(?:Movement      : )?(Ready for a long trek\\.)"
                    ,[[
                       local movement = matches[2]
                       arguments = {movement = movement}
@@ -20,7 +20,7 @@ local function setup(args)
                     ]])
 
   tempTriggers.MovementHyperBypass =
-      tempRegexTrigger("^(?:> )?(?:Movement      : )?(Who needs a hyperspacial bypass\\?)"
+      tempRegexTrigger("^(?:> )*(?:Movement      : )?(Who needs a hyperspacial bypass\\?)"
                        ,[[
                           local movement = matches[2]
                           arguments = {movement = movement}
@@ -29,7 +29,7 @@ local function setup(args)
                         ]])
 
     tempTriggers.MovementTeleport =
-      tempRegexTrigger("^(?:> )?(?:Movement      : )?(Who needs a teleport spell\\?)"
+      tempRegexTrigger("^(?:> )*(?:Movement      : )?(Who needs a teleport spell\\?)"
                        ,[[
                           local movement = matches[2]
                           arguments = {movement = movement}
@@ -38,7 +38,7 @@ local function setup(args)
                         ]])
 
     tempTriggers.MovementHorse =
-      tempRegexTrigger("^(?:> )?(?:Movement      : )?(Who needs a horse\\?)"
+      tempRegexTrigger("^(?:> )*(?:Movement      : )?(Who needs a horse\\?)"
                        ,[[
                           local movement = matches[2]
                           arguments = {movement = movement}
@@ -47,7 +47,7 @@ local function setup(args)
                         ]])
 
     tempTriggers.MovementAwhile =
-      tempRegexTrigger("^(?:> )?(?:Movement      : )?(You can travel a while longer\\.)"
+      tempRegexTrigger("^(?:> )*(?:Movement      : )?(You can travel a while longer\\.)"
                        ,[[
                           local movement = matches[2]
                           arguments = {movement = movement}
@@ -56,7 +56,7 @@ local function setup(args)
                         ]])
 
     tempTriggers.StepSpring =
-      tempRegexTrigger("^(?:> )?(?:Movement      : )?(You have spring in your step\\.)"
+      tempRegexTrigger("^(?:> )*(?:Movement      : )?(You have spring in your step\\.)"
                        ,[[
                           local movement = matches[2]
                           arguments = {movement = movement}
@@ -65,7 +65,7 @@ local function setup(args)
                         ]])
                         
     tempTriggers.MovementNotToMuch =
-      tempRegexTrigger("^(?:> )?(?:Movement      : )?(Not too much spring in your step\\.)"
+      tempRegexTrigger("^(?:> )*(?:Movement      : )?(Not too much spring in your step\\.)"
                        ,[[
                           local movement = matches[2]
                           arguments = {movement = movement}

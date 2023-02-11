@@ -6,28 +6,28 @@ local function setup(args)
   local tempTriggers = {}
 
   tempTriggers.whoTitle =
-    tempRegexTrigger("^(?:> )?(?: *Name +(?:(?:Idle(?: Time)?)|(?:State)))+"
+    tempRegexTrigger("^(?:> )*(?: *Name +(?:(?:Idle(?: Time)?)|(?:State)))+"
                ,[[
                   args = {}
                   Events.raiseEvent("startWhoEvent", args)
                 ]])
 
   tempTriggers.whoNames =
-    tempRegexTrigger("^(?:> )?(?: {7}| {1,2}(?:\\[[A-Za-z]+\\] ))(?:([A-Za-z\-]+ [A-Za-z\-]+ [A-Za-z\-]+)( +)(?:(?:Idle *(?:\\d+m)? ?(?:\\d+s)?)|Online)?)+ *?"
+    tempRegexTrigger("^(?:> )*(?: {7}| {1,2}(?:\\[[A-Za-z]+\\] ))(?:([A-Za-z\-]+ [A-Za-z\-]+ [A-Za-z\-]+)( +)(?:(?:Idle *(?:\\d+m)? ?(?:\\d+s)?)|Online)?)+ *?"
                ,[[
                   args = {name = name}
                   Events.raiseEvent("whoEvent", args)
                 ]])
 
   tempTriggers.playersOnline =
-    tempRegexTrigger("^(?:> )?[\\w ]+ \\d+ (?:(?:players)|(?:people))(?: on\\. |, but) [Oo]nly \\d+ [\\w, ]+\\."
+    tempRegexTrigger("^(?:> )*[\\w ]+ \\d+ (?:(?:players)|(?:people))(?: on\\. |, but) [Oo]nly \\d+ [\\w, ]+\\."
                ,[[
                   args = {}
                   Events.raiseEvent("whoEvent", args)
                 ]])
 
   tempTriggers.playersOnline2 =
-    tempRegexTrigger("^(?:> )?[\\w ]+ \\d+ (?:(?:players)|(?:people))(?: on\\. |, but) Strangely, that many are on who\\."
+    tempRegexTrigger("^(?:> )*[\\w ]+ \\d+ (?:(?:players)|(?:people))(?: on\\. |, but) Strangely, that many are on who\\."
                ,[[
                   args = {}
                   Events.raiseEvent("whoEvent", args)
@@ -35,21 +35,21 @@ local function setup(args)
 
 
   tempTriggers.whoWhere =
-    tempRegexTrigger("^(?:> )? *Most people seem to be in (?:\\w+) right now\."
+    tempRegexTrigger("^(?:> )* *Most people seem to be in (?:\\w+) right now\."
                 ,[[
                   args = {}
                   Events.raiseEvent("whoEvent", args)
                 ]])
 
   tempTriggers.activePlayers =
-    tempRegexTrigger("^(?:> )? *Estimated active characters: \\d+ this month, \\d+ today."
+    tempRegexTrigger("^(?:> )* *Estimated active characters: \\d+ this month, \\d+ today."
                ,[[
                   args = {}
                   Events.raiseEvent("whoEvent", args)
                 ]])
 
   tempTriggers.endWho =
-    tempRegexTrigger("^(?:> )? *Ferdarchi was last renewed (?:\\d+ days? )?(?:\\d+ hours? )?(?:\\d+ minutes? )?(?:\\d+ seconds?)? ago\\."
+    tempRegexTrigger("^(?:> )* *Ferdarchi was last renewed (?:\\d+ days? )?(?:\\d+ hours? )?(?:\\d+ minutes? )?(?:\\d+ seconds?)? ago\\."
                ,[[
                  args = {}
                  Events.raiseEvent("endWhoEvent", args)

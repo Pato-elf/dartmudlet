@@ -6,7 +6,7 @@ local function setup(args)
   local tempTriggers = {}
 
   tempTriggers.Alignment =
-    tempRegexTrigger("^(?:> )?You (\\w+) believe in (\\w+)\\."
+    tempRegexTrigger("^(?:> )*You (\\w+) believe in (\\w+)\\."
                      ,[[
                         local conviction = matches[2]
                         local alignment = matches[3]

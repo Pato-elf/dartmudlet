@@ -6,7 +6,7 @@ local function setup(args)
   local tempTriggers = {}
 
   tempTriggers.generalChatTrigger
-    = tempRegexTrigger("^(?:> )?.* (say|says|ask|asks|exclaim|exclaims|shout|shouts|yell|yells|tells)(?: |,|:).*"
+    = tempRegexTrigger("^(?:> )*.* (say|says|ask|asks|exclaim|exclaims|shout|shouts|yell|yells|tells)(?: |,|:).*"
                         ,[[
                           local message = matches[1]
                           local arguments = {message = message}

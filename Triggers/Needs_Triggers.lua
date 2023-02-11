@@ -6,7 +6,7 @@ local function setup(args)
   local tempTriggers = {}
 
   tempTriggers.Needs=
-    tempRegexTrigger("^(?:> )?Needs         : You are (not hungry|slightly hungry|hungry|famished|faint from hunger|starving|starving to death), and ([\\s\\S]+)\\."
+    tempRegexTrigger("^(?:> )*Needs         : You are (not hungry|slightly hungry|hungry|famished|faint from hunger|starving|starving to death), and ([\\s\\S]+)\\."
                      ,[[
                         local hunger = matches[2]
                         arguments = {hunger = hunger}
@@ -21,7 +21,7 @@ local function setup(args)
 
 
   tempTriggers.NotHungry =
-    tempRegexTrigger("^(?:> )?You are (not hungry)\\."
+    tempRegexTrigger("^(?:> )*You are (not hungry)\\."
                      ,[[
                         local hunger = matches[2]
                         arguments = {hunger = hunger}
@@ -30,7 +30,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.SlightlyHungry =
-    tempRegexTrigger("^(?:> )?You are (slightly hungry)\\."
+    tempRegexTrigger("^(?:> )*You are (slightly hungry)\\."
                      ,[[
                         local hunger = matches[2]
                         arguments = {hunger = hunger}
@@ -39,7 +39,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Hungry =
-    tempRegexTrigger("^(?:> )?You are (hungry)\\."
+    tempRegexTrigger("^(?:> )*You are (hungry)\\."
                      ,[[
                         local hunger = matches[2]
                         arguments = {hunger = hunger}
@@ -48,7 +48,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Famished =
-    tempRegexTrigger("^(?:> )?You are (famished)\\."
+    tempRegexTrigger("^(?:> )*You are (famished)\\."
                      ,[[
                         local hunger = matches[2]
                         arguments = {hunger = hunger}
@@ -57,7 +57,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.FaintFromHunger =
-    tempRegexTrigger("^(?:> )?You are (faint from hunger)\\."
+    tempRegexTrigger("^(?:> )*You are (faint from hunger)\\."
                      ,[[
                         local hunger = matches[2]
                         arguments = {hunger = hunger}
@@ -66,7 +66,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.Starving =
-    tempRegexTrigger("^(?:> )?You are (starving)\\."
+    tempRegexTrigger("^(?:> )*You are (starving)\\."
                      ,[[
                         local hunger = matches[2]
                         arguments = {hunger = hunger}
@@ -75,7 +75,7 @@ local function setup(args)
                       ]])
 
   tempTriggers.StarvingToDeath =
-   tempRegexTrigger("^(?:> )?You are (starving to death)\\."
+   tempRegexTrigger("^(?:> )*You are (starving to death)\\."
                     ,[[
                        local hunger = matches[2]
                        arguments = {hunger = hunger}

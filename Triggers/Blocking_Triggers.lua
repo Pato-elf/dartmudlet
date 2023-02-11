@@ -33,7 +33,7 @@ local function setup(args)
 
   for i,v in ipairs(textToUnBlock) do
     tempTriggers[i] =
-      tempRegexTrigger("^(?:> )?"..v.."[\\s\\S]*"
+      tempRegexTrigger("^(?:> )*"..v.."[\\s\\S]*"
                        ,[[
                           local arguments = {}
                           Events.raiseEvent("unblockEvent", arguments)

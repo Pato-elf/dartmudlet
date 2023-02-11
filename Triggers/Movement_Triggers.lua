@@ -10,6 +10,15 @@ local triggers = {}
 local function setup(args)
   local tempTriggers = {}
 
+  tempTriggers.MovementEpicAdventure =
+  tempRegexTrigger("^(?:> )*(?:Movement      : )?(Ready for an epic adventure\\.)"
+                   ,[[
+                      local movement = matches[2]
+                      arguments = {movement = movement}
+
+                      Events.raiseEvent("movementEvent", arguments)
+                    ]])
+
   tempTriggers.MovementLongTrek =
   tempRegexTrigger("^(?:> )*(?:Movement      : )?(Ready for a long trek\\.)"
                    ,[[

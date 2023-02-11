@@ -37,13 +37,13 @@ local function onNetworkOutput(args)
         table.insert(queue, command)
         denyCurrentSend()
         -- these are what trigger blocking inputs
-    elseif string.match(command, "^cast ! ") == "cast ! " or
-          string.match(command, "^inscribe ") == "inscribe " or
-          string.match(command, "^invoke ") == "invoke " or
-          string.match(command, "^study ") == "study " or
-          string.match(command, "^hunt ") == "hunt " or
-          string.match(command, "^bug") == "bug" then
---[[          string.match(command, "^search shrubs") == "search shrubs" then]]
+    elseif string.match(command, "^cast ") and not string.match(command, '^cast ?!? tell') or
+          string.match(command, "^inscribe ") or
+          string.match(command, "^invoke ") or
+          string.match(command, "^study ") or
+          string.match(command, "^hunt ") or
+          string.match(command, "^summon armor") then
+--[[          string.match(command, "^search shrubs") then]]
       block()
     end
 end

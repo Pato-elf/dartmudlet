@@ -48,6 +48,8 @@ local function onNetworkOutput(args)
           string.match(command, "^invoke ") or
           string.match(command, "^study ") or
           string.match(command, "^hunt ") or
+          string.match(command, "^write ") or --PATO
+		      string.match(command, "^revise ") or --PATO
           string.match(command, "^summon armor") then
 --[[          string.match(command, "^search shrubs") then]]
       block()

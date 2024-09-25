@@ -10,6 +10,8 @@
 - Removed automatic "score" command after the inital one
 - Added "well fed" and "well slaked" statuses
 - Changes to practice casting
+- Removed blocking on "cast net"
+- Added blocking for revise and write
 
 ## Screenshots
 Screenshot soon....

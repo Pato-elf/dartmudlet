@@ -7,19 +7,23 @@ local queue = {}
 
 local function block()
   isBlocked = true
-  cecho("Blocking; new commands will be queued for later. Type /unblock to cancel early.\n")
+  cecho("<orange>BLOCK\n")
+  --cecho("Blocking; new commands will be queued for later. Type /unblock to cancel early.\n")
 end
 
 local function unblock()
   if(isBlocked) then
     local count = table.size(queue)
     isBlocked = false
-    cecho("No longer blocking\n")
+    --cecho("No longer blocking\n")
     if count > 0 then
-      echo("\nProcessing "..count.." previously queued command(s).\n")
+      cecho("<orange>UNBLOCK ("..count.." queued)\n")
+      --echo("\nProcessing "..count.." previously queued command(s).\n")
       for i,v in ipairs(queue) do
         send(v)
       end
+    else
+      cecho("<orange>UNBLOCK (0 queued)\n")
     end
     queue = {}
   end
@@ -33,11 +37,13 @@ end
 local function onNetworkOutput(args)
   local command = args["command"]
     if isBlocked then
-        echo("Queing command: '"..command.."'\n")
+        cecho("<orange>QUEUE: "..command.."\n")
+        --echo("Queing command: '"..command.."'\n")
         table.insert(queue, command)
         denyCurrentSend()
         -- these are what trigger blocking inputs
-    elseif string.match(command, "^cast ") and not string.match(command, '^cast ?!? tell') or
+    elseif string.match(command, "^cast ") and not (string.match(command, '^cast ?!? tell') or string.match(command, "^cast net")) or
+    --elseif string.match(command, "^cast ") and not string.match(command, '^cast ?!? tell') or
           string.match(command, "^inscribe ") or
           string.match(command, "^invoke ") or
           string.match(command, "^study ") or

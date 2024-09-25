@@ -473,10 +473,19 @@ local function onWhoEnd(args)
 end
 
 local function onName(args)
-  name = args["name"]
-  cecho("\n"..name)
+  showname = args["fullname"]
+  name_table = showname:split("are ")
+  showname = name_table[2]
+  name_table2 = showname:split("%. ")
+  showname = name_table2[1]
+  
+  cecho("\n"..showname)
   clearWindow("NameBox")
-  cecho("NameBox", " Name: "..name)
+  cecho("NameBox", " Name: "..showname)
+  --name = args["name"]
+  --cecho("\n"..name)
+  --clearWindow("NameBox")
+  --cecho("NameBox", " Name: "..name)
   deleteLine()
 end
 

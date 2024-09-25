@@ -1,12 +1,9 @@
-# DartMUDlet
+# DartMUDlet  -  Pato Edition &#129414;
 
-**<p bold align="center">A [Mudlet](https://www.mudlet.org/) package for playing [DartMUD](http://dartmud.com).</p>**
-
-<p bold>*** This is Pato's fork of DartMUDlet ***</p>
 
 ## Recent Changes
 - Fixed auto skill adjustment
-- Fixed update problems with similar skill names (blur, blur_other)
+- Fixed update problems with similar skill names (e.g. blur, blur_other)
 - Removed automatic "score" command after the inital one
 - Added "well fed" and "well slaked" statuses
 - Changes to practice casting
@@ -22,13 +19,13 @@ Screenshot soon....
 DartMUDlet does a number of things for you automatically including the obvious visual items like a conversation window up top, your status persisted in the top right.  It also performs the all-important task of counting and reporting improves (for you and for pets), it handles delaying any new commands to the MUD when you are performing interruptable actions like spellcasting and scrollwork, and has many more features useful to DartMUD players.
 
 ## Installation
-+ Head over to the project's [releases page](https://github.com/Pato-elf/dartmudlet/releases) and grab the latest package.zip under Assets.
-+ Launch Mudlet and connect to your DartMUD profile.
-+ Open Mudlet's Package Manager, click Install and point it to your downloaded package.zip.
-+ Finally, in the mud text entry box (lower left) issue `/setup` to get things rolling.
++ Visit the project [releases page](https://github.com/Pato-elf/dartmudlet/releases) and download the latest package.zip under Assets.
++ Launch [Mudlet](https://www.mudlet.org/) and connect to your [DartMUD](http://dartmud.com) profile.
++ Open the Mudlet Package Manager, click "Install new package" and select the package.zip you downloaded.
++ To start using DartMUDlet, type `/setup` in the command window to get things set up.
 
 ## How to use?
-Aside from the automatic features described above, there are a few things you can control by entering directives in the mud's text entry box:
+In addition to the automatic features described above, there are a few things you can control by typing commands:
 
 ```
 /setup - Initialize variables, customize the display, start improve tracking database.
@@ -80,7 +77,7 @@ Some of the rest are:
 ```
 
 ## Credits
-- The core of this package began as zMud scripts authord by Gaborn and shared with the player community.
+- The core of this package began as zMud scripts authored by Gaborn and shared with the player community.
 - Special thanks to Ogma for providing the detailed date/time logic behind the several in-game date/time systems.
 - The zMud scripts were converted to a Mudlet package by Gaborn and shared as DartMUDlet.
 - These were exensively refactored into modular LUA and brought to GitHub by missionz3r0.

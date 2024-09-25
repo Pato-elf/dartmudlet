@@ -2,7 +2,7 @@
 
 **<p bold align="center">A [Mudlet](https://www.mudlet.org/) package for playing [DartMUD](http://dartmud.com).</p>**
 
-<p bold style="color: yellow;">*** This is Pato's fork of DartMUDlet ***</p>
+<p bold>*** This is Pato's fork of DartMUDlet ***</p>
 
 ## Recent Changes
 - Fixed auto skill adjustment
@@ -13,6 +13,7 @@
 - Removed blocking on "cast net"
 - Added blocking for revise and write
 - Added 120+ additional unblocks
+
 
 ## Screenshots
 Screenshot soon....

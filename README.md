@@ -16,7 +16,7 @@
 Screenshot soon....
 
 ## Features
-DartMUDlet does a number of things for you automatically including the obvious visual items like a conversation window up top, your status persisted in the top right.  It also performs the all-important task of counting and reporting improves (for you and for pets), it handles delaying any new commands to the MUD when you are performing interruptable actions like spellcasting and scrollwork, and has many more features useful to DartMUD players.
+DartMUDlet has many display features such as a conversation window across the top, and your status displayed in the top right.  It automatically counts and reports improves (both you and pets), and will attempt to autocorrect when a skill rolls to the next level. DartMUDlet will delay any new commands sent to DartMUD while you are performing interruptable actions such as spellcasting and scrolls.
 
 ## Installation
 + Visit the project [releases page](https://github.com/Pato-elf/dartmudlet/releases) and download the latest package.zip under Assets.

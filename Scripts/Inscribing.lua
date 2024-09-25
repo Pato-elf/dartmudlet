@@ -11,7 +11,9 @@ local function inscribe(args)
 end
 
 local function invoke(args)
-  send("invoke "..currentSpell.." !")
+  local command = "invoke "..currentSpell.." !"
+  tempTimer(0.7, [[send(command)]])
+  --send("invoke "..currentSpell.." !")
 end
 
 local function inscribeSetup(args)

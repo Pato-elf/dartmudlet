@@ -8,8 +8,10 @@ local function setup(args)
   tempTriggers.Name =
     tempRegexTrigger("^(?:> )*You are (?:[A-Za-z]* )?(\\w+) the (?:\\w+)?(?: \\(.*\\))?\\.  You are (?:a|an) (?:[\\s\\S]+)\\."
                      ,[[
+                        local fullname = matches[1]
                         local name = matches[2]
-                        arguments = {name = name}
+                        arguments = {name = name, fullname = fullname}
+                        --arguments = {name = name}
 
                         Events.raiseEvent("nameEvent", arguments)
                       ]])

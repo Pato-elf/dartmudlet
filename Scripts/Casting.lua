@@ -11,7 +11,8 @@ local isActive = false
 
 local function practiceCast(args)
   send("cast ! "..currentSpell.." @ ".. currentSpellPower.. " "..currentSpellArguments)
-  Events.removeListener("BEBTconcEvent", sourceName)
+  --Events.removeListener("BEBTconcEvent", sourceName) --PATO
+  Events.addListener("BEBTconcEvent", sourceName, practiceCast)
 end
 
 local function practiceCastSetup(args)

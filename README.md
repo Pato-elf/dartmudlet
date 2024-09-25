@@ -77,6 +77,7 @@ Some of the rest are:
 /update <Who> <skill> <improves> - Set improves for your (or pet's) skill to given total
                                  - Use capitalized name to update
 /info <skill>                    - Shows current improves/level and improves to reach next
+/help                            - Display a list of available commands
 ```
 ```
 /who on  - Check who is online every 5 minutes; results are updated in persistent custom area

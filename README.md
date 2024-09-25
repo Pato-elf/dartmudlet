@@ -7,6 +7,7 @@
 ## Recent Changes
 - Fixed auto skill adjustment
 - Fixed update problems with similar skill names (blur, blur_other)
+- Removed automatic "score" command after the inital one
 
 ## Screenshots
 Screenshot soon....

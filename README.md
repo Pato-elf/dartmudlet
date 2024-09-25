@@ -2,7 +2,7 @@
 
 **<p bold align="center">A [Mudlet](https://www.mudlet.org/) package for playing [DartMUD](http://dartmud.com).</p>**
 
-*** This is Pato's fork of DartMUDlet ***
+<p bold style="color: yellow;">*** This is Pato's fork of DartMUDlet ***</p>
 
 ## Recent Changes
 - Fixed auto skill adjustment

@@ -6,7 +6,7 @@ local function setup(args)
   local tempTriggers = {}
 
   tempTriggers.Needs=
-    tempRegexTrigger("^(?:> )*Needs         : You are (not hungry|slightly hungry|hungry|famished|faint from hunger|starving|starving to death), and ([\\s\\S]+)\\."
+    tempRegexTrigger("^(?:> )*Needs         : You are (well fed|not hungry|slightly hungry|hungry|famished|faint from hunger|starving|starving to death), and ([\\s\\S]+)\\."
                      ,[[
                         local hunger = matches[2]
                         arguments = {hunger = hunger}
@@ -20,6 +20,15 @@ local function setup(args)
                       ]])
 
 
+    tempTriggers.WellFed =
+    tempRegexTrigger("^(?:> )*You are (well fed)\\."
+                     ,[[
+                        local hunger = matches[2]
+                        arguments = {hunger = hunger}
+						deleteLine()
+                        Events.raiseEvent("hungerEvent", arguments)
+                      ]])
+  
   tempTriggers.NotHungry =
     tempRegexTrigger("^(?:> )*You are (not hungry)\\."
                      ,[[

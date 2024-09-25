@@ -13,6 +13,14 @@ local function setup(args)
                 Events.raiseEvent("announceOnEvent", arguments)
               ]])
 
+  tempAliases.announceBrief =
+    tempAlias("\/[Aa][Nn][Nn][Oo][Uu][Nn][Cc][Ee] [Bb][Rr][Ii][Ee][Ff]"
+              ,[[
+                local arguments = {}
+
+                Events.raiseEvent("announceBriefEvent", arguments)
+              ]])
+
   tempAliases.announceVerbose =
     tempAlias("\/[Aa][Nn][Nn][Oo][Uu][Nn][Cc][Ee] [Vv][Ee][Rr][Bb][Oo][Ss][Ee]"
               ,[[

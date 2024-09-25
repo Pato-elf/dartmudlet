@@ -46,7 +46,7 @@ local function getSkill(args)
       who = Status.name
   end
 
-  local results = dba.query('SELECT * FROM improves WHERE who="'..who..'" AND skill LIKE "'..skill_name..'%"')
+  local results = dba.query('SELECT * FROM improves WHERE who="'..who..'" AND skill="'..skill_name..'"') --PATO
 
   if results.count() == 0 then
       return  -1
@@ -137,7 +137,7 @@ local function increaseSkill(args)
 
 
   --Check skill level reported by the mud (if imp is for the character; mud doesn't report pet skill levels)
-  if name == Status.name then
+  if name == name then --PATO Status.name then
     shownSkill =
       tempRegexTrigger("^(?:> )*([A-Za-z'\\-_# ]+):\\s+([A-Za-z ]+)\\.$"
                       ,[[
@@ -162,7 +162,7 @@ local function increaseSkill(args)
                         Events.raiseEvent("shownSkillEvent", args)
                       ]])
 
-    send("show skills: "..skill_name)
+    send("show skills "..skill_name) --PATO
 
     tempTimer(15, [[disableTrigger(]]..shownSkill..[[)]])
 

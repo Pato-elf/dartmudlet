@@ -70,10 +70,10 @@ Some of the rest are:
 /who on  - Check who is online every 5 minutes; results are updated in persistent custom area
 /who off - Stop issuing automatic checks every 5 minutes; manual 'who' still updates display
 ```
-## Contribute
-Feel free to fork and submit pull requests to my [DartMUDlet repository](https://github.com/daviesow/dartmudlet).
 
 ## Credits
-The core of this package began as zMud scripts authord by Gaborn and shared with the player community.  Special thanks to Ogma for providing the detailed date/time logic behind the several in-game date/time systems.  The zMud scripts were converted to a Mudlet package by Gaborn and shared as DartMUDlet.  These were exensively refactored into modular LUA and brought to GitHub by missionz3r0.
-## License
-MIT © [Owen Davies](https://github.com/daviesow)
+The core of this package began as zMud scripts authord by Gaborn and shared with the player community.
+Special thanks to Ogma for providing the detailed date/time logic behind the several in-game date/time systems.
+The zMud scripts were converted to a Mudlet package by Gaborn and shared as DartMUDlet.
+These were exensively refactored into modular LUA and brought to GitHub by missionz3r0.
+The Pato versions of DartMUDlet are a fork from [Owen Davies](https://github.com/daviesow)

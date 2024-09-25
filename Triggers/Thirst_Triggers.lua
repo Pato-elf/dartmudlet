@@ -8,6 +8,16 @@ local function setup(args)
   local tempTriggers = {}
 
 
+  
+  tempTriggers.WellSlaked =
+    tempRegexTrigger("^(?:> )*You are (well slaked)\\."
+                     ,[[
+                        local thirst = matches[2]
+                        local arguments = {thirst = thirst}
+
+                        Events.raiseEvent("thirstEvent", arguments)
+                      ]])
+  
   tempTriggers.NotThirsty =
     tempRegexTrigger("^(?:> )*You are (not thirsty)\\."
                      ,[[

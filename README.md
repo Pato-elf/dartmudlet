@@ -15,14 +15,17 @@
 ## Screenshots
 Screenshot soon....
 
+
 ## Features
 DartMUDlet has many display features such as a conversation window across the top, and your status displayed in the top right.  It automatically counts and reports improves (both you and pets), and will attempt to autocorrect when a skill rolls to the next level. DartMUDlet will delay any new commands sent to DartMUD while you are performing interruptable actions such as spellcasting and scrolls.
+
 
 ## Installation
 + Visit the project [releases page](https://github.com/Pato-elf/dartmudlet/releases) and download the latest package.zip under Assets.
 + Launch [Mudlet](https://www.mudlet.org/) and connect to your [DartMUD](http://dartmud.com) profile.
 + Open the Mudlet Package Manager, click "Install new package" and select the package.zip you downloaded.
 + To start using DartMUDlet, type `/setup` in the command window to get things set up.
+
 
 ## How to use?
 In addition to the automatic features described above, there are a few things you can control by typing commands:

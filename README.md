@@ -2,6 +2,8 @@
 
 **<p bold align="center">A [Mudlet](https://www.mudlet.org/) package for playing [DartMUD](http://dartmud.com).</p>**
 
+*** This is Pato's fork of DartMUDlet ***
+
 ## Motivation
 Returning to DartMUD after a 10 year absence, I found people were using Mudlet and discovered the excellent DartMUD LUA Scripts available on GitHub. The game has changed a bit since they were last updated by missionz3r0 so I've picked them up to tweak patterns, fix typos, extend functionality and use GitHub's release feature to deliver them as a package installable with Mudlet's package manager.
 

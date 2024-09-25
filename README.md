@@ -8,6 +8,7 @@
 - Fixed update problems with similar skill names (e.g. blur, blur_other)
 - Removed automatic "score" command after the initial one
 - Added "well fed" and "well slaked" statuses
+- Added /help command to display list of commands
 - Changes to practice casting
 - Removed blocking on "cast net"
 - Added blocking for revise and write

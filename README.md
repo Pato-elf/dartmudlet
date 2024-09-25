@@ -4,6 +4,7 @@
 ## Recent Changes
 - Fixed auto skill adjustment
 - Added 120+ additional unblocks
+- Added more announce modes (off, brief, on, verbose)
 - Fixed update problems with similar skill names (e.g. blur, blur_other)
 - Removed automatic "score" command after the initial one
 - Added "well fed" and "well slaked" statuses
@@ -38,9 +39,10 @@ In addition to the automatic features described above, there are a few things yo
 ```
 Some of the rest are:
 ```
-/announce on      - Announce improvements in Brief mode (just a plus, no skill name revealed)
-/announce verbose - Announce improvements including the full name of the skill
-/announce off     - Stop announcing improvements
+/announce on      - Announce improvements in standard mode (skill name+)
+/announce brief   - Announce improvements in brief mode (plus only, no skill name)
+/announce verbose - Announce improvements in verbose mode (skill name, plus, and actual skill number)
+/announce off     - No announcement of improvements
 ```
 ```
 /antispam on|off - suppress repeated lines

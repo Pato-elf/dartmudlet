@@ -1,6 +1,6 @@
 # DartMUDlet  -  Pato Edition &#129414;
 
-
+&nbsp;
 ## Recent Changes
 - Fixed auto skill adjustment
 - Fixed update problems with similar skill names (e.g. blur, blur_other)
@@ -11,27 +11,27 @@
 - Added blocking for revise and write
 - Added 120+ additional unblocks
 
-
+&nbsp;
 ## Screenshots
 Screenshot soon....
 
-
+&nbsp;
 ## Features
 DartMUDlet has many display features such as a conversation window across the top, and your status displayed in the top right.  It automatically counts and reports improves (both you and pets), and will attempt to autocorrect when a skill rolls to the next level. DartMUDlet will delay any new commands sent to DartMUD while you are performing interruptable actions such as spellcasting and scrolls.
 
-
+&nbsp;
 ## Installation
-+ Visit the project [releases page](https://github.com/Pato-elf/dartmudlet/releases) and download the latest package.zip under Assets.
++ Visit the project [release page](https://github.com/Pato-elf/dartmudlet/releases) and download the latest package.zip under Assets.
 + Launch [Mudlet](https://www.mudlet.org/) and connect to your [DartMUD](http://dartmud.com) profile.
 + Open the Mudlet Package Manager, click "Install new package" and select the package.zip you downloaded.
 + To start using DartMUDlet, type `/setup` in the command window to get things set up.
 
-
+&nbsp;
 ## How to use?
 In addition to the automatic features described above, there are a few things you can control by typing commands:
 
 ```
-/setup - Initialize variables, customize the display, start improve tracking database.
+/setup   - Initialize variables, customize the display, start improve tracking database.
 /unsetup - Remove timers and triggers, deactivate display customizations.
 /resetup - Remove then reinitialize timers, etc.  Use to make updated DartMUDLet code active.
 ```
@@ -63,10 +63,10 @@ Some of the rest are:
 /channel status [of <target>] - Show power channeled to last/named target
 ```
 ```
-/inscribe ! <spell> @ <power> - Repeat practice inscribing a spell at the given power 
-/inscribe ! off               - Stop practice inscribing 
-/inscribe ! resume [<spell>]  - Resume practice inscribing the last/named spell at last power 
-/inscribe ! adjust  power <power> - Change the power you are using for each practice
+/inscribe ! <spell> @ <power>     - Repeat practice inscribing a spell at the given power 
+/inscribe ! off                   - Stop practice inscribing 
+/inscribe ! resume [<spell>]      - Resume practice inscribing the last/named spell at last power 
+/inscribe ! adjust power <power>  - Change the power you are using for each practice
 /inscribe ! status [of <spell>]   - Show power used for last/named spell
 ```
 ```
@@ -79,6 +79,7 @@ Some of the rest are:
 /who off - Stop issuing automatic checks every 5 minutes; manual 'who' still updates display
 ```
 
+&nbsp;
 ## Credits
 - The core of this package began as zMud scripts authored by Gaborn and shared with the player community.
 - Special thanks to Ogma for providing the detailed date/time logic behind the several in-game date/time systems.

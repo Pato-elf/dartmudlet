@@ -15,8 +15,8 @@ Screenshot soon....
 DartMUDlet does a number of things for you automatically including the obvious visual items like a conversation window up top, your status persisted in the top right.  It also performs the all-important task of counting and reporting improves (for you and for pets), it handles delaying any new commands to the MUD when you are performing interruptable actions like spellcasting and scrollwork, and has many more features useful to DartMUD players.
 
 ## Installation
-+ Head over to the project's [releases page](https://github.com/daviesow/dartmudlet/releases) and grab the latest package.zip under Assets.
-+ Launch Mudlet and connect to your DartMUD profile.  
++ Head over to the project's [releases page](https://github.com/Pato-elf/dartmudlet/releases) and grab the latest package.zip under Assets.
++ Launch Mudlet and connect to your DartMUD profile.
 + Open Mudlet's Package Manager, click Install and point it to your downloaded package.zip.
 + Finally, in the mud text entry box (lower left) issue `/setup` to get things rolling.
 
@@ -63,7 +63,8 @@ Some of the rest are:
 /inscribe ! status [of <spell>]   - Show power used for last/named spell
 ```
 ```
-/update <who> <skill> <improves> - Set improves for your (or pet's) skill to given total
+/update <Who> <skill> <improves> - Set improves for your (or pet's) skill to given total
+                                 - Use capitalized name to update
 /info <skill>                    - Shows current improves/level and improves to reach next
 ```
 ```

@@ -72,8 +72,8 @@ Some of the rest are:
 ```
 
 ## Credits
-The core of this package began as zMud scripts authord by Gaborn and shared with the player community.
-Special thanks to Ogma for providing the detailed date/time logic behind the several in-game date/time systems.
-The zMud scripts were converted to a Mudlet package by Gaborn and shared as DartMUDlet.
-These were exensively refactored into modular LUA and brought to GitHub by missionz3r0.
-The Pato versions of DartMUDlet are a fork from [Owen Davies](https://github.com/daviesow)
+- The core of this package began as zMud scripts authord by Gaborn and shared with the player community.
+- Special thanks to Ogma for providing the detailed date/time logic behind the several in-game date/time systems.
+- The zMud scripts were converted to a Mudlet package by Gaborn and shared as DartMUDlet.
+- These were exensively refactored into modular LUA and brought to GitHub by missionz3r0.
+- The Pato versions of DartMUDlet are a fork from [Owen Davies](https://github.com/daviesow)

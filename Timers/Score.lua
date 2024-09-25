@@ -4,12 +4,12 @@ local timers = {}
 local sourceName = "Score_Timers"
 
 local function scoreTimer()
-  timers.refresh = tempTimer(300
-                        ,[[
-                          send("score")
-                          local args = {}
-                          Events.raiseEvent("ScoreEvent", args)
-                        ]])
+--  timers.refresh = tempTimer(300
+--                        ,[[
+--                          send("score")
+--                          local args = {}
+--                          Events.raiseEvent("ScoreEvent", args)
+--                        ]])
 end
 
 local function setup(args)

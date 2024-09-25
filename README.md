@@ -4,7 +4,7 @@
 ## Recent Changes
 - Fixed auto skill adjustment
 - Fixed update problems with similar skill names (e.g. blur, blur_other)
-- Removed automatic "score" command after the inital one
+- Removed automatic "score" command after the initial one
 - Added "well fed" and "well slaked" statuses
 - Changes to practice casting
 - Removed blocking on "cast net"
@@ -13,7 +13,7 @@
 
 &nbsp;
 ## Screenshots
-Screenshot soon....
+Screenshot soon...
 
 &nbsp;
 ## Features

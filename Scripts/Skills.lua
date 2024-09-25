@@ -162,7 +162,7 @@ local function increaseSkill(args)
                         Events.raiseEvent("shownSkillEvent", args)
                       ]])
 
-    send("show skills "..skill_name) --PATO
+    send("show skills "..skill_name, false) --PATO
 
     tempTimer(15, [[disableTrigger(]]..shownSkill..[[)]])
 

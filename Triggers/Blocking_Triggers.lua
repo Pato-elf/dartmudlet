@@ -142,9 +142,21 @@ local textToUnBlock = {
   ,"Who do you wish to give the stored spell to?"
   ,"You feel an anticipation in the air"
   ,"You sense the spell becoming active"
-  ,"Sparks shoot out of your fingers"
+  ,"Sparks shoot out of your"
   ,"A small jet of fire leaps from your"
   ,"You are surrounded in"
+  ,"A glowing arrow pointing"
+  ,".* appears above your .* then"
+  ,"You are momentarily surrounded by a halo"
+  ,".* sprays from your"
+  ,".* coil around you like a serpent"
+  ,"A cloud of .* forms above your"
+  ,"A fulminating skull of .* encircles you"
+  ,"Tendrils of .* lash out wildly around you"
+  ,"You scalded"
+  ,"You chilled"
+  ,"You froze"
+  ,"You melted"
 }
 
 local function setup(args)

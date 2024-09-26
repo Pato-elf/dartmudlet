@@ -39,7 +39,7 @@ local function announceOn(args)
   Events.raiseEvent("messageEvent", {message="<yellow>Announce On: Skill_Name+\n"})
   isAnnounce = true
   isVerbose = false
-  isBrief	= false
+  isBrief   = false
   Announce.save()
 end
 
@@ -47,7 +47,7 @@ local function announceBrief(args)
   Events.raiseEvent("messageEvent", {message="<yellow>Announce Brief: +\n"})
   isAnnounce = true
   isVerbose = false
-  isBrief	= true
+  isBrief   = true
   Announce.save()
 end
 
@@ -55,7 +55,7 @@ local function announceVerbose(args)
   Events.raiseEvent("messageEvent", {message="<yellow>Announce Verbose: Skill_Name+ (num)\n"})
   isAnnounce = true
   isVerbose = true
-  isBrief	= false
+  isBrief   = false
   Announce.save()
 end
 
@@ -69,7 +69,7 @@ local function loaderFunction(sentTable)
   if sentTable then
     isAnnounce = sentTable["isAnnounce"]
     isVerbose = sentTable["isVerbose"]
-	isBrief		= sentTable["isBrief"]
+    isBrief   = sentTable["isBrief"]
   end
 end
 
@@ -84,7 +84,7 @@ local function save()
                       ,tableToSave = {
                         isAnnounce = isAnnounce
                         ,isVerbose = isVerbose
-						,isBrief	= isBrief
+			,isBrief   = isBrief
                       }
                     })
 end

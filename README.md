@@ -3,7 +3,7 @@
 &nbsp;
 ## Recent Changes
 - Fixed auto skill adjustment
-- Added 120+ additional unblocks
+- Added 130+ additional unblocks
 - Added more announce modes (off, brief, on, verbose)
 - Fixed update problems with similar skill names (e.g. blur, blur_other)
 - Removed automatic "score" command after the initial one

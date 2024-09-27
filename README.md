@@ -14,6 +14,7 @@
 - Added blocking for revise
 - Removed blocking when writing forms
 - Added player status to name (e.g. blurry, sitting)
+- Fixed text being cut off in upper chat box
 - Removed empty prompt lines
 
 &nbsp;
@@ -26,10 +27,11 @@ DartMUDlet has many display features such as a conversation window across the to
 
 &nbsp;
 ## Installation
-+ Visit the project [release page](https://github.com/Pato-elf/dartmudlet/releases) and download the latest package.zip under Assets.
-+ Launch [Mudlet](https://www.mudlet.org/) and connect to your [DartMUD](http://dartmud.com) profile.
-+ Open the Mudlet Package Manager, click "Install new package" and select the package.zip you downloaded.
-+ To start using DartMUDlet, type `/setup` in the command window to get things set up.
+1 Visit the project [release page](https://github.com/Pato-elf/dartmudlet/releases) and download the latest package.zip under Assets.
+2 Launch [Mudlet](https://www.mudlet.org/) and connect to your [DartMUD](http://dartmud.com) profile.
+3 Open the Mudlet Package Manager, click "Install new package" and select the package.zip you downloaded.
+4 Type `/setup` in the command window to get things set up.
+5 Type `/announce on` in the command window to turn on improve announcements.
 
 &nbsp;
 ## How to use?

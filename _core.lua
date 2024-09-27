@@ -4,40 +4,42 @@ local directory = getMudletHomeDir().."/"..packageName.."/"
 local modules = {}
 local sourceName = "core"
 
-local function setup(e, f, g)
-  print("Setup!")
-  modules = {}
-  args = {}
 
-  local aliases_directory = directory.."Aliases/"
+
+local function setup(e, f, g)
+	cecho("<yellow>DARTMUDLET: setup\n")
+	modules = {}
+	args = {}
+
+  local aliases_directory = directory.."ALIASES/"
   for file in lfs.dir(aliases_directory) do
     if lfs.attributes(aliases_directory..file,"mode") == "file" then
       table.insert(modules, dofile(aliases_directory..file))
     end
   end
 
-  local scripts_directory = directory.."Scripts/"
+  local scripts_directory = directory.."SCRIPTS/"
   for file in lfs.dir(scripts_directory) do
     if lfs.attributes(scripts_directory..file,"mode") == "file" then
       table.insert(modules, dofile(scripts_directory..file))
     end
   end
 
-  local timers_directory = directory.."Timers/"
+  local timers_directory = directory.."TIMERS/"
   for file in lfs.dir(timers_directory) do
     if lfs.attributes(timers_directory..file,"mode") == "file" then
       table.insert(modules, dofile(timers_directory..file))
     end
   end
 
-  local triggers_directory = directory.."Triggers/"
+  local triggers_directory = directory.."TRIGGERS/"
   for file in lfs.dir(triggers_directory) do
     if lfs.attributes(triggers_directory..file,"mode") == "file" then
       table.insert(modules, dofile(triggers_directory..file))
     end
   end
 
-  local personal_directory = directory.."Personal_Scripts/"
+  local personal_directory = directory.."SCRIPTS_PERSONAL/"
     for file in lfs.dir(personal_directory) do
       if lfs.attributes(personal_directory..file,"mode") == "file" then
         table.insert(modules, dofile(personal_directory..file))
@@ -53,10 +55,15 @@ local function setup(e, f, g)
   isFirstLoad = false
 
   _Core.load()
+  
+  send("score", false)
+  send("who", false)
 end
 
+
+
 local function load()
-  print("Loading!")
+  cecho("<yellow>DARTMUDLET: loading\n")
   for i,module in ipairs(modules) do
     if module.load then
       module.load()
@@ -64,12 +71,14 @@ local function load()
   end
 end
 
+
+
 local function unsetup(e, f, g)
   resetProfile()
   args = {}
   args["directory"] = directory
 
-  print("Unsetup!")
+  cecho("<yellow>DARTMUDLET: unsetup\n")
 
   for k,module in pairs(modules) do
     if module.unsetup then
@@ -80,11 +89,15 @@ local function unsetup(e, f, g)
   modules = {}
 end
 
+
+
 local function resetup(e, f, g)
-  print("resetup!")
+  cecho("<yellow>DARTMUDLET: resetup\n")
   unsetup(e, f, g)
   setup(e, f, g)
 end
+
+
 
 _Core = {
   setup = setup

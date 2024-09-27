@@ -39,6 +39,8 @@ levels.tyro       = {name = "a tyro",         abbr = "tyro",		  min = "4",		  ma
 levels.unskilled  = {name = "unskilled",      abbr = "unskilled",	min = "1",		  max = "3",     next_level = levels.tyro}
 levels.NoSkill    = {name = "no skill",       abbr = "noskill", 	min = "0",		  max = "0",     next_level = levels.unskilled}
 
+
+
 local function getSkill(args)
   local who = args["who"]
   local skill_name = args["skill_name"]
@@ -62,6 +64,8 @@ local function getSkill(args)
   return results[1]
 end
 
+
+
 local function imp2lvl(imp)
   imp = tonumber(imp)
 
@@ -73,7 +77,9 @@ local function imp2lvl(imp)
   return levels.NoSkill
 end
 
-local function name2lvl(name)
+
+
+function name2lvl(name)
 
   for k,v in pairs(levels) do
     if (v.name == name) then
@@ -84,12 +90,14 @@ local function name2lvl(name)
   return levels.NoSkill
 end
 
+
+
 local function skillInfo(args)
   local skill_name = args["skill_name"]
   local who = args["who"]
 	local result = getSkill(args)
 	if result == -1 then
-        cecho("<red>_dm.getSkill(): Invalid arguments...<reset>\n")
+		cecho("<red>ERROR: Unknown skill - "..skill_name.."\n")
         return
 	end
 
@@ -104,6 +112,8 @@ local function skillInfo(args)
 	cecho("<yellow>Information for "..who..": "..result.skill.."\n")
 	cecho("<yellow>Improves: "..output.."\n")
 end
+
+
 
 local function increaseSkill(args)
   local skill_name = args["skill_name"]
@@ -171,6 +181,8 @@ local function increaseSkill(args)
 	return count
 end
 
+
+
 local function skillMistake()
   if previous_skill_value.count ~= nil then
     local count = previous_skill_value.count
@@ -189,6 +201,8 @@ local function skillMistake()
   end
 end
 
+
+
 local function updateCount(args)
   local count = args["count"]
   local who = args["who"]
@@ -206,6 +220,8 @@ local function updateCount(args)
     display(skill_name)
   end
 end
+
+
 
 local function shownSkill(args)
   local who = Status.name
@@ -227,6 +243,7 @@ local function shownSkill(args)
     end
   end
 end
+
 
 
 local function setup(args)

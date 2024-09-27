@@ -1,9 +1,11 @@
 local Announce = {}
 
 local sourceName = "announce"
-local isAnnounce = false
+local isAnnounce = true
 local isVerbose = false
 local isBrief = false
+
+
 
 local function announce(args)
   local skill_name = args["skill_name"]
@@ -35,29 +37,38 @@ local function announce(args)
   end
 end
 
-local function announceOn(args)
-  Events.raiseEvent("messageEvent", {message="<yellow>Announce On: Skill_Name+\n"})
-  isAnnounce = true
-  isVerbose = false
-  isBrief	= false
-  Announce.save()
+
+
+function announceOn(args)
+	cecho("<yellow>Announce On: Skill_Name+\n")
+	Events.raiseEvent("messageEvent", {message="<yellow>Announce On: Skill_Name+\n"})
+	isAnnounce = true
+	isVerbose = false
+	isBrief   = false
+	Announce.save()
 end
+
+
 
 local function announceBrief(args)
   Events.raiseEvent("messageEvent", {message="<yellow>Announce Brief: +\n"})
   isAnnounce = true
   isVerbose = false
-  isBrief	= true
+  isBrief   = true
   Announce.save()
 end
+
+
 
 local function announceVerbose(args)
   Events.raiseEvent("messageEvent", {message="<yellow>Announce Verbose: Skill_Name+ (num)\n"})
   isAnnounce = true
   isVerbose = true
-  isBrief	= false
+  isBrief   = false
   Announce.save()
 end
+
+
 
 local function announceOff(args)
   Events.raiseEvent("messageEvent", {message="<yellow>Announce Off.\n"})
@@ -65,29 +76,38 @@ local function announceOff(args)
   Announce.save()
 end
 
+
+
 local function loaderFunction(sentTable)
   if sentTable then
     isAnnounce = sentTable["isAnnounce"]
     isVerbose = sentTable["isVerbose"]
-	isBrief		= sentTable["isBrief"]
+    isBrief   = sentTable["isBrief"]
   end
 end
 
+
+
 local function load()
-  Events.raiseEvent("loadEvent",{sourceName = sourceName, functionToSendData = loaderFunction})
+	Events.raiseEvent("loadEvent",{sourceName = sourceName, functionToSendData = loaderFunction})
 end
 
+
+
 local function save()
-  Events.raiseEvent("saveEvent",
-                    {
-                      sourceName = sourceName
-                      ,tableToSave = {
-                        isAnnounce = isAnnounce
-                        ,isVerbose = isVerbose
-						,isBrief	= isBrief
-                      }
-                    })
+	Events.raiseEvent("saveEvent",
+		{
+		sourceName = sourceName
+		,tableToSave =
+			{
+				isAnnounce = isAnnounce,
+				isVerbose  = isVerbose,
+				isBrief    = isBrief
+			}
+		})
 end
+
+
 
 local function setup(args)
   Events.addListener("skillImproveEvent",sourceName,announce)

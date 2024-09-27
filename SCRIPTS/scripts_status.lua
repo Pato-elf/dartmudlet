@@ -55,6 +55,7 @@ end
 
 local function login(args)
   send("score")
+  send("who")
 end
 
 function Status.setup(args)

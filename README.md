@@ -3,11 +3,12 @@
 &nbsp;
 ## Recent Changes
 - Fixed auto skill adjustment
-- Added 120+ additional unblocks
+- Added 130+ additional unblocks
 - Added more announce modes (off, brief, on, verbose)
 - Fixed update problems with similar skill names (e.g. blur, blur_other)
 - Removed automatic "score" command after the initial one
 - Added "well fed" and "well slaked" statuses
+- Added /help command to display list of commands
 - Changes to practice casting
 - Removed blocking on "cast net"
 - Added blocking for revise and write
@@ -76,6 +77,7 @@ Some of the rest are:
 /update <Who> <skill> <improves> - Set improves for your (or pet's) skill to given total
                                  - Use capitalized name to update
 /info <skill>                    - Shows current improves/level and improves to reach next
+/help                            - Display a list of available commands
 ```
 ```
 /who on  - Check who is online every 5 minutes; results are updated in persistent custom area

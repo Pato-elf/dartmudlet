@@ -21,6 +21,10 @@ local topRightMinSize = 500
 local topLeftWidth = 0
 local rightWidth = 0
 
+
+
+-- create the UI console
+---------------------------------------------------------------------
 local function createUIConsole()
 
   local border = {}
@@ -294,7 +298,9 @@ local function createUIConsole()
     tab:setClickCallback("Events.raiseEvent","tab"..v.name.."ClickedEvent", {})
   end
 
-end
+end -- createUIConsole
+
+
 
 local function onGeneralTabClick(args)
   showWindow("General")
@@ -324,6 +330,10 @@ local function onLocationTabClick(args)
   showWindow("Location")
 end
 
+
+
+-- update the display
+---------------------------------------------------------------------
 local function updateDisplay(args)
     local mainWidth, mainHeight = getMainWindowSize()
     local x = mainWidth
@@ -389,19 +399,27 @@ local function updateDisplay(args)
     tabBar:resize(rightWidth, tabSize)
 end
 
+
+
+-- update chat box
+---------------------------------------------------------------------
 local function onChat(args)
-  local text = args["message"]
+	local text = args["message"]
 	local ts = getTime(true, "hh:mm:ss")
-  local container = windows["ChatBox"]["container"]
+	local container = windows["ChatBox"]["container"]
 	container:echo(ts.." ")
 
 	-- even though we get the text passed into the event we will get the text
-  -- from buffer to preserve colors/formatting
+	-- from buffer to preserve colors/formatting
 	selectCurrentLine()
 	copy()
 	appendBuffer("ChatBox")
 end
 
+
+
+-- update improves box
+---------------------------------------------------------------------
 local function onImprove(args)
   local who = args["name"]
   local skill_name = args["skill_name"]
@@ -445,81 +463,125 @@ local function onSkillMistake(args)
   container:echo("")
 end
 
+
+
+-- update who box
+---------------------------------------------------------------------
 local function onWho(args)
-  local container = windows["WhoBox"]["container"]
-  selectCurrentLine()
-  copy()
-  appendBuffer("WhoBox")
-  deleteLine()
+	local container = windows["WhoBox"]["container"]
+	selectCurrentLine()
+	copy()
+	appendBuffer("WhoBox")
+	deleteLine()
 end
 
 local function onStartWho(args)
-  local container = windows["WhoBox"]["container"]
-  clearWindow("WhoBox")
-  selectCurrentLine()
+	local container = windows["WhoBox"]["container"]
+	clearWindow("WhoBox")
+	selectCurrentLine()
 	copy()
 	appendBuffer("WhoBox")
-  Events.addListener("whoEvent", sourceName, onWho)
-  deleteLine()
+	Events.addListener("whoEvent", sourceName, onWho)
+	deleteLine()
 end
 
 local function onWhoEnd(args)
-  local container = windows["WhoBox"]["container"]
-  selectCurrentLine()
-  copy()
-  appendBuffer("WhoBox")
-  Events.removeListener("whoEvent", sourceName)
-  deleteLine()
+	local container = windows["WhoBox"]["container"]
+	selectCurrentLine()
+	copy()
+	appendBuffer("WhoBox")
+	Events.removeListener("whoEvent", sourceName)
+	deleteLine()
 end
 
+
+
+-- update name box
+---------------------------------------------------------------------
 local function onName(args)
-  showname = args["fullname"]
-  name_table = showname:split("are ")
-  showname = name_table[2]
-  name_table2 = showname:split("%. ")
-  showname = name_table2[1]
-  
-  cecho("\n"..showname)
-  clearWindow("NameBox")
-  cecho("NameBox", " Name: "..showname)
-  --name = args["name"]
-  --cecho("\n"..name)
-  --clearWindow("NameBox")
-  --cecho("NameBox", " Name: "..name)
-  deleteLine()
+	showname = args["fullname"]
+	name_table = showname:split("are ")
+	showname = name_table[2]
+	name_table2 = showname:split("%. ")
+	showname = name_table2[1]
+
+	cecho("\n"..showname)
+	clearWindow("NameBox")
+	cecho("NameBox", " Name: "..showname)
+	--name = args["name"]
+	--cecho("\n"..name)
+	--clearWindow("NameBox")
+	--cecho("NameBox", " Name: "..name)
+	deleteLine()
 end
 
+
+
+-- update age box
+---------------------------------------------------------------------
 local function onAge(args)
-  years = args["years"]
-  months = args["months"]
-  clearWindow("AgeBox")
-  cecho("AgeBox", " Age: "..years.." years, "..months.." months")
-  deleteLine()
+	years = args["years"]
+	months = args["months"]
+	clearWindow("AgeBox")
+	cecho("AgeBox", " Age: "..years.." years, "..months.." months")
+	deleteLine()
 end
 
+
+
+-- update hunger box
+---------------------------------------------------------------------
 local function onHunger(args)
-  hunger = args["hunger"]
+	hunger = args["hunger"]
 
-  clearWindow("HungerBox")
-  cecho("HungerBox", " Hunger: ")
-  selectString(hunger, 1)
-  copy()
-  appendBuffer("HungerBox")
-  moveCursorEnd()
+	if hunger == "well fed" then hunger = "<pale_green>"..hunger
+	elseif hunger == "not hungry" then hunger = "<pale_green>"..hunger
+	elseif hunger == "slightly hungry" then hunger = "<yellow>"..hunger
+	elseif hunger == "hungry" then hunger = "<yellow>"..hunger
+	elseif hunger == "famished" then hunger = "<red>"..hunger
+	elseif hunger == "faint from hunger" then hunger = "<red>"..hunger
+	elseif hunger == "starving" then hunger = "<red>"..hunger
+	elseif hunger == "starving to death" then hunger = "<red>"..hunger
+	end
+	
+	clearWindow("HungerBox")
+	cecho("HungerBox", " Hunger: "..hunger)
+	--selectString(hunger, 1)
+	--copy()
+	--appendBuffer("HungerBox")
+	moveCursorEnd()
 end
 
+
+
+-- update thirst box
+---------------------------------------------------------------------
 local function onThirst(args)
-  thirst = args["thirst"]
-
-  clearWindow("ThirstBox")
-  cecho("ThirstBox", " Thirst: ")
-  selectString(thirst, 1)
-  copy()
-  appendBuffer("ThirstBox")
-  deleteLine()
-  moveCursorEnd()
+	thirst = args["thirst"]
+	
+	if thirst == "well slaked" then thirst = "<pale_green>"..thirst
+	elseif thirst == "not thirsty" then thirst = "<pale_green>"..thirst
+	elseif thirst == "slightly thirsty" then thirst = "<yellow>"..thirst
+	elseif thirst == "thirsty" then thirst = "<yellow>"..thirst
+	elseif thirst == "parched" then thirst = "<red>"..thirst
+	elseif thirst == "faint from thirst" then thirst = "<red>"..thirst
+	elseif thirst == "completely dehydrated" then thirst = "<red>"..thirst
+	elseif thirst == "dying of thirst" then thirst = "<red>"..thirst
+	end
+	
+	clearWindow("ThirstBox")
+	cecho("ThirstBox", " Thirst: "..thirst)
+	--selectString(thirst, 1)
+	--copy()
+	--appendBuffer("ThirstBox")
+	deleteLine()
+	moveCursorEnd()
 end
 
+
+
+-- update encumbrance box
+---------------------------------------------------------------------
 local function onEncumbrance(args)
   encumbrance = args["encumbrance"]
 
@@ -532,6 +594,10 @@ local function onEncumbrance(args)
   moveCursorEnd()
 end
 
+
+
+-- update movement box
+---------------------------------------------------------------------
 local function onMovement(args)
   movement = args["movement"]
 
@@ -544,12 +610,18 @@ local function onMovement(args)
   moveCursorEnd()
 end
 
+
+
+-- update message box
+---------------------------------------------------------------------
 local function onMessage(args)
   message = args["message"]
 
 
   cecho("MessageHistoryBox", " "..message)
 end
+
+
 
 local function onConc(args)
   conc = args["conc"]

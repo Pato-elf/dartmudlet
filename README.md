@@ -11,8 +11,10 @@
 - Added /help command to display list of commands
 - Changes to practice casting
 - Removed blocking on "cast net"
-- Added blocking for revise and write
+- Added blocking for revise
+- Removed blocking when writing forms
 - Added player status to name (e.g. blurry, sitting)
+- Removed empty prompt lines
 
 &nbsp;
 ## Screenshots
@@ -77,6 +79,7 @@ Some of the rest are:
 /update <Who> <skill> <improves> - Set improves for your (or pet's) skill to given total
                                  - Use capitalized name to update
 /info <skill>                    - Shows current improves/level and improves to reach next
+/levels                          - Display a list of skill levels
 /help                            - Display a list of available commands
 ```
 ```

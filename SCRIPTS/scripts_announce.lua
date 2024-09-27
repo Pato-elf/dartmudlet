@@ -40,8 +40,8 @@ end
 
 
 function announceOn(args)
-	cecho("<yellow>Announce On: Skill_Name+\n")
-	Events.raiseEvent("messageEvent", {message="<yellow>Announce On: Skill_Name+\n"})
+	cecho("<yellow>Announce: On\n")
+	Events.raiseEvent("messageEvent", {message="<yellow>Announce: On\n"})
 	isAnnounce = true
 	isVerbose = false
 	isBrief   = false
@@ -51,29 +51,32 @@ end
 
 
 local function announceBrief(args)
-  Events.raiseEvent("messageEvent", {message="<yellow>Announce Brief: +\n"})
-  isAnnounce = true
-  isVerbose = false
-  isBrief   = true
-  Announce.save()
+	cecho("<yellow>Announce: Brief\n")
+	Events.raiseEvent("messageEvent", {message="<yellow>Announce: Brief\n"})
+	isAnnounce = true
+	isVerbose = false
+	isBrief   = true
+	Announce.save()
 end
 
 
 
 local function announceVerbose(args)
-  Events.raiseEvent("messageEvent", {message="<yellow>Announce Verbose: Skill_Name+ (num)\n"})
-  isAnnounce = true
-  isVerbose = true
-  isBrief   = false
-  Announce.save()
+	cecho("<yellow>Announce: Verbose\n")
+	Events.raiseEvent("messageEvent", {message="<yellow>Announce: Verbose\n"})
+	isAnnounce = true
+	isVerbose = true
+	isBrief   = false
+	Announce.save()
 end
 
 
 
 local function announceOff(args)
-  Events.raiseEvent("messageEvent", {message="<yellow>Announce Off.\n"})
-  isAnnounce = false
-  Announce.save()
+	cecho("<yellow>Announce: Off (num)\n")
+	Events.raiseEvent("messageEvent", {message="<yellow>Announce: Off\n"})
+	isAnnounce = false
+	Announce.save()
 end
 
 

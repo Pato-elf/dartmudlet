@@ -15,6 +15,18 @@ local function setup(args)
 --								]])
 
 
+-- # repeat command	
+---------------------------------------------------------------------
+  	tempAliases.repeatCommand =
+      tempAlias("^#(\\d+) (.*)$",
+								[[
+									for i = 1, tonumber(matches[2]) do
+										expandAlias(matches[3])
+									end
+								]])
+
+
+
 -- /help command	
 ---------------------------------------------------------------------
   	tempAliases.showHelp =

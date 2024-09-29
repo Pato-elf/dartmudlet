@@ -1,408 +1,196 @@
-local UI = {}
-
-local sourceName = "ui"
-
+GUI = GUI or {}
 local windows = {}
 local windows_ByPosition = {}
 windows_ByPosition.topRight = {}
 windows_ByPosition.topLeft = {}
 windows_ByPosition.right = {}
 
-local tabBar = {}
-local tabs = {}
-
-local topBorder = 164
-local tabSize = 40
-local bottomBorder = 0
-
-local topLeftMinSize = 700
-local topRightMinSize = 500
-
-local topLeftWidth = 0
-local rightWidth = 0
 
 
-
--- create the UI console
+-- CREATE GUI
 ---------------------------------------------------------------------
 local function createUIConsole()
+GUI.top = Adjustable.Container:new({name = "top",x=0, y=0, height=188})
+GUI.right = Adjustable.Container:new({name = "right", x=-600, y=0, width=600, height="100%"})
+
+
+GUI.top:attachToBorder("top")
+GUI.right:attachToBorder("right")
+GUI.top:connectToBorder("right")
+
+
+GUI.top:setTitle("")
+GUI.right:setTitle("")
+
+
+GUI.top:setBorderMargin(0)
+GUI.top:setPadding(2)
+GUI.right:setBorderMargin(0)
+GUI.right:setPadding(2)
+
+
+GUI.tabwindow1 = GUI.tabwindow1 or
+	Adjustable.TabWindow:new({
+		name = "tabwindow1",
+		x = 0, y = 0,
+		width = "100%",
+		height = "25%",
+		tabBarHeight = 20,
+		activeTabBGColor = "rgb(0,0,192)",
+		color1 = "rgb(0,0,192)",
+		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
+		tabs = {"WHO","CHANNEL","STATS","ALLOCS","MAP"},
+	},GUI.right)
+
+
+GUI.tabwindow2 = GUI.tabwindow2 or
+	Adjustable.TabWindow:new({
+		name = "tabwindow2",
+		x = 0, y = "25%",
+		width = "100%",
+		height = "25%",
+		tabBarHeight = 20,
+		activeTabBGColor = "rgb(0,0,192)",
+		color1 = "rgb(0,0,192)",
+		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
+		tabs = {"MESSAGE","CAST","MISC","MISC2"},
+	},GUI.right)
+
+  
+GUI.tabwindow3 = GUI.tabwindow3 or
+	Adjustable.TabWindow:new({
+		name = "tabwindow3",
+		x = 0, y = "50%",
+		width = "100%",
+		height = "25%",
+		tabBarHeight = 20,
+		activeTabBGColor = "rgb(0,0,192)",
+		color1 = "rgb(0,0,192)",
+		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
+		tabs = {"IMPROVE","TEST2"},
+	},GUI.right)
+  
+  
+GUI.tabwindow4 = GUI.tabwindow4 or
+	Adjustable.TabWindow:new({
+		name = "tabwindow4",
+		x = 0, y = "75%",
+		width = "100%",
+		height = "25%",
+		tabBarHeight = 20,
+		activeTabBGColor = "rgb(0,0,192)",
+		color1 = "rgb(0,0,192)",
+		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
+		tabs = {"TEST3","TEST4"},
+	},GUI.right)
+
+
+GUI.tabwindow5 = GUI.tabwindow5 or
+	Adjustable.TabWindow:new({
+		name = "tabwindow5",
+		x = 0, y = 0,
+		width = "100%",
+		height = "100%",
+		tabBarHeight = 20,
+		activeTabBGColor = "rgb(0,0,192)",
+		color1 = "rgb(0,0,192)",
+		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
+		tabs = {"CHAT"},
+	},GUI.top)
+  
+
+
+-- CREATE CHAT BOX
+-----------------------------------------------------------
+GUI.containerChatBox = GUI.containerChatBox or
+	Geyser.MiniConsole:new({
+		name = "ChatBox",
+		x = 12, y = 10,
+		fontSize = 8,
+		width = "98%",
+		height = "89%",
+		color = "black"
+	}, GUI.tabwindow5.CHATcenter)
 
-  local border = {}
-  local container = {}
-
-  local x, y = getMainWindowSize()
-
-  if(x <= topLeftMinSize) then
-    topLeftWidth = x-4
-    rightWidth = 0
-  elseif (x > topLeftMinSize and x < (topLeftMinSize+topRightMinSize)) then
-    topLeftWidth = topLeftMinSize-4
-    rightWidth = x-topLeftMinSize
-  else
-    topLeftWidth = x - topRightMinSize
-    rightWidth = topRightMinSize
-  end
-
-  setBorderTop(topBorder)
-  setBorderBottom(bottomBorder)
-  setBorderRight(rightWidth)
-
-  local height = topBorder - 4
-  local fontSize = 8
-  local fontWidth = calcFontSize(fontSize)
-  local wrap = topLeftWidth/fontWidth
-  local y = 5
-  local yDelta = 15
-
-  border = Geyser.Label:new({x=topLeftWidth,y=0,width=rightWidth+4,height=height+4})
-  border:setStyleSheet([[border:2px solid white;background-color: black]])
-
-  local name = "NameBox"
-
-  container = Geyser.MiniConsole:new({  name=name,
-                                        x=2, y=y,
-                                        fontSize=fontSize,
-                                        width="99%", height=yDelta,
-                                        color="black"
-                                      }, border)
-
-  local window = {border = border
-                 ,container = container}
-
-  windows[name] = window
-  windows_ByPosition["topRight"][name] = window
-  y=y+yDelta
-
-  local name = "AgeBox"
-  container = Geyser.MiniConsole:new({  name=name,
-                                        x=2, y=y,
-                                        fontSize=fontSize,
-                                        width="99%", height=yDelta,
-                                        color="black"
-                                      }, border)
-  local window = {border = border
-                 ,container = container}
-  windows[name] = window
-  windows_ByPosition["topRight"][name] = window
-  y=y+yDelta
-
-
-  local name = "HungerBox"
-  container = Geyser.MiniConsole:new({  name=name,
-                                        x=2, y=y,
-                                        fontSize=fontSize,
-                                        width="99%", height=yDelta,
-                                        color="black"
-                                      }, border)
-  local window = {border = border
-                 ,container = container}
-  windows[name] = window
-  windows_ByPosition["topRight"][name] = window
-  y=y+yDelta
-
-  local name = "ThirstBox"
-  container = Geyser.MiniConsole:new({  name=name,
-                                        x=2, y=y,
-                                        fontSize=fontSize,
-                                        width="99%", height=yDelta,
-                                        color="black"
-                                      }, border)
-  local window = {border = border
-                 ,container = container}
-  windows[name] = window
-  windows_ByPosition["topRight"][name] = window
-  y=y+yDelta
-
-  local name = "EncumbranceBox"
-  container = Geyser.MiniConsole:new({  name=name,
-                                        x=2, y=y,
-                                        fontSize=fontSize,
-                                        width="99%", height=yDelta,
-                                        color="black"
-                                      }, border)
-  local window = {border = border
-                 ,container = container}
-  windows[name] = window
-  windows_ByPosition["topRight"][name] = window
-  y=y+yDelta
-
-  local name = "MovementBox"
-  container = Geyser.MiniConsole:new({  name=name,
-                                        x=2, y=y,
-                                        fontSize=fontSize,
-                                        width="99%", height=yDelta,
-                                        color="black"
-                                      }, border)
-  local window = {border = border
-                 ,container = container}
-  windows[name] = window
-  windows_ByPosition["topRight"][name] = window
-  y=y+yDelta
-
-  local name = "DateBox"
-  container = Geyser.MiniConsole:new({  name=name,
-                                        x=2, y=y,
-                                        fontSize=fontSize,
-                                        width="99%", height=yDelta*2,
-                                        color="black"
-                                      }, border)
-  local window = {border = border
-                 ,container = container}
-  windows[name] = window
-  windows_ByPosition["topRight"][name] = window
-  y=y+yDelta+20
-
-  local name = "ConcBox"
-  container = Geyser.MiniConsole:new({  name=name,
-                                        x=2, y=y,
-                                        fontSize=fontSize,
-                                        width="99%", height=yDelta,
-                                        color="black"
-                                      }, border)
-  local window = {border = border
-                 ,container = container}
-  windows[name] = window
-  windows_ByPosition["topRight"][name] = window
-  y=y+yDelta
-
-  local name = "AuraBox"
-  container = Geyser.MiniConsole:new({  name=name,
-                                        x=2, y=y,
-                                        fontSize=fontSize,
-                                        width="99%", height=yDelta,
-                                        color="black"
-                                      }, border)
-  local window = {border = border
-                 ,container = container}
-  windows[name] = window
-  windows_ByPosition["topRight"][name] = window
-
-  local name = "ChatBox"
-  local height = topBorder - 4
-  local fontSize = 8
-  local fontWidth = calcFontSize(fontSize)
-  local wrap = rightWidth/fontWidth
-
-  border = Geyser.Label:new({x=0,y=0,width=topLeftWidth+4,height=height+4})
-  border:setStyleSheet([[border:2px solid white;background-color: black]])
-
-  container = Geyser.MiniConsole:new({  name=name,
-                                        x=2, y=2,
-                                        fontSize=fontSize,
-                                        width=rightWidth-4, height=height,
-                                        color="black"
-                                      }, border)
-
-  local window = {border = border
-                 ,container = container}
-
-  windows[name] = window
-  windows_ByPosition["topLeft"][name] = window
-
-  local height = y-topBorder - tabSize
-  local fontSize = 8
-  local fontWidth = calcFontSize(fontSize)
-  local wrap = rightWidth/fontWidth
-
-  border = Geyser.Label:new({name="General", x=topLeftWidth,y=topBorder + tabSize,width=rightWidth,height=height})
-  border:setStyleSheet([[border:2px solid white;background-color: black]])
-
-  tabs[0] = {}
-  tabs[0].name = "General"
-  tabs[0].border = border
-
-  local name = "WhoBox"
-  container = Geyser.MiniConsole:new({  name=name,
-                                        x=2, y="1%",
-                                        fontSize=fontSize,
-                                        width="99%", height="48%",
-                                        color="black"
-                                      }, border)
-
-  local window = {border = border
-                 ,container = container}
-
-  windows[name] = window
-  windows_ByPosition["right"][name] = window
-
-  local name = "ImpBox"
-  container = Geyser.MiniConsole:new({  name=name,
-                                        x=2, y="49%",
-                                        fontSize=fontSize,
-                                        width="99%", height="25%",
-                                        color="black"
-                                      }, border)
-  setWindowWrap(name, wrap)
-
-  local window = {border = border
-  ,container = container}
-
-  windows[name] = window
-  windows_ByPosition["right"][name] = window
-
-  local name = "MessageHistoryBox"
-  container = Geyser.MiniConsole:new({  name=name,
-                                        x=2, y="74%",
-                                        fontSize=fontSize,
-                                        width="99%", height="25%",
-                                        color="black"
-                                      }, border)
-  setWindowWrap(name, wrap)
-
-  local window = {border = border
-  ,container = container}
-
-  windows[name] = window
-  windows_ByPosition["right"][name] = window
-
-  border = Geyser.Label:new({name="Magic", x=topLeftWidth,y=topBorder + tabSize,width=rightWidth,height=height})
-  border:setStyleSheet([[border:2px solid white;background-color: black]])
-
-  tabs[1] = {}
-  tabs[1].name = "Magic"
-  tabs[1].border = border
-
-  border = Geyser.Label:new({name="Combat", x=topLeftWidth,y=topBorder + tabSize,width=rightWidth,height=height})
-  border:setStyleSheet([[border:2px solid white;background-color: black]])
-
-  tabs[2] = {}
-  tabs[2].name = "Combat"
-  tabs[2].border = border
-
-  border = Geyser.Label:new({name="Location", x=topLeftWidth,y=topBorder + tabSize,width=rightWidth,height=height})
-  border:setStyleSheet([[border:2px solid white;background-color: black]])
-
-  tabs[3] = {}
-  tabs[3].name = "Location"
-  tabs[3].border = border
-
-  hideWindow("Magic")
-  hideWindow("Combat")
-  hideWindow("Location")
-
-  border = Geyser.Label:new({x=topLeftWidth,y=topBorder,width=rightWidth,height=tabSize})
-  border:setStyleSheet([[border:2px solid white;background-color: black]])
-
-  tabBar = border
-
-  for i, v in pairs(tabs) do
-    local tab = Geyser.Label:new({
-      name = "tab_"..v.name
-      ,x = 2 + (i * 45)
-      ,y = 2
-      ,width = 45
-      ,height = tabSize-4
-      ,message = [[<center>]]..v.name..[[</center>]]
-    },border)
-    tab:setStyleSheet([[border:1px solid white;background-color: black]])
-    tab:setClickCallback("Events.raiseEvent","tab"..v.name.."ClickedEvent", {})
-  end
-
-end -- createUIConsole
-
-
-
-local function onGeneralTabClick(args)
-  showWindow("General")
-  hideWindow("Magic")
-  hideWindow("Combat")
-  hideWindow("Location")
-end
-
-local function onMagicTabClick(args)
-  hideWindow("General")
-  showWindow("Magic")
-  hideWindow("Combat")
-  hideWindow("Location")
-end
-
-local function onCombatTabClick(args)
-  hideWindow("General")
-  hideWindow("Magic")
-  showWindow("Combat")
-  hideWindow("Location")
-end
-
-local function onLocationTabClick(args)
-  hideWindow("General")
-  hideWindow("Magic")
-  hideWindow("Combat")
-  showWindow("Location")
-end
-
-
-
--- update the display
----------------------------------------------------------------------
-local function updateDisplay(args)
-    local mainWidth, mainHeight = getMainWindowSize()
-    local x = mainWidth
-    local y = mainHeight
-
-    local previousrightWidth = rightWidth
-
-    if(x <= topLeftMinSize) then
-      topLeftWidth = x
-      rightWidth = 0
-    elseif (x > topLeftMinSize and x < (topLeftMinSize+topRightMinSize)) then
-      topLeftWidth = topLeftMinSize
-      rightWidth = x-topLeftMinSize
-    else
-      topLeftWidth = x - topRightMinSize
-      rightWidth = topRightMinSize
-    end
-
-    --We do this because setting the border is a window resize event.
-    --If we didn't do this, we'd get stuck in an infinite loop.
-    if previousrightWidth ~= rightWidth then
-      setBorderRight(rightWidth)
-    end
-
-    local height = topBorder - 4
-    local fontSize = 8
-    local fontWidth = calcFontSize(fontSize)
-    local topLeftWrap = topLeftWidth/fontWidth
-
-    --Update Top Right Window
-    for key,window in pairs(windows_ByPosition["topRight"]) do
-      local border = window["border"]
-      local container = window["container"]
-
-      border:resize(rightWidth, topBorder)
-      border:move(topLeftWidth,0)
-      border:setStyleSheet([[border:2px solid white;background-color: black]])
-    end
-
-    --Update Top Left Window
-    for key,window in pairs(windows_ByPosition["topLeft"]) do
-      local border = window["border"]
-      local container = window["container"]
-
-      border:resize(topLeftWidth, topBorder)
-      border:move(0,0)
-      border:setStyleSheet([[border:2px solid white;background-color: black]])
-      container:resize(topLeftWidth-4,topBorder - 4)
-      setWindowWrap(key, topLeftWrap)
-    end
-
-    --Update Right Side Window
-    for key,window in pairs(windows_ByPosition["right"]) do
-      local border = window["border"]
-      local container = window["container"]
-
-      border:resize(rightWidth, y-topBorder - tabSize)
-      border:move(topLeftWidth,topBorder + tabSize)
-      border:setStyleSheet([[border:2px solid white;background-color: black]])
-    end
-
-    tabBar:move(topLeftWidth, topBorder)
-    tabBar:resize(rightWidth, tabSize)
-end
+local window								= {border = GUI.tabwindow5.CHATcenter, container = GUI.containerChatBox}
+windows["ChatBox"]							= window
+windows_ByPosition["topLeft"]["ChatBox"]	= window
+
+
+
+-- CREATE WHO BOX
+-----------------------------------------------------------
+GUI.containerWhoBox = GUI.containerWhoBox or
+	Geyser.MiniConsole:new({
+		name = "WhoBox",
+		x = 12, y = 10,
+		fontSize = 10,
+		width = "96%",
+		height = "93%",
+		color = "black"
+	}, GUI.tabwindow1.WHOcenter)
+
+local window								= {border = GUI.tabwindow1.WHOcenter, container = GUI.containerWhoBox}
+windows["WhoBox"]							= window
+windows_ByPosition["topLeft"]["WhoBox"]		= window
+
+
+
+-- CREATE MESSAGE BOX
+-----------------------------------------------------------
+GUI.containerMessageBox = GUI.containerMessageBox or
+	Geyser.MiniConsole:new({
+		name = "MessageBox",
+		x = 12, y = 10,
+		fontSize = 10,
+		width = "96%",
+		height = "93%",
+		color = "black"
+	}, GUI.tabwindow2.MESSAGEcenter)
+
+local window								= {border = GUI.tabwindow2.MESSAGEcenter, container = GUI.containerMessageBox}
+windows["MessageBox"]						= window
+windows_ByPosition["topLeft"]["MessageBox"]	= window
+
+
+
+-- CREATE IMPROVE BOX
+-----------------------------------------------------------
+GUI.containerImproveBox = GUI.containerImproveBox or
+	Geyser.MiniConsole:new({
+		name = "ImproveBox",
+		x = 12, y = 10,
+		fontSize = 10,
+		width = "96%",
+		height = "93%",
+		color = "green"
+	}, GUI.tabwindow3.IMPROVEcenter)
+
+local window								= {border = GUI.tabwindow3.IMPROVEcenter, container = GUI.containerImproveBox}
+windows["ImproveBox"]						= window
+windows_ByPosition["topLeft"]["ImproveBox"]	= window
+
+
+
+
+
+
+--GUI.top:load()
+--GUI.right:load()
+--GUI.tabwindow1:load()
+
+
+
+end --createUIConsole
+
+
+
+-- UPDATES ----------------------------------------------------------
 
 
 
 -- update chat box
----------------------------------------------------------------------
+-----------------------------------------------------------
 local function onChat(args)
 	local text = args["message"]
 	local ts = getTime(true, "hh:mm:ss")
@@ -418,13 +206,53 @@ end
 
 
 
+-- update who box
+-----------------------------------------------------------
+local function onWho(args)
+	local container = windows["WhoBox"]["container"]
+	selectCurrentLine()
+	copy()
+	appendBuffer("WhoBox")
+	deleteLine()
+end
+
+local function onStartWho(args)
+	local container = windows["WhoBox"]["container"]
+	clearWindow("WhoBox")
+	selectCurrentLine()
+	copy()
+	appendBuffer("WhoBox")
+	Events.addListener("whoEvent", sourceName, onWho)
+	deleteLine()
+end
+
+local function onWhoEnd(args)
+	local container = windows["WhoBox"]["container"]
+	selectCurrentLine()
+	copy()
+	appendBuffer("WhoBox")
+	Events.removeListener("whoEvent", sourceName)
+	deleteLine()
+end
+
+
+
+-- update message box
+-----------------------------------------------------------
+local function onMessage(args)
+	message = args["message"]
+	cecho("MessageBox", " "..message)
+end
+
+
+
 -- update improves box
----------------------------------------------------------------------
+-----------------------------------------------------------
 local function onImprove(args)
   local who = args["name"]
   local skill_name = args["skill_name"]
   local ts = getTime(true, "hh:mm:ss")
-  local container = windows["ImpBox"]["container"]
+  local container = windows["ImproveBox"]["container"]
   local count = 0
   local output = ''
 
@@ -457,42 +285,15 @@ local function onImprove(args)
 end
 
 local function onSkillMistake(args)
-  local container = windows["ImpBox"]["container"]
-  selectCurrentLine("ImpBox")
-  deleteLine("ImpBox")
+  local container = windows["ImproveBox"]["container"]
+  selectCurrentLine("ImproveBox")
+  deleteLine("ImproveBox")
   container:echo("")
 end
 
 
 
--- update who box
----------------------------------------------------------------------
-local function onWho(args)
-	local container = windows["WhoBox"]["container"]
-	selectCurrentLine()
-	copy()
-	appendBuffer("WhoBox")
-	deleteLine()
-end
 
-local function onStartWho(args)
-	local container = windows["WhoBox"]["container"]
-	clearWindow("WhoBox")
-	selectCurrentLine()
-	copy()
-	appendBuffer("WhoBox")
-	Events.addListener("whoEvent", sourceName, onWho)
-	deleteLine()
-end
-
-local function onWhoEnd(args)
-	local container = windows["WhoBox"]["container"]
-	selectCurrentLine()
-	copy()
-	appendBuffer("WhoBox")
-	Events.removeListener("whoEvent", sourceName)
-	deleteLine()
-end
 
 
 
@@ -612,14 +413,6 @@ end
 
 
 
--- update message box
----------------------------------------------------------------------
-local function onMessage(args)
-  message = args["message"]
-
-
-  cecho("MessageHistoryBox", " "..message)
-end
 
 
 
@@ -647,21 +440,25 @@ local function onAura(args)
   moveCursorEnd()
 end
 
+
+
 local function refreshUI(args)
-  for key,window in pairs(windows) do
-    local container = window["container"]
+--  for key,window in pairs(windows) do
+--    local container = window["container"]
 
-    insertText(container["name"], "")
-  end
+--    insertText(container["name"], "")
+--  end
 
-  clearWindow("DateBox")
-  cecho("DateBox", " Date(common): "..date.format(os.time(), 3, "common").."\n Date(Thorpian): "..date.format(os.time(), 3, "thorpian"))
+--  clearWindow("DateBox")
+--  cecho("DateBox", " Date(common): "..date.format(os.time(), 3, "common").."\n Date(Thorpian): "..date.format(os.time(), 3, "thorpian"))
 end
+
+
 
 local function setup(args)
   createUIConsole()
 
-  Events.addListener("sysWindowResizeEvent", sourceName, updateDisplay)
+--  Events.addListener("sysWindowResizeEvent", sourceName, updateDisplay)
   Events.addListener("chatEvent", sourceName, onChat)
   Events.addListener("skillImproveEvent", sourceName, onImprove)
   Events.addListener("skillMistakeEvent", sourceName, onSkillMistake)
@@ -678,14 +475,14 @@ local function setup(args)
   Events.addListener("concEvent", sourceName, onConc)
   Events.addListener("auraEvent", sourceName, onAura)
 
-  Events.addListener("tabGeneralClickedEvent", sourceName, onGeneralTabClick)
-  Events.addListener("tabMagicClickedEvent", sourceName, onMagicTabClick)
-  Events.addListener("tabCombatClickedEvent", sourceName, onCombatTabClick)
-  Events.addListener("tabLocationClickedEvent", sourceName, onLocationTabClick)
+--  Events.addListener("tabGeneralClickedEvent", sourceName, onGeneralTabClick)
+--  Events.addListener("tabMagicClickedEvent", sourceName, onMagicTabClick)
+--  Events.addListener("tabCombatClickedEvent", sourceName, onCombatTabClick)
+--  Events.addListener("tabLocationClickedEvent", sourceName, onLocationTabClick)
 end
 
 local function unsetup(args)
-  Events.removeListener("sysWindowResizeEvent", sourceName)
+--  Events.removeListener("sysWindowResizeEvent", sourceName)
   Events.removeListener("chatEvent", sourceName)
   Events.removeListener("skillImproveEvent", sourceName)
   Events.removeListener("skillMistakeEvent", sourceName)
@@ -702,10 +499,10 @@ local function unsetup(args)
   Events.removeListener("concEvent", sourceName)
   Events.removeListener("auraEvent", sourceName)
 
-  Events.removeListener("tabGeneralClickedEvent", sourceName)
-  Events.removeListener("tabMagicClickedEvent", sourceName)
-  Events.removeListener("tabCombatClickedEvent", sourceName)
-  Events.removeListener("tabLocationClickedEvent", sourceName)
+--  Events.removeListener("tabGeneralClickedEvent", sourceName)
+--  Events.removeListener("tabMagicClickedEvent", sourceName)
+--  Events.removeListener("tabCombatClickedEvent", sourceName)
+--  Events.removeListener("tabLocationClickedEvent", sourceName)
 
   for key,window in pairs(windows) do
     local container = window["container"]

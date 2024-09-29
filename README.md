@@ -2,6 +2,7 @@
 
 &nbsp;
 ## Recent Changes
+- User interface has been rebuilt to use flexible, movable tabs
 - Fixed auto skill adjustment
 - Added 130+ additional unblocks
 - Added more announce modes (off, brief, on, verbose)
@@ -13,7 +14,7 @@
 - Changes to practice casting
 - Removed blocking on "cast net"
 - Added blocking for revise
-- Removed blocking when writing forms
+- Removed blocking when writing on forms
 - Added player status to name (e.g. blurry, sitting)
 - Fixed text being cut off in upper chat box
 - Removed empty prompt lines

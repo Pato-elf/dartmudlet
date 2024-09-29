@@ -163,7 +163,7 @@ GUI.containerImproveBox = GUI.containerImproveBox or
 		fontSize = 10,
 		width = "96%",
 		height = "93%",
-		color = "green"
+		color = "black"
 	}, GUI.tabwindow3.IMPROVEcenter)
 
 local window								= {border = GUI.tabwindow3.IMPROVEcenter, container = GUI.containerImproveBox}

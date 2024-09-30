@@ -175,14 +175,23 @@ windows_ByPosition["topLeft"]["ImproveBox"]	= window
 -- CREATE INFO BOX
 -----------------------------------------------------------
 GUI.containerInfoBox = GUI.containerInfoBox or
-	Geyser.MiniConsole:new({
+	Geyser.Label:new({
 		name = "InfoBox",
-		x = 16, y = 10,
+		x = 0, y = 0,
 		fontSize = 10,
-		width = "96%",
-		height = "93%",
+		width = "100%",
+		height = "100%",
 		color = "black"
 	}, GUI.tabwindow4.INFOcenter)
+
+
+GUI.containerInfoBox:setStyleSheet([[
+		QLabel{
+			color: black;
+			background-color: black;
+			margin: 10px;
+		}
+]])
 
 local window								= {border = GUI.tabwindow4.INFOcenter, container = GUI.containerInfoBox}
 windows["InfoBox"]							= window
@@ -193,14 +202,23 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 	-- CREATE NAME BOX - INSIDE INFO
 	-------------------------------------------------------
 	GUI.containerNameBox = GUI.containerNameBox or
-		Geyser.MiniConsole:new({
+		Geyser.Label:new({
 			name = "NameBox",
-			x = 0, y = 5,
+			x = 0, y = 10,
 			fontSize = 11,
 			width = "100%",
 			height = 18,
 			color = "black"
 		}, GUI.containerInfoBox)
+
+	GUI.containerNameBox:setStyleSheet([[
+		QLabel{
+			font-size: 11pt;
+			font-family: Bitstream Vera Sans Mono;
+			background-color: black;
+			margin: 0px 10px 0px 10px;
+		}
+	]])
 
 	local window								= {border = GUI.containerInfoBox, container = GUI.containerNameBox}
 	windows["NameBox"]							= window
@@ -211,14 +229,23 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 	-- CREATE AGE BOX - INSIDE INFO
 	-------------------------------------------------------
 	GUI.containerAgeBox = GUI.containerAgeBox or
-		Geyser.MiniConsole:new({
+		Geyser.Label:new({
 			name = "AgeBox",
-			x = 0, y = 23,
+			x = 0, y = 28,
 			fontSize = 11,
 			width = "100%",
 			height = 18,
 			color = "black"
 		}, GUI.containerInfoBox)
+
+	GUI.containerAgeBox:setStyleSheet([[
+		QLabel{
+			font-size: 11pt;
+			font-family: Bitstream Vera Sans Mono;
+			background-color: black;
+			margin: 0px 10px 0px 10px;
+		}
+	]])
 
 	local window								= {border = GUI.containerInfoBox, container = GUI.containerAgeBox}
 	windows["AgeBox"]							= window
@@ -229,14 +256,23 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 	-- CREATE HUNGER BOX - INSIDE INFO
 	-------------------------------------------------------
 	GUI.containerHungerBox = GUI.containerHungerBox or
-		Geyser.MiniConsole:new({
+		Geyser.Label:new({
 			name = "HungerBox",
-			x = 0, y = 41,
+			x = 0, y = 46,
 			fontSize = 11,
 			width = "100%",
 			height = 18,
 			color = "black"
 		}, GUI.containerInfoBox)
+
+	GUI.containerHungerBox:setStyleSheet([[
+		QLabel{
+			font-size: 11pt;
+			font-family: Bitstream Vera Sans Mono;
+			background-color: black;
+			margin: 0px 10px 0px 10px;
+		}
+	]])
 
 	local window								= {border = GUI.containerInfoBox, container = GUI.containerHungerBox}
 	windows["HungerBox"]						= window
@@ -247,15 +283,24 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 	-- CREATE THIRST BOX - INSIDE INFO
 	-------------------------------------------------------
 	GUI.containerThirstBox = GUI.containerThirstBox or
-		Geyser.MiniConsole:new({
+		Geyser.Label:new({
 			name = "ThirstBox",
-			x = 0, y = 59,
+			x = 0, y = 64,
 			fontSize = 11,
 			width = "100%",
 			height = 18,
 			color = "black"
 		}, GUI.containerInfoBox)
 
+	GUI.containerThirstBox:setStyleSheet([[
+		QLabel{
+			font-size: 11pt;
+			font-family: Bitstream Vera Sans Mono;
+			background-color: black;
+			margin: 0px 10px 0px 10px;
+		}
+	]])
+	
 	local window								= {border = GUI.containerInfoBox, container = GUI.containerThirstBox}
 	windows["ThirstBox"]						= window
 	windows_ByPosition["topLeft"]["ThirstBox"]	= window
@@ -265,14 +310,23 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 	-- CREATE ENCUMBRANCE BOX - INSIDE INFO
 	-------------------------------------------------------
 	GUI.containerEncumbranceBox = GUI.containerEncumbranceBox or
-		Geyser.MiniConsole:new({
+		Geyser.Label:new({
 			name = "EncumbranceBox",
-			x = 0, y = 77,
+			x = 0, y = 82,
 			fontSize = 11,
 			width = "100%",
 			height = 18,
 			color = "black"
 		}, GUI.containerInfoBox)
+
+	GUI.containerEncumbranceBox:setStyleSheet([[
+		QLabel{
+			font-size: 11pt;
+			font-family: Bitstream Vera Sans Mono;
+			background-color: black;
+			margin: 0px 10px 0px 10px;
+		}
+	]])
 
 	local window									= {border = GUI.containerInfoBox, container = GUI.containerEncumbranceBox}
 	windows["EncumbranceBox"]						= window
@@ -280,18 +334,54 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 
 
 
+	-- CREATE MOVEMENT BOX - INSIDE INFO
+	-------------------------------------------------------
+	GUI.containerMovementBox = GUI.containerMovementBox or
+		Geyser.Label:new({
+			name = "MovementBox",
+			x = 0, y = 100,
+			fontSize = 11,
+			width = "100%",
+			height = 18,
+			color = "black"
+		}, GUI.containerInfoBox)
+
+	GUI.containerMovementBox:setStyleSheet([[
+		QLabel{
+			font-size: 11pt;
+			font-family: Bitstream Vera Sans Mono;
+			background-color: black;
+			margin: 0px 10px 0px 10px;
+		}
+	]])
+
+	local window									= {border = GUI.containerInfoBox, container = GUI.containerMovementBox}
+	windows["MovementBox"]							= window
+	windows_ByPosition["topLeft"]["MovementBox"]	= window
+	
+	
+
 	-- CREATE DATE BOX - INSIDE INFO
 	-------------------------------------------------------
 	GUI.containerDateBox = GUI.containerDateBox or
-		Geyser.MiniConsole:new({
+		Geyser.Label:new({
 			name = "DateBox",
-			x = 0, y = 95,
+			x = 0, y = 118,
 			fontSize = 11,
-			width = "100%",
+			width = 360,
 			height = 36,
 			color = "black"
 		}, GUI.containerInfoBox)
 
+	GUI.containerDateBox:setStyleSheet([[
+		QLabel{
+			font-size: 11pt;
+			font-family: Bitstream Vera Sans Mono;
+			background-color: black;
+			margin: 0px 10px 0px 10px;
+		}
+	]])
+	
 	local window								= {border = GUI.containerInfoBox, container = GUI.containerDateBox}
 	windows["DateBox"]							= window
 	windows_ByPosition["topLeft"]["DateBox"]	= window
@@ -301,18 +391,114 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 	-- CREATE LANGUAGE BOX - INSIDE INFO
 	-------------------------------------------------------
 	GUI.containerLanguageBox = GUI.containerLanguageBox or
-		Geyser.MiniConsole:new({
+		Geyser.Label:new({
 			name = "LanguageBox",
-			x = 0, y = 131,
+			x = -240, y = 136,
 			fontSize = 11,
-			width = "100%",
+			width = 240,
 			height = 18,
 			color = "black"
 		}, GUI.containerInfoBox)
 
+	GUI.containerLanguageBox:setStyleSheet([[
+		QLabel{
+			font-size: 11pt;
+			font-family: Bitstream Vera Sans Mono;
+			background-color: black;
+			margin: 0px 10px 0px 10px;
+		}
+	]])
+	
 	local window									= {border = GUI.containerInfoBox, container = GUI.containerLanguageBox}
 	windows["LanguageBox"]							= window
 	windows_ByPosition["topLeft"]["LanguageBox"]	= window
+
+
+
+	-- CREATE HOLDER BOX - INSIDE INFO
+	-------------------------------------------------------
+	GUI.containerHolderBox = GUI.containerHolderBox or
+		Geyser.Label:new({
+			name = "HolderBox",
+
+			x = 0, y = -128,
+			fontSize = 24,
+			width = "100%",
+			height = 128,
+			color = "black"
+		}, GUI.containerInfoBox)
+
+	GUI.containerHolderBox:setStyleSheet([[
+			QLabel{
+				color: black;
+				background-color: black;
+				margin: 0 10px 10px 10px;
+			}
+	]])
+
+	local window									= {border = GUI.containerInfoBox, container = GUI.containerHolderBox}
+	windows["HolderBox"]							= window
+	windows_ByPosition["topLeft"]["HolderBox"]	= window
+
+
+
+		-- CREATE AURA BOX - INSIDE HOLDER, INFO
+		-------------------------------------------------------
+		GUI.containerAuraBox = GUI.containerAuraBox or
+			Geyser.Label:new({
+				name = "AuraBox",
+				message = [[<center>no aura</center>]],
+				x = 0, y = 0,
+				fontSize = 24,
+				width = "100%",
+				height = 60,
+				color = "black"
+			}, GUI.containerHolderBox)
+
+		GUI.containerAuraBox:setStyleSheet([[
+			QLabel{
+				font-size: 30px;
+				font-weight: bold;
+				font-family: verdana, tahoma;
+				background-color: black;
+				margin: 0px 10px 0px 10px;
+				border: 2px solid white;
+			}
+		]])
+
+		local window								= {border = GUI.containerHolderBox, container = GUI.containerAuraBox}
+		windows["AuraBox"]							= window
+		windows_ByPosition["topLeft"]["AuraBox"]	= window
+
+
+
+		-- CREATE CONC BOX - INSIDE HOLDER, INFO
+		-------------------------------------------------------
+		GUI.containerConcBox = GUI.containerConcBox or
+			Geyser.Label:new({
+				name = "ConcBox",
+				message = [[<center>UNKNOWN</center>]],
+				x = 0, y = 58,
+				fontSize = 22,
+				width = "100%",
+				height = 60,
+				color = "black"
+			}, GUI.containerHolderBox)
+
+		GUI.containerConcBox:setStyleSheet([[
+			QLabel{
+				font-size: 22px;
+				font-weight: bold;
+				font-family: verdana, tahoma;
+				background-color: black;
+				margin: 0px 10px 0px 10px;
+				border: 2px solid white;
+			}
+		]])
+
+		local window								= {border = GUI.containerHolderBox, container = GUI.containerConcBox}
+		windows["ConcBox"]							= window
+		windows_ByPosition["topLeft"]["ConcBox"]	= window
 
 
 
@@ -517,10 +703,7 @@ local function onEncumbrance(args)
 	encumbrance = args["encumbrance"]
 
 	clearWindow("EncumbranceBox")
-	cecho("EncumbranceBox", "Encumbrance: ")
-	selectString(encumbrance, 1)
-	copy()
-	appendBuffer("EncumbranceBox")
+	cecho("EncumbranceBox", "Encumbrance: "..encumbrance)
 	deleteLine()
 	moveCursorEnd()
 end
@@ -530,15 +713,12 @@ end
 -- update movement box
 -----------------------------------------------------------
 local function onMovement(args)
-  movement = args["movement"]
+	movement = args["movement"]
 
-  clearWindow("MovementBox")
-  cecho("MovementBox", " Movement: ")
-  selectString(movement, 1)
-  copy()
-  appendBuffer("MovementBox")
-  deleteLine()
-  moveCursorEnd()
+	clearWindow("MovementBox")
+	cecho("MovementBox", " Movement: "..movement)
+	deleteLine()
+	moveCursorEnd()
 end
 
 
@@ -572,34 +752,99 @@ end
 
 
 
-
-
-
-
-local function onConc(args)
-  conc = args["conc"]
-
-  clearWindow("ConcBox")
-  cecho("ConcBox", " Concentration: ")
-  selectString(conc, 1)
-  copy()
-  appendBuffer("ConcBox")
-  deleteLine()
-  moveCursorEnd()
-end
-
+-- update aura box
+-----------------------------------------------------------
 local function onAura(args)
-  aura = args["aura"]
+	aura = args["aura"]
+	auraBoxTextColor = "white"
+	auraBoxBGColor = "black"
 
-  clearWindow("AuraBox")
-  cecho("AuraBox", " Aura: ")
-  selectString(aura, 1)
-  copy()
-  appendBuffer("AuraBox")
-  deleteLine()
-  moveCursorEnd()
+	deleteLine()
+	moveCursorEnd()
+
+	if aura == "scintillating" then auraBoxTextColor = "mediumblue" auraBoxBGColor = "crimson"
+	elseif aura == "intense octarine" then auraBoxTextColor = "indigo" auraBoxBGColor = "skyblue"
+	elseif aura == "octarine" then auraBoxTextColor = "mediumvioletred" auraBoxBGColor = "skyblue"
+	elseif aura == "dim octarine" then auraBoxTextColor = "black" auraBoxBGColor = "skyblue"  
+	elseif aura == "intense violet" then auraBoxTextColor = "white" auraBoxBGColor = "darkmagenta"
+	elseif aura == "violet" then auraBoxTextColor = "lightgrey" auraBoxBGColor = "darkmagenta"
+	elseif aura == "dim violet" then auraBoxTextColor = "darkgrey" auraBoxBGColor = "darkmagenta"
+	elseif aura == "intense indigo" then auraBoxTextColor = "white" auraBoxBGColor = "midnightblue"
+	elseif aura == "indigo" then auraBoxTextColor = "lightgrey" auraBoxBGColor = "midnightblue"
+	elseif aura == "dim indigo" then auraBoxTextColor = "dimgrey" auraBoxBGColor = "midnightblue"
+	elseif aura == "intense blue" then auraBoxTextColor = "white" auraBoxBGColor = "blue"
+	elseif aura == "blue" then auraBoxTextColor = "lightgrey" auraBoxBGColor = "blue"
+	elseif aura == "greenish-blue" then auraBoxTextColor = "green" auraBoxBGColor = "blue"
+	elseif aura == "bluish-green" then auraBoxTextColor = "blue" auraBoxBGColor = "darkgreen"
+	elseif aura == "green" then auraBoxTextColor = "lightgreen" auraBoxBGColor = "darkgreen"
+	elseif aura == "yellowish-green" then auraBoxTextColor = "yellow" auraBoxBGColor = "darkgreen"
+	elseif aura == "greenish-yellow" then auraBoxTextColor = "darkgreen" auraBoxBGColor = "yellow"
+	elseif aura == "yellow" then auraBoxTextColor = "darkgoldenrod" auraBoxBGColor = "yellow"
+	elseif aura == "orangish-yellow" then auraBoxTextColor = "orangered" auraBoxBGColor = "yellow"
+	elseif aura == "yellowish-orange" then auraBoxTextColor = "yellow" auraBoxBGColor = "orangered"
+	elseif aura == "orange" then auraBoxTextColor = "white" auraBoxBGColor = "orangered"
+	elseif aura == "reddish-orange" then auraBoxTextColor = "red" auraBoxBGColor = "orangered"
+	elseif aura == "orangish-red" then auraBoxTextColor = "orangered" auraBoxBGColor = "darkred"
+	elseif aura == "red" then auraBoxTextColor = "white" auraBoxBGColor = "darkred"
+	elseif aura == "dim red" then auraBoxTextColor = "darkgrey" auraBoxBGColor = "darkred"
+	elseif aura == "very dim red" then auraBoxTextColor = "black" auraBoxBGColor = "darkred"
+	else aura = "no aura" auraBoxTextColor = "white" auraBoxBGColor = "black"
+	end
+  
+	setLabelStyleSheet("AuraBox",[[
+		QLabel{
+			font-size: 30px;
+			font-weight: bold;
+			font-family: verdana, tahoma;
+			background-color: ]]..auraBoxBGColor..[[;
+			margin: 0px 10px 0px 10px;
+			border: 2px solid white;
+		}
+	]])
+ 
+	echo("AuraBox", [[<center style="color:]]..auraBoxTextColor..[[;">]]..aura.."</center>")
+
 end
 
+
+
+-- update conc box
+-----------------------------------------------------------
+local function onConc(args)
+	conc = args["conc"]
+	concBoxTextColor = "white"
+	concBoxBGColor = "black"
+
+	deleteLine()
+	moveCursorEnd()
+
+	if conc == "You're bright-eyed and bushy-tailed." then concBoxTextColor = "white" concBoxBGColor = "darkgreen"
+	elseif conc == "You're a bit off balance." then concBoxTextColor = "lightgrey" concBoxBGColor = "green"
+	elseif conc == "You're somewhat distracted." then concBoxTextColor = "black" concBoxBGColor = "green"
+	elseif conc == "You're off balance." then concBoxTextColor = "grey" concBoxBGColor = "yellow"
+	elseif conc == "You're quite distracted." then concBoxTextColor = "black" concBoxBGColor = "goldenrod"
+	elseif conc == "You're distracted and off balance." then concBoxTextColor = "white" concBoxBGColor = "red"
+	elseif conc == "Your concentration is shot to hell." then concBoxTextColor = "white" concBoxBGColor = "darkred"
+	elseif conc == "You're too confused to remember your name." then concBoxTextColor = "black" concBoxBGColor = "darkred"
+	end
+
+	setLabelStyleSheet("ConcBox",[[
+		QLabel{
+			font-size: 22px;
+			font-weight: bold;
+			font-family: verdana, tahoma;
+			background-color: ]]..concBoxBGColor..[[;
+			margin: 0px 10px 0px 10px;
+			border: 2px solid white;
+		}
+	]])
+ 
+	echo("ConcBox", [[<center style="color:]]..concBoxTextColor..[[;">]]..conc.."</center>")
+  
+--  setLabelStyleSheet("concLabel",[[background-color:]]..concLabelBGColor) 
+--  echo("concLabel", [[<center style="font-size:24px; font-weight:bold; color:]]..concLabelTextColor..[[;">]]..conc.."</center>")
+  
+end
 
 
 

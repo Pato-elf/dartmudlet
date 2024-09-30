@@ -81,7 +81,7 @@ GUI.tabwindow4 = GUI.tabwindow4 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"TEST3","TEST4"},
+		tabs = {"INFO","TEST4"},
 	},GUI.right)
 
 
@@ -172,8 +172,151 @@ windows_ByPosition["topLeft"]["ImproveBox"]	= window
 
 
 
+-- CREATE INFO BOX
+-----------------------------------------------------------
+GUI.containerInfoBox = GUI.containerInfoBox or
+	Geyser.MiniConsole:new({
+		name = "InfoBox",
+		x = 16, y = 10,
+		fontSize = 10,
+		width = "96%",
+		height = "93%",
+		color = "black"
+	}, GUI.tabwindow4.INFOcenter)
+
+local window								= {border = GUI.tabwindow4.INFOcenter, container = GUI.containerInfoBox}
+windows["InfoBox"]							= window
+windows_ByPosition["topLeft"]["InfoBox"]	= window
 
 
+
+	-- CREATE NAME BOX - INSIDE INFO
+	-------------------------------------------------------
+	GUI.containerNameBox = GUI.containerNameBox or
+		Geyser.MiniConsole:new({
+			name = "NameBox",
+			x = 0, y = 5,
+			fontSize = 11,
+			width = "100%",
+			height = 18,
+			color = "black"
+		}, GUI.containerInfoBox)
+
+	local window								= {border = GUI.containerInfoBox, container = GUI.containerNameBox}
+	windows["NameBox"]							= window
+	windows_ByPosition["topLeft"]["NameBox"]	= window
+
+
+
+	-- CREATE AGE BOX - INSIDE INFO
+	-------------------------------------------------------
+	GUI.containerAgeBox = GUI.containerAgeBox or
+		Geyser.MiniConsole:new({
+			name = "AgeBox",
+			x = 0, y = 23,
+			fontSize = 11,
+			width = "100%",
+			height = 18,
+			color = "black"
+		}, GUI.containerInfoBox)
+
+	local window								= {border = GUI.containerInfoBox, container = GUI.containerAgeBox}
+	windows["AgeBox"]							= window
+	windows_ByPosition["topLeft"]["AgeBox"]		= window
+
+
+
+	-- CREATE HUNGER BOX - INSIDE INFO
+	-------------------------------------------------------
+	GUI.containerHungerBox = GUI.containerHungerBox or
+		Geyser.MiniConsole:new({
+			name = "HungerBox",
+			x = 0, y = 41,
+			fontSize = 11,
+			width = "100%",
+			height = 18,
+			color = "black"
+		}, GUI.containerInfoBox)
+
+	local window								= {border = GUI.containerInfoBox, container = GUI.containerHungerBox}
+	windows["HungerBox"]						= window
+	windows_ByPosition["topLeft"]["HungerBox"]	= window
+
+
+
+	-- CREATE THIRST BOX - INSIDE INFO
+	-------------------------------------------------------
+	GUI.containerThirstBox = GUI.containerThirstBox or
+		Geyser.MiniConsole:new({
+			name = "ThirstBox",
+			x = 0, y = 59,
+			fontSize = 11,
+			width = "100%",
+			height = 18,
+			color = "black"
+		}, GUI.containerInfoBox)
+
+	local window								= {border = GUI.containerInfoBox, container = GUI.containerThirstBox}
+	windows["ThirstBox"]						= window
+	windows_ByPosition["topLeft"]["ThirstBox"]	= window
+
+
+
+	-- CREATE ENCUMBRANCE BOX - INSIDE INFO
+	-------------------------------------------------------
+	GUI.containerEncumbranceBox = GUI.containerEncumbranceBox or
+		Geyser.MiniConsole:new({
+			name = "EncumbranceBox",
+			x = 0, y = 77,
+			fontSize = 11,
+			width = "100%",
+			height = 18,
+			color = "black"
+		}, GUI.containerInfoBox)
+
+	local window									= {border = GUI.containerInfoBox, container = GUI.containerEncumbranceBox}
+	windows["EncumbranceBox"]						= window
+	windows_ByPosition["topLeft"]["EncumbranceBox"]	= window
+
+
+
+	-- CREATE DATE BOX - INSIDE INFO
+	-------------------------------------------------------
+	GUI.containerDateBox = GUI.containerDateBox or
+		Geyser.MiniConsole:new({
+			name = "DateBox",
+			x = 0, y = 95,
+			fontSize = 11,
+			width = "100%",
+			height = 36,
+			color = "black"
+		}, GUI.containerInfoBox)
+
+	local window								= {border = GUI.containerInfoBox, container = GUI.containerDateBox}
+	windows["DateBox"]							= window
+	windows_ByPosition["topLeft"]["DateBox"]	= window
+
+
+
+	-- CREATE LANGUAGE BOX - INSIDE INFO
+	-------------------------------------------------------
+	GUI.containerLanguageBox = GUI.containerLanguageBox or
+		Geyser.MiniConsole:new({
+			name = "LanguageBox",
+			x = 0, y = 131,
+			fontSize = 11,
+			width = "100%",
+			height = 18,
+			color = "black"
+		}, GUI.containerInfoBox)
+
+	local window									= {border = GUI.containerInfoBox, container = GUI.containerLanguageBox}
+	windows["LanguageBox"]							= window
+	windows_ByPosition["topLeft"]["LanguageBox"]	= window
+
+
+
+  
 
 --GUI.top:load()
 --GUI.right:load()
@@ -249,56 +392,52 @@ end
 -- update improves box
 -----------------------------------------------------------
 local function onImprove(args)
-  local who = args["name"]
-  local skill_name = args["skill_name"]
-  local ts = getTime(true, "hh:mm:ss")
-  local container = windows["ImproveBox"]["container"]
-  local count = 0
-  local output = ''
+	local who = args["name"]
+	local skill_name = args["skill_name"]
+	local ts = getTime(true, "hh:mm:ss")
+	local container = windows["ImproveBox"]["container"]
+	local count = 0
+	local output = ''
 
-  local skillVar = Skills.getSkill({who = who, skill_name = skill_name})
+	local skillVar = Skills.getSkill({who = who, skill_name = skill_name})
 
-  if skillVar ~= -1 then
-    count = tonumber(skillVar.count)+1
-  else
-    count = 1
-  end
+	if skillVar ~= -1 then
+		count = tonumber(skillVar.count)+1
+	else
+		count = 1
+	end
 
-  local level = Skills.imp2lvl(count)
-  local nextLevel = level.next_level
-  if nextLevel == nil then
-    if(who ~= Status.name) then
-      output = ts.." ("..who..") "..skill_name.." - "..count.." ("..level.abbr..")"
-    else
-      output = ts.." "..skill_name.." - "..count.." ("..level.abbr..")"
-    end
-  else
-    local tilNext = nextLevel.min - count
-    if(who ~= Status.name) then
-      output = ts.." ("..who..") "..skill_name.." - "..count.." ("..level.abbr..") - ("..tilNext.." / "..nextLevel.abbr..")"
-    else
-      output = ts.." "..skill_name.." - "..count.." ("..level.abbr..") - ("..tilNext.." / "..nextLevel.abbr..")"
-    end
-  end
+	local level = Skills.imp2lvl(count)
+	local nextLevel = level.next_level
+	if nextLevel == nil then
+		if(who ~= Status.name) then
+			output = ts.." ("..who..") "..skill_name.." - "..count.." ("..level.abbr..")"
+		else
+			output = ts.." "..skill_name.." - "..count.." ("..level.abbr..")"
+		end
+	else
+		local tilNext = nextLevel.min - count
+		if(who ~= Status.name) then
+			output = ts.." ("..who..") "..skill_name.." - "..count.." ("..level.abbr..") - ("..tilNext.." / "..nextLevel.abbr..")"
+		else
+			output = ts.." "..skill_name.." - "..count.." ("..level.abbr..") - ("..tilNext.." / "..nextLevel.abbr..")"
+		end
+	end
 
-  container:echo(" "..output.."\n")
+	container:echo(" "..output.."\n")
 end
 
 local function onSkillMistake(args)
-  local container = windows["ImproveBox"]["container"]
-  selectCurrentLine("ImproveBox")
-  deleteLine("ImproveBox")
-  container:echo("")
+	local container = windows["ImproveBox"]["container"]
+	selectCurrentLine("ImproveBox")
+	deleteLine("ImproveBox")
+	container:echo("")
 end
-
-
-
-
 
 
 
 -- update name box
----------------------------------------------------------------------
+-----------------------------------------------------------
 local function onName(args)
 	showname = args["fullname"]
 	name_table = showname:split("are ")
@@ -308,30 +447,27 @@ local function onName(args)
 
 	cecho("\n"..showname)
 	clearWindow("NameBox")
-	cecho("NameBox", " Name: "..showname)
-	--name = args["name"]
-	--cecho("\n"..name)
-	--clearWindow("NameBox")
-	--cecho("NameBox", " Name: "..name)
+	cecho("NameBox", "Name: "..showname)
 	deleteLine()
 end
 
 
 
 -- update age box
----------------------------------------------------------------------
+-----------------------------------------------------------
 local function onAge(args)
 	years = args["years"]
 	months = args["months"]
 	clearWindow("AgeBox")
-	cecho("AgeBox", " Age: "..years.." years, "..months.." months")
+	if months == "" then months = "0" end
+	cecho("AgeBox", "Age: "..years.." years, "..months.." months")
 	deleteLine()
 end
 
 
 
 -- update hunger box
----------------------------------------------------------------------
+-----------------------------------------------------------
 local function onHunger(args)
 	hunger = args["hunger"]
 
@@ -346,17 +482,14 @@ local function onHunger(args)
 	end
 	
 	clearWindow("HungerBox")
-	cecho("HungerBox", " Hunger: "..hunger)
-	--selectString(hunger, 1)
-	--copy()
-	--appendBuffer("HungerBox")
+	cecho("HungerBox", "Hunger: "..hunger)
 	moveCursorEnd()
 end
 
 
 
 -- update thirst box
----------------------------------------------------------------------
+-----------------------------------------------------------
 local function onThirst(args)
 	thirst = args["thirst"]
 	
@@ -371,10 +504,7 @@ local function onThirst(args)
 	end
 	
 	clearWindow("ThirstBox")
-	cecho("ThirstBox", " Thirst: "..thirst)
-	--selectString(thirst, 1)
-	--copy()
-	--appendBuffer("ThirstBox")
+	cecho("ThirstBox", "Thirst: "..thirst)
 	deleteLine()
 	moveCursorEnd()
 end
@@ -382,23 +512,23 @@ end
 
 
 -- update encumbrance box
----------------------------------------------------------------------
+-----------------------------------------------------------
 local function onEncumbrance(args)
-  encumbrance = args["encumbrance"]
+	encumbrance = args["encumbrance"]
 
-  clearWindow("EncumbranceBox")
-  cecho("EncumbranceBox", " Encumbrance: ")
-  selectString(encumbrance, 1)
-  copy()
-  appendBuffer("EncumbranceBox")
-  deleteLine()
-  moveCursorEnd()
+	clearWindow("EncumbranceBox")
+	cecho("EncumbranceBox", "Encumbrance: ")
+	selectString(encumbrance, 1)
+	copy()
+	appendBuffer("EncumbranceBox")
+	deleteLine()
+	moveCursorEnd()
 end
 
 
 
 -- update movement box
----------------------------------------------------------------------
+-----------------------------------------------------------
 local function onMovement(args)
   movement = args["movement"]
 
@@ -410,6 +540,36 @@ local function onMovement(args)
   deleteLine()
   moveCursorEnd()
 end
+
+
+
+-- update date box
+-----------------------------------------------------------
+local function refreshUI(args)
+--  for key,window in pairs(windows) do
+--    local container = window["container"]
+
+--    insertText(container["name"], "")
+--  end
+
+	clearWindow("DateBox")
+	cecho("DateBox", "Date(common): "..date.format(os.time(), 3, "common").."\nDate(Thorpian): "..date.format(os.time(), 3, "thorpian"))
+end
+
+
+
+-- update language box
+-----------------------------------------------------------
+local function onLanguage(args)
+	local language = args["detail"]
+	local language_table = language:split("now ")
+	language = language_table[2]
+	local language_table2 = language:split("%.")
+	language = language_table2[1]
+	clearWindow("LanguageBox")
+	cecho("LanguageBox", "<cyan><b>"..language.."</b>")
+end
+
 
 
 
@@ -442,16 +602,6 @@ end
 
 
 
-local function refreshUI(args)
---  for key,window in pairs(windows) do
---    local container = window["container"]
-
---    insertText(container["name"], "")
---  end
-
---  clearWindow("DateBox")
---  cecho("DateBox", " Date(common): "..date.format(os.time(), 3, "common").."\n Date(Thorpian): "..date.format(os.time(), 3, "thorpian"))
-end
 
 
 
@@ -474,6 +624,7 @@ local function setup(args)
   Events.addListener("messageEvent", sourceName, onMessage)
   Events.addListener("concEvent", sourceName, onConc)
   Events.addListener("auraEvent", sourceName, onAura)
+  Events.addListener("languageEvent", sourceName, onLanguage)
 
 --  Events.addListener("tabGeneralClickedEvent", sourceName, onGeneralTabClick)
 --  Events.addListener("tabMagicClickedEvent", sourceName, onMagicTabClick)
@@ -498,6 +649,7 @@ local function unsetup(args)
   Events.removeListener("messageEvent", sourceName)
   Events.removeListener("concEvent", sourceName)
   Events.removeListener("auraEvent", sourceName)
+  Events.removeListener("languageEvent", sourceName)
 
 --  Events.removeListener("tabGeneralClickedEvent", sourceName)
 --  Events.removeListener("tabMagicClickedEvent", sourceName)

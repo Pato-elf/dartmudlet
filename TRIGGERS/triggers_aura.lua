@@ -12,7 +12,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("NoauraEvent", arguments)
+                        --Events.raiseEvent("NoauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -22,7 +22,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("VeryDimRedauraEvent", arguments)
+                        --Events.raiseEvent("VeryDimRedauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -32,7 +32,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("DimRedauraEvent", arguments)
+                        --Events.raiseEvent("DimRedauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -42,7 +42,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("RedauraEvent", arguments)
+                        --Events.raiseEvent("RedauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -52,7 +52,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("OrangishRedauraEvent", arguments)
+                        --Events.raiseEvent("OrangishRedauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -62,7 +62,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("ReddishOrangeauraEvent", arguments)
+                        --Events.raiseEvent("ReddishOrangeauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -72,7 +72,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("OrangeauraEvent", arguments)
+                        --Events.raiseEvent("OrangeauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -82,7 +82,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("YellowishOrangeauraEvent", arguments)
+                        --Events.raiseEvent("YellowishOrangeauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -92,7 +92,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("OrangishYellowauraEvent", arguments)
+                        --Events.raiseEvent("OrangishYellowauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -102,7 +102,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("YellowauraEvent", arguments)
+                        --Events.raiseEvent("YellowauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -112,7 +112,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("GreenishYellowauraEvent", arguments)
+                        --Events.raiseEvent("GreenishYellowauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -122,7 +122,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("YellowishGreenauraEvent", arguments)
+                        --Events.raiseEvent("YellowishGreenauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -132,7 +132,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("GreenauraEvent", arguments)
+                        --Events.raiseEvent("GreenauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -142,7 +142,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("BluishGreenauraEvent", arguments)
+                        --Events.raiseEvent("BluishGreenauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -152,7 +152,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("GreenishBlueauraEvent", arguments)
+                        --Events.raiseEvent("GreenishBlueauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -162,7 +162,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("BlueauraEvent", arguments)
+                        --Events.raiseEvent("BlueauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -172,7 +172,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("IntenseBlueauraEvent", arguments)
+                        --Events.raiseEvent("IntenseBlueauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -182,7 +182,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("DimIndigoauraEvent", arguments)
+                        --Events.raiseEvent("DimIndigoauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -192,7 +192,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("IndigoauraEvent", arguments)
+                        --Events.raiseEvent("IndigoauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -202,7 +202,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("IntenseIndigoauraEvent", arguments)
+                        --Events.raiseEvent("IntenseIndigoauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -212,7 +212,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("DimVioletauraEvent", arguments)
+                        --Events.raiseEvent("DimVioletauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -222,7 +222,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("VioletauraEvent", arguments)
+                        --Events.raiseEvent("VioletauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -232,7 +232,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("IntenseVioletauraEvent", arguments)
+                        --Events.raiseEvent("IntenseVioletauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -242,7 +242,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("DimOctarineauraEvent", arguments)
+                        --Events.raiseEvent("DimOctarineauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -252,7 +252,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("OctarineauraEvent", arguments)
+                        --Events.raiseEvent("OctarineauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -262,7 +262,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("IntenseOctarineauraEvent", arguments)
+                        --Events.raiseEvent("IntenseOctarineauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 
@@ -272,7 +272,7 @@ local function setup(args)
                         local aura = matches[2]
                         local arguments  = {aura = aura}
 
-                        Events.raiseEvent("ScintillatingauraEvent", arguments)
+                        --Events.raiseEvent("ScintillatingauraEvent", arguments)
                         Events.raiseEvent("auraEvent", arguments)
                       ]])
 

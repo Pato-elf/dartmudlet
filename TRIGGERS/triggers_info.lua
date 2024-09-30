@@ -21,6 +21,7 @@ local function setup(args)
                       ]])
 
 
+
 -- autosave	moved to message window
 ---------------------------------------------------------------------
   tempTriggers.AutoSave =
@@ -35,12 +36,23 @@ local function setup(args)
                       ]])
 
 
+
+-- capture current language	
 ---------------------------------------------------------------------
+  tempTriggers.emptyLine =
+    tempRegexTrigger("^(?:> )*You are now speaking .*"
+                     ,[[
+                        local detail = matches[1]
+                        arguments = {detail = detail}
+                        Events.raiseEvent("languageEvent", arguments)
+                      ]])
 
 
 
   triggers = tempTriggers
 end
+
+
 
 
 local function unsetup(args)

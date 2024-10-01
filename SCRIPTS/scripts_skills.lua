@@ -115,6 +115,8 @@ end
 
 
 
+-- perform skill increase, update improves box, check skill level
+-----------------------------------------------------------
 local function increaseSkill(args)
   local skill_name = args["skill_name"]
   local who = args["name"]
@@ -145,7 +147,7 @@ local function increaseSkill(args)
 		dba.execute('INSERT INTO improves (skill, count, who, last_imp) VALUES("'..skill_name..'", 1, "'..who..'", datetime("NOW"))')
 	end
 
---	UI.onImprove({name = who, skill_name = skill_name})
+	UI.onImprove({name = who, skill_name = skill_name})
 
   --Check skill level reported by the mud (if imp is for the character; mud doesn't report pet skill levels)
   if name == name then --PATO Status.name then

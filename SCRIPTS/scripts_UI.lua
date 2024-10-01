@@ -53,7 +53,7 @@ GUI.tabwindow2 = GUI.tabwindow2 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"MESSAGE","CAST","MISC","MISC2"},
+		tabs = {"MESSAGE","ALLOCS","MISC","MISC2"},
 	},GUI.right)
 
   
@@ -145,6 +145,40 @@ GUI.containerMessageBox = GUI.containerMessageBox or
 local window								= {border = GUI.tabwindow2.MESSAGEcenter, container = GUI.containerMessageBox}
 windows["MessageBox"]						= window
 windows_ByPosition["topLeft"]["MessageBox"]	= window
+
+
+
+-- CREATE ALLOCS BOX -> TABWINDOW2
+-----------------------------------------------------------
+GUI.containerAllocsBox = GUI.containerAllocsBox or
+	Geyser.Label:new({
+		name = "AllocsBox",
+		x = 0, y = 0,
+		fontSize = 10,
+		width = "100%",
+		height = "100%",
+		color = "black"
+	}, GUI.tabwindow2.ALLOCScenter)
+
+
+GUI.containerAllocsBox:setStyleSheet([[
+		QLabel{
+			color: black;
+			background-color: rgb(0,0,70);
+			margin: 5px;
+			border-radius: 10px;
+			padding: 10px;
+			font-size: 10pt;
+			font-family: Bitstream Vera Sans Mono;
+			qproperty-alignment: 'AlignTop | AlignLeft';
+		}
+]])
+
+echo("AllocsBox", Info.showQuickLevels())
+
+local window								= {border = GUI.tabwindow2.ALLOCScenter, container = GUI.containerAllocsBox}
+windows["AllocsBox"]						= window
+windows_ByPosition["topLeft"]["AllocsBox"]	= window
 
 
 
@@ -706,36 +740,41 @@ end
 local function onImprove(args)
 	local who = args["name"]
 	local skill_name = args["skill_name"]
-	local ts = getTime(true, "hh:mm:ss")
+	local timestamp = getTime(true, "hh:mm:ss")
 	local container = windows["ImproveBox"]["container"]
 	local count = 0
 	local output = ''
 
-	local skillVar = Skills.getSkill({who = who, skill_name = skill_name})
-
-	if skillVar ~= -1 then
-		count = tonumber(skillVar.count)-- + 1
+	if args["text"] ~= nil then
+		output = timestamp.." "..args["text"]
 	else
-		count = 1
-	end
+	
+		local skillVar = Skills.getSkill({who = who, skill_name = skill_name})
 
-	local level = Skills.imp2lvl(count)
-	local nextLevel = level.next_level
-	if nextLevel == nil then
-		if(who ~= Status.name) then
-			output = ts.." ("..who..") "..skill_name.." - "..count.." ("..level.abbr..")"
+		if skillVar ~= -1 then
+			count = tonumber(skillVar.count)-- + 1
 		else
-			output = ts.." "..skill_name.." - "..count.." ("..level.abbr..")"
+			count = 1
 		end
-	else
-		local tilNext = nextLevel.min - count
-		if(who ~= Status.name) then
-			output = ts.." ("..who..") "..skill_name.." - "..count.." ("..level.abbr..") - ("..tilNext.." / "..nextLevel.abbr..")"
+
+		local level = Skills.imp2lvl(count)
+		local nextLevel = level.next_level
+		if nextLevel == nil then
+			if(who ~= Status.name) then
+				output = timestamp.." ("..who..") "..skill_name.." - "..count.." ("..level.abbr..")"
+			else
+				output = timestamp.." "..skill_name.." - "..count.." ("..level.abbr..")"
+			end
 		else
-			output = ts.." "..skill_name.." - "..count.." ("..level.abbr..") - ("..tilNext.." / "..nextLevel.abbr..")"
+			local tilNext = nextLevel.min - count
+			if(who ~= Status.name) then
+				output = timestamp.." ("..who..") "..skill_name.." - "..count.." ("..level.abbr..") - ("..tilNext.." / "..nextLevel.abbr..")"
+			else
+				output = timestamp.." "..skill_name.." - "..count.." ("..level.abbr..") - ("..tilNext.." / "..nextLevel.abbr..")"
+			end
 		end
 	end
-
+	
 	container:echo(" "..output.."\n")
 end
 

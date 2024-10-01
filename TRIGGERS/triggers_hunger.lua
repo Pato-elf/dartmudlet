@@ -36,7 +36,7 @@ local function setup(args)
                      ,[[
                         local hunger = matches[2]
                         arguments = {hunger = hunger}
-
+						deleteLine()
                         Events.raiseEvent("hungerEvent", arguments)
                       ]])
 
@@ -45,7 +45,7 @@ local function setup(args)
                      ,[[
                         local hunger = matches[2]
                         arguments = {hunger = hunger}
-
+						deleteLine()
                         Events.raiseEvent("hungerEvent", arguments)
                       ]])
 
@@ -54,7 +54,7 @@ local function setup(args)
                      ,[[
                         local hunger = matches[2]
                         arguments = {hunger = hunger}
-
+						deleteLine()
                         Events.raiseEvent("hungerEvent", arguments)
                       ]])
 
@@ -63,7 +63,7 @@ local function setup(args)
                      ,[[
                         local hunger = matches[2]
                         arguments = {hunger = hunger}
-
+						deleteLine()
                         Events.raiseEvent("hungerEvent", arguments)
                       ]])
 
@@ -72,7 +72,7 @@ local function setup(args)
                      ,[[
                         local hunger = matches[2]
                         arguments = {hunger = hunger}
-
+						deleteLine()
                         Events.raiseEvent("hungerEvent", arguments)
                       ]])
 

@@ -39,12 +39,22 @@ local function setup(args)
 
 -- capture current language	
 ---------------------------------------------------------------------
-  tempTriggers.emptyLine =
+  tempTriggers.captureLanguage =
     tempRegexTrigger("^(?:> )*You are now speaking .*"
                      ,[[
                         local detail = matches[1]
                         arguments = {detail = detail}
                         Events.raiseEvent("languageEvent", arguments)
+                      ]])
+
+
+
+-- regaining consciousness	
+---------------------------------------------------------------------
+  tempTriggers.regainConsciousness =
+    tempRegexTrigger("^(?:> )*You regain consciousness!"
+                     ,[[
+							send("score", false)
                       ]])
 
 

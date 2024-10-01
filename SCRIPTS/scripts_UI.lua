@@ -498,10 +498,10 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 		Geyser.Label:new({
 			name = "HolderBox",
 
-			x = 0, y = -128,
+			x = 0, y = -133,
 			fontSize = 24,
 			width = "100%",
-			height = 128,
+			height = 133,
 			color = "black"
 		}, GUI.containerInfoBox)
 
@@ -509,7 +509,8 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 			QLabel{
 				color: black;
 				background-color: black;
-				margin: 0 10px 10px 10px;
+				margin: 0 10px 11px 10px;
+				border: 2px solid white;
 			}
 	]])
 
@@ -525,10 +526,10 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 			Geyser.Label:new({
 				name = "AuraBox",
 				message = [[<center>no aura</center>]],
-				x = 0, y = 0,
+				x = 0, y = 2,
 				fontSize = 24,
 				width = "100%",
-				height = 60,
+				height = 58,
 				color = "black"
 			}, GUI.containerHolderBox)
 
@@ -538,8 +539,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 				font-weight: bold;
 				font-family: verdana, tahoma;
 				background-color: black;
-				margin: 0px 10px 0px 10px;
-				border: 2px solid white;
+				margin: 0px 12px 0px 12px;
 			}
 		]])
 
@@ -555,10 +555,10 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 			Geyser.Label:new({
 				name = "ConcBox",
 				message = [[<center>unknown concentration</center>]],
-				x = 0, y = 58,
+				x = 0, y = 60,
 				fontSize = 22,
 				width = "100%",
-				height = 60,
+				height = 62,
 				color = "black"
 			}, GUI.containerHolderBox)
 
@@ -860,25 +860,38 @@ local function onAura(args)
 	elseif aura == "orangish-yellow" then auraBoxTextColor = "orangered" auraBoxBGColor = "yellow"
 	elseif aura == "yellowish-orange" then auraBoxTextColor = "yellow" auraBoxBGColor = "orangered"
 	elseif aura == "orange" then auraBoxTextColor = "white" auraBoxBGColor = "orangered"
-	elseif aura == "reddish-orange" then auraBoxTextColor = "red" auraBoxBGColor = "orangered"
+	elseif aura == "reddish-orange" then auraBoxTextColor = "darkred" auraBoxBGColor = "orangered"
 	elseif aura == "orangish-red" then auraBoxTextColor = "orangered" auraBoxBGColor = "darkred"
 	elseif aura == "red" then auraBoxTextColor = "white" auraBoxBGColor = "darkred"
 	elseif aura == "dim red" then auraBoxTextColor = "darkgrey" auraBoxBGColor = "darkred"
 	elseif aura == "very dim red" then auraBoxTextColor = "black" auraBoxBGColor = "darkred"
 	else aura = "no aura" auraBoxTextColor = "white" auraBoxBGColor = "black"
 	end
-  
+
+	if aura == "scintillating" then
+	setLabelStyleSheet("AuraBox",[[
+		QLabel{
+			font-size: 30px;
+			font-weight: bold;
+			font-family: verdana, tahoma;
+			border-image: url("c:/users/X/Downloads/rainbow.png");
+			background-color: ]]..auraBoxBGColor..[[;
+			margin: 0px 12px 0px 12px;
+			border: 2px solid white;
+		}
+	]])
+	else
 	setLabelStyleSheet("AuraBox",[[
 		QLabel{
 			font-size: 30px;
 			font-weight: bold;
 			font-family: verdana, tahoma;
 			background-color: ]]..auraBoxBGColor..[[;
-			margin: 0px 10px 0px 10px;
-			border: 2px solid white;
+			margin: 0px 12px 0px 12px;
 		}
 	]])
- 
+	end
+	
 	echo("AuraBox", [[<center style="color:]]..auraBoxTextColor..[[;">]]..aura.."</center>")
 
 end

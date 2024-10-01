@@ -48,8 +48,8 @@ In addition to the automatic features described above, there are a number of thi
 Some of the rest are:
 ```
 /announce on      - Announce improvements in standard mode (skill name+)
-/announce brief   - Announce improvements in brief mode (plus only, no skill name)
-/announce verbose - Announce improvements in verbose mode (skill name, plus, and actual skill number)
+/announce brief   - Announce improvements in brief mode (+ only, no skill name)
+/announce verbose - Announce improvements in verbose mode (skill name+, and actual skill number)
 /announce off     - No announcement of improvements
 ```
 ```

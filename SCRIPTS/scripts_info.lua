@@ -3,14 +3,41 @@ Info = {}
 local sourceName = "info"
 local colorHelp = "yellow"
 local spacerHelp = "   "
+local versionNumber = "v1.2"
+
+
+-- return quick help
+-----------------------------------------------------------
+local function showQuickHelp()
+	local helpText = ""
+	local helpTagYellow = "<span style=\"color: yellow;\">"
+	local helpTagGreen = "<span style=\"color: palegreen; font-weight: bold;\">"
+	local helpTagRed = "<span style=\"color: red; font-weight: bold;\">"
+	local helpTagOff = "</span>"
+	
+	helpText = helpText..helpTagYellow
+	helpText = helpText.."DartMUDlet - Pato Edition "..versionNumber.."<BR>"
+	helpText = helpText.."============================================================================================="..helpTagOff.."<BR>"
+	helpText = helpText..helpTagGreen.."/unblock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..helpTagOff..helpTagRed.." IF YOU ARE STUCK IN BLOCKING MODE"..helpTagOff.."<BR>"
+	helpText = helpText..helpTagGreen.."/help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..helpTagOff..helpTagYellow.." Display a full list of available commands"..helpTagOff.."<BR>"
+	helpText = helpText..helpTagGreen.."/info &lt;skill&gt;"..helpTagOff..helpTagYellow.." Show current improves/level for a skill"..helpTagOff.."<BR><BR>"
+	helpText = helpText..helpTagGreen.."/announce on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..helpTagOff..helpTagYellow.." Announce improves in standard mode"..helpTagOff.."<BR>"
+	helpText = helpText..helpTagGreen.."/announce brief&nbsp;&nbsp;"..helpTagOff..helpTagYellow.." Announce improves in brief mode"..helpTagOff.."<BR>"
+	helpText = helpText..helpTagGreen.."/announce verbose"..helpTagOff..helpTagYellow.." Announce improves in verbose mode"..helpTagOff.."<BR>"
+	helpText = helpText..helpTagGreen.."/announce off&nbsp;&nbsp;&nbsp;&nbsp;"..helpTagOff..helpTagYellow.." No announcement of improves"..helpTagOff.."<BR><BR>"
+	helpText = helpText..helpTagYellow.."Contact Pato in Discord or in game if you have any<BR>questions or comments about using the package!<BR>"
+	helpText = helpText..helpTagOff
+
+	return helpText
+end
 
 
 
 -- /help command
----------------------------------------------------------------------
+-----------------------------------------------------------
 local function showHelp(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
-	cecho(preText.."                         DartMUDlet - Pato Edition v1.2\n")
+	cecho(preText.."                         DartMUDlet - Pato Edition "..versionNumber.."\n")
 	cecho(preText.."================================================================================\n")
 	cecho(preText.."/setup   - Initialize variables, customize display, start improve tracking\n")
 	cecho(preText.."/unsetup - Remove timers and triggers, deactivate display customizations\n")
@@ -43,7 +70,7 @@ local function showHelp(args)
 	cecho(preText.."/update <Who> <skill> <improves> - Manually set improves for you|pet's skill\n")
 	cecho(preText.."/antispam on|off                 - Suppress repeated lines\n")
 	cecho(preText.."/who on|off                      - Auto check the who list every 5 minutes\n")
-	cecho(preText.."/info <skill>                    - Shows current improves/level for a skill\n")
+	cecho(preText.."/info <skill>                    - Show current improves/level for a skill\n")
 	cecho(preText.."/levels                          - Display a list of skill levels\n")
 	cecho(preText.."/help                            - Display a list of available commands\n")
 end
@@ -120,6 +147,7 @@ Info =
 	setup = setup
 	,unsetup = unsetup
 	,resetup = resetup
+	,showQuickHelp = showQuickHelp
 }
 
 return Info

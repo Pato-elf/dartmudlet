@@ -206,22 +206,23 @@ end
 
 
 
+-- update a skill count
+-----------------------------------------------------------
 local function updateCount(args)
-  local count = args["count"]
-  local who = args["who"]
-  local skill_name = args["skill_name"]
+	local count = args["count"]
+	local who = args["who"]
+	local skill_name = args["skill_name"]
+	local skill = getSkill({who = who, skill_name = skill_name})
 
-  local skill = getSkill({who = who, skill_name = skill_name})
-
-  if skill ~= nil and skill~= 0 and skill ~= -1 then
-    cecho("<red>\nUpdating skill: "..skill_name.." from "..skill.count.." to "..count)
-
-    dba.execute('UPDATE improves SET count='..count..' WHERE who="'..who..'" AND skill="'..skill_name..'"')
-
-  else
-    cecho("<red>No skill by name:\n")
-    display(skill_name)
-  end
+	if skill ~= nil and skill~= 0 and skill ~= -1 then
+		local imptext = "Updating skill: "..skill_name.." from "..skill.count.." to "..count
+		cecho("<red>\n"..imptext)
+		dba.execute('UPDATE improves SET count='..count..' WHERE who="'..who..'" AND skill="'..skill_name..'"')
+		UI.onImprove({name = who, skill_name = skill_name, text = imptext})
+	else
+		cecho("<red>No skill by name:\n")
+		display(skill_name)
+	end
 end
 
 

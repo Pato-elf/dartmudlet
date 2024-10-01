@@ -42,7 +42,7 @@ end
 local function showQuickLevels()
 	local helpText = ""
 	local skillLevels = {}
-	local helpTagYellow = "<span style=\"color: yellow;\">""
+	local helpTagYellow = "<span style=\"color: yellow;\">"
 	local helpTagOff = "</span>"
 
 

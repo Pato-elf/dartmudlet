@@ -81,7 +81,7 @@ GUI.tabwindow4 = GUI.tabwindow4 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"INFO","TEST4"},
+		tabs = {"INFO","HELP"},
 	},GUI.right)
 
 
@@ -100,25 +100,59 @@ GUI.tabwindow5 = GUI.tabwindow5 or
   
 
 
--- CREATE CHAT BOX
+
+
+
+
+-- CREATE CHATHOLDER BOX -> TABWINDOW5
 -----------------------------------------------------------
-GUI.containerChatBox = GUI.containerChatBox or
-	Geyser.MiniConsole:new({
-		name = "ChatBox",
-		x = 12, y = 10,
-		fontSize = 8,
-		width = "98%",
-		height = "89%",
+GUI.containerChatholderBox = GUI.containerChatholderBox or
+	Geyser.Label:new({
+		name = "ChatholderBox",
+		x = 0, y = 0,
+		fontSize = 10,
+		width = "100%",
+		height = "100%",
 		color = "black"
 	}, GUI.tabwindow5.CHATcenter)
 
-local window								= {border = GUI.tabwindow5.CHATcenter, container = GUI.containerChatBox}
-windows["ChatBox"]							= window
-windows_ByPosition["topLeft"]["ChatBox"]	= window
+
+GUI.containerChatholderBox:setStyleSheet([[
+		QLabel{
+			color: black;
+			background-color: black;
+			margin: 9px;
+		}
+]])
+
+local window									= {border = GUI.tabwindow5.CHATcenter, container = GUI.containerChatholderBox}
+windows["ChatholderBox"]						= window
+windows_ByPosition["topLeft"]["ChatholderBox"]	= window
 
 
 
--- CREATE WHO BOX
+	-- CREATE CHAT BOX -> CHATHOLDER -> TABWINDOW5
+	-----------------------------------------------------------
+	GUI.containerChatBox = GUI.containerChatBox or
+		Geyser.MiniConsole:new({
+			name = "ChatBox",
+			x = 9, y = 9,
+			fontSize = 8,
+			width = -9,
+			height = -9,
+			color = "black"
+		}, GUI.containerChatholderBox)
+
+	local window								= {border = GUI.containerChatholderBox, container = GUI.containerChatBox}
+	windows["ChatBox"]							= window
+	windows_ByPosition["topLeft"]["ChatBox"]	= window
+
+
+
+
+
+
+-- CREATE WHO BOX -> TABWINDOW1
 -----------------------------------------------------------
 GUI.containerWhoBox = GUI.containerWhoBox or
 	Geyser.MiniConsole:new({
@@ -136,7 +170,10 @@ windows_ByPosition["topLeft"]["WhoBox"]		= window
 
 
 
--- CREATE MESSAGE BOX
+
+
+
+-- CREATE MESSAGE BOX -> TABWINDOW2
 -----------------------------------------------------------
 GUI.containerMessageBox = GUI.containerMessageBox or
 	Geyser.MiniConsole:new({
@@ -154,7 +191,10 @@ windows_ByPosition["topLeft"]["MessageBox"]	= window
 
 
 
--- CREATE IMPROVE BOX
+
+
+
+-- CREATE IMPROVE BOX -> TABWINDOW3
 -----------------------------------------------------------
 GUI.containerImproveBox = GUI.containerImproveBox or
 	Geyser.MiniConsole:new({
@@ -172,7 +212,44 @@ windows_ByPosition["topLeft"]["ImproveBox"]	= window
 
 
 
--- CREATE INFO BOX
+
+
+
+-- CREATE HELP BOX -> TABWINDOW4
+-----------------------------------------------------------
+GUI.containerHelpBox = GUI.containerHelpBox or
+	Geyser.Label:new({
+		name = "HelpBox",
+		x = 0, y = 0,
+		fontSize = 10,
+		width = "100%",
+		height = "100%",
+		color = "black"
+	}, GUI.tabwindow4.HELPcenter)
+
+
+GUI.containerHelpBox:setStyleSheet([[
+		QLabel{
+			color: black;
+			background-color: rgb(0,0,70);
+			margin: 5px;
+			border-radius: 10px;
+			padding: 10px;
+			font-size: 11pt;
+			font-family: Bitstream Vera Sans Mono;
+			qproperty-alignment: 'AlignTop | AlignLeft';
+		}
+]])
+
+echo("HelpBox", Info.showQuickHelp())
+
+local window								= {border = GUI.tabwindow4.HELPcenter, container = GUI.containerHelpBox}
+windows["HelpBox"]							= window
+windows_ByPosition["topLeft"]["HelpBox"]	= window
+
+
+
+-- CREATE INFO BOX -> TABWINDOW4
 -----------------------------------------------------------
 GUI.containerInfoBox = GUI.containerInfoBox or
 	Geyser.Label:new({
@@ -199,7 +276,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 
 
 
-	-- CREATE NAME BOX - INSIDE INFO
+	-- CREATE NAME BOX -> INFO -> TABWINDOW4
 	-------------------------------------------------------
 	GUI.containerNameBox = GUI.containerNameBox or
 		Geyser.Label:new({
@@ -226,7 +303,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 
 
 
-	-- CREATE AGE BOX - INSIDE INFO
+	-- CREATE AGE BOX -> INFO -> TABWINDOW4
 	-------------------------------------------------------
 	GUI.containerAgeBox = GUI.containerAgeBox or
 		Geyser.Label:new({
@@ -253,7 +330,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 
 
 
-	-- CREATE HUNGER BOX - INSIDE INFO
+	-- CREATE HUNGER BOX -> INFO -> TABWINDOW4
 	-------------------------------------------------------
 	GUI.containerHungerBox = GUI.containerHungerBox or
 		Geyser.Label:new({
@@ -280,7 +357,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 
 
 
-	-- CREATE THIRST BOX - INSIDE INFO
+	-- CREATE THIRST BOX -> INFO -> TABWINDOW4
 	-------------------------------------------------------
 	GUI.containerThirstBox = GUI.containerThirstBox or
 		Geyser.Label:new({
@@ -307,7 +384,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 
 
 
-	-- CREATE ENCUMBRANCE BOX - INSIDE INFO
+	-- CREATE ENCUMBRANCE BOX -> INFO -> TABWINDOW4
 	-------------------------------------------------------
 	GUI.containerEncumbranceBox = GUI.containerEncumbranceBox or
 		Geyser.Label:new({
@@ -334,7 +411,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 
 
 
-	-- CREATE MOVEMENT BOX - INSIDE INFO
+	-- CREATE MOVEMENT BOX -> INFO -> TABWINDOW4
 	-------------------------------------------------------
 	GUI.containerMovementBox = GUI.containerMovementBox or
 		Geyser.Label:new({
@@ -361,7 +438,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 	
 	
 
-	-- CREATE DATE BOX - INSIDE INFO
+	-- CREATE DATE BOX -> INFO -> TABWINDOW4
 	-------------------------------------------------------
 	GUI.containerDateBox = GUI.containerDateBox or
 		Geyser.Label:new({
@@ -388,7 +465,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 
 
 
-	-- CREATE LANGUAGE BOX - INSIDE INFO
+	-- CREATE LANGUAGE BOX -> INFO -> TABWINDOW4
 	-------------------------------------------------------
 	GUI.containerLanguageBox = GUI.containerLanguageBox or
 		Geyser.Label:new({
@@ -415,7 +492,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 
 
 
-	-- CREATE HOLDER BOX - INSIDE INFO
+	-- CREATE HOLDER BOX -> INFO -> TABWINDOW4
 	-------------------------------------------------------
 	GUI.containerHolderBox = GUI.containerHolderBox or
 		Geyser.Label:new({
@@ -442,7 +519,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 
 
 
-		-- CREATE AURA BOX - INSIDE HOLDER, INFO
+		-- CREATE AURA BOX -> HOLDER -> INFO -> TABWINDOW4
 		-------------------------------------------------------
 		GUI.containerAuraBox = GUI.containerAuraBox or
 			Geyser.Label:new({
@@ -472,12 +549,12 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 
 
 
-		-- CREATE CONC BOX - INSIDE HOLDER, INFO
+		-- CREATE CONC BOX -> HOLDER -> INFO -> TABWINDOW4
 		-------------------------------------------------------
 		GUI.containerConcBox = GUI.containerConcBox or
 			Geyser.Label:new({
 				name = "ConcBox",
-				message = [[<center>UNKNOWN</center>]],
+				message = [[<center>unknown concentration</center>]],
 				x = 0, y = 58,
 				fontSize = 22,
 				width = "100%",

@@ -41,15 +41,12 @@ end
 -----------------------------------------------------------
 local function showQuickLevels()
 	local helpText = ""
-	local helpTagYellow = "<span style=\"color: yellow;\">"
-	--local helpTagGreen = "<span style=\"color: palegreen; font-weight: bold;\">"
-	--local helpTagRed = "<span style=\"color: red; font-weight: bold;\">"
-	local helpTagOff = "</span>"
 	local skillLevels = {}
+	local helpTagYellow = "<span style=\"color: yellow;\">""
+	local helpTagOff = "</span>"
 
 
 	for i,v in pairs(levels) do
-		--local skillSize    = ""
 		skillLevels[i] = name2lvl(v)
 		skillLevels[i].length1 = 18-string.len(skillLevels[i].name)
 		skillLevels[i].length2 = 13-string.len(skillLevels[i].min)
@@ -85,13 +82,6 @@ local function showQuickLevels()
 	helpText = helpText..skillLevels[15].name..string.rep("&nbsp;",skillLevels[15].length1)..skillLevels[15].min
 	helpText = helpText..string.rep("&nbsp;",skillLevels[15].length2)..skillLevels[2].name..string.rep("&nbsp;",skillLevels[2].length1)..skillLevels[2].min.."<BR>"
 	helpText = helpText..string.rep("&nbsp;",31)..skillLevels[1].name..string.rep("&nbsp;",skillLevels[1].length1)..skillLevels[1].min.."<BR>"
---	helpText = helpText..helpTagGreen.."/help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..helpTagOff..helpTagYellow.." Display a full list of available commands"..helpTagOff.."<BR>"
---	helpText = helpText..helpTagGreen.."/info &lt;skill&gt;"..helpTagOff..helpTagYellow.." Show current improves/level for a skill"..helpTagOff.."<BR><BR>"
---	helpText = helpText..helpTagGreen.."/announce on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..helpTagOff..helpTagYellow.." Announce improves in standard mode"..helpTagOff.."<BR>"
---	helpText = helpText..helpTagGreen.."/announce brief&nbsp;&nbsp;"..helpTagOff..helpTagYellow.." Announce improves in brief mode"..helpTagOff.."<BR>"
---	helpText = helpText..helpTagGreen.."/announce verbose"..helpTagOff..helpTagYellow.." Announce improves in verbose mode"..helpTagOff.."<BR>"
---	helpText = helpText..helpTagGreen.."/announce off&nbsp;&nbsp;&nbsp;&nbsp;"..helpTagOff..helpTagYellow.." No announcement of improves"..helpTagOff.."<BR><BR>"
---	helpText = helpText..helpTagYellow.."Contact Pato in Discord or in game if you have any<BR>questions or comments about using the package!<BR>"
 	helpText = helpText..helpTagOff
 
 	return helpText

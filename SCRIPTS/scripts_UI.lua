@@ -100,55 +100,9 @@ GUI.tabwindow5 = GUI.tabwindow5 or
   
 
 
-
-
-
-
--- CREATE CHATHOLDER BOX -> TABWINDOW5
------------------------------------------------------------
-GUI.containerChatholderBox = GUI.containerChatholderBox or
-	Geyser.Label:new({
-		name = "ChatholderBox",
-		x = 0, y = 0,
-		fontSize = 10,
-		width = "100%",
-		height = "100%",
-		color = "black"
-	}, GUI.tabwindow5.CHATcenter)
-
-
-GUI.containerChatholderBox:setStyleSheet([[
-		QLabel{
-			color: black;
-			background-color: black;
-			margin: 9px;
-		}
-]])
-
-local window									= {border = GUI.tabwindow5.CHATcenter, container = GUI.containerChatholderBox}
-windows["ChatholderBox"]						= window
-windows_ByPosition["topLeft"]["ChatholderBox"]	= window
-
-
-
-	-- CREATE CHAT BOX -> CHATHOLDER -> TABWINDOW5
-	-----------------------------------------------------------
-	GUI.containerChatBox = GUI.containerChatBox or
-		Geyser.MiniConsole:new({
-			name = "ChatBox",
-			x = 9, y = 9,
-			fontSize = 8,
-			width = -9,
-			height = -9,
-			color = "black"
-		}, GUI.containerChatholderBox)
-
-	local window								= {border = GUI.containerChatholderBox, container = GUI.containerChatBox}
-	windows["ChatBox"]							= window
-	windows_ByPosition["topLeft"]["ChatBox"]	= window
-
-
-
+-------------------------------------------------------------------------------
+-- TABWINDOW1 -----------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 
 
@@ -170,6 +124,9 @@ windows_ByPosition["topLeft"]["WhoBox"]		= window
 
 
 
+-------------------------------------------------------------------------------
+-- TABWINDOW2 -----------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 
 
@@ -191,6 +148,9 @@ windows_ByPosition["topLeft"]["MessageBox"]	= window
 
 
 
+-------------------------------------------------------------------------------
+-- TABWINDOW3 -----------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 
 
@@ -246,6 +206,9 @@ windows_ByPosition["topLeft"]["LevelsBox"]	= window
 
 
 
+-------------------------------------------------------------------------------
+-- TABWINDOW4 -----------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 
 
@@ -610,6 +573,58 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 		local window								= {border = GUI.containerHolderBox, container = GUI.containerConcBox}
 		windows["ConcBox"]							= window
 		windows_ByPosition["topLeft"]["ConcBox"]	= window
+
+
+
+-------------------------------------------------------------------------------
+-- TABWINDOW5 -----------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+
+
+-- CREATE CHATHOLDER BOX -> TABWINDOW5
+-----------------------------------------------------------
+GUI.containerChatholderBox = GUI.containerChatholderBox or
+	Geyser.Label:new({
+		name = "ChatholderBox",
+		x = 0, y = 0,
+		fontSize = 10,
+		width = "100%",
+		height = "100%",
+		color = "black"
+	}, GUI.tabwindow5.CHATcenter)
+
+
+GUI.containerChatholderBox:setStyleSheet([[
+		QLabel{
+			color: black;
+			background-color: black;
+			margin: 9px;
+		}
+]])
+
+local window									= {border = GUI.tabwindow5.CHATcenter, container = GUI.containerChatholderBox}
+windows["ChatholderBox"]						= window
+windows_ByPosition["topLeft"]["ChatholderBox"]	= window
+
+
+
+	-- CREATE CHAT BOX -> CHATHOLDER -> TABWINDOW5
+	-----------------------------------------------------------
+	GUI.containerChatBox = GUI.containerChatBox or
+		Geyser.MiniConsole:new({
+			name = "ChatBox",
+			x = 9, y = 9,
+			fontSize = 8,
+			width = -9,
+			height = -9,
+			color = "black"
+		}, GUI.containerChatholderBox)
+
+	local window								= {border = GUI.containerChatholderBox, container = GUI.containerChatBox}
+	windows["ChatBox"]							= window
+	windows_ByPosition["topLeft"]["ChatBox"]	= window
+
 
 
 

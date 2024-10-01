@@ -14,7 +14,7 @@ local function setup(args)
                      ,[[
                         local thirst = matches[2]
                         local arguments = {thirst = thirst}
-
+						deleteLine()
                         Events.raiseEvent("thirstEvent", arguments)
                       ]])
   
@@ -23,7 +23,7 @@ local function setup(args)
                      ,[[
                         local thirst = matches[2]
                         local arguments = {thirst = thirst}
-
+						deleteLine()
                         Events.raiseEvent("thirstEvent", arguments)
                       ]])
 
@@ -32,7 +32,7 @@ local function setup(args)
                      ,[[
                         local thirst = matches[2]
                         local arguments = {thirst = thirst}
-
+						deleteLine()
                         Events.raiseEvent("thirstEvent", arguments)
                       ]])
 
@@ -41,7 +41,7 @@ local function setup(args)
                      ,[[
                         local thirst = matches[2]
                         local arguments = {thirst = thirst}
-
+						deleteLine()
                         Events.raiseEvent("thirstEvent", arguments)
                       ]])
 
@@ -50,7 +50,7 @@ local function setup(args)
                      ,[[
                         local thirst = matches[2]
                         local arguments = {thirst = thirst}
-
+						deleteLine()
                         Events.raiseEvent("thirstEvent", arguments)
                       ]])
 
@@ -59,7 +59,7 @@ local function setup(args)
                      ,[[
                         local thirst = matches[2]
                         local arguments = {thirst = thirst}
-
+						deleteLine()
                         Events.raiseEvent("thirstEvent", arguments)
                       ]])
 

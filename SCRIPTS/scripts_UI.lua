@@ -204,11 +204,45 @@ GUI.containerImproveBox = GUI.containerImproveBox or
 		width = "96%",
 		height = "93%",
 		color = "black"
-	}, GUI.tabwindow3.IMPROVEcenter)
+	}, GUI.tabwindow3.IMPROVEScenter)
 
 local window								= {border = GUI.tabwindow3.IMPROVEcenter, container = GUI.containerImproveBox}
 windows["ImproveBox"]						= window
 windows_ByPosition["topLeft"]["ImproveBox"]	= window
+
+
+
+-- CREATE LEVELS BOX -> TABWINDOW3
+-----------------------------------------------------------
+GUI.containerLevelsBox = GUI.containerLevelsBox or
+	Geyser.Label:new({
+		name = "LevelsBox",
+		x = 0, y = 0,
+		fontSize = 10,
+		width = "100%",
+		height = "100%",
+		color = "black"
+	}, GUI.tabwindow3.LEVELScenter)
+
+
+GUI.containerLevelsBox:setStyleSheet([[
+		QLabel{
+			color: black;
+			background-color: rgb(0,0,70);
+			margin: 5px;
+			border-radius: 10px;
+			padding: 10px;
+			font-size: 10pt;
+			font-family: Bitstream Vera Sans Mono;
+			qproperty-alignment: 'AlignTop | AlignLeft';
+		}
+]])
+
+echo("LevelsBox", Info.showQuickLevels())
+
+local window								= {border = GUI.tabwindow3.LEVELScenter, container = GUI.containerLevelsBox}
+windows["LevelsBox"]						= window
+windows_ByPosition["topLeft"]["LevelsBox"]	= window
 
 
 
@@ -835,6 +869,7 @@ local function onAura(args)
 	aura = args["aura"]
 	auraBoxTextColor = "white"
 	auraBoxBGColor = "black"
+	scintBackground = packageFolder.."MEDIA/rainbow_small.png"
 
 	deleteLine()
 	moveCursorEnd()
@@ -874,7 +909,7 @@ local function onAura(args)
 			font-size: 30px;
 			font-weight: bold;
 			font-family: verdana, tahoma;
-			border-image: url("c:/users/X/Downloads/rainbow.png");
+			border-image: url("]]..scintBackground..[[");
 			background-color: ]]..auraBoxBGColor..[[;
 			margin: 0px 12px 0px 12px;
 			border: 2px solid white;
@@ -929,11 +964,14 @@ local function onConc(args)
 		}
 	]])
  
-	echo("ConcBox", [[<center style="color:]]..concBoxTextColor..[[;">]]..conc.."</center>")
-  
---  setLabelStyleSheet("concLabel",[[background-color:]]..concLabelBGColor) 
---  echo("concLabel", [[<center style="font-size:24px; font-weight:bold; color:]]..concLabelTextColor..[[;">]]..conc.."</center>")
-  
+	if conc == "You're too confused to remember your name." then
+		displayConc = "Too confused to remember your name."
+	else
+		displayConc = conc
+	end
+	
+	echo("ConcBox", [[<center style="color:]]..concBoxTextColor..[[;">]]..displayConc.."</center>")
+
 end
 
 
@@ -945,7 +983,7 @@ local function setup(args)
 
 --  Events.addListener("sysWindowResizeEvent", sourceName, updateDisplay)
   Events.addListener("chatEvent", sourceName, onChat)
-  Events.addListener("skillImproveEvent", sourceName, onImprove)
+  --Events.addListener("skillImproveEvent", sourceName, onImprove)
   Events.addListener("skillMistakeEvent", sourceName, onSkillMistake)
   Events.addListener("startWhoEvent", sourceName, onStartWho)
   Events.addListener("endWhoEvent", sourceName, onWhoEnd)
@@ -970,7 +1008,7 @@ end
 local function unsetup(args)
 --  Events.removeListener("sysWindowResizeEvent", sourceName)
   Events.removeListener("chatEvent", sourceName)
-  Events.removeListener("skillImproveEvent", sourceName)
+  --Events.removeListener("skillImproveEvent", sourceName)
   Events.removeListener("skillMistakeEvent", sourceName)
   Events.removeListener("startWhoEvent", sourceName)
   Events.removeListener("whoEvent", sourceName)
@@ -1013,6 +1051,7 @@ UI = {
   setup = setup
   ,unsetup = unsetup
   ,resetup = resetup
+  ,onImprove = onImprove
 }
 
 return UI

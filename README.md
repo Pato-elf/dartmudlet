@@ -11,6 +11,7 @@
 - Added "well fed" and "well slaked" statuses
 - Added `/help` command to display list of commands
 - Added `#num repeat` command to repeat commands (e.g. #3 say hi)
+- Update INFO panel when regaining consciousness
 - Changes to practice casting
 - Removed blocking on "cast net"
 - Added blocking for revise
@@ -29,15 +30,15 @@ DartMUDlet has many display features such as a conversation window across the to
 
 &nbsp;
 ## Installation
-1 Visit the project [release page](https://github.com/Pato-elf/dartmudlet/releases) and download the latest package.zip under Assets.
-2 Launch [Mudlet](https://www.mudlet.org/) and connect to your [DartMUD](http://dartmud.com) profile.
-3 Open the Mudlet Package Manager, click "Install new package" and select the package.zip you downloaded.
-4 Type `/setup` in the command window to get things set up.
-5 Type `/announce on` in the command window to turn on improve announcements.
+1. Visit the project [release page](https://github.com/Pato-elf/dartmudlet/releases) and download the latest package.zip under Assets.
+2. Launch [Mudlet](https://www.mudlet.org/) and connect to your [DartMUD](http://dartmud.com) profile.
+3. Open the Mudlet Package Manager, click "Install new package" and select the package.zip you downloaded.
+4. Type `/setup` in the command window to get things set up.
+5. Type `/announce on` in the command window to turn on improve announcements.
 
 &nbsp;
 ## How to use?
-In addition to the automatic features described above, there are a few things you can control by typing commands:
+In addition to the automatic features described above, there are a number of things you can control by typing commands:
 
 ```
 /setup   - Initialize variables, customize the display, start improve tracking database.

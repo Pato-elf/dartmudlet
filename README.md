@@ -99,3 +99,4 @@ Some of the rest are:
 - The zMud scripts were converted to a Mudlet package by Gaborn and shared as DartMUDlet.
 - These were exensively refactored into modular LUA and brought to GitHub by missionz3r0.
 - The Pato versions of DartMUDlet are a fork from [Owen Davies](https://github.com/daviesow) DartMUDlet release.
+- Code for the adjustable tab windows originally written by [Edru2](https://github.com/Edru2).

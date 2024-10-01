@@ -18,6 +18,7 @@
 - Removed blocking when writing on forms
 - Added player status to name (e.g. blurry, sitting)
 - Fixed text being cut off early in upper chat box
+- Updates to reduce client crashing during lag spikes
 - Removed empty prompt lines
 
 &nbsp;

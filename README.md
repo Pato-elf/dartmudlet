@@ -26,7 +26,7 @@ Screenshot soon...
 
 &nbsp;
 ## Features
-DartMUDlet has many display features such as a conversation window across the top, and your status displayed in the top right.  It automatically counts and reports improves (both you and pets), and will attempt to autocorrect when a skill rolls to the next level. DartMUDlet will delay any new commands sent to DartMUD while you are performing interruptable actions such as spellcasting and scrolls.
+DartMUDlet has many useful features to make your DartMUD experience more efficient and enjoyable. Features that include upgrades to the user interface, automation, and reporting are all included. It includes a conversation window across the top as well as a character information panel in the bottom right next to the command window. DartMUDlet automatically counts and reports skill improves for both you and your pets, and will attempt to autocorrect when a skills rolls to the next level. DartMUDlet will also block and queue up commands while you are performing interruptable actions(e.g. spells, books, scrolls), then release them afterwards when the action is complete.
 
 &nbsp;
 ## Installation

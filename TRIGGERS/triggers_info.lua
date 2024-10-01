@@ -28,9 +28,9 @@ local function setup(args)
     tempRegexTrigger("^(?:> )*Autosaving character\\.\\.\\.Ok"
                      ,[[
                         local matchline = matches[1]
-						moveCursor(0,getLineCount()-1)
-						deleteLine()
-						moveCursor(0,getLineCount())
+						--moveCursor(0,getLineCount()-1)
+						--deleteLine()
+						--moveCursor(0,getLineCount())
 						deleteLine()
 						Events.raiseEvent("messageEvent", {message="<yellow>"..matchline.."\n"})
                       ]])

@@ -67,7 +67,7 @@ GUI.tabwindow3 = GUI.tabwindow3 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"IMPROVE","TEST2"},
+		tabs = {"IMPROVES","LEVELS"},
 	},GUI.right)
   
   
@@ -665,7 +665,7 @@ local function onImprove(args)
 	local skillVar = Skills.getSkill({who = who, skill_name = skill_name})
 
 	if skillVar ~= -1 then
-		count = tonumber(skillVar.count)+1
+		count = tonumber(skillVar.count)-- + 1
 	else
 		count = 1
 	end

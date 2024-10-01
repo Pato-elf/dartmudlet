@@ -17,7 +17,7 @@
 - Added blocking for revise
 - Removed blocking when writing on forms
 - Added player status to name (e.g. blurry, sitting)
-- Fixed text being cut off in upper chat box
+- Fixed text being cut off early in upper chat box
 - Removed empty prompt lines
 
 &nbsp;

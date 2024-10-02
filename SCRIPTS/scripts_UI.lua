@@ -39,7 +39,7 @@ GUI.tabwindow1 = GUI.tabwindow1 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"WHO","CHANNEL","STATS","ALLOCS","MAP"},
+		tabs = {"WHO","TEMP1","TEMP2","TEMP3","TEMP4"},
 	},GUI.right)
 
 
@@ -53,7 +53,7 @@ GUI.tabwindow2 = GUI.tabwindow2 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"MESSAGE","ALLOCS","MISC","MISC2"},
+		tabs = {"MESSAGE","ALLOCS","TEMP5","TEMP6"},
 	},GUI.right)
 
   

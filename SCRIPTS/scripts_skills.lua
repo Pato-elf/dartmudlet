@@ -41,64 +41,76 @@ levels.NoSkill    = {name = "no skill",       abbr = "noskill", 	min = "0",		  m
 
 
 
+-- get skill from database
+-----------------------------------------------------------
 local function getSkill(args)
-  local who = args["who"]
-  local skill_name = args["skill_name"]
-  if not who then
-      who = Status.name
-  end
+	local who = args["who"]
+	local skill_name = args["skill_name"]
 
-  local results = dba.query('SELECT * FROM improves WHERE who="'..who..'" AND skill="'..skill_name..'"') --PATO
+	if not who then
+		who = Status.name
+	end
 
-  if results.count() == 0 then
-      return  -1
-  end
-  if results.count() > 1 then
-      local i
-      cecho("<red>Too many results did you mean:\n")
-      for i=1,results.count() do
-          cecho("<red>\t"..results[i].skill.."\n")
-      end
-      return 0
-  end
-  return results[1]
+	local results = dba.query('SELECT * FROM improves WHERE who="'..who..'" AND skill="'..skill_name..'"') --PATO
+
+	if results.count() == 0 then
+		return -1
+	end
+
+	if results.count() > 1 then
+		local i
+		
+		cecho("<red>ERROR: Too many results did you mean:\n")
+		for i=1,results.count() do
+			cecho("<red>\t"..results[i].skill.."\n")
+		end
+		return 0
+	end
+	return results[1]
 end
 
 
 
+-- imp2lvl
+-----------------------------------------------------------
 local function imp2lvl(imp)
-  imp = tonumber(imp)
+	imp = tonumber(imp)
 
-  for k,v in pairs(levels) do
-    if(imp >= tonumber(v.min) and imp <= tonumber(v.max)) then
-      return v
-    end
-  end
-  return levels.NoSkill
+	for k,v in pairs(levels) do
+		if(imp >= tonumber(v.min) and imp <= tonumber(v.max)) then
+			return v
+		end
+	end
+	return levels.NoSkill
 end
 
 
 
+-- name2lvl
+-----------------------------------------------------------
 function name2lvl(name)
 
-  for k,v in pairs(levels) do
-    if (v.name == name) then
-      return v
-    end
-  end
+	for k,v in pairs(levels) do
+		if (v.name == name) then
+			return v
+		end
+	end
 
-  return levels.NoSkill
+	return levels.NoSkill
 end
 
 
 
+-- skill info command
+-----------------------------------------------------------
 local function skillInfo(args)
-  local skill_name = args["skill_name"]
-  local who = args["who"]
+	local skill_name = args["skill_name"]
+	local who = args["who"]
 	local result = getSkill(args)
+
 	if result == -1 then
 		cecho("<red>ERROR: Unknown skill - "..skill_name.."\n")
-        return
+		return
 	end
 
 	local count = tonumber(result.count)
@@ -118,8 +130,9 @@ end
 -- perform skill increase, update improves box, check skill level
 -----------------------------------------------------------
 local function increaseSkill(args)
-  local skill_name = args["skill_name"]
-  local who = args["name"]
+	local skill_name = args["skill_name"]
+	local who = args["name"]
+
 	if not who then
 		who = Status.name
 	end
@@ -128,78 +141,80 @@ local function increaseSkill(args)
 	local count = 1
 
 	if results then
-    previous_skill_value = {}
-    for k,v in pairs(results) do
-      previous_skill_value[k] = v
-    end
+		previous_skill_value = {}
+		for k,v in pairs(results) do
+			previous_skill_value[k] = v
+		end
 
 		results.count = tonumber(results.count) + 1
 		count = results.count
 		dba.execute('UPDATE improves SET count='..count..' WHERE who="'..who..'" AND skill="'..skill_name..'"')
 		dba.execute('UPDATE improves SET last_imp=datetime("NOW") WHERE who="'..who..'" AND skill="'..skill_name..'"')
 	else
-    previous_skill_value = {
-      skill = skill_name
-      ,who = who
-      ,count = 0
-      ,last_imp = 0
-    }
+		previous_skill_value = {
+			skill = skill_name,
+			who = who,
+			count = 0,
+			last_imp = 0
+		}
 		dba.execute('INSERT INTO improves (skill, count, who, last_imp) VALUES("'..skill_name..'", 1, "'..who..'", datetime("NOW"))')
 	end
 
 	UI.onImprove({name = who, skill_name = skill_name})
 
-  --Check skill level reported by the mud (if imp is for the character; mud doesn't report pet skill levels)
-  if name == Status.name then
-    shownSkill =
-      tempRegexTrigger("^(?:> )*([A-Za-z'\\-_# ]+):\\s+([A-Za-z ]+)\\.$"
-                      ,[[
-                        local skill_name = string.lower(matches[2])
-                        local skill_level = string.lower(matches[3])
-  
-                        local isStupidOoc = string.find(matches[1], "(ooc)")
-                        local _s, spaces = string.gsub(skill_name, " ", " ")
-                        spaces = spaces or 0
-                        -- collection of possible false triggers due to the common pattern used in show skills output
-                        -- if there is more than 1 space its a false positive
-                        if skill_name == "concentration" or
-                            skill_name == "encumbrance" or
-                            skill_name == "held" or
-                            skill_name == "worn" or
-                            spaces > 1 or
-                            not isStupidOoc == nil then
-                                return
-                        end
-  
-                        args = {skill_name = skill_name, skill_level = skill_level}
-                        Events.raiseEvent("shownSkillEvent", args)
-                      ]])
+	--Check skill level reported by the mud (if imp is for the character; mud doesn't report pet skill levels)
+	if name == Status.name then
+	shownSkill =
+		tempRegexTrigger("^(?:> )*([A-Za-z'\\-_# ]+):\\s+([A-Za-z ]+)\\.$",
+			[[
+				local skill_name = string.lower(matches[2])
+				local skill_level = string.lower(matches[3])
+				local isStupidOoc = string.find(matches[1], "(ooc)")
+				local _s, spaces = string.gsub(skill_name, " ", " ")
+				spaces = spaces or 0
 
-    send("show skills "..skill_name, false) --PATO
-    tempTimer(15, [[disableTrigger(]]..shownSkill..[[)]])
-  end
+				-- collection of possible false triggers due to the common pattern used in show skills output
+				-- if there is more than 1 space its a false positive
+				if skill_name == "concentration" or
+				skill_name == "encumbrance" or
+				skill_name == "held" or
+				skill_name == "worn" or
+				spaces > 1 or
+				not isStupidOoc == nil then
+					return
+				end
+  
+				args = {skill_name = skill_name, skill_level = skill_level}
+				Events.raiseEvent("shownSkillEvent", args)
+			]])
+
+		send("show skills "..skill_name, false) --PATO
+		tempTimer(15, [[disableTrigger(]]..shownSkill..[[)]])
+	end
 
 	return count
 end
 
 
 
+-- skill mistake
+-----------------------------------------------------------
 local function skillMistake()
-  if previous_skill_value.count ~= nil then
-    local count = previous_skill_value.count
-    local skill_name = previous_skill_value.skill
-    local who = previous_skill_value.who
-    local last_imp = previous_skill_value.last_imp
-    if(count ~= 0) then
-      dba.execute('UPDATE improves SET count='..count..' WHERE who="'..who..'" AND skill="'..skill_name..'"')
-      dba.execute('UPDATE improves SET last_imp=datetime(\''..last_imp..'\') WHERE who="'..who..'" AND skill="'..skill_name..'"')
-    else
-      dba.execute('UPDATE improves SET count='..count..' WHERE who="'..who..'" AND skill="'..skill_name..'"')
-  		dba.execute('UPDATE improves SET last_imp=datetime("NOW") WHERE who="'..who..'" AND skill="'..skill_name..'"')
-    end
+	if previous_skill_value.count ~= nil then
+		local count = previous_skill_value.count
+		local skill_name = previous_skill_value.skill
+		local who = previous_skill_value.who
+		local last_imp = previous_skill_value.last_imp
+		if(count ~= 0) then
+			dba.execute('UPDATE improves SET count='..count..' WHERE who="'..who..'" AND skill="'..skill_name..'"')
+			dba.execute('UPDATE improves SET last_imp=datetime(\''..last_imp..'\') WHERE who="'..who..'" AND skill="'..skill_name..'"')
+		else
+			dba.execute('UPDATE improves SET count='..count..' WHERE who="'..who..'" AND skill="'..skill_name..'"')
+			dba.execute('UPDATE improves SET last_imp=datetime("NOW") WHERE who="'..who..'" AND skill="'..skill_name..'"')
+		end
 
-    previous_skill_value = {}
-  end
+		previous_skill_value = {}
+	end
 end
 
 
@@ -215,12 +230,40 @@ local function updateCount(args)
 	if skill ~= nil and skill~= 0 and skill ~= -1 then
 		dba.execute('UPDATE improves SET count='..count..' WHERE who="'..who..'" AND skill="'..skill_name..'"')
 		local imptext = "Updating skill: "..skill_name.." from "..skill.count.." to "..count
-		cecho("<red>"..imptext.."\n")	
+		cecho("<yellow>"..imptext.."\n")	
 		UI.onImprove({name = who, skill_name = skill_name, text = imptext})
 	else
-		cecho("<red>No skill by name: "..skill_name.."\n")
-		--display(skill_name)
+		cecho("<red>ERROR: Unknown skill - "..skill_name.."\n")
 	end
+end
+
+
+
+-- insert a skill into the database
+-----------------------------------------------------------
+local function insertSkill(args)
+	local count = args["count"]
+	local who = args["who"]
+	local skill_name = args["skill_name"]
+	local skill = getSkill({who = who, skill_name = skill_name})
+
+	if skill ~= nil and skill~= 0 and skill ~= -1 then
+		cecho("<red>ERROR: Skill already in database\n")
+	else
+		dba.execute('INSERT INTO improves (skill, count, who, last_imp) VALUES("'..skill_name..'", '..count..', "'..who..'", datetime("NOW"))')
+		local imptext = "Inserting skill: "..skill_name.." at "..count
+		cecho("<yellow>"..imptext.."\n")
+		UI.onImprove({name = who, skill_name = skill_name, text = imptext})
+	end
+
+--	if skill ~= nil and skill~= 0 and skill ~= -1 then
+--		dba.execute('UPDATE improves SET count='..count..' WHERE who="'..who..'" AND skill="'..skill_name..'"')
+--		local imptext = "Updating skill: "..skill_name.." from "..skill.count.." to "..count
+--		cecho("<yellow>"..imptext.."\n")	
+--		UI.onImprove({name = who, skill_name = skill_name, text = imptext})
+--	else
+--		cecho("<red>ERROR: Unknown skill - "..skill_name.."\n")
+--	end
 end
 
 
@@ -228,54 +271,58 @@ end
 -- check shown skill to see if it needs update or insert
 -----------------------------------------------------------
 local function shownSkill(args)
-  local who = Status.name
-  local skill_name = args["skill_name"]
-  local skill_level = args["skill_level"]
+	local who = Status.name
+	local skill_name = args["skill_name"]
+	local skill_level = args["skill_level"]
 
-  local skill = getSkill({who = who, skill_name = skill_name})
+	local skill = getSkill({who = who, skill_name = skill_name})
 
-  if(skill == -1 ) then
-      local imps = name2lvl(skill_level).min
-      dba.execute('INSERT INTO improves (skill, count, who, last_imp) VALUES("'..skill_name..'", '..imps..', "'..who..'", datetime("NOW"))')
-	  local imptext = "Adding Skill: "..skill_name.." to database for "..who.." at count: "..imps
-      cecho("<red>\n"..imptext)
-	  UI.onImprove({name = who, skill_name = skill_name, text = imptext})
-  else
-    local dba_count = skill.count
-    local current_skill_level = imp2lvl(dba_count)
-    actual_skill_level = name2lvl(skill_level)
-    if(current_skill_level.name ~= actual_skill_level.name) then
-      updateCount({count=actual_skill_level.min, who=who, skill_name=skill_name})
-    end
-  end
+	if(skill == -1 ) then
+		local imps = name2lvl(skill_level).min
+		dba.execute('INSERT INTO improves (skill, count, who, last_imp) VALUES("'..skill_name..'", '..imps..', "'..who..'", datetime("NOW"))')
+		local imptext = "Adding Skill: "..skill_name.." to database for "..who.." at count: "..imps
+		cecho("<yellow>\n"..imptext)
+		UI.onImprove({name = who, skill_name = skill_name, text = imptext})
+	else
+		local dba_count = skill.count
+		local current_skill_level = imp2lvl(dba_count)
+		actual_skill_level = name2lvl(skill_level)
+		if(current_skill_level.name ~= actual_skill_level.name) then
+			updateCount({count=actual_skill_level.min, who=who, skill_name=skill_name})
+		end
+	end
 end
 
 
 
+-- setup
+-----------------------------------------------------------
 local function setup(args)
-  -- build database if needed
-  dba.execute('CREATE TABLE IF NOT EXISTS "improves" (_row_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, skill TEXT, count INTEGER DEFAULT 1, notes TEXT, last_imp TIMESTAMP, who VARCHAR(16), abbr TEXT, weight TEXT, power INTEGER);');
-  local directory = args["directory"]
-  directory = directory.."/Scripts/"
+	-- build database if needed
+	dba.execute('CREATE TABLE IF NOT EXISTS "improves" (_row_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, skill TEXT, count INTEGER DEFAULT 1, notes TEXT, last_imp TIMESTAMP, who VARCHAR(16), abbr TEXT, weight TEXT, power INTEGER);');
+	local directory = args["directory"]
+	directory = directory.."/SCRIPTS/"
 
-  Events.addListener("skillImproveEvent", sourceName, increaseSkill)
-  Events.addListener("skillInfoEvent", sourceName, skillInfo)
-  Events.addListener("skillMistakeEvent", sourceName, skillMistake)
-  Events.addListener("shownSkillEvent", sourceName, shownSkill)
-  Events.addListener("updateSkillEvent", sourceName, updateCount)
+	Events.addListener("skillImproveEvent", sourceName, increaseSkill)
+	Events.addListener("skillInfoEvent", sourceName, skillInfo)
+	Events.addListener("skillMistakeEvent", sourceName, skillMistake)
+	Events.addListener("shownSkillEvent", sourceName, shownSkill)
+	Events.addListener("updateSkillEvent", sourceName, updateCount)
+	Events.addListener("insertSkillEvent", sourceName, insertSkill)
 end
 
 local function unsetup(args)
-  Events.removeListener("skillImproveEvent", sourceName)
-  Events.removeListener("skillInfoEvent", sourceName)
-  Events.removeListener("skillMistakeEvent", sourceName)
-  Events.removeListener("shownSkillEvent", sourceName)
-  Events.removeListener("updateSkillEvent", sourceName)
+	Events.removeListener("skillImproveEvent", sourceName)
+	Events.removeListener("skillInfoEvent", sourceName)
+	Events.removeListener("skillMistakeEvent", sourceName)
+	Events.removeListener("shownSkillEvent", sourceName)
+	Events.removeListener("updateSkillEvent", sourceName)
+	Events.removeListener("insertSkillEvent", sourceName)
 end
 
 local function resetup(args)
-  unsetup(args)
-  setup(args)
+	unsetup(args)
+	setup(args)
 end
 
 Skills =

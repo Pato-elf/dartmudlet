@@ -53,7 +53,7 @@ GUI.tabwindow2 = GUI.tabwindow2 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"MESSAGE","ALLOCS","TEMP5","TEMP6"},
+		tabs = {"MESSAGE","CHANNEL","ALLOCS","TEMP5"},
 	},GUI.right)
 
   
@@ -929,9 +929,9 @@ local function onAura(args)
 	moveCursorEnd()
 
 	if aura == "scintillating" then auraBoxTextColor = "mediumblue" auraBoxBGColor = "crimson"
-	elseif aura == "intense octarine" then auraBoxTextColor = "indigo" auraBoxBGColor = "skyblue"
-	elseif aura == "octarine" then auraBoxTextColor = "mediumvioletred" auraBoxBGColor = "skyblue"
-	elseif aura == "dim octarine" then auraBoxTextColor = "black" auraBoxBGColor = "skyblue"  
+	elseif aura == "intense octarine" then auraBoxTextColor = "indigo" auraBoxBGColor = "aquamarine"
+	elseif aura == "octarine" then auraBoxTextColor = "mediumvioletred" auraBoxBGColor = "aquamarine"
+	elseif aura == "dim octarine" then auraBoxTextColor = "black" auraBoxBGColor = "aquamarine"  
 	elseif aura == "intense violet" then auraBoxTextColor = "white" auraBoxBGColor = "darkmagenta"
 	elseif aura == "violet" then auraBoxTextColor = "lightgrey" auraBoxBGColor = "darkmagenta"
 	elseif aura == "dim violet" then auraBoxTextColor = "darkgrey" auraBoxBGColor = "darkmagenta"
@@ -987,7 +987,7 @@ end
 
 
 
--- update conc box
+-- update concentration box
 -----------------------------------------------------------
 local function onConc(args)
 	conc = args["conc"]

@@ -53,7 +53,7 @@ GUI.tabwindow2 = GUI.tabwindow2 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"MESSAGE","CHANNEL","ALLOCS","TEMP5"},
+		tabs = {"MESSAGE","CHANNEL","ALLOCS"},
 	},GUI.right)
 
   
@@ -148,6 +148,40 @@ windows_ByPosition["topLeft"]["MessageBox"]	= window
 
 
 
+-- CREATE CHANNEL BOX -> TABWINDOW2
+-----------------------------------------------------------
+GUI.containerChannelBox = GUI.containerChannelBox or
+	Geyser.Label:new({
+		name = "ChannelBox",
+		x = 0, y = 0,
+		fontSize = 10,
+		width = "100%",
+		height = "100%",
+		color = "black"
+	}, GUI.tabwindow2.CHANNELcenter)
+
+
+GUI.containerChannelBox:setStyleSheet([[
+		QLabel{
+			color: black;
+			background-color: rgb(0,0,70);
+			margin: 5px;
+			border-radius: 10px;
+			padding: 10px;
+			font-size: 20pt;
+			font-family: Bitstream Vera Sans Mono;
+			qproperty-alignment: 'Center';
+		}
+]])
+
+echo("ChannelBox", Info.showUnderConstruction())
+
+local window								= {border = GUI.tabwindow2.CHANNELcenter, container = GUI.containerChannelBox}
+windows["ChannelBox"]						= window
+windows_ByPosition["topLeft"]["ChannelBox"]	= window
+
+
+
 -- CREATE ALLOCS BOX -> TABWINDOW2
 -----------------------------------------------------------
 GUI.containerAllocsBox = GUI.containerAllocsBox or
@@ -168,13 +202,13 @@ GUI.containerAllocsBox:setStyleSheet([[
 			margin: 5px;
 			border-radius: 10px;
 			padding: 10px;
-			font-size: 10pt;
+			font-size: 20pt;
 			font-family: Bitstream Vera Sans Mono;
-			qproperty-alignment: 'AlignTop | AlignLeft';
+			qproperty-alignment: 'Center';
 		}
 ]])
 
-echo("AllocsBox", Info.showQuickLevels())
+echo("AllocsBox", Info.showUnderConstruction())
 
 local window								= {border = GUI.tabwindow2.ALLOCScenter, container = GUI.containerAllocsBox}
 windows["AllocsBox"]						= window

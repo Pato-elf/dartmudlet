@@ -150,7 +150,7 @@ local function increaseSkill(args)
 	UI.onImprove({name = who, skill_name = skill_name})
 
   --Check skill level reported by the mud (if imp is for the character; mud doesn't report pet skill levels)
-  if name == name then --PATO Status.name then
+  if name == Status.name then
     shownSkill =
       tempRegexTrigger("^(?:> )*([A-Za-z'\\-_# ]+):\\s+([A-Za-z ]+)\\.$"
                       ,[[
@@ -176,9 +176,7 @@ local function increaseSkill(args)
                       ]])
 
     send("show skills "..skill_name, false) --PATO
-
     tempTimer(15, [[disableTrigger(]]..shownSkill..[[)]])
-
   end
 
 	return count
@@ -215,18 +213,20 @@ local function updateCount(args)
 	local skill = getSkill({who = who, skill_name = skill_name})
 
 	if skill ~= nil and skill~= 0 and skill ~= -1 then
-		local imptext = "Updating skill: "..skill_name.." from "..skill.count.." to "..count
-		cecho("<red>\n"..imptext)
 		dba.execute('UPDATE improves SET count='..count..' WHERE who="'..who..'" AND skill="'..skill_name..'"')
+		local imptext = "Updating skill: "..skill_name.." from "..skill.count.." to "..count
+		cecho("<red>"..imptext.."\n")	
 		UI.onImprove({name = who, skill_name = skill_name, text = imptext})
 	else
-		cecho("<red>No skill by name:\n")
-		display(skill_name)
+		cecho("<red>No skill by name: "..skill_name.."\n")
+		--display(skill_name)
 	end
 end
 
 
 
+-- check shown skill to see if it needs update or insert
+-----------------------------------------------------------
 local function shownSkill(args)
   local who = Status.name
   local skill_name = args["skill_name"]
@@ -237,7 +237,9 @@ local function shownSkill(args)
   if(skill == -1 ) then
       local imps = name2lvl(skill_level).min
       dba.execute('INSERT INTO improves (skill, count, who, last_imp) VALUES("'..skill_name..'", '..imps..', "'..who..'", datetime("NOW"))')
-      cecho("<red>Adding Skill: "..skill_name.." to database for "..who.." at count: "..imps)
+	  local imptext = "Adding Skill: "..skill_name.." to database for "..who.." at count: "..imps
+      cecho("<red>\n"..imptext)
+	  UI.onImprove({name = who, skill_name = skill_name, text = imptext})
   else
     local dba_count = skill.count
     local current_skill_level = imp2lvl(dba_count)

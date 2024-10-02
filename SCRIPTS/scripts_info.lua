@@ -163,6 +163,22 @@ end
 
 
 
+-- return under construction message
+-----------------------------------------------------------
+local function showUnderConstruction()
+	local helpText = ""
+	local helpTagYellow = "<span style=\"color: yellow;\">"
+	local helpTagOff = "</span>"
+	
+	helpText = helpText..helpTagYellow
+	helpText = helpText.."Coming Soon!"
+	helpText = helpText..helpTagOff
+
+	return helpText
+end
+
+
+
 -- delete prompt only lines
 ---------------------------------------------------------------------
 local function emptyLine(args)
@@ -198,11 +214,12 @@ end
 
 Info =
 {
-	setup = setup
-	,unsetup = unsetup
-	,resetup = resetup
-	,showQuickHelp = showQuickHelp
-	,showQuickLevels = showQuickLevels
+	setup = setup,
+	unsetup = unsetup,
+	resetup = resetup,
+	showQuickHelp = showQuickHelp,
+	showQuickLevels = showQuickLevels,
+	showUnderConstruction = showUnderConstruction
 }
 
 return Info

@@ -190,24 +190,24 @@ end
 
 
 function setup(args)
-  Events.addListener("showHelpEvent", sourceName, showHelp)
-  Events.addListener("showLevelsEvent", sourceName, showLevels)
-  Events.addListener("emptylineEvent", sourceName, emptyLine)
+	Events.addListener("showHelpEvent", sourceName, showHelp)
+	Events.addListener("showLevelsEvent", sourceName, showLevels)
+	Events.addListener("emptylineEvent", sourceName, emptyLine)
 end
 
 
 
 function unsetup(args)
-  Events.removeListener("showHelpEvent", sourceName)
-  Events.removeListener("showLevelsEvent", sourceName)
-  Events.removeListener("emptylineEvent", sourceName)
+	Events.removeListener("showHelpEvent", sourceName)
+	Events.removeListener("showLevelsEvent", sourceName)
+	Events.removeListener("emptylineEvent", sourceName)
 end
 
 
 
 function resetup(args)
-  unsetup(args)
-  setup(args)
+	unsetup(args)
+	setup(args)
 end
 
 

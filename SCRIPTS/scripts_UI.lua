@@ -123,7 +123,7 @@ GUI.tabwindow2 = GUI.tabwindow2 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"MESSAGE","REFRESH","CHANNEL","ALLOCS"},
+		tabs = {"MESSAGE","CHANNEL","REFRESH","ALLOCS"},
 	},GUI.right)
 
   
@@ -253,17 +253,29 @@ windows_ByPosition["topLeft"]["RefreshBox"]	= window
 		}, GUI.containerRefreshBox)
 
 	GUI.containerRefreshButton1:setStyleSheet(StyleButtonOff:getCSS())
-
 	echo("RefreshButton1", "<center>REFRESH OFF</center>")
-	GUI.containerRefreshButton1:setClickCallback("Button9_click")
+
+	GUI.containerRefreshButton1:setClickCallback("RefreshButton1_click")
 
 	local window									= {border = GUI.containerRefreshBox, container = GUI.containerRefreshButton1}
 	windows["RefreshButton1"]						= window
 	windows_ByPosition["topLeft"]["RefreshButton1"]	= window
 
 
-	function Button9_click()
-		GUI.containerRefreshButton1:setStyleSheet(StyleButtonOn:getCSS())
+	function RefreshButton1_click()
+		if not statusRefresh then
+			statusRefresh = true
+			GUI.containerRefreshButton1:setStyleSheet(StyleButtonOn:getCSS())
+			echo("RefreshButton1", "<center>REFRESH ON</center>")
+			Events.raiseEvent("messageEvent", {message="<yellow>Refresh: On\n"})
+			cecho("<yellow>Refresh: On\n")
+		else
+			statusRefresh = false
+			GUI.containerRefreshButton1:setStyleSheet(StyleButtonOff:getCSS())
+			echo("RefreshButton1", "<center>REFRESH OFF</center>")
+			Events.raiseEvent("messageEvent", {message="<yellow>Refresh: Off\n"})
+			cecho("<yellow>Refresh: Off\n")
+		end
 	end
 
 
@@ -287,6 +299,46 @@ echo("ChannelBox", Info.showUnderConstruction())
 local window								= {border = GUI.tabwindow2.CHANNELcenter, container = GUI.containerChannelBox}
 windows["ChannelBox"]						= window
 windows_ByPosition["topLeft"]["ChannelBox"]	= window
+
+
+
+	-- CREATE CHANNEL BUTTON1 -> CHANNEL -> TABWINDOW2
+	-----------------------------------------------------------
+	GUI.containerChannelButton1 = GUI.containerChannelButton1 or
+		Geyser.Label:new({
+			name = "ChannelButton1",
+			x = 50, y = 50,
+			fontSize = 14,
+			width = 190,
+			height = 46,
+			color = "black"
+		}, GUI.containerChannelBox)
+
+	GUI.containerChannelButton1:setStyleSheet(StyleButtonOff:getCSS())
+	echo("ChannelButton1", "<center>CHANNEL OFF</center>")
+
+	GUI.containerChannelButton1:setClickCallback("ChannelButton1_click")
+
+	local window									= {border = GUI.containerChannelBox, container = GUI.containerChannelButton1}
+	windows["ChannelButton1"]						= window
+	windows_ByPosition["topLeft"]["ChannelButton1"]	= window
+
+
+	function ChannelButton1_click()
+		if not statusChannel then
+			statusChannel = true
+			GUI.containerChannelButton1:setStyleSheet(StyleButtonOn:getCSS())
+			echo("ChannelButton1", "<center>CHANNEL ON</center>")
+			Events.raiseEvent("messageEvent", {message="<yellow>Channel: On\n"})
+			cecho("<yellow>Channel: On\n")
+		else
+			statusChannel = false
+			GUI.containerChannelButton1:setStyleSheet(StyleButtonOff:getCSS())
+			echo("ChannelButton1", "<center>CHANNEL OFF</center>")
+			Events.raiseEvent("messageEvent", {message="<yellow>Channel: Off\n"})
+			cecho("<yellow>Channel: Off\n")
+		end
+	end
 
 
 

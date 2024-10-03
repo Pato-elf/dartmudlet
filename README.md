@@ -82,8 +82,8 @@ Some of the rest are:
 /inscribe ! status [of <spell>]   - Show power used for last/named spell
 ```
 ```
-/update <Who> <skill> <improves> - Set improves for your (or pet's) skill to given total
-                                 - Use capitalized name to update
+/update <who> <skill> <improves> - Set improves for your (or pet's) skill to given total
+/insert <who> <skill> <improves> - Manually insert a new skill into the database
 /info <skill>                    - Shows current improves/level and improves to reach next
 /levels                          - Display a list of skill levels
 /help                            - Display a list of available commands

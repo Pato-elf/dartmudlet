@@ -5,6 +5,10 @@ statusChannel = false
 
 refreshPower1 = 80
 refreshTarget1 = "sianna"
+refreshType1	= "auto"
+refreshPower1 = 80
+refreshTarget1 = ""
+refreshType1	= "auto"
 
 
 
@@ -13,8 +17,6 @@ refreshTarget1 = "sianna"
 -- on scintillating
 -----------------------------------------------------------
 local function processAutomation(args)
---	echo("EVENT!\n")
---	local checkAura = aura
 	
 	if statusRefresh then
 		if (conc == "You're bright-eyed and bushy-tailed.") then

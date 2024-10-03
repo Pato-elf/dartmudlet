@@ -133,10 +133,6 @@ local function increaseSkill(args)
 	local skill_name = args["skill_name"]
 	local who = args["name"]
 
-	if not who then
-		who = Status.name
-	end
-
 	local results = dba.query('SELECT * FROM improves WHERE who="'..who..'" AND skill="'..skill_name..'"')[1]
 	local count = 1
 
@@ -163,7 +159,7 @@ local function increaseSkill(args)
 	UI.onImprove({name = who, skill_name = skill_name})
 
 	--Check skill level reported by the mud (if imp is for the character; mud doesn't report pet skill levels)
-	if name == Status.name then
+	if who == Status.name then
 	shownSkill =
 		tempRegexTrigger("^(?:> )*([A-Za-z'\\-_# ]+):\\s+([A-Za-z ]+)\\.$",
 			[[

@@ -13,6 +13,7 @@ local function setup(args)
 
                           Events.raiseEvent("BEBTconcEvent", arguments)
                           Events.raiseEvent("concEvent", arguments)
+						  Events.raiseEvent("concAutoEvent", arguments)
                         ]])
     tempTriggers.BOB =
       tempRegexTrigger("^(?:> )*(?:Concentration : )?(You're a bit off balance\\.)"

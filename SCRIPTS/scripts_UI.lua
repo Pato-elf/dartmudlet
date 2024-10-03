@@ -5,7 +5,77 @@ windows_ByPosition.topRight = {}
 windows_ByPosition.topLeft = {}
 windows_ByPosition.right = {}
 
+	local StyleButtonOn = Geyser.StyleSheet:new([[
+		QLabel{
+				color: black;
+				background-color: palegreen;
+				margin: 5px;
+				border-width: 2px;
+				border-style: solid;
+				border-color: black;
+				border-radius: 10px;
+				font-size: 14pt;
+				font-family: Bitstream Vera Sans Mono;
+				qproperty-alignment: 'Center';
+			}
+	]])
+	
+	local StyleButtonOff = Geyser.StyleSheet:new([[
+		QLabel{
+			color: black;
+			background-color: #696969;
+			margin: 5px;
+			border-width: 2px;
+			border-style: solid;
+			border-color: black;
+			border-radius: 10px;
+			font-size: 14pt;
+			font-family: Bitstream Vera Sans Mono;
+			qproperty-alignment: 'Center';
+		}
+	]])
 
+	local StyleBoxBlue = Geyser.StyleSheet:new([[
+		QLabel{
+			color: black;
+			background-color: rgb(0,0,70);
+			margin: 5px;
+			border-radius: 10px;
+			padding: 10px;
+			font-size: 20pt;
+			font-family: Bitstream Vera Sans Mono;
+			qproperty-alignment: 'Center';
+		}
+	]])
+
+	local StyleBoxLevels = Geyser.StyleSheet:new([[
+		QLabel{
+			color: black;
+			background-color: rgb(0,0,70);
+			margin: 5px;
+			border-radius: 10px;
+			padding: 10px;
+			font-size: 10pt;
+			font-family: Bitstream Vera Sans Mono;
+			qproperty-alignment: 'AlignTop | AlignLeft';
+		}
+	]])
+
+	local StyleBoxHelp = Geyser.StyleSheet:new([[
+		QLabel{
+			color: black;
+			background-color: rgb(0,0,70);
+			margin: 5px;
+			border-radius: 10px;
+			padding: 10px;
+			font-size: 11pt;
+			font-family: Bitstream Vera Sans Mono;
+			qproperty-alignment: 'AlignTop | AlignLeft';
+		}
+	]])
+
+
+aura = "unknown"
 
 -- CREATE GUI
 ---------------------------------------------------------------------
@@ -53,7 +123,7 @@ GUI.tabwindow2 = GUI.tabwindow2 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"MESSAGE","CHANNEL","ALLOCS"},
+		tabs = {"MESSAGE","REFRESH","CHANNEL","ALLOCS"},
 	},GUI.right)
 
   
@@ -148,6 +218,56 @@ windows_ByPosition["topLeft"]["MessageBox"]	= window
 
 
 
+-- CREATE REFRESH BOX -> TABWINDOW2
+-----------------------------------------------------------
+GUI.containerRefreshBox = GUI.containerRefreshBox or
+	Geyser.Label:new({
+		name = "RefreshBox",
+		x = 0, y = 0,
+		fontSize = 10,
+		width = "100%",
+		height = "100%",
+		color = "black"
+	}, GUI.tabwindow2.REFRESHcenter)
+
+GUI.containerRefreshBox:setStyleSheet(StyleBoxBlue:getCSS())
+
+echo("RefreshBox", Info.showUnderConstruction())
+
+local window								= {border = GUI.tabwindow2.REFRESHcenter, container = GUI.containerRefreshBox}
+windows["RefreshBox"]						= window
+windows_ByPosition["topLeft"]["RefreshBox"]	= window
+
+
+
+	-- CREATE REFRESH BUTTON1 -> REFRESH -> TABWINDOW2
+	-----------------------------------------------------------
+	GUI.containerRefreshButton1 = GUI.containerRefreshButton1 or
+		Geyser.Label:new({
+			name = "RefreshButton1",
+			x = 50, y = 50,
+			fontSize = 14,
+			width = 190,
+			height = 46,
+			color = "black"
+		}, GUI.containerRefreshBox)
+
+	GUI.containerRefreshButton1:setStyleSheet(StyleButtonOff:getCSS())
+
+	echo("RefreshButton1", "<center>REFRESH OFF</center>")
+	GUI.containerRefreshButton1:setClickCallback("Button9_click")
+
+	local window									= {border = GUI.containerRefreshBox, container = GUI.containerRefreshButton1}
+	windows["RefreshButton1"]						= window
+	windows_ByPosition["topLeft"]["RefreshButton1"]	= window
+
+
+	function Button9_click()
+		GUI.containerRefreshButton1:setStyleSheet(StyleButtonOn:getCSS())
+	end
+
+
+
 -- CREATE CHANNEL BOX -> TABWINDOW2
 -----------------------------------------------------------
 GUI.containerChannelBox = GUI.containerChannelBox or
@@ -160,19 +280,7 @@ GUI.containerChannelBox = GUI.containerChannelBox or
 		color = "black"
 	}, GUI.tabwindow2.CHANNELcenter)
 
-
-GUI.containerChannelBox:setStyleSheet([[
-		QLabel{
-			color: black;
-			background-color: rgb(0,0,70);
-			margin: 5px;
-			border-radius: 10px;
-			padding: 10px;
-			font-size: 20pt;
-			font-family: Bitstream Vera Sans Mono;
-			qproperty-alignment: 'Center';
-		}
-]])
+GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 echo("ChannelBox", Info.showUnderConstruction())
 
@@ -194,19 +302,7 @@ GUI.containerAllocsBox = GUI.containerAllocsBox or
 		color = "black"
 	}, GUI.tabwindow2.ALLOCScenter)
 
-
-GUI.containerAllocsBox:setStyleSheet([[
-		QLabel{
-			color: black;
-			background-color: rgb(0,0,70);
-			margin: 5px;
-			border-radius: 10px;
-			padding: 10px;
-			font-size: 20pt;
-			font-family: Bitstream Vera Sans Mono;
-			qproperty-alignment: 'Center';
-		}
-]])
+GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 echo("AllocsBox", Info.showUnderConstruction())
 
@@ -252,19 +348,7 @@ GUI.containerLevelsBox = GUI.containerLevelsBox or
 		color = "black"
 	}, GUI.tabwindow3.LEVELScenter)
 
-
-GUI.containerLevelsBox:setStyleSheet([[
-		QLabel{
-			color: black;
-			background-color: rgb(0,0,70);
-			margin: 5px;
-			border-radius: 10px;
-			padding: 10px;
-			font-size: 10pt;
-			font-family: Bitstream Vera Sans Mono;
-			qproperty-alignment: 'AlignTop | AlignLeft';
-		}
-]])
+GUI.containerLevelsBox:setStyleSheet(StyleBoxLevels:getCSS())
 
 echo("LevelsBox", Info.showQuickLevels())
 
@@ -292,19 +376,7 @@ GUI.containerHelpBox = GUI.containerHelpBox or
 		color = "black"
 	}, GUI.tabwindow4.HELPcenter)
 
-
-GUI.containerHelpBox:setStyleSheet([[
-		QLabel{
-			color: black;
-			background-color: rgb(0,0,70);
-			margin: 5px;
-			border-radius: 10px;
-			padding: 10px;
-			font-size: 11pt;
-			font-family: Bitstream Vera Sans Mono;
-			qproperty-alignment: 'AlignTop | AlignLeft';
-		}
-]])
+GUI.containerHelpBox:setStyleSheet(StyleBoxHelp:getCSS())
 
 echo("HelpBox", Info.showQuickHelp())
 
@@ -1086,11 +1158,6 @@ local function setup(args)
   Events.addListener("concEvent", sourceName, onConc)
   Events.addListener("auraEvent", sourceName, onAura)
   Events.addListener("languageEvent", sourceName, onLanguage)
-
---  Events.addListener("tabGeneralClickedEvent", sourceName, onGeneralTabClick)
---  Events.addListener("tabMagicClickedEvent", sourceName, onMagicTabClick)
---  Events.addListener("tabCombatClickedEvent", sourceName, onCombatTabClick)
---  Events.addListener("tabLocationClickedEvent", sourceName, onLocationTabClick)
 end
 
 local function unsetup(args)
@@ -1112,10 +1179,6 @@ local function unsetup(args)
   Events.removeListener("auraEvent", sourceName)
   Events.removeListener("languageEvent", sourceName)
 
---  Events.removeListener("tabGeneralClickedEvent", sourceName)
---  Events.removeListener("tabMagicClickedEvent", sourceName)
---  Events.removeListener("tabCombatClickedEvent", sourceName)
---  Events.removeListener("tabLocationClickedEvent", sourceName)
 
   for key,window in pairs(windows) do
     local container = window["container"]

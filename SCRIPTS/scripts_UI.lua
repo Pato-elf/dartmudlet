@@ -364,6 +364,7 @@ windows_ByPosition["topLeft"]["ChannelBox"]	= window
 			echo("ChannelButton1", "<center>CHANNEL OFF</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: Off\n"})
 			cecho("<yellow>Channel: Off\n")
+			send("conc")
 		end
 	end
 

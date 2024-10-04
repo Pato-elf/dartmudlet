@@ -13,9 +13,9 @@ local function announce(args)
 	if(isAnnounce) then
   
 		if(isVerbose) then
-			local getskill = dba.query('SELECT * FROM improves WHERE who="'..name..'" AND skill="'..skill_name..'"')[1]
+			local getskill = dba.query('SELECT count FROM improves WHERE who="'..name..'" AND skill="'..skill_name..'"')[1]
 			if name == Status.name then
-				send("ooc "..skill_name.."+ ("..getskill.count..")")
+				send("ooc "..skill_name.."+ ("..(tonumber(getskill.count)+1)..")")
 			else
 				send("ooc "..name.."'s "..skill_name.."+ ("..getskill.count..")")
 			end

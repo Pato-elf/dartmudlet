@@ -3,12 +3,12 @@ Auto = {}
 statusRefresh = false
 statusChannel = false
 
-refreshPower1 = 80
-refreshTarget1 = "sianna"
+refreshPower1 = 60
+refreshTarget1 = "dryfter"
 refreshType1	= "auto"
-refreshPower1 = 80
-refreshTarget1 = ""
-refreshType1	= "auto"
+refreshPower2 = 60
+refreshTarget2 = ""
+refreshType2	= "auto"
 
 
 

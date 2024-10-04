@@ -31,11 +31,12 @@ DartMUDlet has many useful features to make your DartMUD experience more efficie
 
 &nbsp;
 ## Installation
-1. &nbsp;Visit the project [release page](https://github.com/Pato-elf/dartmudlet/releases) and download the latest package.zip under Assets.
+1. &nbsp;Visit the project [release page](https://github.com/Pato-elf/dartmudlet/releases) and download the latest dartmudlet.zip under Assets.
 2. &nbsp;Launch [Mudlet](https://www.mudlet.org/) and connect to your [DartMUD](http://dartmud.com) profile.
 3. &nbsp;Open the Mudlet Package Manager, click "Install new package" and select the package you downloaded.
-4. &nbsp;Type `/setup` in the command window to get things set up.
-5. &nbsp;Type `/announce on` in the command window to turn on improve announcements.
+4. &nbsp;Type `/setup` on the command line to get things set up.
+5. &nbsp;Type `/announce on` to turn on improve announcements.
+6. &nbsp;Type `/help` for a full list of commands.
 
 &nbsp;
 ## How to use?
@@ -85,6 +86,7 @@ Some of the rest are:
 /update <who> <skill> <improves> - Set improves for your (or pet's) skill to given total
 /insert <who> <skill> <improves> - Manually insert a new skill into the database
 /info <skill>                    - Shows current improves/level and improves to reach next
+#num repeat                      - Repeat commands from the command line (e.g. #3 say hi)
 /levels                          - Display a list of skill levels
 /help                            - Display a list of available commands
 ```

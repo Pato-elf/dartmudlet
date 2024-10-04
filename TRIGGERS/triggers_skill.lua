@@ -13,6 +13,8 @@ local function setup(args)
 		local name = Status.name
 		local skill_name = matches[2]
 		arguments = {name = name, skill_name = skill_name}
+		if skill_name == "spell casting" then powercast=(powercast+1) end
+		if skill_name == "spell casting" then pcsuccess=(pcsuccess+1) end
 
 		Events.raiseEvent("skillImproveEvent", arguments)
 	]])

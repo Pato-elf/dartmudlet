@@ -129,6 +129,7 @@ local function showHelp(args)
 	cecho(preText.."/antispam on|off                 - Suppress repeated lines\n")
 	cecho(preText.."/who on|off                      - Auto check the who list every 5 minutes\n")
 	cecho(preText.."/info <skill>                    - Show current improves/level for a skill\n")
+	cecho(preText.."#num repeat                      - Repeat commands (e.g. #3 say hi)\n")
 	cecho(preText.."/levels                          - Display a list of skill levels\n")
 	cecho(preText.."/help                            - Display a list of available commands\n")
 end

@@ -1,14 +1,6 @@
 Auto = {}
 
-statusRefresh = false
-statusChannel = false
 
-refreshPower1 = 60
-refreshTarget1 = "dryfter"
-refreshType1	= "auto"
-refreshPower2 = 60
-refreshTarget2 = ""
-refreshType2	= "auto"
 
 
 
@@ -18,13 +10,13 @@ refreshType2	= "auto"
 -----------------------------------------------------------
 local function processAutomation(args)
 	
-	if statusRefresh then
+	if Status.statusRefresh then
 		if (conc == "You're bright-eyed and bushy-tailed.") then
-			send("cast ro @"..refreshPower1.." "..refreshTarget1)
+			send("cast ro @"..Status.refreshPower1.." "..Status.refreshTarget1)
 		end
 		
 		
-	elseif statusChannel then
+	elseif Status.statusChannel then
 		--echo(aura.." "..conc.."\n");
 		if (aura == "scintillating") and (conc == "You're bright-eyed and bushy-tailed.") then
 			expandAlias("chan default")

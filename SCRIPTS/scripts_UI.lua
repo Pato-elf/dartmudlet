@@ -276,7 +276,7 @@ windows_ByPosition["topLeft"]["RefreshBox"]	= window
 			width = 190,
 			height = 46,
 			color = "black"
-		}, nil)--GUI.containerRefreshBox)
+		}, GUI.containerRefreshBox)
 
 	GUI.containerRefreshButton1:setStyleSheet(StyleButtonOff:getCSS())
 	echo("RefreshButton1", "<center>REFRESH OFF</center>")
@@ -289,14 +289,14 @@ windows_ByPosition["topLeft"]["RefreshBox"]	= window
 
 
 	function RefreshButton1_click()
-		if not statusRefresh then
-			statusRefresh = true
+		if not Status.statusRefresh then
+			Status.statusRefresh = true
 			GUI.containerRefreshButton1:setStyleSheet(StyleButtonOn:getCSS())
 			echo("RefreshButton1", "<center>REFRESH ON</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Refresh: On\n"})
 			cecho("<yellow>Refresh: On\n")
 		else
-			statusRefresh = false
+			Status.statusRefresh = false
 			GUI.containerRefreshButton1:setStyleSheet(StyleButtonOff:getCSS())
 			echo("RefreshButton1", "<center>REFRESH OFF</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Refresh: Off\n"})
@@ -338,7 +338,7 @@ windows_ByPosition["topLeft"]["ChannelBox"]	= window
 			width = 190,
 			height = 46,
 			color = "black"
-		}, nil)--GUI.containerChannelBox)
+		}, GUI.containerChannelBox)
 
 	GUI.containerChannelButton1:setStyleSheet(StyleButtonOff:getCSS())
 	echo("ChannelButton1", "<center>CHANNEL OFF</center>")
@@ -351,14 +351,15 @@ windows_ByPosition["topLeft"]["ChannelBox"]	= window
 
 
 	function ChannelButton1_click()
-		if not statusChannel then
-			statusChannel = true
+		if not Status.statusChannel then
+			Status.statusChannel = true
 			GUI.containerChannelButton1:setStyleSheet(StyleButtonOn:getCSS())
 			echo("ChannelButton1", "<center>CHANNEL ON</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: On\n"})
 			cecho("<yellow>Channel: On\n")
+			send("conc")
 		else
-			statusChannel = false
+			Status.statusChannel = false
 			GUI.containerChannelButton1:setStyleSheet(StyleButtonOff:getCSS())
 			echo("ChannelButton1", "<center>CHANNEL OFF</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: Off\n"})

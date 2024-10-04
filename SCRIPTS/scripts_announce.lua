@@ -8,33 +8,33 @@ local isBrief = false
 
 
 local function announce(args)
-  local skill_name = args["skill_name"]
-  local name = args["name"]
-  if(isAnnounce) then
+	local skill_name = args["skill_name"]
+	local name = args["name"]
+	if(isAnnounce) then
   
-    if(isVerbose) then
-	  local getskill = dba.query('SELECT * FROM improves WHERE who="'..name..'" AND skill="'..skill_name..'"')[1]
-      if name == Status.name then
-        send("ooc "..skill_name.."+ ("..getskill.count..")")
-      else
-        send("ooc "..name.."'s "..skill_name.."+ ("..getskill.count..")")
-      end
-	  
-	elseif(isBrief) then
-      if name == Status.name then
-        send("ooc +")
-      else
-        send("ooc "..name.." +")
-      end
-	  
-    else
-      if name == Status.name then
-        send("ooc "..skill_name.."+")
-      else
-        send("ooc "..name.."'s "..skill_name.."+")
-      end
-    end
-  end
+		if(isVerbose) then
+			local getskill = dba.query('SELECT * FROM improves WHERE who="'..name..'" AND skill="'..skill_name..'"')[1]
+			if name == Status.name then
+				send("ooc "..skill_name.."+ ("..getskill.count..")")
+			else
+				send("ooc "..name.."'s "..skill_name.."+ ("..getskill.count..")")
+			end
+
+		elseif(isBrief) then
+			if name == Status.name then
+				send("ooc +")
+			else
+				send("ooc "..name.." +")
+			end
+		
+		else
+			if name == Status.name then
+				send("ooc "..skill_name.."+")
+			else
+				send("ooc "..name.."'s "..skill_name.."+")
+			end
+		end
+	end
 end
 
 

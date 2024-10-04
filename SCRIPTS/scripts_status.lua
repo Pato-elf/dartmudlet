@@ -42,9 +42,9 @@ Status.focusAmountDefault	= 20
 Status.focusAmountFeed		= 60
 Status.focusAmountTeach		= 45
 Status.focusTotal			= 0
-Status.targetFocus			= 'pearl'
-Status.targetFocusSource	= '(held) scrip'
-Status.targetTeach			= 'tudor'
+Status.focusTarget			= 'pearl'
+Status.focusTargetSource	= '(held) scrip'
+Status.teachTarget			= 'tudor'
 Status.cmdAddon				= ''
 
 

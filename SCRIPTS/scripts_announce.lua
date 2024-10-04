@@ -10,12 +10,21 @@ local isBrief = false
 local function announce(args)
 	local skill_name = args["skill_name"]
 	local name = args["name"]
+	local skillcount = 0
+	
 	if(isAnnounce) then
   
 		if(isVerbose) then
-			local getskill = dba.query('SELECT count FROM improves WHERE who="'..name..'" AND skill="'..skill_name..'"')[1]
+			local results = dba.query('SELECT count FROM improves WHERE who="'..name..'" AND skill="'..skill_name..'"')[1]
+			
+			if results then
+				skillcount = tonumber(results.count) + 1
+			else
+				skillcount = 1
+			end
+			
 			if name == Status.name then
-				send("ooc "..skill_name.."+ ("..(tonumber(getskill.count)+1)..")")
+				send("ooc "..skill_name.."+ ("..skillcount..")")
 			else
 				send("ooc "..name.."'s "..skill_name.."+ ("..getskill.count..")")
 			end

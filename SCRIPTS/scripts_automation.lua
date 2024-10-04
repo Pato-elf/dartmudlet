@@ -2,24 +2,54 @@ Auto = {}
 
 
 
+-- compute powercast number
+-----------------------------------------------------------
+local function computePowercast(args)
+	local results = dba.query('SELECT count FROM improves WHERE who="'..Status.name..'" AND skill="spell casting"')[1]
+	local spellcasting = tonumber(results.count)
+	local powercastNumber = (spellcasting + Status.powercastAddon) * 100
+	
+	return powercastNumber
+end
+
 
 
 -- perform a channel
 -----------------------------------------------------------
 local function processChannel(args)
-	expandAlias("chan default")
+	--expandAlias("chan default")
+
+	send("channel " .. Status.focusAmountDefault .. " " .. Status.focusTarget, false)
 	Status.focusTotal = Status.focusTotal + Status.focusAmountDefault
 	if (Status.focusTotal >= Status.powercastAmount) and (Status.statusPowercast) and (Status.statusPlaySound) then
-		playSoundFile({name = packageFolder.."MEDIA/"..pcsoundfile})
+		playSoundFile({name = packageFolder.."MEDIA/"..Status.powercastSoundFile})
 	end
 	
-	if focustotal < 10 then
-		cecho("<" .. Status.powercastColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t\t")
+	if Status.focusTotal < 10 then
+		cecho("\n<" .. Status.powercastColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t\t")
 	else
-		cecho("<" .. Status.powercastColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t")
+		cecho("\n<" .. Status.powercastColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t")
 	end
 end
 
+
+
+-- perform a powercast
+-----------------------------------------------------------
+local function processPowercast(args)
+	local powercastNumber = computePowercast()
+	
+	-- check for Status.statusAnnounce
+	send("get " .. Status.focusTarget .. " from " .. Status.focusTargetSource)
+	send("discharge " .. Status.focusTarget)
+	send("put " .. Status.focusTarget .. " in " .. Status.focusTargetSource)
+	if Status.statusTeach then send("stop teaching") end
+		send("cast ! lg @"..powercastNumber)
+	if Status.statusTeach then send("teach "..Status.teachTarget) end
+	
+	Status.focusTotal = 0
+	Status.powercastTotal = Status.powercastTotal + 1
+end
 
 
 
@@ -27,9 +57,7 @@ end
 -----------------------------------------------------------
 local function processChannelling(args)
 	local powercastPercentDisplay = ""
-	local results = dba.query('SELECT count FROM improves WHERE who="'..Status.name..'" AND skill="spell casting"')[1]
-	local spellcasting = tonumber(results.count)
-	local powercastNumber = (spellcasting + Status.powercastAddon) * 100
+	
 
 
 	if Status.powercastTotal == 0 then
@@ -69,11 +97,12 @@ local function processAutomation(args)
 		if (aura == "scintillating") and (conc == "You're bright-eyed and bushy-tailed.") then
 			if ((Status.focusTotal >= Status.powercastAmount) and (Status.statusPowercast)) then --or (matches[2] == "force") then
 				--powercast function
-				echo("powercast time\n")
+				--echo("powercast time\n")
+				processPowercast()
 			else
 				processChannel()
 			end
-			processChannelling()
+			--processChannelling()
 		end
 	end
 

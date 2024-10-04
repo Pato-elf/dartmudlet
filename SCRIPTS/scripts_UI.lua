@@ -357,14 +357,14 @@ windows_ByPosition["topLeft"]["ChannelBox"]	= window
 			echo("ChannelButton1", "<center>CHANNEL ON</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: On\n"})
 			cecho("<yellow>Channel: On\n")
-			send("conc")
+			send("conc", false)
 		else
 			Status.statusChannel = false
 			GUI.containerChannelButton1:setStyleSheet(StyleButtonOff:getCSS())
 			echo("ChannelButton1", "<center>CHANNEL OFF</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: Off\n"})
 			cecho("<yellow>Channel: Off\n")
-			send("conc")
+			send("conc", false)
 		end
 	end
 

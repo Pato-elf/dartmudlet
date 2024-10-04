@@ -276,7 +276,7 @@ windows_ByPosition["topLeft"]["RefreshBox"]	= window
 			width = 190,
 			height = 46,
 			color = "black"
-		}, GUI.containerRefreshBox)
+		}, nil)--GUI.containerRefreshBox)
 
 	GUI.containerRefreshButton1:setStyleSheet(StyleButtonOff:getCSS())
 	echo("RefreshButton1", "<center>REFRESH OFF</center>")
@@ -338,7 +338,7 @@ windows_ByPosition["topLeft"]["ChannelBox"]	= window
 			width = 190,
 			height = 46,
 			color = "black"
-		}, GUI.containerChannelBox)
+		}, nil)--GUI.containerChannelBox)
 
 	GUI.containerChannelButton1:setStyleSheet(StyleButtonOff:getCSS())
 	echo("ChannelButton1", "<center>CHANNEL OFF</center>")

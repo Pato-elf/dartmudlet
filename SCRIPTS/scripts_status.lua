@@ -3,28 +3,48 @@ Status = {}
 local sourceName = "status"
 
 -- character status
-Status.age = ''
-Status.alignment = ''
-Status.aura = ''
-Status.encumbrance = ''
-Status.hunger = ''
-Status.movement = ''
-Status.name = ''
-Status.race = ''
-Status.soulage = ''
-Status.thirst = ''
+Status.age			= ''
+Status.alignment	= ''
+Status.aura			= ''
+Status.encumbrance	= ''
+Status.hunger		= ''
+Status.movement		= ''
+Status.name			= ''
+Status.race			= ''
+Status.soulage		= ''
+Status.thirst		= ''
 
 -- refresh box
-Status.statusRefresh = false
-Status.refreshPower1 = 60
-Status.refreshPower2 = 60
-Status.refreshTarget1 = "dryfter"
-Status.refreshTarget2 = ""
-Status.refreshType1	= "auto"
-Status.refreshType2	= "auto"
+Status.statusRefresh	= false
+Status.refreshPower1	= 60
+Status.refreshPower2	= 60
+Status.refreshTarget1	= 'dryfter'
+Status.refreshTarget2	= ''
+Status.refreshType1		= 'auto'
+Status.refreshType2		= 'auto'
 
 -- channel box
-Status.statusChannel = false
+Status.statusChannel		= false
+Status.statusPowercast		= true
+Status.statusAnnounce		= false
+Status.statusCmdAddon		= false
+Status.statusTeach			= false
+Status.statusFeed			= false
+Status.statusPlaySound		= true
+Status.powercastAddon		= 3
+Status.powercastAmount		= 500
+Status.powercastColorEcho	= 'magenta'
+Status.powercastSoundFile	= 'Speech On.wav'
+Status.focusAmountDefault	= 21
+Status.focusAmountFeed		= 60
+Status.focusAmountTeach		= 45
+Status.targetFocus			= 'pearl'
+Status.targetFocusSource	= '(held) scrip'
+Status.targetTeach			= 'tudor'
+Status.cmdAddon				= ''
+
+
+
 
 
 local function setAge(args)

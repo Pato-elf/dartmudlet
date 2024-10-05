@@ -3,7 +3,29 @@ local Channelling_Aliases = {}
 local aliases = {}
 
 local function setup(args)
-  tempAliases = {}
+	tempAliases = {}
+
+
+
+	--display channelling information to self
+	tempAliases.chanInfo =
+		tempAlias("\\/chan info"
+			,[[
+				local arguments = {detail = "info"}
+				Events.raiseEvent("displayStatsEvent", arguments)
+			]])
+
+
+
+	--display channelling information to others
+	tempAliases.chanShare =
+		tempAlias("\\/chan share"
+			,[[
+				local arguments = {detail = "share"}
+				Events.raiseEvent("displayStatsEvent", arguments)
+			]])
+			
+			
 
   --Channelling alias
   tempAliases.channel =

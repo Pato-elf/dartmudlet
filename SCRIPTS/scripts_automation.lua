@@ -14,21 +14,62 @@ end
 
 
 
+-- display the powercasting stats
+-----------------------------------------------------------
+local function displayPowercastStats(args)
+	local displaytype = args["detail"]
+	local displaytext = ''
+	local spellcasting = 0
+	local powercastPercentDisplay = ""
+	--local powercastNumber = computePowercast()
+	local results = Skills.getSkill({who = Status.name, skill_name = "spell casting"})
+
+	if results ~= -1 then spellcasting = tonumber(results.count) else spellcasting = 0 end
+
+	if Status.powercastTotal == 0 then
+		Status.powercastPercent = 0
+	else
+		Status.powercastPercent = (Status.powercastSuccess / Status.powercastTotal) * 100
+	end
+	
+	powercastPercentDisplay = string.format("%.1f", Status.powercastPercent)
+	
+	displaytext = displaytext.."SPELLCASTING: "..spellcasting
+	displaytext = displaytext.."   PCMOD: +"..Status.powercastAddon
+	--displaytext = displaytext.."   FOCUS: "..Status.focusTotal
+	displaytext = displaytext.."   SUCCESS: "..powercastPercentDisplay
+	displaytext = displaytext.."% ("..Status.powercastTotal.." casts)"
+	
+	if displaytype == "share" then
+		send("ooc "..displaytext)
+	else
+		cecho("<"..Status.channelColorEcho..">"..displaytext.."\n")
+	end
+
+end
+
+
+
 -- perform a channel
 -----------------------------------------------------------
 local function processChannel(args)
-	--expandAlias("chan default")
 
 	send("channel " .. Status.focusAmountDefault .. " " .. Status.focusTarget, false)
+
+	if Status.statusCmdAddon then
+		expandAlias(Status.cmdAddon)
+	end
+	
 	Status.focusTotal = Status.focusTotal + Status.focusAmountDefault
+	
 	if (Status.focusTotal >= Status.powercastAmount) and (Status.statusPowercast) and (Status.statusPlaySound) then
 		playSoundFile({name = packageFolder.."MEDIA/"..Status.powercastSoundFile})
 	end
 	
 	if Status.focusTotal < 10 then
-		cecho("\n<" .. Status.powercastColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t\t")
+		cecho("\n<" .. Status.channelColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t\t")
 	else
-		cecho("\n<" .. Status.powercastColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t")
+		cecho("\n<" .. Status.channelColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t")
 	end
 end
 
@@ -49,33 +90,10 @@ local function processPowercast(args)
 	
 	Status.focusTotal = 0
 	Status.powercastTotal = Status.powercastTotal + 1
-end
-
-
-
--- incoming to process automated tasks
------------------------------------------------------------
-local function processChannelling(args)
-	local powercastPercentDisplay = ""
-	
-
-
-	if Status.powercastTotal == 0 then
-		Status.powercastPercent = 0
-	else
-		Status.powercastPercent = (Status.powercastSuccess / Status.powercastTotal) * 100
-	end
-	
-	powercastPercentDisplay = string.format("%.1f", Status.powercastPercent)
-
-	local text = ''
-	text = text.."\nPOWERCAST: "..powercastNumber
-	text = text.."   PCMOD: +"..Status.powercastAddon
-	text = text.."   FOCUS: "..Status.focusTotal
-	text = text.."%   SUCCESS: "..powercastPercentDisplay
-	text = text.."% ("..Status.powercastTotal.." casts)"
-	cecho("<"..Status.powercastColorEcho..">"..text)
-
+	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal)
+	cecho("ChannelTextBox4", Info.showPowercastPercentage())
+	cecho("<"..Status.channelColorEcho..">BEGIN POWERCAST\n")
+	--displayPowercastStats("default")
 end
 
 
@@ -93,16 +111,12 @@ local function processAutomation(args)
 		
 		
 	elseif Status.statusChannel then
-		--echo(aura.." "..conc.."\n");
 		if (aura == "scintillating") and (conc == "You're bright-eyed and bushy-tailed.") then
 			if ((Status.focusTotal >= Status.powercastAmount) and (Status.statusPowercast)) then --or (matches[2] == "force") then
-				--powercast function
-				--echo("powercast time\n")
 				processPowercast()
 			else
 				processChannel()
 			end
-			--processChannelling()
 		end
 	end
 
@@ -128,6 +142,7 @@ end
 
 
 function setup(args)
+	Events.addListener("displayStatsEvent", sourceName, displayPowercastStats)
 	Events.addListener("auraAutoEvent", sourceName, processAutomation)
 	Events.addListener("concAutoEvent", sourceName, processAutomation)
 end
@@ -135,6 +150,7 @@ end
 
 
 function unsetup(args)
+	Events.removeListener("displayStatsEvent", sourceName)
 	Events.removeListener("auraAutoEvent", sourceName)
 	Events.removeListener("concAutoEvent", sourceName)
 end

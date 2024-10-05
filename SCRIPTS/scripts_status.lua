@@ -36,7 +36,6 @@ Status.powercastAmount		= 500
 Status.powercastPercent		= 0
 Status.powercastSuccess		= 0
 Status.powercastTotal		= 0
-Status.powercastColorEcho	= 'magenta'
 Status.powercastSoundFile	= 'Speech On.wav'
 Status.focusAmountDefault	= 20
 Status.focusAmountFeed		= 60
@@ -45,7 +44,8 @@ Status.focusTotal			= 0
 Status.focusTarget			= 'pearl'
 Status.focusTargetSource	= '(held) scrip'
 Status.teachTarget			= 'tudor'
-Status.cmdAddon				= ''
+Status.channelColorEcho		= 'magenta'
+Status.cmdAddon				= 'search shrubs'
 
 
 
@@ -77,6 +77,10 @@ end
 
 local function setName(args)
 	Status.name = args["name"]
+	cecho("ChannelTextBox1", Info.showSpellCasting())
+	cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
+	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal)
+	cecho("ChannelTextBox4", Info.showPowercastPercentage())
 end
 
 local function setRace(args)
@@ -95,6 +99,10 @@ local function login(args)
 	send("score")
 	send("who")
 end
+
+
+
+
 
 
 
@@ -134,5 +142,6 @@ function Status.resetup(args)
 	Status.unsetup(args)
 	Status.setup(args)
 end
+
 
 return Status

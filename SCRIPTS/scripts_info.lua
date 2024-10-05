@@ -3,7 +3,7 @@ Info = {}
 local sourceName = "info"
 local colorHelp = "yellow"
 local spacerHelp = "   "
-local versionNumber = "v1.2"
+local versionNumber = "v1.2.2"
 local levels = {"mythic","legendary","a grand master","a virtuoso","consummate","a high master","renowned","an adept","eminent",
 				"a master","superb","an expert","excellent","very good","adroit","proficient","fair","able","above average",
 				"average","below average","not very good","poor","a beginner","a novice","a tyro","unskilled"}
@@ -165,6 +165,59 @@ end
 
 
 
+-- return spell casting text
+-----------------------------------------------------------
+local function showSpellCasting()
+	local spellcastingText = ""
+	local count = 0
+	local results = Skills.getSkill({who = Status.name, skill_name = "spell casting"})
+
+	if results ~= -1 then
+		count = tonumber(results.count)
+	else
+		count = 0
+	end
+
+	spellcastingText = "<yellow>SPELL CASTING:&nbsp;&nbsp;&nbsp;"..count
+	
+	return spellcastingText
+end
+
+
+
+-- return powercast success percentage
+-----------------------------------------------------------
+local function showPowercastPercentage()
+	local powercastPercentDisplay = ""
+
+	if Status.powercastTotal == 0 then
+		Status.powercastPercent = 0
+	else
+		Status.powercastPercent = (Status.powercastSuccess / Status.powercastTotal) * 100
+	end
+	
+	powercastPercentDisplay = "<yellow>SUCCESS RATE:&nbsp;&nbsp;&nbsp;&nbsp;"..string.format("%.1f", Status.powercastPercent).."%"
+	
+	return powercastPercentDisplay
+end
+
+
+
+-- reset the powercast stats
+-----------------------------------------------------------
+local function resetPowercastStats()
+	Status.powercastTotal = 0
+	Status.powercastSuccess = 0
+	Status.powercastPercent = 0
+	Status.focusTotal = 0
+	cecho("ChannelTextBox1", Info.showSpellCasting())
+	cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
+	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal)
+	cecho("ChannelTextBox4", Info.showPowercastPercentage())
+end
+
+
+
 -- return under construction message
 -----------------------------------------------------------
 local function showUnderConstruction()
@@ -182,7 +235,7 @@ end
 
 
 -- delete prompt only lines
----------------------------------------------------------------------
+-----------------------------------------------------------
 local function emptyLine(args)
 	deleteLine()
 end
@@ -221,7 +274,10 @@ Info =
 	resetup = resetup,
 	showQuickHelp = showQuickHelp,
 	showQuickLevels = showQuickLevels,
-	showUnderConstruction = showUnderConstruction
+	showSpellCasting = showSpellCasting,
+	resetPowercastStats = resetPowercastStats,
+	showUnderConstruction = showUnderConstruction,
+	showPowercastPercentage = showPowercastPercentage
 }
 
 return Info

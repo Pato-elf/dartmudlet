@@ -5,7 +5,7 @@ windows_ByPosition.topRight = {}
 windows_ByPosition.topLeft = {}
 windows_ByPosition.right = {}
 
-	local StyleButtonOn = Geyser.StyleSheet:new([[
+	local StyleButtonPaleGreen = Geyser.StyleSheet:new([[
 		QLabel{
 				color: black;
 				background-color: palegreen;
@@ -19,8 +19,23 @@ windows_ByPosition.right = {}
 				qproperty-alignment: 'Center';
 			}
 	]])
+
+	local StyleButtonPaleBlue = Geyser.StyleSheet:new([[
+		QLabel{
+				color: black;
+				background-color: #9898FB;--#98CFEA;
+				margin: 5px;
+				border-width: 2px;
+				border-style: solid;
+				border-color: black;
+				border-radius: 10px;
+				font-size: 14pt;
+				font-family: Bitstream Vera Sans Mono;
+				qproperty-alignment: 'Center';
+			}
+	]])
 	
-	local StyleButtonOff = Geyser.StyleSheet:new([[
+	local StyleButtonDarkGrey = Geyser.StyleSheet:new([[
 		QLabel{
 			color: black;
 			background-color: #696969;
@@ -33,6 +48,36 @@ windows_ByPosition.right = {}
 			font-family: Bitstream Vera Sans Mono;
 			qproperty-alignment: 'Center';
 		}
+	]])
+
+	local StyleButtonLightGrey = Geyser.StyleSheet:new([[
+		QLabel{
+				color: black;
+				background-color: #D3D3D3;
+				margin: 5px;
+				border-width: 2px;
+				border-style: solid;
+				border-color: black;
+				border-radius: 10px;
+				font-size: 14pt;
+				font-family: Bitstream Vera Sans Mono;
+				qproperty-alignment: 'Center';
+			}
+	]])
+	
+	local StyleButtonRed = Geyser.StyleSheet:new([[
+		QLabel{
+				color: black;
+				background-color: red;
+				margin: 5px;
+				border-width: 2px;
+				border-style: solid;
+				border-color: black;
+				border-radius: 10px;
+				font-size: 14pt;
+				font-family: Bitstream Vera Sans Mono;
+				qproperty-alignment: 'Center';
+			}
 	]])
 
 	local StyleBoxBlue = Geyser.StyleSheet:new([[
@@ -71,6 +116,15 @@ windows_ByPosition.right = {}
 			font-size: 11pt;
 			font-family: Bitstream Vera Sans Mono;
 			qproperty-alignment: 'AlignTop | AlignLeft';
+		}
+	]])
+	
+	local StyleTextDefault = Geyser.StyleSheet:new([[
+		QLabel{
+			font-size: 11pt;
+			font-family: Bitstream Vera Sans Mono;
+			background-color: black;
+			margin: 0px 10px 0px 10px;
 		}
 	]])
 
@@ -123,7 +177,7 @@ GUI.tabwindow2 = GUI.tabwindow2 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"IMPROVES","MESSAGE","CHANNEL","REFRESH","ALLOCS"},
+		tabs = {"IMPROVES","CHANNEL","REFRESH","ALLOCS","MESSAGE"},
 	},GUI.right)
 
  
@@ -174,10 +228,6 @@ GUI.containerWhoBox = GUI.containerWhoBox or
 		color = "black"
 	}, GUI.tabwindow1.WHOcenter)
 
-local window								= {border = GUI.tabwindow1.WHOcenter, container = GUI.containerWhoBox}
-windows["WhoBox"]							= window
-windows_ByPosition["topLeft"]["WhoBox"]		= window
-
 
 
 -- CREATE LEVELS BOX -> TABWINDOW1
@@ -195,10 +245,6 @@ GUI.containerLevelsBox = GUI.containerLevelsBox or
 GUI.containerLevelsBox:setStyleSheet(StyleBoxLevels:getCSS())
 
 echo("LevelsBox", Info.showQuickLevels())
-
-local window								= {border = GUI.tabwindow1.LEVELScenter, container = GUI.containerLevelsBox}
-windows["LevelsBox"]						= window
-windows_ByPosition["topLeft"]["LevelsBox"]	= window
 
 
 
@@ -220,10 +266,6 @@ GUI.containerImproveBox = GUI.containerImproveBox or
 		color = "black"
 	}, GUI.tabwindow2.IMPROVEScenter)
 
-local window								= {border = GUI.tabwindow2.IMPROVEScenter, container = GUI.containerImproveBox}
-windows["ImproveBox"]						= window
-windows_ByPosition["topLeft"]["ImproveBox"]	= window
-
 
 
 -- CREATE MESSAGE BOX -> TABWINDOW2
@@ -237,10 +279,6 @@ GUI.containerMessageBox = GUI.containerMessageBox or
 		height = "93%",
 		color = "black"
 	}, GUI.tabwindow2.MESSAGEcenter)
-
-local window								= {border = GUI.tabwindow2.MESSAGEcenter, container = GUI.containerMessageBox}
-windows["MessageBox"]						= window
-windows_ByPosition["topLeft"]["MessageBox"]	= window
 
 
 
@@ -260,10 +298,6 @@ GUI.containerRefreshBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 echo("RefreshBox", Info.showUnderConstruction())
 
-local window								= {border = GUI.tabwindow2.REFRESHcenter, container = GUI.containerRefreshBox}
-windows["RefreshBox"]						= window
-windows_ByPosition["topLeft"]["RefreshBox"]	= window
-
 
 
 	-- CREATE REFRESH BUTTON1 -> REFRESH -> TABWINDOW2
@@ -276,28 +310,26 @@ windows_ByPosition["topLeft"]["RefreshBox"]	= window
 			width = 190,
 			height = 46,
 			color = "black"
-		}, nil)--GUI.containerRefreshBox)
+		}, GUI.containerRefreshBox)
 
-	GUI.containerRefreshButton1:setStyleSheet(StyleButtonOff:getCSS())
+	GUI.containerRefreshButton1:setStyleSheet(StyleButtonDarkGrey:getCSS())
 	echo("RefreshButton1", "<center>REFRESH OFF</center>")
 
 	GUI.containerRefreshButton1:setClickCallback("RefreshButton1_click")
 
-	local window									= {border = GUI.containerRefreshBox, container = GUI.containerRefreshButton1}
-	windows["RefreshButton1"]						= window
-	windows_ByPosition["topLeft"]["RefreshButton1"]	= window
 
 
 	function RefreshButton1_click()
 		if not Status.statusRefresh then
 			Status.statusRefresh = true
-			GUI.containerRefreshButton1:setStyleSheet(StyleButtonOn:getCSS())
+			GUI.containerRefreshButton1:setStyleSheet(StyleButtonPaleGreen:getCSS())
 			echo("RefreshButton1", "<center>REFRESH ON</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Refresh: On\n"})
 			cecho("<yellow>Refresh: On\n")
+			send("conc", false)
 		else
 			Status.statusRefresh = false
-			GUI.containerRefreshButton1:setStyleSheet(StyleButtonOff:getCSS())
+			GUI.containerRefreshButton1:setStyleSheet(StyleButtonDarkGrey:getCSS())
 			echo("RefreshButton1", "<center>REFRESH OFF</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Refresh: Off\n"})
 			cecho("<yellow>Refresh: Off\n")
@@ -322,10 +354,6 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 echo("ChannelBox", Info.showUnderConstruction())
 
-local window								= {border = GUI.tabwindow2.CHANNELcenter, container = GUI.containerChannelBox}
-windows["ChannelBox"]						= window
-windows_ByPosition["topLeft"]["ChannelBox"]	= window
-
 
 
 	-- CREATE CHANNEL BUTTON1 -> CHANNEL -> TABWINDOW2
@@ -333,40 +361,125 @@ windows_ByPosition["topLeft"]["ChannelBox"]	= window
 	GUI.containerChannelButton1 = GUI.containerChannelButton1 or
 		Geyser.Label:new({
 			name = "ChannelButton1",
-			x = 50, y = 50,
+			x = 10, y = 10,
 			fontSize = 14,
 			width = 190,
 			height = 46,
 			color = "black"
-		}, nil)--GUI.containerChannelBox)
+		}, GUI.containerChannelBox)
 
-	GUI.containerChannelButton1:setStyleSheet(StyleButtonOff:getCSS())
+	GUI.containerChannelButton1:setStyleSheet(StyleButtonDarkGrey:getCSS())
 	echo("ChannelButton1", "<center>CHANNEL OFF</center>")
-
+	GUI.containerChannelButton1:setToolTip("Turn automatic channelling on/off",4)
 	GUI.containerChannelButton1:setClickCallback("ChannelButton1_click")
 
-	local window									= {border = GUI.containerChannelBox, container = GUI.containerChannelButton1}
-	windows["ChannelButton1"]						= window
-	windows_ByPosition["topLeft"]["ChannelButton1"]	= window
 
 
 	function ChannelButton1_click()
 		if not Status.statusChannel then
 			Status.statusChannel = true
-			GUI.containerChannelButton1:setStyleSheet(StyleButtonOn:getCSS())
+			GUI.containerChannelButton1:setStyleSheet(StyleButtonPaleGreen:getCSS())
 			echo("ChannelButton1", "<center>CHANNEL ON</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: On\n"})
 			cecho("<yellow>Channel: On\n")
 			send("conc", false)
 		else
 			Status.statusChannel = false
-			GUI.containerChannelButton1:setStyleSheet(StyleButtonOff:getCSS())
+			GUI.containerChannelButton1:setStyleSheet(StyleButtonDarkGrey:getCSS())
 			echo("ChannelButton1", "<center>CHANNEL OFF</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: Off\n"})
 			cecho("<yellow>Channel: Off\n")
-			send("conc", false)
 		end
 	end
+
+
+
+	-- CREATE CHANNEL BUTTON2 -> CHANNEL -> TABWINDOW2
+	-----------------------------------------------------------
+	GUI.containerChannelButton2 = GUI.containerChannelButton2 or
+		Geyser.Label:new({
+			name = "ChannelButton2",
+			x = 10, y = 56,
+			fontSize = 14,
+			width = 190,
+			height = 46,
+			color = "black"
+		}, GUI.containerChannelBox)
+
+	GUI.containerChannelButton2:setStyleSheet(StyleButtonLightGrey:getCSS())
+	echo("ChannelButton2", "<center>RESET STATS</center>")
+	GUI.containerChannelButton2:setToolTip("Reset the powercast stats",4)
+	GUI.containerChannelButton2:setClickCallback("ChannelButton2_click")
+
+	function ChannelButton2_click()
+		GUI.containerChannelButton2:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.containerChannelButton2:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Info.resetPowercastStats()
+	end
+	
+
+
+	-- CREATE TEXTBOX1 -> CHANNEL -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerChannelTextBox1 = GUI.containerChannelTextBox1 or
+		Geyser.Label:new({
+			name = "ChannelTextBox1",
+			x = 300, y = 10,
+			fontSize = 11,
+			width = 240,
+			height = 17,
+			color = "black"
+		}, GUI.containerChannelBox)
+
+	GUI.containerChannelTextBox1:setStyleSheet(StyleTextDefault:getCSS())
+
+
+
+	-- CREATE TEXTBOX2 -> CHANNEL -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerChannelTextBox2 = GUI.containerChannelTextBox2 or
+		Geyser.Label:new({
+			name = "ChannelTextBox2",
+			x = 300, y = 27,
+			fontSize = 11,
+			width = 240,
+			height = 17,
+			color = "black"
+		}, GUI.containerChannelBox)
+
+	GUI.containerChannelTextBox2:setStyleSheet(StyleTextDefault:getCSS())
+
+
+
+	-- CREATE TEXTBOX3 -> CHANNEL -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerChannelTextBox3 = GUI.containerChannelTextBox3 or
+		Geyser.Label:new({
+			name = "ChannelTextBox3",
+			x = 300, y = 44,
+			fontSize = 11,
+			width = 240,
+			height = 17,
+			color = "black"
+		}, GUI.containerChannelBox)
+
+	GUI.containerChannelTextBox3:setStyleSheet(StyleTextDefault:getCSS())
+	
+	
+	
+	-- CREATE TEXTBOX4 -> CHANNEL -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerChannelTextBox4 = GUI.containerChannelTextBox4 or
+		Geyser.Label:new({
+			name = "ChannelTextBox4",
+			x = 300, y = 61,
+			fontSize = 11,
+			width = 240,
+			height = 17,
+			color = "black"
+		}, GUI.containerChannelBox)
+
+	GUI.containerChannelTextBox4:setStyleSheet(StyleTextDefault:getCSS())
 
 
 
@@ -385,10 +498,6 @@ GUI.containerAllocsBox = GUI.containerAllocsBox or
 GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 echo("AllocsBox", Info.showUnderConstruction())
-
-local window								= {border = GUI.tabwindow2.ALLOCScenter, container = GUI.containerAllocsBox}
-windows["AllocsBox"]						= window
-windows_ByPosition["topLeft"]["AllocsBox"]	= window
 
 
 
@@ -414,10 +523,6 @@ GUI.containerHelpBox:setStyleSheet(StyleBoxHelp:getCSS())
 
 echo("HelpBox", Info.showQuickHelp())
 
-local window								= {border = GUI.tabwindow3.HELPcenter, container = GUI.containerHelpBox}
-windows["HelpBox"]							= window
-windows_ByPosition["topLeft"]["HelpBox"]	= window
-
 
 
 -- CREATE INFO BOX -> TABWINDOW3
@@ -441,10 +546,6 @@ GUI.containerInfoBox:setStyleSheet([[
 		}
 ]])
 
-local window								= {border = GUI.tabwindow3.INFOcenter, container = GUI.containerInfoBox}
-windows["InfoBox"]							= window
-windows_ByPosition["topLeft"]["InfoBox"]	= window
-
 
 
 	-- CREATE NAME BOX -> INFO -> TABWINDOW3
@@ -458,19 +559,8 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 			height = 17,
 			color = "black"
 		}, GUI.containerInfoBox)
-
-	GUI.containerNameBox:setStyleSheet([[
-		QLabel{
-			font-size: 11pt;
-			font-family: Bitstream Vera Sans Mono;
-			background-color: black;
-			margin: 0px 10px 0px 10px;
-		}
-	]])
-
-	local window								= {border = GUI.containerInfoBox, container = GUI.containerNameBox}
-	windows["NameBox"]							= window
-	windows_ByPosition["topLeft"]["NameBox"]	= window
+		
+	GUI.containerNameBox:setStyleSheet(StyleTextDefault:getCSS())
 
 
 
@@ -486,18 +576,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 			color = "black"
 		}, GUI.containerInfoBox)
 
-	GUI.containerAgeBox:setStyleSheet([[
-		QLabel{
-			font-size: 11pt;
-			font-family: Bitstream Vera Sans Mono;
-			background-color: black;
-			margin: 0px 10px 0px 10px;
-		}
-	]])
-
-	local window								= {border = GUI.containerInfoBox, container = GUI.containerAgeBox}
-	windows["AgeBox"]							= window
-	windows_ByPosition["topLeft"]["AgeBox"]		= window
+	GUI.containerAgeBox:setStyleSheet(StyleTextDefault:getCSS())
 
 
 
@@ -506,25 +585,14 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 	GUI.containerHungerBox = GUI.containerHungerBox or
 		Geyser.Label:new({
 			name = "HungerBox",
-			x = 0, y = 43,
+			x = 0, y = 42,
 			fontSize = 11,
 			width = "100%",
 			height = 17,
 			color = "black"
 		}, GUI.containerInfoBox)
-
-	GUI.containerHungerBox:setStyleSheet([[
-		QLabel{
-			font-size: 11pt;
-			font-family: Bitstream Vera Sans Mono;
-			background-color: black;
-			margin: 0px 10px 0px 10px;
-		}
-	]])
-
-	local window								= {border = GUI.containerInfoBox, container = GUI.containerHungerBox}
-	windows["HungerBox"]						= window
-	windows_ByPosition["topLeft"]["HungerBox"]	= window
+		
+	GUI.containerHungerBox:setStyleSheet(StyleTextDefault:getCSS())
 
 
 
@@ -540,19 +608,8 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 			color = "black"
 		}, GUI.containerInfoBox)
 
-	GUI.containerThirstBox:setStyleSheet([[
-		QLabel{
-			font-size: 11pt;
-			font-family: Bitstream Vera Sans Mono;
-			background-color: black;
-			margin: 0px 10px 0px 10px;
-		}
-	]])
+	GUI.containerThirstBox:setStyleSheet(StyleTextDefault:getCSS())
 	
-	local window								= {border = GUI.containerInfoBox, container = GUI.containerThirstBox}
-	windows["ThirstBox"]						= window
-	windows_ByPosition["topLeft"]["ThirstBox"]	= window
-
 
 
 	-- CREATE ENCUMBRANCE BOX -> INFO -> TABWINDOW3
@@ -567,18 +624,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 			color = "black"
 		}, GUI.containerInfoBox)
 
-	GUI.containerEncumbranceBox:setStyleSheet([[
-		QLabel{
-			font-size: 11pt;
-			font-family: Bitstream Vera Sans Mono;
-			background-color: black;
-			margin: 0px 10px 0px 10px;
-		}
-	]])
-
-	local window									= {border = GUI.containerInfoBox, container = GUI.containerEncumbranceBox}
-	windows["EncumbranceBox"]						= window
-	windows_ByPosition["topLeft"]["EncumbranceBox"]	= window
+	GUI.containerEncumbranceBox:setStyleSheet(StyleTextDefault:getCSS())
 
 
 
@@ -594,18 +640,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 			color = "black"
 		}, GUI.containerInfoBox)
 
-	GUI.containerMovementBox:setStyleSheet([[
-		QLabel{
-			font-size: 11pt;
-			font-family: Bitstream Vera Sans Mono;
-			background-color: black;
-			margin: 0px 10px 0px 10px;
-		}
-	]])
-
-	local window									= {border = GUI.containerInfoBox, container = GUI.containerMovementBox}
-	windows["MovementBox"]							= window
-	windows_ByPosition["topLeft"]["MovementBox"]	= window
+	GUI.containerMovementBox:setStyleSheet(StyleTextDefault:getCSS())
 	
 	
 
@@ -621,18 +656,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 			color = "black"
 		}, GUI.containerInfoBox)
 
-	GUI.containerDateBox:setStyleSheet([[
-		QLabel{
-			font-size: 11pt;
-			font-family: Bitstream Vera Sans Mono;
-			background-color: black;
-			margin: 0px 10px 0px 10px;
-		}
-	]])
-	
-	local window								= {border = GUI.containerInfoBox, container = GUI.containerDateBox}
-	windows["DateBox"]							= window
-	windows_ByPosition["topLeft"]["DateBox"]	= window
+	GUI.containerDateBox:setStyleSheet(StyleTextDefault:getCSS())
 
 
 
@@ -648,18 +672,7 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 			color = "black"
 		}, GUI.containerInfoBox)
 
-	GUI.containerLanguageBox:setStyleSheet([[
-		QLabel{
-			font-size: 11pt;
-			font-family: Bitstream Vera Sans Mono;
-			background-color: black;
-			margin: 0px 10px 0px 10px;
-		}
-	]])
-	
-	local window									= {border = GUI.containerInfoBox, container = GUI.containerLanguageBox}
-	windows["LanguageBox"]							= window
-	windows_ByPosition["topLeft"]["LanguageBox"]	= window
+	GUI.containerLanguageBox:setStyleSheet(StyleTextDefault:getCSS())
 
 
 
@@ -683,10 +696,6 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 				border: 2px solid white;
 			}
 	]])
-
-	local window									= {border = GUI.containerInfoBox, container = GUI.containerHolderBox}
-	windows["HolderBox"]							= window
-	windows_ByPosition["topLeft"]["HolderBox"]	= window
 
 
 
@@ -713,10 +722,6 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 			}
 		]])
 
-		local window								= {border = GUI.containerHolderBox, container = GUI.containerAuraBox}
-		windows["AuraBox"]							= window
-		windows_ByPosition["topLeft"]["AuraBox"]	= window
-
 
 
 		-- CREATE CONC BOX -> HOLDER -> INFO -> TABWINDOW3
@@ -742,10 +747,6 @@ windows_ByPosition["topLeft"]["InfoBox"]	= window
 				border: 2px solid white;
 			}
 		]])
-
-		local window								= {border = GUI.containerHolderBox, container = GUI.containerConcBox}
-		windows["ConcBox"]							= window
-		windows_ByPosition["topLeft"]["ConcBox"]	= window
 
 
 
@@ -776,10 +777,6 @@ GUI.containerChatholderBox:setStyleSheet([[
 		}
 ]])
 
-local window									= {border = GUI.tabwindow4.CHATcenter, container = GUI.containerChatholderBox}
-windows["ChatholderBox"]						= window
-windows_ByPosition["topLeft"]["ChatholderBox"]	= window
-
 
 
 	-- CREATE CHAT BOX -> CHATHOLDER -> TABWINDOW4
@@ -794,26 +791,17 @@ windows_ByPosition["topLeft"]["ChatholderBox"]	= window
 			color = "black"
 		}, GUI.containerChatholderBox)
 
-	local window								= {border = GUI.containerChatholderBox, container = GUI.containerChatBox}
-	windows["ChatBox"]							= window
-	windows_ByPosition["topLeft"]["ChatBox"]	= window
-
-
-
-
   
 
 --GUI.top:load()
 --GUI.right:load()
 --GUI.tabwindow1:load()
 
-
-
 end --createUIConsole
 
 
 
--- UPDATES ----------------------------------------------------------
+-- UPDATE FUNCTIONS -------------------------------------------------
 
 
 
@@ -821,10 +809,8 @@ end --createUIConsole
 -----------------------------------------------------------
 local function onChat(args)
 	local text = args["message"]
-	local ts = getTime(true, "hh:mm:ss")
-	local container = windows["ChatBox"]["container"]
-	container:echo(ts.." ")
-
+	local timestamp = getTime(true, "hh:mm:ss")
+	echo("ChatBox", timestamp.." ")
 	-- even though we get the text passed into the event we will get the text
 	-- from buffer to preserve colors/formatting
 	selectCurrentLine()
@@ -837,7 +823,6 @@ end
 -- update who box
 -----------------------------------------------------------
 local function onWho(args)
-	local container = windows["WhoBox"]["container"]
 	selectCurrentLine()
 	copy()
 	appendBuffer("WhoBox")
@@ -845,7 +830,6 @@ local function onWho(args)
 end
 
 local function onStartWho(args)
-	local container = windows["WhoBox"]["container"]
 	clearWindow("WhoBox")
 	selectCurrentLine()
 	copy()
@@ -855,7 +839,6 @@ local function onStartWho(args)
 end
 
 local function onWhoEnd(args)
-	local container = windows["WhoBox"]["container"]
 	selectCurrentLine()
 	copy()
 	appendBuffer("WhoBox")
@@ -880,7 +863,6 @@ local function onImprove(args)
 	local who = args["name"]
 	local skill_name = args["skill_name"]
 	local timestamp = getTime(true, "hh:mm:ss")
-	local container = windows["ImproveBox"]["container"]
 	local count = 0
 	local output = ''
 
@@ -891,7 +873,7 @@ local function onImprove(args)
 		local skillVar = Skills.getSkill({who = who, skill_name = skill_name})
 
 		if skillVar ~= -1 then
-			count = tonumber(skillVar.count)-- + 1
+			count = tonumber(skillVar.count)
 		else
 			count = 1
 		end
@@ -914,14 +896,20 @@ local function onImprove(args)
 		end
 	end
 	
-	container:echo(" "..output.."\n")
+	echo("ImproveBox", " "..output.."\n")
+	
+	if skill_name == "spell casting" then
+		cecho("ChannelTextBox1", Info.showSpellCasting())
+		cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal)
+		cecho("ChannelTextBox4", Info.showPowercastPercentage())
+	end
+	
 end
 
 local function onSkillMistake(args)
-	local container = windows["ImproveBox"]["container"]
 	selectCurrentLine("ImproveBox")
 	deleteLine("ImproveBox")
-	container:echo("")
+	echo("ImproveBox", "")
 end
 
 
@@ -939,6 +927,7 @@ local function onName(args)
 	clearWindow("NameBox")
 	cecho("NameBox", "Name: "..showname)
 	deleteLine()
+	
 end
 
 
@@ -1030,12 +1019,6 @@ end
 -- update date box
 -----------------------------------------------------------
 local function refreshUI(args)
---  for key,window in pairs(windows) do
---    local container = window["container"]
-
---    insertText(container["name"], "")
---  end
-
 	clearWindow("DateBox")
 	cecho("DateBox", "Date(common): "..date.format(os.time(), 3, "common").."\nDate(Thorpian): "..date.format(os.time(), 3, "thorpian"))
 end
@@ -1174,9 +1157,7 @@ end
 local function setup(args)
   createUIConsole()
 
---  Events.addListener("sysWindowResizeEvent", sourceName, updateDisplay)
   Events.addListener("chatEvent", sourceName, onChat)
-  --Events.addListener("skillImproveEvent", sourceName, onImprove)
   Events.addListener("skillMistakeEvent", sourceName, onSkillMistake)
   Events.addListener("startWhoEvent", sourceName, onStartWho)
   Events.addListener("endWhoEvent", sourceName, onWhoEnd)
@@ -1194,9 +1175,7 @@ local function setup(args)
 end
 
 local function unsetup(args)
---  Events.removeListener("sysWindowResizeEvent", sourceName)
   Events.removeListener("chatEvent", sourceName)
-  --Events.removeListener("skillImproveEvent", sourceName)
   Events.removeListener("skillMistakeEvent", sourceName)
   Events.removeListener("startWhoEvent", sourceName)
   Events.removeListener("whoEvent", sourceName)
@@ -1211,18 +1190,6 @@ local function unsetup(args)
   Events.removeListener("concEvent", sourceName)
   Events.removeListener("auraEvent", sourceName)
   Events.removeListener("languageEvent", sourceName)
-
-
-  for key,window in pairs(windows) do
-    local container = window["container"]
-    local border = window["border"]
-
-    Geyser:remove(container)
-    Geyser:remove(border)
-  end
-
-  windows = {}
-  windows_ByPosition = {}
 end
 
 local function resetup(args)

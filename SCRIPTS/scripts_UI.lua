@@ -299,7 +299,7 @@ GUI.containerRefreshBox:setStyleSheet(StyleBoxBlue:getCSS())
 echo("RefreshBox", Info.showUnderConstruction())
 
 
-
+--[[
 	-- CREATE REFRESH BUTTON1 -> REFRESH -> TABWINDOW2
 	-----------------------------------------------------------
 	GUI.containerRefreshButton1 = GUI.containerRefreshButton1 or
@@ -310,7 +310,7 @@ echo("RefreshBox", Info.showUnderConstruction())
 			width = 190,
 			height = 46,
 			color = "black"
-		}, GUI.containerRefreshBox)
+		}, nil)--GUI.containerRefreshBox)
 
 	GUI.containerRefreshButton1:setStyleSheet(StyleButtonDarkGrey:getCSS())
 	echo("RefreshButton1", "<center>REFRESH OFF</center>")
@@ -336,7 +336,7 @@ echo("RefreshBox", Info.showUnderConstruction())
 		end
 	end
 
-
+--]]
 
 -- CREATE CHANNEL BOX -> TABWINDOW2
 -----------------------------------------------------------
@@ -354,7 +354,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 echo("ChannelBox", Info.showUnderConstruction())
 
-
+--[[
 
 	-- CREATE CHANNEL BUTTON1 -> CHANNEL -> TABWINDOW2
 	-----------------------------------------------------------
@@ -366,7 +366,7 @@ echo("ChannelBox", Info.showUnderConstruction())
 			width = 190,
 			height = 46,
 			color = "black"
-		}, GUI.containerChannelBox)
+		}, nil)--GUI.containerChannelBox)
 
 	GUI.containerChannelButton1:setStyleSheet(StyleButtonDarkGrey:getCSS())
 	echo("ChannelButton1", "<center>CHANNEL OFF</center>")
@@ -404,7 +404,7 @@ echo("ChannelBox", Info.showUnderConstruction())
 			width = 190,
 			height = 46,
 			color = "black"
-		}, GUI.containerChannelBox)
+		}, nil)--GUI.containerChannelBox)
 
 	GUI.containerChannelButton2:setStyleSheet(StyleButtonLightGrey:getCSS())
 	echo("ChannelButton2", "<center>RESET STATS</center>")
@@ -429,7 +429,7 @@ echo("ChannelBox", Info.showUnderConstruction())
 			width = 240,
 			height = 17,
 			color = "black"
-		}, GUI.containerChannelBox)
+		}, nil)--GUI.containerChannelBox)
 
 	GUI.containerChannelTextBox1:setStyleSheet(StyleTextDefault:getCSS())
 
@@ -445,7 +445,7 @@ echo("ChannelBox", Info.showUnderConstruction())
 			width = 240,
 			height = 17,
 			color = "black"
-		}, GUI.containerChannelBox)
+		}, nil)--GUI.containerChannelBox)
 
 	GUI.containerChannelTextBox2:setStyleSheet(StyleTextDefault:getCSS())
 
@@ -461,7 +461,7 @@ echo("ChannelBox", Info.showUnderConstruction())
 			width = 240,
 			height = 17,
 			color = "black"
-		}, GUI.containerChannelBox)
+		}, nil)--GUI.containerChannelBox)
 
 	GUI.containerChannelTextBox3:setStyleSheet(StyleTextDefault:getCSS())
 	
@@ -477,11 +477,11 @@ echo("ChannelBox", Info.showUnderConstruction())
 			width = 240,
 			height = 17,
 			color = "black"
-		}, GUI.containerChannelBox)
+		}, nil)--GUI.containerChannelBox)
 
 	GUI.containerChannelTextBox4:setStyleSheet(StyleTextDefault:getCSS())
 
-
+--]]
 
 -- CREATE ALLOCS BOX -> TABWINDOW2
 -----------------------------------------------------------

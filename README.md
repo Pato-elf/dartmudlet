@@ -85,7 +85,8 @@ Some of the rest are:
 ```
 /update <who> <skill> <improves> - Set improves for your (or pet's) skill to given total
 /insert <who> <skill> <improves> - Manually insert a new skill into the database
-/info <skill>                    - Shows current improves/level and improves to reach next
+/info <who> <skill>              - Show current improves/level for a skill
+/conc on|off|full                - Show concentration on screen (none, bright only, all)
 #num repeat                      - Repeat commands from the command line (e.g. #3 say hi)
 /levels                          - Display a list of skill levels
 /help                            - Display a list of available commands

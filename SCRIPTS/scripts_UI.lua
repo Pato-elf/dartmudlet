@@ -127,6 +127,26 @@ windows_ByPosition.right = {}
 			margin: 0px 10px 0px 10px;
 		}
 	]])
+	
+	local StyleTextBlue = Geyser.StyleSheet:new([[
+		QLabel{
+			font-size: 11pt;
+			font-family: Bitstream Vera Sans Mono;
+			background-color: rgb(0,0,70);
+			margin: 0px 10px 0px 10px;
+		}
+	]])
+
+	local StyleCommandLine = Geyser.StyleSheet:new([[
+		QPlainTextEdit{
+			color: black;
+			border: 1px solid silver;
+			background-color: #9898FB;
+			font: bold 14pt;
+			font-family: Bitstream Vera Sans Mono;
+
+		}
+	]])
 
 
 aura = "unknown"
@@ -299,7 +319,7 @@ GUI.containerRefreshBox:setStyleSheet(StyleBoxBlue:getCSS())
 echo("RefreshBox", Info.showUnderConstruction())
 
 
---[[
+--[[ BLOCK SPOT
 	-- CREATE REFRESH BUTTON1 -> REFRESH -> TABWINDOW2
 	-----------------------------------------------------------
 	GUI.containerRefreshButton1 = GUI.containerRefreshButton1 or
@@ -310,7 +330,7 @@ echo("RefreshBox", Info.showUnderConstruction())
 			width = 190,
 			height = 46,
 			color = "black"
-		}, nil)--GUI.containerRefreshBox)
+		}, GUI.containerRefreshBox)
 
 	GUI.containerRefreshButton1:setStyleSheet(StyleButtonDarkGrey:getCSS())
 	echo("RefreshButton1", "<center>REFRESH OFF</center>")
@@ -336,7 +356,7 @@ echo("RefreshBox", Info.showUnderConstruction())
 		end
 	end
 
---]]
+--]] --END BLOCK SPOT
 
 -- CREATE CHANNEL BOX -> TABWINDOW2
 -----------------------------------------------------------
@@ -354,7 +374,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 echo("ChannelBox", Info.showUnderConstruction())
 
---[[
+--[[ BLOCK SPOT
 
 	-- CREATE CHANNEL BUTTON1 -> CHANNEL -> TABWINDOW2
 	-----------------------------------------------------------
@@ -366,7 +386,7 @@ echo("ChannelBox", Info.showUnderConstruction())
 			width = 190,
 			height = 46,
 			color = "black"
-		}, nil)--GUI.containerChannelBox)
+		}, GUI.containerChannelBox)
 
 	GUI.containerChannelButton1:setStyleSheet(StyleButtonDarkGrey:getCSS())
 	echo("ChannelButton1", "<center>CHANNEL OFF</center>")
@@ -399,12 +419,12 @@ echo("ChannelBox", Info.showUnderConstruction())
 	GUI.containerChannelButton2 = GUI.containerChannelButton2 or
 		Geyser.Label:new({
 			name = "ChannelButton2",
-			x = 10, y = 56,
+			x = 10, y = 51,
 			fontSize = 14,
 			width = 190,
 			height = 46,
 			color = "black"
-		}, nil)--GUI.containerChannelBox)
+		}, GUI.containerChannelBox)
 
 	GUI.containerChannelButton2:setStyleSheet(StyleButtonLightGrey:getCSS())
 	echo("ChannelButton2", "<center>RESET STATS</center>")
@@ -417,6 +437,57 @@ echo("ChannelBox", Info.showUnderConstruction())
 		Info.resetPowercastStats()
 	end
 	
+	
+	
+	-- CREATE CHANNEL BUTTON3 -> CHANNEL -> TABWINDOW2
+	-----------------------------------------------------------
+	GUI.containerChannelButton3 = GUI.containerChannelButton3 or
+		Geyser.Label:new({
+			name = "ChannelButton3",
+			x = 10, y = 92,
+			fontSize = 14,
+			width = 190,
+			height = 46,
+			color = "black"
+		}, GUI.containerChannelBox)
+
+	GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS())
+	echo("ChannelButton3", "<center>SAVE SETTINGS</center>")
+	GUI.containerChannelButton3:setToolTip("Save the current channel settings",4)
+	GUI.containerChannelButton3:setClickCallback("ChannelButton3_click")
+
+	function ChannelButton3_click()
+		GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		--Info.resetPowercastStats()
+	end
+
+
+
+	-- CREATE CHANNEL BUTTON4 -> CHANNEL -> TABWINDOW2
+	-----------------------------------------------------------
+	GUI.containerChannelButton4 = GUI.containerChannelButton4 or
+		Geyser.Label:new({
+			name = "ChannelButton4",
+			x = -315, y = 44,
+			fontSize = 14,
+			width = 60,
+			height = 60,
+			color = "black"
+		}, GUI.containerChannelBox)
+
+	GUI.containerChannelButton4:setStyleSheet(StyleButtonLightGrey:getCSS())
+	echo("ChannelButton4", "<center><span style='font-size: 22pt;'>&#128227;</span></center>")
+	GUI.containerChannelButton4:setToolTip("Share channel stats OOC with the room",4)
+	GUI.containerChannelButton4:setClickCallback("ChannelButton4_click")
+
+	function ChannelButton4_click()
+		GUI.containerChannelButton4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.containerChannelButton4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		--local arguments = {detail = "share"}
+		Events.raiseEvent("displayStatsEvent", {detail = "share"})
+	end	
+
 
 
 	-- CREATE TEXTBOX1 -> CHANNEL -> TABWINDOW2
@@ -424,14 +495,14 @@ echo("ChannelBox", Info.showUnderConstruction())
 	GUI.containerChannelTextBox1 = GUI.containerChannelTextBox1 or
 		Geyser.Label:new({
 			name = "ChannelTextBox1",
-			x = 300, y = 10,
+			x = -265, y = 40,
 			fontSize = 11,
-			width = 240,
+			width = 260,
 			height = 17,
 			color = "black"
-		}, nil)--GUI.containerChannelBox)
+		}, GUI.containerChannelBox)
 
-	GUI.containerChannelTextBox1:setStyleSheet(StyleTextDefault:getCSS())
+	GUI.containerChannelTextBox1:setStyleSheet(StyleTextBlue:getCSS())
 
 
 
@@ -440,14 +511,14 @@ echo("ChannelBox", Info.showUnderConstruction())
 	GUI.containerChannelTextBox2 = GUI.containerChannelTextBox2 or
 		Geyser.Label:new({
 			name = "ChannelTextBox2",
-			x = 300, y = 27,
+			x = -265, y = 57,
 			fontSize = 11,
 			width = 240,
 			height = 17,
 			color = "black"
-		}, nil)--GUI.containerChannelBox)
+		}, GUI.containerChannelBox)
 
-	GUI.containerChannelTextBox2:setStyleSheet(StyleTextDefault:getCSS())
+	GUI.containerChannelTextBox2:setStyleSheet(StyleTextBlue:getCSS())
 
 
 
@@ -456,14 +527,14 @@ echo("ChannelBox", Info.showUnderConstruction())
 	GUI.containerChannelTextBox3 = GUI.containerChannelTextBox3 or
 		Geyser.Label:new({
 			name = "ChannelTextBox3",
-			x = 300, y = 44,
+			x = -265, y = 74,
 			fontSize = 11,
 			width = 240,
 			height = 17,
 			color = "black"
-		}, nil)--GUI.containerChannelBox)
+		}, GUI.containerChannelBox)
 
-	GUI.containerChannelTextBox3:setStyleSheet(StyleTextDefault:getCSS())
+	GUI.containerChannelTextBox3:setStyleSheet(StyleTextBlue:getCSS())
 	
 	
 	
@@ -472,16 +543,216 @@ echo("ChannelBox", Info.showUnderConstruction())
 	GUI.containerChannelTextBox4 = GUI.containerChannelTextBox4 or
 		Geyser.Label:new({
 			name = "ChannelTextBox4",
-			x = 300, y = 61,
+			x = -265, y = 91,
 			fontSize = 11,
 			width = 240,
 			height = 17,
 			color = "black"
-		}, nil)--GUI.containerChannelBox)
+		}, GUI.containerChannelBox)
 
-	GUI.containerChannelTextBox4:setStyleSheet(StyleTextDefault:getCSS())
+	GUI.containerChannelTextBox4:setStyleSheet(StyleTextBlue:getCSS())
 
---]]
+
+
+	-- CREATE COMMANDLINE1 -> CHANNEL -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerChannelCommand1 = GUI.containerChannelCommand1 or
+		Geyser.CommandLine:new({
+			name = "ChannelCommand1",
+			x = 160, y = 160,
+			width = 45, height = 28,
+	}, GUI.containerChannelBox)
+
+	GUI.containerChannelCommand1:setStyleSheet(StyleCommandLine:getCSS())
+	GUI.containerChannelCommand1:print(Status.focusAmountDefault)
+	
+	GUI.containerChannelCommand1:setAction(
+	function(command)
+		Info.setfocusAmountDefault(command)
+		GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+	end
+	)
+
+
+
+	-- CREATE COMMANDLINE2 -> CHANNEL -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerChannelCommand2 = GUI.containerChannelCommand2 or
+		Geyser.CommandLine:new({
+			name = "ChannelCommand2",
+			x = -265, y = 160,
+			width = 180, height = 28,
+	}, GUI.containerChannelBox)
+
+	GUI.containerChannelCommand2:setStyleSheet(StyleCommandLine:getCSS())
+	GUI.containerChannelCommand2:print(Status.focusTarget)
+	
+	GUI.containerChannelCommand2:setAction(
+	function(command)
+		Info.setfocusTarget(command)
+		GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+	end
+	)
+
+
+
+	-- CREATE COMMANDLINE3 -> CHANNEL -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerChannelCommand3 = GUI.containerChannelCommand3 or
+		Geyser.CommandLine:new({
+			name = "ChannelCommand3",
+			x = -265, y = 190,
+			width = 180, height = 28,
+	}, GUI.containerChannelBox)
+
+	GUI.containerChannelCommand3:setStyleSheet(StyleCommandLine:getCSS())
+	GUI.containerChannelCommand3:print(Status.focusTargetSource)
+	
+	GUI.containerChannelCommand3:setAction(
+	function(command)
+		Info.setfocusTargetSource(command)
+		GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+	end
+	)
+
+
+
+	-- CREATE COMMANDLINE4 -> CHANNEL -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerChannelCommand4 = GUI.containerChannelCommand4 or
+		Geyser.CommandLine:new({
+			name = "ChannelCommand4",
+			x = 160, y = 250,
+			width = 45, height = 28,
+	}, GUI.containerChannelBox)
+
+	GUI.containerChannelCommand4:setStyleSheet(StyleCommandLine:getCSS())
+	GUI.containerChannelCommand4:print(Status.powercastAmount)
+	
+	GUI.containerChannelCommand4:setAction(
+	function(command)
+		Info.setpowercastAmount(command)
+		GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+	end
+	)
+	
+	
+	
+	-- CREATE COMMANDLINE5 -> CHANNEL -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerChannelCommand5 = GUI.containerChannelCommand5 or
+		Geyser.CommandLine:new({
+			name = "ChannelCommand5",
+			x = -265, y = 220,
+			width = 180, height = 28,
+	}, GUI.containerChannelBox)
+
+	GUI.containerChannelCommand5:setStyleSheet(StyleCommandLine:getCSS())
+	GUI.containerChannelCommand5:print(Status.teachTarget)
+	
+	GUI.containerChannelCommand5:setAction(
+	function(command)
+		Info.setteachTarget(command)
+		GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+	end
+	)
+
+
+
+	-- CREATE COMMANDLINE6 -> CHANNEL -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerChannelCommand6 = GUI.containerChannelCommand6 or
+		Geyser.CommandLine:new({
+			name = "ChannelCommand6",
+			x = 160, y = 280,
+			width = 45, height = 28,
+	}, GUI.containerChannelBox)
+
+	GUI.containerChannelCommand6:setStyleSheet(StyleCommandLine:getCSS())
+	GUI.containerChannelCommand6:print(Status.focusAmountTeach)
+	
+	GUI.containerChannelCommand6:setAction(
+	function(command)
+		Info.setfocusAmountTeach(command)
+		GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+	end
+	)
+	
+	
+	
+	-- CREATE COMMANDLINE7 -> CHANNEL -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerChannelCommand7 = GUI.containerChannelCommand7 or
+		Geyser.CommandLine:new({
+			name = "ChannelCommand7",
+			x = 160, y = 190,
+			width = 45, height = 28,
+	}, GUI.containerChannelBox)
+
+	GUI.containerChannelCommand7:setStyleSheet(StyleCommandLine:getCSS())
+	GUI.containerChannelCommand7:print(Status.powercastAddon)
+	
+	GUI.containerChannelCommand7:setAction(
+	function(command)
+		Info.setpowercastAddon(command)
+		GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+	end
+	)
+
+
+
+	-- CREATE COMMANDLINE8 -> CHANNEL -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerChannelCommand8 = GUI.containerChannelCommand8 or
+		Geyser.CommandLine:new({
+			name = "ChannelCommand8",
+			x = 160, y = 220,
+			width = 45, height = 28,
+	}, GUI.containerChannelBox)
+
+	GUI.containerChannelCommand8:setStyleSheet(StyleCommandLine:getCSS())
+	GUI.containerChannelCommand8:print(Status.focusAmountFeed)
+	
+	GUI.containerChannelCommand8:setAction(
+	function(command)
+		Info.focusAmountFeed(command)
+		GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+	end
+	)
+	
+	
+	
+	-- CREATE COMMANDLINE9 -> CHANNEL -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerChannelCommand9 = GUI.containerChannelCommand9 or
+		Geyser.CommandLine:new({
+			name = "ChannelCommand9",
+			x = -265, y = 250,
+			width = 180, height = 28,
+	}, GUI.containerChannelBox)
+
+	GUI.containerChannelCommand9:setStyleSheet(StyleCommandLine:getCSS())
+	GUI.containerChannelCommand9:print(Status.feedTarget)
+	
+	GUI.containerChannelCommand9:setAction(
+	function(command)
+		Info.setfeedTarget(command)
+		GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+	end
+	)
+
+
+
+--]] --END BLOCK SPOT
 
 -- CREATE ALLOCS BOX -> TABWINDOW2
 -----------------------------------------------------------
@@ -900,7 +1171,7 @@ local function onImprove(args)
 	
 	if skill_name == "spell casting" then
 		cecho("ChannelTextBox1", Info.showSpellCasting())
-		cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal)
+		cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
 		cecho("ChannelTextBox4", Info.showPowercastPercentage())
 	end
 	
@@ -1112,12 +1383,19 @@ end
 -- update concentration box
 -----------------------------------------------------------
 local function onConc(args)
+	local full = args["full"]
+	local concBoxTextColor = "white"
+	local concBoxBGColor = "black"
 	conc = args["conc"]
-	concBoxTextColor = "white"
-	concBoxBGColor = "black"
 
-	deleteLine()
-	moveCursorEnd()
+
+	if (Status.statusConc == "off") or (string.match(full, "^".."Concentration")) then
+		deleteLine()
+		moveCursorEnd()
+	elseif (Status.statusConc == "on") and (conc ~= "You're bright-eyed and bushy-tailed.") then
+		deleteLine()
+		moveCursorEnd()
+	end
 
 	if conc == "You're bright-eyed and bushy-tailed." then concBoxTextColor = "white" concBoxBGColor = "darkgreen"
 	elseif conc == "You're a bit off balance." then concBoxTextColor = "lightgrey" concBoxBGColor = "green"

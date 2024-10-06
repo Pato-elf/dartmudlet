@@ -28,7 +28,7 @@ Status.statusChannel		= false
 Status.statusPowercast		= true
 Status.statusAnnounce		= false
 Status.statusCmdAddon		= false
-Status.statusTeach			= false
+Status.statusTeach			= true
 Status.statusFeed			= false
 Status.statusPlaySound		= true
 Status.powercastAddon		= 3
@@ -44,10 +44,11 @@ Status.focusTotal			= 0
 Status.focusTarget			= 'pearl'
 Status.focusTargetSource	= '(held) scrip'
 Status.teachTarget			= 'tudor'
+Status.feedTarget			= 'tudor'
 Status.channelColorEcho		= 'magenta'
 Status.cmdAddon				= 'search shrubs'
 
-
+Status.statusConc			= 'off'
 
 
 
@@ -79,7 +80,7 @@ local function setName(args)
 	Status.name = args["name"]
 	cecho("ChannelTextBox1", Info.showSpellCasting())
 	cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
-	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal)
+	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
 	cecho("ChannelTextBox4", Info.showPowercastPercentage())
 end
 

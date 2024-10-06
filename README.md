@@ -98,8 +98,8 @@ Some of the rest are:
 &nbsp;
 ## Credits
 - The core of this package began as zMud scripts authored by Gaborn and shared with the player community.
-- Special thanks to Ogma for providing the detailed date/time logic behind the several in-game date/time systems.
+- Special thanks to Ogma for providing the detailed date/time logic behind several in-game date/time systems.
 - The zMud scripts were converted to a Mudlet package by Gaborn and shared as DartMUDlet.
-- These were exensively refactored into modular LUA and brought to GitHub by missionz3r0.
-- The Pato versions of DartMUDlet are a fork from [Owen Davies](https://github.com/daviesow) DartMUDlet release.
+- These were exensively refactored into modular LUA and brought to GitHub by [missionz3r0](https://github.com/missionz3r0).
+- The Pato versions of DartMUDlet are a fork from [daviesow](https://github.com/daviesow) DartMUDlet release.
 - Code for the adjustable tab windows originally written by [Edru2](https://github.com/Edru2).

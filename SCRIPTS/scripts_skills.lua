@@ -106,6 +106,7 @@ end
 local function skillInfo(args)
 	local skill_name = args["skill_name"]
 	local who = args["who"]
+	--who = (who:gsub("^%l", string.upper))
 	local result = getSkill(args)
 
 	if result == -1 then

@@ -53,14 +53,21 @@ end
 -- perform a channel
 -----------------------------------------------------------
 local function processChannel(args)
+	local focusamount = 0
+	
+	if Status.statusTeach then
+		focusamount = Status.focusAmountTeach
+	else
+		focusamount = Status.focusAmountDefault
+	end
 
-	send("channel " .. Status.focusAmountDefault .. " " .. Status.focusTarget, false)
+	send("channel " .. focusamount .. " " .. Status.focusTarget, false)
 
 	if Status.statusCmdAddon then
 		expandAlias(Status.cmdAddon)
 	end
 	
-	Status.focusTotal = Status.focusTotal + Status.focusAmountDefault
+	Status.focusTotal = Status.focusTotal + focusamount
 	
 	if (Status.focusTotal >= Status.powercastAmount) and (Status.statusPowercast) and (Status.statusPlaySound) then
 		playSoundFile({name = packageFolder.."MEDIA/"..Status.powercastSoundFile})
@@ -90,7 +97,7 @@ local function processPowercast(args)
 	
 	Status.focusTotal = 0
 	Status.powercastTotal = Status.powercastTotal + 1
-	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal)
+	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
 	cecho("ChannelTextBox4", Info.showPowercastPercentage())
 	cecho("<"..Status.channelColorEcho..">BEGIN POWERCAST\n")
 	--displayPowercastStats("default")

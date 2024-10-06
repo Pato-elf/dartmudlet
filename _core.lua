@@ -39,12 +39,7 @@ local function setup(e, f, g)
     end
   end
 
---  local personal_directory = packageFolder.."SCRIPTS_PERSONAL/"
---    for file in lfs.dir(personal_directory) do
---      if lfs.attributes(personal_directory..file,"mode") == "file" then
---        table.insert(modules, dofile(personal_directory..file))
---      end
---    end
+
 
   for i,module in ipairs(modules) do
     if module.setup then
@@ -62,13 +57,15 @@ end
 
 
 
+-- run load functions
+-----------------------------------------------------------
 local function load()
-  cecho("<yellow>DARTMUDLET: loading\n")
-  for i,module in ipairs(modules) do
-    if module.load then
-      module.load()
-    end
-  end
+	cecho("<yellow>DARTMUDLET: loading\n")
+	for i,module in ipairs(modules) do
+		if module.load then
+			module.load()
+		end
+	end
 end
 
 

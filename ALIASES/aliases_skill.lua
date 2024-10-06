@@ -34,10 +34,16 @@ local function setup(args)
 
 	--alias for skill information
 	tempAliases.SkillInfo =
-	tempAlias('^\\/info(?: )?(.*)',
+	tempAlias('^\\/info ([\\w]+) ([A-Za-z_#\' ]+)',
+	--tempAlias('^\\/info(?: )?(.*)',
 		[[
-			local skill_name = matches[2]
-			local arguments = {skill_name = skill_name, who = Status.name}
+			local who = matches[2]
+			who = (who:gsub("^%l", string.upper))
+			local skill_name = matches[3]
+			local arguments = {skill_name = skill_name, who = who}
+			
+			--local skill_name = matches[2]
+			--local arguments = {skill_name = skill_name, who = Status.name}
 			Events.raiseEvent('skillInfoEvent', arguments)
 		]])
 

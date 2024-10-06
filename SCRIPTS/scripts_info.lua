@@ -3,7 +3,7 @@ Info = {}
 local sourceName = "info"
 local colorHelp = "yellow"
 local spacerHelp = "   "
-local versionNumber = "v1.2.2"
+local versionNumber = "v1.3"
 local levels = {"mythic","legendary","a grand master","a virtuoso","consummate","a high master","renowned","an adept","eminent",
 				"a master","superb","an expert","excellent","very good","adroit","proficient","fair","able","above average",
 				"average","below average","not very good","poor","a beginner","a novice","a tyro","unskilled"}
@@ -126,9 +126,10 @@ local function showHelp(args)
 	cecho(preText.."\n")
 	cecho(preText.."/update <who> <skill> <improves> - Manually set improves for you|pet's skill\n")
 	cecho(preText.."/insert <who> <skill> <improves> - Manually insert a new skill into database\n")
-	cecho(preText.."/antispam on|off                 - Suppress repeated lines\n")
+	cecho(preText.."/info <who> <skill>              - Show current improves/level for a skill\n")
+	cecho(preText.."/conc on|off|full                - Show concentration on screen (none, bright only, all)\n")
 	cecho(preText.."/who on|off                      - Auto check the who list every 5 minutes\n")
-	cecho(preText.."/info <skill>                    - Show current improves/level for a skill\n")
+	cecho(preText.."/antispam on|off                 - Suppress repeated lines\n")
 	cecho(preText.."#num repeat                      - Repeat commands (e.g. #3 say hi)\n")
 	cecho(preText.."/levels                          - Display a list of skill levels\n")
 	cecho(preText.."/help                            - Display a list of available commands\n")
@@ -212,8 +213,174 @@ local function resetPowercastStats()
 	Status.focusTotal = 0
 	cecho("ChannelTextBox1", Info.showSpellCasting())
 	cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
-	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal)
+	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
 	cecho("ChannelTextBox4", Info.showPowercastPercentage())
+end
+
+
+
+
+-- set Status.focusAmountDefault
+-----------------------------------------------------------
+local function setfocusAmountDefault(args)
+	local focusamount = tonumber(args)
+	
+
+	if not focusamount then
+		cecho("<red>ERROR: Invalid default channel value\n")
+	else
+		if (focusamount < 1) or (focusamount > 100) then
+			cecho("<red>ERROR: Invalid default channel value\n")
+		else
+			Status.focusAmountDefault = focusamount
+			cecho("<yellow>Channel: Default channel value updated\n")
+		end
+	end
+	
+end
+
+
+
+-- set Status.teachTarget
+-----------------------------------------------------------
+local function setteachTarget(args)
+	local teachtarget = args
+	
+	if tonumber(teachtarget) then
+		cecho("<red>ERROR: Invalid teaching target\n")
+	else
+		Status.teachTarget = teachtarget
+		cecho("<yellow>Channel: Teaching target updated\n")
+	end
+	
+end
+
+
+
+-- set Status.feedTarget
+-----------------------------------------------------------
+local function setfeedTarget(args)
+	local feedtarget = args
+	
+	if tonumber(feedtarget) then
+		cecho("<red>ERROR: Invalid feeding target\n")
+	else
+		Status.feedTarget = feedtarget
+		cecho("<yellow>Channel: Feeding target updated\n")
+	end
+
+end
+
+
+
+-- set Status.focusTarget
+-----------------------------------------------------------
+local function setfocusTarget(args)
+	local focustarget = args
+	
+	if tonumber(focustarget) then
+		cecho("<red>ERROR: Invalid focus target\n")
+	else
+		Status.focusTarget = focustarget
+		cecho("<yellow>Channel: Focus target updated\n")
+	end
+	
+end
+
+
+
+-- set Status.focusTargetSource
+-----------------------------------------------------------
+local function setfocusTargetSource(args)
+	local focustargetsource = args
+	
+	if tonumber(focustargetsource) then
+		cecho("<red>ERROR: Invalid focus target source\n")
+	else
+		Status.focusTargetSource = focustargetsource
+		cecho("<yellow>Channel: Focus target source updated\n")
+	end
+	
+end
+
+
+
+-- set Status.powercastAmount
+-----------------------------------------------------------
+local function setpowercastAmount(args)
+	local powercastamount = tonumber(args)
+
+	if not powercastamount then
+		cecho("<red>ERROR: Invalid powercast value\n")
+	else
+		if (powercastamount < 1) or (powercastamount > 9999) then
+			cecho("<red>ERROR: Invalid powercast value\n")
+		else
+			Status.powercastAmount = powercastamount
+			cecho("<yellow>Channel: Powercast value updated\n")
+		end
+	end
+	
+end
+
+
+
+-- set Status.focusAmountTeach
+-----------------------------------------------------------
+local function setfocusAmountTeach(args)
+	local focusamountteach = tonumber(args)
+
+	if not focusamountteach then
+		cecho("<red>ERROR: Invalid teaching channel value\n")
+	else
+		if (focusamountteach < 1) or (focusamountteach > 100) then
+			cecho("<red>ERROR: Invalid teaching channel value\n")
+		else
+			Status.focusAmountTeach = focusamountteach
+			cecho("<yellow>Channel: Teaching channel value updated\n")
+		end
+	end
+	
+end
+
+
+
+-- set Status.focusAmountFeed
+-----------------------------------------------------------
+local function setfocusAmountFeed(args)
+	local focusamountfeed = tonumber(args)
+
+	if not focusamountfeed then
+		cecho("<red>ERROR: Invalid feeding channel value\n")
+	else
+		if (focusamountfeed < 1) or (focusamountfeed > 100) then
+			cecho("<red>ERROR: Invalid feeding channel value\n")
+		else
+			Status.focusAmountFeed = focusamountfeed
+			cecho("<yellow>Channel: Feeding channel value updated\n")
+		end
+	end
+	
+end
+
+
+
+-- set Status.powercastAddon
+-----------------------------------------------------------
+local function setpowercastAddon(args)
+	local powercastaddon = tonumber(args)
+
+	if not powercastaddon then
+		cecho("<red>ERROR: Invalid powercast addon value\n")
+	else
+		if (powercastaddon < -100) or (powercastaddon > 100) then
+			cecho("<red>ERROR: Invalid powercast addon value\n")
+		else
+			Status.powercastAddon = powercastaddon
+			cecho("<yellow>Channel: Powercast addon value updated\n")
+		end
+	end
+	
 end
 
 
@@ -277,7 +444,16 @@ Info =
 	showSpellCasting = showSpellCasting,
 	resetPowercastStats = resetPowercastStats,
 	showUnderConstruction = showUnderConstruction,
-	showPowercastPercentage = showPowercastPercentage
+	showPowercastPercentage = showPowercastPercentage,
+	setfocusAmountDefault = setfocusAmountDefault,
+	setteachTarget = setteachTarget,
+	setfocusTarget = setfocusTarget,
+	setfocusTargetSource = setfocusTargetSource,
+	setpowercastAmount = setpowercastAmount,
+	setfocusAmountTeach = setfocusAmountTeach,
+	setpowercastAddon = setpowercastAddon,
+	focusAmountFeed = focusAmountFeed,
+	setfeedTarget = setfeedTarget
 }
 
 return Info

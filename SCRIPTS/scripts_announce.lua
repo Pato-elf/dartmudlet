@@ -1,12 +1,15 @@
 local Announce = {}
 
-local sourceName = "announce"
-local isAnnounce = true
-local isVerbose = false
-local isBrief = false
+local sourceName	= "announce"
+local isAnnounce	= true
+local isVerbose		= false
+local isBrief		= false
+local savedConc		= "off"
 
 
 
+-- set the conc setting
+-----------------------------------------------------------
 local function announce(args)
 	local skill_name = args["skill_name"]
 	local name = args["name"]
@@ -26,7 +29,7 @@ local function announce(args)
 			if name == Status.name then
 				send("ooc "..skill_name.."+ ("..skillcount..")")
 			else
-				send("ooc "..name.."'s "..skill_name.."+ ("..getskill.count..")")
+				send("ooc "..name.."'s "..skill_name.."+ ("..skillcount..")")
 			end
 
 		elseif(isBrief) then
@@ -90,11 +93,43 @@ end
 
 
 
+-- set the conc setting
+-----------------------------------------------------------
+local function setConc(args)
+	local detail = args["detail"]
+	if (detail ~= "off") and (detail ~= "on") and (detail ~= "full") then
+		cecho("<red>ERROR: Usage: /conc <off|on|full>\n")
+	else
+		if detail == "off" then
+			cecho("<yellow>Concentration: Off\n")
+			Events.raiseEvent("messageEvent", {message="<yellow>Concentration: Off\n"})
+			savedConc = "off"
+		elseif detail == "on" then
+			cecho("<yellow>Concentration: On\n")
+			Events.raiseEvent("messageEvent", {message="<yellow>Concentration: On\n"})
+			savedConc = "on"
+		else
+			cecho("<yellow>Concentration: Full\n")
+			Events.raiseEvent("messageEvent", {message="<yellow>Concentration: Full\n"})
+			savedConc = "full"
+		end
+		Status.statusConc = savedConc
+		Announce.save()
+	end
+
+	
+end
+
+
+
+
 local function loaderFunction(sentTable)
   if sentTable then
     isAnnounce = sentTable["isAnnounce"]
     isVerbose = sentTable["isVerbose"]
     isBrief   = sentTable["isBrief"]
+	savedConc = sentTable["savedConc"]
+	Status.statusConc = savedConc
   end
 end
 
@@ -112,9 +147,10 @@ local function save()
 		sourceName = sourceName
 		,tableToSave =
 			{
-				isAnnounce = isAnnounce,
-				isVerbose  = isVerbose,
-				isBrief    = isBrief
+				isAnnounce	= isAnnounce,
+				isVerbose	= isVerbose,
+				isBrief		= isBrief,
+				savedConc	= savedConc
 			}
 		})
 end
@@ -127,6 +163,7 @@ local function setup(args)
   Events.addListener("announceVerboseEvent",sourceName,announceVerbose)
   Events.addListener("announceBriefEvent",sourceName,announceBrief)
   Events.addListener("announceOffEvent",sourceName,announceOff)
+  Events.addListener("setConcEvent", sourceName, setConc)
 end
 
 local function unsetup(args)
@@ -135,6 +172,7 @@ local function unsetup(args)
   Events.removeListener("announceVerboseEvent",sourceName)
   Events.removeListener("announceBriefEvent",sourceName)
   Events.removeListener("announceOffEvent",sourceName)
+  Events.removeListener("setConcEvent", sourceName)
 end
 
 local function resetup(args)

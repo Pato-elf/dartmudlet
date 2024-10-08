@@ -223,7 +223,7 @@ local function computePowercast(args)
 	local results = dba.query('SELECT count FROM improves WHERE who="'..Status.name..'" AND skill="spell casting"')[1]
 	local spellcasting = tonumber(results.count)
 	local powercastNumber = (spellcasting + Status.powercastAddon) * 100
-	if powercastNumber < 1 then powercastNumber = 1 end
+	if powercastNumber < 100 then powercastNumber = 100 end
 	
 	return powercastNumber
 end

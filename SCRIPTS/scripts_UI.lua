@@ -349,7 +349,7 @@ GUI.containerRefreshBox:setStyleSheet(StyleBoxBlue:getCSS())
 echo("RefreshBox", Info.showUnderConstruction())
 
 
--- BLOCK SPOT
+--[[ BLOCK SPOT
 	-- CREATE REFRESH BUTTON1 -> REFRESH -> TABWINDOW2
 	-----------------------------------------------------------
 	GUI.containerRefreshButton1 = GUI.containerRefreshButton1 or
@@ -386,7 +386,7 @@ echo("RefreshBox", Info.showUnderConstruction())
 		end
 	end
 
--- --END BLOCK SPOT
+--]] --END BLOCK SPOT
 
 -- CREATE CHANNEL BOX -> TABWINDOW2
 -----------------------------------------------------------

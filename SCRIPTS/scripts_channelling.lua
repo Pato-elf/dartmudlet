@@ -91,10 +91,11 @@ local function setpowercastAddon(args)
 	if not powercastaddon then
 		cecho("<red>ERROR: Invalid powercast addon value\n")
 	else
-		if (powercastaddon < -100) or (powercastaddon > 100) then
+		if (powercastaddon < -999) or (powercastaddon > 999) then
 			cecho("<red>ERROR: Invalid powercast addon value\n")
 		else
 			Status.powercastAddon = powercastaddon
+			cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
 			if saveflag then Channelling.save() end
 			cecho("<yellow>Channel: Powercast addon value updated\n")
 		end
@@ -222,6 +223,7 @@ local function computePowercast(args)
 	local results = dba.query('SELECT count FROM improves WHERE who="'..Status.name..'" AND skill="spell casting"')[1]
 	local spellcasting = tonumber(results.count)
 	local powercastNumber = (spellcasting + Status.powercastAddon) * 100
+	if powercastNumber < 1 then powercastNumber = 1 end
 	
 	return powercastNumber
 end

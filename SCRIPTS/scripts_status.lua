@@ -18,37 +18,57 @@ Status.thirst		= ''
 Status.statusRefresh	= false
 Status.refreshPower1	= 60
 Status.refreshPower2	= 60
-Status.refreshTarget1	= 'dryfter'
+Status.refreshTarget1	= 'xanthe'
 Status.refreshTarget2	= ''
 Status.refreshType1		= 'auto'
 Status.refreshType2		= 'auto'
 
 -- channel box
-Status.statusChannel		= false
-Status.statusPowercast		= true
-Status.statusAnnounce		= false
-Status.statusCmdAddon		= false
-Status.statusTeach			= true
-Status.statusFeed			= false
-Status.statusPlaySound		= true
+--Status.statusTeach			= false
+--Status.statusFeed			= false
+
 Status.powercastAddon		= 3
 Status.powercastAmount		= 500
 Status.powercastPercent		= 0
 Status.powercastSuccess		= 0
 Status.powercastTotal		= 0
-Status.powercastSoundFile	= 'Speech On.wav'
 Status.focusAmountDefault	= 20
 Status.focusAmountFeed		= 60
 Status.focusAmountTeach		= 45
 Status.focusTotal			= 0
-Status.focusTarget			= 'pearl'
+Status.focusTarget			= 'necklace'
 Status.focusTargetSource	= '(held) scrip'
-Status.teachTarget			= 'tudor'
-Status.feedTarget			= 'tudor'
+Status.teachTarget			= 'targetname'
+Status.feedTarget			= 'targetname'
+Status.channelMode			= 'POWERCAST'
 Status.channelColorEcho		= 'magenta'
-Status.cmdAddon				= 'search shrubs'
+Status.powercastSoundFile	= 'Speech On.wav'
+Status.cmdAddon				= ''
+Status.statusChanShare		= 'on'
+Status.statusPlaySound		= 'on'
 
 Status.statusConc			= 'off'
+Status.tooltipTime			= 5
+
+
+
+local function setVariables()
+	echo("Dropdown1", "<center><span style='color: white;'>"..Status.channelMode.."</span></center>")
+	cecho("ChannelTextBox1", Info.showSpellCasting())
+	cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
+	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
+	cecho("ChannelTextBox4", Info.showPowercastPercentage())
+	GUI.containerChannelCommand1:print(Status.focusAmountDefault)
+	GUI.containerChannelCommand2:print(Status.focusTarget)
+	GUI.containerChannelCommand3:print(Status.focusTargetSource)
+	GUI.containerChannelCommand4:print(Status.powercastAmount)
+	GUI.containerChannelCommand5:print(Status.teachTarget)
+	GUI.containerChannelCommand6:print(Status.focusAmountTeach)
+	GUI.containerChannelCommand7:print(Status.powercastAddon)
+	GUI.containerChannelCommand8:print(Status.focusAmountFeed)
+	GUI.containerChannelCommand9:print(Status.feedTarget)
+	GUI.containerChannelCommand10:print(Status.cmdAddon)
+end
 
 
 
@@ -56,45 +76,62 @@ local function setAge(args)
 	Status.soulage = args["soulAge"]
 end
 
+
+
 local function setAlignment(args)
 	Status.alignment = args["alignment"]
 end
+
+
 
 local function setAura(args)
 	Status.aura = args["aura"]
 end
 
+
+
 local function setEncumbrance(args)
 	Status.encumbrance = args["encumbrance"]
 end
+
+
 
 local function setHunger(args)
 	Status.hunger = args["hunger"]
 end
 
+
+
 local function setMovement(args)
 	Status.movement = args["movement"]
 end
 
+
+
 local function setName(args)
 	Status.name = args["name"]
-	cecho("ChannelTextBox1", Info.showSpellCasting())
-	cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
-	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
-	cecho("ChannelTextBox4", Info.showPowercastPercentage())
+	setVariables()
 end
+
+
 
 local function setRace(args)
 	Status.race = args["race"]
 end
 
+
+
 local function setThirst(args)
 	Status.thirst = args["thirst"]
 end
 
+
+
 local function setAge(args)
 	Status.age = args["age'"]
 end
+
+
 
 local function login(args)
 	send("score")

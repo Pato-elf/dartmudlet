@@ -1,158 +1,499 @@
-local Channelling = {}
+local Channelling			= {}
+local sourceName			= "channelling"
 
-local sourceName = "channelling"
 
-local channelHistory = {}
 
-local currentChannelTarget = ''
-local currentChannelPower = 1
-local currentChannelCount = 0
-
-local function channel(args)
-  send("channel "..currentChannelPower.. " "..currentChannelTarget)
-  currentChannelCount = currentChannelCount + currentChannelPower
-  Events.raiseEvent("messageEvent", {message="<yellow>Channelled "..currentChannelCount.." to "..currentChannelTarget.."\n"})
-  channelHistory[currentChannelTarget].count = currentChannelCount
-
-  Events.raiseEvent("channeledEvent", {power = currentChannelPower
-                                      ,count = currentChannelCount
-                                      ,target = currentChannelTarget})
-
-  Channelling.save()
+-- set channelMode
+-----------------------------------------------------------
+local function setchannelMode(args)
+	local channelmode = args["input"]
+	
+	Status.channelMode = channelmode
+	send("conc", false)
+	Channelling.save()
+	cecho("<yellow>Channel: Channel mode updated\n")
+	
 end
 
-local function channelSetup(args)
-  local power = args["power"]
-  local target = args["target"]
 
-  currentChannelTarget = target
-  currentChannelPower = power
-  currentChannelCount = 0
-  channelHistory[target] = {power = currentChannelPower, count = currentChannelCount}
 
-  Events.addListener("BEBTconcEvent", sourceName, channel)
-  Events.raiseEvent("messageEvent", {message="<yellow>Channelling "..currentChannelPower.." to "..currentChannelTarget.."\n"})
-  Channelling.save()
+-- set focusAmountDefault
+-----------------------------------------------------------
+local function setfocusAmountDefault(args)
+	local focusamount = tonumber(args["input"])	
+	local saveflag = args["save"]
+
+
+	if not focusamount then
+		cecho("<red>ERROR: Invalid default channel value\n")
+	else
+		if (focusamount < 1) or (focusamount > 100) then
+			cecho("<red>ERROR: Invalid default channel value\n")
+		else
+			Status.focusAmountDefault = focusamount
+			if saveflag then Channelling.save() end
+			cecho("<yellow>Channel: Default channel value updated\n")
+		end
+	end
+	
 end
 
-local function channelResume(args)
-  local target = args["target"]
 
-  if target == "" and currentChannelTarget ~= "" then
-    Events.addListener("BEBTconcEvent", sourceName, channel)
-    Events.raiseEvent("messageEvent", {message="<yellow>Channelling "..currentChannelPower.." to "..currentChannelTarget.."\n"})
-  elseif channelHistory[target] then
-    currentChannelTarget = target
-    currentChannelPower = channelHistory[currentChannelTarget].power
-    currentChannelCount = channelHistory[currentChannelTarget].count
 
-    Events.addListener("BEBTconcEvent", sourceName, channel)
-    Events.raiseEvent("messageEvent", {message="<yellow>Channelling "..currentChannelPower.." to "..currentChannelTarget.."\n"})
-  end
-
-  Channelling.save()
+-- set teachTarget
+-----------------------------------------------------------
+local function setteachTarget(args)
+	local teachtarget = args["input"]
+	local saveflag = args["save"]
+	
+	
+	if tonumber(teachtarget) then
+		cecho("<red>ERROR: Invalid teaching target\n")
+	else
+		Status.teachTarget = teachtarget
+		if saveflag then Channelling.save() end
+		cecho("<yellow>Channel: Teaching target updated\n")
+	end
+	
 end
 
-local function channelOff(args)
-  Events.raiseEvent("messageEvent", {message="<yellow>Stopped Channelling\n"})
-  Events.removeListener("BEBTconcEvent", sourceName)
+
+
+-- set powercastAmount
+-----------------------------------------------------------
+local function setpowercastAmount(args)
+	local powercastamount = tonumber(args["input"])
+	local saveflag = args["save"]
+	
+
+	if not powercastamount then
+		cecho("<red>ERROR: Invalid powercast value\n")
+	else
+		if (powercastamount < 1) or (powercastamount > 999) then
+			cecho("<red>ERROR: Invalid powercast value\n")
+		else
+			Status.powercastAmount = powercastamount
+			if saveflag then Channelling.save() end
+			cecho("<yellow>Channel: Powercast value updated\n")
+		end
+	end
+	
 end
 
-local function changeTarget(args)
-  local target = args["target"]
-  currentChannelTarget = target
 
-  if channelHistory[currentChannelTarget] then
-    currentChannelCount = channelHistory[currentChannelTarget].count
-  else
-    channelHistory[currentChannelTarget] = {}
-    currentChannelCount = 0
-  end
 
-  Events.raiseEvent("messageEvent", {message="<yellow>Changed target to "..currentChannelTarget.." with current count of "..currentChannelCount.."\n"})
-  Channelling.save()
+-- set powercastAddon
+-----------------------------------------------------------
+local function setpowercastAddon(args)
+	local powercastaddon = tonumber(args["input"])
+	local saveflag = args["save"]
+
+	if not powercastaddon then
+		cecho("<red>ERROR: Invalid powercast addon value\n")
+	else
+		if (powercastaddon < -100) or (powercastaddon > 100) then
+			cecho("<red>ERROR: Invalid powercast addon value\n")
+		else
+			Status.powercastAddon = powercastaddon
+			if saveflag then Channelling.save() end
+			cecho("<yellow>Channel: Powercast addon value updated\n")
+		end
+	end
+	
 end
 
-local function changePower(args)
-  local power = args["power"]
 
-  currentChannelPower = power
-  channelHistory[currentChannelTarget].power = power
 
-  Events.raiseEvent("messageEvent", {message="<yellow>Channelling "..currentChannelPower.." to "..currentChannelTarget.."\n"})
+-- set feedTarget
+-----------------------------------------------------------
+local function setfeedTarget(args)
+	local feedtarget = args["input"]
+	local saveflag = args["save"]
+	
+	if tonumber(feedtarget) then
+		cecho("<red>ERROR: Invalid feeding target\n")
+	else
+		Status.feedTarget = feedtarget
+		if saveflag then Channelling.save() end
+		cecho("<yellow>Channel: Feeding target updated\n")
+	end
 
-  Channelling.save()
 end
 
-local function channelStatus(args)
-  local target = args["target"]
 
-  if target == "" and currentChannelTarget ~= "" then
-    Events.raiseEvent("messageEvent", {message="<yellow>Status: Channelling "..currentChannelPower.." to "..currentChannelTarget.."\n"})
-  elseif channelHistory[target] then
-    local power = channelHistory[target].power
-    local count = channelHistory[target].count
 
-    Events.raiseEvent("messageEvent", {message="<yellow>Status: Channelled "..power.." to "..target.." for a total of "..count.."\n"})
-  end
+-- set Status.focusAmountFeed
+-----------------------------------------------------------
+local function setfocusAmountFeed(args)
+	local focusamountfeed = tonumber(args["input"])
+	local saveflag = args["save"]
+
+	if not focusamountfeed then
+		cecho("<red>ERROR: Invalid feeding channel value\n")
+	else
+		if (focusamountfeed < 1) or (focusamountfeed > 100) then
+			cecho("<red>ERROR: Invalid feeding channel value\n")
+		else
+			Status.focusAmountFeed = focusamountfeed
+			if saveflag then Channelling.save() end
+			cecho("<yellow>Channel: Feeding channel value updated\n")
+		end
+	end
+	
 end
+
+
+
+-- set focusTarget
+-----------------------------------------------------------
+local function setfocusTarget(args)
+	local focustarget = args["input"]
+	local saveflag = args["save"]
+	
+	if tonumber(focustarget) then
+		cecho("<red>ERROR: Invalid focus target\n")
+	else
+		Status.focusTarget = focustarget
+		if saveflag then Channelling.save() end
+		cecho("<yellow>Channel: Focus target updated\n")
+	end
+	
+end
+
+
+
+-- set focusTargetSource
+-----------------------------------------------------------
+local function setfocusTargetSource(args)
+	local focustargetsource = args["input"]
+	local saveflag = args["save"]
+	
+	if tonumber(focustargetsource) then
+		cecho("<red>ERROR: Invalid focus target source\n")
+	else
+		Status.focusTargetSource = focustargetsource
+		if saveflag then Channelling.save() end
+		cecho("<yellow>Channel: Focus target source updated\n")
+	end
+	
+end
+
+
+
+-- set focusAmountTeach
+-----------------------------------------------------------
+local function setfocusAmountTeach(args)
+	local focusamountteach = tonumber(args["input"])
+	local saveflag = args["save"]
+
+	if not focusamountteach then
+		cecho("<red>ERROR: Invalid teaching channel value\n")
+	else
+		if (focusamountteach < 1) or (focusamountteach > 100) then
+			cecho("<red>ERROR: Invalid teaching channel value\n")
+		else
+			Status.focusAmountTeach = focusamountteach
+			if saveflag then Channelling.save() end
+			cecho("<yellow>Channel: Teaching channel value updated\n")
+		end
+	end
+	
+end
+
+
+
+-- set channel addon command
+-----------------------------------------------------------
+local function setchannelAddonCommand(args)
+	local channeladdoncommand = args["input"]
+	local saveflag = args["save"]
+
+	Status.cmdAddon = channeladdoncommand
+	if saveflag then Channelling.save() end
+	cecho("<yellow>Channel: Channel addon command updated\n")
+	
+end
+
+
+
+-- compute powercast number
+-----------------------------------------------------------
+local function computePowercast(args)
+	local results = dba.query('SELECT count FROM improves WHERE who="'..Status.name..'" AND skill="spell casting"')[1]
+	local spellcasting = tonumber(results.count)
+	local powercastNumber = (spellcasting + Status.powercastAddon) * 100
+	
+	return powercastNumber
+end
+
+
+
+-- perform a powercast
+-----------------------------------------------------------
+local function processPowercast(args)
+	local powercastNumber = computePowercast()
+
+	if Status.focusTargetSource == "" then
+		send("discharge " .. Status.focusTarget)
+	else
+		send("get " .. Status.focusTarget .. " from " .. Status.focusTargetSource)
+		send("discharge " .. Status.focusTarget)
+		send("put " .. Status.focusTarget .. " in " .. Status.focusTargetSource)
+	end
+	
+	if Status.channelMode == "PC + TEACH" then
+		send("stop teaching")
+		send("cast ! lg @"..powercastNumber)
+		send("teach "..Status.teachTarget)
+	else
+		send("cast ! lg @"..powercastNumber)
+	end
+	
+	Status.focusTotal = 0
+	Status.powercastTotal = Status.powercastTotal + 1
+	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
+	cecho("ChannelTextBox4", Info.showPowercastPercentage())
+	cecho("<"..Status.channelColorEcho..">BEGIN POWERCAST\n")
+	Channelling.save()
+end
+
+
+
+-- perform a channel
+-----------------------------------------------------------
+local function processChannel(args)
+	local focusamount = 0
+	local focustarget = ""
+	
+	if (Status.channelMode == "PC + TEACH") then
+		focusamount = Status.focusAmountTeach
+		focustarget = Status.focusTarget
+	elseif (Status.channelMode == "FEED AURA") then
+		focusamount = Status.focusAmountFeed
+		focustarget = Status.feedTarget
+	else
+		focusamount = Status.focusAmountDefault
+		focustarget = Status.focusTarget
+	end
+
+	send("channel " .. focusamount .. " " .. focustarget, false)
+
+	if Status.cmdAddon ~= "" then
+		expandAlias(Status.cmdAddon)
+	end
+	
+	Status.focusTotal = Status.focusTotal + focusamount
+	
+	if (Status.focusTotal >= Status.powercastAmount) and
+	(Status.channelMode ~= "CHANNEL ONLY") and
+	(Status.channelMode ~= "FEED AURA") and
+	(Status.statusPlaySound ~= "off") then
+		playSoundFile({name = packageFolder.."MEDIA/"..Status.powercastSoundFile})
+	end
+	
+	if Status.focusTotal < 10 then
+		cecho("\n<" .. Status.channelColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t\t")
+	else
+		cecho("\n<" .. Status.channelColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t")
+	end
+end
+
+
+
+-- set /chan share command
+-----------------------------------------------------------
+local function setChanShare(args)
+	local setting = args["detail"]
+
+
+	if tonumber(setting) or ((setting ~= "brief") and (setting ~= "on") and (setting ~= "off")) then
+		cecho("<red>ERROR: Invalid /chan share value\n")
+	else
+		Status.statusChanShare = setting
+		Channelling.save()
+		cecho("<yellow>Channel: /chan share value updated\n")
+	end
+	
+end
+
+
+
+-- set /chan sound command
+-----------------------------------------------------------
+local function setChanSound(args)
+	local setting = args["detail"]
+
+
+	if tonumber(setting) or ((setting ~= "on") and (setting ~= "off")) then
+		cecho("<red>ERROR: Invalid /chan sound value\n")
+	else
+		Status.statusPlaySound = setting
+		Channelling.save()
+		cecho("<yellow>Channel: /chan sound value updated\n")
+	end
+	
+end
+
+
+
+-- reset the powercast stats
+-----------------------------------------------------------
+local function resetPowercastStats()
+	Status.powercastTotal = 0
+	Status.powercastSuccess = 0
+	Status.powercastPercent = 0
+	Status.focusTotal = 0
+	cecho("ChannelTextBox1", Info.showSpellCasting())
+	cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
+	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
+	cecho("ChannelTextBox4", Info.showPowercastPercentage())
+	cecho("<yellow>Channel: Reset powercast stats\n")
+	Channelling.save()
+end
+
+
+
+-- save all channelling settings
+-----------------------------------------------------------
+local function saveChannelSettings(args)
+	setpowercastAmount({save = false, input = GUI.containerChannelCommand4:getText()})
+	setpowercastAddon({save = false, input = GUI.containerChannelCommand7:getText()})
+	setfocusAmountDefault({save = false, input = GUI.containerChannelCommand1:getText()})
+	setfocusAmountTeach({save = false, input = GUI.containerChannelCommand6:getText()})
+	setfocusAmountFeed({save = false, input = GUI.containerChannelCommand8:getText()})
+	setfocusTarget({save = false, input = GUI.containerChannelCommand2:getText()})
+	setfocusTargetSource({save = false, input = GUI.containerChannelCommand3:getText()})
+	setteachTarget({save = false, input = GUI.containerChannelCommand5:getText()})
+	setfeedTarget({save = false, input = GUI.containerChannelCommand9:getText()})
+	setchannelAddonCommand({save = false, input = GUI.containerChannelCommand10:getText()})
+	Channelling.save()
+end
+
+
 
 local function loaderFunction(sentTable)
-  if sentTable then
-   currentChannelPower = sentTable["currentChannelPower"] or 1
-   currentChannelTarget = sentTable["currentChanneTarget"] or ""
-   currentChannelCount = sentTable["currentChannelCount"] or 0
-   channelHistory = sentTable["channelHistory"] or {}
- end
+	if sentTable then
+		Status.channelMode = sentTable["channelMode"] or ""
+		Status.statusPowercast = sentTable["statusPowercast"] or false
+		Status.statusTeach = sentTable["statusTeach"] or false
+		Status.statusFeed = sentTable["statusFeed"] or false
+		Status.statusPlaySound = sentTable["statusPlaySound"] or true
+		Status.powercastAddon = sentTable["powercastAddon"] or 3
+		Status.powercastAmount = sentTable["powercastAmount"] or 500
+		Status.powercastPercent = sentTable["powercastPercent"] or 0
+		Status.powercastSuccess = sentTable["powercastSuccess"] or 0
+		Status.powercastTotal = sentTable["powercastTotal"] or 0
+		Status.focusAmountDefault = sentTable["focusAmountDefault"] or 20
+		Status.focusAmountFeed = sentTable["focusAmountFeed"] or 60
+		Status.focusAmountTeach = sentTable["focusAmountTeach"] or 45
+		Status.focusTarget = sentTable["focusTarget"] or "necklace"
+		Status.focusTargetSource = sentTable["focusTargetSource"] or "(held) scrip"
+		Status.teachTarget = sentTable["teachTarget"] or "targetname"
+		Status.feedTarget = sentTable["feedTarget"] or "targetname"
+		Status.cmdAddon = sentTable["cmdAddon"] or ""
+		Status.statusChanShare = sentTable["statusChanShare"] or "on"
+		Status.statusPlaySound = sentTable["statusPlaySound"] or "on"
+	end
 end
+
+
+
 
 local function load()
-  Events.raiseEvent("loadEvent",
-                   {sourceName = sourceName, functionToSendData = loaderFunction})
+	Events.raiseEvent("loadEvent",{
+		sourceName = sourceName,
+		functionToSendData = loaderFunction
+	})
 end
+
+
 
 local function save()
-  Events.raiseEvent("saveEvent",
-                    {
-                    sourceName = sourceName
-                    ,tableToSave = {
-                        channelHistory = channelHistory
-                        ,currentChannelPower = currentChannelPower
-                        ,currentChannelTarget = currentChannelTarget
-                        ,currentChannelCount = currentChannelCount
-                      }
-                    })
+	Events.raiseEvent("saveEvent",{
+		sourceName = sourceName,
+		tableToSave = {
+			channelMode = Status.channelMode,
+			statusPowercast = Status.statusPowercast,
+			statusTeach = Status.statusTeach,
+			statusFeed = Status.statusFeed,
+			statusPlaySound = Status.statusPlaySound,
+			powercastAddon = Status.powercastAddon,
+			powercastAmount = Status.powercastAmount,
+			powercastPercent = Status.powercastPercent,
+			powercastSuccess = Status.powercastSuccess,
+			powercastTotal = Status.powercastTotal,
+			focusAmountDefault = Status.focusAmountDefault,
+			focusAmountFeed = Status.focusAmountFeed,
+			focusAmountTeach = Status.focusAmountTeach,
+			focusTotal = Status.focusTotal,
+			focusTarget = Status.focusTarget,
+			focusTargetSource = Status.focusTargetSource,
+			teachTarget = Status.teachTarget,
+			feedTarget = Status.feedTarget,
+			cmdAddon = Status.cmdAddon,
+			statusChanShare = Status.statusChanShare,
+			statusPlaySound = Status.statusPlaySound
+		}
+	})
 end
 
+
+
 local function setup(args)
-  Events.addListener("channelSetupEvent", sourceName, channelSetup)
-  Events.addListener("channelResumeEvent", sourceName, channelResume)
-  Events.addListener("channelOffEvent", sourceName, channelOff)
-  Events.addListener("channelStatusEvent", sourceName, channelStatus)
-  Events.addListener("channelTargetEvent", sourceName, changeTarget)
-  Events.addListener("channelPowerEvent", sourceName, changePower)
+	Events.addListener("processPowercastEvent", sourceName, processPowercast)
+	Events.addListener("processChannelEvent", sourceName, processChannel)
+	Events.addListener("resetPowercastStatsEvent", sourceName, resetPowercastStats)
+	Events.addListener("setchannelModeEvent", sourceName, setchannelMode)
+	Events.addListener("setchannelAddonCommandEvent", sourceName, setchannelAddonCommand)
+	Events.addListener("setteachTargetEvent", sourceName, setteachTarget)
+	Events.addListener("setfeedTargetEvent", sourceName, setfeedTarget)
+	Events.addListener("setpowercastAmountEvent", sourceName, setpowercastAmount)
+	Events.addListener("setpowercastAddonEvent", sourceName, setpowercastAddon)
+	Events.addListener("setfocusAmountDefaultEvent", sourceName, setfocusAmountDefault)
+	Events.addListener("setfocusAmountFeedEvent", sourceName, setfocusAmountFeed)
+	Events.addListener("setfocusAmountTeachEvent", sourceName, setfocusAmountTeach)
+	Events.addListener("setfocusTargetEvent", sourceName, setfocusTarget)
+	Events.addListener("setfocusTargetSourceEvent", sourceName, setfocusTargetSource)
+	Events.addListener("saveChannelSettingsEvent", sourceName, saveChannelSettings)
+	Events.addListener("setChanShareEvent", sourceName, setChanShare)
+	Events.addListener("setChanSoundEvent", sourceName, setChanSound)
 end
 
 local function unsetup(args)
-  Events.removeListener("channelSetupEvent", sourceName)
-  Events.removeListener("channelResumeEvent", sourceName)
-  Events.removeListener("channelOffEvent", sourceName)
-  Events.removeListener("channelStatusEvent", sourceName)
-  Events.removeListener("channelTargetEvent", sourceName)
-  Events.removeListener("channelPowerEvent", sourceName)
+	Events.removeListener("processPowercastEvent", sourceName)
+	Events.removeListener("processChannelEvent", sourceName)
+	Events.removeListener("resetPowercastStatsEvent", sourceName)
+	Events.removeListener("setchannelModeEvent", sourceName)
+	Events.removeListener("setchannelAddonCommandEvent", sourceName)
+	Events.removeListener("setteachTargetEvent", sourceName)
+	Events.removeListener("setfeedTargetEvent", sourceName)
+	Events.removeListener("setpowercastAmountEvent", sourceName)
+	Events.removeListener("setpowercastAddonEvent", sourceName)
+	Events.removeListener("setfocusAmountDefaultEvent", sourceName)
+	Events.removeListener("setfocusAmountFeedEvent", sourceName)
+	Events.removeListener("setfocusAmountTeachEvent", sourceName)
+	Events.removeListener("setfocusTargetEvent", sourceName)
+	Events.removeListener("setfocusTargetSourceEvent", sourceName)
+	Events.removeListener("saveChannelSettingsEvent", sourceName)
+	Events.removeListener("setChanShareEvent", sourceName)
+	Events.removeListener("setChanSoundEvent", sourceName)
 end
+
+
 
 local function resetup(args)
-  unsetup(args)
-  setup(args)
+	unsetup(args)
+	setup(args)
 end
 
+
+
 Channelling = {
-  setup = setup
-  ,unsetup = unsetup
-  ,resetup = resetup
-  ,load = load
-  ,save = save
+	setup = setup,
+	unsetup = unsetup,
+	resetup = resetup,
+	load = load,
+	save = save
 }
 
 return Channelling

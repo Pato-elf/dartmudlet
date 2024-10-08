@@ -2,18 +2,6 @@ Auto = {}
 
 
 
--- compute powercast number
------------------------------------------------------------
-local function computePowercast(args)
-	local results = dba.query('SELECT count FROM improves WHERE who="'..Status.name..'" AND skill="spell casting"')[1]
-	local spellcasting = tonumber(results.count)
-	local powercastNumber = (spellcasting + Status.powercastAddon) * 100
-	
-	return powercastNumber
-end
-
-
-
 -- display the powercasting stats
 -----------------------------------------------------------
 local function displayPowercastStats(args)
@@ -21,7 +9,12 @@ local function displayPowercastStats(args)
 	local displaytext = ''
 	local spellcasting = 0
 	local powercastPercentDisplay = ""
-	--local powercastNumber = computePowercast()
+
+	if Status.statusChanShare == "off" then
+		cecho("<red>ERROR: Channel stat sharing is disabled. Use (/chan share on) to enable\n")
+		return 0
+	end
+
 	local results = Skills.getSkill({who = Status.name, skill_name = "spell casting"})
 
 	if results ~= -1 then spellcasting = tonumber(results.count) else spellcasting = 0 end
@@ -34,9 +27,16 @@ local function displayPowercastStats(args)
 	
 	powercastPercentDisplay = string.format("%.1f", Status.powercastPercent)
 	
-	displaytext = displaytext.."SPELLCASTING: "..spellcasting
-	displaytext = displaytext.."   PCMOD: +"..Status.powercastAddon
-	--displaytext = displaytext.."   FOCUS: "..Status.focusTotal
+	if (displaytype ~= "share") or (Status.statusChanShare ~= "brief") then
+		displaytext = displaytext.."SPELLCASTING: "..spellcasting.."   "
+	end
+	
+	displaytext = displaytext.."PCMOD: +"..Status.powercastAddon
+	
+	if (displaytype ~= "share") then
+		displaytext = displaytext.."   FOCUS: "..Status.focusTotal
+	end
+	
 	displaytext = displaytext.."   SUCCESS: "..powercastPercentDisplay
 	displaytext = displaytext.."% ("..Status.powercastTotal.." casts)"
 	
@@ -46,61 +46,6 @@ local function displayPowercastStats(args)
 		cecho("<"..Status.channelColorEcho..">"..displaytext.."\n")
 	end
 
-end
-
-
-
--- perform a channel
------------------------------------------------------------
-local function processChannel(args)
-	local focusamount = 0
-	
-	if Status.statusTeach then
-		focusamount = Status.focusAmountTeach
-	else
-		focusamount = Status.focusAmountDefault
-	end
-
-	send("channel " .. focusamount .. " " .. Status.focusTarget, false)
-
-	if Status.statusCmdAddon then
-		expandAlias(Status.cmdAddon)
-	end
-	
-	Status.focusTotal = Status.focusTotal + focusamount
-	
-	if (Status.focusTotal >= Status.powercastAmount) and (Status.statusPowercast) and (Status.statusPlaySound) then
-		playSoundFile({name = packageFolder.."MEDIA/"..Status.powercastSoundFile})
-	end
-	
-	if Status.focusTotal < 10 then
-		cecho("\n<" .. Status.channelColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t\t")
-	else
-		cecho("\n<" .. Status.channelColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t")
-	end
-end
-
-
-
--- perform a powercast
------------------------------------------------------------
-local function processPowercast(args)
-	local powercastNumber = computePowercast()
-	
-	-- check for Status.statusAnnounce
-	send("get " .. Status.focusTarget .. " from " .. Status.focusTargetSource)
-	send("discharge " .. Status.focusTarget)
-	send("put " .. Status.focusTarget .. " in " .. Status.focusTargetSource)
-	if Status.statusTeach then send("stop teaching") end
-		send("cast ! lg @"..powercastNumber)
-	if Status.statusTeach then send("teach "..Status.teachTarget) end
-	
-	Status.focusTotal = 0
-	Status.powercastTotal = Status.powercastTotal + 1
-	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
-	cecho("ChannelTextBox4", Info.showPowercastPercentage())
-	cecho("<"..Status.channelColorEcho..">BEGIN POWERCAST\n")
-	--displayPowercastStats("default")
 end
 
 
@@ -118,33 +63,19 @@ local function processAutomation(args)
 		
 		
 	elseif Status.statusChannel then
-		if (aura == "scintillating") and (conc == "You're bright-eyed and bushy-tailed.") then
-			if ((Status.focusTotal >= Status.powercastAmount) and (Status.statusPowercast)) then --or (matches[2] == "force") then
-				processPowercast()
+		if (conc == "You're bright-eyed and bushy-tailed.") then --and (aura == "scintillating") then
+			if (
+				(Status.focusTotal >= Status.powercastAmount) and
+				((Status.channelMode == "POWERCAST") or (Status.channelMode == "PC + TEACH"))
+			) then
+					Events.raiseEvent("processPowercastEvent", {input = aura})
 			else
-				processChannel()
+				Events.raiseEvent("processChannelEvent", {input = aura})
 			end
 		end
 	end
 
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

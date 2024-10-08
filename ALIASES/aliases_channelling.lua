@@ -1,6 +1,7 @@
 local Channelling_Aliases = {}
-
 local aliases = {}
+
+
 
 local function setup(args)
 	tempAliases = {}
@@ -17,74 +18,25 @@ local function setup(args)
 
 
 
-	--display channelling information to others
+	--change channelling share settings
 	tempAliases.chanShare =
-		tempAlias("\\/chan share"
+		tempAlias("\\/chan share ([\\w]+)"
 			,[[
-				local arguments = {detail = "share"}
-				Events.raiseEvent("displayStatsEvent", arguments)
+				local detail = matches[2]
+				local arguments = {detail = detail}
+				Events.raiseEvent("setChanShareEvent", arguments)
 			]])
-			
-			
 
-  --Channelling alias
-  tempAliases.channel =
-    tempAlias("\\/[Cc][Hh][Aa][Nn][Nn][Ee][Ll] (\\d+) (\\w+)"
-              ,[[
-                local power = tonumber(matches[2])
-                local target = string.lower(matches[3])
-                local arguments = {power = power, target = target}
 
-                Events.raiseEvent("channelSetupEvent", arguments)
-              ]])
 
-  --Channel resume
-  tempAliases.channelResume =
-    tempAlias("\\/[Cc][Hh][Aa][Nn][Nn][Ee][Ll] [Rr][Ee][Ss][Uu][Mm][Ee](?: (\\w+))?"
-              ,[[
-                local target = matches[2] or ""
-                target = string.lower(target)
-                local arguments = {target = target}
-
-                Events.raiseEvent("channelResumeEvent", arguments)
-              ]])
-
-  --Channel off
-  tempAliases.channelOff =
-    tempAlias("\\/[Cc][Hh][Aa][Nn][Nn][Ee][Ll] [Oo][Ff][Ff]"
-              ,[[
-                Events.raiseEvent("channelOffEvent", arguments)
-              ]])
-
-  --Channel status
-  tempAliases.channelStatus =
-    tempAlias("\\/[Cc][Hh][Aa][Nn][Nn][Ee][Ll] [Ss][Tt][Aa][Tt][Uu][Ss](?: [Oo][Ff] (\\w+))?"
-              ,[[
-                 local target = matches[2] or ""
-                 target = string.lower(target)
-                 arguments = {target = target}
-                 Events.raiseEvent("channelStatusEvent", arguments)
-              ]])
-
-  --Channel change target
-  tempAliases.channelTarget =
-    tempAlias("\\/[Cc][Hh][Aa][Nn][Nn][Ee][Ll] [Tt][Aa][Rr][Gg][Ee][Tt] ?= ?(\\w+)"
-              ,[[
-                 local target = matches[2]
-                 target = string.lower(target)
-                 arguments = {target = target}
-                 Events.raiseEvent("channelTargetEvent", arguments)
-              ]])
-
-  --Channel change power
-  tempAliases.channelPower =
-    tempAlias("\\/[Cc][Hh][Aa][Nn][Nn][Ee][Ll] [Pp][Oo][Ww][Ee][Rr] ?= ?(\\w+)"
-              ,[[
-                 local power = matches[2] or ""
-                 power = tonumber(power)
-                 arguments = {power = power}
-                 Events.raiseEvent("channelPowerEvent", arguments)
-              ]])
+	--change channelling sound settings
+	tempAliases.chanSound =
+		tempAlias("\\/chan sound ([\\w]+)"
+			,[[
+				local detail = matches[2]
+				local arguments = {detail = detail}
+				Events.raiseEvent("setChanSoundEvent", arguments)
+			]])			
 
   aliases = tempAliases
 end

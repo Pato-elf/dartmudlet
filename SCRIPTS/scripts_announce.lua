@@ -144,8 +144,8 @@ end
 local function save()
 	Events.raiseEvent("saveEvent",
 		{
-		sourceName = sourceName
-		,tableToSave =
+		sourceName = sourceName,
+		tableToSave =
 			{
 				isAnnounce	= isAnnounce,
 				isVerbose	= isVerbose,

@@ -158,6 +158,7 @@ local textToUnBlock = {
   ,"You froze"
   ,"You melted"
   ,"Usage: write"
+  ,"You are suddenly surrounded in bubbles"
 }
 
 local function setup(args)

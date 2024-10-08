@@ -70,10 +70,9 @@ Some of the rest are:
 /cast ! status [of <spell>]            - Show power used for last/named spell
 ```
 ```
-/channel <power> <target>     - Repeat channelling aura to target, count how many times you did 
-/channel off                  - Stop channelling, save target and power level for future resume
-/channel resume [<target>]    - Resume channelling last/named target at previous power
-/channel status [of <target>] - Show power channeled to last/named target
+/chan info                       - Display full channelling stats on screen
+/chan share on|off|brief         - Change settings of the channel share button
+/chan sound on|off               - Play notification sound before powercast
 ```
 ```
 /inscribe ! <spell> @ <power>     - Repeat practice inscribing a spell at the given power 

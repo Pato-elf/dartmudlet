@@ -68,6 +68,10 @@ local function setVariables()
 	GUI.containerChannelCommand8:print(Status.focusAmountFeed)
 	GUI.containerChannelCommand9:print(Status.feedTarget)
 	GUI.containerChannelCommand10:print(Status.cmdAddon)
+	
+	if (Status.statusChanShare == "off") then
+		GUI.containerChannelButton4:setStyleSheet(StyleButtonDarkGrey:getCSS())
+	end
 end
 
 

@@ -35,7 +35,7 @@ windows_ByPosition.right = {}
 		}
 	]])
 	
-	local StyleButtonDarkGrey = Geyser.StyleSheet:new([[
+	StyleButtonDarkGrey = Geyser.StyleSheet:new([[
 		QLabel{
 			color: black;
 			background-color: #696969;
@@ -50,7 +50,7 @@ windows_ByPosition.right = {}
 		}
 	]])
 
-	local StyleButtonLightGrey = Geyser.StyleSheet:new([[
+	StyleButtonLightGrey = Geyser.StyleSheet:new([[
 		QLabel{
 			color: black;
 			background-color: #D3D3D3;
@@ -512,8 +512,10 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.containerChannelButton4:setClickCallback("ChannelButton4_click")
 
 	function ChannelButton4_click()
-		GUI.containerChannelButton4:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		tempTimer(0.15, function() GUI.containerChannelButton4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		if(Status.statusChanShare ~= "off") then
+			GUI.containerChannelButton4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+			tempTimer(0.15, function() GUI.containerChannelButton4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		end
 		Events.raiseEvent("displayStatsEvent", {detail = "share"})
 	end	
 

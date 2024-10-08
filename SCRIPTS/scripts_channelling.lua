@@ -310,6 +310,13 @@ local function setChanShare(args)
 		cecho("<red>ERROR: Invalid /chan share value\n")
 	else
 		Status.statusChanShare = setting
+		
+		if (Status.statusChanShare == "off") then
+			GUI.containerChannelButton4:setStyleSheet(StyleButtonDarkGrey:getCSS())
+		else
+			GUI.containerChannelButton4:setStyleSheet(StyleButtonLightGrey:getCSS())
+		end
+		
 		Channelling.save()
 		cecho("<yellow>Channel: /chan share value updated\n")
 	end

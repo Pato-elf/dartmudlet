@@ -346,16 +346,16 @@ GUI.containerRefreshBox = GUI.containerRefreshBox or
 
 GUI.containerRefreshBox:setStyleSheet(StyleBoxBlue:getCSS())
 
-echo("RefreshBox", Info.showUnderConstruction())
+echo("RefreshBox", Info.showInProgress())
 
 
---[[ BLOCK SPOT
+-- BLOCK SPOT
 	-- CREATE REFRESH BUTTON1 -> REFRESH -> TABWINDOW2
 	-----------------------------------------------------------
 	GUI.containerRefreshButton1 = GUI.containerRefreshButton1 or
 		Geyser.Label:new({
 			name = "RefreshButton1",
-			x = 50, y = 50,
+			x = 10, y = 10,
 			fontSize = 14,
 			width = 190,
 			height = 46,
@@ -364,7 +364,7 @@ echo("RefreshBox", Info.showUnderConstruction())
 
 	GUI.containerRefreshButton1:setStyleSheet(StyleButtonDarkGrey:getCSS())
 	echo("RefreshButton1", "<center>REFRESH OFF</center>")
-
+	GUI.containerRefreshButton1:setToolTip("Turn automatic refresh on/off",Status.tooltipTime)
 	GUI.containerRefreshButton1:setClickCallback("RefreshButton1_click")
 
 
@@ -386,7 +386,88 @@ echo("RefreshBox", Info.showUnderConstruction())
 		end
 	end
 
---]] --END BLOCK SPOT
+
+
+	-- CREATE COMMANDLINE1 -> REFRESH -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerRefreshCommand1 = GUI.containerRefreshCommand1 or
+		Geyser.CommandLine:new({
+			name = "RefreshCommand1",
+			x = 78, y = 70,
+			width = 150, height = 28,
+	}, GUI.containerRefreshBox)
+
+	GUI.containerRefreshCommand1:setStyleSheet(StyleCommandLine:getCSS())
+	--GUI.containerRefreshCommand1:print(Status.refreshTarget1)
+	
+	GUI.containerRefreshCommand1:setAction(
+	function(command)
+		Events.raiseEvent("setrefreshTargetEvent", {save = true, input = command})
+		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+	end
+	)
+	
+	
+	
+	-- CREATE COMMANDLINE2 -> REFRESH -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerRefreshCommand2 = GUI.containerRefreshCommand2 or
+		Geyser.CommandLine:new({
+			name = "RefreshCommand2",
+			x = 305, y = 70,
+			width = 45, height = 28,
+	}, GUI.containerRefreshBox)
+
+	GUI.containerRefreshCommand2:setStyleSheet(StyleCommandLine:getCSS())
+	--GUI.containerRefreshCommand2:print(Status.refreshPower1)
+	
+	GUI.containerRefreshCommand2:setAction(
+	function(command)
+		Events.raiseEvent("setrefreshPowerEvent", {save = true, input = command})
+		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+	end
+	)
+	
+	
+	
+	-- CREATE TEXTBOX1 -> REFRESH -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerRefreshTextBox1 = GUI.containerRefreshTextBox1 or
+		Geyser.Label:new({
+			name = "RefreshTextBox1",
+			x = 0, y = 76,
+			fontSize = 11,
+			width = 80,
+			height = 17,
+			color = "black"
+		}, GUI.containerRefreshBox)
+
+	GUI.containerRefreshTextBox1:setStyleSheet(StyleTextBlue:getCSS())
+	cecho("RefreshTextBox1", "<yellow>TARGET")
+	GUI.containerRefreshTextBox1:setToolTip("Target to refresh",Status.tooltipTime)
+	
+	
+	
+	-- CREATE TEXTBOX2 -> REFRESH -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerRefreshTextBox2 = GUI.containerRefreshTextBox2 or
+		Geyser.Label:new({
+			name = "RefreshTextBox2",
+			x = 235, y = 76,
+			fontSize = 11,
+			width = 80,
+			height = 17,
+			color = "black"
+		}, GUI.containerRefreshBox)
+
+	GUI.containerRefreshTextBox2:setStyleSheet(StyleTextBlue:getCSS())
+	cecho("RefreshTextBox2", "<yellow>POWER")
+	GUI.containerRefreshTextBox2:setToolTip("Aura to use for refresh",Status.tooltipTime)
+	
+	
+-- --END BLOCK SPOT
 
 -- CREATE CHANNEL BOX -> TABWINDOW2
 -----------------------------------------------------------
@@ -1376,7 +1457,7 @@ GUI.containerChatholderBox:setStyleSheet([[
 		Geyser.MiniConsole:new({
 			name = "ChatBox",
 			x = 9, y = 9,
-			fontSize = 8,
+			fontSize = Status.chatboxFontSize,
 			width = -9,
 			height = -9,
 			color = "black"

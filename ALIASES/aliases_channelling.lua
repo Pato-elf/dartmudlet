@@ -10,7 +10,7 @@ local function setup(args)
 
 	--display channelling information to self
 	tempAliases.chanInfo =
-		tempAlias("\\/chan info"
+		tempAlias("^\\/chan info"
 			,[[
 				local arguments = {detail = "info"}
 				Events.raiseEvent("displayStatsEvent", arguments)
@@ -20,7 +20,7 @@ local function setup(args)
 
 	--change channelling share settings
 	tempAliases.chanShare =
-		tempAlias("\\/chan share ([\\w]+)"
+		tempAlias("^\\/chan share ([\\w]+)"
 			,[[
 				local detail = matches[2]
 				local arguments = {detail = detail}
@@ -31,12 +31,23 @@ local function setup(args)
 
 	--change channelling sound settings
 	tempAliases.chanSound =
-		tempAlias("\\/chan sound ([\\w]+)"
+		tempAlias("^\\/chan sound ([\\w]+)"
 			,[[
 				local detail = matches[2]
 				local arguments = {detail = detail}
 				Events.raiseEvent("setChanSoundEvent", arguments)
 			]])			
+
+
+
+	--change channelling pause settings
+	tempAliases.chanPause =
+		tempAlias("^\\/chan pause ([\\w]+)"
+			,[[
+				local detail = matches[2]
+				local arguments = {detail = detail}
+				Events.raiseEvent("setChanPauseEvent", arguments)
+			]])	
 
   aliases = tempAliases
 end

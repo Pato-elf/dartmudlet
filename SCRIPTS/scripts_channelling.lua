@@ -235,28 +235,42 @@ end
 local function processPowercast(args)
 	local powercastNumber = computePowercast()
 
-	if Status.focusTargetSource == "" then
-		send("discharge " .. Status.focusTarget)
-	else
-		send("get " .. Status.focusTarget .. " from " .. Status.focusTargetSource)
-		send("discharge " .. Status.focusTarget)
-		send("put " .. Status.focusTarget .. " in " .. Status.focusTargetSource)
+	if not Status.powercastPauseisActive then
+		if Status.focusTargetSource == "" then
+			send("discharge " .. Status.focusTarget)
+		else
+			send("get " .. Status.focusTarget .. " from " .. Status.focusTargetSource)
+			send("discharge " .. Status.focusTarget)
+			send("put " .. Status.focusTarget .. " in " .. Status.focusTargetSource)
+		end
+	end
+
+	if (Status.powercastPause ~= "on") or (Status.powercastPauseisActive) then
+	
+		if Status.channelMode == "PC + TEACH" then
+			send("stop teaching")
+			send("cast ! lg @"..powercastNumber)
+			send("teach "..Status.teachTarget)
+		else
+			send("cast ! lg @"..powercastNumber)
+		end
+
+		Status.focusTotal = 0
+		Status.powercastTotal = Status.powercastTotal + 1
+		cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
+		cecho("ChannelTextBox4", Info.showPowercastPercentage())
+		cecho("<"..Status.channelColorEcho..">BEGIN POWERCAST\n")
+		Channelling.save()
 	end
 	
-	if Status.channelMode == "PC + TEACH" then
-		send("stop teaching")
-		send("cast ! lg @"..powercastNumber)
-		send("teach "..Status.teachTarget)
-	else
-		send("cast ! lg @"..powercastNumber)
+	if (Status.powercastPause == "on") then
+		if Status.powercastPauseisActive then
+			Status.powercastPauseisActive = false
+		else
+			Status.powercastPauseisActive = true
+		end
 	end
 	
-	Status.focusTotal = 0
-	Status.powercastTotal = Status.powercastTotal + 1
-	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
-	cecho("ChannelTextBox4", Info.showPowercastPercentage())
-	cecho("<"..Status.channelColorEcho..">BEGIN POWERCAST\n")
-	Channelling.save()
 end
 
 
@@ -345,6 +359,24 @@ end
 
 
 
+-- set /chan pause command
+-----------------------------------------------------------
+local function setChanPause(args)
+	local setting = args["detail"]
+
+
+	if tonumber(setting) or ((setting ~= "on") and (setting ~= "off")) then
+		cecho("<red>ERROR: Invalid /chan pause value\n")
+	else
+		Status.powercastPause = setting
+		Channelling.save()
+		cecho("<yellow>Channel: /chan pause value updated\n")
+	end
+	
+end
+
+
+
 -- reset the powercast stats
 -----------------------------------------------------------
 local function resetPowercastStats()
@@ -394,7 +426,7 @@ local function loaderFunction(sentTable)
 		Status.powercastTotal = sentTable["powercastTotal"] or 0
 		Status.focusAmountDefault = sentTable["focusAmountDefault"] or 20
 		Status.focusAmountFeed = sentTable["focusAmountFeed"] or 60
-		Status.focusAmountTeach = sentTable["focusAmountTeach"] or 45
+		Status.focusAmountTeach = sentTable["focusAmountTeach"] or 20
 		Status.focusTarget = sentTable["focusTarget"] or "necklace"
 		Status.focusTargetSource = sentTable["focusTargetSource"] or "(held) scrip"
 		Status.teachTarget = sentTable["teachTarget"] or "targetname"
@@ -402,6 +434,7 @@ local function loaderFunction(sentTable)
 		Status.cmdAddon = sentTable["cmdAddon"] or ""
 		Status.statusChanShare = sentTable["statusChanShare"] or "on"
 		Status.statusPlaySound = sentTable["statusPlaySound"] or "on"
+		Status.powercastPause = sentTable["powercastPause"] or "on"
 	end
 end
 
@@ -441,7 +474,8 @@ local function save()
 			feedTarget = Status.feedTarget,
 			cmdAddon = Status.cmdAddon,
 			statusChanShare = Status.statusChanShare,
-			statusPlaySound = Status.statusPlaySound
+			statusPlaySound = Status.statusPlaySound,
+			powercastPause = powercastPause
 		}
 	})
 end
@@ -466,6 +500,7 @@ local function setup(args)
 	Events.addListener("saveChannelSettingsEvent", sourceName, saveChannelSettings)
 	Events.addListener("setChanShareEvent", sourceName, setChanShare)
 	Events.addListener("setChanSoundEvent", sourceName, setChanSound)
+	Events.addListener("setChanPauseEvent", sourceName, setChanPause)
 end
 
 local function unsetup(args)
@@ -486,6 +521,7 @@ local function unsetup(args)
 	Events.removeListener("saveChannelSettingsEvent", sourceName)
 	Events.removeListener("setChanShareEvent", sourceName)
 	Events.removeListener("setChanSoundEvent", sourceName)
+	Events.removeListener("setChanPauseEvent", sourceName)
 end
 
 

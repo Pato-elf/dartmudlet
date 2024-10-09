@@ -14,41 +14,42 @@ Status.race			= ''
 Status.soulage		= ''
 Status.thirst		= ''
 
--- refresh box
+-- refresh system
 Status.statusRefresh	= false
-Status.refreshPower1	= 60
-Status.refreshPower2	= 60
-Status.refreshTarget1	= 'xanthe'
-Status.refreshTarget2	= ''
-Status.refreshType1		= 'auto'
-Status.refreshType2		= 'auto'
+Status.refreshPower1	= 50
+--Status.refreshPower2	= 60
+Status.refreshTarget1	= 'targetname'
+--Status.refreshTarget2	= ''
+--Status.refreshType1		= 'auto'
+--Status.refreshType2		= 'auto'
 
--- channel box
---Status.statusTeach			= false
---Status.statusFeed			= false
+-- channelling system
+Status.powercastAddon			= 3
+Status.powercastAmount			= 500
+Status.powercastPercent			= 0
+Status.powercastSuccess			= 0
+Status.powercastTotal			= 0
+Status.focusAmountDefault		= 20
+Status.focusAmountFeed			= 60
+Status.focusAmountTeach			= 20
+Status.focusTotal				= 0
+Status.focusTarget				= 'necklace'
+Status.focusTargetSource		= '(held) scrip'
+Status.teachTarget				= 'targetname'
+Status.feedTarget				= 'targetname'
+Status.channelMode				= 'POWERCAST'
+Status.channelColorEcho			= 'magenta'
+Status.powercastSoundFile		= 'Speech On.wav'
+Status.cmdAddon					= ''
+Status.statusChanShare			= 'on'
+Status.statusPlaySound			= 'on'
+Status.powercastPause			= 'on'
+Status.powercastPauseisActive	= false
 
-Status.powercastAddon		= 3
-Status.powercastAmount		= 500
-Status.powercastPercent		= 0
-Status.powercastSuccess		= 0
-Status.powercastTotal		= 0
-Status.focusAmountDefault	= 20
-Status.focusAmountFeed		= 60
-Status.focusAmountTeach		= 45
-Status.focusTotal			= 0
-Status.focusTarget			= 'necklace'
-Status.focusTargetSource	= '(held) scrip'
-Status.teachTarget			= 'targetname'
-Status.feedTarget			= 'targetname'
-Status.channelMode			= 'POWERCAST'
-Status.channelColorEcho		= 'magenta'
-Status.powercastSoundFile	= 'Speech On.wav'
-Status.cmdAddon				= ''
-Status.statusChanShare		= 'on'
-Status.statusPlaySound		= 'on'
-
+-- misc variables
 Status.statusConc			= 'off'
 Status.tooltipTime			= 5
+Status.chatboxFontSize		= 9
 
 
 
@@ -68,6 +69,10 @@ local function setVariables()
 	GUI.containerChannelCommand8:print(Status.focusAmountFeed)
 	GUI.containerChannelCommand9:print(Status.feedTarget)
 	GUI.containerChannelCommand10:print(Status.cmdAddon)
+	
+	GUI.containerRefreshCommand1:print(Status.refreshTarget1)
+	GUI.containerRefreshCommand2:print(Status.refreshPower1)
+	
 	
 	if (Status.statusChanShare == "off") then
 		GUI.containerChannelButton4:setStyleSheet(StyleButtonDarkGrey:getCSS())

@@ -3,7 +3,7 @@ Info = {}
 local sourceName = "info"
 local colorHelp = "yellow"
 local spacerHelp = "   "
-local versionNumber = "v1.4"
+local versionNumber = "v1.4.1"
 local levels = {"mythic","legendary","a grand master","a virtuoso","consummate","a high master","renowned","an adept","eminent",
 				"a master","superb","an expert","excellent","very good","adroit","proficient","fair","able","above average",
 				"average","below average","not very good","poor","a beginner","a novice","a tyro","unskilled"}
@@ -114,9 +114,9 @@ local function showHelp(args)
 	cecho(preText.."/cast ! status [of <spell>]      - Show power used for last/named spell\n")
 	cecho(preText.."\n")
 	cecho(preText.."/chan info                       - Display full channelling stats on screen\n")
+	cecho(preText.."/chan pause on|off               - Pause powercast to wait for full concentration\n")
 	cecho(preText.."/chan share on|off|brief         - Change settings of the channel share button\n")
 	cecho(preText.."/chan sound on|off               - Play notification sound before powercast\n")
-	--cecho(preText.."/channel status [of <target>] - Show power channeled to last/named target\n")
 	cecho(preText.."\n")
 	cecho(preText.."/inscribe ! <spell> @ <power>    - Start practice inscribing a spell\n")
 	cecho(preText.."/inscribe ! off                  - Stop practice inscribing a spell\n")
@@ -220,6 +220,22 @@ end
 
 
 
+-- return in progress message
+-----------------------------------------------------------
+local function showInProgress()
+	local helpText = ""
+	local helpTagYellow = "<span style=\"color: yellow;\">"
+	local helpTagOff = "</span>"
+	
+	helpText = helpText..helpTagYellow
+	helpText = helpText.."In Progress!"
+	helpText = helpText..helpTagOff
+
+	return helpText
+end
+
+
+
 -- delete prompt only lines
 -----------------------------------------------------------
 local function emptyLine(args)
@@ -259,6 +275,7 @@ Info =
 	showQuickHelp = showQuickHelp,
 	showQuickLevels = showQuickLevels,
 	showSpellCasting = showSpellCasting,
+	showInProgress = showInProgress,
 	showUnderConstruction = showUnderConstruction,
 	showPowercastPercentage = showPowercastPercentage
 }

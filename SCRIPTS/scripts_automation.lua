@@ -58,19 +58,21 @@ local function processAutomation(args)
 	
 	if Status.statusRefresh then
 		if (conc == "You're bright-eyed and bushy-tailed.") then
+			--send("cast ro @60 dimiva")
 			send("cast ro @"..Status.refreshPower1.." "..Status.refreshTarget1)
 		end
 		
 		
-	elseif Status.statusChannel then
+	elseif Status.statusChannel or Status.powercastisForce then
 		if (conc == "You're bright-eyed and bushy-tailed.") then --and (aura == "scintillating") then
-			if (
-				(Status.focusTotal >= Status.powercastAmount) and
-				((Status.channelMode == "POWERCAST") or (Status.channelMode == "PC + TEACH"))
-			) then
+			if Status.powercastisForce then
+				Events.raiseEvent("processPowercastEvent", {input = aura})
+			elseif  (Status.focusTotal >= Status.powercastAmount) and ((Status.channelMode == "POWERCAST") or (Status.channelMode == "PC + TEACH")) then
 					Events.raiseEvent("processPowercastEvent", {input = aura})
 			else
-				Events.raiseEvent("processChannelEvent", {input = aura})
+				if ((Status.channelMode == "FEED AURA") and (aura == "scintillating")) or (Status.channelMode ~= "FEED AURA") then
+					Events.raiseEvent("processChannelEvent", {input = aura})
+				end
 			end
 		end
 	end

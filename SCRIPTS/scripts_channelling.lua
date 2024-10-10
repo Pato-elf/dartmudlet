@@ -255,6 +255,7 @@ local function processPowercast(args)
 			send("cast ! lg @"..powercastNumber)
 		end
 
+		Status.powercastisForce = false
 		Status.focusTotal = 0
 		Status.powercastTotal = Status.powercastTotal + 1
 		cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")

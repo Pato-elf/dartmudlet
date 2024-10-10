@@ -8,7 +8,7 @@ local function setup(args)
 
 	--alias to manually insert skill into the database
 	tempAliases.insertSkill =
-	tempAlias('^\\/insert ([\\w]+) ([A-Za-z_#\' ]+) ([\\d]+)',
+	tempAlias('^\\/insert ([\\w]+) ([A-Za-z_#\\-\' ]+) ([\\d]+)',
 		[[
 			local who = matches[2]
 			local skill_name = matches[3]
@@ -21,7 +21,7 @@ local function setup(args)
 
 	--alias to update an existing skill
 	tempAliases.updateSkill =
-	tempAlias('^\\/update ([\\w]+) ([A-Za-z_#\' ]+) ([\\d]+)',
+	tempAlias('^\\/update ([\\w]+) ([A-Za-z_#\\-\' ]+) ([\\d]+)',
 		[[
 			local who = matches[2]
 			local skill_name = matches[3]
@@ -34,7 +34,7 @@ local function setup(args)
 
 	--alias for skill information
 	tempAliases.SkillInfo =
-	tempAlias('^\\/info ([\\w]+) ([A-Za-z_#\' ]+)',
+	tempAlias('^\\/info ([\\w]+) ([A-Za-z_#\\-\' ]+)',
 	--tempAlias('^\\/info(?: )?(.*)',
 		[[
 			local who = matches[2]

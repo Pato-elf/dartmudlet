@@ -5,7 +5,7 @@ local colorHelp = "yellow"
 local spacerHelp = "   "
 local versionNumber = "v1.4.1"
 local levels = {"mythic","legendary","a grand master","a virtuoso","consummate","a high master","renowned","an adept","eminent",
-				"a master","superb","an expert","excellent","very good","adroit","proficient","fair","able","above average",
+				"a master","superb","an expert","excellent","very good","adroit","good","proficient","fair","able","above average",
 				"average","below average","not very good","poor","a beginner","a novice","a tyro","unskilled"}
 
 
@@ -55,33 +55,37 @@ local function showQuickLevels()
 	helpText = helpText..helpTagYellow
 	helpText = helpText.."Skill Name"..string.rep("&nbsp;",8).."Level"..string.rep("&nbsp;",8).."Skill Name"..string.rep("&nbsp;",8).."Level<BR>"
 	helpText = helpText.."======================================================<BR>"
+	helpText = helpText..skillLevels[28].name..string.rep("&nbsp;",skillLevels[28].length1)..skillLevels[28].min
+	helpText = helpText..string.rep("&nbsp;",skillLevels[28].length2)..skillLevels[14].name..string.rep("&nbsp;",skillLevels[14].length1)..skillLevels[14].min.."<BR>"
 	helpText = helpText..skillLevels[27].name..string.rep("&nbsp;",skillLevels[27].length1)..skillLevels[27].min
-	helpText = helpText..string.rep("&nbsp;",skillLevels[27].length2)..skillLevels[14].name..string.rep("&nbsp;",skillLevels[14].length1)..skillLevels[14].min.."<BR>"
+	helpText = helpText..string.rep("&nbsp;",skillLevels[27].length2)..skillLevels[13].name..string.rep("&nbsp;",skillLevels[13].length1)..skillLevels[13].min.."<BR>"
 	helpText = helpText..skillLevels[26].name..string.rep("&nbsp;",skillLevels[26].length1)..skillLevels[26].min
-	helpText = helpText..string.rep("&nbsp;",skillLevels[26].length2)..skillLevels[13].name..string.rep("&nbsp;",skillLevels[13].length1)..skillLevels[13].min.."<BR>"
+	helpText = helpText..string.rep("&nbsp;",skillLevels[26].length2)..skillLevels[12].name..string.rep("&nbsp;",skillLevels[12].length1)..skillLevels[12].min.."<BR>"
 	helpText = helpText..skillLevels[25].name..string.rep("&nbsp;",skillLevels[25].length1)..skillLevels[25].min
-	helpText = helpText..string.rep("&nbsp;",skillLevels[25].length2)..skillLevels[12].name..string.rep("&nbsp;",skillLevels[12].length1)..skillLevels[12].min.."<BR>"
+	helpText = helpText..string.rep("&nbsp;",skillLevels[25].length2)..skillLevels[11].name..string.rep("&nbsp;",skillLevels[11].length1)..skillLevels[11].min.."<BR>"	
 	helpText = helpText..skillLevels[24].name..string.rep("&nbsp;",skillLevels[24].length1)..skillLevels[24].min
-	helpText = helpText..string.rep("&nbsp;",skillLevels[24].length2)..skillLevels[11].name..string.rep("&nbsp;",skillLevels[11].length1)..skillLevels[11].min.."<BR>"	
+	helpText = helpText..string.rep("&nbsp;",skillLevels[24].length2)..skillLevels[10].name..string.rep("&nbsp;",skillLevels[10].length1)..skillLevels[10].min.."<BR>"	
 	helpText = helpText..skillLevels[23].name..string.rep("&nbsp;",skillLevels[23].length1)..skillLevels[23].min
-	helpText = helpText..string.rep("&nbsp;",skillLevels[23].length2)..skillLevels[10].name..string.rep("&nbsp;",skillLevels[10].length1)..skillLevels[10].min.."<BR>"	
+	helpText = helpText..string.rep("&nbsp;",skillLevels[23].length2)..skillLevels[9].name..string.rep("&nbsp;",skillLevels[9].length1)..skillLevels[9].min.."<BR>"
 	helpText = helpText..skillLevels[22].name..string.rep("&nbsp;",skillLevels[22].length1)..skillLevels[22].min
-	helpText = helpText..string.rep("&nbsp;",skillLevels[22].length2)..skillLevels[9].name..string.rep("&nbsp;",skillLevels[9].length1)..skillLevels[9].min.."<BR>"
+	helpText = helpText..string.rep("&nbsp;",skillLevels[22].length2)..skillLevels[8].name..string.rep("&nbsp;",skillLevels[8].length1)..skillLevels[8].min.."<BR>"	
 	helpText = helpText..skillLevels[21].name..string.rep("&nbsp;",skillLevels[21].length1)..skillLevels[21].min
-	helpText = helpText..string.rep("&nbsp;",skillLevels[21].length2)..skillLevels[8].name..string.rep("&nbsp;",skillLevels[8].length1)..skillLevels[8].min.."<BR>"	
+	helpText = helpText..string.rep("&nbsp;",skillLevels[21].length2)..skillLevels[7].name..string.rep("&nbsp;",skillLevels[7].length1)..skillLevels[7].min.."<BR>"
 	helpText = helpText..skillLevels[20].name..string.rep("&nbsp;",skillLevels[20].length1)..skillLevels[20].min
-	helpText = helpText..string.rep("&nbsp;",skillLevels[20].length2)..skillLevels[7].name..string.rep("&nbsp;",skillLevels[7].length1)..skillLevels[7].min.."<BR>"
+	helpText = helpText..string.rep("&nbsp;",skillLevels[20].length2)..skillLevels[6].name..string.rep("&nbsp;",skillLevels[6].length1)..skillLevels[6].min.."<BR>"
 	helpText = helpText..skillLevels[19].name..string.rep("&nbsp;",skillLevels[19].length1)..skillLevels[19].min
-	helpText = helpText..string.rep("&nbsp;",skillLevels[19].length2)..skillLevels[6].name..string.rep("&nbsp;",skillLevels[6].length1)..skillLevels[6].min.."<BR>"
+	helpText = helpText..string.rep("&nbsp;",skillLevels[19].length2)..skillLevels[5].name..string.rep("&nbsp;",skillLevels[5].length1)..skillLevels[5].min.."<BR>"
 	helpText = helpText..skillLevels[18].name..string.rep("&nbsp;",skillLevels[18].length1)..skillLevels[18].min
-	helpText = helpText..string.rep("&nbsp;",skillLevels[18].length2)..skillLevels[5].name..string.rep("&nbsp;",skillLevels[5].length1)..skillLevels[5].min.."<BR>"
+	helpText = helpText..string.rep("&nbsp;",skillLevels[18].length2)..skillLevels[4].name..string.rep("&nbsp;",skillLevels[4].length1)..skillLevels[4].min.."<BR>"
 	helpText = helpText..skillLevels[17].name..string.rep("&nbsp;",skillLevels[17].length1)..skillLevels[17].min
-	helpText = helpText..string.rep("&nbsp;",skillLevels[17].length2)..skillLevels[4].name..string.rep("&nbsp;",skillLevels[4].length1)..skillLevels[4].min.."<BR>"
+	helpText = helpText..string.rep("&nbsp;",skillLevels[17].length2)..skillLevels[3].name..string.rep("&nbsp;",skillLevels[3].length1)..skillLevels[3].min.."<BR>"
 	helpText = helpText..skillLevels[16].name..string.rep("&nbsp;",skillLevels[16].length1)..skillLevels[16].min
-	helpText = helpText..string.rep("&nbsp;",skillLevels[16].length2)..skillLevels[3].name..string.rep("&nbsp;",skillLevels[3].length1)..skillLevels[3].min.."<BR>"
+	helpText = helpText..string.rep("&nbsp;",skillLevels[16].length2)..skillLevels[2].name..string.rep("&nbsp;",skillLevels[2].length1)..skillLevels[2].min.."<BR>"
+
 	helpText = helpText..skillLevels[15].name..string.rep("&nbsp;",skillLevels[15].length1)..skillLevels[15].min
-	helpText = helpText..string.rep("&nbsp;",skillLevels[15].length2)..skillLevels[2].name..string.rep("&nbsp;",skillLevels[2].length1)..skillLevels[2].min.."<BR>"
-	helpText = helpText..string.rep("&nbsp;",31)..skillLevels[1].name..string.rep("&nbsp;",skillLevels[1].length1)..skillLevels[1].min.."<BR>"
+	helpText = helpText..string.rep("&nbsp;",skillLevels[15].length2)..skillLevels[1].name..string.rep("&nbsp;",skillLevels[1].length1)..skillLevels[1].min.."<BR>"
+
+--	helpText = helpText..string.rep("&nbsp;",31)..skillLevels[1].name..string.rep("&nbsp;",skillLevels[1].length1)..skillLevels[1].min.."<BR>"
 	helpText = helpText..helpTagOff
 
 	return helpText

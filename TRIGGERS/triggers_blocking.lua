@@ -159,6 +159,8 @@ local textToUnBlock = {
   ,"You melted"
   ,"Usage: write"
   ,"You are suddenly surrounded in bubbles"
+  ,"You internalize the power of the spell"
+  ,"The enchantment on .* holds"
 }
 
 local function setup(args)

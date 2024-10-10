@@ -393,7 +393,7 @@ echo("RefreshBox", Info.showInProgress())
 	GUI.containerRefreshCommand1 = GUI.containerRefreshCommand1 or
 		Geyser.CommandLine:new({
 			name = "RefreshCommand1",
-			x = 78, y = 70,
+			x = 138, y = 70,
 			width = 150, height = 28,
 	}, GUI.containerRefreshBox)
 
@@ -415,7 +415,7 @@ echo("RefreshBox", Info.showInProgress())
 	GUI.containerRefreshCommand2 = GUI.containerRefreshCommand2 or
 		Geyser.CommandLine:new({
 			name = "RefreshCommand2",
-			x = 305, y = 70,
+			x = 365, y = 70,
 			width = 45, height = 28,
 	}, GUI.containerRefreshBox)
 
@@ -432,6 +432,50 @@ echo("RefreshBox", Info.showInProgress())
 	
 	
 	
+	-- CREATE COMMANDLINE3 -> REFRESH -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerRefreshCommand3 = GUI.containerRefreshCommand3 or
+		Geyser.CommandLine:new({
+			name = "RefreshCommand3",
+			x = 138, y = 100,
+			width = 150, height = 28,
+	}, GUI.containerRefreshBox)
+
+	GUI.containerRefreshCommand3:setStyleSheet(StyleCommandLine:getCSS())
+	--GUI.containerRefreshCommand3:print(Status.refreshTarget1)
+	
+	GUI.containerRefreshCommand3:setAction(
+	function(command)
+		--Events.raiseEvent("setrefreshTargetEvent", {save = true, input = command})
+		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+	end
+	)
+
+
+
+	-- CREATE COMMANDLINE4 -> REFRESH -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerRefreshCommand4 = GUI.containerRefreshCommand4 or
+		Geyser.CommandLine:new({
+			name = "RefreshCommand4",
+			x = 365, y = 100,
+			width = 45, height = 28,
+	}, GUI.containerRefreshBox)
+
+	GUI.containerRefreshCommand4:setStyleSheet(StyleCommandLine:getCSS())
+	--GUI.containerRefreshCommand4:print(Status.refreshPower1)
+	
+	GUI.containerRefreshCommand4:setAction(
+	function(command)
+		Events.raiseEvent("setrefreshPowerEvent", {save = true, input = command})
+		--GUI.containerChannelButton4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+	end
+	)
+	
+	
+	
 	-- CREATE TEXTBOX1 -> REFRESH -> TABWINDOW2
 	-------------------------------------------------------
 	GUI.containerRefreshTextBox1 = GUI.containerRefreshTextBox1 or
@@ -439,14 +483,14 @@ echo("RefreshBox", Info.showInProgress())
 			name = "RefreshTextBox1",
 			x = 0, y = 76,
 			fontSize = 11,
-			width = 80,
+			width = 144,
 			height = 17,
 			color = "black"
 		}, GUI.containerRefreshBox)
 
 	GUI.containerRefreshTextBox1:setStyleSheet(StyleTextBlue:getCSS())
-	cecho("RefreshTextBox1", "<yellow>TARGET")
-	GUI.containerRefreshTextBox1:setToolTip("Target to refresh",Status.tooltipTime)
+	cecho("RefreshTextBox1", "<yellow>AUTO TARGET 1")
+	GUI.containerRefreshTextBox1:setToolTip("Target to auto refresh",Status.tooltipTime)
 	
 	
 	
@@ -455,9 +499,9 @@ echo("RefreshBox", Info.showInProgress())
 	GUI.containerRefreshTextBox2 = GUI.containerRefreshTextBox2 or
 		Geyser.Label:new({
 			name = "RefreshTextBox2",
-			x = 235, y = 76,
+			x = 298, y = 76,
 			fontSize = 11,
-			width = 80,
+			width = 74,
 			height = 17,
 			color = "black"
 		}, GUI.containerRefreshBox)
@@ -467,7 +511,42 @@ echo("RefreshBox", Info.showInProgress())
 	GUI.containerRefreshTextBox2:setToolTip("Aura to use for refresh",Status.tooltipTime)
 	
 	
--- --END BLOCK SPOT
+	
+	-- CREATE TEXTBOX3 -> REFRESH -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerRefreshTextBox3 = GUI.containerRefreshTextBox3 or
+		Geyser.Label:new({
+			name = "RefreshTextBox3",
+			x = 298, y = 106,
+			fontSize = 11,
+			width = 74,
+			height = 17,
+			color = "black"
+		}, GUI.containerRefreshBox)
+
+	GUI.containerRefreshTextBox3:setStyleSheet(StyleTextBlue:getCSS())
+	cecho("RefreshTextBox3", "<yellow>POWER")
+	GUI.containerRefreshTextBox3:setToolTip("Second aura to use for refresh",Status.tooltipTime)
+
+
+
+	-- CREATE TEXTBOX4 -> REFRESH -> TABWINDOW2
+	-------------------------------------------------------
+	GUI.containerRefreshTextBox4 = GUI.containerRefreshTextBox4 or
+		Geyser.Label:new({
+			name = "RefreshTextBox4",
+			x = 0, y = 106,
+			fontSize = 11,
+			width = 144,
+			height = 17,
+			color = "black"
+		}, GUI.containerRefreshBox)
+
+	GUI.containerRefreshTextBox4:setStyleSheet(StyleTextBlue:getCSS())
+	cecho("RefreshTextBox4", "<yellow>AUTO TARGET 2")
+	GUI.containerRefreshTextBox4:setToolTip("Second target to auto refresh",Status.tooltipTime)
+	
+	
 
 -- CREATE CHANNEL BOX -> TABWINDOW2
 -----------------------------------------------------------
@@ -513,6 +592,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 			echo("ChannelButton1", "<center>CHANNEL ON</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: On\n"})
 			cecho("<yellow>Channel: On\n")
+			Status.powercastPauseisActive = false
 			send("conc", false)
 		else
 			Status.statusChannel = false
@@ -622,6 +702,8 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	function ChannelButton5_click()
 		GUI.containerChannelButton5:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		tempTimer(0.15, function() GUI.containerChannelButton5:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Status.powercastisForce = true
+		cecho("<yellow>FORCE POWERCAST\n")
 		Events.raiseEvent("processPowercastEvent", arguments)
 	end	
 
@@ -777,7 +859,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 	GUI.containerChannelTextBox9:setStyleSheet(StyleTextBlue:getCSS())
 	cecho("ChannelTextBox9", "<yellow>CHANNEL FEED")
-	GUI.containerChannelTextBox9:setToolTip("Amount to channel while feeding aura",Status.tooltipTime)
+	GUI.containerChannelTextBox9:setToolTip("Amount to channel while feeding aura\nWILL ONLY CHANNEL ON SCINT AURA",Status.tooltipTime)
 
 
 
@@ -849,7 +931,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 	GUI.containerChannelTextBox13:setStyleSheet(StyleTextBlue:getCSS())
 	cecho("ChannelTextBox13", "<yellow>FEED TARGET")
-	GUI.containerChannelTextBox13:setToolTip("Creature that you are feeding aura",Status.tooltipTime)	
+	GUI.containerChannelTextBox13:setToolTip("Creature that you are feeding aura\nWILL ONLY CHANNEL ON SCINT AURA",Status.tooltipTime)	
 
 
 

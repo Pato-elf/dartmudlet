@@ -45,6 +45,7 @@ Status.statusChanShare			= 'on'
 Status.statusPlaySound			= 'on'
 Status.powercastPause			= 'on'
 Status.powercastPauseisActive	= false
+Status.powercastisForce			= false
 
 -- misc variables
 Status.statusConc			= 'off'

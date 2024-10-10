@@ -232,7 +232,7 @@ local function showInProgress()
 	local helpTagOff = "</span>"
 	
 	helpText = helpText..helpTagYellow
-	helpText = helpText.."In Progress!"
+	helpText = helpText.."&#128679; Work in Progress! &#128679;"
 	helpText = helpText..helpTagOff
 
 	return helpText

@@ -58,8 +58,12 @@ local function processAutomation(args)
 	
 	if Status.statusRefresh then
 		if (conc == "You're bright-eyed and bushy-tailed.") then
-			--send("cast ro @60 dimiva")
-			send("cast ro @"..Status.refreshPower1.." "..Status.refreshTarget1)
+			if (Status.refreshTarget1 ~= "") and (Status.refreshTarget1 ~= nil) then
+				send("cast ro @"..Status.refreshPower1.." "..Status.refreshTarget1)
+			end
+			if (Status.refreshTarget2 ~= "") and (Status.refreshTarget2 ~= nil) then
+				send("cast ro @"..Status.refreshPower2.." "..Status.refreshTarget2)
+			end
 		end
 		
 		

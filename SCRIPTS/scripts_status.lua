@@ -17,9 +17,9 @@ Status.thirst		= ''
 -- refresh system
 Status.statusRefresh	= false
 Status.refreshPower1	= 50
---Status.refreshPower2	= 60
+Status.refreshPower2	= 50
 Status.refreshTarget1	= 'targetname'
---Status.refreshTarget2	= ''
+Status.refreshTarget2	= 'targetname'
 --Status.refreshType1		= 'auto'
 --Status.refreshType2		= 'auto'
 
@@ -73,6 +73,8 @@ local function setVariables()
 	
 	GUI.containerRefreshCommand1:print(Status.refreshTarget1)
 	GUI.containerRefreshCommand2:print(Status.refreshPower1)
+	GUI.containerRefreshCommand3:print(Status.refreshTarget2)
+	GUI.containerRefreshCommand4:print(Status.refreshPower2)
 	
 	
 	if (Status.statusChanShare == "off") then

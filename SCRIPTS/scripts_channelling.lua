@@ -323,8 +323,10 @@ local function setChanShare(args)
 	local setting = args["detail"]
 
 
-	if tonumber(setting) or ((setting ~= "brief") and (setting ~= "on") and (setting ~= "off")) then
+	if tonumber(setting) or not ((setting == "brief") or (setting == "on") or (setting == "off") or (setting == "help")) then
 		cecho("<red>ERROR: Invalid /chan share value\n")
+	elseif (setting == "help") then
+		cecho("<yellow>USAGE: /chan share on|off|brief - Change settings of the channel share button (current setting: "..Status.statusChanShare..")\n")
 	else
 		Status.statusChanShare = setting
 		
@@ -348,8 +350,10 @@ local function setChanSound(args)
 	local setting = args["detail"]
 
 
-	if tonumber(setting) or ((setting ~= "on") and (setting ~= "off")) then
+	if tonumber(setting) or not ((setting == "on") or (setting == "off") or (setting == "help")) then
 		cecho("<red>ERROR: Invalid /chan sound value\n")
+	elseif (setting == "help") then
+		cecho("<yellow>USAGE: /chan sound on|off - Play notification sound before powercast (current setting: "..Status.statusPlaySound..")\n")
 	else
 		Status.statusPlaySound = setting
 		Channelling.save()
@@ -366,8 +370,10 @@ local function setChanPause(args)
 	local setting = args["detail"]
 
 
-	if tonumber(setting) or ((setting ~= "on") and (setting ~= "off")) then
+	if tonumber(setting) or not ((setting == "on") or (setting == "off") or (setting == "help")) then
 		cecho("<red>ERROR: Invalid /chan pause value\n")
+	elseif (setting == "help") then
+		cecho("<yellow>USAGE: /chan pause on|off - Pause powercast to wait for full concentration (current setting: "..Status.powercastPause..")\n")
 	else
 		Status.powercastPause = setting
 		Channelling.save()

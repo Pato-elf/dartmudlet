@@ -402,7 +402,7 @@ echo("RefreshBox", Info.showInProgress())
 	
 	GUI.containerRefreshCommand1:setAction(
 	function(command)
-		Events.raiseEvent("setrefreshTargetEvent", {save = true, input = command})
+		Events.raiseEvent("setrefreshTargetEvent", {save = true, input = command, version = 1})
 		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
@@ -424,7 +424,7 @@ echo("RefreshBox", Info.showInProgress())
 	
 	GUI.containerRefreshCommand2:setAction(
 	function(command)
-		Events.raiseEvent("setrefreshPowerEvent", {save = true, input = command})
+		Events.raiseEvent("setrefreshPowerEvent", {save = true, input = command, version = 1})
 		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
@@ -446,7 +446,7 @@ echo("RefreshBox", Info.showInProgress())
 	
 	GUI.containerRefreshCommand3:setAction(
 	function(command)
-		--Events.raiseEvent("setrefreshTargetEvent", {save = true, input = command})
+		Events.raiseEvent("setrefreshTargetEvent", {save = true, input = command, version = 2})
 		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
@@ -468,7 +468,7 @@ echo("RefreshBox", Info.showInProgress())
 	
 	GUI.containerRefreshCommand4:setAction(
 	function(command)
-		Events.raiseEvent("setrefreshPowerEvent", {save = true, input = command})
+		Events.raiseEvent("setrefreshPowerEvent", {save = true, input = command, version = 2})
 		--GUI.containerChannelButton4:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
@@ -544,7 +544,7 @@ echo("RefreshBox", Info.showInProgress())
 
 	GUI.containerRefreshTextBox4:setStyleSheet(StyleTextBlue:getCSS())
 	cecho("RefreshTextBox4", "<yellow>AUTO TARGET 2")
-	GUI.containerRefreshTextBox4:setToolTip("Second target to auto refresh",Status.tooltipTime)
+	GUI.containerRefreshTextBox4:setToolTip("Second target to auto refresh\nLEAVE BLANK IF NOT NEEDED",Status.tooltipTime)
 	
 	
 

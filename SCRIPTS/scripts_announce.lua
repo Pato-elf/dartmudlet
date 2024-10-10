@@ -97,8 +97,10 @@ end
 -----------------------------------------------------------
 local function setConc(args)
 	local detail = args["detail"]
-	if (detail ~= "off") and (detail ~= "on") and (detail ~= "full") then
+	if not ((detail == "off") or (detail == "on") or (detail == "full") or (detail == "help")) then
 		cecho("<red>ERROR: Usage: /conc <off|on|full>\n")
+	elseif (detail == "help") then
+		cecho("<yellow>USAGE: /conc off|on|full - Show concentration on screen (current setting: "..Status.statusConc..")\n")
 	else
 		if detail == "off" then
 			cecho("<yellow>Concentration: Off\n")

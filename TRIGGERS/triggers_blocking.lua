@@ -57,7 +57,7 @@ local textToUnBlock = {
   ,"You disintegrated"
   ,"You shocked"
   ,"You fried"
-  ,"You zapped"
+  ,"You zap"
   ,"Coruscating rays of"
   ,"Your hands crackle"
   ,"A corona of .* surrounds you"

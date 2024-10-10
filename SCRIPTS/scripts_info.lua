@@ -3,7 +3,7 @@ Info = {}
 local sourceName = "info"
 local colorHelp = "yellow"
 local spacerHelp = "   "
-local versionNumber = "v1.4.1"
+local versionNumber = "v1.4.2"
 local levels = {"mythic","legendary","a grand master","a virtuoso","consummate","a high master","renowned","an adept","eminent",
 				"a master","superb","an expert","excellent","very good","adroit","good","proficient","fair","able","above average",
 				"average","below average","not very good","poor","a beginner","a novice","a tyro","unskilled"}

@@ -55,9 +55,6 @@ Some of the rest are:
 /announce off     - No announcement of improvements
 ```
 ```
-/antispam on|off - suppress repeated lines
-```
-```
 /block   - Start blocking new commands from being sent to the MUD, queue them to be sent later.
            Typically blocking is initiated automatically when you begin an interruptable action.
 /unblock - Resume sending commands to the MUD starting with any that were queued while blocking.
@@ -71,6 +68,7 @@ Some of the rest are:
 ```
 ```
 /chan info                       - Display full channelling stats on screen
+/chan pause on|off               - Pause powercast to wait for full concentration
 /chan share on|off|brief         - Change settings of the channel share button
 /chan sound on|off               - Play notification sound before powercast
 ```
@@ -86,13 +84,11 @@ Some of the rest are:
 /insert <who> <skill> <improves> - Manually insert a new skill into the database
 /info <who> <skill>              - Show current improves/level for a skill
 /conc on|off|full                - Show concentration on screen (none, bright only, all)
+/who on|off                      - Auto check the who list every 5 minutes
+/antispam on|off                 - suppress repeated lines
 #num repeat                      - Repeat commands from the command line (e.g. #3 say hi)
 /levels                          - Display a list of skill levels
 /help                            - Display a list of available commands
-```
-```
-/who on  - Check who is online every 5 minutes; results are updated in persistent custom area
-/who off - Stop issuing automatic checks every 5 minutes; manual 'who' still updates display
 ```
 
 &nbsp;

@@ -3,8 +3,8 @@
 &nbsp;
 ## Screenshots
 ![DartMUDlet_screenshot_v1.4.1](https://github.com/user-attachments/assets/09d5b69f-57a1-4338-8055-5088e13c95e4)
+&nbsp;
 ![DartMUDlet_screenshot_v1.2](https://github.com/user-attachments/assets/80b1c2f1-cd70-40f7-866a-aae7df62825b)
-
 &nbsp;
 ## Features
 DartMUDlet has many useful features to make your DartMUD experience more efficient and enjoyable. Features that include upgrades to the user interface, automation, and reporting are all included. It includes a conversation window across the top as well as a character information panel in the bottom right next to the command window. DartMUDlet automatically counts and reports skill improves for both you and your pets, and will attempt to autocorrect when a skills rolls to the next level. DartMUDlet will also block and queue up commands while you are performing interruptable actions(e.g. spells, books, scrolls), then release them afterwards when the action is complete.

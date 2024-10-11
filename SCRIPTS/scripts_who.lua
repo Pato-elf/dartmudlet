@@ -18,7 +18,7 @@ end
 
 function whoOff(args)
 	Events.removeListener("whoTimerEvent", sourceName)
-	cecho("<yellow>Who de-activated\n")
+	cecho("<yellow>Who: Off\n")
 end
 
 
@@ -26,7 +26,7 @@ end
 function whoOn(args)
 	whoItUp(args)
 	Events.addListener("whoTimerEvent", sourceName, whoItUp)
-	cecho("<yellow>Who activated\n")
+	cecho("<yellow>Who: On\n")
 end
 
 

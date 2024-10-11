@@ -1,5 +1,34 @@
 local Channelling			= {}
 local sourceName			= "channelling"
+local powercastTimeLast		= os.time()
+local powercastTimeisFirst	= true
+
+
+
+-- compute time elapsed since last time called
+-----------------------------------------------------------
+local function computeTimeElapsed()
+	local timeelapsed = ""
+	
+	if powercastTimeisFirst then
+		timeelapsed = "N/A"
+		powercastTimeisFirst = false
+	else
+		timeelapsed = os.time()
+		timeelapsed = timeelapsed - powercastTimeLast
+		
+		local hours   = math.floor(timeelapsed / 3600)
+		local minutes = math.floor((timeelapsed % 3600) / 60)
+		local seconds = timeelapsed % 60
+		
+		timeelapsed = string.format("%02d:%02d:%02d", hours, minutes, seconds)
+	end
+	
+	powercastTimeLast = os.time()
+	
+	return timeelapsed
+
+end
 
 
 
@@ -260,7 +289,7 @@ local function processPowercast(args)
 		Status.powercastTotal = Status.powercastTotal + 1
 		cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
 		cecho("ChannelTextBox4", Info.showPowercastPercentage())
-		cecho("<"..Status.channelColorEcho..">BEGIN POWERCAST\n")
+		cecho("<"..Status.channelColorEcho..">BEGIN POWERCAST (Time since last: "..computeTimeElapsed()..")\n")
 		Channelling.save()
 	end
 	

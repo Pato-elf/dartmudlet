@@ -1,28 +1,8 @@
 # DartMUDlet  -  Pato Edition &#129414;
 
 &nbsp;
-## Recent Changes
-- User interface has been rebuilt to use flexible, movable tabs
-- Fixed auto skill adjustment
-- Added 130+ additional unblocks
-- Added more announce modes (off, brief, on, verbose)
-- Fixed update problems with similar skill names (e.g. blur, blur_other)
-- Removed automatic "score" command after the initial one
-- Added "well fed" and "well slaked" statuses
-- Added `/help` command to display list of commands
-- Added `#num repeat` command to repeat commands (e.g. #3 say hi)
-- Update INFO panel when regaining consciousness
-- Changes to practice casting
-- Removed blocking on "cast net"
-- Added blocking for revise
-- Removed blocking when writing on forms
-- Added player status to name (e.g. blurry, sitting)
-- Fixed text being cut off early in upper chat box
-- Updates to reduce client crashing during lag spikes
-- Removed empty prompt lines
-
-&nbsp;
 ## Screenshots
+![DartMUDlet_screenshot_v1.4.1](https://github.com/user-attachments/assets/09d5b69f-57a1-4338-8055-5088e13c95e4)
 ![DartMUDlet_screenshot_v1.2](https://github.com/user-attachments/assets/80b1c2f1-cd70-40f7-866a-aae7df62825b)
 
 &nbsp;

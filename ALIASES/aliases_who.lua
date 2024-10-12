@@ -6,7 +6,8 @@ local aliases = {}
 local function setup(args)
 	tempAliases = {}
 
-	tempAliases.whoOn = tempAlias("^\/[Ww][Hh][Oo] [Oo][Nn]",
+	tempAliases.whoOn =
+	tempAlias("^\/[Ww][Hh][Oo] [Oo][Nn]",
 		[[
 			local arguments = {}
 			Events.raiseEvent("whoOnEvent", arguments)
@@ -14,7 +15,8 @@ local function setup(args)
 
 
 
-	tempAliases.whoOff = tempAlias("^\/[Ww][Hh][Oo] [Oo][Ff][Ff]",
+	tempAliases.whoOff =
+	tempAlias("^\/[Ww][Hh][Oo] [Oo][Ff][Ff]",
 		[[
 			local arguments = {}
 			Events.raiseEvent("whoOffEvent", arguments)

@@ -19,41 +19,39 @@ local function setup(args)
 
 
 
--- /help command	
----------------------------------------------------------------------
-  	tempAliases.showHelp =
-      tempAlias('^\\/help(?: )?(.*)',
-								[[
-									local detail = matches[2]
-									local arguments = {detail = detail, who = Status.name}
-									Events.raiseEvent('showHelpEvent', arguments)
-								]])
+	-- /help command	
+	-------------------------------------------------------
+	tempAliases.showHelp =
+	tempAlias('^\\/help(?: )?(.*)',
+		[[
+			local detail = matches[2]
+			local arguments = {detail = detail, who = Status.name}
+			Events.raiseEvent('showHelpEvent', arguments)
+		]])
 
 
 
--- /levels command
----------------------------------------------------------------------
-  	tempAliases.showLevels =
-      tempAlias('^\\/levels(?: )?(.*)',
-								[[
-									local detail = matches[2]
-									local arguments = {detail = detail, who = Status.name}
-									Events.raiseEvent('showLevelsEvent', arguments)
-								]])
+	-- /levels command
+	-------------------------------------------------------
+	tempAliases.showLevels =
+	tempAlias('^\\/levels(?: )?(.*)',
+		[[
+			local detail = matches[2]
+			local arguments = {detail = detail, who = Status.name}
+			Events.raiseEvent('showLevelsEvent', arguments)
+		]])
 
 
 
--- /conc command
----------------------------------------------------------------------
-  	tempAliases.setConc =
-      tempAlias('^\\/conc (.*)$',
-								[[
-									local detail = matches[2]
-									local arguments = {detail = detail, who = Status.name}
-									Events.raiseEvent('setConcEvent', arguments)
-								]])
-
-
+	-- /conc command
+	-------------------------------------------------------
+	tempAliases.setConc =
+	tempAlias('^\\/conc (.*)$',
+		[[
+			local detail = matches[2]
+			local arguments = {detail = detail, who = Status.name}
+			Events.raiseEvent('setConcEvent', arguments)
+		]])
 
 	aliases = tempAliases
 end

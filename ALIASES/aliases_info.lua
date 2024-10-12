@@ -1,20 +1,21 @@
 local Info = {}
 local aliases = {}
 
+
+
 local function setup(args)
 	tempAliases = {}
 
 
-
--- # repeat command	
----------------------------------------------------------------------
-  	tempAliases.repeatCommand =
-      tempAlias("^#(\\d+) (.*)$",
-								[[
-									for i = 1, tonumber(matches[2]) do
-										expandAlias(matches[3])
-									end
-								]])
+	-- # repeat command	
+	-------------------------------------------------------
+	tempAliases.repeatCommand =
+	tempAlias("^#(\\d+) (.*)$",
+		[[
+			for i = 1, tonumber(matches[2]) do
+				expandAlias(matches[3])
+			end
+		]])
 
 
 
@@ -55,8 +56,9 @@ local function setup(args)
 
 
 	aliases = tempAliases
-
 end
+
+
 
 local function unsetup(args)
 	for i,v in pairs(aliases) do
@@ -64,10 +66,13 @@ local function unsetup(args)
 	end
 end
 
+
 local function resetup(args)
 	unsetup(args)
 	setup(args)
 end
+
+
 
 Info =
 {

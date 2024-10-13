@@ -53,6 +53,18 @@ local function setup(args)
 			Events.raiseEvent('setConcEvent', arguments)
 		]])
 
+
+
+	-- /random command
+	-------------------------------------------------------
+	tempAliases.showRandom =
+	tempAlias('^\\/random (.*)$',
+		[[
+			local detail = matches[2]
+			local arguments = {detail = detail, who = Status.name}
+			Events.raiseEvent('showRandomEvent', arguments)
+		]])
+		
 	aliases = tempAliases
 end
 

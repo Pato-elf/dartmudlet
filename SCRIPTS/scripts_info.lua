@@ -1,5 +1,6 @@
 Info = {}
 
+math.randomseed(os.time())
 local sourceName = "info"
 local colorHelp = "yellow"
 local spacerHelp = "   "
@@ -7,6 +8,45 @@ local versionNumber = "v1.4.2"
 local levels = {"mythic","legendary","a grand master","a virtuoso","consummate","a high master","renowned","an adept","eminent",
 				"a master","superb","an expert","excellent","very good","adroit","good","proficient","fair","able","above average",
 				"average","below average","not very good","poor","a beginner","a novice","a tyro","unskilled"}
+
+
+
+-- return /random results
+-----------------------------------------------------------
+local function showRandom(args)
+	local randomrange = args["detail"]
+	local randomnumber = 0
+	
+	
+	if tonumber(randomrange) then
+		randomrange = tonumber(randomrange)
+		if (randomrange < 2) or (randomrange > 1000) then
+			cecho("<red>ERROR: Invalid random number (Between 2 - 1000\n")
+		else
+			randomnumber = math.random(1, randomrange)
+			send("ooc "..Status.name.." generates a random number between 1 and "..randomrange..": "..randomnumber)
+		end
+		
+	elseif string.find(randomrange, ",") then
+		local randomvalues = {}
+		
+		for value in string.gmatch(randomrange, "([^,]+)") do
+			table.insert(randomvalues, value)
+		end
+		
+		for i, v in ipairs(randomvalues) do
+			randomvalues[i] = v:gsub("^%s*(.-)%s*$", "%1")
+		end
+		
+		send("ooc "..Status.name.." picks a random value out of a list: "..randomrange)
+		send("ooc Value selected: "..randomvalues[math.random(1, #randomvalues)])
+		
+	else --randomrange == "help"
+		cecho("<yellow>USAGE: /random <num> - Generate a random number between 1 and a number of your choosing\n")
+		cecho("<yellow>USAGE: /random <value,value,value> - Pick a random value from a list of values\n")
+	end
+
+end
 
 
 
@@ -142,7 +182,7 @@ end
 
 
 -- /levels command	
----------------------------------------------------------------------
+-----------------------------------------------------------
 local function showLevels(args)
 	local skillnumPosition = 24
 	local skillsizePosition = 44
@@ -250,6 +290,7 @@ end
 
 function setup(args)
 	Events.addListener("showHelpEvent", sourceName, showHelp)
+	Events.addListener("showRandomEvent", sourceName, showRandom)
 	Events.addListener("showLevelsEvent", sourceName, showLevels)
 	Events.addListener("emptylineEvent", sourceName, emptyLine)
 end
@@ -258,6 +299,7 @@ end
 
 function unsetup(args)
 	Events.removeListener("showHelpEvent", sourceName)
+	Events.removeListener("showRandomEvent", sourceName)
 	Events.removeListener("showLevelsEvent", sourceName)
 	Events.removeListener("emptylineEvent", sourceName)
 end

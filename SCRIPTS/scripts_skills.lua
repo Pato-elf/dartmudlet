@@ -228,7 +228,7 @@ local function updateCount(args)
 	if skill ~= nil and skill~= 0 and skill ~= -1 then
 		dba.execute('UPDATE improves SET count='..count..' WHERE who="'..who..'" AND skill="'..skill_name..'"')
 		local imptext = "Updating skill: "..skill_name.." from "..skill.count.." to "..count
-		cecho("<yellow>"..imptext.."\n")	
+		cecho("\n<yellow>"..imptext.."\n")	
 		UI.onImprove({name = who, skill_name = skill_name, text = imptext})
 	else
 		cecho("<red>ERROR: Unknown skill - "..skill_name.."\n")

@@ -4,6 +4,9 @@ local windows_ByPosition = {}
 windows_ByPosition.topRight = {}
 windows_ByPosition.topLeft = {}
 windows_ByPosition.right = {}
+aura = "unknown"
+
+
 
 	local StyleButtonPaleGreen = Geyser.StyleSheet:new([[
 		QLabel{
@@ -148,8 +151,6 @@ windows_ByPosition.right = {}
 		}
 	]])
 
-
-
 	local StyleDropdown = Geyser.StyleSheet:new([[
 		QLabel{
 			color: black;
@@ -179,7 +180,6 @@ windows_ByPosition.right = {}
 	]])
 
 
-aura = "unknown"
 
 -- CREATE GUI
 ---------------------------------------------------------------------
@@ -1913,57 +1913,59 @@ end
 
 
 
-
-
 local function setup(args)
-  createUIConsole()
+	createUIConsole()
 
-  Events.addListener("chatEvent", sourceName, onChat)
-  Events.addListener("skillMistakeEvent", sourceName, onSkillMistake)
-  Events.addListener("startWhoEvent", sourceName, onStartWho)
-  Events.addListener("endWhoEvent", sourceName, onWhoEnd)
-  Events.addListener("refreshUIEvent", sourceName, refreshUI)
-  Events.addListener("nameEvent", sourceName, onName)
-  Events.addListener("SoulAgeEvent", sourceName, onAge)
-  Events.addListener("hungerEvent", sourceName, onHunger)
-  Events.addListener("thirstEvent", sourceName, onThirst)
-  Events.addListener("encumbranceEvent", sourceName, onEncumbrance)
-  Events.addListener("movementEvent", sourceName, onMovement)
-  Events.addListener("messageEvent", sourceName, onMessage)
-  Events.addListener("concEvent", sourceName, onConc)
-  Events.addListener("auraEvent", sourceName, onAura)
-  Events.addListener("languageEvent", sourceName, onLanguage)
+	Events.addListener("chatEvent", sourceName, onChat)
+	Events.addListener("skillMistakeEvent", sourceName, onSkillMistake)
+	Events.addListener("startWhoEvent", sourceName, onStartWho)
+	Events.addListener("endWhoEvent", sourceName, onWhoEnd)
+	Events.addListener("refreshUIEvent", sourceName, refreshUI)
+	Events.addListener("nameEvent", sourceName, onName)
+	Events.addListener("SoulAgeEvent", sourceName, onAge)
+	Events.addListener("hungerEvent", sourceName, onHunger)
+	Events.addListener("thirstEvent", sourceName, onThirst)
+	Events.addListener("encumbranceEvent", sourceName, onEncumbrance)
+	Events.addListener("movementEvent", sourceName, onMovement)
+	Events.addListener("messageEvent", sourceName, onMessage)
+	Events.addListener("concEvent", sourceName, onConc)
+	Events.addListener("auraEvent", sourceName, onAura)
+	Events.addListener("languageEvent", sourceName, onLanguage)
 end
+
+
 
 local function unsetup(args)
-  Events.removeListener("chatEvent", sourceName)
-  Events.removeListener("skillMistakeEvent", sourceName)
-  Events.removeListener("startWhoEvent", sourceName)
-  Events.removeListener("whoEvent", sourceName)
-  Events.removeListener("endWhoEvent", sourceName)
-  Events.removeListener("nameEvent", sourceName)
-  Events.removeListener("SoulAgeEvent", sourceName)
-  Events.removeListener("hungerEvent", sourceName)
-  Events.removeListener("thirstEvent", sourceName)
-  Events.removeListener("encumbranceEvent", sourceName)
-  Events.removeListener("movementEvent", sourceName)
-  Events.removeListener("messageEvent", sourceName)
-  Events.removeListener("concEvent", sourceName)
-  Events.removeListener("auraEvent", sourceName)
-  Events.removeListener("languageEvent", sourceName)
+	Events.removeListener("chatEvent", sourceName)
+	Events.removeListener("skillMistakeEvent", sourceName)
+	Events.removeListener("startWhoEvent", sourceName)
+	Events.removeListener("whoEvent", sourceName)
+	Events.removeListener("endWhoEvent", sourceName)
+	Events.removeListener("nameEvent", sourceName)
+	Events.removeListener("SoulAgeEvent", sourceName)
+	Events.removeListener("hungerEvent", sourceName)
+	Events.removeListener("thirstEvent", sourceName)
+	Events.removeListener("encumbranceEvent", sourceName)
+	Events.removeListener("movementEvent", sourceName)
+	Events.removeListener("messageEvent", sourceName)
+	Events.removeListener("concEvent", sourceName)
+	Events.removeListener("auraEvent", sourceName)
+	Events.removeListener("languageEvent", sourceName)
 end
 
+
+
 local function resetup(args)
-  unsetup(args)
-  resetup(args)
+	unsetup(args)
+	resetup(args)
 end
 
 
 UI = {
-  setup = setup
-  ,unsetup = unsetup
-  ,resetup = resetup
-  ,onImprove = onImprove
+	setup = setup,
+	unsetup = unsetup,
+	resetup = resetup,
+	onImprove = onImprove
 }
 
 return UI

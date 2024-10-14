@@ -302,6 +302,8 @@ local function setup(args)
 	Events.addListener("insertSkillEvent", sourceName, insertSkill)
 end
 
+
+
 local function unsetup(args)
 	Events.removeListener("skillImproveEvent", sourceName)
 	Events.removeListener("skillInfoEvent", sourceName)
@@ -311,19 +313,23 @@ local function unsetup(args)
 	Events.removeListener("insertSkillEvent", sourceName)
 end
 
+
+
 local function resetup(args)
 	unsetup(args)
 	setup(args)
 end
 
+
+
 Skills =
 {
-	setup = setup
-	,unsetup = unsetup
-	,resetup = resetup
-	,imp2lvl = imp2lvl
-	,getSkill = getSkill
-	,nextLevel = nextLevel
+	setup = setup,
+	unsetup = unsetup,
+	resetup = resetup,
+	imp2lvl = imp2lvl,
+	getSkill = getSkill,
+	nextLevel = nextLevel
 }
 
 return Skills

@@ -66,6 +66,8 @@ Some of the rest are:
 /conc on|off|full                - Show concentration on screen (none, bright only, all)
 /who on|off                      - Auto check the who list every 5 minutes
 /antispam on|off                 - suppress repeated lines
+/random <num>                    - Generate a random number between 1 and a number
+/random <value,value,value>      - Pick a random value from a list of values
 #num repeat                      - Repeat commands from the command line (e.g. #3 say hi)
 /levels                          - Display a list of skill levels
 /help                            - Display a list of available commands

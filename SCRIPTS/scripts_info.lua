@@ -4,7 +4,7 @@ math.randomseed(os.time())
 local sourceName = "info"
 local colorHelp = "yellow"
 local spacerHelp = "   "
-local versionNumber = "v1.4.2"
+local versionNumber = "v1.4.3"
 local levels = {"mythic","legendary","a grand master","a virtuoso","consummate","a high master","renowned","an adept","eminent",
 				"a master","superb","an expert","excellent","very good","adroit","good","proficient","fair","able","above average",
 				"average","below average","not very good","poor","a beginner","a novice","a tyro","unskilled"}
@@ -62,9 +62,9 @@ local function showQuickHelp()
 	helpText = helpText..helpTagYellow
 	helpText = helpText.."DartMUDlet - Pato Edition "..versionNumber.."<BR>"
 	helpText = helpText.."============================================================================================="..helpTagOff.."<BR>"
-	helpText = helpText..helpTagGreen.."/unblock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..helpTagOff..helpTagRed.." IF YOU ARE STUCK IN BLOCKING MODE"..helpTagOff.."<BR>"
-	helpText = helpText..helpTagGreen.."/help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..helpTagOff..helpTagYellow.." Display a full list of available commands"..helpTagOff.."<BR>"
-	helpText = helpText..helpTagGreen.."/info &lt;skill&gt;"..helpTagOff..helpTagYellow.." Show current improves/level for a skill"..helpTagOff.."<BR><BR>"
+	helpText = helpText..helpTagGreen.."/unblock&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..helpTagOff..helpTagRed.."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF YOU ARE STUCK IN BLOCKING MODE"..helpTagOff.."<BR>"
+	helpText = helpText..helpTagGreen.."/help&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..helpTagOff..helpTagYellow.."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Full list of available commands"..helpTagOff.."<BR>"
+	helpText = helpText..helpTagGreen.."/info &lt;name&gt; &lt;skill&gt;"..helpTagOff..helpTagYellow.." Show current level for a skill"..helpTagOff.."<BR><BR>"
 	helpText = helpText..helpTagGreen.."/announce on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"..helpTagOff..helpTagYellow.." Announce improves in standard mode"..helpTagOff.."<BR>"
 	helpText = helpText..helpTagGreen.."/announce brief&nbsp;&nbsp;"..helpTagOff..helpTagYellow.." Announce improves in brief mode"..helpTagOff.."<BR>"
 	helpText = helpText..helpTagGreen.."/announce verbose"..helpTagOff..helpTagYellow.." Announce improves in verbose mode"..helpTagOff.."<BR>"
@@ -141,7 +141,7 @@ local function showHelp(args)
 	cecho(preText.."                         DartMUDlet - Pato Edition "..versionNumber.."\n")
 	cecho(preText.."================================================================================\n")
 	cecho(preText.."/setup   - Initialize variables, customize display, start improve tracking\n")
-	cecho(preText.."/unsetup - Remove timers and triggers, deactivate display customizations\n")
+	--cecho(preText.."/unsetup - Remove timers and triggers, deactivate display customizations\n")
 	cecho(preText.."/resetup - Reinitialize timers, etc. Activate any updated DartMUDLet code\n")
 	cecho(preText.."\n")
 	cecho(preText.."/announce on      - Announce improves in standard mode (skill name+)\n")
@@ -174,6 +174,8 @@ local function showHelp(args)
 	cecho(preText.."/conc on|off|full                - Show concentration on screen (none, bright only, all)\n")
 	cecho(preText.."/who on|off                      - Auto check the who list every 5 minutes\n")
 	cecho(preText.."/antispam on|off                 - Suppress repeated lines\n")
+	cecho(preText.."/random <num>                    - Generate a random number between 1 and a number\n")
+	cecho(preText.."/random <value,value,value>      - Pick a random value from a list of values\n")
 	cecho(preText.."#num repeat                      - Repeat commands (e.g. #3 say hi)\n")
 	cecho(preText.."/levels                          - Display a list of skill levels\n")
 	cecho(preText.."/help                            - Display a list of available commands\n")

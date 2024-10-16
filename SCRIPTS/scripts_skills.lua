@@ -51,7 +51,7 @@ local function getSkill(args)
 		who = Status.name
 	end
 
-	local results = dba.query('SELECT * FROM improves WHERE who="'..who..'" AND skill="'..skill_name..'"') --PATO
+	local results = dba.query('SELECT * FROM improves WHERE who="'..who..'" AND skill="'..skill_name..'"')
 
 	if results.count() == 0 then
 		return -1
@@ -106,7 +106,6 @@ end
 local function skillInfo(args)
 	local skill_name = args["skill_name"]
 	local who = args["who"]
-	--who = (who:gsub("^%l", string.upper))
 	local result = getSkill(args)
 
 	if result == -1 then

@@ -79,6 +79,7 @@ local textToUnBlock = {
 	,"You can only inscribe one scroll at a time"
 	,"You can only learn .* from this book"
 	,"You cannot find a corpse here"
+	,"You cannot store such a complex spell"
 	,"You cannot understand .* well enough"
 	,"You charred"
 	,"You chilled"

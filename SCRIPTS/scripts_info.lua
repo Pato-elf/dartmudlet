@@ -121,11 +121,8 @@ local function showQuickLevels()
 	helpText = helpText..string.rep("&nbsp;",skillLevels[17].length2)..skillLevels[3].name..string.rep("&nbsp;",skillLevels[3].length1)..skillLevels[3].min.."<BR>"
 	helpText = helpText..skillLevels[16].name..string.rep("&nbsp;",skillLevels[16].length1)..skillLevels[16].min
 	helpText = helpText..string.rep("&nbsp;",skillLevels[16].length2)..skillLevels[2].name..string.rep("&nbsp;",skillLevels[2].length1)..skillLevels[2].min.."<BR>"
-
 	helpText = helpText..skillLevels[15].name..string.rep("&nbsp;",skillLevels[15].length1)..skillLevels[15].min
 	helpText = helpText..string.rep("&nbsp;",skillLevels[15].length2)..skillLevels[1].name..string.rep("&nbsp;",skillLevels[1].length1)..skillLevels[1].min.."<BR>"
-
---	helpText = helpText..string.rep("&nbsp;",31)..skillLevels[1].name..string.rep("&nbsp;",skillLevels[1].length1)..skillLevels[1].min.."<BR>"
 	helpText = helpText..helpTagOff
 
 	return helpText
@@ -196,7 +193,7 @@ local function showLevels(args)
 	for i,v in pairs(levels) do
 		local skillSize    = ""
 		local currentSkill = name2lvl(v)
-	--echo("test "..currentSkill.name.."\n")
+
 		if currentSkill.name == "mythic" then
 			skillSize = "????"
 		else

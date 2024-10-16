@@ -38,8 +38,8 @@ local function setchannelMode(args)
 	local channelmode = args["input"]
 	
 	Status.channelMode = channelmode
+	dba.execute('UPDATE channel SET channelMode="'..Status.channelMode..'"')
 	send("conc", false)
-	Channelling.save()
 	cecho("<yellow>Channel: Channel mode updated\n")
 	
 end
@@ -60,7 +60,7 @@ local function setfocusAmountDefault(args)
 			cecho("<red>ERROR: Invalid default channel value\n")
 		else
 			Status.focusAmountDefault = focusamount
-			if saveflag then Channelling.save() end
+			if saveflag then dba.execute('UPDATE channel SET focusAmountDefault='..Status.focusAmountDefault) end
 			cecho("<yellow>Channel: Default channel value updated\n")
 		end
 	end
@@ -80,7 +80,7 @@ local function setteachTarget(args)
 		cecho("<red>ERROR: Invalid teaching target\n")
 	else
 		Status.teachTarget = teachtarget
-		if saveflag then Channelling.save() end
+		if saveflag then dba.execute('UPDATE channel SET teachTarget="'..Status.teachTarget..'"') end
 		cecho("<yellow>Channel: Teaching target updated\n")
 	end
 	
@@ -98,11 +98,11 @@ local function setpowercastAmount(args)
 	if not powercastamount then
 		cecho("<red>ERROR: Invalid powercast value\n")
 	else
-		if (powercastamount < 1) or (powercastamount > 999) then
+		if (powercastamount < 100) or (powercastamount > 999) then
 			cecho("<red>ERROR: Invalid powercast value\n")
 		else
 			Status.powercastAmount = powercastamount
-			if saveflag then Channelling.save() end
+			if saveflag then dba.execute('UPDATE channel SET powercastAmount='..Status.powercastAmount) end
 			cecho("<yellow>Channel: Powercast value updated\n")
 		end
 	end
@@ -124,8 +124,8 @@ local function setpowercastAddon(args)
 			cecho("<red>ERROR: Invalid powercast addon value\n")
 		else
 			Status.powercastAddon = powercastaddon
+			if saveflag then dba.execute('UPDATE channel SET powercastAddon='..Status.powercastAddon) end
 			cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
-			if saveflag then Channelling.save() end
 			cecho("<yellow>Channel: Powercast addon value updated\n")
 		end
 	end
@@ -144,7 +144,7 @@ local function setfeedTarget(args)
 		cecho("<red>ERROR: Invalid feeding target\n")
 	else
 		Status.feedTarget = feedtarget
-		if saveflag then Channelling.save() end
+		if saveflag then dba.execute('UPDATE channel SET feedTarget="'..Status.feedTarget..'"') end
 		cecho("<yellow>Channel: Feeding target updated\n")
 	end
 
@@ -165,7 +165,7 @@ local function setfocusAmountFeed(args)
 			cecho("<red>ERROR: Invalid feeding channel value\n")
 		else
 			Status.focusAmountFeed = focusamountfeed
-			if saveflag then Channelling.save() end
+			if saveflag then dba.execute('UPDATE channel SET focusAmountFeed='..Status.focusAmountFeed) end
 			cecho("<yellow>Channel: Feeding channel value updated\n")
 		end
 	end
@@ -184,7 +184,7 @@ local function setfocusTarget(args)
 		cecho("<red>ERROR: Invalid focus target\n")
 	else
 		Status.focusTarget = focustarget
-		if saveflag then Channelling.save() end
+		if saveflag then dba.execute('UPDATE channel SET focusTarget="'..Status.focusTarget..'"') end
 		cecho("<yellow>Channel: Focus target updated\n")
 	end
 	
@@ -202,7 +202,7 @@ local function setfocusTargetSource(args)
 		cecho("<red>ERROR: Invalid focus target source\n")
 	else
 		Status.focusTargetSource = focustargetsource
-		if saveflag then Channelling.save() end
+		if saveflag then dba.execute('UPDATE channel SET focusTargetSource="'..Status.focusTargetSource..'"') end
 		cecho("<yellow>Channel: Focus target source updated\n")
 	end
 	
@@ -223,7 +223,7 @@ local function setfocusAmountTeach(args)
 			cecho("<red>ERROR: Invalid teaching channel value\n")
 		else
 			Status.focusAmountTeach = focusamountteach
-			if saveflag then Channelling.save() end
+			if saveflag then dba.execute('UPDATE channel SET focusAmountTeach='..Status.focusAmountTeach) end
 			cecho("<yellow>Channel: Teaching channel value updated\n")
 		end
 	end
@@ -239,7 +239,7 @@ local function setchannelAddonCommand(args)
 	local saveflag = args["save"]
 
 	Status.cmdAddon = channeladdoncommand
-	if saveflag then Channelling.save() end
+	if saveflag then dba.execute('UPDATE channel SET cmdAddon="'..Status.cmdAddon..'"') end
 	cecho("<yellow>Channel: Channel addon command updated\n")
 	
 end
@@ -287,10 +287,10 @@ local function processPowercast(args)
 		Status.powercastisForce = false
 		Status.focusTotal = 0
 		Status.powercastTotal = Status.powercastTotal + 1
+		dba.execute('UPDATE channel SET powercastTotal='..Status.powercastTotal)
 		cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
 		cecho("ChannelTextBox4", Info.showPowercastPercentage())
 		cecho("<"..Status.channelColorEcho..">BEGIN POWERCAST (Time since last: "..computeTimeElapsed()..")\n")
-		Channelling.save()
 	end
 	
 	if (Status.powercastPause == "on") then
@@ -358,6 +358,7 @@ local function setChanShare(args)
 		cecho("<yellow>USAGE: /chan share on|off|brief - Change settings of the channel share button (current setting: "..Status.statusChanShare..")\n")
 	else
 		Status.statusChanShare = setting
+		dba.execute('UPDATE channel SET statusChanShare="'..Status.statusChanShare..'"')
 		
 		if (Status.statusChanShare == "off") then
 			GUI.containerChannelButton4:setStyleSheet(StyleButtonDarkGrey:getCSS())
@@ -365,7 +366,6 @@ local function setChanShare(args)
 			GUI.containerChannelButton4:setStyleSheet(StyleButtonLightGrey:getCSS())
 		end
 		
-		Channelling.save()
 		cecho("<yellow>Channel: /chan share value updated\n")
 	end
 	
@@ -385,7 +385,7 @@ local function setChanSound(args)
 		cecho("<yellow>USAGE: /chan sound on|off - Play notification sound before powercast (current setting: "..Status.statusPlaySound..")\n")
 	else
 		Status.statusPlaySound = setting
-		Channelling.save()
+		dba.execute('UPDATE channel SET statusPlaySound="'..Status.statusPlaySound..'"')
 		cecho("<yellow>Channel: /chan sound value updated\n")
 	end
 	
@@ -405,7 +405,7 @@ local function setChanPause(args)
 		cecho("<yellow>USAGE: /chan pause on|off - Pause powercast to wait for full concentration (current setting: "..Status.powercastPause..")\n")
 	else
 		Status.powercastPause = setting
-		Channelling.save()
+		dba.execute('UPDATE channel SET powercastPause="'..Status.powercastPause..'"')
 		cecho("<yellow>Channel: /chan pause value updated\n")
 	end
 	
@@ -416,16 +416,23 @@ end
 -- reset the powercast stats
 -----------------------------------------------------------
 local function resetPowercastStats()
+	local query = ""
 	Status.powercastTotal = 0
 	Status.powercastSuccess = 0
 	Status.powercastPercent = 0
 	Status.focusTotal = 0
+	
+	query = query..'UPDATE channel '
+	query = query..'SET powercastTotal='..Status.powercastTotal..', '
+	query = query..'powercastSuccess='..Status.powercastSuccess..', '
+	query = query..'powercastPercent='..Status.powercastPercent
+	dba.execute(query)
+	
 	cecho("ChannelTextBox1", Info.showSpellCasting())
 	cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
 	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
 	cecho("ChannelTextBox4", Info.showPowercastPercentage())
 	cecho("<yellow>Channel: Reset powercast stats\n")
-	Channelling.save()
 end
 
 
@@ -448,77 +455,97 @@ end
 
 
 
-local function loaderFunction(sentTable)
-	if sentTable then
-		Status.channelMode = sentTable["channelMode"] or ""
-		Status.statusPowercast = sentTable["statusPowercast"] or false
-		Status.statusTeach = sentTable["statusTeach"] or false
-		Status.statusFeed = sentTable["statusFeed"] or false
-		Status.statusPlaySound = sentTable["statusPlaySound"] or true
-		Status.powercastAddon = sentTable["powercastAddon"] or 3
-		Status.powercastAmount = sentTable["powercastAmount"] or 500
-		Status.powercastPercent = sentTable["powercastPercent"] or 0
-		Status.powercastSuccess = sentTable["powercastSuccess"] or 0
-		Status.powercastTotal = sentTable["powercastTotal"] or 0
-		Status.focusAmountDefault = sentTable["focusAmountDefault"] or 20
-		Status.focusAmountFeed = sentTable["focusAmountFeed"] or 60
-		Status.focusAmountTeach = sentTable["focusAmountTeach"] or 20
-		Status.focusTarget = sentTable["focusTarget"] or "necklace"
-		Status.focusTargetSource = sentTable["focusTargetSource"] or "(held) scrip"
-		Status.teachTarget = sentTable["teachTarget"] or "targetname"
-		Status.feedTarget = sentTable["feedTarget"] or "targetname"
-		Status.cmdAddon = sentTable["cmdAddon"] or ""
-		Status.statusChanShare = sentTable["statusChanShare"] or "on"
-		Status.statusPlaySound = sentTable["statusPlaySound"] or "on"
-		Status.powercastPause = sentTable["powercastPause"] or "on"
+-- build or update the table during setup
+-----------------------------------------------------------
+local function checkChannelTable(args)
+
+	dba.execute([[CREATE TABLE IF NOT EXISTS channel (
+		id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+		channelColorEcho VARCHAR(16) DEFAULT "magenta",
+		channelMode VARCHAR(16) DEFAULT "SELECT MODE",
+		cmdAddon VARCHAR(64) DEFAULT "",
+		feedTarget VARCHAR(16) DEFAULT "targetname",
+		focusAmountDefault INTEGER DEFAULT 20,
+		focusAmountFeed INTEGER DEFAULT 60,
+		focusAmountTeach INTEGER DEFAULT 20,
+		focusTarget VARCHAR(64) DEFAULT "necklace",
+		focusTargetSource VARCHAR(64) DEFAULT "(held) scrip",
+		powercastAddon INTEGER DEFAULT 3,
+		powercastAmount INTEGER DEFAULT 500,
+		powercastPause VARCHAR(16) DEFAULT "on",
+		powercastPercent FLOAT DEFAULT 0,
+		powercastSoundFile VARCHAR(64) DEFAULT "Speech On.wav",
+		powercastSuccess INTEGER DEFAULT 0,
+		powercastTotal INTEGER DEFAULT 0,
+		statusChanShare VARCHAR(16) DEFAULT "on",
+		statusPlaySound VARCHAR(16) DEFAULT "on",
+		teachTarget VARCHAR(16) DEFAULT "targetname"
+
+	);]])
+
+	local results = dba.query('SELECT id FROM channel')
+	if results.count() == 0 then
+		dba.execute('INSERT INTO channel DEFAULT VALUES')
 	end
+
 end
 
 
 
-
 local function load()
-	Events.raiseEvent("loadEvent",{
-		sourceName = sourceName,
-		functionToSendData = loaderFunction
-	})
+	local result = {}
+	
+	result = dba.query('SELECT * FROM channel')[1]
+	Status.channelColorEcho = result.channelColorEcho
+	Status.channelMode = result.channelMode
+	Status.cmdAddon = result.cmdAddon
+	Status.feedTarget = result.feedTarget
+	Status.focusAmountDefault = result.focusAmountDefault
+	Status.focusAmountFeed = result.focusAmountFeed
+	Status.focusAmountTeach = result.focusAmountTeach
+	Status.focusTarget = result.focusTarget
+	Status.focusTargetSource = result.focusTargetSource
+	Status.powercastAddon = result.powercastAddon
+	Status.powercastAmount = result.powercastAmount
+	Status.powercastPause = result.powercastPause
+	Status.powercastPercent = result.powercastPercent
+	Status.powercastSoundFile = result.powercastSoundFile
+	Status.powercastSuccess = result.powercastSuccess
+	Status.powercastTotal = result.powercastTotal
+	Status.statusChanShare = result.statusChanShare
+	Status.statusPlaySound = result.statusPlaySound
+	Status.teachTarget = result.teachTarget
+	
 end
 
 
 
 local function save()
-	Events.raiseEvent("saveEvent",{
-		sourceName = sourceName,
-		tableToSave = {
-			channelMode = Status.channelMode,
-			statusPowercast = Status.statusPowercast,
-			statusTeach = Status.statusTeach,
-			statusFeed = Status.statusFeed,
-			statusPlaySound = Status.statusPlaySound,
-			powercastAddon = Status.powercastAddon,
-			powercastAmount = Status.powercastAmount,
-			powercastPercent = Status.powercastPercent,
-			powercastSuccess = Status.powercastSuccess,
-			powercastTotal = Status.powercastTotal,
-			focusAmountDefault = Status.focusAmountDefault,
-			focusAmountFeed = Status.focusAmountFeed,
-			focusAmountTeach = Status.focusAmountTeach,
-			focusTotal = Status.focusTotal,
-			focusTarget = Status.focusTarget,
-			focusTargetSource = Status.focusTargetSource,
-			teachTarget = Status.teachTarget,
-			feedTarget = Status.feedTarget,
-			cmdAddon = Status.cmdAddon,
-			statusChanShare = Status.statusChanShare,
-			statusPlaySound = Status.statusPlaySound,
-			powercastPause = powercastPause
-		}
-	})
+	local query = ""
+	
+	query = query..'UPDATE channel '
+	query = query..'SET powercastTotal='..Status.powercastTotal..', '
+	query = query..'powercastSuccess='..Status.powercastSuccess..', '
+	query = query..'powercastPercent='..Status.powercastPercent..', '
+	query = query..'channelMode="'..Status.channelMode..'", '
+	query = query..'focusAmountDefault='..Status.focusAmountDefault..', '
+	query = query..'teachTarget="'..Status.teachTarget..'", '
+	query = query..'powercastAmount='..Status.powercastAmount..', '
+	query = query..'powercastAddon='..Status.powercastAddon..', '
+	query = query..'feedTarget="'..Status.feedTarget..'", '
+	query = query..'focusAmountFeed='..Status.focusAmountFeed..', '
+	query = query..'focusTarget="'..Status.focusTarget..'", '
+	query = query..'focusTargetSource="'..Status.focusTargetSource..'", '
+	query = query..'focusAmountTeach='..Status.focusAmountTeach..', '
+	query = query..'cmdAddon="'..Status.cmdAddon..'"'
+	
+	dba.execute(query)
 end
 
 
 
 local function setup(args)
+	checkChannelTable()
 	Events.addListener("processPowercastEvent", sourceName, processPowercast)
 	Events.addListener("processChannelEvent", sourceName, processChannel)
 	Events.addListener("resetPowercastStatsEvent", sourceName, resetPowercastStats)

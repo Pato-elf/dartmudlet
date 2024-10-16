@@ -732,7 +732,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 			name = "ChannelTextBox2",
 			x = -265, y = 50,
 			fontSize = 11,
-			width = 240,
+			width = 260,
 			height = 17,
 			color = "black"
 		}, GUI.containerChannelBox)
@@ -748,7 +748,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 			name = "ChannelTextBox3",
 			x = -265, y = 67,
 			fontSize = 11,
-			width = 240,
+			width = 260,
 			height = 17,
 			color = "black"
 		}, GUI.containerChannelBox)
@@ -764,7 +764,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 			name = "ChannelTextBox4",
 			x = -265, y = 84,
 			fontSize = 11,
-			width = 240,
+			width = 260,
 			height = 17,
 			color = "black"
 		}, GUI.containerChannelBox)
@@ -1182,7 +1182,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 			width = 190, height = 46,
 			fontSize = 14,
 			nestable=true, 
-			message="<center>CHANNEL MODE</center>"
+			message="<center>SELECT MODE</center>"
 		},GUI.containerChannelBox)
 
 	GUI.containerChannelDropdown1:setStyleSheet(StyleDropdown:getCSS())
@@ -1656,6 +1656,12 @@ local function onImprove(args)
 		cecho("ChannelTextBox1", Info.showSpellCasting())
 		cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
 		cecho("ChannelTextBox4", Info.showPowercastPercentage())
+		
+		local query = 'UPDATE channel '
+		query = query..'SET powercastTotal='..Status.powercastTotal..', '
+		query = query..'powercastSuccess='..Status.powercastSuccess..', '
+		query = query..'powercastPercent='..Status.powercastPercent
+		dba.execute(query)
 	end
 	
 end

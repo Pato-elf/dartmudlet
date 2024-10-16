@@ -19,10 +19,8 @@ local function setrefreshPower(args)
 		else
 			if version == 1 then
 				Status.refreshPower1 = refreshpower
-				dba.execute('UPDATE refresh SET refreshPower1='..refreshpower)
 			else
 				Status.refreshPower2 = refreshpower
-				dba.execute('UPDATE refresh SET refreshPower2='..refreshpower)
 			end
 			
 			if saveflag then Refresh.save() end
@@ -47,10 +45,8 @@ local function setrefreshTarget(args)
 	else
 		if version == 1 then
 			Status.refreshTarget1 = refreshtarget
-			dba.execute('UPDATE refresh SET refreshTarget1="'..refreshtarget..'"')
 		else
 			Status.refreshTarget2 = refreshtarget
-			dba.execute('UPDATE refresh SET refreshTarget2="'..refreshtarget..'"')
 		end
 		
 		if saveflag then Refresh.save() end
@@ -61,65 +57,45 @@ end
 
 
 
--- build or update the table during setup
------------------------------------------------------------
-local function checkRefreshTable(args)
-
-	dba.execute([[CREATE TABLE IF NOT EXISTS refresh (
-		id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-		refreshPower1 INTEGER DEFAULT 50,
-		refreshPower2 INTEGER DEFAULT 50,
-		refreshTarget1 VARCHAR(16) DEFAULT "targetname",
-		refreshTarget2 VARCHAR(16) DEFAULT "targetname",
-		refreshCmdAddon VARCHAR(64) DEFAULT "",
-		nudgeisActive BOOLEAN DEFAULT 0,
-		nudgePower INTEGER DEFAULT 50,
-		nudgeTarget1 VARCHAR(16) DEFAULT "targetname",
-		nudgeTarget2 VARCHAR(16) DEFAULT "",
-		nudgeTarget3 VARCHAR(16) DEFAULT "",
-		nudgeTarget4 VARCHAR(16) DEFAULT "",
-		nudgeTarget5 VARCHAR(16) DEFAULT "",
-		nudgeTarget6 VARCHAR(16) DEFAULT "",
-		nudgeTarget7 VARCHAR(16) DEFAULT "",
-		nudgeTarget8 VARCHAR(16) DEFAULT "",
-		nudgeTarget9 VARCHAR(16) DEFAULT "",
-		nudgeTarget10 VARCHAR(16) DEFAULT ""
-	);]])
-
-	local results = dba.query('SELECT id FROM refresh')
-	if results.count() == 0 then
-		dba.execute('INSERT INTO refresh DEFAULT VALUES')
+local function loaderFunction(sentTable)
+	if sentTable then
+		Status.refreshPower1 = sentTable["refreshPower1"] or 50
+		Status.refreshTarget1 = sentTable["refreshTarget1"] or "targetname"
+		Status.refreshPower2 = sentTable["refreshPower2"] or 50
+		Status.refreshTarget2 = sentTable["refreshTarget2"] or "targetname"
 	end
-
 end
 
 
 
+
 local function load()
-	local result = {}
-	
-	result = dba.query('SELECT * FROM refresh')[1]
-	Status.refreshPower1 = result.refreshPower1
-	Status.refreshPower2 = result.refreshPower2
-	Status.refreshTarget1 = result.refreshTarget1
-	Status.refreshTarget2 = result.refreshTarget2
+	Events.raiseEvent("loadEvent",{
+		sourceName = sourceName,
+		functionToSendData = loaderFunction
+	})
 end
 
 
 
 local function save()
-
+	Events.raiseEvent("saveEvent",{
+		sourceName = sourceName,
+		tableToSave = {
+			refreshPower1 = Status.refreshPower1,
+			refreshTarget1 = Status.refreshTarget1,
+			refreshPower2 = Status.refreshPower2,
+			refreshTarget2 = Status.refreshTarget2
+		}
+	})
 end
 
 
 
 local function setup(args)
-	checkRefreshTable()
 	Events.addListener("setrefreshTargetEvent", sourceName, setrefreshTarget)
 	Events.addListener("setrefreshPowerEvent", sourceName, setrefreshPower)
 end
-
-
 
 local function unsetup(args)
 	Events.removeListener("setrefreshTargetEvent", sourceName)

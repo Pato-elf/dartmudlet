@@ -1,8 +1,10 @@
 Status = {}
-
 local sourceName = "status"
 
+
+
 -- character status
+-----------------------------------------------------------
 Status.age			= ''
 Status.alignment	= ''
 Status.aura			= ''
@@ -14,43 +16,69 @@ Status.race			= ''
 Status.soulage		= ''
 Status.thirst		= ''
 
--- refresh system
-Status.statusRefresh	= false
+
+
+-- alloc system variables
+-----------------------------------------------------------
+Status.allocDisplay = 1
+Status.allocActive = 0
+
+
+
+-- refresh system variables
+-----------------------------------------------------------
 Status.refreshPower1	= 50
 Status.refreshPower2	= 50
 Status.refreshTarget1	= 'targetname'
 Status.refreshTarget2	= 'targetname'
---Status.refreshType1		= 'auto'
---Status.refreshType2		= 'auto'
 
--- channelling system
-Status.powercastAddon			= 3
-Status.powercastAmount			= 500
-Status.powercastPercent			= 0
-Status.powercastSuccess			= 0
-Status.powercastTotal			= 0
-Status.focusAmountDefault		= 20
-Status.focusAmountFeed			= 60
-Status.focusAmountTeach			= 20
-Status.focusTotal				= 0
-Status.focusTarget				= 'necklace'
-Status.focusTargetSource		= '(held) scrip'
-Status.teachTarget				= 'targetname'
-Status.feedTarget				= 'targetname'
+-- unsaved refresh variables
+Status.statusRefresh	= false
+
+
+
+-- channelling system variables
+-----------------------------------------------------------
+Status.powercastAddon			= 3 --
+Status.powercastAmount			= 500 --
+Status.powercastPercent			= 0 --
+Status.powercastSuccess			= 0 --
+Status.powercastTotal			= 0 --
+Status.focusAmountDefault		= 20 --
+Status.focusAmountFeed			= 60 --
+Status.focusAmountTeach			= 20 --
+Status.focusTarget				= 'necklace' --
+Status.focusTargetSource		= '(held) scrip' --
+Status.teachTarget				= 'targetname' --
+Status.feedTarget				= 'targetname' --
 Status.channelMode				= 'POWERCAST'
-Status.channelColorEcho			= 'magenta'
-Status.powercastSoundFile		= 'Speech On.wav'
-Status.cmdAddon					= ''
-Status.statusChanShare			= 'on'
-Status.statusPlaySound			= 'on'
-Status.powercastPause			= 'on'
+Status.channelColorEcho			= 'magenta' --
+Status.powercastSoundFile		= 'Speech On.wav' --
+Status.cmdAddon					= '' --
+Status.statusChanShare			= 'on' --
+Status.statusPlaySound			= 'on' --
+Status.powercastPause			= 'on' --
+
+-- unsaved channelling variables
+Status.focusTotal				= 0
 Status.powercastPauseisActive	= false
 Status.powercastisForce			= false
+Status.statusChannel			= false
+
+
 
 -- misc variables
+-----------------------------------------------------------
+Status.Announce				= 'on'
+Status.statusAntiSpam		= 'off'
 Status.statusConc			= 'off'
-Status.tooltipTime			= 5
 Status.chatboxFontSize		= 9
+Status.numLinesToCheck		= 20
+
+Status.tooltipTime			= 5
+
+
+
 
 
 

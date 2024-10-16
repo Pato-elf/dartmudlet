@@ -7,7 +7,7 @@
 ![DartMUDlet_screenshot_v1.2](https://github.com/user-attachments/assets/80b1c2f1-cd70-40f7-866a-aae7df62825b)
 &nbsp;
 ## Features
-DartMUDlet has many useful features to make your DartMUD experience more efficient and enjoyable. Features that include upgrades to the user interface, automation, and reporting are all included. It includes a conversation window across the top as well as a character information panel in the bottom right next to the command window. DartMUDlet automatically counts and reports skill improves for both you and your pets, and will attempt to autocorrect when a skill rolls to the next level. DartMUDlet will also block and queue up commands while you are performing interruptable actions(e.g. spells, books, scrolls), then release them afterwards when the action is complete.
+DartMUDlet has many useful features to make your DartMUD experience more efficient and enjoyable. Features that include upgrades to the user interface, automation, and reporting are all included. It includes a conversation window across the top as well as a character information panel in the bottom right next to the command window. DartMUDlet automatically counts and reports skill improves for both you and your pets, and will attempt to autocorrect when a skill rolls to the next level. DartMUDlet will also block and queue up commands while you are performing interruptable actions (e.g. spells, books, scrolls), then release them afterwards when the action is complete.
 
 &nbsp;
 ## Installation
@@ -24,8 +24,7 @@ In addition to the automatic features described above, there are a number of thi
 
 ```
 /setup   - Initialize variables, customize the display, start improve tracking database.
-/unsetup - Remove timers and triggers, deactivate display customizations.
-/resetup - Remove then reinitialize timers, etc.  Use to make updated DartMUDLet code active.
+/resetup - Remove then reinitialize timers, etc. Use to make updated DartMUDLet code active.
 ```
 Some of the rest are:
 ```
@@ -53,11 +52,9 @@ Some of the rest are:
 /chan sound on|off               - Play notification sound before powercast
 ```
 ```
-/inscribe ! <spell> @ <power>     - Repeat practice inscribing a spell at the given power 
-/inscribe ! off                   - Stop practice inscribing 
-/inscribe ! resume [<spell>]      - Resume practice inscribing the last/named spell at last power 
-/inscribe ! adjust power <power>  - Change the power you are using for each practice
-/inscribe ! status [of <spell>]   - Show power used for last/named spell
+/inscribe <spell> <power>        - Repeat practice inscribing a spell at the given power
+/inscribe power <power>          - Change the power you are using for scroll practice
+/inscribe off                    - Stop practice inscribing 
 ```
 ```
 /update <who> <skill> <improves> - Set improves for your (or pet's) skill to given total

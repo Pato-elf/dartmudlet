@@ -193,6 +193,8 @@ local function checkSettingsTable(args)
 		id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 		chatboxFontSize INTEGER DEFAULT 9,
 		numLinesToCheck INTEGER DEFAULT 20,
+		scrollCurrentPower INTEGER DEFAULT 100,
+		scrollCurrentSpell VARCHAR(16) DEFAULT "",
 		statusAnnounce VARCHAR16 DEFAULT "on",
 		statusAntiSpam VARCHAR16 DEFAULT "off",
 		statusConc VARCHAR16 DEFAULT "off"
@@ -213,6 +215,8 @@ local function load()
 	result = dba.query('SELECT * FROM settings')[1]
 	Status.chatboxFontSize = result.chatboxFontSize
 	Status.numLinesToCheck = result.numLinesToCheck
+	Status.scrollCurrentPower = result.scrollCurrentPower
+	Status.scrollCurrentSpell = result.scrollCurrentSpell
 	Status.statusAnnounce = result.statusAnnounce
 	Status.statusAntiSpam = result.statusAntiSpam
 	Status.statusConc = result.statusConc

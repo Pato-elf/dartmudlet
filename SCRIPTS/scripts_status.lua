@@ -74,6 +74,9 @@ Status.statusAntiSpam		= 'off'
 Status.statusConc			= 'off'
 Status.chatboxFontSize		= 9
 Status.numLinesToCheck		= 20
+Status.scrollCurrentSpell	= ''
+Status.scrollCurrentPower	= 100
+
 
 Status.tooltipTime			= 5
 

@@ -58,10 +58,6 @@ end --createUIConsole
 
 
 
--- UPDATE FUNCTIONS -------------------------------------------------
-
-
-
 -- update chat box
 -----------------------------------------------------------
 local function onChat(args)

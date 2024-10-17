@@ -1,154 +1,139 @@
-local Casting = {}
+local Casting		= {}
+local sourceName	= "casting"
+local isActive		= false
 
-local sourceName = "casting"
 
-local practiceCastMemory = {}
-
-local currentSpell = ''
-local currentSpellPower = 100
-local currentSpellArguments = ''
-local isActive = false
 
 local function practiceCast(args)
-  send("cast ! "..currentSpell.." @ ".. currentSpellPower.. " "..currentSpellArguments)
-  --Events.removeListener("BEBTconcEvent", sourceName) --PATO
-  Events.addListener("BEBTconcEvent", sourceName, practiceCast)
+	send("cast ! "..Status.castCurrentSpell.." @ ".. Status.castCurrentPower.. " "..Status.castCurrentArgs)
+	Events.addListener("BEBTconcEvent", sourceName, practiceCast)
 end
+
+
 
 local function practiceCastSetup(args)
-  isActive = true
-  local spellName = args["spellName"]
-  local power = args["power"]
-  local spellArguments = args["spellArguments"]
+	local spellName = args["spellName"]
+	local power = args["power"]
+	local spellArguments = args["spellArguments"]
+	isActive = true
 
-  if power < 50 then
-    power = 50
-  end
+	if power < 50 then power = 50 end
 
-  currentSpell = spellName
-  currentSpellPower = power
-  currentSpellArguments = spellArguments
+	Status.castCurrentSpell = spellName
+	Status.castCurrentPower = power
+	Status.castCurrentArgs = spellArguments
+	
+	local query = 'UPDATE casting '
+	query = query..'SET castCurrentSpell="'..Status.castCurrentSpell..'", '
+	query = query..'castCurrentPower='..Status.castCurrentPower..', '
+	query = query..'castCurrentArgs="'..Status.castCurrentArgs..'"'
+	dba.execute(query)
 
-  practiceCastMemory[currentSpell] = {}
-  practiceCastMemory[currentSpell].power = power
+	Events.raiseEvent("messageEvent", {message="<yellow>Practice casting "..Status.castCurrentSpell.." @ "..Status.castCurrentPower.." "..Status.castCurrentArgs.."\n"})
+	Events.addListener("BEBTconcEvent", sourceName, practiceCast)
 
-
-  Events.raiseEvent("messageEvent", {message="<yellow>Practice casting "..spellName.." @ "..currentSpellPower.." "..currentSpellArguments.."\n"})
-
-  Events.addListener("BEBTconcEvent", sourceName, practiceCast)
-
-  Casting.save()
 end
 
-local function practiceCastResume(args)
-  isActive = true
-  local spellName = args["spellName"]
-  if spellName == "" and currentSpell ~= "" then
-    Events.raiseEvent("messageEvent", {message="<yellow>Practice casting "..currentSpell.." @ "..currentSpellPower.." "..currentSpellArguments.."\n"})
-    Events.addListener("BEBTconcEvent", sourceName, practiceCast)
 
-  elseif practiceCastMemory[spellName] then
-    currentSpell = spellName
-    currentSpellPower = practiceCastMemory[spellName].power
-    currentSpellArguments = practiceCastMemory[spellName].arguments
 
-    Events.raiseEvent("messageEvent", {message="<yellow>Practice casting "..spellName.." @ "..currentSpellPower.." "..currentSpellArguments.."\n"})
-
-    Events.addListener("BEBTconcEvent", sourceName, practiceCast)
-
-    Casting.save()
-  end
-end
-
-local function practiceCastStatus(args)
-  local spellName = args["spellName"]
-  if spellName == "" then
-    Events.raiseEvent("messageEvent", {message="<yellow>Status: Practice casting "..spellName.." @ "..currentSpellPower.." "..currentSpellArguments.."\n"})
-  elseif practiceCastMemory[spellName] then
-    local power = practiceCastMemory[spellName].power
-    Events.raiseEvent("messageEvent", {message="<yellow>Status: Practiced casting "..spellName.." @ "..power.."\n"})
-  end
-end
-
+-- change the power level
 local function changePower(args)
-  local spellPower = args["power"]
+	local spellPower = args["power"]
 
-  currentSpellPower = power
+	if (spellPower < 50) or not (tonumber(spellPower)) then
+		cecho("<red>ERROR: Invalid /cast power value\n")
+	else
+		Status.castCurrentPower = power
+		dba.execute('UPDATE casting SET castCurrentPower='..Status.castCurrentPower)
+		cecho("<yellow>Channel: /cast power value updated\n")
+		Events.raiseEvent("messageEvent", {message="<yellow>Practice casting "..Status.castCurrentSpell.." @ "..Status.castCurrentPower.." "..Status.castCurrentArgs.."\n"})
+	end
 
-  Events.raiseEvent("messageEvent", {message="<yellow>Practice casting "..currentSpellName.." @ "..currentSpellPower.." "..currentSpellArguments.."\n"})
-  practiceCastMemory[currentSpell].power = power
-
-  Casting.save()
 end
+
+
 
 local function practiceCastOff(args)
-  isActive = false
-  Events.raiseEvent("messageEvent", {message="<yellow>Stopped casting\n"})
-  Events.removeListener("BEBTconcEvent", sourceName)
+	isActive = false
+	Events.raiseEvent("messageEvent", {message="<yellow>Stopped casting\n"})
+	Events.removeListener("BEBTconcEvent", sourceName)
 end
+
+
 
 local function finishPracticing(args)
-  if isActive then
-      Events.addListener("BEBTconcEvent", sourceName, practiceCast)
-  end
+	if isActive then
+		Events.addListener("BEBTconcEvent", sourceName, practiceCast)
+	end
 end
 
-local function loaderFunction(sentTable)
-  if sentTable then
-    practiceCastMemory = sentTable["practiceCastMemory"] or {}
-    currentSpell = sentTable["currentSpell"] or ""
-    currentSpellPower = sentTable["currentSpellPower"] or 100
-    currentSpellArguments = sentTable["currentSpellArguments"] or ""
-  end
+
+
+-- build or update the table during setup
+-----------------------------------------------------------
+local function checkCastingTable(args)
+
+	dba.execute([[CREATE TABLE IF NOT EXISTS casting (
+		id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+		castCurrentArgs VARCHAR(64) DEFAULT "",
+		castCurrentPower INTEGER DEFAULT 100,
+		castCurrentSpell VARCHAR(16) DEFAULT "lg"
+	);]])
+
+	local results = dba.query('SELECT id FROM casting')
+	if results.count() == 0 then
+		dba.execute('INSERT INTO casting DEFAULT VALUES')
+	end
+
 end
+
+
 
 local function load()
-  Events.raiseEvent("loadEvent",
-                   {sourceName = sourceName, functionToSendData = loaderFunction})
+	local result = {}
+	
+	result = dba.query('SELECT * FROM casting')[1]
+	Status.castCurrentArgs = result.castCurrentArgs
+	Status.castCurrentPower = result.castCurrentPower
+	Status.castCurrentSpell = result.castCurrentSpell
 end
+
+
 
 local function save()
-  Events.raiseEvent("saveEvent",
-                    {
-                    sourceName = sourceName
-                    ,tableToSave = {
-                        practiceCastMemory = practiceCastMemory
-                        ,currentSpell = currentSpell
-                        ,currentSpellPower = currentSpellPower
-                        ,currentSpellArguments = currentSpellArguments
-                      }
-                    })
+
 end
 
+
+
 local function setup(args)
-  Events.addListener("practiceCastEvent",sourceName, practiceCastSetup)
-  Events.addListener("practiceCastResumeEvent",sourceName, practiceCastResume)
-  Events.addListener("practiceCastPauseEvent",sourceName, practiceCastOff)
-  Events.addListener("practiceCastOffEvent",sourceName, practiceCastOff)
-  Events.addListener("practiceCastStatusEvent",sourceName, practiceCastStatus)
-  Events.addListener("finishPracticingEvent",sourceName, finishedPracticing)
+	checkCastingTable()
+	Events.addListener("practiceCastEvent",sourceName, practiceCastSetup)
+	Events.addListener("practiceCastOffEvent",sourceName, practiceCastOff)
+	Events.addListener("finishPracticingEvent",sourceName, finishedPracticing)
+	Events.addListener("castPowerAdjustEvent",sourceName, changePower)
 end
 
 local function unsetup(args)
-  Events.removeListener("practiceCastEvent",sourceName)
-  Events.removeListener("practiceCastResumeEvent",sourceName)
-  Events.removeListener("practiceCastPauseEvent",sourceName)
-  Events.removeListener("practiceCastOffEvent",sourceName)
-  Events.removeListener("practiceCastStatusEvent",sourceName)
-  Events.removeListener("finishPracticingEvent",sourceName)
+	Events.removeListener("practiceCastEvent",sourceName)
+	Events.removeListener("practiceCastOffEvent",sourceName)
+	Events.removeListener("finishPracticingEvent",sourceName)
+	Events.removeListener("castPowerAdjustEvent",sourceName)
 end
 
 local function resetup(args)
-  unsetup(args)
-  setup(args)
+	unsetup(args)
+	setup(args)
 end
 
+
+
 Casting = {
-  setup = setup
-  ,unsetup = unsetup
-  ,resetup = resetup
-  ,load = load
-  ,save = save
+	setup = setup,
+	unsetup = unsetup,
+	resetup = resetup,
+	load = load,
+	save = save
 }
 
 return Casting

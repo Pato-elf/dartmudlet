@@ -40,10 +40,9 @@ Some of the rest are:
            For when you MUST interrupt your previous action (e.g. to run from that dragon NOW).
 ```
 ```
-/cast ! <spell> @ <power> <spell args> - Repeat practice casting a spell
-/cast ! off                            - Stop practicing; remember spell and power
-/cast ! resume [<spell>]               - Resume practing last/named spell at the previous power
-/cast ! status [of <spell>]            - Show power used for last/named spell
+/cast <spell> <power> <args>     - Repeat practice casting a spell
+/cast power <power>              - Change power you are using for practice casting
+/cast off                        - Stop repeat practice casting
 ```
 ```
 /chan info                       - Display full channelling stats on screen

@@ -6,9 +6,9 @@ local aliases = {}
 local function setup(args)
 	tempAliases = {}
 
-	--Practice casting alias
+	-- begin practice casting
 	tempAliases.practiceCast =
-	tempAlias("^\\/[Cc][Aa][Ss][Tt] ! (\\w+) @ (\\d+)(?: ([\\w,\\s]+))?",
+	tempAlias("^\\/[Cc][Aa][Ss][Tt] (\\w+) (\\d+)(?: ([\\w,\\s]+))?",
 		[[
 			local spellName = string.lower(matches[2])
 			local power = tonumber(matches[3]) or 100
@@ -19,19 +19,9 @@ local function setup(args)
 
 
 
-	tempAliases.practiceCastResume =
-    tempAlias("^\\/[Cc][Aa][Ss][Tt] ! [Rr][Ee][Ss][Uu][Mm][Ee](?: (\\w+))?",
-		[[
-			spellName = matches[2] or ""
-			spellName = string.lower(spellName)
-			local arguments = {spellName = spellName}
-			Events.raiseEvent("practiceCastResumeEvent", arguments)
-		]])
-
-
-
+	-- stop practice casting
 	tempAliases.practiceCastOff =
-	tempAlias("^\\/[Cc][Aa][Ss][Tt] ! [Oo][Ff][Ff]",
+	tempAlias("^\\/[Cc][Aa][Ss][Tt] [Oo][Ff][Ff]",
 		[[
 			local arguments = {}
 			Events.raiseEvent("practiceCastOffEvent", arguments)
@@ -39,14 +29,16 @@ local function setup(args)
 
 
 
-	tempAliases.practiceCastStatus =
-	tempAlias("^\\/[Cc][Aa][Ss][Tt] ! [Ss][Tt][Aa][Tt][Uu][Ss](?: [Oo][Ff] (\\w+))?",
+	-- adjust power for practice cast
+	tempAliases.castAdjustPower =
+	tempAlias("^\\/[Cc][Aa][Ss][Tt] [Pp][Oo][Ww][Ee][Rr] (\\d+)",
 		[[
-			local spellName = matches[2] or ""
-			spellName = string.lower(spellName)
-			local arguments = {spellName = spellName}
-			Events.raiseEvent("practiceCastStatusEvent", arguments)
+			local power = tonumber(matches[2]) or 100
+			local arguments = {power = power}
+			Events.raiseEvent("castPowerAdjustEvent", arguments)
 		]])
+
+
 	aliases = tempAliases
 end
 

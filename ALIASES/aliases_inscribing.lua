@@ -28,7 +28,7 @@ local function setup(args)
 
 
 
-	-- adjust power while scroll while
+	-- adjust power for scroll writing
 	tempAliases.inscribeAdjustPower =
 	tempAlias("^\\/[Ii][Nn][Ss][Cc][Rr][Ii][Bb][Ee] [Pp][Oo][Ww][Ee][Rr] (\\d+)",
 		[[

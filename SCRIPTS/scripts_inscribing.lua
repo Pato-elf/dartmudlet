@@ -41,19 +41,6 @@ end
 
 
 
-local function inscribeResume(args)
---  local spellName = args["spellName"]
-
--- if spellName == "" and Status.scrollCurrentSpell ~= "" then
---    Events.addListener("BEBTconcEvent", sourceName, inscribe)
---    cecho("<yellow>Inscribing "..Status.scrollCurrentSpell.." "..Status.scrollCurrentPower.."\n")
---    send("conc")
---  end
-
-end
-
-
-
 local function adjustPower(args)
 	local power = args["power"]
 
@@ -79,17 +66,13 @@ end
 local function setup(args)
 	Events.addListener("practiceInscribingEvent", sourceName, inscribeSetup)
 	Events.addListener("practiceInscribingOffEvent", sourceName, inscribeOff)
---	Events.addListener("practiceInscribingResumeEvent", sourceName, inscribeResume)
 	Events.addListener("practiceInscribingAdjustPowerEvent", sourceName, adjustPower)
---	Events.addListener("practiceInscribingStatusEvent", sourceName, inscribeStatus)
 end
 
 local function unsetup(args)
 	Events.removeListener("practiceInscribingEvent", sourceName)
 	Events.removeListener("practiceInscribingOffEvent", sourceName)
---	Events.removeListener("practiceInscribingResumeEvent", sourceName)
 	Events.removeListener("practiceInscribingAdjustPowerEvent", sourceName)
---	Events.removeListener("practiceInscribingStatusEvent", sourceName)
 end
 
 

@@ -1659,8 +1659,7 @@ local function onImprove(args)
 		
 		local query = 'UPDATE channel '
 		query = query..'SET powercastTotal='..Status.powercastTotal..', '
-		query = query..'powercastSuccess='..Status.powercastSuccess..', '
-		query = query..'powercastPercent='..Status.powercastPercent
+		query = query..'powercastSuccess='..Status.powercastSuccess
 		dba.execute(query)
 	end
 	

@@ -39,31 +39,39 @@ Status.statusRefresh	= false
 
 -- channelling system variables
 -----------------------------------------------------------
-Status.powercastAddon			= 3 --
-Status.powercastAmount			= 500 --
-Status.powercastPercent			= 0 --
-Status.powercastSuccess			= 0 --
-Status.powercastTotal			= 0 --
-Status.focusAmountDefault		= 20 --
-Status.focusAmountFeed			= 60 --
-Status.focusAmountTeach			= 20 --
-Status.focusTarget				= 'necklace' --
-Status.focusTargetSource		= '(held) scrip' --
-Status.teachTarget				= 'targetname' --
-Status.feedTarget				= 'targetname' --
+Status.powercastAddon			= 3
+Status.powercastAmount			= 500
+Status.powercastSuccess			= 0
+Status.powercastTotal			= 0
+Status.focusAmountDefault		= 20
+Status.focusAmountFeed			= 60
+Status.focusAmountTeach			= 20
+Status.focusTarget				= 'necklace'
+Status.focusTargetSource		= '(held) scrip'
+Status.teachTarget				= 'targetname'
+Status.feedTarget				= 'targetname'
 Status.channelMode				= 'POWERCAST'
-Status.channelColorEcho			= 'magenta' --
-Status.powercastSoundFile		= 'Speech On.wav' --
-Status.cmdAddon					= '' --
-Status.statusChanShare			= 'on' --
-Status.statusPlaySound			= 'on' --
-Status.powercastPause			= 'on' --
+Status.channelColorEcho			= 'magenta'
+Status.powercastSoundFile		= 'Speech On.wav'
+Status.cmdAddon					= ''
+Status.statusChanShare			= 'on'
+Status.statusPlaySound			= 'on'
+Status.powercastPause			= 'on'
 
 -- unsaved channelling variables
+Status.powercastPercent			= 0
 Status.focusTotal				= 0
 Status.powercastPauseisActive	= false
 Status.powercastisForce			= false
 Status.statusChannel			= false
+
+
+
+-- casting system variables
+-----------------------------------------------------------
+Status.castCurrentArgs	= ""
+Status.castCurrentPower	= 100
+Status.castCurrentSpell	= "lg"
 
 
 

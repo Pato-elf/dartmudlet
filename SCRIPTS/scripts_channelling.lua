@@ -424,8 +424,7 @@ local function resetPowercastStats()
 	
 	query = query..'UPDATE channel '
 	query = query..'SET powercastTotal='..Status.powercastTotal..', '
-	query = query..'powercastSuccess='..Status.powercastSuccess..', '
-	query = query..'powercastPercent='..Status.powercastPercent
+	query = query..'powercastSuccess='..Status.powercastSuccess
 	dba.execute(query)
 	
 	cecho("ChannelTextBox1", Info.showSpellCasting())
@@ -473,11 +472,10 @@ local function checkChannelTable(args)
 		powercastAddon INTEGER DEFAULT 3,
 		powercastAmount INTEGER DEFAULT 500,
 		powercastPause VARCHAR(16) DEFAULT "on",
-		powercastPercent FLOAT DEFAULT 0,
 		powercastSoundFile VARCHAR(64) DEFAULT "Speech On.wav",
 		powercastSuccess INTEGER DEFAULT 0,
 		powercastTotal INTEGER DEFAULT 0,
-		statusChanShare VARCHAR(16) DEFAULT "on",
+		statusChanShare VARCHAR(16) DEFAULT "brief",
 		statusPlaySound VARCHAR(16) DEFAULT "on",
 		teachTarget VARCHAR(16) DEFAULT "targetname"
 
@@ -508,7 +506,6 @@ local function load()
 	Status.powercastAddon = result.powercastAddon
 	Status.powercastAmount = result.powercastAmount
 	Status.powercastPause = result.powercastPause
-	Status.powercastPercent = result.powercastPercent
 	Status.powercastSoundFile = result.powercastSoundFile
 	Status.powercastSuccess = result.powercastSuccess
 	Status.powercastTotal = result.powercastTotal
@@ -526,7 +523,6 @@ local function save()
 	query = query..'UPDATE channel '
 	query = query..'SET powercastTotal='..Status.powercastTotal..', '
 	query = query..'powercastSuccess='..Status.powercastSuccess..', '
-	query = query..'powercastPercent='..Status.powercastPercent..', '
 	query = query..'channelMode="'..Status.channelMode..'", '
 	query = query..'focusAmountDefault='..Status.focusAmountDefault..', '
 	query = query..'teachTarget="'..Status.teachTarget..'", '

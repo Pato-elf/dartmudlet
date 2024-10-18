@@ -272,7 +272,14 @@ local function processPowercast(args)
 			send("discharge " .. Status.focusTarget)
 			send("put " .. Status.focusTarget .. " in " .. Status.focusTargetSource)
 		end
+		
+		Status.focusTotal = 0
+		cecho("ChannelTextBox16", "<magenta>"..Status.focusTotal.."%")
+		--Status.powercastPauseisActive = true
+		--cecho("ChannelTextBox15", "<magenta>FOCUS TOTAL:&nbsp;&nbsp;"..Status.focusTotal.."%")
+
 	end
+	
 
 	if (Status.powercastPause ~= "on") or (Status.powercastPauseisActive) then
 	
@@ -285,7 +292,6 @@ local function processPowercast(args)
 		end
 
 		Status.powercastisForce = false
-		Status.focusTotal = 0
 		Status.powercastTotal = Status.powercastTotal + 1
 		dba.execute('UPDATE channel SET powercastTotal='..Status.powercastTotal)
 		cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
@@ -328,7 +334,14 @@ local function processChannel(args)
 		expandAlias(Status.cmdAddon)
 	end
 	
-	Status.focusTotal = Status.focusTotal + focusamount
+	if not (Status.channelMode == "FEED AURA") then
+		Status.focusTotal = Status.focusTotal + focusamount
+	end
+	
+	cecho("ChannelTextBox16", "<magenta>"..Status.focusTotal.."%")
+	--cecho("ChannelTextBox15", "<magenta>FOCUS TOTAL:&nbsp;&nbsp;"..Status.focusTotal.."%")
+	--GUI.containerChannelTextBox15:setStyleSheet(StyleTextBlueLarge:getCSS())
+	--tempTimer(0.1, function() GUI.containerChannelTextBox15:setStyleSheet(StyleTextBlue:getCSS()) end)
 	
 	if (Status.focusTotal >= Status.powercastAmount) and
 	(Status.channelMode ~= "CHANNEL ONLY") and
@@ -336,11 +349,13 @@ local function processChannel(args)
 	(Status.statusPlaySound ~= "off") then
 		playSoundFile({name = packageFolder.."MEDIA/"..Status.powercastSoundFile})
 	end
-	
-	if Status.focusTotal < 10 then
-		cecho("\n<" .. Status.channelColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t\t")
-	else
-		cecho("\n<" .. Status.channelColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t")
+
+	if Status.statusFocusTotal == "on" then
+		if Status.focusTotal < 10 then
+			cecho("\n<" .. Status.channelColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t\t")
+		else
+			cecho("\n<" .. Status.channelColorEcho .. ">FOCUS TOTAL: " .. Status.focusTotal .. "%\t\t\t\t\t")
+		end
 	end
 end
 
@@ -367,6 +382,26 @@ local function setChanShare(args)
 		end
 		
 		cecho("<yellow>Channel: /chan share value updated\n")
+	end
+	
+end
+
+
+
+-- set /focus command
+-----------------------------------------------------------
+local function setFocusTotal(args)
+	local setting = args["detail"]
+
+
+	if tonumber(setting) or not ((setting == "on") or (setting == "off") or (setting == "help")) then
+		cecho("<red>ERROR: Invalid /focus value\n")
+	elseif (setting == "help") then
+		cecho("<yellow>USAGE: /focus on|off - Show running focus total in main window (current setting: "..Status.statusFocusTotal..")\n")
+	else
+		Status.statusFocusTotal = setting
+		dba.execute('UPDATE channel SET statusFocusTotal="'..Status.statusFocusTotal..'"')
+		cecho("<yellow>Channel: /focus value updated\n")
 	end
 	
 end
@@ -431,6 +466,7 @@ local function resetPowercastStats()
 	cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
 	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
 	cecho("ChannelTextBox4", Info.showPowercastPercentage())
+	cecho("ChannelTextBox16", "<magenta>"..Status.focusTotal.."%")
 	cecho("<yellow>Channel: Reset powercast stats\n")
 end
 
@@ -476,6 +512,7 @@ local function checkChannelTable(args)
 		powercastSuccess INTEGER DEFAULT 0,
 		powercastTotal INTEGER DEFAULT 0,
 		statusChanShare VARCHAR(16) DEFAULT "brief",
+		statusFocusTotal VARCHAR(16) DEFAULT "off",
 		statusPlaySound VARCHAR(16) DEFAULT "on",
 		teachTarget VARCHAR(16) DEFAULT "targetname"
 
@@ -510,6 +547,7 @@ local function load()
 	Status.powercastSuccess = result.powercastSuccess
 	Status.powercastTotal = result.powercastTotal
 	Status.statusChanShare = result.statusChanShare
+	Status.statusFocusTotal = result.statusFocusTotal
 	Status.statusPlaySound = result.statusPlaySound
 	Status.teachTarget = result.teachTarget
 	
@@ -559,6 +597,7 @@ local function setup(args)
 	Events.addListener("saveChannelSettingsEvent", sourceName, saveChannelSettings)
 	Events.addListener("setChanShareEvent", sourceName, setChanShare)
 	Events.addListener("setChanSoundEvent", sourceName, setChanSound)
+	Events.addListener("setFocusTotalEvent", sourceName, setFocusTotal)
 	Events.addListener("setChanPauseEvent", sourceName, setChanPause)
 end
 
@@ -580,6 +619,7 @@ local function unsetup(args)
 	Events.removeListener("saveChannelSettingsEvent", sourceName)
 	Events.removeListener("setChanShareEvent", sourceName)
 	Events.removeListener("setChanSoundEvent", sourceName)
+	Events.removeListener("setFocusTotalEvent", sourceName)
 	Events.removeListener("setChanPauseEvent", sourceName)
 end
 

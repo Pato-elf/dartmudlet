@@ -402,7 +402,41 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.containerChannelTextBox14:setStyleSheet(StyleTextBlue:getCSS())
 	cecho("ChannelTextBox14", "<yellow>MISC ADD CMD")
 	GUI.containerChannelTextBox14:setToolTip("Send a command of your choice after each channel\nLeave blank if not needed",Status.tooltipTime)
-	
+
+
+
+	-- CREATE TEXTBOX15 -> CHANNEL -> TABWINDOW2  (focus total text)
+	-------------------------------------------------------
+	GUI.containerChannelTextBox15 = GUI.containerChannelTextBox15 or
+		Geyser.Label:new({
+			name = "ChannelTextBox15",
+			x = -265, y = 145,
+			fontSize = 14,
+			width = 160,
+			height = 20,
+			color = "black"
+		}, GUI.containerChannelBox)
+
+	GUI.containerChannelTextBox15:setStyleSheet(StyleTextBlueLarge:getCSS())
+	cecho("ChannelTextBox15", "<magenta>FOCUS TOTAL:")
+	GUI.containerChannelTextBox15:setToolTip("Amount of aura currently stored in your focus",Status.tooltipTime)
+
+
+
+	-- CREATE TEXTBOX16 -> CHANNEL -> TABWINDOW2  (focus total number)
+	-------------------------------------------------------
+	GUI.containerChannelTextBox16 = GUI.containerChannelTextBox16 or
+		Geyser.Label:new({
+			name = "ChannelTextBox16",
+			x = -113, y = 145,
+			fontSize = 14,
+			width = 100,
+			height = 20,
+			color = "black"
+		}, GUI.containerChannelBox)
+
+	GUI.containerChannelTextBox16:setStyleSheet(StyleTextBlueLarge:getCSS())
+
 
 
 	-- CREATE COMMANDLINE1 -> CHANNEL -> TABWINDOW2

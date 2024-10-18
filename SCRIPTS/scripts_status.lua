@@ -55,8 +55,10 @@ Status.channelColorEcho			= 'magenta'
 Status.powercastSoundFile		= 'Speech On.wav'
 Status.cmdAddon					= ''
 Status.statusChanShare			= 'on'
+Status.statusFocusTotal			= 'off'
 Status.statusPlaySound			= 'on'
 Status.powercastPause			= 'on'
+
 
 -- unsaved channelling variables
 Status.powercastPercent			= 0
@@ -79,6 +81,7 @@ Status.castCurrentSpell	= "lg"
 -----------------------------------------------------------
 Status.Announce				= 'on'
 Status.statusAntiSpam		= 'off'
+Status.statusAura			= 'off'
 Status.statusConc			= 'off'
 Status.chatboxFontSize		= 9
 Status.numLinesToCheck		= 20
@@ -99,6 +102,7 @@ local function setVariables()
 	cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
 	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
 	cecho("ChannelTextBox4", Info.showPowercastPercentage())
+	cecho("ChannelTextBox16", "<magenta>"..Status.focusTotal.."%")
 	GUI.containerChannelCommand1:print(Status.focusAmountDefault)
 	GUI.containerChannelCommand2:print(Status.focusTarget)
 	GUI.containerChannelCommand3:print(Status.focusTargetSource)

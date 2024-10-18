@@ -300,13 +300,22 @@ end
 -- update aura box
 -----------------------------------------------------------
 local function onAura(args)
+	local full = args["full"]
 	aura = args["aura"]
 	auraBoxTextColor = "white"
 	auraBoxBGColor = "black"
 	scintBackground = packageFolder.."MEDIA/rainbow_small.png"
 
-	deleteLine()
-	moveCursorEnd()
+
+	if (Status.statusAura == "off") or (string.match(full, "^".."Aura")) then
+		deleteLine()
+		moveCursorEnd()
+	elseif (Status.statusAura == "scint") and (aura ~= "scintillating") then
+		deleteLine()
+		moveCursorEnd()
+	end
+
+
 
 	if aura == "scintillating" then auraBoxTextColor = "mediumblue" auraBoxBGColor = "crimson"
 	elseif aura == "intense octarine" then auraBoxTextColor = "indigo" auraBoxBGColor = "aquamarine"
@@ -379,7 +388,7 @@ local function onConc(args)
 	if (Status.statusConc == "off") or (string.match(full, "^".."Concentration")) then
 		deleteLine()
 		moveCursorEnd()
-	elseif (Status.statusConc == "on") and (conc ~= "You're bright-eyed and bushy-tailed.") then
+	elseif (Status.statusConc == "bright") and (conc ~= "You're bright-eyed and bushy-tailed.") then
 		deleteLine()
 		moveCursorEnd()
 	end

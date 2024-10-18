@@ -18,7 +18,7 @@ local function setup(args)
 
 
 
-	--change channelling share settings
+	--change channelling share setting
 	tempAliases.chanShare =
 	tempAlias("^\\/chan share ([\\w]+)",
 		[[
@@ -29,7 +29,7 @@ local function setup(args)
 
 
 
-	--change channelling sound settings
+	--change channelling sound setting
 	tempAliases.chanSound =
 	tempAlias("^\\/chan sound ([\\w]+)",
 		[[
@@ -40,7 +40,7 @@ local function setup(args)
 
 
 
-	--change channelling pause settings
+	--change channelling pause setting
 	tempAliases.chanPause =
 	tempAlias("^\\/chan pause ([\\w]+)",
 		[[
@@ -49,6 +49,17 @@ local function setup(args)
 			Events.raiseEvent("setChanPauseEvent", arguments)
 		]])	
 
+
+
+	--change focus display setting
+	tempAliases.focusTotal =
+	tempAlias("^\\/focus ([\\w]+)",
+		[[
+			local detail = matches[2]
+			local arguments = {detail = detail}
+			Events.raiseEvent("setFocusTotalEvent", arguments)
+		]])		
+		
 	aliases = tempAliases
 end
 

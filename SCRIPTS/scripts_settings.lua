@@ -159,26 +159,57 @@ end
 local function setConc(args)
 	local detail = args["detail"]
 	
-	if not ((detail == "off") or (detail == "on") or (detail == "full") or (detail == "help")) then
+	if not ((detail == "off") or (detail == "on") or (detail == "full") or (detail == "bright") or (detail == "help")) then
 		cecho("<red>ERROR: Usage: /conc <off|on|full>\n")
 	elseif (detail == "help") then
-		cecho("<yellow>USAGE: /conc off|on|full - Show concentration on screen (current setting: "..Status.statusConc..")\n")
+		cecho("<yellow>USAGE: /conc on|off|bright - Show concentration on screen (current setting: "..Status.statusConc..")\n")
 	else
 		if detail == "off" then
 			cecho("<yellow>Concentration: Off\n")
 			Events.raiseEvent("messageEvent", {message="<yellow>Concentration: Off\n"})
 			Status.statusConc = "off"
-		elseif detail == "on" then
+		elseif detail == "bright" then
+			cecho("<yellow>Concentration: Bright only\n")
+			Events.raiseEvent("messageEvent", {message="<yellow>Concentration: Bright only\n"})
+			Status.statusConc = "bright"
+		else
 			cecho("<yellow>Concentration: On\n")
 			Events.raiseEvent("messageEvent", {message="<yellow>Concentration: On\n"})
 			Status.statusConc = "on"
-		else
-			cecho("<yellow>Concentration: Full\n")
-			Events.raiseEvent("messageEvent", {message="<yellow>Concentration: Full\n"})
-			Status.statusConc = "full"
 		end
 
 		dba.execute('UPDATE settings SET statusConc="'..Status.statusConc..'"')
+	end
+
+end
+
+
+
+-- set the aura setting
+-----------------------------------------------------------
+local function setAura(args)
+	local detail = args["detail"]
+	
+	if not ((detail == "off") or (detail == "on") or (detail == "scint") or (detail == "help")) then
+		cecho("<red>ERROR: Usage: /aura <on|off|scint>\n")
+	elseif (detail == "help") then
+		cecho("<yellow>USAGE: /aura on|off|scint - Show aura on screen (current setting: "..Status.statusAura..")\n")
+	else
+		if detail == "off" then
+			cecho("<yellow>Aura: Off\n")
+			Events.raiseEvent("messageEvent", {message="<yellow>Aura: Off\n"})
+			Status.statusAura = "off"
+		elseif detail == "scint" then
+			cecho("<yellow>Aura: Scint only\n")
+			Events.raiseEvent("messageEvent", {message="<yellow>Aura: Scint only\n"})
+			Status.statusAura = "scint"
+		else
+			cecho("<yellow>Aura: On\n")
+			Events.raiseEvent("messageEvent", {message="<yellow>Aura: On\n"})
+			Status.statusAura = "on"
+		end
+
+		dba.execute('UPDATE settings SET statusAura="'..Status.statusAura..'"')
 	end
 
 end
@@ -195,9 +226,10 @@ local function checkSettingsTable(args)
 		numLinesToCheck INTEGER DEFAULT 20,
 		scrollCurrentPower INTEGER DEFAULT 100,
 		scrollCurrentSpell VARCHAR(16) DEFAULT "",
-		statusAnnounce VARCHAR16 DEFAULT "on",
-		statusAntiSpam VARCHAR16 DEFAULT "off",
-		statusConc VARCHAR16 DEFAULT "off"
+		statusAnnounce VARCHAR(16) DEFAULT "on",
+		statusAntiSpam VARCHAR(16) DEFAULT "off",
+		statusAura VARCHAR(16) DEFAULT "off",
+		statusConc VARCHAR(16) DEFAULT "off"
 	);]])
 
 	local results = dba.query('SELECT id FROM settings')
@@ -219,6 +251,7 @@ local function load()
 	Status.scrollCurrentSpell = result.scrollCurrentSpell
 	Status.statusAnnounce = result.statusAnnounce
 	Status.statusAntiSpam = result.statusAntiSpam
+	Status.statusAura = result.statusAura
 	Status.statusConc = result.statusConc
 end
 
@@ -237,6 +270,7 @@ local function setup(args)
 	Events.addListener("announceVerboseEvent",sourceName,announceVerbose)
 	Events.addListener("announceBriefEvent",sourceName,announceBrief)
 	Events.addListener("announceOffEvent",sourceName,announceOff)
+	Events.addListener("setAuraEvent", sourceName, setAura)
 	Events.addListener("setConcEvent", sourceName, setConc)
 	Events.addListener("antiSpamOnEvent",sourceName, antispamOn)
 	Events.addListener("antiSpamOffEvent",sourceName, antispamOff)
@@ -248,6 +282,7 @@ local function unsetup(args)
 	Events.removeListener("announceVerboseEvent",sourceName)
 	Events.removeListener("announceBriefEvent",sourceName)
 	Events.removeListener("announceOffEvent",sourceName)
+	Events.removeListener("setAuraEvent", sourceName)
 	Events.removeListener("setConcEvent", sourceName)
 	Events.removeListener("antiSpamOnEvent",sourceName)
 	Events.removeListener("antiSpamOffEvent",sourceName)

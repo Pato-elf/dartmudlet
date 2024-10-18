@@ -55,6 +55,18 @@ local function setup(args)
 
 
 
+	-- /aura command
+	-------------------------------------------------------
+	tempAliases.setAura =
+	tempAlias('^\\/aura (.*)$',
+		[[
+			local detail = matches[2]
+			local arguments = {detail = detail, who = Status.name}
+			Events.raiseEvent('setAuraEvent', arguments)
+		]])
+
+
+
 	-- /random command
 	-------------------------------------------------------
 	tempAliases.showRandom =

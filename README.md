@@ -49,6 +49,7 @@ Some of the rest are:
 /chan pause on|off               - Pause powercast to wait for full concentration
 /chan share on|off|brief         - Change settings of the channel share button
 /chan sound on|off               - Play notification sound before powercast
+/focus on|off                    - Show running focus total in main window (default off)
 ```
 ```
 /inscribe <spell> <power>        - Repeat practice inscribing a spell at the given power
@@ -56,10 +57,11 @@ Some of the rest are:
 /inscribe off                    - Stop practice inscribing 
 ```
 ```
-/update <who> <skill> <improves> - Set improves for your (or pet's) skill to given total
 /insert <who> <skill> <improves> - Manually insert a new skill into the database
+/update <who> <skill> <improves> - Set improves for your (or pet's) skill to given total
+/aura on|off|scint               - Show aura on screen (default off)
+/conc on|off|bright              - Show concentration on screen (default off)
 /info <who> <skill>              - Show current improves/level for a skill
-/conc on|off|full                - Show concentration on screen (none, bright only, all)
 /who on|off                      - Auto check the who list every 5 minutes
 /antispam on|off                 - suppress repeated lines
 /random <num>                    - Generate a random number between 1 and a number

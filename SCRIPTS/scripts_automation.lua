@@ -69,7 +69,7 @@ local function processAutomation(args)
 		
 	elseif Status.statusChannel or Status.powercastisForce then
 		if (conc == "You're bright-eyed and bushy-tailed.") then --and (aura == "scintillating") then
-			if Status.powercastisForce then
+			if Status.powercastisForce or Status.powercastPauseisActive then
 				Events.raiseEvent("processPowercastEvent", {input = aura})
 			elseif  (Status.focusTotal >= Status.powercastAmount) and ((Status.channelMode == "POWERCAST") or (Status.channelMode == "PC + TEACH")) then
 					Events.raiseEvent("processPowercastEvent", {input = aura})

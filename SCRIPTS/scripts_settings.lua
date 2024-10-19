@@ -221,8 +221,7 @@ end
 local function setFontSize(args)
 	local detail = args["detail"]
 	local size = args["size"]
-	
-	
+
 	if (detail == "help") then
 		cecho("<yellow>USAGE: /set fontsize <all|chat|improves|message|who> <8-16> - Set the fontsize for one or all valid tabs\n")
 	elseif (tonumber(size) < 8) or (tonumber(size) > 16) then

@@ -24,7 +24,7 @@ In addition to the automatic features described above, there are a number of thi
 
 ```
 /setup   - Initialize variables, customize the display, start improve tracking database.
-/resetup - Remove then reinitialize timers, etc. Use to make updated DartMUDLet code active.
+/resetup - Remove then reinitialize timers, etc. Use to make updated DartMUDlet code active.
 ```
 Some of the rest are:
 ```
@@ -66,6 +66,7 @@ Some of the rest are:
 /antispam on|off                 - suppress repeated lines
 /random <num>                    - Generate a random number between 1 and a number
 /random <value,value,value>      - Pick a random value from a list of values
+/set fontsize <option> <8-16>    - Set the fontsize for tabs (all|chat|improves|message|who)
 #num repeat                      - Repeat commands from the command line (e.g. #3 say hi)
 /levels                          - Display a list of skill levels
 /help                            - Display a list of available commands

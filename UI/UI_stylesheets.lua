@@ -134,10 +134,21 @@ function loadStylesheets()
 		}
 	]])
 	
-	StyleTextBlueLarge = Geyser.StyleSheet:new([[
+	StyleTextWhiteLarge = Geyser.StyleSheet:new([[
 		QLabel{
 			font-size: 14pt;
 			font-family: Bitstream Vera Sans Mono;
+			color: white;
+			background-color: rgb(0,0,70);
+			margin: 0px 10px 0px 10px;
+		}
+	]])
+	
+	StyleTextMagentaLarge = Geyser.StyleSheet:new([[
+		QLabel{
+			font-size: 14pt;
+			font-family: Bitstream Vera Sans Mono;
+			color: magenta;
 			background-color: rgb(0,0,70);
 			margin: 0px 10px 0px 10px;
 		}

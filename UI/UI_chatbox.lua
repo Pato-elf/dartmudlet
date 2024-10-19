@@ -31,7 +31,7 @@ GUI.containerChatholderBox:setStyleSheet([[
 		Geyser.MiniConsole:new({
 			name = "ChatBox",
 			x = 9, y = 9,
-			fontSize = Status.chatboxFontSize,
+			fontSize = Status.fontSizeChat,
 			width = -9,
 			height = -9,
 			color = "black"

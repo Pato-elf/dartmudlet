@@ -30,6 +30,7 @@ local textToUnBlock = {
 	,"A translucent orb of"
 	,"corpse isn't here!"
 	,"Coruscating rays of"
+	,"How rude!"
 	,"Hunting cattle would be too easy"
 	,"Incandescent .* erupt from your body"
 	,"Light bends around you, turning you translucent"

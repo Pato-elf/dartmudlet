@@ -76,6 +76,18 @@ local function setup(args)
 			local arguments = {detail = detail, who = Status.name}
 			Events.raiseEvent('showRandomEvent', arguments)
 		]])
+
+
+
+	-- /set fontsize
+	tempAliases.setFontSize =
+	tempAlias('^\\/set fontsize ([\\w]+) ([\\d]+)',
+		[[
+			local detail = matches[2]
+			local size = matches[3]
+			local arguments = {detail = detail, size = size}
+			Events.raiseEvent('setFontSizeEvent', arguments)
+		]])
 		
 	aliases = tempAliases
 end

@@ -216,13 +216,79 @@ end
 
 
 
+-- set the fontsize setting
+-----------------------------------------------------------
+local function setFontSize(args)
+	local detail = args["detail"]
+	local size = args["size"]
+	
+	
+	if (detail == "help") then
+		cecho("<yellow>USAGE: /set fontsize <all|chat|improves|message|who> <8-16> - Set the fontsize for one or all valid tabs\n")
+	elseif (tonumber(size) < 8) or (tonumber(size) > 16) then
+		cecho("<red>ERROR: Usage: /set fontsize <all|chat|improves|message|who> <8-16> - Set the fontsize for one or all valid tabs\n")	
+	elseif (detail == "chat") then
+		Status.fontSizeChat = tonumber(size)
+		dba.execute('UPDATE settings SET fontSizeChat="'..Status.fontSizeChat..'"')
+		GUI.containerChatBox:setFontSize(Status.fontSizeChat)
+		cecho("<yellow>Fontsize: CHAT = "..size.."\n")
+		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: CHAT = "..size.."\n"})
+	elseif (detail == "improves") then
+		Status.fontSizeImproves = tonumber(size)
+		dba.execute('UPDATE settings SET fontSizeImproves="'..Status.fontSizeImproves..'"')
+		GUI.containerImproveBox:setFontSize(Status.fontSizeImproves)
+		cecho("<yellow>Fontsize: IMPROVES = "..size.."\n")
+		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: IMPROVES = "..size.."\n"})
+	elseif (detail == "message") then
+		Status.fontSizeMessage = tonumber(size)
+		dba.execute('UPDATE settings SET fontSizeMessage="'..Status.fontSizeMessage..'"')
+		GUI.containerMessageBox:setFontSize(Status.fontSizeMessage)
+		cecho("<yellow>Fontsize: MESSAGE = "..size.."\n")
+		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: MESSAGE = "..size.."\n"})
+	elseif (detail == "who") then
+		Status.fontSizeWho = tonumber(size)
+		dba.execute('UPDATE settings SET fontSizeWho="'..Status.fontSizeWho..'"')
+		GUI.containerWhoBox:setFontSize(Status.fontSizeWho)
+		cecho("<yellow>Fontsize: WHO = "..size.."\n")
+		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: WHO = "..size.."\n"})
+	elseif (detail == "all") then
+		Status.fontSizeChat = tonumber(size)
+		Status.fontSizeImproves = tonumber(size)
+		Status.fontSizeMessage = tonumber(size)
+		Status.fontSizeWho = tonumber(size)
+		
+		local query = ''
+		query = query..'UPDATE settings '
+		query = query..'SET fontSizeChat='..Status.fontSizeChat..', '
+		query = query..'fontSizeImproves='..Status.fontSizeImproves..', '
+		query = query..'fontSizeMessage='..Status.fontSizeMessage..', '
+		query = query..'fontSizeWho='..Status.fontSizeWho
+		dba.execute(query)
+	
+		GUI.containerChatBox:setFontSize(Status.fontSizeChat)
+		GUI.containerImproveBox:setFontSize(Status.fontSizeImproves)
+		GUI.containerMessageBox:setFontSize(Status.fontSizeMessage)
+		GUI.containerWhoBox:setFontSize(Status.fontSizeWho)
+		cecho("<yellow>Fontsize: ALL = "..size.."\n")
+		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: ALL = "..size.."\n"})
+	else
+		cecho("<red>ERROR: Usage: /set fontsize <all|chat|improves|message|who> <8-16> - Set the fontsize for one or all valid tabs\n")	
+	end
+	
+end
+
+
+
 -- build or update the table during setup
 -----------------------------------------------------------
 local function checkSettingsTable(args)
 
 	dba.execute([[CREATE TABLE IF NOT EXISTS settings (
 		id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-		chatboxFontSize INTEGER DEFAULT 9,
+		fontSizeChat INTEGER DEFAULT 10,
+		fontSizeImproves INTEGER DEFAULT 10,
+		fontSizeMessage INTEGER DEFAULT 10,
+		fontSizeWho INTEGER DEFAULT 10,
 		numLinesToCheck INTEGER DEFAULT 20,
 		scrollCurrentPower INTEGER DEFAULT 100,
 		scrollCurrentSpell VARCHAR(16) DEFAULT "",
@@ -245,7 +311,10 @@ local function load()
 	local result = {}
 	
 	result = dba.query('SELECT * FROM settings')[1]
-	Status.chatboxFontSize = result.chatboxFontSize
+	Status.fontSizeChat = result.fontSizeChat
+	Status.fontSizeImproves = result.fontSizeImproves
+	Status.fontSizeMessage = result.fontSizeMessage
+	Status.fontSizeWho = result.fontSizeWho
 	Status.numLinesToCheck = result.numLinesToCheck
 	Status.scrollCurrentPower = result.scrollCurrentPower
 	Status.scrollCurrentSpell = result.scrollCurrentSpell
@@ -253,6 +322,11 @@ local function load()
 	Status.statusAntiSpam = result.statusAntiSpam
 	Status.statusAura = result.statusAura
 	Status.statusConc = result.statusConc
+	
+	GUI.containerChatBox:setFontSize(Status.fontSizeChat)
+	GUI.containerImproveBox:setFontSize(Status.fontSizeImproves)
+	GUI.containerMessageBox:setFontSize(Status.fontSizeMessage)
+	GUI.containerWhoBox:setFontSize(Status.fontSizeWho)
 end
 
 
@@ -272,6 +346,7 @@ local function setup(args)
 	Events.addListener("announceOffEvent",sourceName,announceOff)
 	Events.addListener("setAuraEvent", sourceName, setAura)
 	Events.addListener("setConcEvent", sourceName, setConc)
+	Events.addListener("setFontSizeEvent", sourceName, setFontSize)
 	Events.addListener("antiSpamOnEvent",sourceName, antispamOn)
 	Events.addListener("antiSpamOffEvent",sourceName, antispamOff)
 end
@@ -284,6 +359,7 @@ local function unsetup(args)
 	Events.removeListener("announceOffEvent",sourceName)
 	Events.removeListener("setAuraEvent", sourceName)
 	Events.removeListener("setConcEvent", sourceName)
+	Events.removeListener("setFontSizeEvent", sourceName)
 	Events.removeListener("antiSpamOnEvent",sourceName)
 	Events.removeListener("antiSpamOffEvent",sourceName)
 end

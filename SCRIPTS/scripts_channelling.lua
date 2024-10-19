@@ -31,6 +31,18 @@ local function computeTimeElapsed()
 end
 
 
+-- update the focus total display
+-----------------------------------------------------------
+local function updateFocusDisplay()
+	GUI.containerChannelTextBox16:setStyleSheet(StyleTextWhiteLarge:getCSS())
+	cecho("ChannelTextBox16", ""..Status.focusTotal.."%")
+	tempTimer(0.06, function()
+		GUI.containerChannelTextBox16:setStyleSheet(StyleTextMagentaLarge:getCSS())
+		cecho("ChannelTextBox16", ""..Status.focusTotal.."%")
+	end)
+end
+
+
 
 -- set channelMode
 -----------------------------------------------------------
@@ -274,9 +286,7 @@ local function processPowercast(args)
 		end
 		
 		Status.focusTotal = 0
-		cecho("ChannelTextBox16", "<magenta>"..Status.focusTotal.."%")
-		--Status.powercastPauseisActive = true
-		--cecho("ChannelTextBox15", "<magenta>FOCUS TOTAL:&nbsp;&nbsp;"..Status.focusTotal.."%")
+		updateFocusDisplay()
 
 	end
 	
@@ -334,15 +344,11 @@ local function processChannel(args)
 		expandAlias(Status.cmdAddon)
 	end
 	
-	if not (Status.channelMode == "FEED AURA") then
+	if (Status.channelMode ~= "FEED AURA") or (Status.feedTarget == Status.focusTarget)then
 		Status.focusTotal = Status.focusTotal + focusamount
+		updateFocusDisplay()
 	end
-	
-	cecho("ChannelTextBox16", "<magenta>"..Status.focusTotal.."%")
-	--cecho("ChannelTextBox15", "<magenta>FOCUS TOTAL:&nbsp;&nbsp;"..Status.focusTotal.."%")
-	--GUI.containerChannelTextBox15:setStyleSheet(StyleTextBlueLarge:getCSS())
-	--tempTimer(0.1, function() GUI.containerChannelTextBox15:setStyleSheet(StyleTextBlue:getCSS()) end)
-	
+
 	if (Status.focusTotal >= Status.powercastAmount) and
 	(Status.channelMode ~= "CHANNEL ONLY") and
 	(Status.channelMode ~= "FEED AURA") and
@@ -392,7 +398,6 @@ end
 -----------------------------------------------------------
 local function setFocusTotal(args)
 	local setting = args["detail"]
-
 
 	if tonumber(setting) or not ((setting == "on") or (setting == "off") or (setting == "help")) then
 		cecho("<red>ERROR: Invalid /focus value\n")

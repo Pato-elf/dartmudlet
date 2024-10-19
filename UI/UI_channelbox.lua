@@ -417,7 +417,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 			color = "black"
 		}, GUI.containerChannelBox)
 
-	GUI.containerChannelTextBox15:setStyleSheet(StyleTextBlueLarge:getCSS())
+	GUI.containerChannelTextBox15:setStyleSheet(StyleTextMagentaLarge:getCSS())
 	cecho("ChannelTextBox15", "<magenta>FOCUS TOTAL:")
 	GUI.containerChannelTextBox15:setToolTip("Amount of aura currently stored in your focus",Status.tooltipTime)
 
@@ -435,7 +435,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 			color = "black"
 		}, GUI.containerChannelBox)
 
-	GUI.containerChannelTextBox16:setStyleSheet(StyleTextBlueLarge:getCSS())
+	GUI.containerChannelTextBox16:setStyleSheet(StyleTextMagentaLarge:getCSS())
 
 
 

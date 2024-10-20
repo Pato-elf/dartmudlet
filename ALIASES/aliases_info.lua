@@ -67,6 +67,18 @@ local function setup(args)
 
 
 
+	-- /contents command
+	-------------------------------------------------------
+	tempAliases.setContents =
+	tempAlias('^\\/contents (.*)$',
+		[[
+			local detail = matches[2]
+			local arguments = {detail = detail, who = Status.name}
+			Events.raiseEvent('setContentsEvent', arguments)
+		]])
+
+
+
 	-- /random command
 	-------------------------------------------------------
 	tempAliases.showRandom =

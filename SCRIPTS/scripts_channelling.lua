@@ -370,7 +370,7 @@ end
 -- set /chan share command
 -----------------------------------------------------------
 local function setChanShare(args)
-	local setting = args["detail"]
+	local setting = string.lower(args["detail"])
 
 
 	if tonumber(setting) or not ((setting == "brief") or (setting == "on") or (setting == "off") or (setting == "help")) then
@@ -397,7 +397,7 @@ end
 -- set /focus command
 -----------------------------------------------------------
 local function setFocusTotal(args)
-	local setting = args["detail"]
+	local setting = string.lower(args["detail"])
 
 	if tonumber(setting) or not ((setting == "on") or (setting == "off") or (setting == "help")) then
 		cecho("<red>ERROR: Invalid /focus value\n")
@@ -416,7 +416,7 @@ end
 -- set /chan sound command
 -----------------------------------------------------------
 local function setChanSound(args)
-	local setting = args["detail"]
+	local setting = string.lower(args["detail"])
 
 
 	if tonumber(setting) or not ((setting == "on") or (setting == "off") or (setting == "help")) then
@@ -436,7 +436,7 @@ end
 -- set /chan pause command
 -----------------------------------------------------------
 local function setChanPause(args)
-	local setting = args["detail"]
+	local setting = string.lower(args["detail"])
 
 
 	if tonumber(setting) or not ((setting == "on") or (setting == "off") or (setting == "help")) then

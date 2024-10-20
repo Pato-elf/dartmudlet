@@ -83,6 +83,7 @@ Status.Announce				= 'on'
 Status.statusAntiSpam		= 'off'
 Status.statusAura			= 'off'
 Status.statusConc			= 'off'
+Status.statusContents		= 'on'
 Status.fontSizeChat			= 10
 Status.fontSizeImproves		= 10
 Status.fontSizeMessage		= 10

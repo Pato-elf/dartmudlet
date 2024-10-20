@@ -4,7 +4,7 @@ math.randomseed(os.time())
 local sourceName = "info"
 local colorHelp = "yellow"
 local spacerHelp = "   "
-local versionNumber = "v1.5"
+local versionNumber = "v1.5.1"
 local levels = {"mythic","legendary","a grand master","a virtuoso","consummate","a high master","renowned","an adept","eminent",
 				"a master","superb","an expert","excellent","very good","adroit","good","proficient","fair","able","above average",
 				"average","below average","not very good","poor","a beginner","a novice","a tyro","unskilled"}
@@ -171,6 +171,7 @@ local function showHelp(args)
 	cecho(preText.."/antispam on|off                 - Suppress repeated lines\n")
 	cecho(preText.."/random <num>                    - Generate a random number between 1 and a number\n")
 	cecho(preText.."/random <value,value,value>      - Pick a random value from a list of values\n")
+	cecho(preText.."/contents on|off                 - Show expanded contents view for containers\n")
 	cecho(preText.."/set fontsize <option> <8-16>    - Set fontsize for tabs (all|chat|improves|message|who)\n")
 	cecho(preText.."#num repeat                      - Repeat commands (e.g. #3 say hi)\n")
 	cecho(preText.."/levels                          - Display a list of skill levels\n")
@@ -204,6 +205,84 @@ local function showLevels(args)
 		
 		cecho(preText..currentSkill.name..string.rep(" ", fillerChars1)..currentSkill.min..string.rep(" ", fillerChars2)..skillSize.."\n")
   end
+end
+
+
+
+-- show contents style containers
+-- TODO: cleanup the book hack
+-----------------------------------------------------------
+local function showContents(args)
+
+	if Status.statusContents == "off" then
+		return
+	end
+	
+	local detail = args["detail"]
+	local items = {}
+	local itemOrder = {}
+	local falseStack = {}
+	local item = ""
+	local tempNum
+	
+	deleteLine()
+	
+	for k,v in pairs (detail) do
+		-- negative look ahead regex causes double matches
+		if k % 2 == 0 then
+
+			item = string.gsub(v, ", ", "")
+			item = trim(item)
+			item = string.gsub(item, "^and ", "")
+			item = string.gsub(item, "^an ", "")
+			item = string.gsub(item, "^a ", "")
+			tempNum = string.match(item, "^([0-9]+)")
+			
+			if tempNum then
+				tempNum = tonumber(tempNum)
+				item = trim(string.gsub(item, tempNum, ""))
+			else
+				tempNum = 1
+			end
+			
+			-- build a count of each item type for final display
+			if items[item] then
+				items[item] = items[item] + tempNum
+				falseStack[item] = true
+			else
+				items[item] = tempNum
+				table.insert(itemOrder, item);
+				falseStack[item] = false
+			end
+		end
+	end
+	
+	-- sort alphabetically
+	local keys = {}
+	for key in pairs(items) do
+		table.insert(keys, key)
+	end
+	table.sort(keys)
+	
+	echo("\n===============================================\n")
+	for _, key in ipairs(keys) do
+		local stack	= ""
+	
+		if key ~= 'by King Islagador"' then
+
+			if items[key] > 1 then
+				if falseStack[key] then
+					stack = "<LightSlateGrey>"..items[key].."x"
+				else
+					stack = "<reset>"..items[key].."x"
+				end
+			end
+			if key == 'volume entitled "A Treatise on Traps' then key = key..', by King Islagador"' end
+			cecho(stack.."\t"..key.."\n")
+		end
+	end
+	echo("===============================================\n")
+
 end
 
 
@@ -287,6 +366,7 @@ end
 
 
 function setup(args)
+	Events.addListener("showContentsEvent", sourceName, showContents)
 	Events.addListener("showHelpEvent", sourceName, showHelp)
 	Events.addListener("showRandomEvent", sourceName, showRandom)
 	Events.addListener("showLevelsEvent", sourceName, showLevels)
@@ -296,6 +376,7 @@ end
 
 
 function unsetup(args)
+	Events.removeListener("showContentsEvent", sourceName)
 	Events.removeListener("showHelpEvent", sourceName)
 	Events.removeListener("showRandomEvent", sourceName)
 	Events.removeListener("showLevelsEvent", sourceName)

@@ -66,6 +66,7 @@ Some of the rest are:
 /antispam on|off                 - suppress repeated lines
 /random <num>                    - Generate a random number between 1 and a number
 /random <value,value,value>      - Pick a random value from a list of values
+/contents on|off                 - Show expanded contents view for containers (default on)
 /set fontsize <option> <8-16>    - Set the fontsize for tabs (all|chat|improves|message|who)
 #num repeat                      - Repeat commands from the command line (e.g. #3 say hi)
 /levels                          - Display a list of skill levels

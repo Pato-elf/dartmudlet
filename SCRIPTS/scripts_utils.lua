@@ -1,5 +1,7 @@
 utils = {};
 
+
+
 function utils.member(tbl, item)
 	for key, value in pairs(tbl) do
 		if value == item then
@@ -9,9 +11,19 @@ function utils.member(tbl, item)
 	return -1;
 end
 
+
+
 function utils.sizeOf(tbl)
 	return #tbl + 1;
 end
+
+
+
+function trim(s)
+	return s:match("^%s*(.-)%s*$")
+end
+
+
 
 function utils.capitalize(str)
 	if not str then
@@ -22,5 +34,6 @@ function utils.capitalize(str)
 
 	return string.upper(str:sub(1,1)) .. str:sub(2);
 end
+
 
 return utils;

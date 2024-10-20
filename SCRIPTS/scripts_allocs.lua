@@ -10,7 +10,7 @@ local function checkAllocsTable(args)
 	dba.execute([[CREATE TABLE IF NOT EXISTS allocs (
 		id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 		allocName VARCHAR(64) DEFAULT "default",
-		allocPetname VARCHAR(16) DEFAULT "",
+		allocTarget VARCHAR(16) DEFAULT "",
 		bodypart1 VARCHAR(64) DEFAULT "left hand",
 		bonus1 INTEGER DEFAULT 75,
 		daring1 INTEGER DEFAULT 75,
@@ -84,7 +84,7 @@ end
 
 
 local function save()
-
+	checkAllocsTable()
 end
 
 

@@ -157,7 +157,7 @@ end
 -- set the conc setting
 -----------------------------------------------------------
 local function setConc(args)
-	local detail = args["detail"]
+	local detail = string.lower(args["detail"])
 	
 	if not ((detail == "off") or (detail == "on") or (detail == "full") or (detail == "bright") or (detail == "help")) then
 		cecho("<red>ERROR: Usage: /conc <off|on|full>\n")
@@ -188,7 +188,7 @@ end
 -- set the aura setting
 -----------------------------------------------------------
 local function setAura(args)
-	local detail = args["detail"]
+	local detail = string.lower(args["detail"])
 	
 	if not ((detail == "off") or (detail == "on") or (detail == "scint") or (detail == "help")) then
 		cecho("<red>ERROR: Usage: /aura <on|off|scint>\n")
@@ -216,10 +216,37 @@ end
 
 
 
+-- set the contents setting
+-----------------------------------------------------------
+local function setContents(args)
+	local detail = string.lower(args["detail"])
+	
+	if not ((detail == "off") or (detail == "on") or (detail == "help")) then
+		cecho("<red>ERROR: Usage: /contents <on|off>\n")
+	elseif (detail == "help") then
+		cecho("<yellow>USAGE: /contents on|off - Show expanded contents view for containers (current setting: "..Status.statusContents..")\n")
+	else
+		if detail == "off" then
+			cecho("<yellow>Contents: Off\n")
+			Events.raiseEvent("messageEvent", {message="<yellow>Contents: Off\n"})
+			Status.statusContents = "off"
+		else
+			cecho("<yellow>Contents: On\n")
+			Events.raiseEvent("messageEvent", {message="<yellow>Contents: On\n"})
+			Status.statusContents = "on"
+		end
+
+		dba.execute('UPDATE settings SET statusContents="'..Status.statusContents..'"')
+	end
+
+end
+
+
+
 -- set the fontsize setting
 -----------------------------------------------------------
 local function setFontSize(args)
-	local detail = args["detail"]
+	local detail = string.lower(args["detail"])
 	local size = args["size"]
 
 	if (detail == "help") then
@@ -282,6 +309,8 @@ end
 -----------------------------------------------------------
 local function checkSettingsTable(args)
 
+
+	-- create table if its not there
 	dba.execute([[CREATE TABLE IF NOT EXISTS settings (
 		id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 		fontSizeChat INTEGER DEFAULT 10,
@@ -294,12 +323,20 @@ local function checkSettingsTable(args)
 		statusAnnounce VARCHAR(16) DEFAULT "on",
 		statusAntiSpam VARCHAR(16) DEFAULT "off",
 		statusAura VARCHAR(16) DEFAULT "off",
-		statusConc VARCHAR(16) DEFAULT "off"
+		statusConc VARCHAR(16) DEFAULT "off",
+		statusContents VARCHAR(16) DEFAULT "on"
 	);]])
-
 	local results = dba.query('SELECT id FROM settings')
 	if results.count() == 0 then
 		dba.execute('INSERT INTO settings DEFAULT VALUES')
+	end
+
+
+
+	-- add any missing fields
+	local temp = dba.query('SELECT * FROM settings')[1]
+	if not temp.statusContents then
+		dba.execute('ALTER TABLE settings ADD COLUMN statusContents VARCHAR(16) DEFAULT "on"')
 	end
 
 end
@@ -321,6 +358,7 @@ local function load()
 	Status.statusAntiSpam = result.statusAntiSpam
 	Status.statusAura = result.statusAura
 	Status.statusConc = result.statusConc
+	Status.statusContents = result.statusContents
 	
 	GUI.containerChatBox:setFontSize(Status.fontSizeChat)
 	GUI.containerImproveBox:setFontSize(Status.fontSizeImproves)
@@ -345,6 +383,7 @@ local function setup(args)
 	Events.addListener("announceOffEvent",sourceName,announceOff)
 	Events.addListener("setAuraEvent", sourceName, setAura)
 	Events.addListener("setConcEvent", sourceName, setConc)
+	Events.addListener("setContentsEvent", sourceName, setContents)
 	Events.addListener("setFontSizeEvent", sourceName, setFontSize)
 	Events.addListener("antiSpamOnEvent",sourceName, antispamOn)
 	Events.addListener("antiSpamOffEvent",sourceName, antispamOff)
@@ -358,6 +397,7 @@ local function unsetup(args)
 	Events.removeListener("announceOffEvent",sourceName)
 	Events.removeListener("setAuraEvent", sourceName)
 	Events.removeListener("setConcEvent", sourceName)
+	Events.removeListener("setContentsEvent", sourceName)
 	Events.removeListener("setFontSizeEvent", sourceName)
 	Events.removeListener("antiSpamOnEvent",sourceName)
 	Events.removeListener("antiSpamOffEvent",sourceName)

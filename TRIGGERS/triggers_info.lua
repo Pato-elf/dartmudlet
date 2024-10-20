@@ -59,6 +59,20 @@ local function setup(args)
 
 
 
+
+-- contents view	
+---------------------------------------------------------------------
+	tempTriggers.contentsView =
+	tempComplexRegexTrigger("contentsView", "(On it you see|It contains):",
+		[[]], 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, nil)
+	tempComplexRegexTrigger("contentsView", '("([^"]+)"|[^,]+)(?:[,.]\s*)',
+		[[
+			local detail = multimatches[2]
+			arguments = {detail = detail}
+			Events.raiseEvent("showContentsEvent", arguments)
+		]], 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, nil)
+
+
   triggers = tempTriggers
 end
 

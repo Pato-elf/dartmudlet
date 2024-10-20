@@ -30,6 +30,7 @@ GUI.containerChatholderBox:setStyleSheet([[
 	GUI.containerChatBox = GUI.containerChatBox or
 		Geyser.MiniConsole:new({
 			name = "ChatBox",
+			autoWrap = true,
 			x = 9, y = 9,
 			fontSize = Status.fontSizeChat,
 			width = -9,

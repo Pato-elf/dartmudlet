@@ -34,10 +34,10 @@ GUI.containerAllocsBox = GUI.containerAllocsBox or
 
 GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 
---echo("AllocsBox", Info.showUnderConstruction())
+echo("AllocsBox", Info.showUnderConstruction())
 
 
-
+--[[
 -------------------------------------------------------------------------------
 -- COMMAND LINES
 -------------------------------------------------------------------------------
@@ -808,7 +808,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 	GUI.textboxAllocs1:setStyleSheet(StyleTextBlue:getCSS())
 
-
+--]]
 end
 
 return allocsbox

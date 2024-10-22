@@ -81,3 +81,4 @@ Some of the rest are:
 - These were exensively refactored into modular LUA and brought to GitHub by [missionz3r0](https://github.com/missionz3r0).
 - The Pato versions of DartMUDlet are a fork from [daviesow](https://github.com/daviesow) DartMUDlet release.
 - Code for the adjustable tab windows originally written by [Edru2](https://github.com/Edru2).
+- Bug testers: Castlehoff, Rikter, Tudor

@@ -23,6 +23,7 @@ Status.thirst		= ''
 Status.allocDisplay = 1
 Status.allocActive = 0
 
+Status.allocsTable = {}
 
 
 -- refresh system variables
@@ -123,6 +124,61 @@ local function setVariables()
 	GUI.containerRefreshCommand3:print(Status.refreshTarget2)
 	GUI.containerRefreshCommand4:print(Status.refreshPower2)
 	
+	GUI.commandlineAllocs1:print(Status.allocsTable[1].allocName)
+	GUI.commandlineAllocs2:print(Status.allocsTable[1].allocTarget)
+	GUI.commandlineAllocs3:print(Status.allocsTable[1].bodypart1)
+	GUI.commandlineAllocs4:print(Status.allocsTable[1].bonus1)
+	GUI.commandlineAllocs5:print(Status.allocsTable[1].daring1)
+	GUI.commandlineAllocs6:print(Status.allocsTable[1].speed1)
+	GUI.commandlineAllocs7:print(Status.allocsTable[1].aiming1)
+	GUI.commandlineAllocs8:print(Status.allocsTable[1].parry1)
+	GUI.commandlineAllocs9:print(Status.allocsTable[1].control1)
+	GUI.commandlineAllocs10:print(Status.allocsTable[1].null1)
+
+	GUI.commandlineAllocs11:print(Status.allocsTable[1].bodypart2)
+	GUI.commandlineAllocs12:print(Status.allocsTable[1].bonus2)
+	GUI.commandlineAllocs13:print(Status.allocsTable[1].daring2)
+	GUI.commandlineAllocs14:print(Status.allocsTable[1].speed2)
+	GUI.commandlineAllocs15:print(Status.allocsTable[1].aiming2)
+	GUI.commandlineAllocs16:print(Status.allocsTable[1].parry2)
+	GUI.commandlineAllocs17:print(Status.allocsTable[1].control2)
+	GUI.commandlineAllocs18:print(Status.allocsTable[1].null2)
+
+	GUI.commandlineAllocs19:print(Status.allocsTable[1].bodypart3)
+	GUI.commandlineAllocs20:print(Status.allocsTable[1].bonus3)
+	GUI.commandlineAllocs21:print(Status.allocsTable[1].daring3)
+	GUI.commandlineAllocs22:print(Status.allocsTable[1].speed3)
+	GUI.commandlineAllocs23:print(Status.allocsTable[1].aiming3)
+	GUI.commandlineAllocs24:print(Status.allocsTable[1].parry3)
+	GUI.commandlineAllocs25:print(Status.allocsTable[1].control3)
+	GUI.commandlineAllocs26:print(Status.allocsTable[1].null3)
+
+	GUI.commandlineAllocs27:print(Status.allocsTable[1].bodypart4)
+	GUI.commandlineAllocs28:print(Status.allocsTable[1].bonus4)
+	GUI.commandlineAllocs29:print(Status.allocsTable[1].daring4)
+	GUI.commandlineAllocs30:print(Status.allocsTable[1].speed4)
+	GUI.commandlineAllocs31:print(Status.allocsTable[1].aiming4)
+	GUI.commandlineAllocs32:print(Status.allocsTable[1].parry4)
+	GUI.commandlineAllocs33:print(Status.allocsTable[1].control4)
+	GUI.commandlineAllocs34:print(Status.allocsTable[1].null4)
+
+	GUI.commandlineAllocs35:print(Status.allocsTable[1].bodypart5)
+	GUI.commandlineAllocs36:print(Status.allocsTable[1].bonus5)
+	GUI.commandlineAllocs37:print(Status.allocsTable[1].daring5)
+	GUI.commandlineAllocs38:print(Status.allocsTable[1].speed5)
+	GUI.commandlineAllocs39:print(Status.allocsTable[1].aiming5)
+	GUI.commandlineAllocs40:print(Status.allocsTable[1].parry5)
+	GUI.commandlineAllocs41:print(Status.allocsTable[1].control5)
+	GUI.commandlineAllocs42:print(Status.allocsTable[1].null5)
+
+	GUI.commandlineAllocs43:print(Status.allocsTable[1].bodypart6)
+	GUI.commandlineAllocs44:print(Status.allocsTable[1].bonus6)
+	GUI.commandlineAllocs45:print(Status.allocsTable[1].daring6)
+	GUI.commandlineAllocs46:print(Status.allocsTable[1].speed6)
+	GUI.commandlineAllocs47:print(Status.allocsTable[1].aiming6)
+	GUI.commandlineAllocs48:print(Status.allocsTable[1].parry6)
+	GUI.commandlineAllocs49:print(Status.allocsTable[1].control6)
+	GUI.commandlineAllocs50:print(Status.allocsTable[1].null6)
 	
 	if (Status.statusChanShare == "off") then
 		GUI.containerChannelButton4:setStyleSheet(StyleButtonDarkGrey:getCSS())

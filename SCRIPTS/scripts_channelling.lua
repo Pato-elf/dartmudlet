@@ -534,7 +534,7 @@ end
 
 local function load()
 	local result = {}
-	
+
 	result = dba.query('SELECT * FROM channel')[1]
 	Status.channelColorEcho = result.channelColorEcho
 	Status.channelMode = result.channelMode
@@ -555,14 +555,14 @@ local function load()
 	Status.statusFocusTotal = result.statusFocusTotal
 	Status.statusPlaySound = result.statusPlaySound
 	Status.teachTarget = result.teachTarget
-	
+
 end
 
 
 
 local function save()
 	local query = ""
-	
+
 	query = query..'UPDATE channel '
 	query = query..'SET powercastTotal='..Status.powercastTotal..', '
 	query = query..'powercastSuccess='..Status.powercastSuccess..', '

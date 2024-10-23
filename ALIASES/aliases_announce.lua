@@ -7,7 +7,7 @@ local function setup(args)
 	tempAliases = {}
 
 	tempAliases.announceOn =
-	tempAlias("^\/[Aa][Nn][Nn][Oo][Uu][Nn][Cc][Ee] [Oo][Nn]",
+	tempAlias("^\\/[Aa][Nn][Nn][Oo][Uu][Nn][Cc][Ee] [Oo][Nn]",
 		[[
 			local arguments = {}
 			Events.raiseEvent("announceOnEvent", arguments)
@@ -16,7 +16,7 @@ local function setup(args)
 
 
 	tempAliases.announceBrief =
-	tempAlias("^\/[Aa][Nn][Nn][Oo][Uu][Nn][Cc][Ee] [Bb][Rr][Ii][Ee][Ff]",
+	tempAlias("^\\/[Aa][Nn][Nn][Oo][Uu][Nn][Cc][Ee] [Bb][Rr][Ii][Ee][Ff]",
 		[[
 			local arguments = {}
 			Events.raiseEvent("announceBriefEvent", arguments)
@@ -25,7 +25,7 @@ local function setup(args)
 
 
 	tempAliases.announceVerbose =
-	tempAlias("^\/[Aa][Nn][Nn][Oo][Uu][Nn][Cc][Ee] [Vv][Ee][Rr][Bb][Oo][Ss][Ee]",
+	tempAlias("^\\/[Aa][Nn][Nn][Oo][Uu][Nn][Cc][Ee] [Vv][Ee][Rr][Bb][Oo][Ss][Ee]",
 		[[
 			local arguments = {}
 			Events.raiseEvent("announceVerboseEvent", arguments)
@@ -34,7 +34,7 @@ local function setup(args)
 
 
 	tempAliases.announceOff =
-	tempAlias("^\/[Aa][Nn][Nn][Oo][Uu][Nn][Cc][Ee] [Oo][Ff][Ff]",
+	tempAlias("^\\/[Aa][Nn][Nn][Oo][Uu][Nn][Cc][Ee] [Oo][Ff][Ff]",
 		[[
 			local arguments = {}
 			Events.raiseEvent("announceOffEvent", arguments)

@@ -7,7 +7,7 @@ local function setup(args)
 	tempAliases = {}
 
 	tempAliases.block =
-	tempAlias("^\/[Bb][Ll][Oo][Cc][Kk]",
+	tempAlias("^\\/[Bb][Ll][Oo][Cc][Kk]",
 		[[
 			local arguments = {}
 			Events.raiseEvent("blockEvent", arguments)
@@ -16,7 +16,7 @@ local function setup(args)
 
 
 	tempAliases.unblock =
-	tempAlias("^\/[Uu][Nn][Bb][Ll][Oo][Cc][Kk]",
+	tempAlias("^\\/[Uu][Nn][Bb][Ll][Oo][Cc][Kk]",
 		[[
 			local arguments = {}
 			Events.raiseEvent("unblockEvent", arguments)

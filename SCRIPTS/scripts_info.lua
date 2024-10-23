@@ -233,6 +233,8 @@ local function showContents(args)
 
 			item = string.gsub(v, ", ", "")
 			item = trim(item)
+			item = string.gsub(item, "^You catch ", "")
+			item = string.gsub(item, " in your fishing net$", "")
 			item = string.gsub(item, "^and ", "")
 			item = string.gsub(item, "^an ", "")
 			item = string.gsub(item, "^a ", "")

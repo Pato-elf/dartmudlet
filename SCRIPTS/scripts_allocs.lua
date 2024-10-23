@@ -9,7 +9,9 @@ local function checkAllocsTable(args)
 
 	dba.execute([[CREATE TABLE IF NOT EXISTS allocs (
 		id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+		allocIsActive BOOLEAN DEFAULT false,
 		allocName VARCHAR(64) DEFAULT "default",
+		allocOrderNumber INTEGER DEFAULT 0,
 		allocTarget VARCHAR(16) DEFAULT "",
 		bodypart1 VARCHAR(64) DEFAULT "left hand",
 		bonus1 INTEGER DEFAULT 75,
@@ -20,12 +22,12 @@ local function checkAllocsTable(args)
 		control1 INTEGER DEFAULT 0,
 		null1 INTEGER DEFAULT 300,
 		bodypart2 VARCHAR(64) DEFAULT "right hand",
-		bonus2 INTEGER DEFAULT 75,
-		daring2 INTEGER DEFAULT 75,
-		speed2 INTEGER DEFAULT 75,
-		aiming2 INTEGER DEFAULT 75,
-		parry2 INTEGER DEFAULT 0,
-		control2 INTEGER DEFAULT 0,
+		bonus2 INTEGER DEFAULT 0,
+		daring2 INTEGER DEFAULT 0,
+		speed2 INTEGER DEFAULT 0,
+		aiming2 INTEGER DEFAULT 0,
+		parry2 INTEGER DEFAULT 150,
+		control2 INTEGER DEFAULT 150,
 		null2 INTEGER DEFAULT 300,
 		bodypart3 VARCHAR(64) DEFAULT "",
 		bonus3 INTEGER DEFAULT 0,
@@ -58,19 +60,16 @@ local function checkAllocsTable(args)
 		aiming6 INTEGER DEFAULT 0,
 		parry6 INTEGER DEFAULT 0,
 		control6 INTEGER DEFAULT 0,
-		null6 INTEGER DEFAULT 300,
+		null6 INTEGER DEFAULT 300
 	);]])
+
 
 	local results = dba.query('SELECT id FROM allocs')
 	if results.count() == 0 then
-		local values = {}
-
-		for i = 1, 20 do
-			table.insert(values, '(DEFAULT)')
+		for i = 1, 30 do
+			dba.execute('INSERT INTO allocs DEFAULT VALUES')
 		end
-		
-		local sql = 'INSERT INTO allocs VALUES '..table.concat(values, ', ')
-		dba.execute(sql)	
+		dba.execute('UPDATE allocs SET allocOrderNumber=id')
 	end
 
 end
@@ -78,19 +77,28 @@ end
 
 
 local function load()
+	local result = {}
+	
+	result = dba.query('SELECT * FROM allocs ORDER BY allocOrderNumber')
+	for i = 1, 30 do
+		table.insert(Status.allocsTable, result[i])
+	end
 
+	for i, row in ipairs(Status.allocsTable) do
+		print(row.id, row.allocName)
+	end
 end
 
 
 
 local function save()
-	checkAllocsTable()
+	
 end
 
 
 
 local function setup(args)
-
+	checkAllocsTable()
 end
 
 local function unsetup(args)

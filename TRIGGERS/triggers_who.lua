@@ -13,7 +13,7 @@ local function setup(args)
                 ]])
 
   tempTriggers.whoNames =
-    tempRegexTrigger("^(?:> )*(?: {7}| {1,2}(?:\\[[A-Za-z]+\\] ))(?:([A-Za-z\-]+ [A-Za-z\-]+ [A-Za-z\-]+)( +)(?:(?:Idle *(?:\\d+m)? ?(?:\\d+s)?)|Online)?)+ *?"
+    tempRegexTrigger("^(?:> )*(?: {7}| {1,2}(?:\\[[A-Za-z]+\\] ))(?:([A-Za-z\\-]+ [A-Za-z\\-]+ [A-Za-z\\-]+)( +)(?:(?:Idle *(?:\\d+m)? ?(?:\\d+s)?)|Online)?)+ *?"
                ,[[
                   args = {name = name}
                   Events.raiseEvent("whoEvent", args)
@@ -35,7 +35,7 @@ local function setup(args)
 
 
   tempTriggers.whoWhere =
-    tempRegexTrigger("^(?:> )* *Most people seem to be in (?:\\w+) right now\."
+    tempRegexTrigger("^(?:> )* *Most people seem to be in (?:\\w+) right now\\."
                 ,[[
                   args = {}
                   Events.raiseEvent("whoEvent", args)

@@ -2,6 +2,8 @@
 
 &nbsp;
 ## Screenshots
+![allocs_example_cropped](https://github.com/user-attachments/assets/eeba2503-3f57-45a1-8362-2a4aa3de4c6d)
+&nbsp;
 ![DartMUDlet_screenshot_v1.4.1](https://github.com/user-attachments/assets/09d5b69f-57a1-4338-8055-5088e13c95e4)
 &nbsp;
 ![DartMUDlet_screenshot_v1.2](https://github.com/user-attachments/assets/80b1c2f1-cd70-40f7-866a-aae7df62825b)

@@ -1,5 +1,5 @@
-Status = {}
-local sourceName = "status"
+Status				= {}
+local sourceName	= "status"
 
 
 
@@ -20,9 +20,8 @@ Status.thirst		= ''
 
 -- alloc system variables
 -----------------------------------------------------------
-Status.allocCurrentDisplay = 1
---Status.allocActive = 0
-Status.allocsTable = {}
+Status.allocCurrentDisplay	= 1
+Status.allocsTable			= {}
 
 
 -- refresh system variables
@@ -215,7 +214,6 @@ function Status.setup(args)
 	Events.addListener("movementEvent", sourceName, setMovement)
 	Events.addListener("nameEvent", sourceName, setName)
 	Events.addListener("raceEvent", sourceName, setRace)
---	Events.addListener("soulAgeEvent", sourceName, setSoulAge)
 	Events.addListener("thirstEvent", sourceName, setThirst)
 	Events.addListener("loginEvent", sourceName, login)
 end
@@ -231,7 +229,6 @@ function Status.unsetup(args)
 	Events.removeListener("movementEvent", sourceName)
 	Events.removeListener("nameEvent", sourceName)
 	Events.removeListener("raceEvent", sourceName)
---	Events.removeListener("soulAgeEvent", sourceName)
 	Events.removeListener("thirstEvent", sourceName)
 	Events.removeListener("loginEvent", sourceName)
 end

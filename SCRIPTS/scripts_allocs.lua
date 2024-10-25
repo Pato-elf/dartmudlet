@@ -751,7 +751,7 @@ local function saveAllocSettings(args)
 	setAllocNull({save = false, number = 5, input = GUI.commandlineAllocs42:getText()})
 	setAllocNull({save = false, number = 6, input = GUI.commandlineAllocs50:getText()})
 
-	cecho("<yellow>Allocs: Allocation "..string.format("%02d", Status.allocCurrentDisplay).." settings updated\n")
+	cecho("<yellow>Allocs: Allocation set "..string.format("%02d", Status.allocCurrentDisplay).." updated\n")
 	if savetype == "set" then setAlloc({input = "set"}) end
 end
 

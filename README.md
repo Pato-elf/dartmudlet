@@ -26,7 +26,6 @@ In addition to the automatic features described above, there are a number of thi
 /setup   - Initialize variables, customize the display, start improve tracking database.
 /resetup - Remove then reinitialize timers, etc. Use to make updated DartMUDlet code active.
 ```
-Some of the rest are:
 ```
 /announce on      - Announce improvements in standard mode (skill name+)
 /announce brief   - Announce improvements in brief mode (+ only, no skill name)

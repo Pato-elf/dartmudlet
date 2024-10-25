@@ -1,10 +1,11 @@
-local Inscribing_Aliases = {}
-local aliases = {}
+local Inscribing_Aliases	= {}
+local aliases				= {}
 
 
 
 local function setup(args)
 	tempAliases = {}
+
 
 	-- practice scroll writing
 	tempAliases.practiceInscribing =
@@ -37,7 +38,7 @@ local function setup(args)
 			Events.raiseEvent("practiceInscribingAdjustPowerEvent", arguments)
 		]])
 
-  aliases = tempAliases
+	aliases = tempAliases
 end
 
 

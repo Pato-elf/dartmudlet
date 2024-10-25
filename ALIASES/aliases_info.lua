@@ -1,5 +1,5 @@
-local Info = {}
-local aliases = {}
+local Info		= {}
+local aliases	= {}
 
 
 
@@ -92,6 +92,7 @@ local function setup(args)
 
 
 	-- /set fontsize
+	-------------------------------------------------------
 	tempAliases.setFontSize =
 	tempAlias('^\\/set fontsize ([\\w]+) ([\\d]+)',
 		[[
@@ -100,7 +101,32 @@ local function setup(args)
 			local arguments = {detail = detail, size = size}
 			Events.raiseEvent('setFontSizeEvent', arguments)
 		]])
-		
+
+
+
+	-- /alloc copy
+	-------------------------------------------------------
+	tempAliases.allocCopy =
+	tempAlias('^\\/alloc copy ([\\d]+) ([\\d]+)',
+		[[
+			local source = matches[2]
+			local target = matches[3]
+			local arguments = {source = source, target = target}
+			Events.raiseEvent('allocCopyEvent', arguments)
+		]])
+
+
+
+	-- /alloc clear
+	-------------------------------------------------------
+	tempAliases.allocClear =
+	tempAlias('^\\/alloc clear ([\\d]+)',
+		[[
+			local target = matches[2]
+			local arguments = {target = target}
+			Events.raiseEvent('allocClearEvent', arguments)
+		]])
+
 	aliases = tempAliases
 end
 

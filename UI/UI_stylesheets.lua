@@ -20,7 +20,22 @@ function loadStylesheets()
 	StyleButtonPaleBlue = Geyser.StyleSheet:new([[
 		QLabel{
 			color: black;
-			background-color: #9898FB;--#98CFEA;
+			background-color: #9898FB;
+			margin: 5px;
+			border-width: 2px;
+			border-style: solid;
+			border-color: black;
+			border-radius: 10px;
+			font-size: 14pt;
+			font-family: Bitstream Vera Sans Mono;
+			qproperty-alignment: 'Center';
+		}
+	]])
+
+	StyleButtonPaleRed = Geyser.StyleSheet:new([[
+		QLabel{
+			color: black;
+			background-color: #FB98FB;
 			margin: 5px;
 			border-width: 2px;
 			border-style: solid;

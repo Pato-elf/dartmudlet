@@ -5,10 +5,11 @@ Auto = {}
 -- display the powercasting stats
 -----------------------------------------------------------
 local function displayPowercastStats(args)
-	local displaytype = args["detail"]
-	local displaytext = ''
-	local spellcasting = 0
-	local powercastPercentDisplay = ""
+	local displaytype				= args["detail"]
+	local powercastPercentDisplay	= ""
+	local displaytext				= ''
+	local spellcasting				= 0
+
 
 	if Status.statusChanShare == "off" then
 		cecho("<red>ERROR: Channel stat sharing is disabled. Use (/chan share on) to enable\n")

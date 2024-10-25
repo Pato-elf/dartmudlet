@@ -6,9 +6,9 @@ local sourceName		= "refresh"
 -- set refreshPower
 -----------------------------------------------------------
 local function setrefreshPower(args)
-	local version = args["version"]
-	local refreshpower = tonumber(args["input"])	
-	local saveflag = args["save"]
+	local refreshpower	= tonumber(args["input"])
+	local version		= args["version"]
+	local saveflag		= args["save"]
 
 
 	if not refreshpower then
@@ -37,9 +37,9 @@ end
 -- set refreshTarget
 -----------------------------------------------------------
 local function setrefreshTarget(args)
-	local version = args["version"]
-	local refreshtarget = args["input"]
-	local saveflag = args["save"]
+	local refreshtarget	= args["input"]
+	local version		= args["version"]
+	local saveflag		= args["save"]
 	
 	
 	if tonumber(refreshtarget) then

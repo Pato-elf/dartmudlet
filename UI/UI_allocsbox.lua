@@ -11,13 +11,23 @@ function createAllocsBox()
 	local alloc6_y		= 320
 	
 	local bodypart_x	= 15
-	local bonus_x		= 200
-	local daring_x		= 242
-	local speed_x		= 284
-	local aiming_x		= 326
-	local parry_x		= 368
-	local control_x		= 410
-	local null_x		= 452
+	local bonus_x		= -308
+	local daring_x		= -266
+	local speed_x		= -224
+	local aiming_x		= -182
+	local parry_x		= -140
+	local control_x		= -98
+	local null_x		= -56
+
+--	local bodypart_x	= 62      -- 15 + 47
+--	local bonus_x		= 247     -- 200 + 47
+--	local daring_x		= 289     -- 242 + 47
+--	local speed_x		= 331     -- 284 + 47
+--	local aiming_x		= 373     -- 326 + 47
+--	local parry_x		= 415     -- 368 + 47
+--	local control_x		= 457     -- 410 + 47
+--	local null_x		= 499     -- 452 + 47
+
 	
 
 -- CREATE ALLOCS BOX -> TABWINDOW2
@@ -49,7 +59,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.commandlineAllocs1 = GUI.commandlineAllocs1 or
 		Geyser.CommandLine:new({
 			name = "commandlineAllocs1",
-			x = 287, y = 80,
+			x = -221, y = 80,
 			width = 205, height = 28,
 	}, GUI.containerAllocsBox)
 
@@ -57,9 +67,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs1:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocNameEvent", {save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -70,7 +80,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.commandlineAllocs2 = GUI.commandlineAllocs2 or
 		Geyser.CommandLine:new({
 			name = "commandlineAllocs2",
-			x = 287, y = 110,
+			x = -221, y = 110,
 			width = 205, height = 28,
 	}, GUI.containerAllocsBox)
 
@@ -78,9 +88,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs2:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocTargetEvent", {save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -92,16 +102,16 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 		Geyser.CommandLine:new({
 			name = "commandlineAllocs3",
 			x = bodypart_x, y = alloc1_y,
-			width = 170, height = 28,
+			width = 190, height = 28,
 	}, GUI.containerAllocsBox)
 
 	GUI.commandlineAllocs3:setStyleSheet(StyleCommandLine:getCSS())
 	
 	GUI.commandlineAllocs3:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocBodypartEvent", {number = 1, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -120,9 +130,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs4:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocBonusEvent", {number = 1, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -141,9 +151,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs5:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocDaringEvent", {number = 1, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -162,9 +172,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs6:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocSpeedEvent", {number = 1, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -183,9 +193,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs7:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocAimingEvent", {number = 1, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -204,9 +214,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs8:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocParryEvent", {number = 1, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -225,9 +235,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs9:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocControlEvent", {number = 1, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -246,9 +256,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs10:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocNullEvent", {number = 1, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -265,16 +275,16 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 		Geyser.CommandLine:new({
 			name = "commandlineAllocs11",
 			x = bodypart_x, y = alloc2_y,
-			width = 170, height = 28,
+			width = 190, height = 28,
 	}, GUI.containerAllocsBox)
 
 	GUI.commandlineAllocs11:setStyleSheet(StyleCommandLine:getCSS())
 	
 	GUI.commandlineAllocs11:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocBodypartEvent", {number = 2, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -293,9 +303,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs12:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocBonusEvent", {number = 2, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -314,9 +324,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs13:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocDaringEvent", {number = 2, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -335,9 +345,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs14:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocSpeedEvent", {number = 2, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -356,9 +366,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs15:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocAimingEvent", {number = 2, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -377,9 +387,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs16:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocParryEvent", {number = 2, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -398,9 +408,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs17:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocControlEvent", {number = 2, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -419,9 +429,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs18:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocNullEvent", {number = 2, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -438,16 +448,16 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 		Geyser.CommandLine:new({
 			name = "commandlineAllocs19",
 			x = bodypart_x, y = alloc3_y,
-			width = 170, height = 28,
+			width = 190, height = 28,
 	}, GUI.containerAllocsBox)
 
 	GUI.commandlineAllocs19:setStyleSheet(StyleCommandLine:getCSS())
 	
 	GUI.commandlineAllocs19:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocBodypartEvent", {number = 3, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -466,9 +476,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs20:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocBonusEvent", {number = 3, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -487,9 +497,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs21:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocDaringEvent", {number = 3, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -508,9 +518,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs22:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocSpeedEvent", {number = 3, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -529,9 +539,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs23:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocAimingEvent", {number = 3, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -550,9 +560,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs24:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocParryEvent", {number = 3, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -571,9 +581,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs25:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocControlEvent", {number = 3, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -592,9 +602,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs26:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocNullEvent", {number = 3, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -618,16 +628,16 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 		Geyser.CommandLine:new({
 			name = "commandlineAllocs27",
 			x = bodypart_x, y = alloc4_y,
-			width = 170, height = 28,
+			width = 190, height = 28,
 	}, GUI.containerAllocsBox)
 
 	GUI.commandlineAllocs27:setStyleSheet(StyleCommandLine:getCSS())
 	
 	GUI.commandlineAllocs27:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocBodypartEvent", {number = 4, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -646,9 +656,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs28:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocBonusEvent", {number = 4, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -667,9 +677,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs29:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocDaringEvent", {number = 4, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -688,9 +698,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs30:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocSpeedEvent", {number = 4, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -709,9 +719,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs31:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocAimingEvent", {number = 4, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -730,9 +740,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs32:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocParryEvent", {number = 4, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -751,9 +761,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs33:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocControlEvent", {number = 4, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -772,9 +782,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs34:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocNullEvent", {number = 4, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -796,16 +806,16 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 		Geyser.CommandLine:new({
 			name = "commandlineAllocs35",
 			x = bodypart_x, y = alloc5_y,
-			width = 170, height = 28,
+			width = 190, height = 28,
 	}, GUI.containerAllocsBox)
 
 	GUI.commandlineAllocs35:setStyleSheet(StyleCommandLine:getCSS())
 	
 	GUI.commandlineAllocs35:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocBodypartEvent", {number = 5, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -824,9 +834,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs36:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocBonusEvent", {number = 5, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -845,9 +855,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs37:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocDaringEvent", {number = 5, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -866,9 +876,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs38:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocSpeedEvent", {number = 5, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -887,9 +897,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs39:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocAimingEvent", {number = 5, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -908,9 +918,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs40:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocParryEvent", {number = 5, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -929,9 +939,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs41:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocControlEvent", {number = 5, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -950,9 +960,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs42:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocNullEvent", {number = 5, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -973,16 +983,16 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 		Geyser.CommandLine:new({
 			name = "commandlineAllocs43",
 			x = bodypart_x, y = alloc6_y,
-			width = 170, height = 28,
+			width = 190, height = 28,
 	}, GUI.containerAllocsBox)
 
 	GUI.commandlineAllocs43:setStyleSheet(StyleCommandLine:getCSS())
 	
 	GUI.commandlineAllocs43:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocBodypartEvent", {number = 6, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -1001,9 +1011,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs44:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocBonusEvent", {number = 6, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -1022,9 +1032,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs45:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocDaringEvent", {number = 6, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -1043,9 +1053,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs46:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocSpeedEvent", {number = 6, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -1064,9 +1074,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs47:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocAimingEvent", {number = 6, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -1085,9 +1095,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs48:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocParryEvent", {number = 6, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -1106,9 +1116,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs49:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocControlEvent", {number = 6, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 	
@@ -1127,9 +1137,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	
 	GUI.commandlineAllocs50:setAction(
 	function(command)
-		--Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
-		--GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("setAllocNullEvent", {number = 6, save = true, input = command})
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
 
@@ -1293,15 +1303,15 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.textboxAllocs9 = GUI.textboxAllocs9 or
 		Geyser.Label:new({
 			name = "textboxAllocs9",
-			x = 185, y = 86,
+			x = -340, y = 86,
 			fontSize = 11,
-			width = 110,
+			width = 120,
 			height = 17,
 			color = "black"
 		}, GUI.containerAllocsBox)
 
 	GUI.textboxAllocs9:setStyleSheet(StyleTextBlue:getCSS())
-	cecho("textboxAllocs9", "<yellow>ALLOC&nbsp;&nbsp;01")
+	cecho("textboxAllocs9", "<yellow>ALLOC NAME")
 	GUI.textboxAllocs9:setToolTip("Name for the allocation set",Status.tooltipTime)
 
 
@@ -1311,17 +1321,34 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.textboxAllocs10 = GUI.textboxAllocs10 or
 		Geyser.Label:new({
 			name = "textboxAllocs10",
-			x = 185, y = 116,
+			x = -340, y = 116,
 			fontSize = 11,
-			width = 110,
+			width = 120,
 			height = 17,
 			color = "black"
 		}, GUI.containerAllocsBox)
 
 	GUI.textboxAllocs10:setStyleSheet(StyleTextBlue:getCSS())
-	cecho("textboxAllocs10", "<yellow>TARGET 01")
+	cecho("textboxAllocs10", "<yellow>TARGET NAME")
 	GUI.textboxAllocs10:setToolTip("Who this allocation is for",Status.tooltipTime)
-	
+
+
+
+	-- CREATE TEXTBOX11 -> ALLOCS -> TABWINDOW2  (CURRENT ALLOC NUMBER)
+	-------------------------------------------------------
+	GUI.textboxAllocs11 = GUI.textboxAllocs11 or
+		Geyser.Label:new({
+			name = "textboxAllocs11",
+			x = 67, y = 80,
+			fontSize = 11,
+			width = 120,
+			height = 40,
+			color = "black"
+		}, GUI.containerAllocsBox)
+
+	GUI.textboxAllocs11:setStyleSheet(StyleTextBlue:getCSS())
+	--cecho("textboxAllocs11", "<yellow>01")
+	GUI.textboxAllocs11:setToolTip("Allocation number",Status.tooltipTime)
 	
 	
 	
@@ -1339,7 +1366,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.buttonAllocs1 = GUI.buttonAllocs1 or
 		Geyser.Label:new({
 			name = "buttonAllocs1",
-			x = bodypart_x+92, y = 79,
+			x = bodypart_x+87, y = 10,
 			fontSize = 14,
 			width = 60,
 			height = 60,
@@ -1354,9 +1381,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	function buttonAllocs1_click()
 		GUI.buttonAllocs1:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		tempTimer(0.15, function() GUI.buttonAllocs1:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
-		--Status.powercastisForce = true
-		--cecho("<yellow>FORCE POWERCAST\n")
-		--Events.raiseEvent("processPowercastEvent", arguments)
+		Allocs.setAllocsCurrentNumber("up")
 	end
 
 
@@ -1366,7 +1391,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.buttonAllocs2 = GUI.buttonAllocs2 or
 		Geyser.Label:new({
 			name = "buttonAllocs2",
-			x = bodypart_x+17, y = 79,
+			x = bodypart_x+32, y = 10,
 			fontSize = 14,
 			width = 60,
 			height = 60,
@@ -1381,9 +1406,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	function buttonAllocs2_click()
 		GUI.buttonAllocs2:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		tempTimer(0.15, function() GUI.buttonAllocs2:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
-		--Status.powercastisForce = true
-		--cecho("<yellow>FORCE POWERCAST\n")
-		--Events.raiseEvent("processPowercastEvent", arguments)
+		Allocs.setAllocsCurrentNumber("down")
 	end
 
 
@@ -1393,7 +1416,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.buttonAllocs3 = GUI.buttonAllocs3 or
 		Geyser.Label:new({
 			name = "buttonAllocs3",
-			x = 200, y = 10,
+			x = -235, y = 10,
 			fontSize = 14,
 			width = 60,
 			height = 60,
@@ -1406,11 +1429,12 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.buttonAllocs3:setClickCallback("buttonAllocs3_click")
 
 	function buttonAllocs3_click()
-		GUI.buttonAllocs3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		tempTimer(0.15, function() GUI.buttonAllocs3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
-		--Status.powercastisForce = true
-		--cecho("<yellow>FORCE POWERCAST\n")
-		--Events.raiseEvent("processPowercastEvent", arguments)
+		--GUI.buttonAllocs3:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		--tempTimer(0.15, function() GUI.buttonAllocs3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+		Events.raiseEvent("saveAllocSettingsEvent", {type = "set"})
+		--Events.raiseEvent("setAllocEvent", {type = "set"})
 	end
 
 
@@ -1420,7 +1444,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.buttonAllocs4 = GUI.buttonAllocs4 or
 		Geyser.Label:new({
 			name = "buttonAllocs4",
-			x = 260, y = 10,
+			x = -180, y = 10,
 			fontSize = 14,
 			width = 60,
 			height = 60,
@@ -1435,9 +1459,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	function buttonAllocs4_click()
 		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
-		--Status.powercastisForce = true
-		--cecho("<yellow>FORCE POWERCAST\n")
-		--Events.raiseEvent("processPowercastEvent", arguments)
+		Events.raiseEvent("saveAllocSettingsEvent", {input = ""})
 	end
 
 
@@ -1447,7 +1469,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.buttonAllocs5 = GUI.buttonAllocs5 or
 		Geyser.Label:new({
 			name = "buttonAllocs5",
-			x = 320, y = 10,
+			x = -125, y = 10,
 			fontSize = 14,
 			width = 60,
 			height = 60,
@@ -1462,9 +1484,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	function buttonAllocs5_click()
 		GUI.buttonAllocs5:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		tempTimer(0.15, function() GUI.buttonAllocs5:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
-		--Status.powercastisForce = true
-		--cecho("<yellow>FORCE POWERCAST\n")
-		--Events.raiseEvent("processPowercastEvent", arguments)
+		Events.raiseEvent("setAllocEvent", {type = "share"})
 	end
 
 
@@ -1474,7 +1494,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.buttonAllocs6 = GUI.buttonAllocs6 or
 		Geyser.Label:new({
 			name = "buttonAllocs6",
-			x = 380, y = 10,
+			x = -70, y = 10,
 			fontSize = 14,
 			width = 60,
 			height = 60,
@@ -1489,9 +1509,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	function buttonAllocs6_click()
 		GUI.buttonAllocs6:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		tempTimer(0.15, function() GUI.buttonAllocs6:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
-		--Status.powercastisForce = true
-		--cecho("<yellow>FORCE POWERCAST\n")
-		--Events.raiseEvent("processPowercastEvent", arguments)
+		Events.raiseEvent("setAllocOrderEvent", {type = "set"})
 	end
 
 	

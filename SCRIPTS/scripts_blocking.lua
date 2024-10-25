@@ -1,7 +1,7 @@
-local Blocking = {}
-local sourceName = "blocking"
-local isBlocked = false
-local queue = {}
+local Blocking		= {}
+local sourceName	= "blocking"
+local isBlocked		= false
+local queue			= {}
 
 
 
@@ -96,7 +96,8 @@ end
 -----------------------------------------------------------
 local function unblock()
 	local containsBlock = false
-	local tempQueue = {}
+	local tempQueue		= {}
+
 
 	if(isBlocked) then
 		local count = table.size(queue)
@@ -105,7 +106,7 @@ local function unblock()
 		if count > 0 then
 			cecho("<orange>UNBLOCK ("..count.." queued)\n")
 
-			for i,v in ipairs(queue) do
+			for i, v in ipairs(queue) do
 				if (not containsBlock) and (not isBlocker(v)) then
 					send(v)
 				elseif not containsBlock then

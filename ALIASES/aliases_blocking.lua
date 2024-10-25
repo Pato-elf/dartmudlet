@@ -1,10 +1,11 @@
-local Blocking_Aliases = {}
-local aliases = {}
+local Blocking_Aliases	= {}
+local aliases			= {}
 
 
 
 local function setup(args)
 	tempAliases = {}
+
 
 	tempAliases.block =
 	tempAlias("^\\/[Bb][Ll][Oo][Cc][Kk]",
@@ -21,6 +22,7 @@ local function setup(args)
 			local arguments = {}
 			Events.raiseEvent("unblockEvent", arguments)
 		]])
+		
 	aliases = tempAliases
 end
 

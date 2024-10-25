@@ -1,21 +1,20 @@
-Info = {}
-
+Info				= {}
+local versionNumber	= "v1.6"
+local sourceName	= "info"
+local colorHelp		= "yellow"
+local spacerHelp	= "   "
+local levels		= {"mythic","legendary","a grand master","a virtuoso","consummate","a high master","renowned","an adept","eminent",
+					"a master","superb","an expert","excellent","very good","adroit","good","proficient","fair","able","above average",
+					"average","below average","not very good","poor","a beginner","a novice","a tyro","unskilled"}
 math.randomseed(os.time())
-local sourceName = "info"
-local colorHelp = "yellow"
-local spacerHelp = "   "
-local versionNumber = "v1.5.1"
-local levels = {"mythic","legendary","a grand master","a virtuoso","consummate","a high master","renowned","an adept","eminent",
-				"a master","superb","an expert","excellent","very good","adroit","good","proficient","fair","able","above average",
-				"average","below average","not very good","poor","a beginner","a novice","a tyro","unskilled"}
 
 
 
 -- return /random results
 -----------------------------------------------------------
 local function showRandom(args)
-	local randomrange = args["detail"]
-	local randomnumber = 0
+	local randomrange	= args["detail"]
+	local randomnumber	= 0
 	
 	
 	if tonumber(randomrange) then
@@ -53,12 +52,13 @@ end
 -- return quick help
 -----------------------------------------------------------
 local function showQuickHelp()
-	local helpText = ""
-	local helpTagYellow = "<span style=\"color: yellow;\">"
-	local helpTagGreen = "<span style=\"color: palegreen; font-weight: bold;\">"
-	local helpTagRed = "<span style=\"color: red; font-weight: bold;\">"
-	local helpTagOff = "</span>"
+	local helpText		= ""
+	local helpTagYellow	= "<span style=\"color: yellow;\">"
+	local helpTagGreen	= "<span style=\"color: palegreen; font-weight: bold;\">"
+	local helpTagRed	= "<span style=\"color: red; font-weight: bold;\">"
+	local helpTagOff	= "</span>"
 	
+
 	helpText = helpText..helpTagYellow
 	helpText = helpText.."DartMUDlet - Pato Edition "..versionNumber.."<BR>"
 	helpText = helpText.."============================================================================================="..helpTagOff.."<BR>"
@@ -80,10 +80,10 @@ end
 -- return quick levels
 -----------------------------------------------------------
 local function showQuickLevels()
-	local helpText = ""
-	local skillLevels = {}
-	local helpTagYellow = "<span style=\"color: yellow;\">"
-	local helpTagOff = "</span>"
+	local helpText		= ""
+	local skillLevels	= {}
+	local helpTagYellow	= "<span style=\"color: yellow;\">"
+	local helpTagOff	= "</span>"
 
 
 	for i,v in pairs(levels) do
@@ -135,6 +135,7 @@ end
 local function showHelp(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
+
 	cecho(preText.."                          DartMUDlet - Pato Edition "..versionNumber.."\n")
 	cecho(preText.."==================================================================================\n")
 	cecho(preText.."/setup   - Initialize variables, customize display, start improve tracking\n")
@@ -162,19 +163,22 @@ local function showHelp(args)
 	cecho(preText.."/inscribe power <power>          - Change power you are using for practice inscribe\n")
 	cecho(preText.."/inscribe off                    - Stop practice inscribing a spell\n")
 	cecho(preText.."\n")
+	cecho(preText.."/info <who> <skill>              - Show current improves/level for a skill\n")
 	cecho(preText.."/insert <who> <skill> <improves> - Manually insert a new skill into database\n")
 	cecho(preText.."/update <who> <skill> <improves> - Manually set improves for you|pet's skill\n")
+	cecho(preText.."\n")
+	cecho(preText.."/alloc clear <num>               - Clear the contents of an allocation set\n")
+	cecho(preText.."/alloc copy <num> <num>          - Copy one allocation set over to another\n")
+	cecho(preText.."/antispam on|off                 - Suppress repeated lines\n")
 	cecho(preText.."/aura on|off|scint               - Show aura on screen (default off)\n")
 	cecho(preText.."/conc on|off|bright              - Show concentration on screen (default off)\n")
-	cecho(preText.."/info <who> <skill>              - Show current improves/level for a skill\n")
-	cecho(preText.."/who on|off                      - Auto check the who list every 5 minutes\n")
-	cecho(preText.."/antispam on|off                 - Suppress repeated lines\n")
+	cecho(preText.."/contents on|off                 - Show expanded contents view for containers\n")
+	cecho(preText.."/levels                          - Display a list of skill levels\n")
 	cecho(preText.."/random <num>                    - Generate a random number between 1 and a number\n")
 	cecho(preText.."/random <value,value,value>      - Pick a random value from a list of values\n")
-	cecho(preText.."/contents on|off                 - Show expanded contents view for containers\n")
 	cecho(preText.."/set fontsize <option> <8-16>    - Set fontsize for tabs (all|chat|improves|message|who)\n")
+	cecho(preText.."/who on|off                      - Auto check the who list every 5 minutes\n")
 	cecho(preText.."#num repeat                      - Repeat commands (e.g. #3 say hi)\n")
-	cecho(preText.."/levels                          - Display a list of skill levels\n")
 	cecho(preText.."/help                            - Display a list of available commands\n")
 end
 

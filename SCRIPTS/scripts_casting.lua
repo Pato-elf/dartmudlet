@@ -43,7 +43,7 @@ local function changePower(args)
 	if (spellPower < 50) or not (tonumber(spellPower)) then
 		cecho("<red>ERROR: Invalid /cast power value\n")
 	else
-		Status.castCurrentPower = power
+		Status.castCurrentPower = spellPower
 		dba.execute('UPDATE casting SET castCurrentPower='..Status.castCurrentPower)
 		cecho("<yellow>Channel: /cast power value updated\n")
 		Events.raiseEvent("messageEvent", {message="<yellow>Practice casting "..Status.castCurrentSpell.." @ "..Status.castCurrentPower.." "..Status.castCurrentArgs.."\n"})
@@ -110,14 +110,14 @@ local function setup(args)
 	checkCastingTable()
 	Events.addListener("practiceCastEvent",sourceName, practiceCastSetup)
 	Events.addListener("practiceCastOffEvent",sourceName, practiceCastOff)
-	Events.addListener("finishPracticingEvent",sourceName, finishedPracticing)
+--	Events.addListener("finishPracticingEvent",sourceName, finishedPracticing)
 	Events.addListener("castPowerAdjustEvent",sourceName, changePower)
 end
 
 local function unsetup(args)
 	Events.removeListener("practiceCastEvent",sourceName)
 	Events.removeListener("practiceCastOffEvent",sourceName)
-	Events.removeListener("finishPracticingEvent",sourceName)
+--	Events.removeListener("finishPracticingEvent",sourceName)
 	Events.removeListener("castPowerAdjustEvent",sourceName)
 end
 

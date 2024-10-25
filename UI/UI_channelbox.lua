@@ -156,7 +156,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 		tempTimer(0.15, function() GUI.containerChannelButton5:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 		Status.powercastisForce = true
 		cecho("<yellow>FORCE POWERCAST\n")
-		Events.raiseEvent("processPowercastEvent", arguments)
+		Events.raiseEvent("processPowercastEvent", "none")
 	end	
 
 

@@ -4,13 +4,12 @@
 
 
 require "luasql.sqlite3"
-dba = {}
-
-local loader_game = "Database_dartmud"
-local dbFile = string.upper(loader_game)..".db"
-local env = assert(luasql.sqlite3(),"Failed to setup( luasql.sqlite3")
-local db = env:connect(string.format("%s/%s",getMudletHomeDir(),dbFile))
-local transaction = false
+dba					= {}
+local loader_game	= "Database_dartmud"
+local dbFile		= string.upper(loader_game)..".db"
+local env			= assert(luasql.sqlite3(),"Failed to setup( luasql.sqlite3")
+local db			= env:connect(string.format("%s/%s",getMudletHomeDir(),dbFile))
+local transaction	= false
 
 
 

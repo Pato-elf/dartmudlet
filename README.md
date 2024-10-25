@@ -57,19 +57,23 @@ Some of the rest are:
 /inscribe off                    - Stop practice inscribing 
 ```
 ```
+/info <who> <skill>              - Show current improves/level for a skill
 /insert <who> <skill> <improves> - Manually insert a new skill into the database
 /update <who> <skill> <improves> - Set improves for your (or pet's) skill to given total
+```
+```
+/alloc clear <num>               - Clear the contents of an allocation set
+/alloc copy <num> <num>          - Copy one allocation set over to another
+/antispam on|off                 - suppress repeated lines
 /aura on|off|scint               - Show aura on screen (default off)
 /conc on|off|bright              - Show concentration on screen (default off)
-/info <who> <skill>              - Show current improves/level for a skill
-/who on|off                      - Auto check the who list every 5 minutes
-/antispam on|off                 - suppress repeated lines
+/contents on|off                 - Show expanded contents view for containers (default on)
+/levels                          - Display a list of skill levels
 /random <num>                    - Generate a random number between 1 and a number
 /random <value,value,value>      - Pick a random value from a list of values
-/contents on|off                 - Show expanded contents view for containers (default on)
 /set fontsize <option> <8-16>    - Set the fontsize for tabs (all|chat|improves|message|who)
+/who on|off                      - Auto check the who list every 5 minutes
 #num repeat                      - Repeat commands from the command line (e.g. #3 say hi)
-/levels                          - Display a list of skill levels
 /help                            - Display a list of available commands
 ```
 

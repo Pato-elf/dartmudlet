@@ -9,7 +9,7 @@ function createAllocsBox()
 	local alloc4_y		= 260
 	local alloc5_y		= 290
 	local alloc6_y		= 320
-	
+
 	local bodypart_x	= 15
 	local bonus_x		= -308
 	local daring_x		= -266
@@ -19,16 +19,7 @@ function createAllocsBox()
 	local control_x		= -98
 	local null_x		= -56
 
---	local bodypart_x	= 62      -- 15 + 47
---	local bonus_x		= 247     -- 200 + 47
---	local daring_x		= 289     -- 242 + 47
---	local speed_x		= 331     -- 284 + 47
---	local aiming_x		= 373     -- 326 + 47
---	local parry_x		= 415     -- 368 + 47
---	local control_x		= 457     -- 410 + 47
---	local null_x		= 499     -- 452 + 47
 
-	
 
 -- CREATE ALLOCS BOX -> TABWINDOW2
 -----------------------------------------------------------
@@ -1434,7 +1425,6 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 		Events.raiseEvent("saveAllocSettingsEvent", {type = "set"})
-		--Events.raiseEvent("setAllocEvent", {type = "set"})
 	end
 
 

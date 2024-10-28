@@ -1,8 +1,10 @@
 messagebox = {}
 
+
+
 function createMessageBox()
 
--- CREATE MESSAGE BOX -> TABWINDOW2
+-- CREATE MESSAGE BOX -> TABWINDOW1
 -----------------------------------------------------------
 GUI.containerMessageBox = GUI.containerMessageBox or
 	Geyser.MiniConsole:new({
@@ -12,7 +14,7 @@ GUI.containerMessageBox = GUI.containerMessageBox or
 		width = "96%",
 		height = "93%",
 		color = "black"
-	}, GUI.tabwindow2.MESSAGEcenter)
+	}, GUI.tabwindow1.MESSAGEcenter)
 
 end
 

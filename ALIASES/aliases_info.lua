@@ -117,6 +117,19 @@ local function setup(args)
 
 
 
+	-- /repeat copy
+	-------------------------------------------------------
+	tempAliases.repeatCopy =
+	tempAlias('^\\/repeat copy ([\\d]+) ([\\d]+)',
+		[[
+			local source = matches[2]
+			local target = matches[3]
+			local arguments = {source = source, target = target}
+			Events.raiseEvent('repeatCopyEvent', arguments)
+		]])
+
+
+
 	-- /alloc clear
 	-------------------------------------------------------
 	tempAliases.allocClear =
@@ -126,6 +139,19 @@ local function setup(args)
 			local arguments = {target = target}
 			Events.raiseEvent('allocClearEvent', arguments)
 		]])
+
+
+
+	-- /repeat clear
+	-------------------------------------------------------
+	tempAliases.repeatClear =
+	tempAlias('^\\/repeat clear ([\\d]+)',
+		[[
+			local target = matches[2]
+			local arguments = {target = target}
+			Events.raiseEvent('repeatClearEvent', arguments)
+		]])
+
 
 	aliases = tempAliases
 end

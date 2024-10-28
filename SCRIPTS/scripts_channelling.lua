@@ -9,23 +9,24 @@ local powercastTimeisFirst	= true
 -----------------------------------------------------------
 local function computeTimeElapsed()
 	local timeelapsed = ""
-	
+
+
 	if powercastTimeisFirst then
 		timeelapsed = "N/A"
 		powercastTimeisFirst = false
 	else
 		timeelapsed = os.time()
 		timeelapsed = timeelapsed - powercastTimeLast
-		
+
 		local hours   = math.floor(timeelapsed / 3600)
 		local minutes = math.floor((timeelapsed % 3600) / 60)
 		local seconds = timeelapsed % 60
-		
+
 		timeelapsed = string.format("%02d:%02d:%02d", hours, minutes, seconds)
 	end
-	
+
 	powercastTimeLast = os.time()
-	
+
 	return timeelapsed
 
 end
@@ -48,7 +49,8 @@ end
 -----------------------------------------------------------
 local function setchannelMode(args)
 	local channelmode = args["input"]
-	
+
+
 	Status.channelMode = channelmode
 	dba.execute('UPDATE channel SET channelMode="'..Status.channelMode..'"')
 	send("conc", false)
@@ -86,8 +88,8 @@ end
 local function setteachTarget(args)
 	local teachtarget = args["input"]
 	local saveflag = args["save"]
-	
-	
+
+
 	if tonumber(teachtarget) then
 		cecho("<red>ERROR: Invalid teaching target\n")
 	else
@@ -105,7 +107,7 @@ end
 local function setpowercastAmount(args)
 	local powercastamount = tonumber(args["input"])
 	local saveflag = args["save"]
-	
+
 
 	if not powercastamount then
 		cecho("<red>ERROR: Invalid powercast value\n")
@@ -129,6 +131,7 @@ local function setpowercastAddon(args)
 	local powercastaddon = tonumber(args["input"])
 	local saveflag = args["save"]
 
+
 	if not powercastaddon then
 		cecho("<red>ERROR: Invalid powercast addon value\n")
 	else
@@ -151,6 +154,7 @@ end
 local function setfeedTarget(args)
 	local feedtarget = args["input"]
 	local saveflag = args["save"]
+
 	
 	if tonumber(feedtarget) then
 		cecho("<red>ERROR: Invalid feeding target\n")
@@ -169,6 +173,7 @@ end
 local function setfocusAmountFeed(args)
 	local focusamountfeed = tonumber(args["input"])
 	local saveflag = args["save"]
+
 
 	if not focusamountfeed then
 		cecho("<red>ERROR: Invalid feeding channel value\n")
@@ -191,6 +196,7 @@ end
 local function setfocusTarget(args)
 	local focustarget = args["input"]
 	local saveflag = args["save"]
+
 	
 	if tonumber(focustarget) then
 		cecho("<red>ERROR: Invalid focus target\n")
@@ -209,6 +215,7 @@ end
 local function setfocusTargetSource(args)
 	local focustargetsource = args["input"]
 	local saveflag = args["save"]
+
 	
 	if tonumber(focustargetsource) then
 		cecho("<red>ERROR: Invalid focus target source\n")
@@ -227,6 +234,7 @@ end
 local function setfocusAmountTeach(args)
 	local focusamountteach = tonumber(args["input"])
 	local saveflag = args["save"]
+
 
 	if not focusamountteach then
 		cecho("<red>ERROR: Invalid teaching channel value\n")
@@ -250,10 +258,10 @@ local function setchannelAddonCommand(args)
 	local channeladdoncommand = args["input"]
 	local saveflag = args["save"]
 
+
 	Status.cmdAddon = channeladdoncommand
 	if saveflag then dba.execute('UPDATE channel SET cmdAddon="'..Status.cmdAddon..'"') end
 	cecho("<yellow>Channel: Channel addon command updated\n")
-	
 end
 
 
@@ -276,6 +284,7 @@ end
 local function processPowercast(args)
 	local powercastNumber = computePowercast()
 
+
 	if not Status.powercastPauseisActive then
 		if Status.focusTargetSource == "" then
 			send("discharge " .. Status.focusTarget)
@@ -287,7 +296,6 @@ local function processPowercast(args)
 		
 		Status.focusTotal = 0
 		updateFocusDisplay()
-
 	end
 	
 
@@ -324,10 +332,18 @@ end
 -- perform a channel
 -----------------------------------------------------------
 local function processChannel(args)
-	local focusamount = 0
-	local focustarget = ""
-	
-	if (Status.channelMode == "PC + TEACH") then
+	local amount		= args["amount"]
+	local focusamount	= 0
+	local focustarget	= ""
+
+	if amount then
+		focusamount = amount
+		if (Status.channelMode == "FEED AURA") then
+			focustarget = Status.feedTarget
+		else
+			focustarget = Status.focusTarget
+		end
+	elseif (Status.channelMode == "PC + TEACH") then
 		focusamount = Status.focusAmountTeach
 		focustarget = Status.focusTarget
 	elseif (Status.channelMode == "FEED AURA") then
@@ -344,7 +360,7 @@ local function processChannel(args)
 		expandAlias(Status.cmdAddon)
 	end
 	
-	if (Status.channelMode ~= "FEED AURA") or (Status.feedTarget == Status.focusTarget)then
+	if (Status.channelMode ~= "FEED AURA") or (Status.feedTarget == Status.focusTarget) then
 		Status.focusTotal = Status.focusTotal + focusamount
 		updateFocusDisplay()
 	end
@@ -398,6 +414,7 @@ end
 -----------------------------------------------------------
 local function setFocusTotal(args)
 	local setting = string.lower(args["detail"])
+
 
 	if tonumber(setting) or not ((setting == "on") or (setting == "off") or (setting == "help")) then
 		cecho("<red>ERROR: Invalid /focus value\n")
@@ -456,23 +473,45 @@ end
 -- reset the powercast stats
 -----------------------------------------------------------
 local function resetPowercastStats()
-	local query = ""
-	Status.powercastTotal = 0
-	Status.powercastSuccess = 0
-	Status.powercastPercent = 0
-	Status.focusTotal = 0
-	
+	local query				= ""
+	Status.powercastTotal	= 0
+	Status.powercastSuccess	= 0
+	Status.powercastPercent	= 0
+	Status.focusTotal		= 0
+
+
 	query = query..'UPDATE channel '
 	query = query..'SET powercastTotal='..Status.powercastTotal..', '
 	query = query..'powercastSuccess='..Status.powercastSuccess
 	dba.execute(query)
-	
+
 	cecho("ChannelTextBox1", Info.showSpellCasting())
 	cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
 	cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
 	cecho("ChannelTextBox4", Info.showPowercastPercentage())
 	cecho("ChannelTextBox16", "<magenta>"..Status.focusTotal.."%")
 	cecho("<yellow>Channel: Reset powercast stats\n")
+end
+
+
+
+-- process single channel
+-----------------------------------------------------------
+local function processSingleChannel(args)
+	local amount = tonumber(args["detail"])
+
+
+	if (not amount) or (amount < 1) or (amount > 100) then
+		cecho("<red>ERROR: Invalid /chan value\n")
+	elseif  (Status.focusTotal >= Status.powercastAmount) and ((Status.channelMode == "POWERCAST") or (Status.channelMode == "PC + TEACH")) then
+		Events.raiseEvent("processPowercastEvent", {input = aura})
+	else
+		--if ((Status.channelMode == "FEED AURA") and (aura == "scintillating")) or (Status.channelMode ~= "FEED AURA") then
+		processChannel({input = aura, amount = amount})
+		--	Events.raiseEvent("processChannelEvent", {input = aura, amount = amount})
+		--end
+	end
+
 end
 
 
@@ -585,6 +624,7 @@ end
 
 local function setup(args)
 	checkChannelTable()
+	Events.addListener("singleChannelEvent", sourceName, processSingleChannel)
 	Events.addListener("processPowercastEvent", sourceName, processPowercast)
 	Events.addListener("processChannelEvent", sourceName, processChannel)
 	Events.addListener("resetPowercastStatsEvent", sourceName, resetPowercastStats)
@@ -607,6 +647,7 @@ local function setup(args)
 end
 
 local function unsetup(args)
+	Events.removeListener("singleChannelEvent", sourceName)
 	Events.removeListener("processPowercastEvent", sourceName)
 	Events.removeListener("processChannelEvent", sourceName)
 	Events.removeListener("resetPowercastStatsEvent", sourceName)

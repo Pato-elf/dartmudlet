@@ -73,6 +73,7 @@ local function showAllocsCurrentNumber(args)
 	local allocnumber = args
 	local displaytext = ""
 
+
 	displaytext = "<yellow><span style='font-size: 30pt;'>"
 	displaytext = displaytext..string.format("%02d", allocnumber)
 	displaytext = displaytext.."</span>"
@@ -890,7 +891,6 @@ local function unsetup(args)
 	Events.removeListener("saveAllocSettingsEvent", sourceName)
 	Events.removeListener("allocCopyEvent", sourceName)
 	Events.removeListener("allocClearEvent", sourceName)
-
 end
 
 

@@ -1,16 +1,17 @@
-local _Core = {}
-local packageName = "dartmudlet"
-packageFolder = getMudletHomeDir().."/"..packageName.."/"
-local modules = {}
-local sourceName = "core"
+local _Core			= {}
+local packageName	= "dartmudlet"
+packageFolder		= getMudletHomeDir().."/"..packageName.."/"
+local modules		= {}
+local sourceName	= "core"
 
 
 
 local function setup(e, f, g)
-	cecho("<yellow>DARTMUDLET: setup\n")
-	modules = {}
-	args = {}
+	modules	= {}
+	args	= {}
 
+
+	cecho("<yellow>DARTMUDLET: setup\n")
 
 	local aliases_directory = packageFolder.."ALIASES/"
 	for file in lfs.dir(aliases_directory) do

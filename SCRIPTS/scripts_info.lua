@@ -1,5 +1,5 @@
 Info				= {}
-local versionNumber	= "v1.6"
+local versionNumber	= "v1.6.1"
 local sourceName	= "info"
 local colorHelp		= "yellow"
 local spacerHelp	= "   "
@@ -176,6 +176,8 @@ local function showHelp(args)
 	cecho(preText.."/levels                          - Display a list of skill levels\n")
 	cecho(preText.."/random <num>                    - Generate a random number between 1 and a number\n")
 	cecho(preText.."/random <value,value,value>      - Pick a random value from a list of values\n")
+	cecho(preText.."/repeat clear <num>              - Clear the contents of a repeat set\n")
+	cecho(preText.."/repeat copy <num> <num>         - Copy one repeat set over to another\n")
 	cecho(preText.."/set fontsize <option> <8-16>    - Set fontsize for tabs (all|chat|improves|message|who)\n")
 	cecho(preText.."/who on|off                      - Auto check the who list every 5 minutes\n")
 	cecho(preText.."#num repeat                      - Repeat commands (e.g. #3 say hi)\n")

@@ -72,6 +72,8 @@ In addition to the automatic features described above, there are a number of thi
 /levels                          - Display a list of skill levels
 /random <num>                    - Generate a random number between 1 and a number
 /random <value,value,value>      - Pick a random value from a list of values
+/repeat clear <num>              - Clear the contents of a repeat set
+/repeat copy <num> <num>         - Copy one repeat set over to another
 /set fontsize <option> <8-16>    - Set the fontsize for tabs (all|chat|improves|message|who)
 /who on|off                      - Auto check the who list every 5 minutes
 #num repeat                      - Repeat commands from the command line (e.g. #3 say hi)

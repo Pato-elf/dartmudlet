@@ -36,7 +36,7 @@ local function setup(args)
 			local detail = matches[2]
 			local arguments = {detail = detail}
 			Events.raiseEvent("setChanSoundEvent", arguments)
-		]])			
+		]])	
 
 
 
@@ -47,7 +47,18 @@ local function setup(args)
 			local detail = matches[2]
 			local arguments = {detail = detail}
 			Events.raiseEvent("setChanPauseEvent", arguments)
-		]])	
+		]])
+
+
+
+	--perform a single channel to channelling system
+	tempAliases.singleChannel =
+	tempAlias("^\\/chan ([\\d]+)",
+		[[
+			local detail = matches[2]
+			local arguments = {detail = detail}
+			Events.raiseEvent("singleChannelEvent", arguments)
+		]])
 
 
 
@@ -58,7 +69,7 @@ local function setup(args)
 			local detail = matches[2]
 			local arguments = {detail = detail}
 			Events.raiseEvent("setFocusTotalEvent", arguments)
-		]])		
+		]])
 		
 	aliases = tempAliases
 end

@@ -1,10 +1,11 @@
-GUI = GUI or {}
-local windows = {}
-local windows_ByPosition = {}
-windows_ByPosition.topRight = {}
-windows_ByPosition.topLeft = {}
-windows_ByPosition.right = {}
-aura = "unknown"
+GUI							= GUI or {}
+aura						= "unknown"
+local windows				= {}
+local windows_ByPosition	= {}
+windows_ByPosition.topRight	= {}
+windows_ByPosition.topLeft	= {}
+windows_ByPosition.right	= {}
+
 
 
 
@@ -32,14 +33,15 @@ local function createUIConsole()
 	-------------------------
 	createWhoBox()
 	createLevelsBox()
+	createMessageBox()
 
 	-- TABWINDOW2
 	-------------------------
 	createImproveBox()
-	createMessageBox()
 	createRefreshBox()
 	createChannelBox()
 	createAllocsBox()
+	createRepeatBox()
 
 	-- TABWINDOW3
 	-------------------------
@@ -113,11 +115,12 @@ end
 -- update improves box
 -----------------------------------------------------------
 local function onImprove(args)
-	local who = args["name"]
-	local skill_name = args["skill_name"]
-	local timestamp = getTime(true, "hh:mm:ss")
-	local count = 0
-	local output = ''
+	local who			= args["name"]
+	local skill_name	= args["skill_name"]
+	local timestamp		= getTime(true, "hh:mm:ss")
+	local output		= ''
+	local count
+
 
 	if args["text"] ~= nil then
 		output = timestamp.." "..args["text"]
@@ -175,8 +178,11 @@ end
 -- update name box
 -----------------------------------------------------------
 local function onName(args)
-	showname = args["fullname"]
-	name_table = showname:split("are ")
+	local showname		= args["fullname"]
+	local name_table	= showname:split("are ")
+	local name_table2
+
+
 	showname = name_table[2]
 	name_table2 = showname:split("%. ")
 	showname = name_table2[1]
@@ -193,8 +199,10 @@ end
 -- update age box
 -----------------------------------------------------------
 local function onAge(args)
-	years = args["years"]
-	months = args["months"]
+	local years		= args["years"]
+	local months	= args["months"]
+
+
 	clearWindow("AgeBox")
 	if months == "" then months = "0" end
 	cecho("AgeBox", "Age: "..years.." years, "..months.." months")
@@ -206,7 +214,8 @@ end
 -- update hunger box
 -----------------------------------------------------------
 local function onHunger(args)
-	hunger = args["hunger"]
+	local hunger = args["hunger"]
+
 
 	if hunger == "well fed" then hunger = "<pale_green>"..hunger
 	elseif hunger == "not hungry" then hunger = "<pale_green>"..hunger
@@ -228,8 +237,9 @@ end
 -- update thirst box
 -----------------------------------------------------------
 local function onThirst(args)
-	thirst = args["thirst"]
-	
+	local thirst = args["thirst"]
+
+
 	if thirst == "well slaked" then thirst = "<pale_green>"..thirst
 	elseif thirst == "not thirsty" then thirst = "<pale_green>"..thirst
 	elseif thirst == "slightly thirsty" then thirst = "<yellow>"..thirst
@@ -239,7 +249,7 @@ local function onThirst(args)
 	elseif thirst == "completely dehydrated" then thirst = "<red>"..thirst
 	elseif thirst == "dying of thirst" then thirst = "<red>"..thirst
 	end
-	
+
 	clearWindow("ThirstBox")
 	cecho("ThirstBox", "Thirst: "..thirst)
 	deleteLine()
@@ -251,7 +261,8 @@ end
 -- update encumbrance box
 -----------------------------------------------------------
 local function onEncumbrance(args)
-	encumbrance = args["encumbrance"]
+	local encumbrance = args["encumbrance"]
+
 
 	clearWindow("EncumbranceBox")
 	cecho("EncumbranceBox", "Encumbrance: "..encumbrance)
@@ -264,7 +275,8 @@ end
 -- update movement box
 -----------------------------------------------------------
 local function onMovement(args)
-	movement = args["movement"]
+	local movement = args["movement"]
+
 
 	clearWindow("MovementBox")
 	cecho("MovementBox", " Movement: "..movement)
@@ -286,10 +298,13 @@ end
 -- update language box
 -----------------------------------------------------------
 local function onLanguage(args)
-	local language = args["detail"]
-	local language_table = language:split("now ")
+	local language			= args["detail"]
+	local language_table	= language:split("now ")
+	local language_table2
+
+
 	language = language_table[2]
-	local language_table2 = language:split("%.")
+	language_table2 = language:split("%.")
 	language = language_table2[1]
 	clearWindow("LanguageBox")
 	cecho("LanguageBox", "<cyan><b>"..language.."</b>")
@@ -300,11 +315,11 @@ end
 -- update aura box
 -----------------------------------------------------------
 local function onAura(args)
-	local full = args["full"]
-	aura = args["aura"]
-	auraBoxTextColor = "white"
-	auraBoxBGColor = "black"
-	scintBackground = packageFolder.."MEDIA/rainbow_small.png"
+	local full				= args["full"]
+	local auraBoxTextColor	= "white"
+	local auraBoxBGColor	= "black"
+	local scintBackground	= packageFolder.."MEDIA/rainbow_small.png"
+	aura					= args["aura"]
 
 
 	if (Status.statusAura == "off") or (string.match(full, "^".."Aura")) then
@@ -379,10 +394,11 @@ end
 -- update concentration box
 -----------------------------------------------------------
 local function onConc(args)
-	local full = args["full"]
-	local concBoxTextColor = "white"
-	local concBoxBGColor = "black"
-	conc = args["conc"]
+	local full				= args["full"]
+	local concBoxTextColor	= "white"
+	local concBoxBGColor	= "black"
+	local displayConc		= ""
+	conc					= args["conc"]
 
 
 	if (Status.statusConc == "off") or (string.match(full, "^".."Concentration")) then

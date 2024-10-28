@@ -8,7 +8,7 @@ local function displayPowercastStats(args)
 	local displaytype				= args["detail"]
 	local powercastPercentDisplay	= ""
 	local displaytext				= ''
-	local spellcasting				= 0
+	local spellcasting
 
 
 	if Status.statusChanShare == "off" then
@@ -68,7 +68,7 @@ local function processAutomation(args)
 		end
 		
 		
-	elseif Status.statusChannel or Status.powercastisForce then
+	elseif (Status.statusChannel) or (Status.powercastisForce) or (Status.powercastPauseisActive) then
 		if (conc == "You're bright-eyed and bushy-tailed.") then --and (aura == "scintillating") then
 			if Status.powercastisForce or Status.powercastPauseisActive then
 				Events.raiseEvent("processPowercastEvent", {input = aura})

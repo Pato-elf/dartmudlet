@@ -1,5 +1,7 @@
 refreshbox = {}
 
+
+
 function createRefreshBox()
 
 -- CREATE REFRESH BOX -> TABWINDOW2

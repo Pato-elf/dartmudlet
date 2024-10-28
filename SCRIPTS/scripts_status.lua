@@ -35,6 +35,11 @@ Status.refreshTarget2	= 'targetname'
 Status.statusRefresh	= false
 
 
+-- repeat system variables
+-----------------------------------------------------------
+Status.repeatCurrentDisplay	= 1
+Status.repeatTable			= {}
+
 
 -- channelling system variables
 -----------------------------------------------------------
@@ -100,6 +105,8 @@ Status.tooltipTime			= 5
 
 
 local function setVariables()
+
+	-- CHANNEL BOX
 	echo("Dropdown1", "<center><span style='color: white;'>"..Status.channelMode.."</span></center>")
 	cecho("ChannelTextBox1", Info.showSpellCasting())
 	cecho("ChannelTextBox2", "<yellow>POWERCAST MOD:&nbsp;&nbsp;&nbsp;"..Status.powercastAddon)
@@ -119,23 +126,28 @@ local function setVariables()
 	if (Status.statusChanShare == "off") then
 		GUI.containerChannelButton4:setStyleSheet(StyleButtonDarkGrey:getCSS())
 	end
-	
+
+	-- REFRESH BOX
 	GUI.containerRefreshCommand1:print(Status.refreshTarget1)
 	GUI.containerRefreshCommand2:print(Status.refreshPower1)
 	GUI.containerRefreshCommand3:print(Status.refreshTarget2)
 	GUI.containerRefreshCommand4:print(Status.refreshPower2)
-	
+
+	-- ALLOCS BOX
 	Allocs.showAllocsCurrentFields(Status.allocCurrentDisplay)
 	Allocs.showAllocsCurrentNumber(Status.allocCurrentDisplay)
 	Events.raiseEvent("checkAllocSetButtonEvent", {target = "unknown"})
 
+	-- REPEAT BOX
+	Repeat.showRepeatCurrentFields(Status.repeatCurrentDisplay)
+	Repeat.showRepeatCurrentNumber(Status.repeatCurrentDisplay)
 end
 
 
 
-local function setAge(args)
-	Status.soulage = args["soulAge"]
-end
+--local function setAge(args)
+--	Status.soulage = args["soulAge"]
+--end
 
 
 

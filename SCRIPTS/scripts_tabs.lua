@@ -1,14 +1,14 @@
-Tabs = {}
-
 -- Adjustable TabWindow
 -- TabWindow code by Mudlet Wiki
 -- other functions
 -- by Edru 10th October 2020
 -- https://github.com/Edru2/AdjustableTabWindow 
 
-Adjustable = Adjustable or {}
-Adjustable.TabWindow = Adjustable.TabWindow or Geyser.Container:new({name = "AdjustableTabWindowClass"})
-local tab_pos = nil
+Tabs                    = {}
+Adjustable              = Adjustable or {}
+Adjustable.TabWindow    = Adjustable.TabWindow or Geyser.Container:new({name = "AdjustableTabWindowClass"})
+local tab_pos           = nil
+
 
 function Adjustable.TabWindow:createBaseContainers()
     self.tabBar = self.tabBar or Geyser.Label:new({        
@@ -56,6 +56,8 @@ function Adjustable.TabWindow:createBaseContainers()
     self.footer:setStyleSheet(self.footerStyle)
 end
 
+
+
 local function setTabToolTip(tab)
     -- put ToolTip on Label if TabText is to long to display
     local w,h = calcFontSize(tab.adjLabel.fontSize)
@@ -66,6 +68,8 @@ local function setTabToolTip(tab)
         tab.adjLabel:resetToolTip()
     end
 end
+
+
 
 -- function to create new tabs in tabs table or to rewrite/readjust them
 function Adjustable.TabWindow:createTabs()
@@ -145,6 +149,7 @@ function Adjustable.TabWindow:createTabs()
 end
 
 
+
 --- Sets the amount of space to use between the tabs and the consoles
 -- @tparam number gap Number of pixels to keep between the tabs and consoles
 function Adjustable.TabWindow:setGap(gap)
@@ -154,6 +159,8 @@ function Adjustable.TabWindow:setGap(gap)
     self.gap = gapNumber
     self.footer:move(0, gapNumber)
 end
+
+
 
 --- Sets the height of the tabs in pixels/percent
 -- @tparam number tabHeight the height of the tabs for the object, in pixels/percent
@@ -165,6 +172,7 @@ function Adjustable.TabWindow:setTabHeight(tabHeight)
 end
 
 
+
 --- Sets the CSS to use for the tab box which contains the tabs for the object
 -- @tparam string css The css styling to use for the tab box
 function Adjustable.TabWindow:setTabBarCSS(css)
@@ -174,6 +182,8 @@ function Adjustable.TabWindow:setTabBarCSS(css)
     self.tabBar:setStyleSheet(self.tabBarStyle)
 end
 
+
+
 --- Sets the color to use for the tab box background
 -- @param color Color string suitable for decho or hecho, or color name eg "purple", or table of colors {r,g,b}
 function Adjustable.TabWindow:setTabBarColor(color)
@@ -182,6 +192,8 @@ function Adjustable.TabWindow:setTabBarColor(color)
     self.tabBar:setStyleSheet(self.tabBarStyle)
     self.tabBar:setColor(self.tabBarColor)
 end
+
+
 
 --- Sets the FG color for the active tab
 -- @param color Color string suitable for decho or hecho, or color name eg "purple", or table of colors {r,g,b}
@@ -202,6 +214,8 @@ function Adjustable.TabWindow:setActiveTabFGColor(color)
     end
     self:adjustTabStyle()
 end
+
+
 
 --- Sets the FG color for the inactive tab
 -- @param color Color string suitable for decho or hecho, or color name eg "purple", or table of colors {r,g,b}
@@ -227,6 +241,8 @@ function Adjustable.TabWindow:setInactiveTabFGColor(color)
     self:adjustTabStyle()
 end
 
+
+
 --- Sets the BG color for the active tab.
 -- <br>NOTE: If you set CSS for the active tab, it will override this setting.
 -- @param color Color string suitable for decho or hecho, or color name eg "purple", or table of colors {r,g,b}
@@ -238,6 +254,8 @@ function Adjustable.TabWindow:setActiveTabBGColor(color)
     self:adjustTabStyle()
 end
 
+
+
 --- Sets the BG color for the inactive tab.
 -- <br>NOTE: If you set CSS for the inactive tab, it will override this setting.
 -- @param color Color string suitable for decho or hecho, or color name eg "purple", or table of colors {r,g,b}
@@ -248,6 +266,8 @@ function Adjustable.TabWindow:setInactiveTabBGColor(color)
     self.inactiveTabStyle = string.gsub(self.inactiveTabStyle, "(background%-color:.-).-(;)","%1 "..rgba.."%2")
     self:adjustTabStyle()
 end
+
+
 
 function Adjustable.TabWindow:adjustTabStyle()
     local abg_rgb = string.match(self.activeTabBGColor, "%d+.-%d+.-%d+")
@@ -273,6 +293,8 @@ function Adjustable.TabWindow:adjustTabStyle()
     end
 end
 
+
+
 --- sets the font for all tabs
 --- @tparam string font the font to use.
 function Adjustable.TabWindow:setTabFont(font)
@@ -281,6 +303,8 @@ function Adjustable.TabWindow:setTabFont(font)
         self[v].adjLabel:setFont(font)
     end
 end
+
+
 
 --- sets the font for a single tab. If you use setTabFont this will be overridden
 --- @tparam string tabName the tab to change the font of
@@ -292,6 +316,8 @@ function Adjustable.TabWindow:setSingleTabFont(tabName, font)
     end
     self[tabName].adjLabel:setFont(font)
 end
+
+
 
 -- finds the right position to drop the tab into
 function Adjustable.TabWindow:findPosition(tab)
@@ -310,6 +336,8 @@ function Adjustable.TabWindow:findPosition(tab)
     return position
 end
 
+
+
 -- checks if 2 elements collide
 local function checkCollision(x1,y1,w1,h1, x2,y2,w2,h2)
     if  x1 < x2+w2 and
@@ -319,6 +347,8 @@ local function checkCollision(x1,y1,w1,h1, x2,y2,w2,h2)
         return true
     end
 end
+
+
 
 local function getFloatingWindows()
     local floatingWindows = {}
@@ -330,6 +360,8 @@ local function getFloatingWindows()
     return floatingWindows
     
 end
+
+
 
 -- checks if your tab collides with one of the tabwindows
 function Adjustable.TabWindow:checkMultiCollision(tab)
@@ -343,8 +375,9 @@ function Adjustable.TabWindow:checkMultiCollision(tab)
     end  
     for k,v in pairs(Adjustable.TabWindow.all) do
         local x2, y2, w2, h2 = v:get_x(), v:get_y(), v:get_width(), v:get_height()
-        
-        if checkCollision(x1,y1,w1,h1, x2,y2,w2,h2) and v.windowname == self.windowname and not(v.hidden or v.auto_hidden) then
+
+        -- PATO tweak window height check to reduce mistake window drags
+        if checkCollision(x1,y1,w1,h1, x2,y2,w2,h2-v.tabBarHeight) and v.windowname == self.windowname and not(v.hidden or v.auto_hidden) then
             return "TabWindow", v
         end
     end  

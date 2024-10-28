@@ -65,7 +65,7 @@ In addition to the automatic features described above, there are a number of thi
 ```
 /alloc clear <num>               - Clear the contents of an allocation set
 /alloc copy <num> <num>          - Copy one allocation set over to another
-/antispam on|off                 - suppress repeated lines
+/antispam on|off                 - Suppress repeated lines
 /aura on|off|scint               - Show aura on screen (default off)
 /conc on|off|bright              - Show concentration on screen (default off)
 /contents on|off                 - Show expanded contents view for containers (default on)

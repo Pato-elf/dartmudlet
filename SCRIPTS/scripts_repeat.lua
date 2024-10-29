@@ -68,7 +68,7 @@ local function setRepeatCurrentNumber(args)
 
 	showRepeatCurrentNumber(Status.repeatCurrentDisplay)
 	showRepeatCurrentFields(Status.repeatCurrentDisplay)
---	checkAllocSetButton({target = "unknown"})
+    Events.raiseEvent("checkRepeatActiveEvent", {target = "move"})
 end
 
 
@@ -179,10 +179,11 @@ local function setRepeatOrder(args)
 	end
 
 	Status.repeatCurrentDisplay = 1
+    Status.repeatCurrentActive = 0
 	Repeat.load()
 	showRepeatCurrentFields(Status.repeatCurrentDisplay)
 	showRepeatCurrentNumber(Status.repeatCurrentDisplay)
-	--Events.raiseEvent("checkAllocSetButtonEvent", {target = "unknown"})
+    Events.raiseEvent("checkRepeatActiveEvent", {target = "order"})
 	cecho("<yellow>Repeat: Repeat set order updated\n")
 end
 
@@ -192,16 +193,22 @@ end
 -----------------------------------------------------------
 local function processRepeat(args)
 	local settype = args["type"]
-    local current = Status.repeatCurrentDisplay
+    local activeset = 0
 
-    local set1 = {cmd = Status.repeatTable[current].repeatCommand1, num = tonumber(Status.repeatTable[current].repeatCommandAmount1)}
-    local set2 = {cmd = Status.repeatTable[current].repeatCommand2, num = tonumber(Status.repeatTable[current].repeatCommandAmount2)}
-    local set3 = {cmd = Status.repeatTable[current].repeatCommand3, num = tonumber(Status.repeatTable[current].repeatCommandAmount3)}
-    local set4 = {cmd = Status.repeatTable[current].repeatCommand4, num = tonumber(Status.repeatTable[current].repeatCommandAmount4)}
-    local set5 = {cmd = Status.repeatTable[current].repeatCommand5, num = tonumber(Status.repeatTable[current].repeatCommandAmount5)}
-    local set6 = {cmd = Status.repeatTable[current].repeatCommand6, num = tonumber(Status.repeatTable[current].repeatCommandAmount6)}
-    local set7 = {cmd = Status.repeatTable[current].repeatCommand7, num = tonumber(Status.repeatTable[current].repeatCommandAmount7)}
-    local set8 = {cmd = Status.repeatTable[current].repeatCommand8, num = tonumber(Status.repeatTable[current].repeatCommandAmount8)}
+    if settype == "run" then
+        activeset = Status.repeatCurrentDisplay
+    else
+        activeset = Status.repeatCurrentActive
+    end
+
+    local set1 = {cmd = Status.repeatTable[activeset].repeatCommand1, num = tonumber(Status.repeatTable[activeset].repeatCommandAmount1)}
+    local set2 = {cmd = Status.repeatTable[activeset].repeatCommand2, num = tonumber(Status.repeatTable[activeset].repeatCommandAmount2)}
+    local set3 = {cmd = Status.repeatTable[activeset].repeatCommand3, num = tonumber(Status.repeatTable[activeset].repeatCommandAmount3)}
+    local set4 = {cmd = Status.repeatTable[activeset].repeatCommand4, num = tonumber(Status.repeatTable[activeset].repeatCommandAmount4)}
+    local set5 = {cmd = Status.repeatTable[activeset].repeatCommand5, num = tonumber(Status.repeatTable[activeset].repeatCommandAmount5)}
+    local set6 = {cmd = Status.repeatTable[activeset].repeatCommand6, num = tonumber(Status.repeatTable[activeset].repeatCommandAmount6)}
+    local set7 = {cmd = Status.repeatTable[activeset].repeatCommand7, num = tonumber(Status.repeatTable[activeset].repeatCommandAmount7)}
+    local set8 = {cmd = Status.repeatTable[activeset].repeatCommand8, num = tonumber(Status.repeatTable[activeset].repeatCommandAmount8)}
 
 
 	if (set1.cmd == "") and
@@ -287,10 +294,17 @@ local function saveRepeatSettings(args)
     setRepeatCommandAmount({save = false, number = 7, input = GUI.commandlineRepeat16:getText()})
     setRepeatCommandAmount({save = false, number = 8, input = GUI.commandlineRepeat17:getText()})
 
-	if not (savetype == "run") then
-        cecho("<yellow>Repeat: Repeat set "..string.format("%02d", Status.repeatCurrentDisplay).." updated\n")
+	if (savetype == "run") then
+        processRepeat({type = "run"})
+    elseif (savetype == "auto") then
+        if Status.repeatCurrentDisplay == Status.repeatCurrentActive then
+            Status.repeatCurrentActive = 0
+        else
+            Status.repeatCurrentActive = Status.repeatCurrentDisplay
+        end
+        Events.raiseEvent("checkRepeatActiveEvent", {target = "auto"})
     else
-        processRepeat({input = "run"})
+        cecho("<yellow>Repeat: Repeat set "..string.format("%02d", Status.repeatCurrentDisplay).." updated\n")
     end
 end
 
@@ -329,7 +343,11 @@ local function repeatCopy(args)
 		query = query..'WHERE orderNumber = '..target
 
 		dba.execute(query)
-		Repeat.load()
+        Repeat.load()
+        if Status.repeatCurrentActive == target then
+            Status.repeatCurrentActive = 0
+            Events.raiseEvent("checkRepeatActiveEvent", {target = "copy"})
+        end
 		showRepeatCurrentFields(Status.repeatCurrentDisplay)
 		cecho("<yellow>Repeat: Repeat set copied\n")
 	end
@@ -350,16 +368,33 @@ local function repeatClear(args)
 		query = query..'repeatName = "", '
         query = query..'repeatCommand1 = "", repeatCommand2 = "", repeatCommand3 = "", repeatCommand4 = "", '
         query = query..'repeatCommand5 = "", repeatCommand6 = "", repeatCommand7 = "", repeatCommand8 = "", '
-        query = query..'repeatCommandAmount1 = "", repeatCommandAmount2 = "", repeatCommandAmount3 = "", repeatCommandAmount4 = "", '
-        query = query..'repeatCommandAmount5 = "", repeatCommandAmount6 = "", repeatCommandAmount7 = "", repeatCommandAmount8 = "" '
+        query = query..'repeatCommandAmount1 = 0, repeatCommandAmount2 = 0, repeatCommandAmount3 = 0, repeatCommandAmount4 = 0, '
+        query = query..'repeatCommandAmount5 = 0, repeatCommandAmount6 = 0, repeatCommandAmount7 = 0, repeatCommandAmount8 = 0 '
 		query = query..'WHERE orderNumber = '..target
 
 		dba.execute(query)
-		Repeat.load()
+        Repeat.load()
+        if Status.repeatCurrentActive == target then
+            Status.repeatCurrentActive = 0
+            Events.raiseEvent("checkRepeatActiveEvent", {target = "clear"})
+        end
 		showRepeatCurrentFields(Status.repeatCurrentDisplay)
-		--Events.raiseEvent("checkAllocSetButtonEvent", {target = "unknown"})
 		cecho("<yellow>Repeat: Repeat set cleared\n")
 	end
+end
+
+
+
+-- check the repeat active button background
+-----------------------------------------------------------
+local function checkRepeatActiveButton(args)
+
+    if Status.repeatCurrentActive == Status.repeatCurrentDisplay then
+        GUI.buttonRepeat3:setStyleSheet(StyleButtonPaleGreen:getCSS())
+    else
+        GUI.buttonRepeat3:setStyleSheet(StyleButtonLightGrey:getCSS())
+    end
+
 end
 
 
@@ -430,24 +465,28 @@ local function setup(args)
 	checkRepeatTable()
     Events.addListener("repeatClearEvent", sourceName, repeatClear)
     Events.addListener("repeatCopyEvent", sourceName, repeatCopy)
+    Events.addListener("processRepeatEvent", sourceName, processRepeat)
     Events.addListener("saveRepeatSettingsEvent", sourceName, saveRepeatSettings)
     Events.addListener("setRepeatNameEvent", sourceName, setRepeatName)
     Events.addListener("setRepeatOrderEvent", sourceName, setRepeatOrder)
     Events.addListener("setRepeatCommandEvent", sourceName, setRepeatCommand)
     Events.addListener("setRepeatCommandAmountEvent", sourceName, setRepeatCommandAmount)
     Events.addListener("setRepeatCurrentNumberEvent", sourceName, setRepeatCurrentNumber)
+    Events.addListener("checkRepeatActiveEvent", sourceName, checkRepeatActiveButton)
 
 end
 
 local function unsetup(args)
     Events.removeListener("repeatClearEvent", sourceName)
     Events.removeListener("repeatCopyEvent", sourceName)
+    Events.removeListener("processRepeatEvent", sourceName)
     Events.removeListener("saveRepeatSettingsEvent", sourceName)
     Events.removeListener("setRepeatNameEvent", sourceName)
     Events.removeListener("setRepeatOrderEvent", sourceName)
     Events.removeListener("setRepeatCommandEvent", sourceName)
     Events.removeListener("setRepeatCommandAmountEvent", sourceName)
     Events.removeListener("setRepeatCurrentNumberEvent", sourceName)
+    Events.removeListener("checkRepeatActiveEvent", sourceName)
 end
 
 

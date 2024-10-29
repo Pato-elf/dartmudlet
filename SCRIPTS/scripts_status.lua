@@ -38,6 +38,7 @@ Status.statusRefresh	= false
 -- repeat system variables
 -----------------------------------------------------------
 Status.repeatCurrentDisplay	= 1
+Status.repeatCurrentActive	= 0
 Status.repeatTable			= {}
 
 

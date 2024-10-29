@@ -56,8 +56,15 @@ end
 -- on scintillating
 -----------------------------------------------------------
 local function processAutomation(args)
-	
-	if Status.statusRefresh then
+
+
+    if (Status.repeatCurrentActive > 0) then
+        if (conc == "You're bright-eyed and bushy-tailed.") then
+            Events.raiseEvent("processRepeatEvent", {type = "auto"})
+        end
+
+
+    elseif Status.statusRefresh then
 		if (conc == "You're bright-eyed and bushy-tailed.") then
 			if (Status.refreshTarget1 ~= "") and (Status.refreshTarget1 ~= nil) then
 				send("cast ro @"..Status.refreshPower1.." "..Status.refreshTarget1)
@@ -66,8 +73,8 @@ local function processAutomation(args)
 				send("cast ro @"..Status.refreshPower2.." "..Status.refreshTarget2)
 			end
 		end
-		
-		
+
+
 	elseif (Status.statusChannel) or (Status.powercastisForce) or (Status.powercastPauseisActive) then
 		if (conc == "You're bright-eyed and bushy-tailed.") then --and (aura == "scintillating") then
 			if Status.powercastisForce or Status.powercastPauseisActive then

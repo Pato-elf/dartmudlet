@@ -8,7 +8,6 @@ windows_ByPosition.right	= {}
 
 
 
-
 -- CREATE GUI
 -----------------------------------------------------------
 local function createUIConsole()
@@ -125,7 +124,7 @@ local function onImprove(args)
 	if args["text"] ~= nil then
 		output = timestamp.." "..args["text"]
 	else
-	
+
 		local skillVar = Skills.getSkill({who = who, skill_name = skill_name})
 
 		if skillVar ~= -1 then
@@ -151,14 +150,14 @@ local function onImprove(args)
 			end
 		end
 	end
-	
+
 	echo("ImproveBox", " "..output.."\n")
-	
+
 	if skill_name == "spell casting" then
 		cecho("ChannelTextBox1", Info.showSpellCasting())
 		cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
 		cecho("ChannelTextBox4", Info.showPowercastPercentage())
-		
+
 		local query = 'UPDATE channel '
 		query = query..'SET powercastTotal='..Status.powercastTotal..', '
 		query = query..'powercastSuccess='..Status.powercastSuccess
@@ -384,7 +383,7 @@ local function onAura(args)
 		}
 	]])
 	end
-	
+
 	echo("AuraBox", [[<center style="color:]]..auraBoxTextColor..[[;">]]..aura.."</center>")
 
 end
@@ -429,13 +428,13 @@ local function onConc(args)
 			border: 2px solid white;
 		}
 	]])
- 
+
 	if conc == "You're too confused to remember your name." then
 		displayConc = "Too confused to remember your name."
 	else
 		displayConc = conc
 	end
-	
+
 	echo("ConcBox", [[<center style="color:]]..concBoxTextColor..[[;">]]..displayConc.."</center>")
 
 end

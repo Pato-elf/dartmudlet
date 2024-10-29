@@ -1,14 +1,12 @@
 repeatbox = {}
 
 
-
 function createRepeatBox()
 
 
     local x1    = 100
     local x2    = 35
     local x3    = -65
-
 
     local y1    = 80
     local y2    = 120
@@ -442,7 +440,6 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
 		GUI.buttonRepeat1:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		tempTimer(0.15, function() GUI.buttonRepeat1:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
         Events.raiseEvent("setRepeatCurrentNumberEvent", "up")
---		Allocs.setAllocsCurrentNumber("up")
 	end
 
 
@@ -468,7 +465,6 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
 		GUI.buttonRepeat2:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		tempTimer(0.15, function() GUI.buttonRepeat2:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
         Events.raiseEvent("setRepeatCurrentNumberEvent", "down")
---		Allocs.setAllocsCurrentNumber("down")
 	end
 
 
@@ -491,9 +487,7 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
     GUI.buttonRepeat3:setClickCallback("buttonRepeat3_click")
 
     function buttonRepeat3_click()
-        GUI.buttonRepeat3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-        tempTimer(0.15, function() GUI.buttonRepeat3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
-    --		Allocs.setAllocsCurrentNumber("down")
+        Events.raiseEvent("saveRepeatSettingsEvent", {type = "auto"})
     end
 
 

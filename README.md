@@ -48,6 +48,7 @@ In addition to the automatic features described above, there are a number of thi
 /cast off                        - Stop repeat practice casting
 ```
 ```
+/chan <num>                      - Manually channel an amount to the channelling system
 /chan info                       - Display full channelling stats on screen
 /chan pause on|off               - Pause powercast to wait for full concentration
 /chan share on|off|brief         - Change settings of the channel share button

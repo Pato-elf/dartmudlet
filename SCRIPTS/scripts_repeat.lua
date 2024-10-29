@@ -301,6 +301,7 @@ local function saveRepeatSettings(args)
             Status.repeatCurrentActive = 0
         else
             Status.repeatCurrentActive = Status.repeatCurrentDisplay
+            send("conc", false)
         end
         Events.raiseEvent("checkRepeatActiveEvent", {target = "auto"})
     else
@@ -432,9 +433,9 @@ local function checkRepeatTable(args)
 			dba.execute('INSERT INTO repeat DEFAULT VALUES')
 		end
 		dba.execute('UPDATE repeat SET orderNumber=id')
-		local examplerepeats = "UPDATE repeat SET "
+		local examplerepeats = 'UPDATE repeat SET repeatName="EXAMPLE", '
 		examplerepeats = examplerepeats..'repeatCommand1="/chan 50", repeatCommand2="craft vial", repeatCommand3="pump forge", '
-		examplerepeats = examplerepeats..'repeatCommandAmount1=1, repeatCommandAmount2=6, repeatCommandAmount3=2 '
+		examplerepeats = examplerepeats..'repeatCommandAmount1=1, repeatCommandAmount2=10, repeatCommandAmount3=2 '
 		examplerepeats = examplerepeats..'WHERE orderNumber=1'
 		dba.execute(examplerepeats)
 	end

@@ -345,7 +345,7 @@ end
 
 local function load()
 	local result = {}
-	
+
 	result = dba.query('SELECT * FROM settings')[1]
 	Status.fontSizeChat = result.fontSizeChat
 	Status.fontSizeImproves = result.fontSizeImproves
@@ -359,7 +359,7 @@ local function load()
 	Status.statusAura = result.statusAura
 	Status.statusConc = result.statusConc
 	Status.statusContents = result.statusContents
-	
+
 	GUI.containerChatBox:setFontSize(Status.fontSizeChat)
 	GUI.containerImproveBox:setFontSize(Status.fontSizeImproves)
 	GUI.containerMessageBox:setFontSize(Status.fontSizeMessage)

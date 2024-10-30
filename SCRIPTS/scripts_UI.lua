@@ -297,16 +297,23 @@ end
 -- update language box
 -----------------------------------------------------------
 local function onLanguage(args)
-	local language			= args["detail"]
-	local language_table	= language:split("now ")
-	local language_table2
+	local language  = args["detail"]
 
 
-	language = language_table[2]
-	language_table2 = language:split("%.")
-	language = language_table2[1]
 	clearWindow("LanguageBox")
-	cecho("LanguageBox", "<cyan><b>"..language.."</b>")
+	cecho("LanguageBox", "<cyan><b>Speak: "..language.."</b>")
+end
+
+
+
+-- update aim box
+-----------------------------------------------------------
+local function onAim(args)
+	local target  = args["detail"]
+
+
+	clearWindow("AimBox")
+	cecho("AimBox", "<cyan><b>Aim:&nbsp;&nbsp;&nbsp;"..target.."</b>")
 end
 
 
@@ -459,7 +466,8 @@ local function setup(args)
 	Events.addListener("messageEvent", sourceName, onMessage)
 	Events.addListener("concEvent", sourceName, onConc)
 	Events.addListener("auraEvent", sourceName, onAura)
-	Events.addListener("languageEvent", sourceName, onLanguage)
+	Events.addListener("showLanguageEvent", sourceName, onLanguage)
+    Events.addListener("showAimEvent", sourceName, onAim)
 end
 
 local function unsetup(args)
@@ -477,7 +485,7 @@ local function unsetup(args)
 	Events.removeListener("messageEvent", sourceName)
 	Events.removeListener("concEvent", sourceName)
 	Events.removeListener("auraEvent", sourceName)
-	Events.removeListener("languageEvent", sourceName)
+	Events.removeListener("showAimEvent", sourceName)
 end
 
 

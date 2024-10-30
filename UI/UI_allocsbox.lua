@@ -10,7 +10,7 @@ function createAllocsBox()
 	local alloc5_y		= 290
 	local alloc6_y		= 320
 
-	local bodypart_x	= 15
+	local bodypart_x	= 37
 	local bonus_x		= -308
 	local daring_x		= -266
 	local speed_x		= -224
@@ -1330,7 +1330,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.textboxAllocs11 = GUI.textboxAllocs11 or
 		Geyser.Label:new({
 			name = "textboxAllocs11",
-			x = 67, y = 80,
+			x = 79, y = 80,
 			fontSize = 11,
 			width = 120,
 			height = 40,
@@ -1338,12 +1338,12 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 		}, GUI.containerAllocsBox)
 
 	GUI.textboxAllocs11:setStyleSheet(StyleTextBlue:getCSS())
-	--cecho("textboxAllocs11", "<yellow>01")
+
 	GUI.textboxAllocs11:setToolTip("Allocation number",Status.tooltipTime)
-	
-	
-	
-	
+
+
+
+
 
 
 -------------------------------------------------------------------------------
@@ -1357,7 +1357,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.buttonAllocs1 = GUI.buttonAllocs1 or
 		Geyser.Label:new({
 			name = "buttonAllocs1",
-			x = bodypart_x+87, y = 10,
+			x = bodypart_x+77, y = 10,
 			fontSize = 14,
 			width = 60,
 			height = 60,
@@ -1382,7 +1382,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.buttonAllocs2 = GUI.buttonAllocs2 or
 		Geyser.Label:new({
 			name = "buttonAllocs2",
-			x = bodypart_x+32, y = 10,
+			x = bodypart_x+22, y = 10,
 			fontSize = 14,
 			width = 60,
 			height = 60,
@@ -1420,8 +1420,6 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.buttonAllocs3:setClickCallback("buttonAllocs3_click")
 
 	function buttonAllocs3_click()
-		--GUI.buttonAllocs3:setStyleSheet(StyleButtonPaleBlue:getCSS())
-		--tempTimer(0.15, function() GUI.buttonAllocs3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 		GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 		Events.raiseEvent("saveAllocSettingsEvent", {type = "set"})
@@ -1502,8 +1500,164 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 		Events.raiseEvent("setAllocOrderEvent", {type = "set"})
 	end
 
-	
-	
+
+
+
+
+
+
+
+
+
+
+
+    -- CREATE BUTTON7 -> ALLOCS -> TABWINDOW2  (set bodypart1 button)
+	-----------------------------------------------------------
+	GUI.buttonAllocs7 = GUI.buttonAllocs7 or
+    Geyser.Label:new({
+        name = "buttonAllocs7",
+        x = 7, y = alloc1_y,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerAllocsBox)
+
+    GUI.buttonAllocs7:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonAllocs7", "<center><span style='font-size: 12pt; color: green;'>&#10004;</span></center>")
+    GUI.buttonAllocs7:setToolTip("Set this bodypart's allocation for the target\nMust be the active alloction",Status.tooltipTime)
+    GUI.buttonAllocs7:setClickCallback("buttonAllocs7_click")
+
+    function buttonAllocs7_click()
+        GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("saveAllocSettingsEvent", {number = 1, type = "set"})
+    end
+
+
+
+    -- CREATE BUTTON8 -> ALLOCS -> TABWINDOW2  (set bodypart2 button)
+	-----------------------------------------------------------
+	GUI.buttonAllocs8 = GUI.buttonAllocs8 or
+    Geyser.Label:new({
+        name = "buttonAllocs8",
+        x = 7, y = alloc2_y,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerAllocsBox)
+
+    GUI.buttonAllocs8:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonAllocs8", "<center><span style='font-size: 12pt; color: green;'>&#10004;</span></center>")
+    GUI.buttonAllocs8:setToolTip("Set this bodypart's allocation for the target\nMust be the active alloction",Status.tooltipTime)
+    GUI.buttonAllocs8:setClickCallback("buttonAllocs8_click")
+
+    function buttonAllocs8_click()
+        GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("saveAllocSettingsEvent", {number = 2, type = "set"})
+    end
+
+
+
+    -- CREATE BUTTON9 -> ALLOCS -> TABWINDOW2  (set bodypart3 button)
+	-----------------------------------------------------------
+	GUI.buttonAllocs9 = GUI.buttonAllocs9 or
+    Geyser.Label:new({
+        name = "buttonAllocs9",
+        x = 7, y = alloc3_y,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerAllocsBox)
+
+    GUI.buttonAllocs9:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonAllocs9", "<center><span style='font-size: 12pt; color: green;'>&#10004;</span></center>")
+    GUI.buttonAllocs9:setToolTip("Set this bodypart's allocation for the target\nMust be the active alloction",Status.tooltipTime)
+    GUI.buttonAllocs9:setClickCallback("buttonAllocs9_click")
+
+    function buttonAllocs9_click()
+        GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("saveAllocSettingsEvent", {number = 3, type = "set"})
+    end
+
+
+
+    -- CREATE BUTTON10 -> ALLOCS -> TABWINDOW2  (set bodypart4 button)
+	-----------------------------------------------------------
+	GUI.buttonAllocs10 = GUI.buttonAllocs10 or
+    Geyser.Label:new({
+        name = "buttonAllocs10",
+        x = 7, y = alloc4_y,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerAllocsBox)
+
+    GUI.buttonAllocs10:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonAllocs10", "<center><span style='font-size: 12pt; color: green;'>&#10004;</span></center>")
+    GUI.buttonAllocs10:setToolTip("Set this bodypart's allocation for the target\nMust be the active alloction",Status.tooltipTime)
+    GUI.buttonAllocs10:setClickCallback("buttonAllocs10_click")
+
+    function buttonAllocs10_click()
+        GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("saveAllocSettingsEvent", {number = 4, type = "set"})
+    end
+
+
+
+    -- CREATE BUTTON11 -> ALLOCS -> TABWINDOW2  (set bodypart5 button)
+	-----------------------------------------------------------
+	GUI.buttonAllocs11 = GUI.buttonAllocs11 or
+    Geyser.Label:new({
+        name = "buttonAllocs11",
+        x = 7, y = alloc5_y,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerAllocsBox)
+
+    GUI.buttonAllocs11:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonAllocs11", "<center><span style='font-size: 12pt; color: green;'>&#10004;</span></center>")
+    GUI.buttonAllocs11:setToolTip("Set this bodypart's allocation for the target\nMust be the active alloction",Status.tooltipTime)
+    GUI.buttonAllocs11:setClickCallback("buttonAllocs11_click")
+
+    function buttonAllocs11_click()
+        GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("saveAllocSettingsEvent", {number = 5, type = "set"})
+    end
+
+
+
+    -- CREATE BUTTON12 -> ALLOCS -> TABWINDOW2  (set bodypart6 button)
+	-----------------------------------------------------------
+	GUI.buttonAllocs12 = GUI.buttonAllocs12 or
+    Geyser.Label:new({
+        name = "buttonAllocs12",
+        x = 7, y = alloc6_y,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerAllocsBox)
+
+    GUI.buttonAllocs12:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonAllocs12", "<center><span style='font-size: 12pt; color: green;'>&#10004;</span></center>")
+    GUI.buttonAllocs12:setToolTip("Set this bodypart's allocation for the target\nMust be the active alloction",Status.tooltipTime)
+    GUI.buttonAllocs12:setClickCallback("buttonAllocs12_click")
+
+    function buttonAllocs12_click()
+        GUI.buttonAllocs4:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonAllocs4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("saveAllocSettingsEvent", {number = 6, type = "set"})
+    end
 
 end
 

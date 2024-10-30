@@ -107,6 +107,7 @@ Status.tooltipTime			= 5
 
 local function setVariables()
 
+
 	-- CHANNEL BOX
 	echo("Dropdown1", "<center><span style='color: white;'>"..Status.channelMode.."</span></center>")
 	cecho("ChannelTextBox1", Info.showSpellCasting())

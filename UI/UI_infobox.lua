@@ -118,8 +118,8 @@ GUI.containerInfoBox:setStyleSheet([[
 		}, GUI.containerInfoBox)
 
 	GUI.containerMovementBox:setStyleSheet(StyleTextDefault:getCSS())
-	
-	
+
+
 
 	-- CREATE DATE BOX -> INFO -> TABWINDOW3
 	-------------------------------------------------------
@@ -134,6 +134,22 @@ GUI.containerInfoBox:setStyleSheet([[
 		}, GUI.containerInfoBox)
 
 	GUI.containerDateBox:setStyleSheet(StyleTextDefault:getCSS())
+
+
+
+    -- CREATE LANGUAGE BOX -> INFO -> TABWINDOW3
+	-------------------------------------------------------
+	GUI.containerAimBox = GUI.containerAimBox or
+    Geyser.Label:new({
+        name = "AimBox",
+        x = -235, y = 110,
+        fontSize = 11,
+        width = 235,
+        height = 17,
+        color = "black"
+    }, GUI.containerInfoBox)
+
+    GUI.containerAimBox:setStyleSheet(StyleTextDefault:getCSS())
 
 
 

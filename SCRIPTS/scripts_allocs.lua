@@ -86,15 +86,40 @@ end
 -- send current alloc to game
 -----------------------------------------------------------
 local function setAlloc(args)
-	local settype = args["type"]
-	local setting1 = ""
-	local setting2 = ""
-	local setting3 = ""
-	local setting4 = ""
-	local setting5 = ""
-	local setting6 = ""
-	local pretext = ""
-	local target = Status.allocsTable[Status.allocCurrentDisplay].allocTarget
+	local settype       = args["type"]
+    local partnumber    = args["number"]
+	local setting1      = ""
+	local setting2      = ""
+	local setting3      = ""
+	local setting4      = ""
+	local setting5      = ""
+	local setting6      = ""
+	local pretext       = ""
+	local target        = Status.allocsTable[Status.allocCurrentDisplay].allocTarget
+
+
+    if (partnumber) and (Status.allocsTable[Status.allocCurrentDisplay].allocIsActive == 0) then
+        cecho("<red>ERROR: Allocation must be active to set individual bodypart\n")
+		return
+    elseif (partnumber == 1) and (Status.allocsTable[Status.allocCurrentDisplay].bodypart1 == "") then
+        cecho("<red>ERROR: Allocation has no bodypart name\n")
+		return
+    elseif (partnumber == 2) and (Status.allocsTable[Status.allocCurrentDisplay].bodypart2 == "") then
+        cecho("<red>ERROR: Allocation has no bodypart name\n")
+		return
+    elseif (partnumber == 3) and (Status.allocsTable[Status.allocCurrentDisplay].bodypart3 == "") then
+        cecho("<red>ERROR: Allocation has no bodypart name\n")
+		return
+    elseif (partnumber == 4) and (Status.allocsTable[Status.allocCurrentDisplay].bodypart4 == "") then
+        cecho("<red>ERROR: Allocation has no bodypart name\n")
+		return
+    elseif (partnumber == 5) and (Status.allocsTable[Status.allocCurrentDisplay].bodypart5 == "") then
+        cecho("<red>ERROR: Allocation has no bodypart name\n")
+		return
+    elseif (partnumber == 6) and (Status.allocsTable[Status.allocCurrentDisplay].bodypart6 == "") then
+        cecho("<red>ERROR: Allocation has no bodypart name\n")
+		return
+    end
 
 
 	if (Status.allocsTable[Status.allocCurrentDisplay].bodypart1 == "") and
@@ -117,7 +142,8 @@ local function setAlloc(args)
 		pretext = "say "..target.." set combat allocation = "
 	end
 
-	if Status.allocsTable[Status.allocCurrentDisplay].bodypart1 ~= "" then
+
+	if (Status.allocsTable[Status.allocCurrentDisplay].bodypart1 ~= "") and ((not partnumber) or (partnumber == 1)) then
 		setting1 = pretext..Status.allocsTable[Status.allocCurrentDisplay].bodypart1
 		setting1 = setting1..",b,"..Status.allocsTable[Status.allocCurrentDisplay].bonus1
 		setting1 = setting1..",d,"..Status.allocsTable[Status.allocCurrentDisplay].daring1
@@ -129,7 +155,7 @@ local function setAlloc(args)
 		send(setting1)
 	end
 
-	if Status.allocsTable[Status.allocCurrentDisplay].bodypart2 ~= "" then
+	if (Status.allocsTable[Status.allocCurrentDisplay].bodypart2 ~= "") and ((not partnumber) or (partnumber == 2)) then
 		setting2 = pretext..Status.allocsTable[Status.allocCurrentDisplay].bodypart2
 		setting2 = setting2..",b,"..Status.allocsTable[Status.allocCurrentDisplay].bonus2
 		setting2 = setting2..",d,"..Status.allocsTable[Status.allocCurrentDisplay].daring2
@@ -141,7 +167,7 @@ local function setAlloc(args)
 		send(setting2)
 	end
 
-	if Status.allocsTable[Status.allocCurrentDisplay].bodypart3 ~= "" then
+	if (Status.allocsTable[Status.allocCurrentDisplay].bodypart3 ~= "") and ((not partnumber) or (partnumber == 3)) then
 		setting3 = pretext..Status.allocsTable[Status.allocCurrentDisplay].bodypart3
 		setting3 = setting3..",b,"..Status.allocsTable[Status.allocCurrentDisplay].bonus3
 		setting3 = setting3..",d,"..Status.allocsTable[Status.allocCurrentDisplay].daring3
@@ -153,7 +179,7 @@ local function setAlloc(args)
 		send(setting3)
 	end
 
-	if Status.allocsTable[Status.allocCurrentDisplay].bodypart4 ~= "" then
+	if (Status.allocsTable[Status.allocCurrentDisplay].bodypart4 ~= "") and ((not partnumber) or (partnumber == 4)) then
 		setting4 = pretext..Status.allocsTable[Status.allocCurrentDisplay].bodypart4
 		setting4 = setting4..",b,"..Status.allocsTable[Status.allocCurrentDisplay].bonus4
 		setting4 = setting4..",d,"..Status.allocsTable[Status.allocCurrentDisplay].daring4
@@ -165,7 +191,7 @@ local function setAlloc(args)
 		send(setting4)
 	end
 
-	if Status.allocsTable[Status.allocCurrentDisplay].bodypart5 ~= "" then
+	if (Status.allocsTable[Status.allocCurrentDisplay].bodypart5 ~= "") and ((not partnumber) or (partnumber == 5)) then
 		setting5 = pretext..Status.allocsTable[Status.allocCurrentDisplay].bodypart5
 		setting5 = setting5..",b,"..Status.allocsTable[Status.allocCurrentDisplay].bonus5
 		setting5 = setting5..",d,"..Status.allocsTable[Status.allocCurrentDisplay].daring5
@@ -177,7 +203,7 @@ local function setAlloc(args)
 		send(setting5)
 	end
 
-	if Status.allocsTable[Status.allocCurrentDisplay].bodypart6 ~= "" then
+	if (Status.allocsTable[Status.allocCurrentDisplay].bodypart6 ~= "") and ((not partnumber) or (partnumber == 6)) then
 		setting6 = pretext..Status.allocsTable[Status.allocCurrentDisplay].bodypart6
 		setting6 = setting6..",b,"..Status.allocsTable[Status.allocCurrentDisplay].bonus6
 		setting6 = setting6..",d,"..Status.allocsTable[Status.allocCurrentDisplay].daring6
@@ -189,7 +215,7 @@ local function setAlloc(args)
 		send(setting6)
 	end
 
-	if not (settype == "share") then
+	if (settype ~= "share") and (not partnumber) then
 		Status.allocsTable[Status.allocCurrentDisplay].allocIsActive = 1
 		Events.raiseEvent("checkAllocSetButtonEvent", {target = target})
 	end
@@ -212,11 +238,29 @@ local function checkAllocSetButton(args)
 	if isActive.allocIsActive == 1 then
 		if (target == "") or (string.lower(Status.name) == target) then
 			GUI.buttonAllocs3:setStyleSheet(StyleButtonPaleGreen:getCSS())
+            GUI.buttonAllocs7:setStyleSheet(StyleButtonSmallPaleGreen:getCSS())
+            GUI.buttonAllocs8:setStyleSheet(StyleButtonSmallPaleGreen:getCSS())
+            GUI.buttonAllocs9:setStyleSheet(StyleButtonSmallPaleGreen:getCSS())
+            GUI.buttonAllocs10:setStyleSheet(StyleButtonSmallPaleGreen:getCSS())
+            GUI.buttonAllocs11:setStyleSheet(StyleButtonSmallPaleGreen:getCSS())
+            GUI.buttonAllocs12:setStyleSheet(StyleButtonSmallPaleGreen:getCSS())
 		else
 			GUI.buttonAllocs3:setStyleSheet(StyleButtonPaleRed:getCSS())
+            GUI.buttonAllocs7:setStyleSheet(StyleButtonSmallPaleRed:getCSS())
+            GUI.buttonAllocs8:setStyleSheet(StyleButtonSmallPaleRed:getCSS())
+            GUI.buttonAllocs9:setStyleSheet(StyleButtonSmallPaleRed:getCSS())
+            GUI.buttonAllocs10:setStyleSheet(StyleButtonSmallPaleRed:getCSS())
+            GUI.buttonAllocs11:setStyleSheet(StyleButtonSmallPaleRed:getCSS())
+            GUI.buttonAllocs12:setStyleSheet(StyleButtonSmallPaleRed:getCSS())
 		end
 	else
 		GUI.buttonAllocs3:setStyleSheet(StyleButtonLightGrey:getCSS())
+        GUI.buttonAllocs7:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+        GUI.buttonAllocs8:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+        GUI.buttonAllocs9:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+        GUI.buttonAllocs10:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+        GUI.buttonAllocs11:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+        GUI.buttonAllocs12:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
 	end
 end
 
@@ -691,69 +735,85 @@ end
 -- TODO: make more efficient?
 -----------------------------------------------------------
 local function saveAllocSettings(args)
-	local savetype	= args["type"]
+	local savetype      = args["type"]
+    local partnumber    = args["number"]
 
-	setAllocName({save = false, number = 0, input = GUI.commandlineAllocs1:getText()})
-	setAllocTarget({save = false, number = 0, input = GUI.commandlineAllocs2:getText()})
 
-	setAllocBodypart({save = false, number = 1, input = GUI.commandlineAllocs3:getText()})
-	setAllocBodypart({save = false, number = 2, input = GUI.commandlineAllocs11:getText()})
-	setAllocBodypart({save = false, number = 3, input = GUI.commandlineAllocs19:getText()})
-	setAllocBodypart({save = false, number = 4, input = GUI.commandlineAllocs27:getText()})
-	setAllocBodypart({save = false, number = 5, input = GUI.commandlineAllocs35:getText()})
-	setAllocBodypart({save = false, number = 6, input = GUI.commandlineAllocs43:getText()})
+    if not partnumber then
+	    setAllocName({save = false, number = 0, input = GUI.commandlineAllocs1:getText()})
+	    setAllocTarget({save = false, number = 0, input = GUI.commandlineAllocs2:getText()})
+    end
 
-	setAllocBonus({save = false, number = 1, input = GUI.commandlineAllocs4:getText()})
-	setAllocBonus({save = false, number = 2, input = GUI.commandlineAllocs12:getText()})
-	setAllocBonus({save = false, number = 3, input = GUI.commandlineAllocs20:getText()})
-	setAllocBonus({save = false, number = 4, input = GUI.commandlineAllocs28:getText()})
-	setAllocBonus({save = false, number = 5, input = GUI.commandlineAllocs36:getText()})
-	setAllocBonus({save = false, number = 6, input = GUI.commandlineAllocs44:getText()})
+    if (not partnumber) or (partnumber == 1) then
+        setAllocBodypart({save = false, number = 1, input = GUI.commandlineAllocs3:getText()})
+        setAllocBonus({save = false, number = 1, input = GUI.commandlineAllocs4:getText()})
+        setAllocDaring({save = false, number = 1, input = GUI.commandlineAllocs5:getText()})
+        setAllocSpeed({save = false, number = 1, input = GUI.commandlineAllocs6:getText()})
+        setAllocAiming({save = false, number = 1, input = GUI.commandlineAllocs7:getText()})
+        setAllocParry({save = false, number = 1, input = GUI.commandlineAllocs8:getText()})
+        setAllocControl({save = false, number = 1, input = GUI.commandlineAllocs9:getText()})
+        setAllocNull({save = false, number = 1, input = GUI.commandlineAllocs10:getText()})
+    end
 
-	setAllocDaring({save = false, number = 1, input = GUI.commandlineAllocs5:getText()})
-	setAllocDaring({save = false, number = 2, input = GUI.commandlineAllocs13:getText()})
-	setAllocDaring({save = false, number = 3, input = GUI.commandlineAllocs21:getText()})
-	setAllocDaring({save = false, number = 4, input = GUI.commandlineAllocs29:getText()})
-	setAllocDaring({save = false, number = 5, input = GUI.commandlineAllocs37:getText()})
-	setAllocDaring({save = false, number = 6, input = GUI.commandlineAllocs45:getText()})
 
-	setAllocSpeed({save = false, number = 1, input = GUI.commandlineAllocs6:getText()})
-	setAllocSpeed({save = false, number = 2, input = GUI.commandlineAllocs14:getText()})
-	setAllocSpeed({save = false, number = 3, input = GUI.commandlineAllocs22:getText()})
-	setAllocSpeed({save = false, number = 4, input = GUI.commandlineAllocs30:getText()})
-	setAllocSpeed({save = false, number = 5, input = GUI.commandlineAllocs38:getText()})
-	setAllocSpeed({save = false, number = 6, input = GUI.commandlineAllocs46:getText()})
-	
-	setAllocAiming({save = false, number = 1, input = GUI.commandlineAllocs7:getText()})
-	setAllocAiming({save = false, number = 2, input = GUI.commandlineAllocs15:getText()})
-	setAllocAiming({save = false, number = 3, input = GUI.commandlineAllocs23:getText()})
-	setAllocAiming({save = false, number = 4, input = GUI.commandlineAllocs31:getText()})
-	setAllocAiming({save = false, number = 5, input = GUI.commandlineAllocs39:getText()})
-	setAllocAiming({save = false, number = 6, input = GUI.commandlineAllocs47:getText()})
+    if (not partnumber) or (partnumber == 2) then
+        setAllocBodypart({save = false, number = 2, input = GUI.commandlineAllocs11:getText()})
+        setAllocBonus({save = false, number = 2, input = GUI.commandlineAllocs12:getText()})
+        setAllocDaring({save = false, number = 2, input = GUI.commandlineAllocs13:getText()})
+        setAllocSpeed({save = false, number = 2, input = GUI.commandlineAllocs14:getText()})
+        setAllocAiming({save = false, number = 2, input = GUI.commandlineAllocs15:getText()})
+        setAllocParry({save = false, number = 2, input = GUI.commandlineAllocs16:getText()})
+        setAllocControl({save = false, number = 2, input = GUI.commandlineAllocs17:getText()})
+        setAllocNull({save = false, number = 2, input = GUI.commandlineAllocs18:getText()})
+    end
 
-	setAllocParry({save = false, number = 1, input = GUI.commandlineAllocs8:getText()})
-	setAllocParry({save = false, number = 2, input = GUI.commandlineAllocs16:getText()})
-	setAllocParry({save = false, number = 3, input = GUI.commandlineAllocs24:getText()})
-	setAllocParry({save = false, number = 4, input = GUI.commandlineAllocs32:getText()})
-	setAllocParry({save = false, number = 5, input = GUI.commandlineAllocs40:getText()})
-	setAllocParry({save = false, number = 6, input = GUI.commandlineAllocs48:getText()})
+    if (not partnumber) or (partnumber == 3) then
+        setAllocBodypart({save = false, number = 3, input = GUI.commandlineAllocs19:getText()})
+        setAllocBonus({save = false, number = 3, input = GUI.commandlineAllocs20:getText()})
+        setAllocDaring({save = false, number = 3, input = GUI.commandlineAllocs21:getText()})
+        setAllocSpeed({save = false, number = 3, input = GUI.commandlineAllocs22:getText()})
+        setAllocAiming({save = false, number = 3, input = GUI.commandlineAllocs23:getText()})
+        setAllocParry({save = false, number = 3, input = GUI.commandlineAllocs24:getText()})
+        setAllocControl({save = false, number = 3, input = GUI.commandlineAllocs25:getText()})
+        setAllocNull({save = false, number = 3, input = GUI.commandlineAllocs26:getText()})
+    end
 
-	setAllocControl({save = false, number = 1, input = GUI.commandlineAllocs9:getText()})
-	setAllocControl({save = false, number = 2, input = GUI.commandlineAllocs17:getText()})
-	setAllocControl({save = false, number = 3, input = GUI.commandlineAllocs25:getText()})
-	setAllocControl({save = false, number = 4, input = GUI.commandlineAllocs33:getText()})
-	setAllocControl({save = false, number = 5, input = GUI.commandlineAllocs41:getText()})
-	setAllocControl({save = false, number = 6, input = GUI.commandlineAllocs49:getText()})
+    if (not partnumber) or (partnumber == 4) then
+        setAllocBodypart({save = false, number = 4, input = GUI.commandlineAllocs27:getText()})
+        setAllocBonus({save = false, number = 4, input = GUI.commandlineAllocs28:getText()})
+        setAllocDaring({save = false, number = 4, input = GUI.commandlineAllocs29:getText()})
+        setAllocSpeed({save = false, number = 4, input = GUI.commandlineAllocs30:getText()})
+        setAllocAiming({save = false, number = 4, input = GUI.commandlineAllocs31:getText()})
+        setAllocParry({save = false, number = 4, input = GUI.commandlineAllocs32:getText()})
+        setAllocControl({save = false, number = 4, input = GUI.commandlineAllocs33:getText()})
+        setAllocNull({save = false, number = 4, input = GUI.commandlineAllocs34:getText()})
+    end
 
-	setAllocNull({save = false, number = 1, input = GUI.commandlineAllocs10:getText()})
-	setAllocNull({save = false, number = 2, input = GUI.commandlineAllocs18:getText()})
-	setAllocNull({save = false, number = 3, input = GUI.commandlineAllocs26:getText()})
-	setAllocNull({save = false, number = 4, input = GUI.commandlineAllocs34:getText()})
-	setAllocNull({save = false, number = 5, input = GUI.commandlineAllocs42:getText()})
-	setAllocNull({save = false, number = 6, input = GUI.commandlineAllocs50:getText()})
+    if (not partnumber) or (partnumber == 5) then
+        setAllocBodypart({save = false, number = 5, input = GUI.commandlineAllocs35:getText()})
+        setAllocBonus({save = false, number = 5, input = GUI.commandlineAllocs36:getText()})
+        setAllocDaring({save = false, number = 5, input = GUI.commandlineAllocs37:getText()})
+        setAllocSpeed({save = false, number = 5, input = GUI.commandlineAllocs38:getText()})
+        setAllocAiming({save = false, number = 5, input = GUI.commandlineAllocs39:getText()})
+        setAllocParry({save = false, number = 5, input = GUI.commandlineAllocs40:getText()})
+        setAllocControl({save = false, number = 5, input = GUI.commandlineAllocs41:getText()})
+        setAllocNull({save = false, number = 5, input = GUI.commandlineAllocs42:getText()})
+    end
+
+    if (not partnumber) or (partnumber == 6) then
+    	setAllocBodypart({save = false, number = 6, input = GUI.commandlineAllocs43:getText()})
+    	setAllocBonus({save = false, number = 6, input = GUI.commandlineAllocs44:getText()})
+    	setAllocDaring({save = false, number = 6, input = GUI.commandlineAllocs45:getText()})
+    	setAllocSpeed({save = false, number = 6, input = GUI.commandlineAllocs46:getText()})
+    	setAllocAiming({save = false, number = 6, input = GUI.commandlineAllocs47:getText()})
+    	setAllocParry({save = false, number = 6, input = GUI.commandlineAllocs48:getText()})
+    	setAllocControl({save = false, number = 6, input = GUI.commandlineAllocs49:getText()})
+    	setAllocNull({save = false, number = 6, input = GUI.commandlineAllocs50:getText()})
+    end
+
 
 	cecho("<yellow>Allocs: Allocation set "..string.format("%02d", Status.allocCurrentDisplay).." updated\n")
-	if savetype == "set" then setAlloc({input = "set"}) end
+	if savetype == "set" then setAlloc({number = partnumber, input = "set"}) end
 end
 
 

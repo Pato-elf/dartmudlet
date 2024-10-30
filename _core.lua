@@ -58,9 +58,11 @@ local function setup(e, f, g)
 	isFirstLoad = false
 
 	_Core.load()
-  
+
 	send("score", false)
 	send("who", false)
+    send("speak", false)
+    send("set aim", false)
 end
 
 

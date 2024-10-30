@@ -31,14 +31,49 @@ local function setup(args)
 
 
 
-	-- capture current language	
+	-- capture current language
 	---------------------------------------------------------------------
 	tempTriggers.captureLanguage =
-		tempRegexTrigger("^(?:> )*You are now speaking .*",
+		tempRegexTrigger("^(?:> )*You are (?:now )?speaking (.*?)\\.",
 			[[
-				local detail = matches[1]
+				local detail = matches[2]
 				arguments = {detail = detail}
-				Events.raiseEvent("languageEvent", arguments)
+				Events.raiseEvent("showLanguageEvent", arguments)
+			]])
+
+
+
+	-- capture current aiming target version 1
+	---------------------------------------------------------------------
+	tempTriggers.captureAim1 =
+		tempRegexTrigger("^(?:> )*You start to aim for the (.*?)\\.",
+			[[
+				local detail = matches[2]
+				arguments = {detail = detail}
+				Events.raiseEvent("showAimEvent", arguments)
+			]])
+
+
+
+	-- capture current aiming target version 2
+	---------------------------------------------------------------------
+	tempTriggers.captureAim2 =
+		tempRegexTrigger("^(?:> )*You are currently aiming at: (.*?)\\.",
+			[[
+				local detail = matches[2]
+				arguments = {detail = detail}
+				Events.raiseEvent("showAimEvent", arguments)
+			]])
+
+
+
+	-- capture current aiming target version 3
+	---------------------------------------------------------------------
+	tempTriggers.captureAim3 =
+		tempRegexTrigger("^(?:> )*No longer aiming at anything\\.",
+			[[
+				arguments = {detail = "none"}
+				Events.raiseEvent("showAimEvent", arguments)
 			]])
 
 

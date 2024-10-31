@@ -1,5 +1,5 @@
 Info				= {}
-local versionNumber	= "v1.7"
+local versionNumber	= "v1.7.1"
 local sourceName	= "info"
 local colorHelp		= "yellow"
 local spacerHelp	= "   "

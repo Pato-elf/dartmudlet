@@ -491,7 +491,6 @@ local function repeatClear(args)
         Repeat.load()
         if Status.repeatCurrentActive == target then
             Status.repeatCurrentActive = 0
-        --    Events.raiseEvent("checkRepeatActiveEvent", {target = "clear"})
         end
         Events.raiseEvent("checkRepeatActiveEvent", {target = "clear"})
 		showRepeatCurrentFields(Status.repeatCurrentDisplay)

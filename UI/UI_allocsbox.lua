@@ -1338,7 +1338,6 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 		}, GUI.containerAllocsBox)
 
 	GUI.textboxAllocs11:setStyleSheet(StyleTextBlue:getCSS())
-
 	GUI.textboxAllocs11:setToolTip("Allocation number",Status.tooltipTime)
 
 

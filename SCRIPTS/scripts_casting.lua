@@ -82,6 +82,7 @@ local function checkCastingTable(args)
 
 	local results = dba.query('SELECT id FROM casting')
 	if results.count() == 0 then
+        systemMessage("Create CASTING table")
 		dba.execute('INSERT INTO casting DEFAULT VALUES')
 	end
 
@@ -91,7 +92,9 @@ end
 
 local function load()
 	local result = {}
-	
+
+
+    systemMessage("Load CASTING table")
 	result = dba.query('SELECT * FROM casting')[1]
 	Status.castCurrentArgs = result.castCurrentArgs
 	Status.castCurrentPower = result.castCurrentPower

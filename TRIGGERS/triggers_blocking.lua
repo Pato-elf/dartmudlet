@@ -20,6 +20,7 @@ local textToUnBlock = {
 	,".* sprays from your"
 	,"A cloud of .* forms above your"
 	,"A corona of .* surrounds you"
+    ,"A faint arrow appears briefly"
 	,"A faintly glowing rune appears on"
     ,"A flicker of light briefly illuminates"
 	,"A fulminating skull of .* encircles you"

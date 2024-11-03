@@ -40,6 +40,7 @@ Status.statusRefresh	= false
 Status.repeatCurrentDisplay	= 1
 Status.repeatCurrentActive	= 0
 Status.repeatTable			= {}
+Status.statusRepeatEcho     = 'off'
 
 
 -- channelling system variables
@@ -76,9 +77,9 @@ Status.statusChannel			= false
 
 -- casting system variables
 -----------------------------------------------------------
-Status.castCurrentArgs	= ""
+Status.castCurrentArgs	= ''
 Status.castCurrentPower	= 100
-Status.castCurrentSpell	= "lg"
+Status.castCurrentSpell	= 'lg'
 
 
 
@@ -98,7 +99,7 @@ Status.scrollCurrentSpell	= ''
 Status.scrollCurrentPower	= 100
 
 
-Status.tooltipTime			= 5
+Status.tooltipTime			= 6
 
 
 

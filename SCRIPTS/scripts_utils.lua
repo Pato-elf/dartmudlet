@@ -36,4 +36,10 @@ function utils.capitalize(str)
 end
 
 
+
+function systemMessage(arg)
+    cecho("<yellow>DARTMUDLET: "..arg.."\n")
+end
+
+
 return utils;

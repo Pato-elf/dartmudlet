@@ -88,6 +88,7 @@ local function checkRefreshTable(args)
 
 	local results = dba.query('SELECT id FROM refresh')
 	if results.count() == 0 then
+        systemMessage("Create REFRESH table")
 		dba.execute('INSERT INTO refresh DEFAULT VALUES')
 	end
 
@@ -97,7 +98,9 @@ end
 
 local function load()
 	local result = {}
-	
+
+
+    systemMessage("Load REFRESH table")
 	result = dba.query('SELECT * FROM refresh')[1]
 	Status.refreshPower1 = result.refreshPower1
 	Status.refreshPower2 = result.refreshPower2

@@ -98,6 +98,7 @@ function loadStylesheets()
 			color: black;
 			background-color: palegreen;
 			margin: 0px;
+            padding-left: -6px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;
@@ -113,6 +114,7 @@ function loadStylesheets()
 			color: black;
 			background-color: #FB98FB;
 			margin: 0px;
+            padding-left: -6px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;
@@ -128,6 +130,7 @@ function loadStylesheets()
 			color: black;
 			background-color: #D3D3D3;
 			margin: 0px;
+            padding-left: -6px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;

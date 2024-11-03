@@ -18,8 +18,11 @@ function createRepeatBox()
     local y8    = 300
     local y9    = 330
 
-    local width1    = 400
+    local width1    = 408
 
+    local tooltip_linked = "Set repeat command to round-robin style versus the default sequential style\n\n"
+    tooltip_linked = tooltip_linked.."SEQUENTIAL: 1, 1, 1, 2, 2, 2\n"
+    tooltip_linked = tooltip_linked.."ROUND-ROBIN: 1, 2, 1, 2, 1, 2"
 
 
 -- CREATE REPEAT BOX -> TABWINDOW2
@@ -567,6 +570,216 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 
 
+
+
+
+
+
+
+
+
+
+
+    -- CREATE BUTTON7 -> REPEAT -> TABWINDOW2  (linked button 1)
+	-----------------------------------------------------------
+	GUI.buttonRepeat7 = GUI.buttonRepeat7 or
+    Geyser.Label:new({
+        name = "buttonRepeat7",
+        x = x3-30, y = y2,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerRepeatBox)
+
+    GUI.buttonRepeat7:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonRepeat7", "<center><span style='font-size: 10pt;'>&#x1F517;</span></center>")
+    GUI.buttonRepeat7:setToolTip(tooltip_linked,Status.tooltipTime+5)
+    GUI.buttonRepeat7:setClickCallback("buttonRepeat7_click")
+
+    function buttonRepeat7_click()
+        GUI.buttonRepeat5:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonRepeat5:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("setRepeatLinkedEvent", {number = 1, type = "set"})
+    end
+
+
+
+    -- CREATE BUTTON8 -> REPEAT -> TABWINDOW2  (linked button 2)
+	-----------------------------------------------------------
+	GUI.buttonRepeat8 = GUI.buttonRepeat8 or
+    Geyser.Label:new({
+        name = "buttonRepeat8",
+        x = x3-30, y = y3,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerRepeatBox)
+
+    GUI.buttonRepeat8:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonRepeat8", "<center><span style='font-size: 10pt;'>&#x1F517;</span></center>")
+    GUI.buttonRepeat8:setToolTip(tooltip_linked,Status.tooltipTime+5)
+    GUI.buttonRepeat8:setClickCallback("buttonRepeat8_click")
+
+    function buttonRepeat8_click()
+        GUI.buttonRepeat5:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonRepeat5:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("setRepeatLinkedEvent", {number = 2, type = "set"})
+    end
+
+
+
+    -- CREATE BUTTON9 -> REPEAT -> TABWINDOW2  (linked button 3)
+	-----------------------------------------------------------
+	GUI.buttonRepeat9 = GUI.buttonRepeat9 or
+    Geyser.Label:new({
+        name = "buttonRepeat9",
+        x = x3-30, y = y4,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerRepeatBox)
+
+    GUI.buttonRepeat9:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonRepeat9", "<center><span style='font-size: 10pt;'>&#x1F517;</span></center>")
+    GUI.buttonRepeat9:setToolTip(tooltip_linked,Status.tooltipTime+5)
+    GUI.buttonRepeat9:setClickCallback("buttonRepeat9_click")
+
+    function buttonRepeat9_click()
+        GUI.buttonRepeat5:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonRepeat5:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("setRepeatLinkedEvent", {number = 3, type = "set"})
+    end
+
+
+
+    -- CREATE BUTTON10 -> REPEAT -> TABWINDOW2  (linked button 4)
+	-----------------------------------------------------------
+	GUI.buttonRepeat10 = GUI.buttonRepeat10 or
+    Geyser.Label:new({
+        name = "buttonRepeat10",
+        x = x3-30, y = y5,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerRepeatBox)
+
+    GUI.buttonRepeat10:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonRepeat10", "<center><span style='font-size: 10pt;'>&#x1F517;</span></center>")
+    GUI.buttonRepeat10:setToolTip(tooltip_linked,Status.tooltipTime+5)
+    GUI.buttonRepeat10:setClickCallback("buttonRepeat10_click")
+
+    function buttonRepeat10_click()
+        GUI.buttonRepeat5:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonRepeat5:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("setRepeatLinkedEvent", {number = 4, type = "set"})
+    end
+
+
+
+    -- CREATE BUTTON11 -> REPEAT -> TABWINDOW2  (linked button 5)
+	-----------------------------------------------------------
+	GUI.buttonRepeat11 = GUI.buttonRepeat11 or
+    Geyser.Label:new({
+        name = "buttonRepeat11",
+        x = x3-30, y = y6,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerRepeatBox)
+
+    GUI.buttonRepeat11:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonRepeat11", "<center><span style='font-size: 10pt;'>&#x1F517;</span></center>")
+    GUI.buttonRepeat11:setToolTip(tooltip_linked,Status.tooltipTime+5)
+    GUI.buttonRepeat11:setClickCallback("buttonRepeat11_click")
+
+    function buttonRepeat11_click()
+        GUI.buttonRepeat5:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonRepeat5:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("setRepeatLinkedEvent", {number = 5, type = "set"})
+    end
+
+
+
+    -- CREATE BUTTON12 -> REPEAT -> TABWINDOW2  (linked button 6)
+	-----------------------------------------------------------
+	GUI.buttonRepeat12 = GUI.buttonRepeat12 or
+    Geyser.Label:new({
+        name = "buttonRepeat12",
+        x = x3-30, y = y7,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerRepeatBox)
+
+    GUI.buttonRepeat12:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonRepeat12", "<center><span style='font-size: 10pt;'>&#x1F517;</span></center>")
+    GUI.buttonRepeat12:setToolTip(tooltip_linked,Status.tooltipTime+5)
+    GUI.buttonRepeat12:setClickCallback("buttonRepeat12_click")
+
+    function buttonRepeat12_click()
+        GUI.buttonRepeat5:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonRepeat5:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("setRepeatLinkedEvent", {number = 6, type = "set"})
+    end
+
+
+
+    -- CREATE BUTTON13 -> REPEAT -> TABWINDOW2  (linked button 7)
+	-----------------------------------------------------------
+	GUI.buttonRepeat13 = GUI.buttonRepeat13 or
+    Geyser.Label:new({
+        name = "buttonRepeat13",
+        x = x3-30, y = y8,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerRepeatBox)
+
+    GUI.buttonRepeat13:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonRepeat13", "<center><span style='font-size: 10pt;'>&#x1F517;</span></center>")
+    GUI.buttonRepeat13:setToolTip(tooltip_linked,Status.tooltipTime+5)
+    GUI.buttonRepeat13:setClickCallback("buttonRepeat13_click")
+
+    function buttonRepeat13_click()
+        GUI.buttonRepeat5:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonRepeat5:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("setRepeatLinkedEvent", {number = 7, type = "set"})
+    end
+
+
+
+    -- CREATE BUTTON14 -> REPEAT -> TABWINDOW2  (linked button 8)
+	-----------------------------------------------------------
+	GUI.buttonRepeat14 = GUI.buttonRepeat14 or
+    Geyser.Label:new({
+        name = "buttonRepeat14",
+        x = x3-30, y = y9,
+        fontSize = 14,
+        width = 28,
+        height = 28,
+        color = "black"
+    }, GUI.containerRepeatBox)
+
+    GUI.buttonRepeat14:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    echo("buttonRepeat14", "<center><span style='font-size: 10pt;'>&#x1F517;</span></center>")
+    GUI.buttonRepeat14:setToolTip(tooltip_linked,Status.tooltipTime+5)
+    GUI.buttonRepeat14:setClickCallback("buttonRepeat14_click")
+
+    function buttonRepeat14_click()
+        GUI.buttonRepeat5:setStyleSheet(StyleButtonPaleBlue:getCSS())
+        tempTimer(0.15, function() GUI.buttonRepeat5:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
+        Events.raiseEvent("setRepeatLinkedEvent", {number = 8, type = "set"})
+    end
+
+
+
 -------------------------------------------------------------------------------
 -- TEXT BOXES
 -------------------------------------------------------------------------------
@@ -605,7 +818,7 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.textboxRepeat2:setStyleSheet(StyleTextBlue:getCSS())
     cecho("textboxRepeat2", "<yellow>1")
-    GUI.textboxRepeat2:setToolTip("Command #1 in repeat set",Status.tooltipTime)
+    GUI.textboxRepeat2:setToolTip("Command #1 in repeat set\n(Max 36 characters)",Status.tooltipTime)
 
 
 
@@ -623,7 +836,7 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.textboxRepeat3:setStyleSheet(StyleTextBlue:getCSS())
     cecho("textboxRepeat3", "<yellow>2")
-    GUI.textboxRepeat3:setToolTip("Command #2 in repeat set",Status.tooltipTime)
+    GUI.textboxRepeat3:setToolTip("Command #2 in repeat set\n(Max 36 characters)",Status.tooltipTime)
 
 
 
@@ -641,7 +854,7 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.textboxRepeat4:setStyleSheet(StyleTextBlue:getCSS())
     cecho("textboxRepeat4", "<yellow>3")
-    GUI.textboxRepeat4:setToolTip("Command #3 in repeat set",Status.tooltipTime)
+    GUI.textboxRepeat4:setToolTip("Command #3 in repeat set\n(Max 36 characters)",Status.tooltipTime)
 
 
 
@@ -659,7 +872,7 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.textboxRepeat5:setStyleSheet(StyleTextBlue:getCSS())
     cecho("textboxRepeat5", "<yellow>4")
-    GUI.textboxRepeat5:setToolTip("Command #4 in repeat set",Status.tooltipTime)
+    GUI.textboxRepeat5:setToolTip("Command #4 in repeat set\n(Max 36 characters)",Status.tooltipTime)
 
 
 
@@ -677,7 +890,7 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.textboxRepeat6:setStyleSheet(StyleTextBlue:getCSS())
     cecho("textboxRepeat6", "<yellow>5")
-    GUI.textboxRepeat6:setToolTip("Command #5 in repeat set",Status.tooltipTime)
+    GUI.textboxRepeat6:setToolTip("Command #5 in repeat set\n(Max 36 characters)",Status.tooltipTime)
 
 
 
@@ -695,7 +908,7 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.textboxRepeat7:setStyleSheet(StyleTextBlue:getCSS())
     cecho("textboxRepeat7", "<yellow>6")
-    GUI.textboxRepeat7:setToolTip("Command #6 in repeat set",Status.tooltipTime)
+    GUI.textboxRepeat7:setToolTip("Command #6 in repeat set\n(Max 36 characters)",Status.tooltipTime)
 
 
 
@@ -713,7 +926,7 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.textboxRepeat8:setStyleSheet(StyleTextBlue:getCSS())
     cecho("textboxRepeat8", "<yellow>7")
-    GUI.textboxRepeat8:setToolTip("Command #7 in repeat set",Status.tooltipTime)
+    GUI.textboxRepeat8:setToolTip("Command #7 in repeat set\n(Max 36 characters)",Status.tooltipTime)
 
 
 
@@ -731,7 +944,7 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.textboxRepeat9:setStyleSheet(StyleTextBlue:getCSS())
     cecho("textboxRepeat9", "<yellow>8")
-    GUI.textboxRepeat9:setToolTip("Command #8 in repeat set",Status.tooltipTime)
+    GUI.textboxRepeat9:setToolTip("Command #8 in repeat set\n(Max 36 characters)",Status.tooltipTime)
 
 
 

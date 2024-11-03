@@ -881,6 +881,7 @@ local function checkAllocsTable(args)
 
 	local results = dba.query('SELECT id FROM allocs')
 	if results.count() == 0 then
+        systemMessage("Create ALLOCS table")
 		for i = 1, 30 do
 			dba.execute('INSERT INTO allocs DEFAULT VALUES')
 		end
@@ -899,7 +900,9 @@ end
 local function load()
 	local result = {}
 	Status.allocsTable = {}
-	
+
+
+    systemMessage("Load ALLOCS table")
 	result = dba.query('SELECT * FROM allocs ORDER BY allocOrderNumber')
 	for i = 1, 30 do
 		table.insert(Status.allocsTable, result[i])
@@ -909,7 +912,7 @@ end
 
 
 local function save()
-	
+
 end
 
 

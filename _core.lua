@@ -11,7 +11,7 @@ local function setup(e, f, g)
 	args	= {}
 
 
-	cecho("<yellow>DARTMUDLET: setup\n")
+	cecho("<yellow>DARTMUDLET: Begin setup\n")
 
 	local aliases_directory = packageFolder.."ALIASES/"
 	for file in lfs.dir(aliases_directory) do
@@ -70,7 +70,7 @@ end
 -- run load functions
 -----------------------------------------------------------
 local function load()
-	cecho("<yellow>DARTMUDLET: loading\n")
+    systemMessage("Begin loading")
 	for i,module in ipairs(modules) do
 		if module.load then
 			module.load()
@@ -85,7 +85,7 @@ local function unsetup(e, f, g)
 	args = {}
 	args["directory"] = packageFolder
 
-	cecho("<yellow>DARTMUDLET: unsetup\n")
+    systemMessage("Begin unsetup")
 
 	for k,module in pairs(modules) do
 		if module.unsetup then

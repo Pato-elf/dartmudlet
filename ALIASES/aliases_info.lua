@@ -153,6 +153,18 @@ local function setup(args)
 		]])
 
 
+
+    -- /repeat echo
+	-------------------------------------------------------
+	tempAliases.repeatEcho =
+	tempAlias('^\\/repeat echo ([\\w]+)',
+		[[
+			local detail = matches[2]
+			local arguments = {detail = detail}
+			Events.raiseEvent('setRepeatEchoEvent', arguments)
+		]])
+
+
 	aliases = tempAliases
 end
 

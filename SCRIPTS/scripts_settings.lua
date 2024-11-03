@@ -189,7 +189,8 @@ end
 -----------------------------------------------------------
 local function setAura(args)
 	local detail = string.lower(args["detail"])
-	
+
+
 	if not ((detail == "off") or (detail == "on") or (detail == "scint") or (detail == "help")) then
 		cecho("<red>ERROR: Usage: /aura <on|off|scint>\n")
 	elseif (detail == "help") then
@@ -220,7 +221,8 @@ end
 -----------------------------------------------------------
 local function setContents(args)
 	local detail = string.lower(args["detail"])
-	
+
+
 	if not ((detail == "off") or (detail == "on") or (detail == "help")) then
 		cecho("<red>ERROR: Usage: /contents <on|off>\n")
 	elseif (detail == "help") then
@@ -237,6 +239,34 @@ local function setContents(args)
 		end
 
 		dba.execute('UPDATE settings SET statusContents="'..Status.statusContents..'"')
+	end
+
+end
+
+
+
+-- set the repeat echo setting
+-----------------------------------------------------------
+local function setRepeatEcho(args)
+	local detail = string.lower(args["detail"])
+
+
+	if not ((detail == "off") or (detail == "on") or (detail == "help")) then
+		cecho("<red>ERROR: Usage: /repeat echo <on|off>\n")
+	elseif (detail == "help") then
+		cecho("<yellow>USAGE: /repeat echo on|off - Echo repeat commands to the screen (current setting: "..Status.statusRepeatEcho..")\n")
+	else
+		if detail == "off" then
+			cecho("<yellow>Repeat: Echo Off\n")
+			Events.raiseEvent("messageEvent", {message="<yellow>Repeat: Echo Off\n"})
+			Status.statusRepeatEcho = "off"
+		else
+			cecho("<yellow>Repeat: Echo On\n")
+			Events.raiseEvent("messageEvent", {message="<yellow>Repeat: Echo On\n"})
+			Status.statusRepeatEcho = "on"
+		end
+
+		dba.execute('UPDATE settings SET statusRepeatEcho="'..Status.statusRepeatEcho..'"')
 	end
 
 end
@@ -324,10 +354,12 @@ local function checkSettingsTable(args)
 		statusAntiSpam VARCHAR(16) DEFAULT "off",
 		statusAura VARCHAR(16) DEFAULT "off",
 		statusConc VARCHAR(16) DEFAULT "off",
-		statusContents VARCHAR(16) DEFAULT "on"
+		statusContents VARCHAR(16) DEFAULT "on",
+        statusRepeatEcho VARCHAR(16) DEFAULT "off"
 	);]])
 	local results = dba.query('SELECT id FROM settings')
 	if results.count() == 0 then
+        systemMessage("Create SETTINGS table")
 		dba.execute('INSERT INTO settings DEFAULT VALUES')
 	end
 
@@ -336,9 +368,16 @@ local function checkSettingsTable(args)
 	-- add any missing fields
 	local temp = dba.query('SELECT * FROM settings')[1]
 	if not temp.statusContents then
+        systemMessage("Update SETTINGS table")
 		dba.execute('ALTER TABLE settings ADD COLUMN statusContents VARCHAR(16) DEFAULT "on"')
+        dba.execute('UPDATE settings SET statusContents = "on"')
 	end
 
+    if not temp.statusRepeatEcho then
+        systemMessage("Update SETTINGS table")
+		dba.execute('ALTER TABLE settings ADD COLUMN statusRepeatEcho VARCHAR(16) DEFAULT "off"')
+        dba.execute('UPDATE settings SET statusRepeatEcho = "off"')
+	end
 end
 
 
@@ -346,6 +385,8 @@ end
 local function load()
 	local result = {}
 
+
+    systemMessage("Load SETTINGS table")
 	result = dba.query('SELECT * FROM settings')[1]
 	Status.fontSizeChat = result.fontSizeChat
 	Status.fontSizeImproves = result.fontSizeImproves
@@ -359,6 +400,7 @@ local function load()
 	Status.statusAura = result.statusAura
 	Status.statusConc = result.statusConc
 	Status.statusContents = result.statusContents
+    Status.statusRepeatEcho = result.statusRepeatEcho
 
 	GUI.containerChatBox:setFontSize(Status.fontSizeChat)
 	GUI.containerImproveBox:setFontSize(Status.fontSizeImproves)
@@ -385,6 +427,7 @@ local function setup(args)
 	Events.addListener("setConcEvent", sourceName, setConc)
 	Events.addListener("setContentsEvent", sourceName, setContents)
 	Events.addListener("setFontSizeEvent", sourceName, setFontSize)
+    Events.addListener("setRepeatEchoEvent", sourceName, setRepeatEcho)
 	Events.addListener("antiSpamOnEvent",sourceName, antispamOn)
 	Events.addListener("antiSpamOffEvent",sourceName, antispamOff)
 end
@@ -399,6 +442,7 @@ local function unsetup(args)
 	Events.removeListener("setConcEvent", sourceName)
 	Events.removeListener("setContentsEvent", sourceName)
 	Events.removeListener("setFontSizeEvent", sourceName)
+    Events.removeListener("setRepeatEchoEvent", sourceName)
 	Events.removeListener("antiSpamOnEvent",sourceName)
 	Events.removeListener("antiSpamOffEvent",sourceName)
 end

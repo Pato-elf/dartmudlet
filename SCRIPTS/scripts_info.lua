@@ -1,5 +1,5 @@
 Info				= {}
-local versionNumber	= "v1.7.1"
+local versionNumber	= "v1.7.2"
 local sourceName	= "info"
 local colorHelp		= "yellow"
 local spacerHelp	= "   "
@@ -15,8 +15,8 @@ math.randomseed(os.time())
 local function showRandom(args)
 	local randomrange	= args["detail"]
 	local randomnumber	= 0
-	
-	
+
+
 	if tonumber(randomrange) then
 		randomrange = tonumber(randomrange)
 		if (randomrange < 2) or (randomrange > 1000) then
@@ -25,21 +25,21 @@ local function showRandom(args)
 			randomnumber = math.random(1, randomrange)
 			send("ooc "..Status.name.." generates a random number between 1 and "..randomrange..": "..randomnumber)
 		end
-		
+
 	elseif string.find(randomrange, ",") then
 		local randomvalues = {}
-		
+
 		for value in string.gmatch(randomrange, "([^,]+)") do
 			table.insert(randomvalues, value)
 		end
-		
+
 		for i, v in ipairs(randomvalues) do
 			randomvalues[i] = v:gsub("^%s*(.-)%s*$", "%1")
 		end
-		
+
 		send("ooc "..Status.name.." picks a random value out of a list: "..randomrange)
 		send("ooc Value selected: "..randomvalues[math.random(1, #randomvalues)])
-		
+
 	else --randomrange == "help"
 		cecho("<yellow>USAGE: /random <num> - Generate a random number between 1 and a number of your choosing\n")
 		cecho("<yellow>USAGE: /random <value,value,value> - Pick a random value from a list of values\n")
@@ -57,7 +57,7 @@ local function showQuickHelp()
 	local helpTagGreen	= "<span style=\"color: palegreen; font-weight: bold;\">"
 	local helpTagRed	= "<span style=\"color: red; font-weight: bold;\">"
 	local helpTagOff	= "</span>"
-	
+
 
 	helpText = helpText..helpTagYellow
 	helpText = helpText.."DartMUDlet - Pato Edition "..versionNumber.."<BR>"
@@ -91,7 +91,7 @@ local function showQuickLevels()
 		skillLevels[i].length1 = 18-string.len(skillLevels[i].name)
 		skillLevels[i].length2 = 13-string.len(skillLevels[i].min)
 	end
-	
+
 	helpText = helpText..helpTagYellow
 	helpText = helpText.."Skill Name"..string.rep("&nbsp;",8).."Level"..string.rep("&nbsp;",8).."Skill Name"..string.rep("&nbsp;",8).."Level<BR>"
 	helpText = helpText.."======================================================<BR>"
@@ -207,10 +207,10 @@ local function showLevels(args)
 		else
 			skillSize = tonumber(currentSkill.max) - tonumber(currentSkill.min) + 1
 		end
-		
+
 		local fillerChars1 = skillnumPosition - string.len(currentSkill.name)
 		local fillerChars2 = skillsizePosition - string.len(currentSkill.name) - fillerChars1 - string.len(currentSkill.min)--math.floor(math.log(v.min)+1)
-		
+
 		cecho(preText..currentSkill.name..string.rep(" ", fillerChars1)..currentSkill.min..string.rep(" ", fillerChars2)..skillSize.."\n")
   end
 end
@@ -221,20 +221,17 @@ end
 -- TODO: cleanup the book hack
 -----------------------------------------------------------
 local function showContents(args)
+	if (Status.statusContents == "off") then return end
 
-	if Status.statusContents == "off" then
-		return
-	end
-	
-	local detail = args["detail"]
-	local items = {}
-	local itemOrder = {}
-	local falseStack = {}
-	local item = ""
+	local detail        = args["detail"]
+	local items         = {}
+	local itemOrder     = {}
+	local falseStack    = {}
+	local item          = ""
 	local tempNum
-	
+
 	deleteLine()
-	
+
 	for k,v in pairs (detail) do
 		-- negative look ahead regex causes double matches
 		if k % 2 == 0 then
@@ -247,14 +244,14 @@ local function showContents(args)
 			item = string.gsub(item, "^an ", "")
 			item = string.gsub(item, "^a ", "")
 			tempNum = string.match(item, "^([0-9]+)")
-			
+
 			if tempNum then
 				tempNum = tonumber(tempNum)
 				item = trim(string.gsub(item, tempNum, ""))
 			else
 				tempNum = 1
 			end
-			
+
 			-- build a count of each item type for final display
 			if items[item] then
 				items[item] = items[item] + tempNum
@@ -266,18 +263,18 @@ local function showContents(args)
 			end
 		end
 	end
-	
+
 	-- sort alphabetically
 	local keys = {}
 	for key in pairs(items) do
 		table.insert(keys, key)
 	end
 	table.sort(keys)
-	
+
 	echo("\n===============================================\n")
 	for _, key in ipairs(keys) do
 		local stack	= ""
-	
+
 		if key ~= 'by King Islagador"' then
 
 			if items[key] > 1 then
@@ -304,6 +301,7 @@ local function showSpellCasting()
 	local count = 0
 	local results = Skills.getSkill({who = Status.name, skill_name = "spell casting"})
 
+
 	if results ~= -1 then
 		count = tonumber(results.count)
 	else
@@ -311,7 +309,7 @@ local function showSpellCasting()
 	end
 
 	spellcastingText = "<yellow>SPELL CASTING:&nbsp;&nbsp;&nbsp;"..count
-	
+
 	return spellcastingText
 end
 
@@ -322,14 +320,15 @@ end
 local function showPowercastPercentage()
 	local powercastPercentDisplay = ""
 
+
 	if Status.powercastTotal == 0 then
 		Status.powercastPercent = 0
 	else
 		Status.powercastPercent = (Status.powercastSuccess / Status.powercastTotal) * 100
 	end
-	
+
 	powercastPercentDisplay = "<yellow>SUCCESS RATE:&nbsp;&nbsp;&nbsp;&nbsp;"..string.format("%.1f", Status.powercastPercent).."%"
-	
+
 	return powercastPercentDisplay
 end
 
@@ -338,10 +337,11 @@ end
 -- return under construction message
 -----------------------------------------------------------
 local function showUnderConstruction()
-	local helpText = ""
+	local helpText      = ""
 	local helpTagYellow = "<span style=\"color: yellow;\">"
-	local helpTagOff = "</span>"
-	
+	local helpTagOff    = "</span>"
+
+
 	helpText = helpText..helpTagYellow
 	helpText = helpText.."Coming Soon!"
 	helpText = helpText..helpTagOff
@@ -354,10 +354,11 @@ end
 -- return in progress message
 -----------------------------------------------------------
 local function showInProgress()
-	local helpText = ""
+	local helpText      = ""
 	local helpTagYellow = "<span style=\"color: yellow;\">"
-	local helpTagOff = "</span>"
-	
+	local helpTagOff    = "</span>"
+
+
 	helpText = helpText..helpTagYellow
 	helpText = helpText.."&#128679; Work in Progress! &#128679;"
 	helpText = helpText..helpTagOff

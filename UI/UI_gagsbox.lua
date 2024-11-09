@@ -23,7 +23,7 @@ function createGagsBox()
     local tooltip_gags3 = "Gags many emotes from wild creatures"
     local tooltip_gags4 = "Gags emotes and chatter from many citzens inside cities and towns"
     local tooltip_gags5 = "Gags emotes and chatter from trainers like Nazir and Ambrosius"
-    local tooltip_gags6 = "Gags emotes and chatter from common sparring partners like Ruffians and Pells"
+    local tooltip_gags6 = "Gags emotes and chatter from some common sparring partners"
     local tooltip_gags7 = "Gags some channelling messages such as failed channels and \"Gossamar strand\" text"
     local tooltip_gags8 = "Toggle AntiSpam system on|off (Recommended Off unless needed)"
 

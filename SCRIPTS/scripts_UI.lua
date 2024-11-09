@@ -45,6 +45,7 @@ local function createUIConsole()
 	-- TABWINDOW3
 	-------------------------
 	createInfoBox()
+    createGagsBox()
 	createHelpBox()
 
 	-- TABWINDOW4

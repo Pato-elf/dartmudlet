@@ -10,8 +10,8 @@ local sourceName		= "gags"
 
 
 local petList = {
-	"(\\w+) wanders around sniffing things"
-    ,"(\\w+) stares piercingly at"
+	"(\\w+) wanders around sniffing"
+    ,"(\\w+) stares piercingly"
     ,"(\\w+) whickers softly"
     ,"(\\w+) looks for something to steal"
     ,"(\\w+) chases (her|his) tail"
@@ -45,7 +45,7 @@ local petList = {
     ,"(\\w+) grooms (her|his) fur"
     ,"(\\w+) looks about cautiously"
     ,"(\\w+) looks around for some grass"
-    ,"(\\w+) curls up with"
+    ,"(\\w+) curls up (and|with)"
     ,"(\\w+) snorts\\."
     ,"(\\w+) rests lazily"
     ,"(\\w+) eyes (\\w+) as if calculating"
@@ -79,20 +79,13 @@ local channelList = {
 
 
 local creatureList = {
-    "Zebra looks at"
-    ,"Zebra watches"
-    ,"Zebra looks around"
-    ,"Zebra grazes"
-    ,"Turtle rests"
-    ,"Crab waves its pincers"
+    "Zebra (looks|grazes|nibbles|watches)"
+    ,"Turtle (looks|rests)"
+    ,"Turtle crawls ahead"
     ,"Crab scuttles about"
     ,"Crab scuttles back and"
-    ,"Crab scavenges"
-    ,"Crab (wiggles|cocks)"
+    ,"Crab (wiggles|cocks|scavenges|waves)"
     ,"Crab snaps" --combat?
-    ,"Turtle looks around"
-    ,"Zebra nibbles"
-    ,"Turtle crawls ahead"
     ,"Elephant (flaps|forages|trumpets|tosses)"
     ,"(Cat|Rat) looks at"
     ,"Cat scratches"
@@ -120,8 +113,8 @@ local citizenList   = {
 
     ,"(Aiko|Alberea|Aluysio|Andrea|Arizzo|Ascelina) ("..citizenemotes..")"
     ,"(Aiko|Alberea|Aluysio|Andrea|Arizzo|Ascelina) ("..citizenspeaks..")"
-    ,"(Bucello) ("..citizenemotes..")"
-    ,"(Bucello) ("..citizenspeaks..")"
+    ,"(Bolezino|Bucello) ("..citizenemotes..")"
+    ,"(Bolezino|Bucello) ("..citizenspeaks..")"
     ,"(Colette) ("..citizenemotes..")"
     ,"(Colette) ("..citizenspeaks..")"
     ,"(Dyonisius) ("..citizenemotes..")"
@@ -132,28 +125,32 @@ local citizenList   = {
     ,"(Gerolimo|Girout) ("..citizenspeaks..")"
     ,"(Hecelina|Helloysis) ("..citizenemotes..")"
     ,"(Hecelina|Helloysis) ("..citizenspeaks..")"
-    ,"(Luciana) ("..citizenemotes..")"
-    ,"(Luciana) ("..citizenspeaks..")"
+    ,"(Lorenzo|Luciana) ("..citizenemotes..")"
+    ,"(Lorenzo|Luciana) ("..citizenspeaks..")"
     ,"(Mirabae) ("..citizenemotes..")"
     ,"(Mirabae) ("..citizenspeaks..")"
     ,"(Nasih) ("..citizenemotes..")"
     ,"(Nasih) ("..citizenspeaks..")"
-    ,"(Pasqualina) ("..citizenemotes..")"
-    ,"(Pasqualina) ("..citizenspeaks..")"
+    ,"(Pasqualina|Piruza) ("..citizenemotes..")"
+    ,"(Pasqualina|Piruza) ("..citizenspeaks..")"
     ,"(Rigi|Romano) ("..citizenemotes..")"
     ,"(Rigi|Romano) ("..citizenspeaks..")"
     ,"(Sedilia) ("..citizenemotes..")"
     ,"(Sedilia) ("..citizenspeaks..")"
-    ,"(Thadeo|Thalia|Tuscus) ("..citizenemotes..")"
-    ,"(Thadeo|Thalia|Tuscus) ("..citizenspeaks..")"
+    ,"(Thadeo|Thalia|Thomisina|Tuscus) ("..citizenemotes..")"
+    ,"(Thadeo|Thalia|Thomisina|Tuscus) ("..citizenspeaks..")"
 
 }
 
 
 local trainerList = {
-    "Ambrosius yawns"
+    "Ambrosius (yawns|winks)"
     ,"Nazir (scowls|yawns|grunts|slouches)"
     ,"Nazir exclaims"
+    ,"Ambrosius (exclaims|says) in (magic|common), \\'(Always|Trust|Open|Focus|Let|See)"
+    ,"Ambrosius says in (magic|common), \\'I am a master"
+    ,"Ambrosius says in (magic|common), \\'A closed mind"
+    ,"Ambrosius says in (magic|common), \\'The (Ebon|mages|true)"
 
 }
 

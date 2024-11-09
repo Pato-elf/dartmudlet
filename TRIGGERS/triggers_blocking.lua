@@ -85,10 +85,8 @@ local textToUnBlock = {
 	,"You are suddenly surrounded in bubbles"
 	,"You are surrounded by a shimmering"
 	,"You are surrounded in"
-	,"You battered"
+	,"You (battered|bludgeoned|burned)"
 	,"You begin to waver"
-	,"You bludgeoned"
-	,"You burned"
 	,"You can't hunt in here"
 	,"You can't study a"
 	,"You can only inscribe one scroll"
@@ -97,8 +95,7 @@ local textToUnBlock = {
     ,"You cannot find an enchantment"
 	,"You cannot store such a complex spell"
 	,"You cannot understand .* well enough"
-	,"You charred"
-	,"You chilled"
+	,"You (charred|chilled)"
 	,"You come face to face with the"
 	,"You didn't specify a target"
 	,"You disintegrated"
@@ -116,12 +113,9 @@ local textToUnBlock = {
 	,"You feel more fluent"
     ,"You feel your power drain"
 	,"You fill the room with"
-	,"You finish editing"
-	,"You finish studying the book"
+	,"You finish (editing|studying|work)"
 	,"You finish the incantation"
-	,"You finish work on"
-	,"You fried"
-	,"You froze"
+	,"You (fried|froze)"
 	,"You grow in size"
 	,"You have to be holding the"
 	,"You have written"
@@ -146,24 +140,21 @@ local textToUnBlock = {
 	,"You regain some feeling"
 	,"You restore"
 	,"You return to your normal size"
-	,"You scalded"
-	,"You seared"
+	,"You (scalded|seared|shocked|singed)"
 	,"You see the .* It hasn't noticed you"
 	,"You see the .* It stares back at you"
 	,"You sense a deep affection"
 	,"You sense its aura to be"
 	,"You sense that .* has no disease"
 	,"You sense the spell becoming active"
-	,"You shocked"
 	,"You shrink in size"
-	,"You singed"
 	,"You stop hunting\\."
 	,"You torched"
 	,"You try to touch [A-Za-z]+, but you miss"
 	,"You zap"
 	,"Your .* begins to manifest its aura"
 	,"Your .* bursts"
-	,"Your .* disappears"
+	,"Your (\\w+) disappears" --
 	,"Your .* feels"
 	,"Your .* is wreathed"
 	,"Your .* return to normal"
@@ -174,11 +165,9 @@ local textToUnBlock = {
 	,"Your concentration is disrupted"
 	,"Your eyes adjust"
 	,"Your hands are momentarily"
-	,"Your hands crackle"
-	,"Your hands glow"
+	,"Your hands (crackle|glow)"
 	,"Your message is borne away"
 	,"Your mind is isolated, you cannot send"
-	,"Your mist disappears"
 	,"Your recuperative powers"
 	,"Your scroll writhes and disappears"
 	,"Your sense of .* becomes heightened"
@@ -197,8 +186,16 @@ local function setup(args)
 		tempTriggers[i] =
 		tempRegexTrigger("^(?:> )*"..v.."[\\s\\S]*",
 			[[
+                local text      = matches[1]
 				local arguments = {}
-				Events.raiseEvent("unblockEvent", arguments)
+
+                if not (Status.blockType == 'inscribe') then 
+                    Status.blockType = ''
+				    Events.raiseEvent("unblockEvent", arguments)
+                elseif not (string.find(text, "mist") or string.find(text, "gusak")) then
+                    Status.blockType = ''
+                    Events.raiseEvent("unblockEvent", arguments)
+                end
 			]])
 	end
 

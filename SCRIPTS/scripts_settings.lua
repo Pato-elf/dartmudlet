@@ -167,15 +167,15 @@ local function setConc(args)
 		cecho("<yellow>USAGE: /conc on|off|bright - Show concentration on screen (current setting: "..Status.statusConc..")\n")
 	else
 		if detail == "off" then
-			cecho("<yellow>Concentration: Off\n")
+            systemMessage("Concentration Off")
 			Events.raiseEvent("messageEvent", {message="<yellow>Concentration: Off\n"})
 			Status.statusConc = "off"
 		elseif detail == "bright" then
-			cecho("<yellow>Concentration: Bright only\n")
+            systemMessage("Concentration Bright only")
 			Events.raiseEvent("messageEvent", {message="<yellow>Concentration: Bright only\n"})
 			Status.statusConc = "bright"
 		else
-			cecho("<yellow>Concentration: On\n")
+            systemMessage("Concentration On")
 			Events.raiseEvent("messageEvent", {message="<yellow>Concentration: On\n"})
 			Status.statusConc = "on"
 		end
@@ -199,15 +199,15 @@ local function setAura(args)
 		cecho("<yellow>USAGE: /aura on|off|scint - Show aura on screen (current setting: "..Status.statusAura..")\n")
 	else
 		if detail == "off" then
-			cecho("<yellow>Aura: Off\n")
+            systemMessage("Aura Off")
 			Events.raiseEvent("messageEvent", {message="<yellow>Aura: Off\n"})
 			Status.statusAura = "off"
 		elseif detail == "scint" then
-			cecho("<yellow>Aura: Scint only\n")
+            systemMessage("Aura Scint only")
 			Events.raiseEvent("messageEvent", {message="<yellow>Aura: Scint only\n"})
 			Status.statusAura = "scint"
 		else
-			cecho("<yellow>Aura: On\n")
+            systemMessage("Aura On")
 			Events.raiseEvent("messageEvent", {message="<yellow>Aura: On\n"})
 			Status.statusAura = "on"
 		end
@@ -231,11 +231,11 @@ local function setContents(args)
 		cecho("<yellow>USAGE: /contents on|off - Show expanded contents view for containers (current setting: "..Status.statusContents..")\n")
 	else
 		if detail == "off" then
-			cecho("<yellow>Contents: Off\n")
+            systemMessage("Contents Off")
 			Events.raiseEvent("messageEvent", {message="<yellow>Contents: Off\n"})
 			Status.statusContents = "off"
 		else
-			cecho("<yellow>Contents: On\n")
+            systemMessage("Contents On")
 			Events.raiseEvent("messageEvent", {message="<yellow>Contents: On\n"})
 			Status.statusContents = "on"
 		end
@@ -259,11 +259,11 @@ local function setRepeatEcho(args)
 		cecho("<yellow>USAGE: /repeat echo on|off - Echo repeat commands to the screen (current setting: "..Status.statusRepeatEcho..")\n")
 	else
 		if detail == "off" then
-			cecho("<yellow>Repeat: Echo Off\n")
+            systemMessage("Repeat echo off")
 			Events.raiseEvent("messageEvent", {message="<yellow>Repeat: Echo Off\n"})
 			Status.statusRepeatEcho = "off"
 		else
-			cecho("<yellow>Repeat: Echo On\n")
+            systemMessage("Repeat echo on")
 			Events.raiseEvent("messageEvent", {message="<yellow>Repeat: Echo On\n"})
 			Status.statusRepeatEcho = "on"
 		end
@@ -331,7 +331,7 @@ local function setFontSize(args)
 		cecho("<yellow>Fontsize: ALL = "..size.."\n")
 		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: ALL = "..size.."\n"})
 	else
-		cecho("<red>ERROR: Usage: /set fontsize <all|chat|improves|message|who> <8-16> - Set the fontsize for one or all valid tabs\n")	
+		cecho("<red>ERROR: Usage: /set fontsize <all|chat|improves|message|who> <8-16> - Set the fontsize for one or all valid tabs\n")
 	end
 
 end

@@ -114,7 +114,7 @@ Status.numLinesToCheck		= 20
 Status.scrollCurrentSpell	= ''
 Status.scrollCurrentPower	= 100
 Status.tooltipTime			= 7
-
+Status.blockType            = ''
 
 
 

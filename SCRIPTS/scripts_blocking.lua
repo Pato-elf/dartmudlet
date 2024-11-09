@@ -22,13 +22,15 @@ local function onNetworkOutput(args)
 		table.insert(queue, command)
 		denyCurrentSend()
 	elseif string.match(command, "^cast ") and not (string.match(command, '^cast ?!? tell') or string.match(command, "^cast net")) or
-		string.match(command, "^inscribe ") or
 		string.match(command, "^invoke ") or
 		string.match(command, "^study ") or
 		string.match(command, "^hunt ") or
 		string.match(command, "^revise ") or
 		string.match(command, "^summon armor") then
 		block()
+    elseif string.match(command, "^inscribe ") then
+        Status.blockType = 'inscribe'
+        block()
 	elseif string.match(command, "^write ") and not
 		string.match(command, "^write color") and not
 		string.match(command, "^write name") and not
@@ -59,7 +61,7 @@ local function isBlocker(args)
 	local command = args
 
 	if string.match(command, "^cast ") and not (string.match(command, '^cast ?!? tell') or string.match(command, "^cast net")) or
-		string.match(command, "^inscribe ") or
+        string.match(command, "^inscribe ") or
 		string.match(command, "^invoke ") or
 		string.match(command, "^study ") or
 		string.match(command, "^hunt ") or

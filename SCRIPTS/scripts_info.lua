@@ -1,5 +1,5 @@
 Info				= {}
-local versionNumber	= "v1.7.2"
+local versionNumber	= "v1.7.3"
 local sourceName	= "info"
 local colorHelp		= "yellow"
 local spacerHelp	= "   "
@@ -183,6 +183,7 @@ local function showHelp(args)
 	cecho(preText.."/set fontsize <option> <8-16>    - Set fontsize for tabs (all|chat|improves|message|who)\n")
 	cecho(preText.."/who on|off                      - Auto check the who list every 5 minutes\n")
 	cecho(preText.."#num repeat                      - Repeat commands (e.g. #3 say hi)\n")
+    cecho(preText.."#Wnum <command>                  - Delay command for num seconds (e.g. #W4 smoke pipe)\n")
 	cecho(preText.."/help                            - Display a list of available commands\n")
 end
 

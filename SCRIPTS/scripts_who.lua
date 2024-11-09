@@ -1,6 +1,6 @@
-Who = {}
-local sourceName = "who"
-local timers = {}
+Who                 = {}
+local sourceName    = "who"
+local timers        = {}
 
 
 
@@ -33,6 +33,7 @@ end
 
 function setup(args)
 	temp_timers = {}
+
 
 	temp_timers.who = tempTimer(300,
 		[[

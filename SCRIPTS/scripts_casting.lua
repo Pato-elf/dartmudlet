@@ -22,7 +22,7 @@ local function practiceCastSetup(args)
 	Status.castCurrentSpell = spellName
 	Status.castCurrentPower = power
 	Status.castCurrentArgs = spellArguments
-	
+
 	local query = 'UPDATE casting '
 	query = query..'SET castCurrentSpell="'..Status.castCurrentSpell..'", '
 	query = query..'castCurrentPower='..Status.castCurrentPower..', '

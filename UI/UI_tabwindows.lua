@@ -30,7 +30,7 @@ GUI.tabwindow2 = GUI.tabwindow2 or
 		tabs = {"IMPROVES","CHANNEL","REFRESH","ALLOCS","REPEAT"},
 	},GUI.right)
 
- 
+
 GUI.tabwindow3 = GUI.tabwindow3 or
 	Adjustable.TabWindow:new({
 		name = "tabwindow3",
@@ -41,7 +41,7 @@ GUI.tabwindow3 = GUI.tabwindow3 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"INFO","HELP"},
+		tabs = {"INFO","GAGS","HELP"},
 	},GUI.right)
 
 

@@ -19,6 +19,22 @@ local function setup(args)
 
 
 
+    -- # wait command	
+	-------------------------------------------------------
+	tempAliases.waitCommand =
+	tempAlias("^#(?:W|w)(\\d+) (.*)$",
+		[[
+            local waittime = tonumber(matches[2])
+            local command = matches[3]
+            tempTimer(waittime, function() expandAlias(command) end)
+            --tempTimer(waittime, expandAlias(command))
+		--	for i = 1, tonumber(matches[2]) do
+		--		expandAlias(matches[3])
+		--	end
+		]])
+
+
+
 	-- /help command	
 	-------------------------------------------------------
 	tempAliases.showHelp =

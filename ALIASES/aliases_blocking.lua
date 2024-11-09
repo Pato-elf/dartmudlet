@@ -22,7 +22,7 @@ local function setup(args)
 			local arguments = {}
 			Events.raiseEvent("unblockEvent", arguments)
 		]])
-		
+
 	aliases = tempAliases
 end
 

@@ -6,19 +6,6 @@ local function setup(args)
 	local tempTriggers = {}
 
 
-
-	-- empty line with just a prompt are removed	
-	---------------------------------------------------------------------
-	tempTriggers.emptyLine =
-		tempRegexTrigger("^(?:> )*$",
-			[[
-				local detail = matches[1]
-				arguments = {detail = detail}
-				Events.raiseEvent("emptylineEvent", arguments)
-			]])
-
-
-
 	-- autosave	moved to message window
 	---------------------------------------------------------------------
 	tempTriggers.AutoSave =

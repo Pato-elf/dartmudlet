@@ -284,7 +284,7 @@ local function setAllocsCurrentNumber(args)
 			Status.allocCurrentDisplay = Status.allocCurrentDisplay - 1
 		end
 	end
-	
+
 	Allocs.showAllocsCurrentNumber(Status.allocCurrentDisplay)
 	Allocs.showAllocsCurrentFields(Status.allocCurrentDisplay)
 	checkAllocSetButton({target = "unknown"})
@@ -298,7 +298,7 @@ local function setAllocName(args)
 	local allocvalue	= args["input"]
 	local announce		= args["save"]
 
-	
+
 	Status.allocsTable[Status.allocCurrentDisplay].allocName = allocvalue
 	dba.execute('UPDATE allocs SET allocName="'..allocvalue..'" WHERE allocOrderNumber='..Status.allocCurrentDisplay)
 	if announce then cecho("<yellow>Allocs: Allocation name updated\n") end
@@ -312,7 +312,7 @@ local function setAllocTarget(args)
 	local allocvalue	= string.lower(args["input"])
 	local announce		= args["save"]
 
-	
+
 	Status.allocsTable[Status.allocCurrentDisplay].allocTarget = allocvalue
 	dba.execute('UPDATE allocs SET allocTarget="'..allocvalue..'" WHERE allocOrderNumber='..Status.allocCurrentDisplay)
 	if announce then cecho("<yellow>Allocs: Allocation target updated\n") end
@@ -327,7 +327,7 @@ local function setAllocBodypart(args)
 	local partnumber	= args["number"]
 	local announce		= args["save"]
 
-	
+
 	if partnumber == 1 then
 		Status.allocsTable[Status.allocCurrentDisplay].bodypart1 = allocvalue
 		dba.execute('UPDATE allocs SET bodypart1="'..allocvalue..'" WHERE bodypart1 != "'..allocvalue..'" AND allocOrderNumber='..Status.allocCurrentDisplay)
@@ -360,7 +360,7 @@ local function setAllocBonus(args)
 	local partnumber	= args["number"]
 	local announce		= args["save"]
 
-	
+
 	if (not allocvalue) or (allocvalue < 0) or (allocvalue > 300) then
 		cecho("<red>ERROR: Invalid allocation bonus"..partnumber.." value\n")
 		return
@@ -396,7 +396,7 @@ local function setAllocDaring(args)
 	local partnumber	= args["number"]
 	local announce		= args["save"]
 
-	
+
 	if (not allocvalue) or (allocvalue < 0) or (allocvalue > 300) then
 		cecho("<red>ERROR: Invalid allocation daring"..partnumber.." value\n")
 		return
@@ -432,7 +432,7 @@ local function setAllocSpeed(args)
 	local partnumber	= args["number"]
 	local announce		= args["save"]
 
-	
+
 	if (not allocvalue) or (allocvalue < 0) or (allocvalue > 300) then
 		cecho("<red>ERROR: Invalid allocation speed"..partnumber.." value\n")
 		return
@@ -468,7 +468,7 @@ local function setAllocAiming(args)
 	local partnumber	= args["number"]
 	local announce		= args["save"]
 
-	
+
 	if (not allocvalue) or (allocvalue < 0) or (allocvalue > 300) then
 		cecho("<red>ERROR: Invalid allocation aiming"..partnumber.." value\n")
 		return
@@ -504,7 +504,7 @@ local function setAllocParry(args)
 	local partnumber	= args["number"]
 	local announce		= args["save"]
 
-	
+
 	if (not allocvalue) or (allocvalue < 0) or (allocvalue > 300) then
 		cecho("<red>ERROR: Invalid allocation parry"..partnumber.." value\n")
 		return
@@ -540,7 +540,7 @@ local function setAllocControl(args)
 	local partnumber	= args["number"]
 	local announce		= args["save"]
 
-	
+
 	if (not allocvalue) or (allocvalue < 0) or (allocvalue > 300) then
 		cecho("<red>ERROR: Invalid allocation control"..partnumber.." value\n")
 		return
@@ -576,7 +576,7 @@ local function setAllocNull(args)
 	local partnumber	= args["number"]
 	local announce		= args["save"]
 
-	
+
 	if (not allocvalue) or (allocvalue < 0) or (allocvalue > 300) then
 		cecho("<red>ERROR: Invalid allocation null"..partnumber.." value\n")
 		return

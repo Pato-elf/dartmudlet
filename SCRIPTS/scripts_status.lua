@@ -3,20 +3,6 @@ local sourceName	= "status"
 
 
 
--- character status
------------------------------------------------------------
-Status.age			= ''
-Status.alignment	= ''
-Status.aura			= ''
-Status.encumbrance	= ''
-Status.hunger		= ''
-Status.movement		= ''
-Status.name			= ''
-Status.race			= ''
-Status.soulage		= ''
-Status.thirst		= ''
-
-
 
 -- alloc system variables
 -----------------------------------------------------------
@@ -24,23 +10,13 @@ Status.allocCurrentDisplay	= 1
 Status.allocsTable			= {}
 
 
--- refresh system variables
+
+-- casting system variables
 -----------------------------------------------------------
-Status.refreshPower1	= 50
-Status.refreshPower2	= 50
-Status.refreshTarget1	= 'targetname'
-Status.refreshTarget2	= 'targetname'
+Status.castCurrentArgs	= ''
+Status.castCurrentPower	= 100
+Status.castCurrentSpell	= 'lg'
 
--- unsaved refresh variables
-Status.statusRefresh	= false
-
-
--- repeat system variables
------------------------------------------------------------
-Status.repeatCurrentDisplay	= 1
-Status.repeatCurrentActive	= 0
-Status.repeatTable			= {}
-Status.statusRepeatEcho     = 'off'
 
 
 -- channelling system variables
@@ -75,11 +51,51 @@ Status.statusChannel			= false
 
 
 
--- casting system variables
+-- character status
 -----------------------------------------------------------
-Status.castCurrentArgs	= ''
-Status.castCurrentPower	= 100
-Status.castCurrentSpell	= 'lg'
+Status.age			= ''
+Status.alignment	= ''
+Status.aura			= ''
+Status.encumbrance	= ''
+Status.hunger		= ''
+Status.movement		= ''
+Status.name			= ''
+Status.race			= ''
+Status.soulage		= ''
+Status.thirst		= ''
+
+
+
+-- gagging system variables
+-----------------------------------------------------------
+Status.gagChannels      = false
+Status.gagCitizens      = false
+Status.gagCreatures     = false
+Status.gagPets          = false
+Status.gagPrompts       = false
+Status.gagSparring      = false
+Status.gagTrainers      = false
+
+
+
+-- refresh system variables
+-----------------------------------------------------------
+Status.refreshPower1	= 50
+Status.refreshPower2	= 50
+Status.refreshTarget1	= 'targetname'
+Status.refreshTarget2	= 'targetname'
+
+-- unsaved refresh variables
+Status.statusRefresh	= false
+
+
+
+-- repeat system variables
+-----------------------------------------------------------
+Status.repeatCurrentDisplay	= 1
+Status.repeatCurrentActive	= 0
+Status.repeatTable			= {}
+Status.statusRepeatEcho     = 'off'
 
 
 
@@ -97,9 +113,7 @@ Status.fontSizeWho			= 10
 Status.numLinesToCheck		= 20
 Status.scrollCurrentSpell	= ''
 Status.scrollCurrentPower	= 100
-
-
-Status.tooltipTime			= 6
+Status.tooltipTime			= 7
 
 
 
@@ -144,6 +158,9 @@ local function setVariables()
 	-- REPEAT BOX
 	Repeat.showRepeatCurrentFields(Status.repeatCurrentDisplay)
 	Repeat.showRepeatCurrentNumber(Status.repeatCurrentDisplay)
+
+    -- GAG BOX
+    Events.raiseEvent("showGagButtonsEvent")
 end
 
 

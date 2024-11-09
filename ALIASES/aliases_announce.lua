@@ -1,5 +1,5 @@
-local Announce_Aliases = {}
-local aliases = {}
+local Announce_Aliases  = {}
+local aliases           = {}
 
 
 

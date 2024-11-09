@@ -141,6 +141,22 @@ function loadStylesheets()
 		}
 	]])
 
+    StyleButtonExtraSmallLightGrey = Geyser.StyleSheet:new([[
+		QLabel{
+			color: black;
+			background-color: #D3D3D3;
+			margin: 0px;
+            padding-left: -8px;
+			border-width: 2px;
+			border-style: solid;
+			border-color: black;
+			border-radius: 5px;
+			font-size: 14pt;
+			font-family: Bitstream Vera Sans Mono;
+			qproperty-alignment: 'Center';
+		}
+	]])
+
 	StyleBoxBlue = Geyser.StyleSheet:new([[
 		QLabel{
 			color: black;
@@ -179,7 +195,7 @@ function loadStylesheets()
 			qproperty-alignment: 'AlignTop | AlignLeft';
 		}
 	]])
-	
+
 	StyleTextDefault = Geyser.StyleSheet:new([[
 		QLabel{
 			font-size: 11pt;
@@ -188,7 +204,7 @@ function loadStylesheets()
 			margin: 0px 10px 0px 10px;
 		}
 	]])
-	
+
 	StyleTextBlue = Geyser.StyleSheet:new([[
 		QLabel{
 			font-size: 11pt;
@@ -197,7 +213,7 @@ function loadStylesheets()
 			margin: 0px 10px 0px 10px;
 		}
 	]])
-	
+
 	StyleTextWhiteLarge = Geyser.StyleSheet:new([[
 		QLabel{
 			font-size: 14pt;
@@ -207,12 +223,22 @@ function loadStylesheets()
 			margin: 0px 10px 0px 10px;
 		}
 	]])
-	
+
 	StyleTextMagentaLarge = Geyser.StyleSheet:new([[
 		QLabel{
 			font-size: 14pt;
 			font-family: Bitstream Vera Sans Mono;
 			color: magenta;
+			background-color: rgb(0,0,70);
+			margin: 0px 10px 0px 10px;
+		}
+	]])
+
+    StyleTextYellowLarge = Geyser.StyleSheet:new([[
+		QLabel{
+			font-size: 13pt;
+			font-family: Bitstream Vera Sans Mono;
+			color: yellow;
 			background-color: rgb(0,0,70);
 			margin: 0px 10px 0px 10px;
 		}

@@ -11,18 +11,18 @@ local function announceImprove(args)
 	local skill_name = args["skill_name"]
 	local name = args["name"]
 	local skillcount = 0
-	
+
 	if(Status.statusAnnounce ~= 'off') then
-  
+
 		if(Status.statusAnnounce == 'verbose') then
 			local results = dba.query('SELECT count FROM improves WHERE who="'..name..'" AND skill="'..skill_name..'"')[1]
-			
+
 			if results then
 				skillcount = tonumber(results.count) + 1
 			else
 				skillcount = 1
 			end
-			
+
 			if name == Status.name then
 				send("ooc "..skill_name.."+ ("..skillcount..")")
 			else
@@ -35,7 +35,7 @@ local function announceImprove(args)
 			else
 				send("ooc "..name.." +")
 			end
-		
+
 		else
 			if name == Status.name then
 				send("ooc "..skill_name.."+")
@@ -51,9 +51,10 @@ end
 -- block spam lines
 -----------------------------------------------------------
 local function blockSpam(args)
-	local text = args["text"]
-	local linesToDelete = {}
-	local currentLineNum = getLineNumber()
+	local text              = args["text"]
+	local currentLineNum    = getLineNumber()
+    local linesToDelete     = {}
+
 
 	if currentLineNum > 0 then
 		local numDeleted = 0
@@ -83,7 +84,6 @@ local function blockSpam(args)
 			textMemory[text]["numDeleted"] = numDeleted
 		end
 
-
 		for k,v in pairs(linesToDelete) do
 			moveCursor(0, k)
 			deleteLine()
@@ -102,7 +102,7 @@ end
 function announceOn(args)
 	Status.statusAnnounce = 'on'
 	dba.execute('UPDATE settings SET statusAnnounce="'..Status.statusAnnounce..'"')
-	cecho("<yellow>Announce: On\n")
+    systemMessage("Announce On")
 	Events.raiseEvent("messageEvent", {message="<yellow>Announce: On\n"})
 end
 
@@ -111,7 +111,7 @@ end
 local function announceBrief(args)
 	Status.statusAnnounce = 'brief'
 	dba.execute('UPDATE settings SET statusAnnounce="'..Status.statusAnnounce..'"')
-	cecho("<yellow>Announce: Brief\n")
+    systemMessage("Announce Brief")
 	Events.raiseEvent("messageEvent", {message="<yellow>Announce: Brief\n"})
 end
 
@@ -120,7 +120,7 @@ end
 local function announceVerbose(args)
 	Status.statusAnnounce = 'verbose'
 	dba.execute('UPDATE settings SET statusAnnounce="'..Status.statusAnnounce..'"')
-	cecho("<yellow>Announce: Verbose\n")
+    systemMessage("Announce Verbose")
 	Events.raiseEvent("messageEvent", {message="<yellow>Announce: Verbose\n"})
 end
 
@@ -129,7 +129,7 @@ end
 local function announceOff(args)
 	Status.statusAnnounce = 'off'
 	dba.execute('UPDATE settings SET statusAnnounce="'..Status.statusAnnounce..'"')	
-	cecho("<yellow>Announce: Off (num)\n")
+    systemMessage("Announce Off")
 	Events.raiseEvent("messageEvent", {message="<yellow>Announce: Off\n"})
 
 end
@@ -139,8 +139,9 @@ end
 local function antispamOn(args)
 	Status.statusAntiSpam = 'on'
 	dba.execute('UPDATE settings SET statusAntiSpam="'..Status.statusAntiSpam..'"')
+    systemMessage("AntiSpam On")
 	Events.raiseEvent("messageEvent", {message="<yellow>AntiSpam On.\n"})
-	Events.addListener("anyEvent",sourceName, blockSpam)
+	Events.addListener("anyEvent", sourceName, blockSpam)
 end
 
 
@@ -148,8 +149,9 @@ end
 local function antispamOff(args)
 	Status.statusAntiSpam = 'off'
 	dba.execute('UPDATE settings SET statusAntiSpam="'..Status.statusAntiSpam..'"')
+    systemMessage("AntiSpam Off")
 	Events.raiseEvent("messageEvent", {message="<yellow>AntiSpam Off.\n"})
-	Events.removeListener("anyEvent",sourceName)
+	Events.removeListener("anyEvent", sourceName)
 end
 
 
@@ -158,7 +160,7 @@ end
 -----------------------------------------------------------
 local function setConc(args)
 	local detail = string.lower(args["detail"])
-	
+
 	if not ((detail == "off") or (detail == "on") or (detail == "full") or (detail == "bright") or (detail == "help")) then
 		cecho("<red>ERROR: Usage: /conc <off|on|full>\n")
 	elseif (detail == "help") then
@@ -279,6 +281,7 @@ local function setFontSize(args)
 	local detail = string.lower(args["detail"])
 	local size = args["size"]
 
+
 	if (detail == "help") then
 		cecho("<yellow>USAGE: /set fontsize <all|chat|improves|message|who> <8-16> - Set the fontsize for one or all valid tabs\n")
 	elseif (tonumber(size) < 8) or (tonumber(size) > 16) then
@@ -312,7 +315,7 @@ local function setFontSize(args)
 		Status.fontSizeImproves = tonumber(size)
 		Status.fontSizeMessage = tonumber(size)
 		Status.fontSizeWho = tonumber(size)
-		
+
 		local query = ''
 		query = query..'UPDATE settings '
 		query = query..'SET fontSizeChat='..Status.fontSizeChat..', '
@@ -320,7 +323,7 @@ local function setFontSize(args)
 		query = query..'fontSizeMessage='..Status.fontSizeMessage..', '
 		query = query..'fontSizeWho='..Status.fontSizeWho
 		dba.execute(query)
-	
+
 		GUI.containerChatBox:setFontSize(Status.fontSizeChat)
 		GUI.containerImproveBox:setFontSize(Status.fontSizeImproves)
 		GUI.containerMessageBox:setFontSize(Status.fontSizeMessage)
@@ -330,7 +333,7 @@ local function setFontSize(args)
 	else
 		cecho("<red>ERROR: Usage: /set fontsize <all|chat|improves|message|who> <8-16> - Set the fontsize for one or all valid tabs\n")	
 	end
-	
+
 end
 
 

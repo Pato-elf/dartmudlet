@@ -16,7 +16,7 @@ end
 -----------------------------------------------------------
 local function onNetworkOutput(args)
 	local command = args["command"]
-	
+
 	if isBlocked then
 		cecho("<orange>QUEUE: "..command.."\n")
 		table.insert(queue, command)
@@ -57,7 +57,7 @@ end
 -----------------------------------------------------------
 local function isBlocker(args)
 	local command = args
-	
+
 	if string.match(command, "^cast ") and not (string.match(command, '^cast ?!? tell') or string.match(command, "^cast net")) or
 		string.match(command, "^inscribe ") or
 		string.match(command, "^invoke ") or
@@ -86,7 +86,7 @@ local function isBlocker(args)
 		string.match(command, "^write intaglio") then
 		return true
 	end
-	
+
 	return false
 end
 
@@ -115,18 +115,18 @@ local function unblock()
 				else
 					table.insert(tempQueue, v)
 				end
-	
+
 			end
 		else
 			cecho("<orange>UNBLOCK (0 queued)\n")
 		end
-		
+
 	else
 		--cecho("<orange>UNBLOCK (0 queued)\n")
 	end
-	
+
 	queue = {}
-	
+
 	if containsBlock then
 		isBlocked = true
 		queue = tempQueue

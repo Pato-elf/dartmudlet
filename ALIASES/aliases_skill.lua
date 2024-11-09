@@ -1,5 +1,5 @@
-local Skill = {}
-local aliases = {}
+local Skill     = {}
+local aliases   = {}
 
 
 

@@ -1,40 +1,53 @@
-local Name = {}
+local Name      = {}
+local triggers  = {}
 
-local triggers = {}
 
 local function setup(args)
-  local tempTriggers = {}
+    local tempTriggers = {}
 
-  tempTriggers.Name =
-    tempRegexTrigger("^(?:> )*You are (?:[A-Za-z]* )?(\\w+) the (?:\\w+)?(?: \\(.*\\))?\\.  You are (?:a|an) (?:[\\s\\S]+)\\."
-                     ,[[
-                        local fullname = matches[1]
-                        local name = matches[2]
-                        arguments = {name = name, fullname = fullname}
-                        --arguments = {name = name}
 
-                        Events.raiseEvent("nameEvent", arguments)
-                      ]])
+    tempTriggers.Name =
+    tempRegexTrigger("^(?:> )*You are (?:[A-Za-z]* )?(\\w+) the (\\w+)?(?: \\(.*\\))?\\.  You are (?:a|an) (?:[\\s\\S]+)\\.",
+        [[
+            local arguments = {name = matches[2], fullname = matches[1]}
+            local race      = {race = matches[3]}
+            Events.raiseEvent("nameEvent", arguments)
+            Events.raiseEvent("raceEvent", race)
+        ]])
 
-  triggers = tempTriggers
+
+
+    tempTriggers.Name2 =
+    tempRegexTrigger("^(?:> )*You are (?:[A-Za-z]* )?(\\w+) the (\\w+)?(?: \\(.*\\))?, outlined by a .* glow\\.  You are (?:a|an) (?:[\\s\\S]+)\\.",
+        [[
+            local arguments = {name = matches[2], fullname = matches[1]}
+            local race      = {race = matches[3]}
+            Events.raiseEvent("nameEvent", arguments)
+            Events.raiseEvent("raceEvent", race)
+        ]])
+
+
+    triggers = tempTriggers
 end
 
+
+
 local function unsetup(args)
-  for i,v in pairs(triggers) do
-    killTrigger(v)
-  end
-  triggers = {}
+    for i,v in pairs(triggers) do
+        killTrigger(v)
+    end
+    triggers = {}
 end
 
 local function resetup(args)
-  unsetup(args)
-  setup(args)
+    unsetup(args)
+    setup(args)
 end
 
 Name = {
-  setup = setup
-  ,unsetup = unsetup
-  ,resetup = resetup
+    setup = setup,
+    unsetup = unsetup,
+    resetup = resetup
 }
 
 return Name

@@ -1,5 +1,5 @@
-local Channelling_Aliases = {}
-local aliases = {}
+local Channelling_Aliases   = {}
+local aliases               = {}
 
 
 
@@ -70,7 +70,7 @@ local function setup(args)
 			local arguments = {detail = detail}
 			Events.raiseEvent("setFocusTotalEvent", arguments)
 		]])
-		
+
 	aliases = tempAliases
 end
 

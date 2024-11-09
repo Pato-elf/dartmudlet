@@ -25,22 +25,22 @@ local function displayPowercastStats(args)
 	else
 		Status.powercastPercent = (Status.powercastSuccess / Status.powercastTotal) * 100
 	end
-	
+
 	powercastPercentDisplay = string.format("%.1f", Status.powercastPercent)
-	
+
 	if (displaytype ~= "share") or (Status.statusChanShare ~= "brief") then
 		displaytext = displaytext.."SPELLCASTING: "..spellcasting.."   "
 	end
-	
+
 	displaytext = displaytext.."PCMOD: +"..Status.powercastAddon
-	
+
 	if (displaytype ~= "share") then
 		displaytext = displaytext.."   FOCUS: "..Status.focusTotal
 	end
-	
+
 	displaytext = displaytext.."   SUCCESS: "..powercastPercentDisplay
 	displaytext = displaytext.."% ("..Status.powercastTotal.." casts)"
-	
+
 	if displaytype == "share" then
 		send("ooc "..displaytext)
 	else

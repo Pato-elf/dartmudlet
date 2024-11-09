@@ -1,10 +1,10 @@
-local AntiSpam_Aliases = {}
-local aliases = {}
+local AntiSpam_Aliases  = {}
+local aliases           = {}
 
 
 
 local function setup(args)
-	tempAliases = {}
+	local tempAliases = {}
 
 	tempAliases.AntiSpamOn =
 	tempAlias("^\\/[Aa][Nn][Tt][Ii][Ss][Pp][Aa][Mm] [Oo][Nn]",
@@ -21,6 +21,7 @@ local function setup(args)
 			local arguments = {}
 			Events.raiseEvent("antiSpamOffEvent", arguments)
 		]])
+
 	aliases = tempAliases
 end
 

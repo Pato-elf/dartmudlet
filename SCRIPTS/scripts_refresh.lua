@@ -24,7 +24,7 @@ local function setrefreshPower(args)
 				Status.refreshPower2 = refreshpower
 				dba.execute('UPDATE refresh SET refreshPower2='..refreshpower)
 			end
-			
+
 			if saveflag then Refresh.save() end
 			cecho("<yellow>Channel: Refresh power value updated\n")
 		end

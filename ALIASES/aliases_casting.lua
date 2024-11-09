@@ -1,5 +1,5 @@
-local Casting_Aliases = {}
-local aliases = {}
+local Casting_Aliases   = {}
+local aliases           = {}
 
 
 

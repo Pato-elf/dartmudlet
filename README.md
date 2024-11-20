@@ -62,6 +62,7 @@ In addition to the automatic features described above, there are a number of thi
 ```
 ```
 /info <who> <skill>              - Show current improves/level for a skill
+/share <who> <skill>             - OOC share current improves/level for a skill
 /insert <who> <skill> <improves> - Manually insert a new skill into the database
 /update <who> <skill> <improves> - Set improves for your (or pet's) skill to given total
 ```
@@ -90,7 +91,7 @@ In addition to the automatic features described above, there are a number of thi
 - The core of this package began as zMud scripts authored by Gaborn and shared with the player community.
 - Special thanks to Ogma for providing the detailed date/time logic behind several in-game date/time systems.
 - The zMud scripts were converted to a Mudlet package by Gaborn and shared as DartMUDlet.
-- These were exensively refactored into modular LUA and brought to GitHub by [missionz3r0](https://github.com/missionz3r0).
+- These were refactored into modular LUA and brought to GitHub by [missionz3r0](https://github.com/missionz3r0).
 - The Pato versions of DartMUDlet are a fork from [daviesow](https://github.com/daviesow) DartMUDlet release.
 - Code for the adjustable tab windows originally written by [Edru2](https://github.com/Edru2).
 - Bug testers: Castlehoff, Rikter, Tudor

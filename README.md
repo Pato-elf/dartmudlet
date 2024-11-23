@@ -28,7 +28,6 @@ In addition to the automatic features described above, there are a number of thi
 
 ```
 /setup   - Initialize variables, customize the display, start improve tracking database.
-/resetup - Remove then reinitialize timers, etc. Use to make updated DartMUDlet code active.
 ```
 ```
 /announce on      - Announce improvements in standard mode (skill name+)
@@ -83,7 +82,7 @@ In addition to the automatic features described above, there are a number of thi
 /who on|off                      - Auto check the who list every 5 minutes
 #num repeat                      - Repeat commands from the command line (e.g. #3 say hi)
 #Wnum <command>                  - Delay command for num seconds (e.g. #W4 smoke pipe)
-/help                            - Display a list of available commands
+/help <topic>                    - Get detailed help for most DartMUDlet commands
 ```
 
 &nbsp;

@@ -1364,7 +1364,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 		}, GUI.containerAllocsBox)
 
 	GUI.buttonAllocs1:setStyleSheet(StyleButtonLightGrey:getCSS())
-	echo("buttonAllocs1", "<center><span style='font-size: 24pt;'>&#9654;</span></center>")
+	echo("buttonAllocs1", "<center><span style='font-size: 25pt;'>&#9654;</span></center>")
 	GUI.buttonAllocs1:setToolTip("Go to next allocation",Status.tooltipTime)
 	GUI.buttonAllocs1:setClickCallback("buttonAllocs1_click")
 
@@ -1389,7 +1389,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 		}, GUI.containerAllocsBox)
 
 	GUI.buttonAllocs2:setStyleSheet(StyleButtonLightGrey:getCSS())
-	echo("buttonAllocs2", "<center><span style='font-size: 24pt;'>&#9664;</span></center>")
+	echo("buttonAllocs2", "<center><span style='font-size: 25pt;'>&#9664;</span></center>")
 	GUI.buttonAllocs2:setToolTip("Go to previous allocation",Status.tooltipTime)
 	GUI.buttonAllocs2:setClickCallback("buttonAllocs2_click")
 

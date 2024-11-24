@@ -20,21 +20,21 @@
             <script>core.unsetup()</script>
             <command></command>
             <packageName></packageName>
-            <regex>/unsetup</regex>
+            <regex>^/unsetup</regex>
         </Alias>
         <Alias isActive="yes" isFolder="no">
             <name>Setup</name>
             <script>core.setup()</script>
             <command></command>
             <packageName></packageName>
-            <regex>/setup</regex>
+            <regex>^/setup</regex>
         </Alias>
         <Alias isActive="yes" isFolder="no">
             <name>Resetup</name>
             <script>core.resetup()</script>
             <command></command>
             <packageName></packageName>
-            <regex>/resetup</regex>
+            <regex>^/resetup</regex>
         </Alias>
     </AliasPackage>
 </MudletPackage>

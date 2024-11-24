@@ -435,7 +435,7 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
 		}, GUI.containerRepeatBox)
 
 	GUI.buttonRepeat1:setStyleSheet(StyleButtonLightGrey:getCSS())
-	echo("buttonRepeat1", "<center><span style='font-size: 24pt;'>&#9654;</span></center>")
+	echo("buttonRepeat1", "<center><span style='font-size: 25pt;'>&#9654;</span></center>")
 	GUI.buttonRepeat1:setToolTip("Go to next repeat set",Status.tooltipTime)
 	GUI.buttonRepeat1:setClickCallback("buttonRepeat1_click")
 
@@ -460,7 +460,7 @@ GUI.containerRepeatBox:setStyleSheet(StyleBoxBlue:getCSS())
 		}, GUI.containerRepeatBox)
 
 	GUI.buttonRepeat2:setStyleSheet(StyleButtonLightGrey:getCSS())
-	echo("buttonRepeat2", "<center><span style='font-size: 24pt;'>&#9664;</span></center>")
+	echo("buttonRepeat2", "<center><span style='font-size: 25pt;'>&#9664;</span></center>")
 	GUI.buttonRepeat2:setToolTip("Go to previous repeat set",Status.tooltipTime)
 	GUI.buttonRepeat2:setClickCallback("buttonRepeat2_click")
 

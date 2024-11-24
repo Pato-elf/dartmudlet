@@ -6,6 +6,7 @@ local trainerGags       = {}
 local sparringGags      = {}
 local channelGags       = {}
 local promptGags        = {}
+local questGags         = {}
 local sourceName		= "gags"
 
 
@@ -67,10 +68,21 @@ local petList = {
     ,"(\\w+) washes (\\w+)\\."
     ,"(\\w+) stands beside (\\w+)"
     ,"(\\w+) rolls around"
-    ,"(\\w+) whistles softly"
+    ,"(\\w+) (hoots|whistles) softly"
     ,"(\\w+) exclaims, \\'hee-haw"
-
 }
+
+
+local questList = {
+    "In the Commander\\'s temple"
+    ,"Seek out the Holy Island"
+    ,"It waits for you in the southern"
+    ,"Serve the Red Sword"
+    ,"The Master of Battle has"
+    ,"With the Symbol of the Commander"
+    ,"Find your destiny across the"
+}
+
 
 local channelList = {
     "None of the power"
@@ -79,7 +91,7 @@ local channelList = {
 
 
 local creatureList = {
-    "Zebra (looks|grazes|nibbles|watches)"
+    "(Donkey|Zebra) (looks|grazes|nibbles|watches)"
     ,"Turtle (appears|looks|rests)"
     ,"Turtle crawls ahead"
     ,"Turtle drags itself a few"
@@ -88,22 +100,25 @@ local creatureList = {
     ,"Crab (wiggles|cocks|scavenges|waves)"
     ,"Elephant (flaps|forages|trumpets|tosses)"
     ,"(Cat|Rat) looks at"
-    ,"Cat scratches"
+    ,"Cat (scratches|sniffs|washes)"
     ,"Bat (flits|lets)"
     ,"Ostrich (squawks|pecks|nibbles|cranes|looks|eyes)"
     ,"Camel spits at"
     ,"Wolf watches"
     ,"Horse looks around"
-    ,"Crow (exclaims|watches|caws)"
+    ,"Crow (exclaims|watches|caws|stares)"
     ,"Turkey (exclaims|pecks)"
     ,"Owl scans"
-    ,"Partridge preens"
+    ,"(Grouse|Partridge) (preens|wanders)"
     ,"Sparrow pecks"
     ,"Bee glares"
-
+    ,"Parrot (preens|squawks)"
+    ,"Quail pecks"
+    ,"Peacock looks"
 }
 
-local citizenemotes = "blinks|bows|chuckles|flees|frowns|giggles|glares|grins|nods|peers|ponders|screams|shakes|smiles|smirks|stares|whistles|yawns"
+
+local citizenemotes = "blinks|bows|chuckles|flees|frowns|giggles|glares|grins|looks|nods|peers|ponders|screams|shakes|smiles|smirks|stares|whistles|yawns"
 local citizenspeaks = "asks|exclaims|says"
 local citizenList   = {
     "(\\w+) incants some mystic phrases but"
@@ -115,49 +130,53 @@ local citizenList   = {
     ,"Rice counts"
     ,"(Lulpox|Torcas) (stares|nudges|grins|chuckles|whispers|points)"
 
-    ,"(Aiko|Alberea|Aluysio|Andrea|Arizzo|Ascelina) ("..citizenemotes..")"
-    ,"(Aiko|Alberea|Aluysio|Andrea|Arizzo|Ascelina) ("..citizenspeaks..")"
-    ,"(Blancha|Bolezino|Bucello) ("..citizenemotes..")"
-    ,"(Blancha|Bolezino|Bucello) ("..citizenspeaks..")"
+    ,"(Ai|Aiko|Alberea|Alegreza|Aluysio|Andrea|Arizzo|Ascelina|Aya) ("..citizenemotes..")"
+    ,"(Ai|Aiko|Alberea|Alegreza|Aluysio|Andrea|Arizzo|Ascelina|Aya) ("..citizenspeaks..")"
+    ,"(Barbus|Bartolomeo|Benevenuta|Bertucio|Blancha|Bolezino|Borbrator|Bucello) ("..citizenemotes..")"
+    ,"(Barbus|Bartolomeo|Benevenuta|Bertucio|Blancha|Bolezino|Borbrator|Bucello) ("..citizenspeaks..")"
     ,"(Colette) ("..citizenemotes..")"
     ,"(Colette) ("..citizenspeaks..")"
-    ,"(Dyonisius) ("..citizenemotes..")"
-    ,"(Dyonisius) ("..citizenspeaks..")"
+    ,"(Dai|Dyonisius) ("..citizenemotes..")"
+    ,"(Dai|Dyonisius) ("..citizenspeaks..")"
+    ,"(Edelina|Evrardus) ("..citizenemotes..")"
+    ,"(Edelina|Evrardus) ("..citizenspeaks..")"
     ,"(Federico|Fiora|Flaminio|Flos|Francescino) ("..citizenemotes..")"
     ,"(Federico|Fiora|Flaminio|Flos|Francescino) ("..citizenspeaks..")"
-    ,"(Gerolimo|Girout) ("..citizenemotes..")"
-    ,"(Gerolimo|Girout) ("..citizenspeaks..")"
-    ,"(Hecelina|Helloysis|Heloysis) ("..citizenemotes..")"
-    ,"(Hecelina|Helloysis|Heloysis) ("..citizenspeaks..")"
+    ,"(Gerita|Gerolimo|Girardus|Girout|Gregorio|Guillelmus) ("..citizenemotes..")"
+    ,"(Gerita|Gerolimo|Girardus|Girout|Gregorio|Guillelmus) ("..citizenspeaks..")"
+    ,"(Hecelina|Helena|Helloysis|Heloysis) ("..citizenemotes..")"
+    ,"(Hecelina|Helena|Helloysis|Heloysis) ("..citizenspeaks..")"
     ,"(Jacobus) ("..citizenemotes..")"
     ,"(Jacobus) ("..citizenspeaks..")"
-    ,"(Lorenzo|Lucha|Luciana) ("..citizenemotes..")"
-    ,"(Lorenzo|Lucha|Luciana) ("..citizenspeaks..")"
-    ,"(Mirabae) ("..citizenemotes..")"
-    ,"(Mirabae) ("..citizenspeaks..")"
+    ,"(Lambertus|Lorenzo|Lucha|Luciana) ("..citizenemotes..")"
+    ,"(Lambertus|Lorenzo|Lucha|Luciana) ("..citizenspeaks..")"
+    ,"(Matio|Micola|Mirabae) ("..citizenemotes..")"
+    ,"(Matio|Micola|Mirabae) ("..citizenspeaks..")"
     ,"(Nasih) ("..citizenemotes..")"
     ,"(Nasih) ("..citizenspeaks..")"
-    ,"(Pasqualina|Piruza) ("..citizenemotes..")"
-    ,"(Pasqualina|Piruza) ("..citizenspeaks..")"
+    ,"(Oliverio) ("..citizenemotes..")"
+    ,"(Oliverio) ("..citizenspeaks..")"
+    ,"(Paolo|Pasqualina|Petronilla|Piruza) ("..citizenemotes..")"
+    ,"(Paolo|Pasqualina|Petronilla|Piruza) ("..citizenspeaks..")"
     ,"(Richa|Rigi|Romano) ("..citizenemotes..")"
     ,"(Richa|Rigi|Romano) ("..citizenspeaks..")"
-    ,"(Sedilia|Simon) ("..citizenemotes..")"
-    ,"(Sedilia|Simon) ("..citizenspeaks..")"
-    ,"(Thadeo|Thalia|Thomisina|Tuscus) ("..citizenemotes..")"
-    ,"(Thadeo|Thalia|Thomisina|Tuscus) ("..citizenspeaks..")"
-
+    ,"(Sedilia|Seimei|Shinobu|Simon) ("..citizenemotes..")"
+    ,"(Sedilia|Seimei|Shinobu|Simon) ("..citizenspeaks..")"
+    ,"(Tetsu|Thadeo|Thalia|Thomisina|Tor|Tsukasa|Tuscus) ("..citizenemotes..")"
+    ,"(Tetsu|Thadeo|Thalia|Thomisina|Tor|Tsukasa|Tuscus) ("..citizenspeaks..")"
+    ,"(Un) ("..citizenemotes..")"
+    ,"(Un) ("..citizenspeaks..")"
 }
 
 
 local trainerList = {
-    "Ambrosius (yawns|winks)"
+    "Ambrosius (dozes|examines|winks|yawns)"
     ,"Nazir (scowls|yawns|grunts|slouches)"
     ,"Nazir exclaims"
     ,"Ambrosius (exclaims|says) in (magic|common), \\'(Always|Trust|Open|Focus|Let|See)"
     ,"Ambrosius says in (magic|common), \\'I am a master"
     ,"Ambrosius says in (magic|common), \\'A closed mind"
     ,"Ambrosius says in (magic|common), \\'The (Ebon|mages|true)"
-
 }
 
 
@@ -166,20 +185,21 @@ local sparringList = {
     ,"(\\w+) lashes out"
     ,"(\\w+) neighs loudly"
     ,"(\\w+) rears back"
+    ,"(\\w+) tosses (her|his) head"
     ,"(\\w+) attempts to trample"
     ,"(Aegnor|Aloysius) (listens|peers|hums|leans)"
     ,"Pell (spins|reverses)"
     ,"(\\w+) picks (her|his) nose"
     ,"(\\w+) tosses (her|his) head"
     ,"(\\w+) (spits|sneers|kicks) at"
-    ,"(\\w+) (growls|snarls|sneers)"
+    ,"(\\w+) (growls|snarls|sneers|taunts)"
     ,"(\\w+) grins arrogantly"
-    ,"(\\w+) taunts you"
     ,"(\\w+) exclaims, \\'hee-haw"
     ,"(\\w+) says in southern, \\'I\\'m going to enjoy killing"
     ,"Sparrow (swoops|tries)"
     ,"Bee (dives|tries|hums|stabs)"
     ,"Bat tries"
+    ,"Rat jumps"
     ,"Crab snaps"
 }
 
@@ -245,6 +265,15 @@ local function loadTriggers(args)
                 ]])
         end
 
+    elseif (gagset == 'gagQuests') then
+        for i,v in ipairs(questList) do
+            questGags[i] =
+            tempRegexTrigger("^(?:> )*"..v.."[\\s\\S]*",
+                [[
+                    deleteLine()
+                ]])
+        end
+
     elseif (gagset == 'gagPrompts') then
         promptGags =
         tempRegexTrigger("^(?:> )*$",
@@ -292,6 +321,11 @@ local function killTriggers(args)
 
     elseif (gagset == 'gagSparring') then
         for i,v in pairs(sparringGags) do
+            killTrigger(v)
+        end
+
+    elseif (gagset == 'gagQuests') then
+        for i,v in pairs(questGags) do
             killTrigger(v)
         end
 
@@ -464,6 +498,29 @@ end
 
 
 
+-- toggle gagQuests on|off
+-----------------------------------------------------------
+local function setGagQuests(args)
+
+    if Status.gagQuests then
+        Status.gagQuests = false
+        dba.execute('UPDATE gags SET gagQuests = false')
+        killTriggers({detail = "gagQuests"})
+        GUI.buttonGags9:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+        echo("buttonGags9", "<center><span style='font-size: 12pt; color: green;'>&nbsp;</span></center>")
+        systemMessage("Gag quests Off")
+    else
+        Status.gagQuests = true
+        dba.execute('UPDATE gags SET gagQuests = true')
+        loadTriggers({detail = "gagQuests"})
+        GUI.buttonGags9:setStyleSheet(StyleButtonSmallPaleGreen:getCSS())
+        echo("buttonGags9", "<center><span style='font-size: 12pt; color: green;'>&#10004;</span></center>")
+        systemMessage("Gag quests On")
+    end
+end
+
+
+
 -- toggle antiSpam on|off
 -----------------------------------------------------------
 local function setAntiSpamButton(args)
@@ -548,6 +605,14 @@ local function showGagButtons(args)
         GUI.buttonGags8:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
         echo("buttonGags8", "<center><span style='font-size: 12pt; color: green;'>&nbsp;</span></center>")
     end
+
+    if Status.gagQuests then
+        GUI.buttonGags9:setStyleSheet(StyleButtonSmallPaleGreen:getCSS())
+        echo("buttonGags9", "<center><span style='font-size: 12pt; color: green;'>&#10004;</span></center>")
+    else
+        GUI.buttonGags9:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+        echo("buttonGags9", "<center><span style='font-size: 12pt; color: green;'>&nbsp;</span></center>")
+    end
 end
 
 
@@ -563,6 +628,7 @@ local function checkGagsTable(args)
         gagCreatures BOOLEAN DEFAULT false,
         gagPets BOOLEAN DEFAULT false,
         gagPrompts BOOLEAN DEFAULT true,
+        gagQuests BOOLEAN DEFAULT false,
         gagSparring BOOLEAN DEFAULT false,
         gagTrainers BOOLEAN DEFAULT false
 	);]])
@@ -571,6 +637,15 @@ local function checkGagsTable(args)
 	if results.count() == 0 then
         systemMessage("Create GAGS table")
 		dba.execute('INSERT INTO gags DEFAULT VALUES')
+	end
+
+
+    -- add any missing fields
+	local temp = dba.query('SELECT * FROM gags')[1]
+	if not temp.gagQuests then
+        systemMessage("Update GAGS table")
+		dba.execute('ALTER TABLE gags ADD COLUMN gagQuests BOOLEAN DEFAULT false')
+        dba.execute('UPDATE gags SET gagQuests = false')
 	end
 
 end
@@ -590,6 +665,7 @@ local function load()
     Status.gagCreatures     = (result.gagCreatures == 1)
     Status.gagPets          = (result.gagPets == 1)
     Status.gagPrompts       = (result.gagPrompts == 1)
+    Status.gagQuests        = (result.gagQuests == 1)
     Status.gagSparring      = (result.gagSparring == 1)
     Status.gagTrainers      = (result.gagTrainers == 1)
 
@@ -598,6 +674,7 @@ local function load()
     if Status.gagCreatures then loadTriggers({detail = "gagCreatures"}) end
     if Status.gagPets then loadTriggers({detail = "gagPets"}) end
     if Status.gagPrompts then loadTriggers({detail = "gagPrompts"}) end
+    if Status.gagQuests then loadTriggers({detail = "gagQuests"}) end
     if Status.gagSparring then loadTriggers({detail = "gagSparring"}) end
     if Status.gagTrainers then loadTriggers({detail = "gagTrainers"}) end
 
@@ -614,6 +691,7 @@ local function setup(args)
     Events.addListener("setGagTrainersEvent", sourceName, setGagTrainers)
     Events.addListener("setGagSparringEvent", sourceName, setGagSparring)
     Events.addListener("setGagChannelsEvent", sourceName, setGagChannels)
+    Events.addListener("setGagQuestsEvent", sourceName, setGagQuests)
     Events.addListener("setAntiSpamButtonEvent", sourceName, setAntiSpamButton)
     Events.addListener("showGagButtonsEvent", sourceName, showGagButtons)
 end
@@ -633,6 +711,7 @@ local function unsetup(args)
     if Status.gagCreatures then killTriggers({detail = "gagCreatures"}) end
     if Status.gagPets then killTriggers({detail = "gagPets"}) end
     if Status.gagPrompts then killTriggers({detail = "gagPrompts"}) end
+    if Status.gagQuests then killTriggers({detail = "gagQuests"}) end
     if Status.gagSparring then killTriggers({detail = "gagSparring"}) end
     if Status.gagTrainers then killTriggers({detail = "gagTrainers"}) end
 
@@ -643,6 +722,7 @@ local function unsetup(args)
     Events.removeListener("setGagTrainersEvent", sourceName)
     Events.removeListener("setGagSparringEvent", sourceName)
     Events.removeListener("setGagChannelsEvent", sourceName)
+    Events.removeListener("setGagQuestsEvent", sourceName)
     Events.removeListener("setAntiSpamButtonEvent", sourceName)
     Events.removeListener("showGagButtonsEvent", sourceName)
 end

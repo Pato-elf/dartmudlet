@@ -107,6 +107,18 @@ local function setup(args)
 
 
 
+    -- /date command
+	-------------------------------------------------------
+	tempAliases.showDate =
+	tempAlias('^\\/date(.*)?$',
+		[[
+			local detail = matches[2]
+			local arguments = {detail = detail, who = Status.name}
+			Events.raiseEvent('showDateEvent', arguments)
+		]])
+
+
+
 	-- /set fontsize
 	-------------------------------------------------------
 	tempAliases.setFontSize =

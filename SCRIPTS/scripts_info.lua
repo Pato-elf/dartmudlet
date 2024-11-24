@@ -1,5 +1,5 @@
 Info				= {}
-local versionNumber	= "v1.7.3"
+local versionNumber	= "v1.7.4"
 local sourceName	= "info"
 local colorHelp		= "yellow"
 local spacerHelp	= "   "
@@ -130,16 +130,15 @@ end
 
 
 
--- /help command
+-- /help base
 -----------------------------------------------------------
-local function showHelp(args)
+local function showHelpBase(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
 
 	cecho(preText.."                          DartMUDlet - Pato Edition "..versionNumber.."\n")
 	cecho(preText.."==================================================================================\n")
 	cecho(preText.."/setup   - Initialize variables, customize display, start improve tracking\n")
-	cecho(preText.."/resetup - Reinitialize timers, etc. Activate any updated DartMUDlet code\n")
 	cecho(preText.."\n")
 	cecho(preText.."/announce on      - Announce improves in standard mode (skill name+)\n")
 	cecho(preText.."/announce brief   - Announce improves in brief mode (plus only, no skill name)\n")
@@ -165,6 +164,7 @@ local function showHelp(args)
 	cecho(preText.."/inscribe off                    - Stop practice inscribing a spell\n")
 	cecho(preText.."\n")
 	cecho(preText.."/info <who> <skill>              - Show current improves/level for a skill\n")
+    cecho(preText.."/share <who> <skill>             - OOC share current improves/level for a skill\n")
 	cecho(preText.."/insert <who> <skill> <improves> - Manually insert a new skill into database\n")
 	cecho(preText.."/update <who> <skill> <improves> - Manually set improves for you|pet's skill\n")
 	cecho(preText.."\n")
@@ -174,6 +174,7 @@ local function showHelp(args)
 	cecho(preText.."/aura on|off|scint               - Show aura on screen (default off)\n")
 	cecho(preText.."/conc on|off|bright              - Show concentration on screen (default off)\n")
 	cecho(preText.."/contents on|off                 - Show expanded contents view for containers\n")
+    cecho(preText.."/date <now> <+|-><num><h|d>      - Show game dates for the past, now, or future")
 	cecho(preText.."/levels                          - Display a list of skill levels\n")
 	cecho(preText.."/random <num>                    - Generate a random number between 1 and a number\n")
 	cecho(preText.."/random <value,value,value>      - Pick a random value from a list of values\n")
@@ -184,7 +185,253 @@ local function showHelp(args)
 	cecho(preText.."/who on|off                      - Auto check the who list every 5 minutes\n")
 	cecho(preText.."#num repeat                      - Repeat commands (e.g. #3 say hi)\n")
     cecho(preText.."#Wnum <command>                  - Delay command for num seconds (e.g. #W4 smoke pipe)\n")
-	cecho(preText.."/help                            - Display a list of available commands\n")
+	cecho(preText.."/help <topic>                    - Get detailed help for most DartMUDlet commands\n")
+end
+
+
+
+-- /help levels
+-----------------------------------------------------------
+local function showHelpLevels(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: levels\n")
+	cecho(preText.."USAGE: /levels\n")
+    cecho(preText.."\n")
+    cecho(preText.."Displays a full list of skill levels on the screen along with the size of\n")
+    cecho(preText.."each skill.\n")
+end
+
+
+
+-- /help who
+-----------------------------------------------------------
+local function showHelpWho(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: who\n")
+	cecho(preText.."USAGE: /who <on|off>\n")
+    cecho(preText.."\n")
+    cecho(preText.."Setting this to on will automatically update the WHO tab every five minutes.\n")
+    cecho(preText.."Having this on will also keep you from idling out of the game.\n")
+    cecho(preText.."\n")
+    cecho(preText.."(Default setting is ON)\n")
+end
+
+
+
+-- /help contents
+-----------------------------------------------------------
+local function showHelpContents(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: contents\n")
+	cecho(preText.."USAGE: /contents <on|off>\n")
+    cecho(preText.."\n")
+    cecho(preText.."Lists container contents out in an alphabetical, \"contents\" style view.\n")
+    cecho(preText.."It also groups single items together to show them in the same way as stackable\n")
+    cecho(preText.."items. Works with many containers such as bins, tables, packs, bookshelves etc.\n")
+    cecho(preText.."Also works with fishing nets.\n")
+    cecho(preText.."\n")
+    cecho(preText.."(Default setting is ON)\n")
+end
+
+
+
+-- /help aura
+-----------------------------------------------------------
+local function showHelpAura(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: aura\n")
+	cecho(preText.."USAGE: /aura <on|off|scint>\n")
+    cecho(preText.."\n")
+    cecho(preText.."Displays aura output to the screen in addition to the auto updating aura box.\n")
+    cecho(preText.."Setting the value to on will show all aura changes to the screen, while setting\n")
+    cecho(preText.."the value to scint will only show when aura becomes scintillating on the screen.\n")
+    cecho(preText.."\n")
+    cecho(preText.."(Default setting is OFF)\n")
+end
+
+
+
+-- /help conc
+-----------------------------------------------------------
+local function showHelpConc(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: conc\n")
+	cecho(preText.."USAGE: /conc <on|off|bright>\n")
+    cecho(preText.."\n")
+    cecho(preText.."Displays concentration output to the screen in addition to the auto updating\n")
+    cecho(preText.."concentration box. Setting the value to on will show all conc changes to the screen,\n")
+    cecho(preText.."while setting the value to bright will only show when conc becomes bright-eyed.\n")
+    cecho(preText.."\n")
+    cecho(preText.."(Default setting is OFF)\n")
+end
+
+
+
+-- /help setup
+-----------------------------------------------------------
+local function showHelpSetup(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: setup, resetup\n")
+	cecho(preText.."USAGE: /setup\n")
+    cecho(preText.."\n")
+    cecho(preText.."This command sets up a new instance of DartMUDlet. It does things like customize the\n")
+    cecho(preText.."display, build database tables if they don't exist, and update existing database tables\n")
+    cecho(preText.."with new fields. This command should be run when first setting up DartMUDlet, as well\n")
+    cecho(preText.."as when updating to a new release.\n")
+end
+
+
+
+-- /help announce
+-----------------------------------------------------------
+local function showHelpAnnounce(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: announce\n")
+	cecho(preText.."USAGE: /announce <on|off|brief|verbose>\n")
+    cecho(preText.."\n")
+    cecho(preText.."This command will automatically OOC announce your skill improvements to the room.\n")
+    cecho(preText.."You can choose from various announce formats:\n\n")
+    cecho(preText.."brief:   You say (OOC), '+'\n")
+    cecho(preText.."on:      You say (OOC), 'skill_name+'\n")
+    cecho(preText.."verbose: You say (OOC), 'skill_name+ (1234)'\n")
+    cecho(preText.."\n")
+    cecho(preText.."(Default setting is ON)\n")
+end
+
+
+
+-- /help antispam
+-----------------------------------------------------------
+local function showHelpAntispam(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: antispam\n")
+	cecho(preText.."USAGE: /antispam <on|off>\n")
+    cecho(preText.."\n")
+    cecho(preText.."This command will attempt to suppress repeated lines to cut down on the amount\n")
+    cecho(preText.."spam on the screen. This setting can also be toggled on and off from the GAGS\n")
+    cecho(preText.."menu. Recommended keeping off unless needed.\n")
+    cecho(preText.."\n")
+    cecho(preText.."(Default setting is OFF)\n")
+end
+
+
+
+-- /help fontsize
+-----------------------------------------------------------
+local function showHelpFontsize(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: fontsize\n")
+	cecho(preText.."USAGE: /set fontsize <option> <8-16>\n")
+    cecho(preText.."\n")
+    cecho(preText.."This command allows you to manually set the fontsize for various DartMUDlet tabs.\n")
+    cecho(preText.."Current tab options are: all, chat, improves, message, who\n")
+    cecho(preText.."Current font sizes are: 8 to 16\n")
+    cecho(preText.."\n")
+    cecho(preText.."(Default setting is 10)\n")
+end
+
+
+
+-- /help block and unblock
+-----------------------------------------------------------
+local function showHelpBlock(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: block, unblock\n")
+	cecho(preText.."USAGE: /block\n")
+    cecho(preText.."USAGE: /unblock\n")
+    cecho(preText.."\n")
+    cecho(preText.."The /block command blocks new commands from being sent to the game. It puts these\n")
+    cecho(preText.."commands into a queue while you are performing interruptable actions such as casting\n")
+    cecho(preText.."spells, writing books, or hunting. The /block command normally runs automatically and\n")
+    cecho(preText.."doesn't require the player to trigger it.\n")
+    cecho(preText.."\n")
+    cecho(preText.."The /unblock command turns off blocking and allows commands to resume being sent to\n")
+    cecho(preText.."the game. Any commands that are currently queued by the blocking system are sent first\n")
+    cecho(preText.."in the order in which they were queued.\n")
+    cecho(preText.."\n")
+    cecho(preText.."The /unblock command normally runs automatically, however if you get stuck in blocking\n")
+    cecho(preText.."mode for whatever reason, run the /unblock command manually to turn it off.\n")
+end
+
+
+
+-- /help date
+-----------------------------------------------------------
+local function showHelpDate(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: date\n")
+	cecho(preText.."USAGE: /date <now>\n")
+    cecho(preText.."USAGE: /date <+|-><num><h|d>\n")
+    cecho(preText.."\n")
+    cecho(preText.."This command will display the ingame dates for the common, adachian, and thorpian\n")
+    cecho(preText.."calendars. It can show dates for the past, present, and future. Some examples of\n")
+    cecho(preText.."date commands that can be run:\n")
+    cecho(preText.."\n")
+    cecho(preText.."/date now            -- display ingame calendar dates as of the current moment\n")
+    cecho(preText.."/date +10h           -- display ingame calendar dates for 10 real hours from now\n")
+    cecho(preText.."/date +365d          -- display ingame calendar dates for 1 real year from now\n")
+    cecho(preText.."/date -12h           -- display ingame calendar dates for 12 real hours ago\n")
+    cecho(preText.."/date -30d           -- display ingame calendar dates for 1 real month ago\n")
+end
+
+
+
+-- /help main
+-----------------------------------------------------------
+local function showHelp(args)
+    local detail = args["detail"]
+
+    detail = trim(detail)
+    detail = string.gsub(detail, "/", "")
+
+    if (detail == "") or (detail == nil) or (detail == "help") then
+        showHelpBase()
+    elseif (detail == "level") or (detail == "levels") then
+        showHelpLevels()
+    elseif (detail == "who") or (detail == "who on") then
+        showHelpWho()
+    elseif (detail == "content") or (detail == "contents") then
+        showHelpContents()
+    elseif (detail == "aura") or (detail == "aura on") then
+        showHelpAura()
+    elseif (detail == "conc") or (detail == "conc on") then
+        showHelpConc()
+    elseif (detail == "setup") or (detail == "resetup") then
+        showHelpSetup()
+    elseif (detail == "announce") or (detail == "verbose") then
+        showHelpAnnounce()
+    elseif (detail == "antispam") or (detail == "anti spam") then
+        showHelpAntispam()
+    elseif (detail == "fontsize") or (detail == "set fontsize") then
+        showHelpFontsize()
+    elseif (detail == "block") or (detail == "unblock") then
+        showHelpBlock()
+    elseif (detail == "date") or (detail == "date now") then
+        showHelpDate()
+    end
+
 end
 
 
@@ -295,12 +542,85 @@ end
 
 
 
+-- show game date in the past, present, or future
+-----------------------------------------------------------
+local function showDate(args)
+    local detail        = args["detail"]
+    local direction
+    local timemod
+    local timetype
+
+
+    detail = trim(detail)
+    detail = string.lower(detail)
+    direction, timemod, timetype = detail:match("^([+-]?)(%d+)(%w+)$")
+
+    if (timetype ~= "h") and
+    (timetype ~= "hr") and
+    (timetype ~= "hour") and
+    (timetype ~= "hours") and
+    (timetype ~= "d") and
+    (timetype ~= "day") and
+    (timetype ~= "days") then
+        detail = "help"
+    end
+
+    if (detail == "now") or (detail == "current") or (detail == "present") then
+        print("\n===============================================\n")
+        print("ooc Game date as of now ("..os.date("%Y-%m-%d %H:%M:%S").."):")
+        print("ooc Date(common):   "..date.format(os.time(), 3, "common"))
+        print("ooc Date(Adachian): "..date.format(os.time(), 3, "adachian"))
+        print("ooc Date(Thorpian): "..date.format(os.time(), 3, "thorpian"))
+        print("\n===============================================\n")
+    elseif (detail == "") or (detail == "help") or ((not direction) or (not timemod) or (not timetype)) then
+        cecho("<yellow>USAGE: /date now                -- Show current game dates\n")
+        cecho("<yellow>USAGE: /date <+|-><num><h|d>    -- Show game dates in the past or future\n")
+    else
+        local timechange    = 0
+        local timetotal     = os.time()
+        timetype            = string.lower(timetype)
+        timemod             = tonumber(timemod)
+
+        if (timemod > 999) or (timemod < 1) then
+            cecho("<red>ERROR: date out of range\n")
+            return
+        end
+
+        if (timetype == "h") or (timetype == "hr") or (timetype == "hour") or (timetype == "hours")then
+            timechange = timemod * 3600
+            timetype = "hours"
+        else
+            timechange = timemod * 86400
+            timetype = "days"
+        end
+
+        print("\n===============================================\n")
+
+        if (direction == "-") then
+            timetotal = timetotal - timechange
+            print("Game date "..timemod.." "..timetype.." ago ("..os.date("%Y-%m-%d %H:%M:%S",timetotal).."):")
+        else
+            timetotal = timetotal + timechange
+            print("Game date "..timemod.." "..timetype.." from now ("..os.date("%Y-%m-%d %H:%M:%S",timetotal).."):")
+        end
+
+        print("Date(common):   "..date.format(timetotal, 3, "common"))
+        print("Date(Adachian): "..date.format(timetotal, 3, "adachian"))
+        print("Date(Thorpian): "..date.format(timetotal, 3, "thorpian"))
+
+        print("\n===============================================\n")
+    end
+
+end
+
+
+
 -- return spell casting text
 -----------------------------------------------------------
 local function showSpellCasting()
-	local spellcastingText = ""
-	local count = 0
-	local results = Skills.getSkill({who = Status.name, skill_name = "spell casting"})
+    local count
+	local spellcastingText  = ""
+	local results           = Skills.getSkill({who = Status.name, skill_name = "spell casting"})
 
 
 	if results ~= -1 then
@@ -382,6 +702,7 @@ function setup(args)
 	Events.addListener("showHelpEvent", sourceName, showHelp)
 	Events.addListener("showRandomEvent", sourceName, showRandom)
 	Events.addListener("showLevelsEvent", sourceName, showLevels)
+    Events.addListener("showDateEvent", sourceName, showDate)
 	Events.addListener("emptylineEvent", sourceName, emptyLine)
 end
 
@@ -392,6 +713,7 @@ function unsetup(args)
 	Events.removeListener("showHelpEvent", sourceName)
 	Events.removeListener("showRandomEvent", sourceName)
 	Events.removeListener("showLevelsEvent", sourceName)
+    Events.removeListener("showDateEvent", sourceName)
 	Events.removeListener("emptylineEvent", sourceName)
 end
 

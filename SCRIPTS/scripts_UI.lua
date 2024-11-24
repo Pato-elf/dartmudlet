@@ -37,10 +37,11 @@ local function createUIConsole()
 	-- TABWINDOW2
 	-------------------------
 	createImproveBox()
-	createRefreshBox()
+    createCastingBox()
 	createChannelBox()
+    createRefreshBox()
+    createRepeatBox()
 	createAllocsBox()
-	createRepeatBox()
 
 	-- TABWINDOW3
 	-------------------------
@@ -51,7 +52,7 @@ local function createUIConsole()
 	-- TABWINDOW4
 	-------------------------
 	createChatBox()
-  
+
 --GUI.top:load()
 --GUI.right:load()
 --GUI.tabwindow1:load()

@@ -27,7 +27,7 @@ GUI.tabwindow2 = GUI.tabwindow2 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"IMPROVES","CHANNEL","REFRESH","ALLOCS","REPEAT"},
+		tabs = {"IMPROVES","CASTING","CHANNEL","REFRESH","REPEAT","ALLOCS"},
 	},GUI.right)
 
 

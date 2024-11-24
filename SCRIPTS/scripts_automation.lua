@@ -32,7 +32,11 @@ local function displayPowercastStats(args)
 		displaytext = displaytext.."SPELLCASTING: "..spellcasting.."   "
 	end
 
-	displaytext = displaytext.."PCMOD: +"..Status.powercastAddon
+    if (Status.powercastAddon >= 0) then
+	    displaytext = displaytext.."PCMOD: +"..Status.powercastAddon
+    else
+        displaytext = displaytext.."PCMOD: "..Status.powercastAddon
+    end
 
 	if (displaytype ~= "share") then
 		displaytext = displaytext.."   FOCUS: "..Status.focusTotal

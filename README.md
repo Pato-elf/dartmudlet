@@ -72,6 +72,7 @@ In addition to the automatic features described above, there are a number of thi
 /aura on|off|scint               - Show aura on screen (default off)
 /conc on|off|bright              - Show concentration on screen (default off)
 /contents on|off                 - Show expanded contents view for containers (default on)
+/date <now> <+|-><num><h|d>      - Show game dates for the past, now, or future
 /levels                          - Display a list of skill levels
 /random <num>                    - Generate a random number between 1 and a number
 /random <value,value,value>      - Pick a random value from a list of values

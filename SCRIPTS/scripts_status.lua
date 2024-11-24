@@ -73,6 +73,7 @@ Status.gagCitizens      = false
 Status.gagCreatures     = false
 Status.gagPets          = false
 Status.gagPrompts       = false
+Status.gagQuests        = false
 Status.gagSparring      = false
 Status.gagTrainers      = false
 

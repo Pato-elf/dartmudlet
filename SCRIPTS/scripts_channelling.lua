@@ -8,7 +8,7 @@ local powercastTimeisFirst	= true
 -- compute time elapsed since last time called
 -----------------------------------------------------------
 local function computeTimeElapsed()
-	local timeelapsed = ""
+	local timeelapsed
 
 
 	if powercastTimeisFirst then
@@ -616,7 +616,7 @@ local function save()
 	query = query..'focusTargetSource="'..Status.focusTargetSource..'", '
 	query = query..'focusAmountTeach='..Status.focusAmountTeach..', '
 	query = query..'cmdAddon="'..Status.cmdAddon..'"'
-	
+
 	dba.execute(query)
 end
 

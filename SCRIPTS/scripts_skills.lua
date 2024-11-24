@@ -1,38 +1,146 @@
 Skills                      = {}
 local sourceName            = 'skills'
 local previous_skill_value  = {}
+levels                      = {}
 
 
-levels = {}
-levels.mythic     = {name = "mythic",         abbr = "mythic",    min = "10000",  max = "99999", next_level = nil}
-levels.leggy      = {name = "legendary",      abbr = "leggy",	  	min = "1700",	  max = "9999",  next_level = levels.mythic}
-levels.gm         = {name = "a grand master", abbr = "gm",			  min = "1400",	  max = "1699",  next_level = levels.leggy}
-levels.virtuoso   = {name = "a virtuoso",     abbr = "virtuoso",	min = "1200",  	max = "1399",  next_level = levels.gm}
-levels.consummate = {name = "consummate",     abbr = "consummate",min = "1050", 	max = "1199",  next_level = levels.virtuoso}
-levels.hm         = {name = "a high master",  abbr = "hm",			  min = "920",	  max = "1049",  next_level = levels.consummate}
-levels.renowned   = {name = "renowned",       abbr = "renowned",	min = "825",  	max = "919",   next_level = levels.hm}
-levels.adept      = {name = "an adept",       abbr = "adept",		  min = "740",	  max = "824",   next_level = levels.renowned}
-levels.eminent    = {name = "eminent",        abbr = "eminent",   min = "660",	  max = "739",   next_level = levels.adept}
-levels.master     = {name = "a master",       abbr = "master",		min = "585",	  max = "659",   next_level = levels.eminent}
-levels.superb     = {name = "superb",         abbr = "superb",		min = "515",	  max = "584",   next_level = levels.master}
-levels.expert     = {name = "an expert",      abbr = "expert",		min = "450",	  max = "514",   next_level = levels.superb}
-levels.excellent  = {name = "excellent",      abbr = "excellent",	min = "390",	  max = "449",   next_level = levels.expert}
-levels.vg         = {name = "very good",      abbr = "vg",			  min = "335",	  max = "389",   next_level = levels.excellent}
-levels.adroit     = {name = "adroit",         abbr = "adroit",		min = "285",	  max = "334",   next_level = levels.vg}
-levels.good       = {name = "good",           abbr = "good",		  min = "240",	  max = "284",   next_level = levels.adroit}
-levels.prof       = {name = "proficient",     abbr = "prof",		  min = "200",	  max = "239",   next_level = levels.good}
-levels.fair       = {name = "fair",           abbr = "fair",		  min = "165",	  max = "199",   next_level = levels.prof}
-levels.able       = {name = "able",           abbr = "able",	  	min = "135",	  max = "164",   next_level = levels.fair}
-levels.aa         = {name = "above average",  abbr = "aa",		  	min = "110",	  max = "134",   next_level = levels.able}
-levels.avg        = {name = "average",        abbr = "avg",		    min = "90",		  max = "109",   next_level = levels.aa}
-levels.ba         = {name = "below average",  abbr = "ba",			  min = "70",		  max = "89",    next_level = levels.avg}
-levels.nvg        = {name = "not very good",  abbr = "nvg",		    min = "50",		  max = "69",    next_level = levels.ba}
-levels.poor       = {name = "poor",           abbr = "poor",		  min = "30",		  max = "49",    next_level = levels.nvg}
-levels.beginner   = {name = "a beginner",     abbr = "beginner",	min = "18",		  max = "29",    next_level = levels.poor}
-levels.novice     = {name = "a novice",       abbr = "novice",		min = "10",		  max = "17",    next_level = levels.beginner}
-levels.tyro       = {name = "a tyro",         abbr = "tyro",		  min = "4",		  max = "9",     next_level = levels.novice}
-levels.unskilled  = {name = "unskilled",      abbr = "unskilled",	min = "1",		  max = "3",     next_level = levels.tyro}
-levels.NoSkill    = {name = "no skill",       abbr = "noskill", 	min = "0",		  max = "0",     next_level = levels.unskilled}
+
+levels.mythic     = {name = "mythic",         abbr = "mythic",      min = "10000",  max = "99999", next_level = nil}
+levels.leggy      = {name = "legendary",      abbr = "leggy",       min = "1700",   max = "9999",  next_level = levels.mythic}
+levels.gm         = {name = "a grand master", abbr = "gm",          min = "1400",   max = "1699",  next_level = levels.leggy}
+levels.virtuoso   = {name = "a virtuoso",     abbr = "virtuoso",    min = "1200",   max = "1399",  next_level = levels.gm}
+levels.consummate = {name = "consummate",     abbr = "consummate",  min = "1050",   max = "1199",  next_level = levels.virtuoso}
+levels.hm         = {name = "a high master",  abbr = "hm",          min = "920",    max = "1049",  next_level = levels.consummate}
+levels.renowned   = {name = "renowned",       abbr = "renowned",    min = "825",    max = "919",   next_level = levels.hm}
+levels.adept      = {name = "an adept",       abbr = "adept",       min = "740",    max = "824",   next_level = levels.renowned}
+levels.eminent    = {name = "eminent",        abbr = "eminent",     min = "660",    max = "739",   next_level = levels.adept}
+levels.master     = {name = "a master",       abbr = "master",      min = "585",    max = "659",   next_level = levels.eminent}
+levels.superb     = {name = "superb",         abbr = "superb",      min = "515",    max = "584",   next_level = levels.master}
+levels.expert     = {name = "an expert",      abbr = "expert",      min = "450",    max = "514",   next_level = levels.superb}
+levels.excellent  = {name = "excellent",      abbr = "excellent",   min = "390",    max = "449",   next_level = levels.expert}
+levels.vg         = {name = "very good",      abbr = "vg",          min = "335",    max = "389",   next_level = levels.excellent}
+levels.adroit     = {name = "adroit",         abbr = "adroit",      min = "285",    max = "334",   next_level = levels.vg}
+levels.good       = {name = "good",           abbr = "good",        min = "240",    max = "284",   next_level = levels.adroit}
+levels.prof       = {name = "proficient",     abbr = "prof",        min = "200",    max = "239",   next_level = levels.good}
+levels.fair       = {name = "fair",           abbr = "fair",        min = "165",    max = "199",   next_level = levels.prof}
+levels.able       = {name = "able",           abbr = "able",        min = "135",    max = "164",   next_level = levels.fair}
+levels.aa         = {name = "above average",  abbr = "aa",          min = "110",    max = "134",   next_level = levels.able}
+levels.avg        = {name = "average",        abbr = "avg",         min = "90",     max = "109",   next_level = levels.aa}
+levels.ba         = {name = "below average",  abbr = "ba",          min = "70",     max = "89",    next_level = levels.avg}
+levels.nvg        = {name = "not very good",  abbr = "nvg",         min = "50",     max = "69",    next_level = levels.ba}
+levels.poor       = {name = "poor",           abbr = "poor",        min = "30",     max = "49",    next_level = levels.nvg}
+levels.beginner   = {name = "a beginner",     abbr = "beginner",    min = "18",     max = "29",    next_level = levels.poor}
+levels.novice     = {name = "a novice",       abbr = "novice",      min = "10",     max = "17",    next_level = levels.beginner}
+levels.tyro       = {name = "a tyro",         abbr = "tyro",        min = "4",      max = "9",     next_level = levels.novice}
+levels.unskilled  = {name = "unskilled",      abbr = "unskilled",   min = "1",      max = "3",     next_level = levels.tyro}
+levels.NoSkill    = {name = "no skill",       abbr = "noskill",     min = "0",      max = "0",     next_level = levels.unskilled}
+
+
+local skills_level = {
+    {num = 1,name = "unskilled",      abbr = "unskilled",	min = "1",		  max = "3"},
+    {num = 2,name = "a tyro",         abbr = "tyro",		  min = "4",		  max = "9"},
+    {num = 3,name = "a novice",       abbr = "novice",		min = "10",		  max = "17"},
+    {num = 4,name = "a beginner",     abbr = "beginner",	min = "18",		  max = "29"},
+    {num = 5,name = "poor",           abbr = "poor",		  min = "30",		  max = "49"},
+    {num = 6,name = "not very good",  abbr = "nvg",		    min = "50",		  max = "69"},
+    {num = 7,name = "below average",  abbr = "ba",			  min = "70",		  max = "89"},
+    {num = 8,name = "average",        abbr = "avg",		    min = "90",		  max = "109"},
+    {num = 9,name = "above average",  abbr = "aa",		  	min = "110",	  max = "134"},
+    {num = 10,name = "able",           abbr = "able",	  	min = "135",	  max = "164"},
+    {num = 11,name = "fair",           abbr = "fair",		  min = "165",	  max = "199"},
+    {num = 12,name = "proficient",     abbr = "prof",		  min = "200",	  max = "239"},
+    {num = 13,name = "good",           abbr = "good",		  min = "240",	  max = "284"},
+    {num = 14,name = "adroit",         abbr = "adroit",		min = "285",	  max = "334"},
+    {num = 15,name = "very good",      abbr = "vg",			  min = "335",	  max = "389"},
+    {num = 16,name = "excellent",      abbr = "excellent",	min = "390",	  max = "449"},
+    {num = 17,name = "an expert",      abbr = "expert",		min = "450",	  max = "514"},
+    {num = 18,name = "superb",         abbr = "superb",		min = "515",	  max = "584"},
+    {num = 19,name = "a master",       abbr = "master",		min = "585",	  max = "659"},
+    {num = 20,name = "eminent",        abbr = "eminent",   min = "660",	  max = "739"},
+    {num = 21,name = "an adept",       abbr = "adept",		  min = "740",	  max = "824"},
+    {num = 22,name = "renowned",       abbr = "renowned",	min = "825",  	max = "919"},
+    {num = 23,name = "a high master",  abbr = "hm",			  min = "920",	  max = "1049"},
+    {num = 24,name = "consummate",     abbr = "consummate",min = "1050", 	max = "1199"},
+    {num = 25,name = "a virtuoso",     abbr = "virtuoso",	min = "1200",  	max = "1399"},
+    {num = 26,name = "a grand master", abbr = "gm",			  min = "1400",	  max = "1699"},
+    {num = 27,name = "legendary",      abbr = "leggy",	  	min = "1700",	  max = "9999"},
+    {num = 28,name = "mythic",         abbr = "mythic",    min = "10000",  max = "99999"}
+}
+
+
+
+local skills_fighter = {
+    {num = 1,   name = "parry",             count = 0,  abbr = ""},
+    {num = 2,   name = "control",           count = 0,  abbr = ""},
+    {num = 3,   name = "split defense",     count = 0,  abbr = ""},
+    {num = 4,   name = "aim blows",         count = 0,  abbr = ""},
+    {num = 5,   name = "attack speed",      count = 0,  abbr = ""},
+    {num = 6,   name = "offensive",         count = 0,  abbr = ""},
+    {num = 7,   name = "daring",            count = 0,  abbr = ""},
+    {num = 8,   name = "fighting",          count = 0,  abbr = ""},
+    {num = 9,   name = "shield use",        count = 0,  abbr = ""},
+    {num = 10,  name = "hafted",            count = 0,  abbr = ""},
+    {num = 11,  name = "sword",             count = 0,  abbr = ""},
+    {num = 12,  name = "brawling",          count = 0,  abbr = ""},
+    {num = 13,  name = "multiple attacks",  count = 0,  abbr = ""},
+    {num = 14,  name = "two-handed hafted", count = 0,  abbr = ""},
+    {num = 15,  name = "two-handed sword",  count = 0,  abbr = ""}
+}
+
+
+
+local skills_mage = {
+    {num = 1,   name = "spell casting",     count = 0,  abbr = ""},
+    {num = 2,   name = "channelling",       count = 0,  abbr = ""},
+    {num = 3,   name = "scroll reading",    count = 0,  abbr = ""},
+    {num = 4,   name = "scroll writing",    count = 0,  abbr = ""},
+    {num = 5,   name = "language#magic",    count = 0,  abbr = ""}
+}
+
+
+
+local skills_move = {
+    {num = 1,   name = "riding",        count = 0,  abbr = ""},
+    {num = 2,   name = "sailing",       count = 0,  abbr = ""},
+    {num = 3,   name = "climbing",      count = 0,  abbr = ""},
+    {num = 4,   name = "travel",        count = 0,  abbr = ""},
+    {num = 5,   name = "hiking",        count = 0,  abbr = ""},
+    {num = 6,   name = "swimming",      count = 0,  abbr = ""},
+    {num = 7,   name = "acrobatics",    count = 0,  abbr = ""},
+    {num = 8,   name = "spelunking",    count = 0,  abbr = ""}
+}
+
+
+
+local skills_crafts = {
+    {num = 1,   name = "appraisal",         count = 0,  abbr = ""},
+    {num = 2,   name = "herding",           count = 0,  abbr = ""},
+    {num = 3,   name = "alchemy",           count = 0,  abbr = ""},
+    {num = 4,   name = "smithing",          count = 0,  abbr = ""},
+    {num = 5,   name = "butchering",        count = 0,  abbr = ""},
+    {num = 6,   name = "cooking",           count = 0,  abbr = ""},
+    {num = 7,   name = "wood working",      count = 0,  abbr = ""},
+    {num = 8,   name = "farming",           count = 0,  abbr = ""},
+    {num = 9,   name = "tanning",           count = 0,  abbr = ""},
+    {num = 10,   name = "sewing",           count = 0,  abbr = ""},
+    {num = 11,   name = "chandlery",        count = 0,  abbr = ""},
+    {num = 12,   name = "metallurgy",       count = 0,  abbr = ""},
+    {num = 13,   name = "milling",          count = 0,  abbr = ""},
+    {num = 14,   name = "leather working",  count = 0,  abbr = ""},
+    {num = 15,   name = "construction",     count = 0,  abbr = ""},
+    {num = 16,   name = "lumbering",        count = 0,  abbr = ""},
+    {num = 17,   name = "mining",           count = 0,  abbr = ""},
+    {num = 18,   name = "brewing",          count = 0,  abbr = ""}
+}
+
+
+
+local skills_thief = {
+    {num = 1,   name = "lock picking",  count = 0,  abbr = ""},
+    {num = 2,   name = "hiding",        count = 0,  abbr = ""},
+    {num = 3,   name = "sneaking",      count = 0,  abbr = ""},
+    {num = 4,   name = "pilfer",        count = 0,  abbr = ""},
+}
 
 
 
@@ -99,10 +207,102 @@ end
 -- skill info command
 -----------------------------------------------------------
 local function skillInfo(args)
-	local skill_name = args["skill_name"]
-	local who = args["who"]
-	local result = getSkill(args)
+	local skill_name    = string.lower(args["skill_name"])
+	local who           = args["who"]
+    local type          = args["type"]
+    local skill_list    = {}
+    local char_length1  = 26
+    local char_length2  = 52
+    local char_fill1    = 0
+    local char_fill2    = 0
+    local tilNext       = 0
+    local output        = ""
+    local level
+    local nextLevel
 
+
+    who = who:sub(1, 1):upper()..who:sub(2):lower()
+
+
+    -- select or build skill list
+    if (skill_name == "mage") then
+        skill_list = skills_mage
+    elseif (skill_name == "fighter") then
+        skill_list = skills_fighter
+    elseif (skill_name == "move") or (skill_name == "movement") then
+        skill_list = skills_move
+    elseif (skill_name == "craft") or (skill_name == "crafts") or (skill_name == "crafting") then
+        skill_list = skills_crafts
+    elseif (skill_name == "thief") then
+        skill_list = skills_thief
+    else
+        local search_flag = skill_name
+        search_flag = string.gsub(search_flag, "^%*", "%%")
+        search_flag = string.gsub(search_flag, "%*$", "%%")
+
+        if not string.match(search_flag, "^%%") and not string.match(search_flag, "%%$") then
+            search_flag = "%" .. search_flag .. "%"
+        end
+
+        local result = dba.query('SELECT skill FROM improves WHERE who="'..who..'" AND skill LIKE "'..search_flag..'"')
+        for i=1,result.count() do
+            table.insert(skill_list, {
+                num     = #skill_list + 1,
+                name    = result[i].skill,
+                count   = 0,
+                abbr    = ""
+            })
+        end
+    end
+
+    -- get skill counts
+    for i=1,#skill_list do
+        local result = dba.query('SELECT * FROM improves WHERE who="'..who..'" AND skill="'..skill_list[i].name..'"')[1]
+        if result == nil then
+            skill_list[i].count = 0
+        else
+            skill_list[i].count = result.count
+        end
+    end
+
+    -- get skill levels
+    for i=1,#skill_list do
+        for x=1,#skills_level do
+            if (skill_list[i].count >= tonumber(skills_level[x].min)) and (skill_list[i].count <= tonumber(skills_level[x].max)) then
+                skill_list[i].abbr = skills_level[x].name
+            end
+        end
+    end
+
+    -- sort and print skill list
+    table.sort(skill_list, function (k1,k2) return k1.count > k2.count end)
+    for i,v in ipairs(skill_list) do
+
+        if v.count > 0 then
+            char_fill1 = char_length1 - string.len(skill_list[i].name) - 1
+            char_fill2 = char_length2 - string.len(skill_list[i].name) - 3 - char_fill1 - string.len(v.abbr) - #tostring(v.count)
+
+            level = imp2lvl(v.count)
+            nextLevel = level.next_level
+            output = ""
+
+            if nextLevel ~= nil then
+                tilNext = level.next_level.min - v.count
+                output = output.."["..tilNext.." / "..nextLevel.abbr.."]"
+            end
+
+            if type == "share" then
+                send("ooc "..who..":   "..v.name..":"..string.rep(" ", char_fill1).."("..v.count..") "..v.abbr..string.rep(" ", char_fill2)..output, false)
+            else
+                cecho(who..":   "..v.name..":"..string.rep(" ", char_fill1).."("..v.count..") "..v.abbr..string.rep(" ", char_fill2)..output.."\n")
+            end
+        end
+    end
+
+
+--[[
+
+    local result        = getSkill(args)
 	if result == -1 then
 		cecho("<red>ERROR: Unknown skill - "..skill_name.."\n")
 		return
@@ -111,13 +311,19 @@ local function skillInfo(args)
 	local count = tonumber(result.count)
 	local level = imp2lvl(count)
 	local nextLevel = level.next_level
-	local output = count.." - "..level.abbr
+	local output = " ("..count..") - "..level.abbr
+
 	if nextLevel ~= nil then
 	    tilNext = level.next_level.min - count
-	    output = output.." - ("..tilNext.." / "..nextLevel.abbr..")"
+	    output = output.." ("..tilNext.." / "..nextLevel.abbr..")"
 	end
-	cecho("<yellow>Information for "..who..": "..result.skill.."\n")
-	cecho("<yellow>Improves: "..output.."\n")
+
+    if type == "share" then
+        send("ooc "..who..": "..result.skill..output.."\n")
+    else
+        cecho("<yellow>"..who..": "..result.skill..output.."\n")
+    end
+--]]
 end
 
 
@@ -160,7 +366,7 @@ local function increaseSkill(args)
 			[[
 				local skill_name = string.lower(matches[2])
 				local skill_level = string.lower(matches[3])
-				local isStupidOoc = string.find(matches[1], "(ooc)")
+				local isFalseOoc = string.find(matches[1], "(ooc)")
 				local _s, spaces = string.gsub(skill_name, " ", " ")
 				spaces = spaces or 0
 
@@ -171,7 +377,7 @@ local function increaseSkill(args)
 				skill_name == "held" or
 				skill_name == "worn" or
 				spaces > 1 or
-				not isStupidOoc == nil then
+				not isFalseOoc == nil then
 					return
 				end
   
@@ -180,7 +386,7 @@ local function increaseSkill(args)
 			]])
 
 		send("show skills "..skill_name, false) --PATO
-		tempTimer(15, [[disableTrigger(]]..shownSkill..[[)]])
+		tempTimer(10, [[disableTrigger(]]..shownSkill..[[)]])
 	end
 
 	return count
@@ -322,8 +528,7 @@ Skills =
 	unsetup = unsetup,
 	resetup = resetup,
 	imp2lvl = imp2lvl,
-	getSkill = getSkill,
-	nextLevel = nextLevel
+	getSkill = getSkill
 }
 
 return Skills

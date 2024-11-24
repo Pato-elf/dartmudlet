@@ -8,6 +8,7 @@ function loadStylesheets()
 			color: black;
 			background-color: palegreen;
 			margin: 5px;
+            padding-left: -3px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;
@@ -23,6 +24,7 @@ function loadStylesheets()
 			color: black;
 			background-color: #9898FB;
 			margin: 5px;
+            padding-left: -3px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;
@@ -38,6 +40,7 @@ function loadStylesheets()
 			color: black;
 			background-color: #FB98FB;
 			margin: 5px;
+            padding-left: -3px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;
@@ -47,12 +50,13 @@ function loadStylesheets()
 			qproperty-alignment: 'Center';
 		}
 	]])
-	
+
 	StyleButtonDarkGrey = Geyser.StyleSheet:new([[
 		QLabel{
 			color: black;
 			background-color: #696969;
 			margin: 5px;
+            padding-left: -3px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;
@@ -68,6 +72,7 @@ function loadStylesheets()
 			color: black;
 			background-color: #D3D3D3;
 			margin: 5px;
+            padding-left: -3px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;
@@ -77,12 +82,13 @@ function loadStylesheets()
 			qproperty-alignment: 'Center';
 		}
 	]])
-	
+
 	StyleButtonRed = Geyser.StyleSheet:new([[
 		QLabel{
 			color: black;
 			background-color: red;
 			margin: 5px;
+            padding-left: -3px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;

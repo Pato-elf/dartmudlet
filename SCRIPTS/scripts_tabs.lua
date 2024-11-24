@@ -358,7 +358,7 @@ local function getFloatingWindows()
         end
     end
     return floatingWindows
-    
+
 end
 
 
@@ -382,6 +382,8 @@ function Adjustable.TabWindow:checkMultiCollision(tab)
         end
     end  
 end
+
+
 
 -- onMove function
 -- contains all the functionality to move the tab (collision check, make space ...)
@@ -410,6 +412,8 @@ function Adjustable.TabWindow:onMove(tab, event)
         Adjustable.TabWindow.currentWindow = nil
     end
 end
+
+
 
 --- Transforms a floating Tab into a temporary TabWindow
 -- @tparam tab the tab which will be transformed

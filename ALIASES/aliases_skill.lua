@@ -34,14 +34,33 @@ local function setup(args)
 
 	--alias for skill information
 	tempAliases.SkillInfo =
-	tempAlias('^\\/info ([\\w]+) ([A-Za-z_#\\-\' ]+)',
+	tempAlias('^\\/info ([\\w]+) ([A-Za-z_#\\*\\-\' ]+)',
 		[[
-			local who = matches[2]
-			who = (who:gsub("^%l", string.upper))
-			local skill_name = matches[3]
-			local arguments = {skill_name = skill_name, who = who}
+			local who           = matches[2]
+			who                 = (who:gsub("^%l", string.upper))
+			local skill_name    = matches[3]
+            local type          = "info"
+			local arguments     = {skill_name = skill_name, who = who, type = type}
+
 			Events.raiseEvent('skillInfoEvent', arguments)
 		]])
+
+
+
+    --alias for sharing skill information
+	tempAliases.ShareSkill =
+	tempAlias('^\\/share ([\\w]+) ([A-Za-z_#\\*\\-\' ]+)',
+		[[
+			local who           = matches[2]
+			who                 = (who:gsub("^%l", string.upper))
+			local skill_name    = matches[3]
+            local type          = "share"
+			local arguments     = {skill_name = skill_name, who = who, type = type}
+
+			Events.raiseEvent('skillInfoEvent', arguments)
+		]])
+
+
 
 	aliases = tempAliases
 

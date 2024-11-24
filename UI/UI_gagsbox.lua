@@ -13,8 +13,9 @@ function createGagsBox()
     local y5        = 116
     local y6        = 140
     local y7        = 164
+    local y8        = 188
 
-    local y9        = 212
+    local y9        = 236
 
     local width1    = 265
 
@@ -26,6 +27,8 @@ function createGagsBox()
     local tooltip_gags6 = "Gags emotes and chatter from some common sparring partners"
     local tooltip_gags7 = "Gags some channelling messages such as failed channels and \"Gossamar strand\" text"
     local tooltip_gags8 = "Toggle AntiSpam system on|off (Recommended Off unless needed)"
+    local tooltip_gags9 = "Gags some quest messages such as \"Red Sword\""
+
 
 
 -- CREATE GAGS BOX -> TABWINDOW3
@@ -178,6 +181,24 @@ GUI.containerGagsBox:setStyleSheet(StyleBoxBlue:getCSS())
     GUI.textboxGags7:setStyleSheet(StyleTextYellowLarge:getCSS())
     cecho("textboxGags7", "<yellow>Gag misc channel text")
     GUI.textboxGags7:setToolTip(tooltip_gags7,Status.tooltipTime)
+
+
+
+    -- CREATE TEXTBOX9 -> GAGS -> TABWINDOW3
+	-------------------------------------------------------
+	GUI.textboxGags9 = GUI.textboxGags9 or
+    Geyser.Label:new({
+        name = "textboxGags9",
+        x = x2, y = y8,
+        fontSize = 11,
+        width = width1,
+        height = 24,
+        color = "black"
+    }, GUI.containerGagsBox)
+
+    GUI.textboxGags9:setStyleSheet(StyleTextYellowLarge:getCSS())
+    cecho("textboxGags9", "<yellow>Gag misc quest text")
+    GUI.textboxGags9:setToolTip(tooltip_gags9,Status.tooltipTime)
 
 
 
@@ -358,6 +379,28 @@ GUI.containerGagsBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     function buttonGags7_click()
         Events.raiseEvent("setGagChannelsEvent", {number = 7})
+    end
+
+
+
+    -- CREATE BUTTON9 -> GAGS -> TABWINDOW3  (gag button 9)
+	-----------------------------------------------------------
+	GUI.buttonGags9 = GUI.buttonGags9 or
+    Geyser.Label:new({
+        name = "buttonGags9",
+        x = x1, y = y8,
+        fontSize = 14,
+        width = 23,
+        height = 23,
+        color = "black"
+    }, GUI.containerGagsBox)
+
+    GUI.buttonGags9:setStyleSheet(StyleButtonSmallLightGrey:getCSS())
+    GUI.buttonGags9:setToolTip(tooltip_gags9,Status.tooltipTime)
+    GUI.buttonGags9:setClickCallback("buttonGags9_click")
+
+    function buttonGags9_click()
+        Events.raiseEvent("setGagQuestsEvent", {number = 9})
     end
 
 

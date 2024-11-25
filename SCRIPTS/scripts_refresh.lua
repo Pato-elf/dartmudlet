@@ -26,10 +26,10 @@ local function setrefreshPower(args)
 			end
 
 			if saveflag then Refresh.save() end
-			cecho("<yellow>Channel: Refresh power value updated\n")
+            systemMessage("Refresh power value updated")
 		end
 	end
-	
+
 end
 
 
@@ -40,8 +40,8 @@ local function setrefreshTarget(args)
 	local refreshtarget	= args["input"]
 	local version		= args["version"]
 	local saveflag		= args["save"]
-	
-	
+
+
 	if tonumber(refreshtarget) then
 		cecho("<red>ERROR: Invalid refresh target\n")
 	else
@@ -52,11 +52,11 @@ local function setrefreshTarget(args)
 			Status.refreshTarget2 = refreshtarget
 			dba.execute('UPDATE refresh SET refreshTarget2="'..refreshtarget..'"')
 		end
-		
+
 		if saveflag then Refresh.save() end
-		cecho("<yellow>Channel: Refresh target updated\n")
+        systemMessage("Refresh target updated")
 	end
-	
+
 end
 
 

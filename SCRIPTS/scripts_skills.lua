@@ -219,10 +219,20 @@ local function skillInfo(args)
     local output        = ""
     local level
     local nextLevel
+    local sort_type
 
 
     who = who:sub(1, 1):upper()..who:sub(2):lower()
 
+
+    -- strip sort type symbol from skill_name
+    skill_name = trim(skill_name)
+    sort_type = skill_name:match("[<>]$")
+
+    if sort_type then
+        skill_name = skill_name:sub(1, -2)
+        skill_name = trim(skill_name)
+    end
 
     -- select or build skill list
     if (skill_name == "mage") then
@@ -275,7 +285,11 @@ local function skillInfo(args)
     end
 
     -- sort and print skill list
-    table.sort(skill_list, function (k1,k2) return k1.count > k2.count end)
+    if (sort_type == ">") then
+        table.sort(skill_list, function (k1,k2) return k1.count < k2.count end)
+    else
+        table.sort(skill_list, function (k1,k2) return k1.count > k2.count end)
+    end
     for i,v in ipairs(skill_list) do
 
         if v.count > 0 then
@@ -299,31 +313,6 @@ local function skillInfo(args)
         end
     end
 
-
---[[
-
-    local result        = getSkill(args)
-	if result == -1 then
-		cecho("<red>ERROR: Unknown skill - "..skill_name.."\n")
-		return
-	end
-
-	local count = tonumber(result.count)
-	local level = imp2lvl(count)
-	local nextLevel = level.next_level
-	local output = " ("..count..") - "..level.abbr
-
-	if nextLevel ~= nil then
-	    tilNext = level.next_level.min - count
-	    output = output.." ("..tilNext.." / "..nextLevel.abbr..")"
-	end
-
-    if type == "share" then
-        send("ooc "..who..": "..result.skill..output.."\n")
-    else
-        cecho("<yellow>"..who..": "..result.skill..output.."\n")
-    end
---]]
 end
 
 

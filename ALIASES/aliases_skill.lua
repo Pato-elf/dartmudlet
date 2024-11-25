@@ -34,7 +34,7 @@ local function setup(args)
 
 	--alias for skill information
 	tempAliases.SkillInfo =
-	tempAlias('^\\/info ([\\w]+) ([A-Za-z_#\\*\\-\' ]+)',
+	tempAlias('^\\/info ([\\w]+) ([A-Za-z_#<>\\*\\-\' ]+)',
 		[[
 			local who           = matches[2]
 			who                 = (who:gsub("^%l", string.upper))
@@ -49,7 +49,7 @@ local function setup(args)
 
     --alias for sharing skill information
 	tempAliases.ShareSkill =
-	tempAlias('^\\/share ([\\w]+) ([A-Za-z_#\\*\\-\' ]+)',
+	tempAlias('^\\/share ([\\w]+) ([A-Za-z_#<>\\*\\-\' ]+)',
 		[[
 			local who           = matches[2]
 			who                 = (who:gsub("^%l", string.upper))

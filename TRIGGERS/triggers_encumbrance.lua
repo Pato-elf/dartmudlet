@@ -1,38 +1,40 @@
-local Encumbrance = {}
+local Encumbrance   = {}
+local triggers      = {}
 
-local triggers = {}
 
 local function setup(args)
-  local tempTriggers = {}
+    local tempTriggers = {}
 
-  tempTriggers.Encumbrance =
-    tempRegexTrigger("^(?:> )*Encumbrance   : (.+)"
-                     ,[[
-                        local encumbrance = matches[2]
-                        local arguments = {encumbrance = encumbrance}
+    tempTriggers.Encumbrance =
+        tempRegexTrigger("^(?:> )*Encumbrance   : (.+)"
+        ,[[
+            local encumbrance = matches[2]
+            local arguments = {encumbrance = encumbrance}
+            Events.raiseEvent("encumbranceEvent", arguments)
+        ]])
 
-                        Events.raiseEvent("encumbranceEvent", arguments)
-                      ]])
-
-  triggers = tempTriggers
+    triggers = tempTriggers
 end
 
+
+
 local function unsetup(args)
-  for i,v in pairs(triggers) do
-    killTrigger(v)
-  end
-  triggers = {}
+    for i,v in pairs(triggers) do
+        killTrigger(v)
+    end
+    triggers = {}
 end
 
 local function resetup(args)
-  unsetup(args)
-  setup(args)
+    unsetup(args)
+    setup(args)
 end
 
+
 Encumbrance = {
-  setup = setup
-  ,unsetup = unsetup
-  ,resetup = resetup
+    setup = setup,
+    unsetup = unsetup,
+    resetup = resetup
 }
 
 return Encumbrance

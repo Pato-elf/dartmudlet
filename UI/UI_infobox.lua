@@ -86,7 +86,7 @@ GUI.containerInfoBox:setStyleSheet([[
 		}, GUI.containerInfoBox)
 
 	GUI.containerThirstBox:setStyleSheet(StyleTextDefault:getCSS())
-	
+
 
 
 	-- CREATE ENCUMBRANCE BOX -> INFO -> TABWINDOW3
@@ -137,7 +137,7 @@ GUI.containerInfoBox:setStyleSheet([[
 
 
 
-    -- CREATE LANGUAGE BOX -> INFO -> TABWINDOW3
+    -- CREATE AIM BOX -> INFO -> TABWINDOW3
 	-------------------------------------------------------
 	GUI.containerAimBox = GUI.containerAimBox or
     Geyser.Label:new({

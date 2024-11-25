@@ -174,7 +174,7 @@ local function showHelpBase(args)
 	cecho(preText.."/aura on|off|scint               - Show aura on screen (default off)\n")
 	cecho(preText.."/conc on|off|bright              - Show concentration on screen (default off)\n")
 	cecho(preText.."/contents on|off                 - Show expanded contents view for containers\n")
-    cecho(preText.."/date <now> <+|-><num><h|d>      - Show game dates for the past, now, or future")
+    cecho(preText.."/date <now> <+|-><num><h|d>      - Show game dates for the past, now, or future\n")
 	cecho(preText.."/levels                          - Display a list of skill levels\n")
 	cecho(preText.."/random <num>                    - Generate a random number between 1 and a number\n")
 	cecho(preText.."/random <value,value,value>      - Pick a random value from a list of values\n")
@@ -398,6 +398,75 @@ end
 
 
 
+-- /help random
+-----------------------------------------------------------
+local function showHelpRandom(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: random\n")
+	cecho(preText.."USAGE: /random <num>\n")
+    cecho(preText.."USAGE: /random <value,value,value>\n")
+    cecho(preText.."\n")
+    cecho(preText.."This command can be used to generate a random number between 1 and a number of\n")
+    cecho(preText.."your choosing to broadcast to the room. It can also be used to pick a random item\n")
+    cecho(preText.."from a list. Some examples:\n")
+    cecho(preText.."\n")
+    cecho(preText.."/random 10                            -- pick a random number between 1 and 10\n")
+    cecho(preText.."/random 100                           -- pick a random number between 1 and 100\n")
+    cecho(preText.."/random apple,orange,banana,peach     -- pick a random item from a list of fruit\n")
+end
+
+
+
+-- /help focus
+-----------------------------------------------------------
+local function showHelpFocus(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: focus\n")
+	cecho(preText.."USAGE: /focus <on|off>\n")
+    cecho(preText.."\n")
+    cecho(preText.."Use this command to show your running focus total in the main window. The focus\n")
+    cecho(preText.."total will automatically update in the channel tab as you use the channelling system\n")
+    cecho(preText.."and the /chan command. Turning this command on will also show the focus total in the\n")
+    cecho(preText.."main window.\n")
+    cecho(preText.."\n")
+    cecho(preText.."(Default setting is OFF)\n")
+end
+
+
+
+-- /help info
+-----------------------------------------------------------
+local function showHelpInfo(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+    --cecho(preText.."\n")
+	cecho(preText.."DARTMUDLET: info, share\n")
+	cecho(preText.."USAGE: /info <name> <skill> [<>]\n")
+    cecho(preText.."USAGE: /share <name> <skill> [<>]\n")
+    cecho(preText.."\n")
+    cecho(preText.."The /info and /share commands will list one or more skills out for you or your pets.\n")
+    cecho(preText.."Info will display skills to the screen and share will OOC share them with the room.\n")
+    cecho(preText.."You can show a single skill, groups of skill types, or partial names for matching.\n")
+    cecho(preText.."These commands function similar to the show skills command available in game. Some\n")
+    cecho(preText.."examples of things you can do with these commands:\n")
+    cecho(preText.."\n")
+    cecho(preText.."/info playername heal_self         -- show info for the player's heal_self skill\n")
+    cecho(preText.."/info playername yellow*           -- show player's skills that start with yellow\n")
+    cecho(preText.."/info petname >                    -- show all a pet's skills in increasing order\n")
+    cecho(preText.."/info playername fighter           -- show player's skills of type 'fighter'\n")
+    cecho(preText.."/share petname channelling         -- share a pet's channelling skill with the room\n")
+    cecho(preText.."/share playername move <           -- share player's 'move' skills in decreasing order\n")
+    cecho(preText.."/share playername *other           -- share player's skills ending in other with room\n")
+    cecho(preText.."\n")
+    cecho(preText.."Valid skill categories are: fighter, mage, thief, crafts, movement (or move)\n")
+end
+
+
+
 -- /help main
 -----------------------------------------------------------
 local function showHelp(args)
@@ -430,6 +499,12 @@ local function showHelp(args)
         showHelpBlock()
     elseif (detail == "date") or (detail == "date now") then
         showHelpDate()
+    elseif (detail == "random") or (detail == "rand") then
+        showHelpRandom()
+    elseif (detail == "focus") or (detail == "focus on") then
+        showHelpFocus()
+    elseif (detail == "share") or (detail == "info") then
+        showHelpInfo()
     end
 
 end
@@ -561,17 +636,18 @@ local function showDate(args)
     (timetype ~= "hours") and
     (timetype ~= "d") and
     (timetype ~= "day") and
-    (timetype ~= "days") then
+    (timetype ~= "days") and
+    (timetype ~= nil) then
         detail = "help"
     end
 
     if (detail == "now") or (detail == "current") or (detail == "present") then
-        print("\n===============================================\n")
-        print("ooc Game date as of now ("..os.date("%Y-%m-%d %H:%M:%S").."):")
-        print("ooc Date(common):   "..date.format(os.time(), 3, "common"))
-        print("ooc Date(Adachian): "..date.format(os.time(), 3, "adachian"))
-        print("ooc Date(Thorpian): "..date.format(os.time(), 3, "thorpian"))
-        print("\n===============================================\n")
+        print("===============================================")
+        print("Game date as of now ("..os.date("%Y-%m-%d %H:%M:%S").."):\n")
+        print("Date(common):   "..date.format(os.time(), 3, "common"))
+        print("Date(Adachian): "..date.format(os.time(), 3, "adachian"))
+        print("Date(Thorpian): "..date.format(os.time(), 3, "thorpian"))
+        print("===============================================")
     elseif (detail == "") or (detail == "help") or ((not direction) or (not timemod) or (not timetype)) then
         cecho("<yellow>USAGE: /date now                -- Show current game dates\n")
         cecho("<yellow>USAGE: /date <+|-><num><h|d>    -- Show game dates in the past or future\n")
@@ -594,21 +670,21 @@ local function showDate(args)
             timetype = "days"
         end
 
-        print("\n===============================================\n")
+        print("===============================================")
 
         if (direction == "-") then
             timetotal = timetotal - timechange
-            print("Game date "..timemod.." "..timetype.." ago ("..os.date("%Y-%m-%d %H:%M:%S",timetotal).."):")
+            print("Game date "..timemod.." "..timetype.." ago ("..os.date("%Y-%m-%d %H:%M:%S",timetotal).."):\n")
         else
             timetotal = timetotal + timechange
-            print("Game date "..timemod.." "..timetype.." from now ("..os.date("%Y-%m-%d %H:%M:%S",timetotal).."):")
+            print("Game date "..timemod.." "..timetype.." from now ("..os.date("%Y-%m-%d %H:%M:%S",timetotal).."):\n")
         end
 
         print("Date(common):   "..date.format(timetotal, 3, "common"))
         print("Date(Adachian): "..date.format(timetotal, 3, "adachian"))
         print("Date(Thorpian): "..date.format(timetotal, 3, "thorpian"))
 
-        print("\n===============================================\n")
+        print("===============================================")
     end
 
 end

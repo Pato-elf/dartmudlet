@@ -195,7 +195,7 @@ end
 local function showHelpLevels(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: levels\n")
 	cecho(preText.."USAGE: /levels\n")
     cecho(preText.."\n")
@@ -210,7 +210,7 @@ end
 local function showHelpWho(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: who\n")
 	cecho(preText.."USAGE: /who <on|off>\n")
     cecho(preText.."\n")
@@ -227,7 +227,7 @@ end
 local function showHelpContents(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: contents\n")
 	cecho(preText.."USAGE: /contents <on|off>\n")
     cecho(preText.."\n")
@@ -246,7 +246,7 @@ end
 local function showHelpAura(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: aura\n")
 	cecho(preText.."USAGE: /aura <on|off|scint>\n")
     cecho(preText.."\n")
@@ -264,7 +264,7 @@ end
 local function showHelpConc(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: conc\n")
 	cecho(preText.."USAGE: /conc <on|off|bright>\n")
     cecho(preText.."\n")
@@ -282,7 +282,7 @@ end
 local function showHelpSetup(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: setup\n")
 	cecho(preText.."USAGE: /setup\n")
     cecho(preText.."\n")
@@ -299,7 +299,7 @@ end
 local function showHelpAnnounce(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: announce\n")
 	cecho(preText.."USAGE: /announce <on|off|brief|verbose>\n")
     cecho(preText.."\n")
@@ -319,7 +319,7 @@ end
 local function showHelpAntispam(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: antispam\n")
 	cecho(preText.."USAGE: /antispam <on|off>\n")
     cecho(preText.."\n")
@@ -337,7 +337,7 @@ end
 local function showHelpFontsize(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: fontsize\n")
 	cecho(preText.."USAGE: /set fontsize <option> <8-16>\n")
     cecho(preText.."\n")
@@ -355,7 +355,7 @@ end
 local function showHelpBlock(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: block, unblock\n")
 	cecho(preText.."USAGE: /block\n")
     cecho(preText.."USAGE: /unblock\n")
@@ -380,7 +380,7 @@ end
 local function showHelpDate(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: date\n")
 	cecho(preText.."USAGE: /date <now>\n")
     cecho(preText.."USAGE: /date <+|-><num><h|d>\n")
@@ -403,7 +403,7 @@ end
 local function showHelpRandom(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: random\n")
 	cecho(preText.."USAGE: /random <num>\n")
     cecho(preText.."USAGE: /random <value,value,value>\n")
@@ -424,7 +424,7 @@ end
 local function showHelpFocus(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: focus\n")
 	cecho(preText.."USAGE: /focus <on|off>\n")
     cecho(preText.."\n")
@@ -443,10 +443,10 @@ end
 local function showHelpInfo(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
 
-    --cecho(preText.."\n")
+
 	cecho(preText.."DARTMUDLET: info, share\n")
-	cecho(preText.."USAGE: /info <name> <skill> [<>]\n")
-    cecho(preText.."USAGE: /share <name> <skill> [<>]\n")
+	cecho(preText.."USAGE: /info <who> <skill> [<>]\n")
+    cecho(preText.."USAGE: /share <who> <skill> [<>]\n")
     cecho(preText.."\n")
     cecho(preText.."The /info and /share commands will list one or more skills out for you or your pets.\n")
     cecho(preText.."Info will display skills to the screen and share will OOC share them with the room.\n")
@@ -455,6 +455,35 @@ local function showHelpInfo(args)
     cecho(preText.."examples of things you can do with these commands:\n")
     cecho(preText.."\n")
     cecho(preText.."/info playername heal_self         -- show info for the player's heal_self skill\n")
+    cecho(preText.."/info playername yellow*           -- show player's skills that start with yellow\n")
+    cecho(preText.."/info petname >                    -- show all a pet's skills in increasing order\n")
+    cecho(preText.."/info playername fighter           -- show player's skills of type 'fighter'\n")
+    cecho(preText.."/share petname channelling         -- share a pet's channelling skill with the room\n")
+    cecho(preText.."/share playername move <           -- share player's 'move' skills in decreasing order\n")
+    cecho(preText.."/share playername *other           -- share player's skills ending in other with room\n")
+    cecho(preText.."\n")
+    cecho(preText.."Valid skill categories are: fighter, mage, thief, crafts, movement (or move)\n")
+end
+
+
+
+-- /help insert, update
+-----------------------------------------------------------
+local function showHelpUpdate(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+
+	cecho(preText.."DARTMUDLET: update, insert\n")
+	cecho(preText.."USAGE: /update <who> <skillname> <num>\n")
+    cecho(preText.."USAGE: /insert <who> <skillname> <num>\n")
+    cecho(preText.."\n")
+    cecho(preText.."The /update command will update an existing skill for you or your pets. The skill\n")
+    cecho(preText.."must already be in the database for it to work.\n")
+    cecho(preText.."The /insert command will add a new skill into the database for you or your pets at\n")
+    cecho(preText.."the initial number you select. Some examples:\n")
+    cecho(preText.."\n")
+    cecho(preText.."/update playername herbalism 100   -- update the player's herbalism skill to 100\n")
+
     cecho(preText.."/info playername yellow*           -- show player's skills that start with yellow\n")
     cecho(preText.."/info petname >                    -- show all a pet's skills in increasing order\n")
     cecho(preText.."/info playername fighter           -- show player's skills of type 'fighter'\n")
@@ -505,6 +534,8 @@ local function showHelp(args)
         showHelpFocus()
     elseif (detail == "share") or (detail == "info") then
         showHelpInfo()
+    elseif (detail == "update") or (detail == "insert") then
+        showHelpUpdate()
     end
 
 end

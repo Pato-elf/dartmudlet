@@ -16,6 +16,16 @@ local function setup(args)
 
 
 
+        tempTriggers.MovementRested =
+        tempRegexTrigger("^(?:> )*(?:Movement      : )?(Well rested\\.)",
+        [[
+            local movement = matches[2]
+            arguments = {movement = movement}
+            Events.raiseEvent("movementEvent", arguments)
+        ]])
+
+
+
     tempTriggers.MovementEpicAdventure =
         tempRegexTrigger("^(?:> )*(?:Movement      : )?(Ready for an epic adventure\\.)",
         [[

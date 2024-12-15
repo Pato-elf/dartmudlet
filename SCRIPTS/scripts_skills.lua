@@ -84,7 +84,8 @@ local skills_fighter = {
     {num = 12,  name = "brawling",          count = 0,  abbr = ""},
     {num = 13,  name = "multiple attacks",  count = 0,  abbr = ""},
     {num = 14,  name = "two-handed hafted", count = 0,  abbr = ""},
-    {num = 15,  name = "two-handed sword",  count = 0,  abbr = ""}
+    {num = 15,  name = "two-handed sword",  count = 0,  abbr = ""},
+    {num = 16,  name = "thrown",            count = 0,  abbr = ""}
 }
 
 

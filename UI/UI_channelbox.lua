@@ -41,6 +41,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 		if not Status.statusChannel then
 			Status.statusChannel = true
 			GUI.containerChannelButton1:setStyleSheet(StyleButtonPaleGreen:getCSS())
+            GUI.containerChannelBox:setSingleTabColor("CHANNEL","blue")
 			echo("ChannelButton1", "<center>CHANNEL ON</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: On\n"})
 			cecho("<yellow>Channel: On\n")
@@ -49,6 +50,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 		else
 			Status.statusChannel = false
 			GUI.containerChannelButton1:setStyleSheet(StyleButtonDarkGrey:getCSS())
+            GUI.containerChannelBox:setSingleTabColor("CHANNEL","blue")
 			echo("ChannelButton1", "<center>CHANNEL OFF</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: Off\n"})
 			cecho("<yellow>Channel: Off\n")
@@ -79,9 +81,9 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 		tempTimer(0.15, function() GUI.containerChannelButton2:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 		Events.raiseEvent("resetPowercastStatsEvent", {input = ""})
 	end
-	
-	
-	
+
+
+
 	-- CREATE CHANNEL BUTTON3 -> CHANNEL -> TABWINDOW2
 	-----------------------------------------------------------
 	GUI.containerChannelButton3 = GUI.containerChannelButton3 or

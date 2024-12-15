@@ -16,6 +16,7 @@ local textToUnBlock = {
 	,".* is surrounded by a shimmering"
 	,".* lets off a real rip-roarer"
 	,".* mind is closed to you"
+    ,".* seems to go all out of focus"
 	,".* spellbooks may be obfuscated"
 	,".* sprays from your"
 	,"A cloud of .* forms above your"
@@ -67,6 +68,7 @@ local textToUnBlock = {
 	,"The spell critically fails"
 	,"The spell fails"
 	,"The spell merges with the wall, and alters"
+    ,"The spell seems to have no effect"
 	,"The talisman .* disintegrates"
 	,"The wall flares up violently"
 	,"The wall of light disappears"
@@ -170,6 +172,7 @@ local textToUnBlock = {
 	,"Your senses adjust"
 	,"Your spellbook shimmers and vanishes"
 	,"Your surroundings disappear"
+    ,"Your vision blurs and feel yourself"
 	,"You've already searched this area"
 }
 

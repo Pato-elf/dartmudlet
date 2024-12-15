@@ -358,7 +358,8 @@ local function checkSettingsTable(args)
 		statusAura VARCHAR(16) DEFAULT "off",
 		statusConc VARCHAR(16) DEFAULT "off",
 		statusContents VARCHAR(16) DEFAULT "on",
-        statusRepeatEcho VARCHAR(16) DEFAULT "off"
+        statusRepeatEcho VARCHAR(16) DEFAULT "off",
+        statusWho VARCHAR(16) DEFAULT "on"
 	);]])
 	local results = dba.query('SELECT id FROM settings')
 	if results.count() == 0 then
@@ -380,6 +381,12 @@ local function checkSettingsTable(args)
         systemMessage("Update SETTINGS table")
 		dba.execute('ALTER TABLE settings ADD COLUMN statusRepeatEcho VARCHAR(16) DEFAULT "off"')
         dba.execute('UPDATE settings SET statusRepeatEcho = "off"')
+	end
+
+    if not temp.statusWho then
+        systemMessage("Update SETTINGS table")
+		dba.execute('ALTER TABLE settings ADD COLUMN statusWho VARCHAR(16) DEFAULT "on"')
+        dba.execute('UPDATE settings SET statusWho = "on"')
 	end
 end
 
@@ -404,6 +411,7 @@ local function load()
 	Status.statusConc = result.statusConc
 	Status.statusContents = result.statusContents
     Status.statusRepeatEcho = result.statusRepeatEcho
+    Status.statusWho = result.statusWho
 
 	GUI.containerChatBox:setFontSize(Status.fontSizeChat)
 	GUI.containerImproveBox:setFontSize(Status.fontSizeImproves)

@@ -107,6 +107,7 @@ Status.statusAntiSpam		= 'off'
 Status.statusAura			= 'off'
 Status.statusConc			= 'off'
 Status.statusContents		= 'on'
+Status.statusWho            = 'on'
 Status.fontSizeChat			= 10
 Status.fontSizeImproves		= 10
 Status.fontSizeMessage		= 10
@@ -162,6 +163,12 @@ local function setVariables()
 
     -- GAG BOX
     Events.raiseEvent("showGagButtonsEvent")
+
+    -- WHO TIMER
+    if (Status.statusWho == 'on') then
+        Events.raiseEvent("whoTimerEvent")
+    end
+
 end
 
 

@@ -319,6 +319,17 @@ end
 
 
 
+--- sets the color for a single tab
+function Adjustable.TabWindow:setSingleTabColor(tabName, color)
+    local funcName = "EMCO:setSingleTabColor(tabName, color)"
+    if not table.contains(self.tabs, tabName) then
+        error("tabName must be an existing tab")
+    end
+    self[tabName].adjLabel:setColor(color)
+end
+
+
+
 -- finds the right position to drop the tab into
 function Adjustable.TabWindow:findPosition(tab)
     local myWindow = Adjustable.TabWindow.currentWindow or self

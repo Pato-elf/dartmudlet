@@ -6,8 +6,9 @@ local aliases       = {}
 local function setup(args)
 	tempAliases = {}
 
+
 	tempAliases.whoOn =
-	tempAlias("^\\/[Ww][Hh][Oo] [Oo][Nn]",
+	tempAlias("^\\/who on",
 		[[
 			local arguments = {}
 			Events.raiseEvent("whoOnEvent", arguments)
@@ -16,11 +17,20 @@ local function setup(args)
 
 
 	tempAliases.whoOff =
-	tempAlias("^\\/[Ww][Hh][Oo] [Oo][Ff][Ff]",
+	tempAlias("^\\/who off",
 		[[
 			local arguments = {}
 			Events.raiseEvent("whoOffEvent", arguments)
 		]])
+
+
+
+    tempAliases.whoHelp =
+    tempAlias("^\\/who help",
+        [[
+            local arguments = {detail = "who"}
+            Events.raiseEvent("showHelpEvent", arguments)
+        ]])
 
 	aliases = tempAliases
 end

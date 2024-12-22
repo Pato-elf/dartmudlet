@@ -127,7 +127,6 @@ Status.languageActive6  = false
 
 -- unsaved language variables
 Status.statusLanguage   = false
-Status.languageCurrent  = 0
 
 
 

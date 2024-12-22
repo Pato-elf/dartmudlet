@@ -228,6 +228,7 @@ local function setLanguageActive()
 
         killTriggers()
         killTimers()
+        send("conc", false)
     else
 
         if not setLanguageType({input = GUI.commandlineLanguage1:getText()}) then

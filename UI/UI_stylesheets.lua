@@ -115,6 +115,22 @@ function loadStylesheets()
 		}
 	]])
 
+    StyleButtonSmallPaleBlue = Geyser.StyleSheet:new([[
+		QLabel{
+			color: black;
+			background-color: #9898FB;
+			margin: 0px;
+            padding-left: -6px;
+			border-width: 2px;
+			border-style: solid;
+			border-color: black;
+			border-radius: 5px;
+			font-size: 14pt;
+			font-family: Bitstream Vera Sans Mono;
+			qproperty-alignment: 'Center';
+		}
+	]])
+
     StyleButtonSmallPaleRed = Geyser.StyleSheet:new([[
 		QLabel{
 			color: black;
@@ -151,6 +167,22 @@ function loadStylesheets()
 		QLabel{
 			color: black;
 			background-color: #D3D3D3;
+			margin: 0px;
+            padding-left: -8px;
+			border-width: 2px;
+			border-style: solid;
+			border-color: black;
+			border-radius: 5px;
+			font-size: 14pt;
+			font-family: Bitstream Vera Sans Mono;
+			qproperty-alignment: 'Center';
+		}
+	]])
+
+    StyleButtonExtraSmallPaleBlue = Geyser.StyleSheet:new([[
+		QLabel{
+			color: black;
+			background-color: #9898FB;
 			margin: 0px;
             padding-left: -8px;
 			border-width: 2px;
@@ -286,6 +318,16 @@ function loadStylesheets()
 				font-size: 14pt;
 				font-family: Bitstream Vera Sans Mono;
 				qproperty-alignment: 'Center';
+		}
+	]])
+
+    StyleHorizontalLine = Geyser.StyleSheet:new([[
+		QLabel{
+			font-size: 13pt;
+			font-family: Bitstream Vera Sans Mono;
+			color: white;
+			background-color: #D3D3D3;
+			margin: 0px 10px 0px 10px;
 		}
 	]])
 

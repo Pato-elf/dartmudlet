@@ -31,6 +31,7 @@ local function createUIConsole()
 	-- TABWINDOW1
 	-------------------------
 	createWhoBox()
+    createLanguageBox()
 	createLevelsBox()
 	createMessageBox()
 
@@ -296,14 +297,14 @@ end
 
 
 
--- update language box
+-- update speak box
 -----------------------------------------------------------
-local function onLanguage(args)
+local function onSpeak(args)
 	local language  = args["detail"]
 
 
-	clearWindow("LanguageBox")
-	cecho("LanguageBox", "<cyan><b>Speak: "..language.."</b>")
+	clearWindow("SpeakBox")
+	cecho("SpeakBox", "<cyan><b>Speak: "..language.."</b>")
 end
 
 
@@ -468,7 +469,7 @@ local function setup(args)
 	Events.addListener("messageEvent", sourceName, onMessage)
 	Events.addListener("concEvent", sourceName, onConc)
 	Events.addListener("auraEvent", sourceName, onAura)
-	Events.addListener("showLanguageEvent", sourceName, onLanguage)
+	Events.addListener("showLanguageEvent", sourceName, onSpeak)
     Events.addListener("showAimEvent", sourceName, onAim)
 end
 

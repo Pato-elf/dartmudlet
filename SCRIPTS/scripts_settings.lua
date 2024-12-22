@@ -417,6 +417,8 @@ local function load()
 	GUI.containerImproveBox:setFontSize(Status.fontSizeImproves)
 	GUI.containerMessageBox:setFontSize(Status.fontSizeMessage)
 	GUI.containerWhoBox:setFontSize(Status.fontSizeWho)
+
+    Events.raiseEvent("whoTimerEvent")
 end
 
 

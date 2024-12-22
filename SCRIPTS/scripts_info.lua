@@ -1,5 +1,5 @@
 Info				= {}
-local versionNumber	= "v1.7.4"
+local versionNumber	= "v1.8"
 local sourceName	= "info"
 local colorHelp		= "yellow"
 local spacerHelp	= "   "
@@ -456,10 +456,10 @@ local function showHelpInfo(args)
     cecho(preText.."\n")
     cecho(preText.."/info playername heal_self         -- show info for the player's heal_self skill\n")
     cecho(preText.."/info playername yellow*           -- show player's skills that start with yellow\n")
-    cecho(preText.."/info petname >                    -- show all a pet's skills in increasing order\n")
+    cecho(preText.."/info petname <                    -- show ALL a pet's skills in decreasing order\n")
     cecho(preText.."/info playername fighter           -- show player's skills of type 'fighter'\n")
     cecho(preText.."/share petname channelling         -- share a pet's channelling skill with the room\n")
-    cecho(preText.."/share playername move <           -- share player's 'move' skills in decreasing order\n")
+    cecho(preText.."/share playername move >           -- share player's 'move' skills in increasing order\n")
     cecho(preText.."/share playername *other           -- share player's skills ending in other with room\n")
     cecho(preText.."\n")
     cecho(preText.."Valid skill categories are: fighter, mage, thief, crafts, movement (or move)\n")

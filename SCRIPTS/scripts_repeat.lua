@@ -403,8 +403,16 @@ local function saveRepeatSettings(args)
     elseif (savetype == "auto") then
         if Status.repeatCurrentDisplay == Status.repeatCurrentActive then
             Status.repeatCurrentActive = 0
+            GUI.tabwindow1:setTabHighlight("REPEAT","REPEAT",false)
+            GUI.tabwindow2:setTabHighlight("REPEAT","REPEAT",false)
+            GUI.tabwindow3:setTabHighlight("REPEAT","REPEAT",false)
+            GUI.tabwindow4:setTabHighlight("REPEAT","REPEAT",false)
         else
             Status.repeatCurrentActive = Status.repeatCurrentDisplay
+            GUI.tabwindow1:setTabHighlight("REPEAT","REPEAT",true)
+            GUI.tabwindow2:setTabHighlight("REPEAT","REPEAT",true)
+            GUI.tabwindow3:setTabHighlight("REPEAT","REPEAT",true)
+            GUI.tabwindow4:setTabHighlight("REPEAT","REPEAT",true)
             send("conc", false)
         end
         Events.raiseEvent("checkRepeatActiveEvent", {target = "auto"})

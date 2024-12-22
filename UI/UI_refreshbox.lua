@@ -44,16 +44,28 @@ echo("RefreshBox", Info.showInProgress())
 		if not Status.statusRefresh then
 			Status.statusRefresh = true
 			GUI.containerRefreshButton1:setStyleSheet(StyleButtonPaleGreen:getCSS())
+
+            GUI.tabwindow1:setTabHighlight("REFRESH","REFRESH",true)
+            GUI.tabwindow2:setTabHighlight("REFRESH","REFRESH",true)
+            GUI.tabwindow3:setTabHighlight("REFRESH","REFRESH",true)
+            GUI.tabwindow4:setTabHighlight("REFRESH","REFRESH",true)
+
 			echo("RefreshButton1", "<center>REFRESH ON</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Refresh: On\n"})
-			cecho("<yellow>Refresh: On\n")
+            systemMessage("Refresh On")
 			send("conc", false)
 		else
 			Status.statusRefresh = false
 			GUI.containerRefreshButton1:setStyleSheet(StyleButtonDarkGrey:getCSS())
+
+            GUI.tabwindow1:setTabHighlight("REFRESH","REFRESH",false)
+            GUI.tabwindow2:setTabHighlight("REFRESH","REFRESH",false)
+            GUI.tabwindow3:setTabHighlight("REFRESH","REFRESH",false)
+            GUI.tabwindow4:setTabHighlight("REFRESH","REFRESH",false)
+
 			echo("RefreshButton1", "<center>REFRESH OFF</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Refresh: Off\n"})
-			cecho("<yellow>Refresh: Off\n")
+            systemMessage("Refresh Off")
 		end
 	end
 

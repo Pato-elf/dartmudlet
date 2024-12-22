@@ -41,19 +41,29 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 		if not Status.statusChannel then
 			Status.statusChannel = true
 			GUI.containerChannelButton1:setStyleSheet(StyleButtonPaleGreen:getCSS())
-            GUI.containerChannelBox:setSingleTabColor("CHANNEL","blue")
+
+            GUI.tabwindow1:setTabHighlight("CHANNEL","CHANNEL",true)
+            GUI.tabwindow2:setTabHighlight("CHANNEL","CHANNEL",true)
+            GUI.tabwindow3:setTabHighlight("CHANNEL","CHANNEL",true)
+            GUI.tabwindow4:setTabHighlight("CHANNEL","CHANNEL",true)
+
 			echo("ChannelButton1", "<center>CHANNEL ON</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: On\n"})
-			cecho("<yellow>Channel: On\n")
+            systemMessage("Channel On")
 			Status.powercastPauseisActive = false
 			send("conc", false)
 		else
 			Status.statusChannel = false
 			GUI.containerChannelButton1:setStyleSheet(StyleButtonDarkGrey:getCSS())
-            GUI.containerChannelBox:setSingleTabColor("CHANNEL","blue")
+
+            GUI.tabwindow1:setTabHighlight("CHANNEL","CHANNEL",false)
+            GUI.tabwindow2:setTabHighlight("CHANNEL","CHANNEL",false)
+            GUI.tabwindow3:setTabHighlight("CHANNEL","CHANNEL",false)
+            GUI.tabwindow4:setTabHighlight("CHANNEL","CHANNEL",false)
+
 			echo("ChannelButton1", "<center>CHANNEL OFF</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: Off\n"})
-			cecho("<yellow>Channel: Off\n")
+            systemMessage("Channel Off")
 		end
 	end
 

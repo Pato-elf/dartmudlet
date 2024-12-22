@@ -8,6 +8,8 @@ Tabs                    = {}
 Adjustable              = Adjustable or {}
 Adjustable.TabWindow    = Adjustable.TabWindow or Geyser.Container:new({name = "AdjustableTabWindowClass"})
 local tab_pos           = nil
+local colorRegular      = "white"
+local colorHighlight    = "red"
 
 
 function Adjustable.TabWindow:createBaseContainers()
@@ -18,41 +20,41 @@ function Adjustable.TabWindow:createBaseContainers()
         height = self.tabBarHeight,
     },self)
     self.tabBar:setStyleSheet(self.tabBarStyle)
-    
+
     self.header = self.header or Geyser.HBox:new({
         name = self.name.."header",
         x = 0, y = 0,
         width = "100%",
         height = "100%",
     },self.tabBar)
-    
+
     self.overlay = self.overlay or Geyser.Label:new({
         name = self.name.."overlay",
         x = 0, y = 0,
         width = "100%",
         height = "100%",
     },self.tabBar)
-    
+
     self.overlay:setStyleSheet(self.overlayStyle)
     self.overlay:setMoveCallback(function(event) self:onOverlayMove(event) end)
     self.overlay:setOnLeave(function(event) self:onOverlayLeave(event) end)
     self.overlay:setClickCallback(function(event) self:onOverlayClick(event) end)
     self.overlay:hide()
-    
+
     self.footerContainer = self.footerContainer or Geyser.Container:new({
         name = self.name.."footerContainer",
         x = 0, y = self.tabBarHeight,
         width = "100%",
         height = "-0",
     },self)
-    
+
     self.footer = self.footer or Geyser.Label:new({
         name = self.name.."footer",
         x = 0, y = self.gap,
         width = "100%",
         height = "-0",
     },self.footerContainer)
-    
+
     self.footer:setStyleSheet(self.footerStyle)
 end
 
@@ -96,6 +98,7 @@ function Adjustable.TabWindow:createTabs()
             autoSave = false,
             autoLoad = false,
             raiseOnClick = false,
+            highlighted = false,
             adjLabelstyle = self.inactiveTabStyle,
             titleTxtColor = self.tabTxtColor
             
@@ -315,17 +318,6 @@ function Adjustable.TabWindow:setSingleTabFont(tabName, font)
         error("tabName must be an existing tab")
     end
     self[tabName].adjLabel:setFont(font)
-end
-
-
-
---- sets the color for a single tab
-function Adjustable.TabWindow:setSingleTabColor(tabName, color)
-    local funcName = "EMCO:setSingleTabColor(tabName, color)"
-    if not table.contains(self.tabs, tabName) then
-        error("tabName must be an existing tab")
-    end
-    self[tabName].adjLabel:setColor(color)
 end
 
 
@@ -584,6 +576,8 @@ function Adjustable.TabWindow:onMinimizeClick(tab)
     self:restoreTab(tab, value)
 end
 
+
+
 -- activates the tab tab (doesn't deactivate the previous tab)
 -- @see Adjustable.TabWindow:deactivateTab()
 function Adjustable.TabWindow:activateTab(tab)
@@ -591,21 +585,42 @@ function Adjustable.TabWindow:activateTab(tab)
     tab = self[tab] and tab or self.tabs[1]
     self.current = tab
     if self.current then
-        self[tab].adjLabelstyle = self.activeTabStyle
-        self[tab].adjLabel:setStyleSheet(self.activeTabStyle)
+
+        ----------------------------------------------------------------
+        if not self[tab].highlighted then
+            self[tab].adjLabelstyle = self.activeTabStyle
+            self[tab].adjLabel:setStyleSheet(self.activeTabStyle)
+        else
+            self[tab].adjLabelstyle = self.activeTabStyle2
+            self[tab].adjLabel:setStyleSheet(self.activeTabStyle2)
+        end
         self[self.current.."center"]:show()
     end
     self:raiseAll()
 end
 
+
+
 -- deactivates and hides the current active tab
 function Adjustable.TabWindow:deactivateTab()
-    if self.current and self[self.current] then  
-        self[self.current].adjLabelstyle = self.inactiveTabStyle
-        self[self.current].adjLabel:setStyleSheet(self.inactiveTabStyle)
+    if self.current and self[self.current] then
+
+        ----------------------------------------------------------------
+        if not self[self.current].highlighted then
+            self[self.current].adjLabelstyle = self.inactiveTabStyle
+            self[self.current].adjLabel:setStyleSheet(self.inactiveTabStyle)
+        else
+            self[self.current].adjLabelstyle = self.inactiveTabStyle2
+            self[self.current].adjLabel:setStyleSheet(self.inactiveTabStyle2)
+        end
+
+        --self[self.current].adjLabelstyle = self.inactiveTabStyle
+        --self[self.current].adjLabel:setStyleSheet(self.inactiveTabStyle)
         self[self.current.."center"]:hide()
     end
 end
+
+
 
 -- handles click event on tab
 function Adjustable.TabWindow:onClick(tab, event)
@@ -626,9 +641,14 @@ function Adjustable.TabWindow:onClick(tab, event)
         self[tab].minimizeLabel:hide()
         Adjustable.TabWindow.clicked = true
         Adjustable.TabWindow.clickedTab = self[tab]
-        self[tab].adjLabel:echo(self[tab].tabText, "nocolor", "c")
+        ----------------------------------------------------------------
+        if not self[tab].highlighted then
+            self[tab].adjLabel:echo(self[tab].tabText, "nocolor", "c")
+        else
+            self[tab].adjLabel:echo(self[tab].tabText, "red", "c")
+        end
     end
-    
+
     if self[tab].floating then
         self[tab]:onClick(self[tab].adjLabel, event)
     end
@@ -637,6 +657,8 @@ function Adjustable.TabWindow:onClick(tab, event)
         self[tab].adjLabel:raise(false)
     end
 end
+
+
 
 -- handles double click event on getAreaTable
 -- activates the tab overlay
@@ -847,6 +869,8 @@ function Adjustable.TabWindow:onRelease(tab, event, position)
     tab_pos = nil
 end
 
+
+
 -- change the text a tab displays
 function Adjustable.TabWindow:setTabText(which, text)
     assert(type(which) == "string" or type(which) == "number", "setTabText: bad argument #1 type (tab name/position as string or number expected, got "..type(which).."!)")
@@ -854,7 +878,7 @@ function Adjustable.TabWindow:setTabText(which, text)
     if not (type(which) == "number" and which <= #self.tabs) then
         which = table.index_of(self.tabs, which)
     end
-    
+
     if which then
         self[self.tabs[which]]:setTitle("")
         self[self.tabs[which]].titleText = "&nbsp;&nbsp;"..text
@@ -865,6 +889,51 @@ function Adjustable.TabWindow:setTabText(which, text)
     end
     return nil, "setTabText: Couldn't find tab to set a new text"
 end
+
+
+
+
+
+
+
+
+-- change the text a tab displays
+function Adjustable.TabWindow:setTabHighlight(which, text, detail)
+    assert(type(which) == "string" or type(which) == "number", "setTabText: bad argument #1 type (tab name/position as string or number expected, got "..type(which).."!)")
+    assert(type(text) == "string", "setTabText: bad argument #2 type (tab text as string expected, got "..type(text).."!)")
+    if not (type(which) == "number" and which <= #self.tabs) then
+        which = table.index_of(self.tabs, which)
+    end
+
+    if which then
+        self[self.tabs[which]]:setTitle("")
+        self[self.tabs[which]].titleText = "&nbsp;&nbsp;"..text
+        self[self.tabs[which]].tabText = text
+        --self[self.tabs[which]].adjLabel:echo(text, "nocolor", "c")
+        --self[self.tabs[which]].adjLabel:setFgColor(color)
+        --self[self.tabs[which]].activeTabFGColor = color
+        --self[self.tabs[which]].inactiveTabFGColor = color
+        --self[self.tabs[which]].tabTxtColor = color
+        --self[self.tabs[which]].adjLabel:echo(text, color, "c")
+        --self.activeTabStyle = self.activeTabStyle2
+        --self.inactiveTabStyle = self.inactiveTabStyle2
+        --self[self.tabs[which]].adjLabel:setStyleSheet(self.inactiveTabStyle2)
+        tempcolor = ""
+        self[self.tabs[which]].highlighted = detail
+        if not self[self.tabs[which]].highlighted then
+            tempcolor = colorRegular
+        else
+            tempcolor = colorHighlight
+        end
+        self[self.tabs[which]].adjLabel:echo(text, tempcolor, "c")
+
+        setTabToolTip(self[self.tabs[which]])
+        return true
+    end
+    return nil, "setTabText: Couldn't find tab to set a new text"
+end
+
+
 
 -- removes a tab (this won't be saved)
 function Adjustable.TabWindow:removeTab(which)
@@ -1343,6 +1412,8 @@ function Adjustable.TabWindow:new(cons, container)
     border-radius: 10px;
     margin: 5px;
     ]]
+   
+    
     
     me.inactiveTabStyle = me.inactiveTabStyle or [[QLabel::hover{
         background-color: ]]..me.activeTabBGColor..[[;
@@ -1363,7 +1434,52 @@ function Adjustable.TabWindow:new(cons, container)
         qproperty-alignment: 'AlignVCenter';
     }
     ]]
-    
+
+
+
+    me.inactiveTabStyle1 = me.inactiveTabStyle1 or [[QLabel::hover{
+        background-color: ]]..me.activeTabBGColor..[[;
+        color: ]]..me.tabTxtColor..[[;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        margin-right: 1px;
+        margin-left: 1px;
+        qproperty-alignment: 'AlignVCenter';
+    }
+    QLabel::!hover{
+        background-color: ]]..me.inactiveTabBGColor..[[;
+        color: ]]..me.tabTxtColor..[[;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        margin-right: 1px;
+        margin-left: 1px;
+        qproperty-alignment: 'AlignVCenter';
+    }
+    ]]
+
+
+
+    me.inactiveTabStyle2 = me.inactiveTabStyle2 or [[QLabel::hover{
+        background-color: ]]..me.activeTabBGColor..[[;
+        color: ]]..colorHighlight..[[;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        margin-right: 1px;
+        margin-left: 1px;
+        qproperty-alignment: 'AlignVCenter';
+    }
+    QLabel::!hover{
+        background-color: ]]..me.inactiveTabBGColor..[[;
+        color: ]]..colorHighlight..[[;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        margin-right: 1px;
+        margin-left: 1px;
+        qproperty-alignment: 'AlignVCenter';
+    }
+    ]]
+
+
     me.activeTabStyle = me.activeTabStyle or [[
     background-color: ]]..me.activeTabBGColor..[[;
     color: ]]..me.tabTxtColor..[[;
@@ -1373,7 +1489,33 @@ function Adjustable.TabWindow:new(cons, container)
     margin-left: 1px;
     qproperty-alignment: 'AlignVCenter';
     ]]
-    
+
+
+
+    me.activeTabStyle1 = me.activeTabStyle1 or [[
+        background-color: ]]..me.activeTabBGColor..[[;
+        color: red;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        margin-right: 1px;
+        margin-left: 1px;
+        qproperty-alignment: 'AlignVCenter';
+        ]]
+
+
+
+        me.activeTabStyle2 = me.activeTabStyle2 or [[
+        background-color: ]]..me.activeTabBGColor..[[;
+        color: ]]..colorHighlight..[[;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        margin-right: 1px;
+        margin-left: 1px;
+        qproperty-alignment: 'AlignVCenter';
+        ]]
+
+
+
     me.chosenTabStyle = me.chosenTabStyle or [[
     background-color: rgba(255,30,0,60%);
     border-top-left-radius: 10px;

@@ -1,5 +1,7 @@
 infobox = {}
 
+
+
 function createInfoBox()
 
 -- CREATE INFO BOX -> TABWINDOW3
@@ -153,11 +155,11 @@ GUI.containerInfoBox:setStyleSheet([[
 
 
 
-	-- CREATE LANGUAGE BOX -> INFO -> TABWINDOW3
+	-- CREATE SPEAK BOX -> INFO -> TABWINDOW3
 	-------------------------------------------------------
-	GUI.containerLanguageBox = GUI.containerLanguageBox or
+	GUI.containerSpeakBox = GUI.containerSpeakBox or
 		Geyser.Label:new({
-			name = "LanguageBox",
+			name = "SpeakBox",
 			x = -235, y = 127,
 			fontSize = 11,
 			width = 235,
@@ -165,7 +167,7 @@ GUI.containerInfoBox:setStyleSheet([[
 			color = "black"
 		}, GUI.containerInfoBox)
 
-	GUI.containerLanguageBox:setStyleSheet(StyleTextDefault:getCSS())
+	GUI.containerSpeakBox:setStyleSheet(StyleTextDefault:getCSS())
 
 
 

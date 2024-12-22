@@ -375,8 +375,8 @@ local function increaseSkill(args)
 				Events.raiseEvent("shownSkillEvent", args)
 			]])
 
-		send("show skills "..skill_name, false) --PATO
-		tempTimer(10, [[disableTrigger(]]..shownSkill..[[)]])
+		send("show skills "..skill_name, false)
+		tempTimer(5, [[disableTrigger(]]..shownSkill..[[)]])
 	end
 
 	return count

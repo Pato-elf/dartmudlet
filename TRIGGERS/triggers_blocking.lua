@@ -120,7 +120,8 @@ local textToUnBlock = {
     ,"You gaze deeply into"
 	,"You grow in size"
 	,"You have to be holding the"
-	,"You have written"
+	--,"You have written"
+    --,"As you inscribe the"
 	,"You (heal|restore)"
 	,"You hear a soothing"
 	,"You (imploded|knocked|melted|pummeled)"
@@ -152,7 +153,7 @@ local textToUnBlock = {
 	,"You zap"
 	,"Your .* begins to manifest its aura"
 	,"Your .* bursts"
-	,"Your (\\w+) disappears" --
+	,"Your (\\w+) disappears"
 	,"Your .* feels"
 	,"Your .* is wreathed"
 	,"Your .* return to normal"
@@ -191,7 +192,11 @@ local function setup(args)
                 if not (Status.blockType == 'inscribe') then 
                     Status.blockType = ''
 				    Events.raiseEvent("unblockEvent", arguments)
-                elseif not (string.find(text, "mist") or string.find(text, "gusak")) then
+
+                elseif not
+                string.find(text, "mist") and not
+                string.find(text, "gusak") or
+                string.find(text, "missing mist") then
                     Status.blockType = ''
                     Events.raiseEvent("unblockEvent", arguments)
                 end

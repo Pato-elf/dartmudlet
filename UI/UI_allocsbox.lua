@@ -55,7 +55,7 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	}, GUI.containerAllocsBox)
 
 	GUI.commandlineAllocs1:setStyleSheet(StyleCommandLine:getCSS())
-	
+
 	GUI.commandlineAllocs1:setAction(
 	function(command)
 		Events.raiseEvent("setAllocNameEvent", {save = true, input = command})
@@ -1178,9 +1178,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.textboxAllocs2:setStyleSheet(StyleTextBlue:getCSS())
 	cecho("textboxAllocs2", "<yellow>B")
 	GUI.textboxAllocs2:setToolTip("Bonus - how hard you try to hit",Status.tooltipTime)
-	
-	
-	
+
+
+
 	-- CREATE TEXTBOX3 -> ALLOCS -> TABWINDOW2
 	-------------------------------------------------------
 	GUI.textboxAllocs3 = GUI.textboxAllocs3 or
@@ -1196,9 +1196,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.textboxAllocs3:setStyleSheet(StyleTextBlue:getCSS())
 	cecho("textboxAllocs3", "<yellow>D")
 	GUI.textboxAllocs3:setToolTip("Daring - how wildly you fight",Status.tooltipTime)
-	
-	
-	
+
+
+
 	-- CREATE TEXTBOX4 -> ALLOCS -> TABWINDOW2
 	-------------------------------------------------------
 	GUI.textboxAllocs4 = GUI.textboxAllocs4 or
@@ -1214,9 +1214,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.textboxAllocs4:setStyleSheet(StyleTextBlue:getCSS())
 	cecho("textboxAllocs4", "<yellow>S")
 	GUI.textboxAllocs4:setToolTip("Speed - how fast you swing, must be non-zero to attack",Status.tooltipTime)
-	
-	
-	
+
+
+
 	-- CREATE TEXTBOX5 -> ALLOCS -> TABWINDOW2
 	-------------------------------------------------------
 	GUI.textboxAllocs5 = GUI.textboxAllocs5 or
@@ -1232,9 +1232,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.textboxAllocs5:setStyleSheet(StyleTextBlue:getCSS())
 	cecho("textboxAllocs5", "<yellow>A")
 	GUI.textboxAllocs5:setToolTip("Aiming - You must 'set aim to (part)' for aiming to be effective",Status.tooltipTime)
-	
-	
-	
+
+
+
 	-- CREATE TEXTBOX6 -> ALLOCS -> TABWINDOW2
 	-------------------------------------------------------
 	GUI.textboxAllocs6 = GUI.textboxAllocs6 or
@@ -1250,9 +1250,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.textboxAllocs6:setStyleSheet(StyleTextBlue:getCSS())
 	cecho("textboxAllocs6", "<yellow>P")
 	GUI.textboxAllocs6:setToolTip("Parry - Deflecting blows",Status.tooltipTime)
-	
-	
-	
+
+
+
 	-- CREATE TEXTBOX7 -> ALLOCS -> TABWINDOW2
 	-------------------------------------------------------
 	GUI.textboxAllocs7 = GUI.textboxAllocs7 or
@@ -1268,9 +1268,9 @@ GUI.containerAllocsBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.textboxAllocs7:setStyleSheet(StyleTextBlue:getCSS())
 	cecho("textboxAllocs7", "<yellow>C")
 	GUI.textboxAllocs7:setToolTip("Control - Avoiding attacks",Status.tooltipTime)
-	
-	
-	
+
+
+
 	-- CREATE TEXTBOX8 -> ALLOCS -> TABWINDOW2
 	-------------------------------------------------------
 	GUI.textboxAllocs8 = GUI.textboxAllocs8 or

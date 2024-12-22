@@ -79,6 +79,58 @@ Status.gagTrainers      = false
 
 
 
+-- language system variables
+-----------------------------------------------------------
+Status.languageType     = 'common'
+Status.languageInterval = 10
+Status.languageTitle1   = 'Bardic Songs'
+Status.languageFile1    = 'language_bardic_songs.txt'
+Status.languageSize1    = 262
+Status.languageLine1    = 0
+Status.languageTotal1   = 0
+Status.languageActive1  = false
+
+Status.languageTitle2   = 'Beowulf'
+Status.languageFile2    = 'language_beowulf_1910.txt'
+Status.languageSize2    = 3193
+Status.languageLine2    = 0
+Status.languageTotal2   = 0
+Status.languageActive2  = false
+
+Status.languageTitle3   = 'Medieval Proverbs'
+Status.languageFile3    = 'language_medieval_proverbs.txt'
+Status.languageSize3    = 226
+Status.languageLine3    = 0
+Status.languageTotal3   = 0
+Status.languageActive3  = false
+
+Status.languageTitle4   = 'Nature Metaphors'
+Status.languageFile4    = 'language_nature_metaphors.txt'
+Status.languageSize4    = 225
+Status.languageLine4    = 0
+Status.languageTotal4   = 0
+Status.languageActive4  = false
+
+Status.languageTitle5   = 'Rituals and Oaths'
+Status.languageFile5    = 'language_rituals_oaths.txt'
+Status.languageSize5    = 399
+Status.languageLine5    = 0
+Status.languageTotal5   = 0
+Status.languageActive5  = false
+
+Status.languageTitle6   = 'The Squire\'s Tale'
+Status.languageFile6    = 'language_squires_tale.txt'
+Status.languageSize6    = 664
+Status.languageLine6    = 0
+Status.languageTotal6   = 0
+Status.languageActive6  = false
+
+-- unsaved language variables
+Status.statusLanguage   = false
+Status.languageCurrent  = 0
+
+
+
 -- refresh system variables
 -----------------------------------------------------------
 Status.refreshPower1	= 50
@@ -164,11 +216,10 @@ local function setVariables()
     -- GAG BOX
     Events.raiseEvent("showGagButtonsEvent")
 
-    -- WHO TIMER
-    if (Status.statusWho == 'on') then
-        Events.raiseEvent("whoTimerEvent")
-    end
-
+    -- LANGUAGE BOX
+    Events.raiseEvent("showLanguageButtonsEvent")
+    Events.raiseEvent("showLanguageTypeEvent")
+    Events.raiseEvent("showLanguageStatsEvent")
 end
 
 

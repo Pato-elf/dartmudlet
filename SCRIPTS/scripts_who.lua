@@ -18,12 +18,14 @@ end
 -----------------------------------------------------------
 local function loadTimers(args)
 
-    send("who")
-    timers.who = tempTimer(300,
-		[[
-			local args = {}
-			Events.raiseEvent("whoTimerEvent", args)
-		]])
+        send("who")
+        if (Status.statusWho == 'on') then
+            timers.who = tempTimer(300,
+	    	    [[
+	    		    local args = {}
+	    		    Events.raiseEvent("whoTimerEvent", args)
+	    	    ]])
+        end
 end
 
 

@@ -1,15 +1,15 @@
 local Alignment = {}
+local triggers  = {}
 
-local triggers = {}
 
 local function setup(args)
-  local tempTriggers = {}
+    local tempTriggers = {}
 
   tempTriggers.Alignment =
     tempRegexTrigger("^(?:> )*You (\\w+) believe in (\\w+)\\."
                      ,[[
-                        local conviction = matches[2]
-                        local alignment = matches[3]
+                        local conviction = matches[2] or ""
+                        local alignment = matches[3] or ""
                         local arguments  = {conviction = conviction
                                             ,alignment = alignment}
 

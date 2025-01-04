@@ -1,5 +1,6 @@
 The golden crown, the silver sword, our voices rise with every chord.
 The moon is high, the stars our guide, and we will sail until the tide.
+A nimble thief, both sharp and keen, hide in shadows, remain unseen.
 The fair ranger, with cheek so bright, got lost in woods during broad daylight.
 Sing of the hero, brave and bold, whose name was sung in tales of old.
 A barmaid's smile, glint in her eye, steals your heart with just a sigh.
@@ -13,8 +14,10 @@ Winds may howl, the skies may cry, but the heart of heroes will never die.
 The mage cast magic spells so grand, got careless and lost her hand.
 In the valley, beneath the hill, the song of love is ever still.
 The brewer he's so full with cheer, he's also full with pints of beer.
+In the king's grand hall, tales are spun, of battles fought and spoils won.
+Gnome so brave, with tiny sword, attacked the cat, but got ignored.
 The sword is sharp, the heart is true, the battle won, the war is through.
-The village healer, known for grace, perhaps she could fixen your face.
+The village healer, known for grace, perhaps she could fix then your face.
 Let the rivers sing their song, the nights are long, the days are gone.
 The fighter brave, the battle near, forgot her sword, so used a spear.
 By the moon and by the sun, we will ride until the war is won.
@@ -22,11 +25,15 @@ Mage's spells, so quick and bright, shoots sparks from hands for crowd's delight
 In the hall where shadows fall, our brave heroes answer the call.
 A maiden fair with eyes so bright, shines like the moon on starry night.
 The road is long, the journey far, we follow the light of evening star.
+The ogre's chair, made of wood, snapped in two, that's why he stood.
 In the royal halls, the princess waits, her future sealed by fate's own gates.
 The gold it shines, the gold it gleams, the treasure holds our fondest dreams.
+She bakes bread to town's delight, so warm and sweet with every bite.
 The halfling cook with pot of stew, served it up then ate some too.
+A hunter's horn, the call so clear, shakes the fox with sudden fear.
 The ancient oak, the mountain tall, they stand through time and hear our call.
 The fire's glow, the wind's soft sigh, these are the songs that never die.
+A farmer's plow, chipped and worn, cuts the earth at break of morn.
 The city bell so tall and bright, fell to the stone and gave a fright.
 When the battle ends and dust does fall, we sing the songs that tell it all.
 O'er the hills and through the glen, we sing of love, of loss, of men.
@@ -47,11 +54,13 @@ The hero stood with sword in hand, then got his boots stuck in the sand.
 Through the vale and over the hills, we sing of hope and hearts that thrill.
 From the towers, high and grand, comes the song of the steadfast band.
 The bard was merry, he cried out proud, lost his head when he got too loud.
+Centaur hooves, more quick than feet, danced a jig on cobbled street.
 The falcon flies, the eagle soars, our song is heard on distant shores.
 In the hall of stone and flame, the minstrel sings the hero's name.
 The dawn is near, the night is long, but our hearts remain true and strong.
 By moonlit path and starlit glen, we'll walk together once again.
 The knight may fall, the archer die, but the songs of old will never lie.
+A sailor's tales, of lands afar, turned out to be the local bar.
 The wind may weep, the sun may fade, but songs of heroes will never trade.
 The ocean's roar, the mountain's song, they echo in our hearts all along.
 By the riverside, the firelight gleams, and we sing of knights and ancient dreams.
@@ -67,27 +76,34 @@ With every step, with every mile, the bard will sing with heart and smile.
 The skies may darken, the days may dim, but the bard's song remains within.
 Through battles fought and battles won, the song of courage has just begun.
 The horses gallop, the horses race, with hearts untamed and wind to chase.
+Castle guards, so stern and tall, found asleep beside the wall.
 The road is long, the journey wide, but the song of bards will be our guide.
+Thief of night, silent and quick, foiled by a snapping stick.
 The fire's light, the moon's soft glow, these are the tales that we all know.
-Swords will shine and shields will gleam, the bard will sing just like your dream.
+Swords will shine and shields will gleam, the bard will sing just like a dream.
 The wizard's spell it went awry, now he's a frog, and so am I.
 The winds may change, the sky may weep, but songs of past is what we keep.
 Brave knight trains with shield and sword, page he trains with shovel and board.
 The battles fought, the wars now past, our good song echoes at last.
 The king returns to sit his throne, but still we sing of what he's known.
 The hero fell in eastern plains, the wolves did pick through his remains.
+A healer's touch, so soft and kind, can mend the heart and ease the mind.
 The world may end, the skies may fall, but the bard's song will outlast it all.
 The barmaid laughed, the patrons spit, when he bent down his pants they split.
 The battle ends, the night is near, but the song of victory is crystal clear.
+A healer's herbs, both rare and true, sipping draaf for health anew.
 The moonlit path, the starry skies, we sing of heroes, bold and wise.
 The river runs, the mountains rise, and the bard's sweet song never dies.
+Hammer strikes steel red with heat, shapes the sword in steady beat.
 The night may fall, the storm may rage, but the bard's song turns every page.
 The maiden hummed, the maiden sang, all the days til church bells rang.
 Through thick and thin, storm and strife, the bard's sweet song echoes our life.
 The dawn is breaking, the night is gone, but the bard's sweet song carries on.
+A tavern's brew, so strong and bold, makes the crowd quite uncontrolled.
 The feast is over, the fires die, but the bard's song will never lie.
 The baron's clothes, so rich and fair, stolen by a thief with flair.
 The fire's warmth, the earth's embrace, we sing the tale of hero's grace.
+A merchant's wares, fair and fine, from unknown lands where sultans dine.
 The dragon roars, the knight stands tall, trips on his sword and takes a fall.
 The battle fought, the battle won, the bard's sweet song has just begun.
 The fire's glow, the lute's soft sound, we sing of heroes all around.
@@ -112,16 +128,20 @@ The winds of fortune, the winds of war, the bard's sweet song forever more.
 The hearts that weep, the hearts that sing, the bard's song is a living thing.
 Merchant sells with voice so loud, his voice rings out across the crowd.
 The hills are green, the skies are blue, the bard will sing of all that's true.
+A shepherd's crook, a gentle guide, leads the flock by the riverside.
 The princess fair, her crown of gold, her story more than can be told.
 Through days of sunshine, nights of rain, the bard will sing of joy and pain.
+A maiden's favor, tied with care, blew away in a gust of air.
 Through wars of old, and lands untold, the bard's song will never grow cold.
 The baker's pies, so round and warm, she molds the crust with expert form.
 The fire may die, the hearth may fade, but the bard's song will never trade.
+Knight's new shield, gleaming so bright, used to serve the feast that night.
 By the riverside, the ocean wide, the bard will sing, a voice to guide.
 In tavern's glow, where tales are spun, the barmaid laughs and serves the fun.
 Through days of peace and nights of strife, the bard's sweet song fills your life.
 Through every season, through every storm, the bard's song will keep you warm.
 The battle's fierce, the battle's true, the bard's song carries you through.
+A squire's dream, to be a knight, trains from dawn straight to twilight.
 The maiden's hair, the maiden's grace, is like the dawn's soft, golden trace.
 The sea may rise, the winds may roar, but the bard's song will ever soar.
 Cackling witch, with crooked grin, served up soup with fingers thrown in.
@@ -138,11 +158,13 @@ Through the ancient forest, through the wild, the bard's song is free and mild.
 The stars above, the earth below, the bard's sweet song will always glow.
 The halfling feast, it was quite a sight, then they snored throughout the night.
 Through storm and sorrow, joy and cheer, we sing our song for all to hear.
+Princess gown, so fine and neat, tripped her up right off her feet.
 Through valleys deep and mountains tall, voices of the past do to us call.
-The dwarf well armed, was brave and stout. But his pants were inside out.
+The dwarf well armed, was brave and stout, but his pants were inside out.
 Beneath the stars, the campfires gleam, and hero lives within our dream.
 The rivers sing of lands unknown, where once great kings have made their throne.
 The wind it whispers in the night, of battles fought, of love, of light.
+A sailor's song, both bold and free, sings the tales of the open sea.
 The dragon slept, the knight did creep, but could not climb the rocks too steep.
 The ancient oaks stand proud and wise, their branches reach to distant skies.
 Across the sea, beyond the shore, our hearts belong to legends yore.
@@ -168,6 +190,7 @@ The road is long, the journey wild, but we press on with spirits mild.
 By firelight's glow and moon's pale gleam, we sing of heroes lost in dream.
 The guild of thieves, with nimble hands, lost their chest in swampy lands.
 The fields are ripe, the harvest near, we sing of joy, we sing of cheer.
+A witch's cackle, causing fright, echoes through the dead of night.
 The sky is dark, the stars are bright, our voices soar through endless night.
 The eagle flies, the falcon soars, their calls are heard on distant shores.
 She quaffed potions without any care, then she quaffed one and all lost her hair.
@@ -184,9 +207,11 @@ A warrior's heart, a maiden's grace, our song will echo through this place.
 Trees sway soft, the night is near, we sing the song that brings us cheer.
 The night is long, the road is rough, but our sweet song is always enough.
 The knights pursued in shining mail, but rode too slow and lost the trail.
+A merchant's tale, of far-off lands, treasures found and desert sands.
 The moon may wane, the sun may rise, but the bard's sweet song will never die.
 Through deepened love, through tears and pain, our sweet song will still remain.
 The cave winds whisper, dark and cold, tales of riches and legends bold.
+The orc swings his axe, sharp and fine, stuck it in the tavern's sign.
 When the sun does set and shadows fall, the song of the bard is heard by all.
 With every step, with every mile, we wander forth with hearts to smile.
 The battle's won, the land is free, and still we sing of what will be.
@@ -199,16 +224,20 @@ The earth is rich, the sky so wide, we raise our voices with the tide.
 Through the valley, over the hill, we sing of days both bright and still.
 The captain sailed with drunken cheer, crashed the ship into the pier.
 The mountains rise, the valleys fall, the song of time endures us all.
+A knightly quest, brave and bold, seeks the treasure of tales long told.
 The stars are bright, the moon is high, our voices reach up to the sky.
 A road well-travelled, a song well-spun, beneath the moon, we walk as one.
 The knight is brave, the maiden fair, their love lives on through every prayer.
 Through city walls and castle gates, the song of old awaits its fate.
 The wind it sings of journeys long, the tales we tell, our stories strong.
+A baron's feast, the food so fine, celebrates with flowing wine.
 The bard would sing, the rogue would clap, until he walked into a trap.
 The stars will light the darkened way, as bards sing songs, both night and day.
+Two bakers boast of dough so light, ended with a flour fight.
 With every note, with every sound, we find our hearts upon the ground.
 For the group, cook serves the stew, has no ladle so uses his shoe.
 The ocean's vast, the sky is wide, and still the song shall never hide.
+Stable boy, in dung and hay, dreams to sleep in castle one day.
 The banners wave, the drums do sound, as warriors march upon the ground.
 In the forest, deep and wild, the song is sung, both soft and mild.
 Blacksmith's forge, so hot and bright, burned off his beard what a sorry sight.
@@ -216,20 +245,25 @@ The storm may rise, the thunder roll, but still our song will warm the soul.
 Through rolling hills and endless plains, the song of life forever reigns.
 A dragon's breath of fire and flame, the coward knight he runs in shame.
 The moon may fade, the stars may fall, but our song still echoes one and all.
+This brave gnome, adventure in his head, gets lost in his flower bed.
 Through midnight skies and sunlit days, our song will guide you through the haze.
 The mighty river, the endless sea, these are the places we must be.
 Let the rivers rise and the winds blow cold, our sweet songs get never old.
 The bard sang loud, the crowd did cheer, until he tripped and spilled his beer.
 The ogre's stew was full of spice, but it was hardly cooked it was cold as ice.
+An archer's aim, both swift and true, splits the apple, right in two.
 The winds of fate, the winds of change, the bard's song remains, ever strange.
+A queen's decree, both firm and fair, guides the realm with gentle care.
 The heart of the hero, the soul of the land, the bard's song will ever stand.
-The farmer has such a love for bean, brown ones, black ones, and of course green.
+The farmer has such a love for bean, brown ones, black ones, and even green.
 Through the battle and through the fight, our voices carry on through the night.
 Beneath the stars, beneath the sky, we sing of dreams that never die.
 The drunkard threw his dagger high, looked to the sky and lost an eye.
 The banner flies, the battle calls, the song of glory fills the halls.
-The goblin chef tried to serve some stew, tasted so bad the pot ran away too.
+A jester's jest, a merry play, turns the darkest night to day.
+Goblin chef tries to serve some stew, tastes so bad the pot ran away too.
 The seasons turn, the years go by, our song still echoes beneath the sky.
+A falcon's flight, swift and high, cuts a path straight through the sky.
 The princess ran, the princess flew, went so fast she lost her shoe.
 From the hearth, from the field, we sing of all the tales we yield.
 A voice so sweet, a heart so pure, the song of love it shall endure.
@@ -239,24 +273,28 @@ The mountain's peak, the valley's floor, we sing of life forevermore.
 Riding the beach on horse so fine, it bucked me off into the brine.
 The rivers flow, the trees do sway, our song will light the darkest day.
 The eagle flies, the falcon calls, the bard's sweet song echoes through the halls.
-The barmaid's smile was sweet and wide, her hips they swung from side to side.
+Blacksmith hammers, a pattern found, crafting armor with a rhythmic sound.
 The morning sun, the evening star, the bard will sing from near and far.
+A minstrel's tale of battles won, told beneath the setting sun.
 The songs of old, the tales we tell, will echo in the hearts we swell.
 Alchemist to the queen, so wise and grand, made her sick now he has no hand.
 The flames may flicker, the winds may howl, but the bard's song will never scowl.
 For battle's lost, and battle's won, the bards will sing til all is done.
 The storm is loud, the winds are wild, the bard's sweet song consoles the child.
+A merchant's tales, so full of zest, left the crowd quite unimpressed.
 The stars above, the earth below, the song of life will always glow.
 With every breath, with every beat, the bard's sweet song is sure to greet.
 The fire flickers, the embers glow, and tales of old in whispers flow.
 The warrior's heart, the hero's hand, the bards will sing across the land.
+In the village square, the children play, carefree joy in the light of day.
 The wizard studied ancient stones, then cast spells from magic tomes.
 The moon may rise, the sun may set, but the bard's song we won't forget.
+The barmaid's smile was sweet and wide, her hips they swung from side to side.
 Let the winds blow and the rain fall, the bard's sweet song will answer all.
 Battle waits, it will be grand, but first we all must find the band.
 The fields are ripe, the harvest near, we sing of joy, we sing of cheer.
 A dragon's roar, a dragon's flame, the mountains shake when it's untamed.
 Glimmering piles of gold does shine, a wealth that sparkles so divine.
-The knight was brave, sword swung with might, until he tripped and lost the fight.
+The knight was brave, swung sword with might, then he tripped and lost the fight.
 A barmaid fair with golden hair, but could she cook? I wouldn't dare.
 The people's love of king did fade, so he called for a grand parade.

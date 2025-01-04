@@ -85,7 +85,7 @@ Status.languageType     = 'common'
 Status.languageInterval = 10
 Status.languageTitle1   = 'Bardic Songs'
 Status.languageFile1    = 'language_bardic_songs.txt'
-Status.languageSize1    = 262
+Status.languageSize1    = 300
 Status.languageLine1    = 0
 Status.languageTotal1   = 0
 Status.languageActive1  = false
@@ -99,7 +99,7 @@ Status.languageActive2  = false
 
 Status.languageTitle3   = 'Medieval Proverbs'
 Status.languageFile3    = 'language_medieval_proverbs.txt'
-Status.languageSize3    = 226
+Status.languageSize3    = 250
 Status.languageLine3    = 0
 Status.languageTotal3   = 0
 Status.languageActive3  = false
@@ -113,7 +113,7 @@ Status.languageActive4  = false
 
 Status.languageTitle5   = 'Rituals and Oaths'
 Status.languageFile5    = 'language_rituals_oaths.txt'
-Status.languageSize5    = 399
+Status.languageSize5    = 400
 Status.languageLine5    = 0
 Status.languageTotal5   = 0
 Status.languageActive5  = false
@@ -136,9 +136,24 @@ Status.refreshPower1	= 50
 Status.refreshPower2	= 50
 Status.refreshTarget1	= 'targetname'
 Status.refreshTarget2	= 'targetname'
+Status.nudgeisActive = false
+Status.nudgeAll = false
+Status.nudgePower = 50
+Status.nudgeTarget1 = 'targetname'
+Status.nudgeTarget2 = ''
+Status.nudgeTarget3 = ''
+Status.nudgeTarget4 = ''
+Status.nudgeTarget5 = ''
+Status.nudgeTarget6 = ''
+Status.nudgeTarget7 = ''
+Status.nudgeTarget8 = ''
+Status.nudgeTarget9 = ''
+Status.nudgeTarget10 = ''
 
 -- unsaved refresh variables
 Status.statusRefresh	= false
+Status.nudgePause       = false
+Status.nudgeDelay       = 4
 
 
 
@@ -168,6 +183,7 @@ Status.scrollCurrentSpell	= ''
 Status.scrollCurrentPower	= 100
 Status.tooltipTime			= 7
 Status.blockType            = ''
+Status.contentsScrollStand  = false
 
 
 
@@ -198,10 +214,7 @@ local function setVariables()
 	end
 
 	-- REFRESH BOX
-	GUI.containerRefreshCommand1:print(Status.refreshTarget1)
-	GUI.containerRefreshCommand2:print(Status.refreshPower1)
-	GUI.containerRefreshCommand3:print(Status.refreshTarget2)
-	GUI.containerRefreshCommand4:print(Status.refreshPower2)
+    Events.raiseEvent("showRefreshDataEvent")
 
 	-- ALLOCS BOX
 	Allocs.showAllocsCurrentFields(Status.allocCurrentDisplay)

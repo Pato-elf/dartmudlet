@@ -1,9 +1,9 @@
-local Who_Triggers = {}
+local Who_Triggers  = {}
+local triggers      = {}
 
-local triggers = {}
 
 local function setup(args)
-  local tempTriggers = {}
+    local tempTriggers = {}
 
   tempTriggers.whoTitle =
     tempRegexTrigger("^(?:> )*(?: *Name +(?:(?:Idle(?: Time)?)|(?:State)))+"

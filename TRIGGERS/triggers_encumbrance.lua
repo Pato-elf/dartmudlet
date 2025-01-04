@@ -5,9 +5,10 @@ local triggers      = {}
 local function setup(args)
     local tempTriggers = {}
 
+
     tempTriggers.Encumbrance =
-        tempRegexTrigger("^(?:> )*Encumbrance   : (.+)"
-        ,[[
+    tempRegexTrigger("^(?:> )*Encumbrance   : (.+)",
+        [[
             local encumbrance = matches[2]
             local arguments = {encumbrance = encumbrance}
             Events.raiseEvent("encumbranceEvent", arguments)
@@ -25,10 +26,13 @@ local function unsetup(args)
     triggers = {}
 end
 
+
+
 local function resetup(args)
     unsetup(args)
     setup(args)
 end
+
 
 
 Encumbrance = {

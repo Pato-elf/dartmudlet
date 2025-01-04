@@ -6,18 +6,18 @@ local function setup(args)
     local tempTriggers = {}
 
     tempTriggers.SoulAge =
-        tempRegexTrigger("^(?:> )*Your soul's age is: (\\d+) years(?:, (\\d+) months?)? by the (Common|Thorpian) Reckoning",
-            [[
-                local years = matches[2]
-                local months = matches[3]
+    tempRegexTrigger("^(?:> )*Your soul's age is: (\\d+) years(?:, (\\d+) months?)? by the (Common|Thorpian) Reckoning",
+        [[
+            local years = matches[2]
+            local months = matches[3]
 
-                if not months then
-                    months = 0
-                end
+            if not months then
+                months = 0
+            end
 
-                arguments = {years = years, months = months}
-                Events.raiseEvent("SoulAgeEvent", arguments)
-            ]])
+            arguments = {years = years, months = months}
+            Events.raiseEvent("SoulAgeEvent", arguments)
+        ]])
 
     triggers = tempTriggers
 end

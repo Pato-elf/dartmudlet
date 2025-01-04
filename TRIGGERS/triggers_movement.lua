@@ -7,7 +7,7 @@ local function setup(args)
 
 
     tempTriggers.MovementAnything =
-        tempRegexTrigger("^(?:> )*(?:Movement      : )?(Ready for anything!)",
+    tempRegexTrigger("^(?:> )*(?:Movement      : )?(Ready for anything!)",
         [[
             local movement = matches[2]
             arguments = {movement = movement}
@@ -16,8 +16,8 @@ local function setup(args)
 
 
 
-        tempTriggers.MovementRested =
-        tempRegexTrigger("^(?:> )*(?:Movement      : )?(Well rested\\.)",
+    tempTriggers.MovementRested =
+    tempRegexTrigger("^(?:> )*(?:Movement      : )?(Well rested\\.)",
         [[
             local movement = matches[2]
             arguments = {movement = movement}
@@ -27,76 +27,84 @@ local function setup(args)
 
 
     tempTriggers.MovementEpicAdventure =
-        tempRegexTrigger("^(?:> )*(?:Movement      : )?(Ready for an epic adventure\\.)",
+    tempRegexTrigger("^(?:> )*(?:Movement      : )?(Ready for an epic adventure\\.)",
         [[
             local movement = matches[2]
             arguments = {movement = movement}
             Events.raiseEvent("movementEvent", arguments)
         ]])
 
-  tempTriggers.MovementLongTrek =
-      tempRegexTrigger("^(?:> )*(?:Movement      : )?(Ready for a long trek\\.)",
+
+
+    tempTriggers.MovementLongTrek =
+    tempRegexTrigger("^(?:> )*(?:Movement      : )?(Ready for a long trek\\.)",
       [[
-                      local movement = matches[2]
-                      arguments = {movement = movement}
-                      Events.raiseEvent("movementEvent", arguments)
+            local movement = matches[2]
+            arguments = {movement = movement}
+            Events.raiseEvent("movementEvent", arguments)
       ]])
 
-  tempTriggers.MovementHyperBypass =
-      tempRegexTrigger("^(?:> )*(?:Movement      : )?(Who needs a hyperspacial bypass\\?)"
-      , [[
-                          local movement = matches[2]
-                          arguments = {movement = movement}
 
-                          Events.raiseEvent("movementEvent", arguments)
-                        ]])
 
-  tempTriggers.MovementTeleport =
-      tempRegexTrigger("^(?:> )*(?:Movement      : )?(Who needs a teleport spell\\?)"
-      , [[
-                          local movement = matches[2]
-                          arguments = {movement = movement}
+    tempTriggers.MovementHyperBypass =
+    tempRegexTrigger("^(?:> )*(?:Movement      : )?(Who needs a hyperspacial bypass\\?)",
+        [[
+            local movement = matches[2]
+            arguments = {movement = movement}
+            Events.raiseEvent("movementEvent", arguments)
+        ]])
 
-                          Events.raiseEvent("movementEvent", arguments)
-                        ]])
 
-  tempTriggers.MovementHorse =
-      tempRegexTrigger("^(?:> )*(?:Movement      : )?(Who needs a horse\\?)"
-      , [[
-                          local movement = matches[2]
-                          arguments = {movement = movement}
 
-                          Events.raiseEvent("movementEvent", arguments)
-                        ]])
+    tempTriggers.MovementTeleport =
+    tempRegexTrigger("^(?:> )*(?:Movement      : )?(Who needs a teleport spell\\?)",
+        [[
+            local movement = matches[2]
+            arguments = {movement = movement}
+            Events.raiseEvent("movementEvent", arguments)
+        ]])
 
-  tempTriggers.MovementAwhile =
-      tempRegexTrigger("^(?:> )*(?:Movement      : )?(You can travel a while longer\\.)"
-      , [[
-                          local movement = matches[2]
-                          arguments = {movement = movement}
 
-                          Events.raiseEvent("movementEvent", arguments)
-                        ]])
 
-  tempTriggers.StepSpring =
-      tempRegexTrigger("^(?:> )*(?:Movement      : )?(You have spring in your step\\.)"
-      , [[
-                          local movement = matches[2]
-                          arguments = {movement = movement}
+    tempTriggers.MovementHorse =
+    tempRegexTrigger("^(?:> )*(?:Movement      : )?(Who needs a horse\\?)",
+        [[
+            local movement = matches[2]
+            arguments = {movement = movement}
+            Events.raiseEvent("movementEvent", arguments)
+        ]])
 
-                          Events.raiseEvent("movementEvent", arguments)
-                        ]])
 
-  tempTriggers.MovementNotToMuch =
-      tempRegexTrigger("^(?:> )*(?:Movement      : )?(Not too much spring in your step\\.)"
-      , [[
-                          local movement = matches[2]
-                          arguments = {movement = movement}
 
-                          Events.raiseEvent("movementEvent", arguments)
-                        ]])
+    tempTriggers.MovementAwhile =
+    tempRegexTrigger("^(?:> )*(?:Movement      : )?(You can travel a while longer\\.)",
+        [[
+            local movement = matches[2]
+            arguments = {movement = movement}
+            Events.raiseEvent("movementEvent", arguments)
+        ]])
 
-  triggers = tempTriggers
+
+
+    tempTriggers.StepSpring =
+    tempRegexTrigger("^(?:> )*(?:Movement      : )?(You have spring in your step\\.)",
+        [[
+            local movement = matches[2]
+            arguments = {movement = movement}
+            Events.raiseEvent("movementEvent", arguments)
+        ]])
+
+
+
+    tempTriggers.MovementNotToMuch =
+    tempRegexTrigger("^(?:> )*(?:Movement      : )?(Not too much spring in your step\\.)",
+        [[
+            local movement = matches[2]
+            arguments = {movement = movement}
+            Events.raiseEvent("movementEvent", arguments)
+        ]])
+
+    triggers = tempTriggers
 end
 
 

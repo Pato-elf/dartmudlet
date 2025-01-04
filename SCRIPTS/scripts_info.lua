@@ -1,5 +1,5 @@
 Info				= {}
-local versionNumber	= "v1.8"
+local versionNumber	= "v1.8.1"
 local sourceName	= "info"
 local colorHelp		= "yellow"
 local spacerHelp	= "   "
@@ -454,7 +454,7 @@ local function showHelpInfo(args)
     cecho(preText.."These commands function similar to the show skills command available in game. Some\n")
     cecho(preText.."examples of things you can do with these commands:\n")
     cecho(preText.."\n")
-    cecho(preText.."/info playername heal_self         -- show info for the player's heal_self skill\n")
+    cecho(preText.."/info playername herbalism         -- show info for the player's herbalism skill\n")
     cecho(preText.."/info playername yellow*           -- show player's skills that start with yellow\n")
     cecho(preText.."/info petname <                    -- show ALL a pet's skills in decreasing order\n")
     cecho(preText.."/info playername fighter           -- show player's skills of type 'fighter'\n")
@@ -482,16 +482,10 @@ local function showHelpUpdate(args)
     cecho(preText.."The /insert command will add a new skill into the database for you or your pets at\n")
     cecho(preText.."the initial number you select. Some examples:\n")
     cecho(preText.."\n")
-    cecho(preText.."/update playername herbalism 100   -- update the player's herbalism skill to 100\n")
-
-    cecho(preText.."/info playername yellow*           -- show player's skills that start with yellow\n")
-    cecho(preText.."/info petname >                    -- show all a pet's skills in increasing order\n")
-    cecho(preText.."/info playername fighter           -- show player's skills of type 'fighter'\n")
-    cecho(preText.."/share petname channelling         -- share a pet's channelling skill with the room\n")
-    cecho(preText.."/share playername move <           -- share player's 'move' skills in decreasing order\n")
-    cecho(preText.."/share playername *other           -- share player's skills ending in other with room\n")
-    cecho(preText.."\n")
-    cecho(preText.."Valid skill categories are: fighter, mage, thief, crafts, movement (or move)\n")
+    cecho(preText.."/update playername herbalism 100     -- update the player's herbalism skill to 100\n")
+    cecho(preText.."/update petname fighting 200         -- update a pet's fighting skill to 200\n")
+    cecho(preText.."/insert playername shield use 10     -- insert shield use skill for player at skill 10\n")
+    cecho(preText.."/insert petname channelling 1        -- insert channelling skill for pet at skill 1\n")
 end
 
 
@@ -575,7 +569,7 @@ end
 -- TODO: cleanup the book hack
 -----------------------------------------------------------
 local function showContents(args)
-	if (Status.statusContents == "off") then return end
+	--if (Status.statusContents == "off") then return end
 
 	local detail        = args["detail"]
 	local items         = {}

@@ -691,7 +691,7 @@ GUI.containerLanguageBox:setStyleSheet(StyleBoxBlue:getCSS())
     }, GUI.containerLanguageBox)
 
     GUI.buttonLanguage2:setStyleSheet(StyleButtonExtraSmallLightGrey:getCSS())
-    echo("buttonLanguage2", "<center><span style='font-size: 8pt; color: green;'>&#x274C;</span></center>")
+    echo("buttonLanguage2", "<center><span style='font-size: 9pt; color: green;'>&#x274C;</span></center>")
     GUI.buttonLanguage2:setToolTip(tooltip_language12,Status.tooltipTime)
     GUI.buttonLanguage2:setClickCallback("ButtonLanguage2_click")
 

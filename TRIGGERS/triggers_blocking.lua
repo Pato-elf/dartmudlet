@@ -42,9 +42,8 @@ local textToUnBlock = {
 	,"Incandescent .* erupt from your"
 	,"Light bends around you, turning you"
 	,"No effect"
-	,"No language specified"
+	,"No (language|target) specified"
     ,"No such language"
-	,"No target specified."
 	,"Nothing happens"
 	,"Oh no, it escaped"
 	,"Perhaps you should learn that spell more"
@@ -120,8 +119,6 @@ local textToUnBlock = {
     ,"You gaze deeply into"
 	,"You grow in size"
 	,"You have to be holding the"
-	--,"You have written"
-    --,"As you inscribe the"
 	,"You (heal|restore)"
 	,"You hear a soothing"
 	,"You (imploded|knocked|melted|pummeled)"
@@ -136,6 +133,7 @@ local textToUnBlock = {
 	,"You neglected to name a target"
 	,"You notice that .* has"
 	,"You pass your"
+    ,"You raise your .* and a "
 	,"You raise your hands and begin to"
 	,"You regain some feeling"
 	,"You return to your normal size"
@@ -186,7 +184,7 @@ local function setup(args)
 		tempTriggers[i] =
 		tempRegexTrigger("^(?:> )*"..v.."[\\s\\S]*",
 			[[
-                local text      = matches[1]
+                local text      = matches[1] or ""
 				local arguments = {}
 
                 if not (Status.blockType == 'inscribe') then 

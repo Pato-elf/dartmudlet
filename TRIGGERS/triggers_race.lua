@@ -6,13 +6,12 @@ local function setup(args)
     local tempTriggers = {}
 
     tempTriggers.Race =
-        tempRegexTrigger("^(?:> )*You are (?:\\w+) the (\\w+)?\\.  You are a ([\\s\\S]+)\\.",
-            [[
-                local race = matches[2]
-                arguments = {race = race}
-
-                Events.raiseEvent("raceEvent", arguments)
-            ]])
+    tempRegexTrigger("^(?:> )*You are (?:\\w+) the (\\w+)?\\.  You are a ([\\s\\S]+)\\.",
+        [[
+            local race = matches[2]
+            arguments = {race = race}
+            Events.raiseEvent("raceEvent", arguments)
+        ]])
 
     triggers = tempTriggers
 end

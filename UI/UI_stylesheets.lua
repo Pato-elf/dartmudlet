@@ -104,7 +104,7 @@ function loadStylesheets()
 			color: black;
 			background-color: palegreen;
 			margin: 0px;
-            padding-left: -6px;
+            padding-left: -4px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;
@@ -120,7 +120,7 @@ function loadStylesheets()
 			color: black;
 			background-color: #9898FB;
 			margin: 0px;
-            padding-left: -6px;
+            padding-left: -4px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;
@@ -136,7 +136,7 @@ function loadStylesheets()
 			color: black;
 			background-color: #FB98FB;
 			margin: 0px;
-            padding-left: -6px;
+            padding-left: -4px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;
@@ -152,7 +152,7 @@ function loadStylesheets()
 			color: black;
 			background-color: #D3D3D3;
 			margin: 0px;
-            padding-left: -6px;
+            padding-left: -4px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;
@@ -168,7 +168,7 @@ function loadStylesheets()
 			color: black;
 			background-color: #D3D3D3;
 			margin: 0px;
-            padding-left: -8px;
+            padding-left: -6px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;
@@ -184,7 +184,7 @@ function loadStylesheets()
 			color: black;
 			background-color: #9898FB;
 			margin: 0px;
-            padding-left: -8px;
+            padding-left: -6px;
 			border-width: 2px;
 			border-style: solid;
 			border-color: black;
@@ -277,6 +277,16 @@ function loadStylesheets()
 			font-size: 13pt;
 			font-family: Bitstream Vera Sans Mono;
 			color: yellow;
+			background-color: rgb(0,0,70);
+			margin: 0px 10px 0px 10px;
+		}
+	]])
+
+    StyleTextPaleGreenLarge = Geyser.StyleSheet:new([[
+		QLabel{
+			font-size: 13pt;
+			font-family: Bitstream Vera Sans Mono;
+			color: palegreen;
 			background-color: rgb(0,0,70);
 			margin: 0px 10px 0px 10px;
 		}

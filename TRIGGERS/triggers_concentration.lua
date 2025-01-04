@@ -1,51 +1,56 @@
 local Concentration = {}
-local triggers = {}
-
+local triggers      = {}
 
 
 local function setup(args)
 	local tempTriggers = {}
 
 	tempTriggers.BEBT =
-		tempRegexTrigger("^(?:> )*(?:Concentration : )?(You're bright-eyed and bushy-tailed\\.)",
-			[[
-				local full = matches[1]
-				local conc = matches[2]
-				local arguments = {full = full, conc = conc}
+    tempRegexTrigger("^(?:> )*(?:Concentration : )?(You're bright-eyed and bushy-tailed\\.)",
+		[[
+			local full = matches[1]
+			local conc = matches[2]
+			local arguments = {full = full, conc = conc}
 
-				Events.raiseEvent("BEBTconcEvent", arguments)
-				Events.raiseEvent("concEvent", arguments)
-				Events.raiseEvent("concAutoEvent", arguments)
-			]])
+			Events.raiseEvent("BEBTconcEvent", arguments)
+			Events.raiseEvent("concEvent", arguments)
+			Events.raiseEvent("concAutoEvent", arguments)
+		]])
 
 
 
 	tempTriggers.BOB =
-      tempRegexTrigger("^(?:> )*(?:Concentration : )?(You're a bit off balance\\.)"
-                       ,[[
-				local full = matches[1]
-				local conc = matches[2]
-				local arguments = {full = full, conc = conc}
+    tempRegexTrigger("^(?:> )*(?:Concentration : )?(You're a bit off balance\\.)",
+        [[
+			local full = matches[1]
+			local conc = matches[2]
+			local arguments = {full = full, conc = conc}
 
-                          Events.raiseEvent("BOBconcEvent", arguments)
-                          Events.raiseEvent("concEvent", arguments)
-                        ]])
+            Events.raiseEvent("BOBconcEvent", arguments)
+            Events.raiseEvent("concEvent", arguments)
+        ]])
+
+
+
     tempTriggers.SD =
-      tempRegexTrigger("^(?:> )*(?:Concentration : )?(You're somewhat distracted\\.)"
-                       ,[[
-				local full = matches[1]
-				local conc = matches[2]
-				local arguments  = {full = full, conc = conc}
+    tempRegexTrigger("^(?:> )*(?:Concentration : )?(You're somewhat distracted\\.)",
+        [[
+			local full = matches[1]
+			local conc = matches[2]
+			local arguments = {full = full, conc = conc}
 
-                          Events.raiseEvent("SDconcEvent", arguments)
-                          Events.raiseEvent("concEvent", arguments)
-                        ]])
+            Events.raiseEvent("SDconcEvent", arguments)
+            Events.raiseEvent("concEvent", arguments)
+        ]])
+
+
+
     tempTriggers.QD =
       tempRegexTrigger("^(?:> )*(?:Concentration : )?(You're quite distracted\\.)"
                        ,[[
 				local full = matches[1]
 				local conc = matches[2]
-				local arguments  = {full = full, conc = conc}
+				local arguments = {full = full, conc = conc}
 
                           Events.raiseEvent("QDconcEvent", arguments)
                           Events.raiseEvent("concEvent", arguments)

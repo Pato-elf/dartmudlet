@@ -31,7 +31,7 @@ end
 
 
 local function raiseSysDataSendRequestEvent(evt, command)
-	args = {command = command}
+	local args = {command = command}
 	Events.raiseEvent("sysDataSendRequestEvent", args)
 end
 

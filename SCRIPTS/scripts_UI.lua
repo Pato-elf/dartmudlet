@@ -65,7 +65,7 @@ end --createUIConsole
 -- update chat box
 -----------------------------------------------------------
 local function onChat(args)
-	local text = args["message"]
+	local text = args["message"] or ""
 	local timestamp = getTime(true, "hh:mm:ss")
 	echo("ChatBox", timestamp.." ")
 	-- even though we get the text passed into the event we will get the text
@@ -108,7 +108,7 @@ end
 -- update message box
 -----------------------------------------------------------
 local function onMessage(args)
-	message = args["message"]
+	message = args["message"] or ""
 	cecho("MessageBox", " "..message)
 end
 
@@ -117,8 +117,8 @@ end
 -- update improves box
 -----------------------------------------------------------
 local function onImprove(args)
-	local who			= args["name"]
-	local skill_name	= args["skill_name"]
+	local who			= args["name"] or ""
+	local skill_name	= args["skill_name"] or ""
 	local timestamp		= getTime(true, "hh:mm:ss")
 	local output		= ''
 	local count
@@ -180,7 +180,7 @@ end
 -- update name box
 -----------------------------------------------------------
 local function onName(args)
-	local showname		= args["fullname"]
+	local showname		= args["fullname"] or ""
 	local name_table	= showname:split("are ")
 	local name_table2
 
@@ -201,8 +201,8 @@ end
 -- update age box
 -----------------------------------------------------------
 local function onAge(args)
-	local years		= args["years"]
-	local months	= args["months"]
+	local years		= args["years"] or ""
+	local months	= args["months"] or ""
 
 
 	clearWindow("AgeBox")
@@ -216,7 +216,7 @@ end
 -- update hunger box
 -----------------------------------------------------------
 local function onHunger(args)
-	local hunger = args["hunger"]
+	local hunger = args["hunger"] or ""
 
 
 	if hunger == "well fed" then hunger = "<pale_green>"..hunger
@@ -228,7 +228,7 @@ local function onHunger(args)
 	elseif hunger == "starving" then hunger = "<red>"..hunger
 	elseif hunger == "starving to death" then hunger = "<red>"..hunger
 	end
-	
+
 	clearWindow("HungerBox")
 	cecho("HungerBox", "Hunger: "..hunger)
 	moveCursorEnd()
@@ -239,7 +239,7 @@ end
 -- update thirst box
 -----------------------------------------------------------
 local function onThirst(args)
-	local thirst = args["thirst"]
+	local thirst = args["thirst"] or ""
 
 
 	if thirst == "well slaked" then thirst = "<pale_green>"..thirst
@@ -263,7 +263,7 @@ end
 -- update encumbrance box
 -----------------------------------------------------------
 local function onEncumbrance(args)
-	local encumbrance = args["encumbrance"]
+	local encumbrance = args["encumbrance"] or ""
 
 
 	clearWindow("EncumbranceBox")
@@ -277,11 +277,11 @@ end
 -- update movement box
 -----------------------------------------------------------
 local function onMovement(args)
-	local movement = args["movement"]
+	local movement = args["movement"] or ""
 
 
 	clearWindow("MovementBox")
-	cecho("MovementBox", " Movement: "..movement)
+	cecho("MovementBox", "Movement: "..movement)
 	deleteLine()
 	moveCursorEnd()
 end
@@ -300,7 +300,7 @@ end
 -- update speak box
 -----------------------------------------------------------
 local function onSpeak(args)
-	local language  = args["detail"]
+	local language  = args["detail"] or ""
 
 
 	clearWindow("SpeakBox")
@@ -312,7 +312,7 @@ end
 -- update aim box
 -----------------------------------------------------------
 local function onAim(args)
-	local target  = args["detail"]
+	local target  = args["detail"] or ""
 
 
 	clearWindow("AimBox")
@@ -328,8 +328,9 @@ local function onAura(args)
 	local auraBoxTextColor	= "white"
 	local auraBoxBGColor	= "black"
 	local scintBackground	= packageFolder.."MEDIA/rainbow_small.png"
-	aura					= args["aura"]
+    aura                    = args["aura"]
 
+    --if args["aura"] then aura = args["aura"] end
 
 	if (Status.statusAura == "off") or (string.match(full, "^".."Aura")) then
 		deleteLine()
@@ -403,12 +404,13 @@ end
 -- update concentration box
 -----------------------------------------------------------
 local function onConc(args)
-	local full				= args["full"]
+	local full				= args["full"] or ""
 	local concBoxTextColor	= "white"
 	local concBoxBGColor	= "black"
 	local displayConc		= ""
-	conc					= args["conc"]
+    conc                    = args["conc"]
 
+	--if args["conc"] then conc = args["conc"] end
 
 	if (Status.statusConc == "off") or (string.match(full, "^".."Concentration")) then
 		deleteLine()

@@ -491,6 +491,22 @@ end
 
 
 
+-- /help tracking
+-----------------------------------------------------------
+local function showHelpTracking(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+
+	cecho(preText.."DARTMUDLET: tracking\n")
+	cecho(preText.."USAGE: /track <name>\n")
+    cecho(preText.."\n")
+    cecho(preText.."Displays detailed statistics for skills gained while the tracking system was activated.\n")
+    cecho(preText.."This can be for the player or for any pets that gained skills during this time.\n")
+    cecho(preText.."Click the RESET TRACKING button in the tracking tab to reset stats to zero.\n")
+end
+
+
+
 -- /help main
 -----------------------------------------------------------
 local function showHelp(args)
@@ -503,6 +519,8 @@ local function showHelp(args)
         showHelpBase()
     elseif (detail == "level") or (detail == "levels") then
         showHelpLevels()
+    elseif (detail == "track") or (detail == "tracking") then
+        showHelpTracking()
     elseif (detail == "who") or (detail == "who on") then
         showHelpWho()
     elseif (detail == "content") or (detail == "contents") then

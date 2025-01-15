@@ -200,8 +200,14 @@ local function setup(args)
 	tempAlias('^\\/track ([\\w]+)',
 		[[
 			local name = matches[2]
-			local arguments = {name = name}
-			Events.raiseEvent('showTrackingDetailEvent', arguments)
+            
+            if (string.lower(name) == "help") then
+                local arguments = {detail = "track"}
+                Events.raiseEvent('showHelpEvent', arguments)
+            else
+                local arguments = {name = name}
+			    Events.raiseEvent('showTrackingDetailEvent', arguments)
+            end
 		]])
 
 

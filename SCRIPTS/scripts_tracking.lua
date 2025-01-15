@@ -162,7 +162,6 @@ local function updateTrackingTable(args)
     if not isfound then
         table.insert(skillData, {skill, name, count})
     end
-    --display(skillData)
 end
 
 
@@ -170,17 +169,17 @@ end
 -- show the tracking details
 -----------------------------------------------------------
 local function showTrackingDetail(args)
-    local name          = args["name"]
-    local tempSkills    = {}
-    local tempSkillName = ""
-    local tempName      = ""
-    local tempLine      = ""
-    local tempCount     = 0
-    local tempTotal     = 0
-    local tempMinuteRate = 0
-    local tempHourRate = 0
-    local char_length1  = 26
-    local char_fill1    = 0
+    local name              = args["name"]
+    local tempSkills        = {}
+    local tempSkillName     = ""
+    local tempName          = ""
+    local tempLine          = ""
+    local tempCount         = 0
+    local tempTotal         = 0
+    local tempMinuteRate    = 0
+    local tempHourRate      = 0
+    local char_length1      = 26
+    local char_fill1        = 0
 
 
     name            = string.lower(name)
@@ -311,7 +310,6 @@ local function setTrackingReset()
     skillData                   = {}
     Status.trackingCurrentTime  = 0
 
-    --updateTrackingTimer()
     updateTrackingStats()
     cecho("textboxTracking1", "00:00:00")
     systemMessage("Tracking stats reset")
@@ -328,13 +326,9 @@ end
 
 
 local function setup(args)
---	checkLanguageTable()
     Events.addListener("updateTrackingEvent", sourceName, updateTrackingTable)
     Events.addListener("showTrackingDetailEvent", sourceName, showTrackingDetail)
---    Events.addListener("showLanguageStatsEvent", sourceName, showLanguageStats)
---    Events.addListener("setLanguageContentEvent", sourceName, setLanguageContent)
     Events.addListener("setTrackingResetEvent", sourceName, setTrackingReset)
---    Events.addListener("setLanguageTypeEvent", sourceName, setLanguageType)
     Events.addListener("setTrackingActiveEvent", sourceName, setTrackingActive)
     Events.addListener("trackingTimerEvent", sourceName, loadTimers)
 end
@@ -350,14 +344,10 @@ end
 local function unsetup(args)
     Events.removeListener("updateTrackingEvent", sourceName)
     Events.removeListener("showTrackingDetailEvent", sourceName)
---    Events.removeListener("showLanguageStatsEvent", sourceName)
---    Events.removeListener("setLanguageContentEvent", sourceName)
     Events.removeListener("setTrackingResetEvent", sourceName)
---    Events.removeListener("setLanguageTypeEvent", sourceName)
     Events.removeListener("setTrackingActiveEvent", sourceName)
     Events.removeListener("trackingTimerEvent", sourceName)
     killTimers()
---    killTriggers()
 end
 
 

@@ -167,7 +167,7 @@ local function onImprove(args)
 		query = query..'powercastSuccess='..Status.powercastSuccess
 		dba.execute(query)
 	end
-	
+
 end
 
 local function onSkillMistake(args)
@@ -194,7 +194,7 @@ local function onName(args)
 	clearWindow("NameBox")
 	cecho("NameBox", "Name: "..showname)
 	deleteLine()
-	
+
 end
 
 
@@ -331,7 +331,6 @@ local function onAura(args)
 	local scintBackground	= packageFolder.."MEDIA/rainbow_small.png"
     aura                    = args["aura"]
 
-    --if args["aura"] then aura = args["aura"] end
 
 	if (Status.statusAura == "off") or (string.match(full, "^".."Aura")) then
 		deleteLine()
@@ -411,7 +410,6 @@ local function onConc(args)
 	local displayConc		= ""
     conc                    = args["conc"]
 
-	--if args["conc"] then conc = args["conc"] end
 
 	if (Status.statusConc == "off") or (string.match(full, "^".."Concentration")) then
 		deleteLine()

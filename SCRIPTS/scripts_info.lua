@@ -500,7 +500,7 @@ local function showHelpTracking(args)
 	cecho(preText.."DARTMUDLET: tracking\n")
 	cecho(preText.."USAGE: /track <name>\n")
     cecho(preText.."\n")
-    cecho(preText.."Displays detailed statistics for skills gained while the tracking system was activated.\n")
+    cecho(preText.."Displays detailed statistics for skills gained while the tracking system is activated.\n")
     cecho(preText.."This can be for the player or for any pets that gained skills during this time.\n")
     cecho(preText.."Click the RESET TRACKING button in the tracking tab to reset stats to zero.\n")
 end

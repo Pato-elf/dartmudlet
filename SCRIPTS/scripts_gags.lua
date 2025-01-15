@@ -48,7 +48,7 @@ local petList = {
     ,"(\\w+) helps (\\w+) dig"
     ,"(\\w+) wrestles with (\\w+)"
     ,"(\\w+) stands beside (\\w+)"
-    ,"(\\w+) exclaims, \\'hee-haw"
+    ,"(\\w+) exclaims, \\'(H|h)ee-haw"
 }
 
 
@@ -70,7 +70,7 @@ local channelList = {
 
 
 local creatureList = {
-    "(Donkey|Zebra) (looks|grazes|nibbles|watches)"
+    "(Donkey|Horse|Rhinoceros|Zebra) (looks|grazes|nibbles|watches)"
     ,"Turtle (appears|looks|rests)"
     ,"Turtle crawls ahead"
     ,"Turtle drags itself a few"
@@ -94,7 +94,7 @@ local creatureList = {
     ,"(Nightingale|Quail|Sparrow) pecks"
     ,"Bee glares"
     ,"Rat searches"
-    ,"Gecko cocks"
+    ,"Gecko (cocks|runs)"
     ,"Parrot (preens|squawks)"
     ,"Peacock looks"
     ,"Squirrel digs"
@@ -102,7 +102,8 @@ local creatureList = {
 }
 
 
-local citizenemotes = "blinks|bows|chuckles|flees|frowns|giggles|glares|grins|looks|nods|peers|ponders|screams|shakes|smiles|smirks|stares|stretches|twiddles|whistles|yawns"
+local citizenemotes = "blinks|bows|chuckles|flees|frowns|giggles|glares|grins|looks|"
+citizenemotes = citizenemotes.."nods|peers|ponders|screams|shakes|smiles|smirks|stares|stretches|swings|twiddles|whistles|yawns"
 local citizenspeaks = "asks|exclaims|says"
 local citizenList   = {
     "([\\w']+) incants some mystic phrases but"
@@ -146,16 +147,16 @@ local citizenList   = {
     ,"(Matio|Micola|Mirabae) ("..citizenspeaks..")"
     ,"(Nasih) ("..citizenemotes..")"
     ,"(Nasih) ("..citizenspeaks..")"
-    ,"(Oliverio) ("..citizenemotes..")"
-    ,"(Oliverio) ("..citizenspeaks..")"
+    ,"(Oliverio|Ooll) ("..citizenemotes..")"
+    ,"(Oliverio|Ooll) ("..citizenspeaks..")"
     ,"(Paolo|Pasqualina|Petronilla|Piruza) ("..citizenemotes..")"
     ,"(Paolo|Pasqualina|Petronilla|Piruza) ("..citizenspeaks..")"
     ,"(Rambaldo|Richa|Rigi|Romano|Rogerus) ("..citizenemotes..")"
     ,"(Rambaldo|Richa|Rigi|Romano|Rogerus) ("..citizenspeaks..")"
     ,"(Scabor|Scalortormut|Sedilia|Seimei|Shinobu|Shun|Simon|Staji) ("..citizenemotes..")"
     ,"(Scabor|Scalortormut|Sedilia|Seimei|Shinobu|Shun|Simon|Staji) ("..citizenspeaks..")"
-    ,"(Tetsu|Thadeo|Thalia|Thomas|Thomisina|Tor|Tsukasa|Tuscus) ("..citizenemotes..")"
-    ,"(Tetsu|Thadeo|Thalia|Thomas|Thomisina|Tor|Tsukasa|Tuscus) ("..citizenspeaks..")"
+    ,"(Tetsu|Thadeo|Thalia|Thomas|Thomisina|Tirna|Tor|Tsukasa|Tuscus) ("..citizenemotes..")"
+    ,"(Tetsu|Thadeo|Thalia|Thomas|Thomisina|Tirna|Tor|Tsukasa|Tuscus) ("..citizenspeaks..")"
     ,"(Un) ("..citizenemotes..")"
     ,"(Un) ("..citizenspeaks..")"
     ,"(Vitaliano) ("..citizenemotes..")"
@@ -189,6 +190,7 @@ local sparringList = {
     ,"Hassan (asks|exclaims|ignores|says|smiles|smirks)"
     ,"Armando (paces|pats)"
     ,"Khash (grins|spits)"
+    ,"Ozzo (asks|exclaims)"
     ,"Pell (spins|reverses)"
     ,"(\\w+) picks (her|his) nose"
     ,"(\\w+) tosses (her|his) head"

@@ -31,6 +31,7 @@ local function createUIConsole()
 	-- TABWINDOW1
 	-------------------------
 	createWhoBox()
+    createTrackingBox()
     createLanguageBox()
 	createLevelsBox()
 	createMessageBox()
@@ -62,14 +63,14 @@ end --createUIConsole
 
 
 
+
+
 -- update chat box
 -----------------------------------------------------------
-local function onChat(args)
-	local text = args["message"] or ""
+local function onChat()
 	local timestamp = getTime(true, "hh:mm:ss")
+
 	echo("ChatBox", timestamp.." ")
-	-- even though we get the text passed into the event we will get the text
-	-- from buffer to preserve colors/formatting
 	selectCurrentLine()
 	copy()
 	appendBuffer("ChatBox")

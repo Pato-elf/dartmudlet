@@ -136,19 +136,19 @@ Status.refreshPower1	= 50
 Status.refreshPower2	= 50
 Status.refreshTarget1	= 'targetname'
 Status.refreshTarget2	= 'targetname'
-Status.nudgeisActive = false
-Status.nudgeAll = false
-Status.nudgePower = 50
-Status.nudgeTarget1 = 'targetname'
-Status.nudgeTarget2 = ''
-Status.nudgeTarget3 = ''
-Status.nudgeTarget4 = ''
-Status.nudgeTarget5 = ''
-Status.nudgeTarget6 = ''
-Status.nudgeTarget7 = ''
-Status.nudgeTarget8 = ''
-Status.nudgeTarget9 = ''
-Status.nudgeTarget10 = ''
+Status.nudgeisActive    = false
+Status.nudgeAll         = false
+Status.nudgePower       = 50
+Status.nudgeTarget1     = 'targetname'
+Status.nudgeTarget2     = ''
+Status.nudgeTarget3     = ''
+Status.nudgeTarget4     = ''
+Status.nudgeTarget5     = ''
+Status.nudgeTarget6     = ''
+Status.nudgeTarget7     = ''
+Status.nudgeTarget8     = ''
+Status.nudgeTarget9     = ''
+Status.nudgeTarget10    = ''
 
 -- unsaved refresh variables
 Status.statusRefresh	= false
@@ -164,6 +164,13 @@ Status.repeatCurrentActive	= 0
 Status.repeatTable			= {}
 Status.statusRepeatEcho     = 'off'
 
+
+
+-- tracking system variables
+-----------------------------------------------------------
+Status.statusTracking       = false
+Status.trackingInterval     = 1
+Status.trackingCurrentTime  = 0
 
 
 -- misc variables
@@ -182,6 +189,7 @@ Status.numLinesToCheck		= 20
 Status.scrollCurrentSpell	= ''
 Status.scrollCurrentPower	= 100
 Status.tooltipTime			= 7
+Status.showSkillDelay       = 4
 Status.blockType            = ''
 Status.contentsScrollStand  = false
 
@@ -232,6 +240,9 @@ local function setVariables()
     Events.raiseEvent("showLanguageButtonsEvent")
     Events.raiseEvent("showLanguageTypeEvent")
     Events.raiseEvent("showLanguageStatsEvent")
+
+    -- TRACKING BOX
+    GUI.textboxTracking8:echo(Status.name,"yellow","l")
 end
 
 

@@ -54,7 +54,6 @@ local function loadTriggers(args)
                 ]])
         end
     end
-
 end
 
 

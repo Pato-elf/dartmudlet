@@ -13,7 +13,7 @@ GUI.tabwindow1 = GUI.tabwindow1 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"WHO","LANGUAGE","LEVELS","MESSAGE"},
+		tabs = {"WHO","TRACKING","LANGUAGE","LEVELS","MESSAGE"},
 	},GUI.right)
 
 

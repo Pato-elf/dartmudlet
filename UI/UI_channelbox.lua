@@ -2,6 +2,10 @@ channelbox = {}
 
 function createChannelBox()
 
+
+
+
+
 -- CREATE CHANNEL BOX -> TABWINDOW2
 -----------------------------------------------------------
 GUI.containerChannelBox = GUI.containerChannelBox or
@@ -15,6 +19,21 @@ GUI.containerChannelBox = GUI.containerChannelBox or
 	}, GUI.tabwindow2.CHANNELcenter)
 
 GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------
+-- BUTTONS
+-------------------------------------------------------------------------------
+
+
+
+
 
 
 
@@ -169,7 +188,22 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 		Status.powercastisForce = true
 		cecho("<yellow>FORCE POWERCAST\n")
 		Events.raiseEvent("processPowercastEvent", "none")
-	end	
+	end
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------
+-- TEXT BOXES
+-------------------------------------------------------------------------------
+
+
+
+
+
 
 
 
@@ -218,9 +252,9 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 		}, GUI.containerChannelBox)
 
 	GUI.containerChannelTextBox3:setStyleSheet(StyleTextBlue:getCSS())
-	
-	
-	
+
+
+
 	-- CREATE TEXTBOX4 -> CHANNEL -> TABWINDOW2
 	-------------------------------------------------------
 	GUI.containerChannelTextBox4 = GUI.containerChannelTextBox4 or
@@ -451,6 +485,22 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 
 
+
+
+
+
+
+-------------------------------------------------------------------------------
+-- COMMAND LINES
+-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
 	-- CREATE COMMANDLINE1 -> CHANNEL -> TABWINDOW2
 	-------------------------------------------------------
 	GUI.containerChannelCommand1 = GUI.containerChannelCommand1 or
@@ -461,7 +511,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	}, GUI.containerChannelBox)
 
 	GUI.containerChannelCommand1:setStyleSheet(StyleCommandLine:getCSS())
-	
+
 	GUI.containerChannelCommand1:setAction(
 	function(command)
 		Events.raiseEvent("setfocusAmountDefaultEvent", {save = true, input = command})
@@ -482,7 +532,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	}, GUI.containerChannelBox)
 
 	GUI.containerChannelCommand2:setStyleSheet(StyleCommandLine:getCSS())
-	
+
 	GUI.containerChannelCommand2:setAction(
 	function(command)
 		Events.raiseEvent("setfocusTargetEvent", {save = true, input = command})
@@ -503,7 +553,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	}, GUI.containerChannelBox)
 
 	GUI.containerChannelCommand3:setStyleSheet(StyleCommandLine:getCSS())
-	
+
 	GUI.containerChannelCommand3:setAction(
 	function(command)
 		Events.raiseEvent("setfocusTargetSourceEvent", {save = true, input = command})
@@ -524,7 +574,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	}, GUI.containerChannelBox)
 
 	GUI.containerChannelCommand4:setStyleSheet(StyleCommandLine:getCSS())
-	
+
 	GUI.containerChannelCommand4:setAction(
 	function(command)
 		Events.raiseEvent("setpowercastAmountEvent", {save = true, input = command})
@@ -532,9 +582,9 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
-	
-	
-	
+
+
+
 	-- CREATE COMMANDLINE5 -> CHANNEL -> TABWINDOW2
 	-------------------------------------------------------
 	GUI.containerChannelCommand5 = GUI.containerChannelCommand5 or
@@ -545,7 +595,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	}, GUI.containerChannelBox)
 
 	GUI.containerChannelCommand5:setStyleSheet(StyleCommandLine:getCSS())
-	
+
 	GUI.containerChannelCommand5:setAction(
 	function(command)
 		Events.raiseEvent("setteachTargetEvent", {save = true, input = command})
@@ -566,7 +616,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	}, GUI.containerChannelBox)
 
 	GUI.containerChannelCommand6:setStyleSheet(StyleCommandLine:getCSS())
-	
+
 	GUI.containerChannelCommand6:setAction(
 	function(command)
 		Events.raiseEvent("setfocusAmountTeachEvent", {save = true, input = command})
@@ -574,9 +624,9 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
-	
-	
-	
+
+
+
 	-- CREATE COMMANDLINE7 -> CHANNEL -> TABWINDOW2
 	-------------------------------------------------------
 	GUI.containerChannelCommand7 = GUI.containerChannelCommand7 or
@@ -587,7 +637,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	}, GUI.containerChannelBox)
 
 	GUI.containerChannelCommand7:setStyleSheet(StyleCommandLine:getCSS())
-	
+
 	GUI.containerChannelCommand7:setAction(
 	function(command)
 		Events.raiseEvent("setpowercastAddonEvent", {save = true, input = command})
@@ -608,7 +658,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	}, GUI.containerChannelBox)
 
 	GUI.containerChannelCommand8:setStyleSheet(StyleCommandLine:getCSS())
-	
+
 	GUI.containerChannelCommand8:setAction(
 	function(command)
 		Events.raiseEvent("setfocusAmountFeedEvent", {save = true, input = command})
@@ -616,9 +666,9 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
-	
-	
-	
+
+
+
 	-- CREATE COMMANDLINE9 -> CHANNEL -> TABWINDOW2
 	-------------------------------------------------------
 	GUI.containerChannelCommand9 = GUI.containerChannelCommand9 or
@@ -629,7 +679,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	}, GUI.containerChannelBox)
 
 	GUI.containerChannelCommand9:setStyleSheet(StyleCommandLine:getCSS())
-	
+
 	GUI.containerChannelCommand9:setAction(
 	function(command)
 		Events.raiseEvent("setfeedTargetEvent", {save = true, input = command})
@@ -650,7 +700,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	}, GUI.containerChannelBox)
 
 	GUI.containerChannelCommand10:setStyleSheet(StyleCommandLine:getCSS())
-	
+
 	GUI.containerChannelCommand10:setAction(
 	function(command)
 		Events.raiseEvent("setchannelAddonCommandEvent", {save = true, input = command})
@@ -658,6 +708,21 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
 	)
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------
+-- DROPDOWNS
+-------------------------------------------------------------------------------
+
+
+
+
+
 
 
 
@@ -675,7 +740,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 	GUI.containerChannelDropdown1:setStyleSheet(StyleDropdown:getCSS())
 	GUI.containerChannelDropdown1:setToolTip("Click to select a channelling mode",Status.tooltipTime)
- 
+
 
 	label1 = GUI.containerChannelDropdown1:addChild({name="label1",height=46,width=190, fontSize = 14, layoutDir="BV",  flyOut=true, message="CHANNEL ONLY"})
 	label1:setStyleSheet(StyleDropdownChild:getCSS())
@@ -698,7 +763,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 		GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
-	
+
 	label3 = GUI.containerChannelDropdown1:addChild({name="label3",height=46,width=190, fontSize = 14, layoutDir="BV", flyOut=true, message="PC + TEACH"})
 	label3:setStyleSheet(StyleDropdownChild:getCSS())
 	label3:setClickCallback("label3Function",label3.name)
@@ -720,7 +785,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 		GUI.containerChannelButton3:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		tempTimer(0.15, function() GUI.containerChannelButton3:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 	end
-	
+
 end
 
 return channelbox

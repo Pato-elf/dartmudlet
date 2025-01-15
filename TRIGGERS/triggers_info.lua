@@ -90,7 +90,6 @@ local function setup(args)
 			]], 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, nil)
 
 
-
 	triggers = tempTriggers
 end
 

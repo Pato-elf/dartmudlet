@@ -291,6 +291,7 @@ local function skillInfo(args)
     else
         table.sort(skill_list, function (k1,k2) return k1.count > k2.count end)
     end
+
     for i,v in ipairs(skill_list) do
 
         if v.count > 0 then
@@ -347,13 +348,16 @@ local function increaseSkill(args)
 		dba.execute('INSERT INTO improves (skill, count, who, last_imp) VALUES("'..skill_name..'", 1, "'..who..'", datetime("NOW"))')
 	end
 
+    if Status.statusTracking then
+        Events.raiseEvent("updateTrackingEvent", {name = who, skill = skill_name, count = 1})
+    end
 	UI.onImprove({name = who, skill_name = skill_name})
 
 	--Check skill level reported by the mud (if imp is for the character; mud doesn't report pet skill levels)
 	if who == Status.name then
         enableTrigger(shownSkill)
 		send("show skills "..skill_name, false)
-		tempTimer(5, [[disableTrigger(]]..shownSkill..[[)]])
+		tempTimer(Status.showSkillDelay, [[disableTrigger(]]..shownSkill..[[)]])
 	end
 
 	return count
@@ -394,8 +398,13 @@ local function updateCount(args)
 
 	if skill ~= nil and skill~= 0 and skill ~= -1 then
 		dba.execute('UPDATE improves SET count='..count..' WHERE who="'..who..'" AND skill="'..skill_name..'"')
+
+        if (Status.statusTracking) then --and (count > skill.count) then
+            Events.raiseEvent("updateTrackingEvent", {name = who, skill = skill_name, count = count-skill.count})
+        end
+
 		local imptext = "Updating skill: "..skill_name.." from "..skill.count.." to "..count
-		cecho("\n<yellow>"..imptext.."\n")	
+		cecho("\n<yellow>"..imptext.."\n")
 		UI.onImprove({name = who, skill_name = skill_name, text = imptext})
 	else
 		cecho("<red>ERROR: Unknown skill - "..skill_name.."\n")

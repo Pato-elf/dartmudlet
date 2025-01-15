@@ -1,5 +1,5 @@
 Info				= {}
-local versionNumber	= "v1.8.1"
+local versionNumber	= "v1.8.2"
 local sourceName	= "info"
 local colorHelp		= "yellow"
 local spacerHelp	= "   "
@@ -19,8 +19,8 @@ local function showRandom(args)
 
 	if tonumber(randomrange) then
 		randomrange = tonumber(randomrange)
-		if (randomrange < 2) or (randomrange > 1000) then
-			cecho("<red>ERROR: Invalid random number (Between 2 - 1000\n")
+		if (randomrange < 2) or (randomrange > 1000000) then
+			cecho("<red>ERROR: Invalid random number (Between 2 - 1000000)\n")
 		else
 			randomnumber = math.random(1, randomrange)
 			send("ooc "..Status.name.." generates a random number between 1 and "..randomrange..": "..randomnumber)
@@ -40,11 +40,12 @@ local function showRandom(args)
 		send("ooc "..Status.name.." picks a random value out of a list: "..randomrange)
 		send("ooc Value selected: "..randomvalues[math.random(1, #randomvalues)])
 
-	else --randomrange == "help"
+	elseif (randomrange == "help") then
+        Events.raiseEvent("showHelpEvent", {detail = "random"})
+    else
 		cecho("<yellow>USAGE: /random <num> - Generate a random number between 1 and a number of your choosing\n")
 		cecho("<yellow>USAGE: /random <value,value,value> - Pick a random value from a list of values\n")
 	end
-
 end
 
 

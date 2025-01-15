@@ -602,7 +602,7 @@ GUI.containerLanguageBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 
 
-    -- CREATE TEXTBOX29 -> LANGUAGE -> TABWINDOW1 (lines header)
+    -- CREATE TEXTBOX29 -> LANGUAGE -> TABWINDOW1 (language tag)
 	-------------------------------------------------------
 	GUI.textboxLanguage29 = GUI.textboxLanguage29 or
     Geyser.Label:new({

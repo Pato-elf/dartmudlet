@@ -193,6 +193,18 @@ local function setup(args)
 		]])
 
 
+
+    -- /track command
+	-------------------------------------------------------
+	tempAliases.track =
+	tempAlias('^\\/track ([\\w]+)',
+		[[
+			local name = matches[2]
+			local arguments = {name = name}
+			Events.raiseEvent('showTrackingDetailEvent', arguments)
+		]])
+
+
 	aliases = tempAliases
 end
 

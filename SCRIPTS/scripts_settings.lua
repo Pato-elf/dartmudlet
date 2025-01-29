@@ -283,33 +283,33 @@ local function setFontSize(args)
 
 
 	if (detail == "help") then
-		cecho("<yellow>USAGE: /set fontsize <all|chat|improves|message|who> <8-16> - Set the fontsize for one or all valid tabs\n")
-	elseif (tonumber(size) < 8) or (tonumber(size) > 16) then
-		cecho("<red>ERROR: Usage: /set fontsize <all|chat|improves|message|who> <8-16> - Set the fontsize for one or all valid tabs\n")	
+		cecho("<yellow>USAGE: /set fontsize <all|chat|improves|message|who> <8-20> - Set the fontsize for one or all valid tabs\n")
+	elseif (tonumber(size) < 8) or (tonumber(size) > 20) then
+		cecho("<red>ERROR: Usage: /set fontsize <all|chat|improves|message|who> <8-20> - Set the fontsize for one or all valid tabs\n")
 	elseif (detail == "chat") then
 		Status.fontSizeChat = tonumber(size)
 		dba.execute('UPDATE settings SET fontSizeChat="'..Status.fontSizeChat..'"')
 		GUI.containerChatBox:setFontSize(Status.fontSizeChat)
-		cecho("<yellow>Fontsize: CHAT = "..size.."\n")
-		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: CHAT = "..size.."\n"})
+        systemMessage("Fontsize CHAT "..size)
+		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: CHAT "..size.."\n"})
 	elseif (detail == "improves") then
 		Status.fontSizeImproves = tonumber(size)
 		dba.execute('UPDATE settings SET fontSizeImproves="'..Status.fontSizeImproves..'"')
 		GUI.containerImproveBox:setFontSize(Status.fontSizeImproves)
-		cecho("<yellow>Fontsize: IMPROVES = "..size.."\n")
-		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: IMPROVES = "..size.."\n"})
+        systemMessage("Fontsize IMPROVES "..size)
+		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: IMPROVES "..size.."\n"})
 	elseif (detail == "message") then
 		Status.fontSizeMessage = tonumber(size)
 		dba.execute('UPDATE settings SET fontSizeMessage="'..Status.fontSizeMessage..'"')
 		GUI.containerMessageBox:setFontSize(Status.fontSizeMessage)
-		cecho("<yellow>Fontsize: MESSAGE = "..size.."\n")
-		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: MESSAGE = "..size.."\n"})
+        systemMessage("Fontsize MESSAGE "..size)
+		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: MESSAGE "..size.."\n"})
 	elseif (detail == "who") then
 		Status.fontSizeWho = tonumber(size)
 		dba.execute('UPDATE settings SET fontSizeWho="'..Status.fontSizeWho..'"')
 		GUI.containerWhoBox:setFontSize(Status.fontSizeWho)
-		cecho("<yellow>Fontsize: WHO = "..size.."\n")
-		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: WHO = "..size.."\n"})
+        systemMessage("Fontsize WHO "..size)
+		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: WHO "..size.."\n"})
 	elseif (detail == "all") then
 		Status.fontSizeChat = tonumber(size)
 		Status.fontSizeImproves = tonumber(size)
@@ -328,10 +328,10 @@ local function setFontSize(args)
 		GUI.containerImproveBox:setFontSize(Status.fontSizeImproves)
 		GUI.containerMessageBox:setFontSize(Status.fontSizeMessage)
 		GUI.containerWhoBox:setFontSize(Status.fontSizeWho)
-		cecho("<yellow>Fontsize: ALL = "..size.."\n")
-		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: ALL = "..size.."\n"})
+        systemMessage("Fontsize ALL "..size)
+		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: ALL "..size.."\n"})
 	else
-		cecho("<red>ERROR: Usage: /set fontsize <all|chat|improves|message|who> <8-16> - Set the fontsize for one or all valid tabs\n")
+		cecho("<red>ERROR: Usage: /set fontsize <all|chat|improves|message|who> <8-20> - Set the fontsize for one or all valid tabs\n")
 	end
 
 end

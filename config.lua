@@ -2,7 +2,7 @@ mpackage = [[DartMUDlet]]
 author = [[Pato]]
 icon = [[dartmud_icon_512.png]]
 title = [[DartMUDlet has many useful features to make your DartMUD experience more efficient and enjoyable (dartmud.com:2525)]]
-description = [[### description
+description = [[### Description
 
 DartMUDlet has many useful features to make your DartMUD experience more efficient and enjoyable.
 Features that include upgrades to the user interface, automation, and reporting are all included.
@@ -18,5 +18,5 @@ DartMUDlet will also block and queue up commands while you are performing interr
 Type /setup to initialize DartMUDlet once installed.
 Type /help for a full list of commands.
 ]]
-version = [[1.8.3]]
-created = "2025-01-18T00:00:00+0:00"
+version = [[1.8.4]]
+created = "2025-01-29T00:00:00+0:00"

@@ -1,5 +1,5 @@
 Info				= {}
-local versionNumber	= "v1.8.3"
+local versionNumber	= "v1.8.4"
 local sourceName	= "info"
 local colorHelp		= "yellow"
 local spacerHelp	= "   "
@@ -498,11 +498,19 @@ local function showHelpTracking(args)
 
 
 	cecho(preText.."DARTMUDLET: tracking\n")
-	cecho(preText.."USAGE: /track <name>\n")
+	cecho(preText.."USAGE: /track <name|on|off|toggle|reset>\n")
     cecho(preText.."\n")
-    cecho(preText.."Displays detailed statistics for skills gained while the tracking system is activated.\n")
+    cecho(preText.."NAME: Displays detailed statistics for skills gained while the tracking system is active.\n")
     cecho(preText.."This can be for the player or for any pets that gained skills during this time.\n")
-    cecho(preText.."Click the RESET TRACKING button in the tracking tab to reset stats to zero.\n")
+    cecho(preText.."\n")
+    cecho(preText.."ON|OFF: Turns the tracking system on or off if not already at that status.\n")
+    cecho(preText.."\n")
+    cecho(preText.."TOGGLE: Flips the tracking system on or off depending on what the current status is.\n")
+    cecho(preText.."This can also be done using the TRACKING ON/OFF button in the tracking tab.\n")
+    cecho(preText.."\n")
+    cecho(preText.."RESET: Reset the tracking stats and timer to zero. This can also be done using the\n")
+    cecho(preText.."button labeled RESET TRACKING in the tracking tab.\n")
+    cecho(preText.."\n")
 end
 
 
@@ -588,8 +596,6 @@ end
 -- TODO: cleanup the book hack
 -----------------------------------------------------------
 local function showContents(args)
-	--if (Status.statusContents == "off") then return end
-
 	local detail        = args["detail"]
 	local items         = {}
 	local itemOrder     = {}

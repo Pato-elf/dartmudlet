@@ -180,9 +180,32 @@ local function showTrackingDetail(args)
     local tempHourRate      = 0
     local char_length1      = 26
     local char_fill1        = 0
+    name                    = string.lower(name)
 
 
-    name            = string.lower(name)
+    -- reset tracking with command line
+    if (name == "reset") then
+        Events.raiseEvent("setTrackingResetEvent")
+        return
+    end
+
+    -- toggle|on|off tracking with command line
+    if (name == "on") then
+        if not Status.statusTracking then
+            Events.raiseEvent("setTrackingActiveEvent")
+        end
+        return
+    elseif (name == "off") then
+        if Status.statusTracking then
+            Events.raiseEvent("setTrackingActiveEvent")
+        end
+        return
+    elseif (name == "toggle") then
+        Events.raiseEvent("setTrackingActiveEvent")
+        return
+    end
+
+
     name            = utils.capitalize(name)
     hours           = math.floor(Status.trackingCurrentTime / 3600)
     minutes         = math.floor((Status.trackingCurrentTime % 3600) / 60)

@@ -132,6 +132,18 @@ local function setup(args)
 
 
 
+    -- /set keypad
+    -------------------------------------------------------
+	tempAliases.setKeypad =
+	tempAlias('^\\/set keypad ([\\w]+)',
+		[[
+			local detail = matches[2]
+			local arguments = {detail = detail}
+			Events.raiseEvent('setKeypadEvent', arguments)
+		]])
+
+
+
 	-- /alloc copy
 	-------------------------------------------------------
 	tempAliases.allocCopy =

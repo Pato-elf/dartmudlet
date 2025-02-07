@@ -47,6 +47,15 @@ local function setup(args)
 
 
 
+    --alias for skill information error
+	tempAliases.SkillInfoError =
+	tempAlias('^\\/info ([\\w]+)$',
+		[[
+            cecho("<yellow>DARTMUDLET: Usage: /info <name> <skill name|skill group>\n")
+		]])
+
+
+
     --alias for sharing skill information
 	tempAliases.ShareSkill =
 	tempAlias('^\\/share ([\\w]+) ([A-Za-z_#<>\\*\\-\' ]+)',
@@ -60,6 +69,14 @@ local function setup(args)
 			Events.raiseEvent('skillInfoEvent', arguments)
 		]])
 
+
+
+    --alias for sharing skill error
+	tempAliases.ShareSkillError =
+	tempAlias('^\\/share ([\\w]+)$',
+		[[
+			cecho("<yellow>DARTMUDLET: Usage: /share <name> <skill name|skill group>\n")
+		]])
 
 
 	aliases = tempAliases

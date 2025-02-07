@@ -358,6 +358,7 @@ local function checkSettingsTable(args)
 		statusAura VARCHAR(16) DEFAULT "off",
 		statusConc VARCHAR(16) DEFAULT "off",
 		statusContents VARCHAR(16) DEFAULT "on",
+        statusKeypad VARCHAR(16) DEFAULT "on",
         statusRepeatEcho VARCHAR(16) DEFAULT "off",
         statusWho VARCHAR(16) DEFAULT "on"
 	);]])
@@ -388,6 +389,12 @@ local function checkSettingsTable(args)
 		dba.execute('ALTER TABLE settings ADD COLUMN statusWho VARCHAR(16) DEFAULT "on"')
         dba.execute('UPDATE settings SET statusWho = "on"')
 	end
+
+    if not temp.statusKeypad then
+        systemMessage("Update SETTINGS table")
+		dba.execute('ALTER TABLE settings ADD COLUMN statusKeypad VARCHAR(16) DEFAULT "on"')
+        dba.execute('UPDATE settings SET statusKeypad = "on"')
+	end
 end
 
 
@@ -398,20 +405,21 @@ local function load()
 
     systemMessage("Load SETTINGS table")
 	result = dba.query('SELECT * FROM settings')[1]
-	Status.fontSizeChat = result.fontSizeChat
-	Status.fontSizeImproves = result.fontSizeImproves
-	Status.fontSizeMessage = result.fontSizeMessage
-	Status.fontSizeWho = result.fontSizeWho
-	Status.numLinesToCheck = result.numLinesToCheck
-	Status.scrollCurrentPower = result.scrollCurrentPower
-	Status.scrollCurrentSpell = result.scrollCurrentSpell
-	Status.statusAnnounce = result.statusAnnounce
-	Status.statusAntiSpam = result.statusAntiSpam
-	Status.statusAura = result.statusAura
-	Status.statusConc = result.statusConc
-	Status.statusContents = result.statusContents
-    Status.statusRepeatEcho = result.statusRepeatEcho
-    Status.statusWho = result.statusWho
+	Status.fontSizeChat         = result.fontSizeChat
+	Status.fontSizeImproves     = result.fontSizeImproves
+	Status.fontSizeMessage      = result.fontSizeMessage
+	Status.fontSizeWho          = result.fontSizeWho
+	Status.numLinesToCheck      = result.numLinesToCheck
+	Status.scrollCurrentPower   = result.scrollCurrentPower
+	Status.scrollCurrentSpell   = result.scrollCurrentSpell
+	Status.statusAnnounce       = result.statusAnnounce
+	Status.statusAntiSpam       = result.statusAntiSpam
+	Status.statusAura           = result.statusAura
+	Status.statusConc           = result.statusConc
+	Status.statusContents       = result.statusContents
+    Status.statusKeypad         = result.statusKeypad
+    Status.statusRepeatEcho     = result.statusRepeatEcho
+    Status.statusWho            = result.statusWho
 
 	GUI.containerChatBox:setFontSize(Status.fontSizeChat)
 	GUI.containerImproveBox:setFontSize(Status.fontSizeImproves)

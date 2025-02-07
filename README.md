@@ -80,6 +80,7 @@ In addition to the automatic features described above, there are a number of thi
 /repeat copy <num> <num>         - Copy one repeat set over to another
 /repeat echo on|off              - Echo repeat commands to the screen (default off)
 /set fontsize <option> <8-20>    - Set the fontsize for tabs (all|chat|improves|message|who)
+/set keypad on|off|help          - Enable the keypad for directional movement
 /track <option>                  - Command line control of the tracking system
 /who on|off                      - Auto check the who list every 5 minutes
 #num repeat                      - Repeat commands from the command line (e.g. #3 say hi)

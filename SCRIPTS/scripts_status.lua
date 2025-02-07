@@ -180,6 +180,7 @@ Status.statusAntiSpam		= 'off'
 Status.statusAura			= 'off'
 Status.statusConc			= 'off'
 Status.statusContents		= 'on'
+Status.statusKeypad         = 'on'
 Status.statusWho            = 'on'
 Status.fontSizeChat			= 10
 Status.fontSizeImproves		= 10
@@ -220,6 +221,11 @@ local function setVariables()
 	if (Status.statusChanShare == "off") then
 		GUI.containerChannelButton4:setStyleSheet(StyleButtonDarkGrey:getCSS())
 	end
+
+    -- KEYPAD BINDINGS
+    if Status.statusKeypad == "on" then
+        Events.raiseEvent("loadKeysEvent", {detail = "keypad"})
+    end
 
 	-- REFRESH BOX
     Events.raiseEvent("showRefreshDataEvent")

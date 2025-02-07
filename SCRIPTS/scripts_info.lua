@@ -1,5 +1,5 @@
 Info				= {}
-local versionNumber	= "v1.8.4"
+local versionNumber	= "v1.8.5"
 local sourceName	= "info"
 local colorHelp		= "yellow"
 local spacerHelp	= "   "
@@ -183,6 +183,7 @@ local function showHelpBase(args)
 	cecho(preText.."/repeat copy <num> <num>         - Copy one repeat set over to another\n")
     cecho(preText.."/repeat echo on|off              - Echo repeat commands to the screen (default off)\n")
 	cecho(preText.."/set fontsize <option> <8-20>    - Set fontsize for tabs (all|chat|improves|message|who)\n")
+    cecho(preText.."/set keypad on|off|help          - Enable the keypad for directional movement\n")
     cecho(preText.."/track <option>                  - Command line control of the tracking system\n")
 	cecho(preText.."/who on|off                      - Auto check the who list every 5 minutes\n")
 	cecho(preText.."#num repeat                      - Repeat commands (e.g. #3 say hi)\n")
@@ -440,6 +441,49 @@ end
 
 
 
+-- /help keypad
+-----------------------------------------------------------
+local function showHelpKeypad(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+
+
+	cecho(preText.."DARTMUDLET: keypad\n")
+	cecho(preText.."USAGE: /set keypad <on|off|help>\n")
+    cecho(preText.."\n")
+    cecho(preText.."Use this command to enable directional movement using the keypad. The numlock key should\n")
+    cecho(preText.."be enabled to use this. Four different variations of keypad movement are possible:\n")
+    cecho(preText.."\n")
+    cecho(preText.."Keypad            - Standard movement\n")
+    cecho(preText.."CTRL+Keypad       - Leading movement\n")
+    cecho(preText.."SHIFT+Keypad      - Sequential movement (opening and closing doors behind you)\n")
+    cecho(preText.."CTRL+SHIFT+Keypad - Sequential leading movement (leading while opening and closing doors)\n")
+    cecho(preText.."\n")
+    cecho(preText.."Use the keypad keys by themselves, or while pressing the optional CTRL and/or SHIFT keys\n")
+    cecho(preText.."to create the type of movement behavior you want. Here is the full list of key bindings:\n")
+    cecho(preText.."\n")
+    cecho(preText.."Keypad 1        - southwest\n")
+    cecho(preText.."Keypad 2        - south\n")
+    cecho(preText.."Keypad 3        - southeast\n")
+    cecho(preText.."Keypad 4        - west\n")
+    cecho(preText.."Keypad 5        - look\n")
+    cecho(preText.."Keypad 6        - east\n")
+    cecho(preText.."Keypad 7        - northwest\n")
+    cecho(preText.."Keypad 8        - north\n")
+    cecho(preText.."Keypad 9        - northeast\n")
+    cecho(preText.."Keypad -        - up\n")
+    cecho(preText.."Keypad +        - down\n")
+    cecho(preText.."Keypad /        - survey\n")
+    cecho(preText.."Keypad *        - out\n")
+    cecho(preText.."Keypad 0        - enter town\n")
+    cecho(preText.."Keypad .        - enter gate\n")
+    cecho(preText.."Keypad enter    - enter castle\n")
+    cecho(preText.."\n")
+    cecho(preText.."(Default setting is ON)\n")
+    cecho(preText.."(Current setting is "..string.upper(Status.statusKeypad)..")\n")
+end
+
+
+
 -- /help info
 -----------------------------------------------------------
 local function showHelpInfo(args)
@@ -558,6 +602,8 @@ local function showHelp(args)
         showHelpInfo()
     elseif (detail == "update") or (detail == "insert") then
         showHelpUpdate()
+    elseif (detail == "keypad") or (detail == "key pad") then
+        showHelpKeypad()
     end
 
 end

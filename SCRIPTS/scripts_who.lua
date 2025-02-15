@@ -3,11 +3,12 @@ local timers        = {}
 local sourceName    = "who"
 
 
+
 -- remove who timers
 -----------------------------------------------------------
 local function killTimers(args)
 
-    for k,v in pairs(timers) do
+    for _,v in pairs(timers) do
 		killTimer(v)
 	end
 end

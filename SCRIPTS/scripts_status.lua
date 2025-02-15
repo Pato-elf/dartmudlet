@@ -186,6 +186,7 @@ Status.fontSizeChat			= 10
 Status.fontSizeImproves		= 10
 Status.fontSizeMessage		= 10
 Status.fontSizeWho			= 10
+Status.backgroundFade       = 130
 Status.numLinesToCheck		= 20
 Status.scrollCurrentSpell	= ''
 Status.scrollCurrentPower	= 100
@@ -193,6 +194,7 @@ Status.tooltipTime			= 7
 Status.showSkillDelay       = 4
 Status.blockType            = ''
 Status.contentsScrollStand  = false
+Status.locationFile1        = 'locations_general.txt'
 
 
 

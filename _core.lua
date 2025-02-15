@@ -7,53 +7,49 @@ local sourceName	= "core"
 
 
 local function setup(e, f, g)
-	modules	= {}
-	args	= {}
+    local directory = ""
+	modules         = {}
+	args            = {}
+
+    local directories = {
+        "ALIASES/",
+        "SCRIPTS/",
+        "TIMERS/",
+        "TRIGGERS/",
+        "UI/"
+    }
 
 
-	cecho("<yellow>DARTMUDLET: Begin setup\n")
-
-	local aliases_directory = packageFolder.."ALIASES/"
-	for file in lfs.dir(aliases_directory) do
-		if lfs.attributes(aliases_directory..file,"mode") == "file" then
-			table.insert(modules, dofile(aliases_directory..file))
-		end
-	end
-
-	local scripts_directory = packageFolder.."SCRIPTS/"
-	for file in lfs.dir(scripts_directory) do
-		if lfs.attributes(scripts_directory..file,"mode") == "file" then
-			table.insert(modules, dofile(scripts_directory..file))
-		end
-	end
-
-	local timers_directory = packageFolder.."TIMERS/"
-	for file in lfs.dir(timers_directory) do
-		if lfs.attributes(timers_directory..file,"mode") == "file" then
-			table.insert(modules, dofile(timers_directory..file))
-		end
-	end
-
-	local triggers_directory = packageFolder.."TRIGGERS/"
-	for file in lfs.dir(triggers_directory) do
-		if lfs.attributes(triggers_directory..file,"mode") == "file" then
-			table.insert(modules, dofile(triggers_directory..file))
-		end
-	end
-
-	local ui_directory = packageFolder.."UI/"
-	for file in lfs.dir(ui_directory) do
-		if lfs.attributes(ui_directory..file,"mode") == "file" then
-			table.insert(modules, dofile(ui_directory..file))
-		end
-	end
+    -- function to load modules
+    -----------------------------------------------------------
+    local function loadModules(directory)
+        local modules = {}
+        for file in lfs.dir(directory) do
+            if lfs.attributes(directory..file,"mode") == "file" then
+                table.insert(modules, dofile(directory..file))
+            end
+        end
+        return modules
+    end
 
 
-	for i,module in ipairs(modules) do
-		if module.setup then
-			module.setup({directory=packageFolder})
-		end
-	end
+    cecho("<yellow>DARTMUDLET: Begin setup\n")
+
+    -- load modules from each directory
+    for _, dir in ipairs(directories) do
+        directory = packageFolder..dir
+        local loadedModules = loadModules(directory)
+        for _, module in ipairs(loadedModules) do
+            table.insert(modules, module)
+        end
+    end
+
+    -- set up each module
+    for _, module in ipairs(modules) do
+        if module.setup then
+            module.setup({directory=packageFolder})
+        end
+    end
 
 	isFirstLoad = false
 
@@ -63,6 +59,7 @@ local function setup(e, f, g)
 	send("who", false)
     send("speak", false)
     send("set aim", false)
+    send("look", false)
 end
 
 
@@ -71,7 +68,7 @@ end
 -----------------------------------------------------------
 local function load()
     systemMessage("Begin loading")
-	for i,module in ipairs(modules) do
+	for _,module in ipairs(modules) do
 		if module.load then
 			module.load()
 		end
@@ -87,7 +84,7 @@ local function unsetup(e, f, g)
 
     systemMessage("Begin unsetup")
 
-	for k,module in pairs(modules) do
+	for _,module in pairs(modules) do
 		if module.unsetup then
 			module.unsetup({directory = packageFolder, isFirstLoad = isFirstLoad})
 			module = nil

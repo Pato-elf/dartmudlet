@@ -13,7 +13,7 @@ GUI.tabwindow1 = GUI.tabwindow1 or
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
-		tabs = {"WHO","TRACKING","LANGUAGE","LEVELS","MESSAGE"},
+		tabs = {"WHO","TRACKING","LANGUAGE","LEVELS"},
 	},GUI.right)
 
 
@@ -26,7 +26,7 @@ GUI.tabwindow2 = GUI.tabwindow2 or
 		tabBarHeight = 20,
 		activeTabBGColor = "rgb(0,0,192)",
 		color1 = "rgb(0,0,192)",
-		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
+		centerStyle = "background-color: black; border-radius: 10px; padding: 0px; margin: 5px;",
 		tabs = {"IMPROVES","CASTING","CHANNEL","REFRESH","REPEAT","ALLOCS"},
 	},GUI.right)
 
@@ -56,7 +56,21 @@ GUI.tabwindow4 = GUI.tabwindow4 or
 		color1 = "rgb(0,0,192)",
 		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
 		tabs = {"CHAT"},
-	},GUI.top)
+	},GUI.topleft)
+
+
+GUI.tabwindow5 = GUI.tabwindow5 or
+	Adjustable.TabWindow:new({
+		name = "tabwindow5",
+		x = 0, y = 0,
+		width = "100%",
+		height = "100%",
+		tabBarHeight = 20,
+		activeTabBGColor = "rgb(0,0,192)",
+		color1 = "rgb(0,0,192)",
+		centerStyle = "background-color: black; border-radius: 10px; margin: 5px;",
+		tabs = {"LOCATION","MESSAGE"},
+	},GUI.topright)
 
 end
 

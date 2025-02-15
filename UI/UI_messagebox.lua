@@ -4,17 +4,17 @@ messagebox = {}
 
 function createMessageBox()
 
--- CREATE MESSAGE BOX -> TABWINDOW1
+-- CREATE MESSAGE BOX -> TABWINDOW5
 -----------------------------------------------------------
 GUI.containerMessageBox = GUI.containerMessageBox or
 	Geyser.MiniConsole:new({
 		name = "MessageBox",
-		x = 12, y = 10,
+		x = 8, y = 8,
 		fontSize = Status.fontSizeMessage,
-		width = "96%",
-		height = "93%",
+		width = "100%-16",
+		height = "100%-16",
 		color = "black"
-	}, GUI.tabwindow1.MESSAGEcenter)
+	}, GUI.tabwindow5.MESSAGEcenter)
 
 end
 

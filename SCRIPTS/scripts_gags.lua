@@ -108,7 +108,7 @@ local creatureList = {
 }
 
 
-local citizenemotes = "blinks|bows|chuckles|flees|frowns|giggles|glares|grins|looks|"
+local citizenemotes = "blinks|bows|chuckles|flees|frowns|giggles|glares|grins|hums|looks|"
 citizenemotes = citizenemotes.."nods|peers|ponders|screams|shakes|smiles|smirks|stares|stretches|swings|twiddles|whistles|yawns"
 local citizenspeaks = "asks|exclaims|says"
 local citizenList   = {
@@ -123,7 +123,7 @@ local citizenList   = {
     ,"Dougal asks in common, \\'Are you looking for anything"
     ,"([\\w']+) asks in common, \\'Got anything to eat"
     ,"([\\w']+) asks in common, \\'Need something carried"
-    ,"Rice counts"
+    ,"Rice (counts|messes|sniffs|yawns)"
     ,"Sylis (cries|sniffs|weeps)"
     ,"(Lulpox|Torcas) (stares|nudges|grins|chuckles|whispers|points)"
 
@@ -149,8 +149,8 @@ local citizenList   = {
     ,"(Jacobus) ("..citizenspeaks..")"
     ,"(Kasumi|Kentaro) ("..citizenemotes..")"
     ,"(Kasumi|Kentaro) ("..citizenspeaks..")"
-    ,"(Lambertus|Leonardo|Lorenzo|Luca|Lucha|Luciana) ("..citizenemotes..")"
-    ,"(Lambertus|Leonardo|Lorenzo|Luca|Lucha|Luciana) ("..citizenspeaks..")"
+    ,"(Lambertus|Lancelinus|Leonardo|Lorenzo|Luca|Lucha|Luciana) ("..citizenemotes..")"
+    ,"(Lambertus|Lancelinus|Leonardo|Lorenzo|Luca|Lucha|Luciana) ("..citizenspeaks..")"
     ,"(Matio|Micola|Mirabae|Moonoolool|Multormuh) ("..citizenemotes..")"
     ,"(Matio|Micola|Mirabae|Moonoolool|Multormuh) ("..citizenspeaks..")"
     ,"(Nasih) ("..citizenemotes..")"

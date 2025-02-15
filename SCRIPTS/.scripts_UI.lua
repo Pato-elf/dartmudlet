@@ -1,30 +1,65 @@
 GUI							= GUI or {}
 aura						= "unknown"
-local windows				= {}
-local windows_ByPosition	= {}
-windows_ByPosition.topRight	= {}
-windows_ByPosition.topLeft	= {}
-windows_ByPosition.right	= {}
+--local windows				= {}
+--local windows_ByPosition	= {}
+--windows_ByPosition.topRight	= {}
+--windows_ByPosition.topLeft	= {}
+--windows_ByPosition.right	= {}
 
 
 
 -- CREATE GUI
 -----------------------------------------------------------
 local function createUIConsole()
-	GUI.top = Adjustable.Container:new({name = "top",x=0, y=0, height=188})
-	GUI.right = Adjustable.Container:new({name = "right", x=-600, y=0, width=600, height="100%"})
+	GUI.top = Adjustable.Container:new({name = "top", x=0, y=0, height=256})
+	GUI.right = Adjustable.Container:new({name = "right", x=-570, y=0, width=570, height="100%"})
 
 	GUI.top:attachToBorder("top")
 	GUI.right:attachToBorder("right")
 	GUI.top:connectToBorder("right")
 
-	GUI.top:setTitle("")
+    GUI.top:setTitle("")
 	GUI.right:setTitle("")
 
-	GUI.top:setBorderMargin(0)
+    GUI.top:setBorderMargin(0)
 	GUI.top:setPadding(2)
 	GUI.right:setBorderMargin(0)
 	GUI.right:setPadding(2)
+
+
+
+    GUI.topleft = Adjustable.Container:new({name = "topleft", x=0, y=0, width="100%-384", height="100%", adjLabelstyle = [[border: none;]]},GUI.top)
+    GUI.topright = Adjustable.Container:new({name = "topright", x=-384, y=0, width=384, height="100%", adjLabelstyle = [[border: none;]]},GUI.top)
+
+    GUI.topleft:attachToBorder("right")
+	GUI.topright:attachToBorder("right")
+	GUI.topleft:connectToBorder("right")
+    GUI.topright:connectToBorder("right")
+
+    GUI.topleft:setTitle("")
+	GUI.topright:setTitle("")
+
+    GUI.topleft:setBorderMargin(2)
+	GUI.topleft:setPadding(0)
+	GUI.topright:setBorderMargin(2)
+	GUI.topright:setPadding(0)
+
+-- Create the right container
+--GUI.left = Adjustable.Container:new({name = "left", x=0, y=0, width="50%", height=188})
+--GUI.top = Adjustable.Container:new({name = "top", y=0, height=188})
+--GUI.right = Adjustable.Container:new({name = "right", x=-600, y=0, width=600, height="100%"})
+
+-- Attach containers to borders
+--GUI.left:attachToBorder("top")
+--GUI.top:attachToBorder("left")
+--GUI.right:attachToBorder("right")
+
+--Connect top container to flex
+--GUI.top:connectToBorder("left")
+--GUI.top:connectToBorder("right")
+
+
+
 
 	createTabwindows()
 
@@ -34,7 +69,6 @@ local function createUIConsole()
     createTrackingBox()
     createLanguageBox()
 	createLevelsBox()
-	createMessageBox()
 
 	-- TABWINDOW2
 	-------------------------
@@ -54,6 +88,11 @@ local function createUIConsole()
 	-- TABWINDOW4
 	-------------------------
 	createChatBox()
+
+    -- TABWINDOW5
+	-------------------------
+	createLocationBox()
+    createMessageBox()
 
 --GUI.top:load()
 --GUI.right:load()
@@ -82,24 +121,35 @@ end
 -----------------------------------------------------------
 local function onWho(args)
 	selectCurrentLine()
-	copy()
-	appendBuffer("WhoBox")
+    local copyText = copy2decho()
+    --copyText = copyText:gsub(":0,0,0>", ":0,0,0,"..Status.backgroundFade..">")
+    copyText = copyText:gsub("<255,255,255:0,0,0>%[HG%]", "<0,0,0:255,255,255>%[HG%]")
+    copyText = copyText:gsub(">", "><b>")
+    --copyText = copyText.."<255,255,255:0,0,0,"..Status.backgroundFade..">"..string.rep(" ", 400 - #copyText)
+    decho("WhoBox","<b>"..copyText.."\n")
 	deleteLine()
 end
 
 local function onStartWho(args)
 	clearWindow("WhoBox")
 	selectCurrentLine()
-	copy()
-	appendBuffer("WhoBox")
+    local copyText = copy2decho()
+    copyText = copyText:gsub(">> ", ">", 1)
+    --test = test:gsub(":0,0,0>", ":0,0,0,"..Status.backgroundFade..">")
+    copyText = copyText:gsub(">", "><b>")
+    --test = test.."<255,255,255:0,0,0,"..Status.backgroundFade..">"..string.rep(" ", 200 - #test)
+    decho("WhoBox","<b>"..copyText.."\n")
 	Events.addListener("whoEvent", sourceName, onWho)
 	deleteLine()
 end
 
 local function onWhoEnd(args)
 	selectCurrentLine()
-	copy()
-	appendBuffer("WhoBox")
+    local copyText = copy2decho()
+    copyText = copyText:gsub(">", "><b>")
+    --test = test:gsub(":0,0,0>", ":0,0,0,"..Status.backgroundFade..">")
+    --test = test.."<255,255,255:0,0,0,"..Status.backgroundFade..">"..string.rep(" ", 200 - #test)
+    decho("WhoBox","<b>"..copyText.."\n")
 	Events.removeListener("whoEvent", sourceName)
 	deleteLine()
 end
@@ -155,6 +205,7 @@ local function onImprove(args)
 		end
 	end
 
+    -- update improve box
 	echo("ImproveBox", " "..output.."\n")
 
 	if skill_name == "spell casting" then

@@ -7,10 +7,10 @@ function createWhoBox()
 GUI.containerWhoBox = GUI.containerWhoBox or
 	Geyser.MiniConsole:new({
 		name = "WhoBox",
-		x = 12, y = 10,
+		x = 8, y = 8,
 		fontSize = Status.fontSizeWho,
-		width = "96%",
-		height = "93%",
+		width = "100%-16",
+		height = "100%-16",
 		color = "black"
 	}, GUI.tabwindow1.WHOcenter)
 

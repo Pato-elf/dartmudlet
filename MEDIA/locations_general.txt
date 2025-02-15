@@ -160,3 +160,8 @@ Gatehouse,Gatehouse.jpg
 Parade Ground,Parade Ground.jpg
 Barracks,Barracks.jpg
 Commander\'s Office,Commanders Office.jpg
+Bank,Bank.jpg
+Royal Stables,Royal Stables.jpg
+Gymnasium,Gymnasium.jpg
+Rope,Rope.jpg
+Rafters,Rafters.jpg

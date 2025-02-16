@@ -257,12 +257,14 @@ local function loadFileToTable(args)
     end
 
     for line in file:lines() do
-        columns = {}
-        for value in string.gmatch(line, '([^,]+)') do
-            table.insert(columns, value)
+        if string.sub(line, 1, 1) ~= "#" then
+            columns = {}
+            for value in string.gmatch(line, '([^,]+)') do
+                table.insert(columns, value)
+            end
+            lines[linenum]  = columns
+            linenum         = linenum + 1
         end
-        lines[linenum]  = columns
-        linenum         = linenum + 1
     end
 
     file:close()

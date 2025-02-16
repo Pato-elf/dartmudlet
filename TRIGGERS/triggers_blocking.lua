@@ -11,6 +11,7 @@ local textToUnBlock = {
     ,"The area becomes (faintly) shrouded"
     ,"Your .* begins (faintly|softly|brightly|brilliantly) glowing"
     ,"Your .* becomes (faintly|deeply|distinctly) shrouded"
+    ,"An arcane rune appears on the .*"
 	,".* believes"
 	,".* coil around you like a serpent"
 	,".* corpse isn't here"

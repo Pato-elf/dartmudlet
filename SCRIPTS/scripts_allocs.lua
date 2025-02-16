@@ -888,7 +888,7 @@ local function checkAllocsTable(args)
 		dba.execute('UPDATE allocs SET allocOrderNumber=id')
 		local exampleallocs = "UPDATE allocs SET "
 		exampleallocs = exampleallocs..'bodypart1="left hand", bodypart2="right hand", allocName="DEFAULT", '
-		exampleallocs = exampleallocs..'bonus1=75, daring1=75, speed1=75, aiming1=75, parry2=150, control2=150 '
+		exampleallocs = exampleallocs..'bonus1=70, daring1=70, speed1=70, aiming1=70, parry1=10, control1=10, parry2=150, control2=150 '
 		exampleallocs = exampleallocs..'WHERE allocOrderNumber=1'
 		dba.execute(exampleallocs)
 	end

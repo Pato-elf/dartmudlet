@@ -5,7 +5,7 @@ local locationTriggersHexes     = {}
 local sourceName                = "locations"
 
 local locationListHexes = {
-    {"This is a large open plain.", "HEX Plains.jpg", "HEX - Plains"}
+    {"This is a large (open|wet) plain.", "HEX Plains.jpg", "HEX - Plains"}
     ,{"You are in the hills.", "HEX Hills.jpg", "HEX - Hills"}
     ,{"You are in a swamp.", "HEX Swamp.jpg", "HEX - Swamp"}
     ,{"You are in open farmland.", "HEX Farmland.jpg", "HEX - Farmland"}

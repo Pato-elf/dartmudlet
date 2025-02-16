@@ -6,7 +6,11 @@ local triggers = {}
 local textToUnBlock = {
 	".* appears above your .* then"
 	,".* aura manifests!"
-	,".* begins to glow"
+	,".* begins to glow"--
+    ,"The area begins (faintly|softly|brightly|brilliantly) glowing"
+    ,"The area becomes (faintly) shrouded"
+    ,"Your .* begins (faintly|softly|brightly|brilliantly) glowing"
+    ,"Your .* becomes (faintly|deeply|distinctly) shrouded"
 	,".* believes"
 	,".* coil around you like a serpent"
 	,".* corpse isn't here"

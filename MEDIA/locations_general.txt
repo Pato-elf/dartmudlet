@@ -1,34 +1,45 @@
-OOC Entry Hall,OOC Entry Hall.jpg
-OOC Area,OOC Area.jpg
-Gilmore OOC Entrance,OOC Entrance General.jpg
-Soriktos OOC Entrance,OOC Entrance General.jpg
-The Chat Room,The Chat Room.jpg
-Hall of Mortals,Hall of Mortals.jpg
-Wooded Clearing,Wooded Clearing.jfif
-South Field,South Field.jpg
-North Field,North Field.jpg
+###
+### MISC
+###
+Balcony,Balcony.jfif
+Bank,Bank.jpg
+Barn,Barn.jpg
+Bedroom,Bedroom.jpg
 East Field,East Field.jpg
-West Field,West Field.jpg
+Entry Hall,Entry Hall.jpg
 Farm,Farm.jpg
 Farmhouse,Farmhouse.jpg
-Millhouse,Millhouse.jpg
+Garden,Garden.jpg
 Grove,Grove.jpg
-Smithy,Smithy.jpg
-Barn,Barn.jpg
+Hall of Mortals,Hall of Mortals.jpg
 Kitchen,Kitchen.jpg
-Library,Library.jpg
-Bedroom,Bedroom.jpg
 Landing,Landing.jpg
-Stable,Stable.jpg
-Sawmill,Sawmill.jpg
-Warehouse,Warehouse.jpg
-Vault,Vault.jpg
-Destroyed Wagon,Destroyed Wagon.jpg
-Alcove,Alcove.jpg
+Library,Library.jpg
+Millhouse,Millhouse.jpg
+North Field,North Field.jpg
+OOC Area,OOC Area.jpg
+OOC Entry Hall,OOC Entry Hall.jpg
+Pool,Pool.jpg
 Post Office,Post Office.jpg
+Sawmill,Sawmill.jpg
+Smithy,Smithy.jpg
+South Field,South Field.jpg
+Stable,Stable.jpg
+Stall,Stall.jpg
+The Chat Room,The Chat Room.jpg
+Underwater,Underwater.jpg
+Vault,Vault.jpg
+Warehouse,Warehouse.jpg
+West Field,West Field.jpg
+###
+### GILMORE
+###
+Gilmore OOC Entrance,OOC Entrance General.jpg
+Guest Cottage,Guest Cottage.jpg
+Wooded Clearing,Wooded Clearing.jfif
+Alcove,Alcove.jpg
 Stableyard,Stableyard.jpg
 Courtyard,Courtyard.jpg
-Garden,Garden.jpg
 Pen,Pen.jpg
 Guild Chantry,Guild Chantry.jpg
 Guild Office,Guild Office.jpg
@@ -37,15 +48,11 @@ Wine Cellar,Wine Cellar.jpg
 Bindery,Bindery.jpg
 Glassworks,Glassworks.jpg
 Dormitory,Dormitory.jpg
-Entry Hall,Entry Hall.jpg
 Common Room,Common Room.jpg
 Anteroom,Anteroom.jpg
 Nexus,Nexus.jpg
-Pool,Pool.jpg
 Closet,Closet.jpg
 Lobby,Lobby.jpg
-Underwater,Underwater.jpg
-Stall,Stall.jpg
 Guild Road,Guild Road.jpg
 Gavin Road,Gavin Road.jpg
 Temple Road,Temple Road.jpg
@@ -75,11 +82,9 @@ Southeast Corner of the Gilmore Market,Southeast Corner of the Gilmore Market.jp
 Northeast Corner of the Gilmore Market,Northeast Corner of the Gilmore Market.jpg
 Northwest Corner of the Gilmore Market,Northwest Corner of the Gilmore Market.jpg
 Southwest Corner of the Gilmore Market,Southwest Corner of the Gilmore Market.jpg
-Hamlet Square,Hamlet Square.jpg
-Whitlow\'s General Store,Whitlows General Store.jpg
-Narrow Path,Narrow Path.jpg
-Stockyard,Stockyard.jpg
-Balcony,Balcony.jfif
+###
+### SORIKTOS
+###
 Salon,Salon.jpg
 Pottery,Pottery.jpg
 The Souk,The Souk.jpg
@@ -88,6 +93,7 @@ Infirmary,Infirmary.jpg
 Healer\'s Hall,Healers Hall.jpg
 Onyx Street,Onyx Street.jpg
 Chalcedony Street,Chalcedony Street.jpg
+Soriktos OOC Entrance,OOC Entrance General.jpg
 Street of the Twisted Camel,Street of the Twisted Camel.jpg
 Jacinth Street,Jacinth Street.jpg
 Port Street,Port Street.jpg
@@ -145,27 +151,18 @@ Room Nine at The Blue Pearl,Room at The Blue Pearl.jpg
 Room Ten at The Blue Pearl,Room at The Blue Pearl.jpg
 Room Eleven at The Blue Pearl,Room at The Blue Pearl.jpg
 Room Twelve at The Blue Pearl,Room at The Blue Pearl.jpg
-Front Yard,Front Yard.jpg
-South Street,South Street.jpg
-Village Smithy,Village Smithy.jpg
-Felora\'s Fibers,Feloras Fibers.jpg
-Krummholtz,Krummholtz.jpg
-A circular cave.,A circular cave..jpg
-The cave mouth,The cave mouth.jpg
-Wolf Den,Wolf Den.jpg
-Cave,Cave.jpg
-Subterranean Chamber,Subterranean Chamber.jpg
 Gates of the Citadel,Gates of the Citadel.jpg
 Gatehouse,Gatehouse.jpg
 Parade Ground,Parade Ground.jpg
 Barracks,Barracks.jpg
 Commander\'s Office,Commanders Office.jpg
-Bank,Bank.jpg
 Royal Stables,Royal Stables.jpg
 Gymnasium,Gymnasium.jpg
 Rope,Rope.jpg
 Rafters,Rafters.jpg
+###
 ### BASILICA
+###
 Basilica of the Holy Luminaris,Basilica of the Holy Luminaris.jpg
 Narthex,Basilica of the Holy Luminaris.jpg
 North Tower,Basilica of the Holy Luminaris.jpg
@@ -185,10 +182,33 @@ Steeple Tower,Basilica of the Holy Luminaris.jpg
 North Tower - Second Floor,Basilica of the Holy Luminaris.jpg
 North Tower - Third Floor,Basilica of the Holy Luminaris.jpg
 South Tower - Third Floor,Basilica of the Holy Luminaris.jpg
+###
 ### NECROPOLIS
+###
 Necropolis,Necropolis.jpg
 Outside the Temple,Outside the Temple.jpg
 Temple,Temple.jpg
 Catacombs,Catacombs.jpg
 Sepulchre,Sepulchre.jpg
+Chamber of Skulls,Chamber of Skulls.jpg
 Underworld Portal,Underworld Portal.jpg
+###
+### TIRACHI
+###
+Destroyed Wagon,Destroyed Wagon.jpg
+Subterranean Chamber,Subterranean Chamber.jpg
+Krummholtz,Krummholtz.jpg
+A circular cave.,A circular cave..jpg
+The cave mouth,The cave mouth.jpg
+Wolf Den,Wolf Den.jpg
+###
+### HAMLET
+###
+Hamlet Square,Hamlet Square.jpg
+Whitlow\'s General Store,Whitlows General Store.jpg
+Narrow Path,Narrow Path.jpg
+Stockyard,Stockyard.jpg
+Front Yard,Front Yard.jpg
+South Street,South Street.jpg
+Village Smithy,Village Smithy.jpg
+Felora\'s Fibers,Feloras Fibers.jpg

@@ -190,3 +190,4 @@ Necropolis,Necropolis.jpg
 Outside the Temple,Outside the Temple.jpg
 Temple,Temple.jpg
 Catacombs,Catacombs.jpg
+Underworld Portal,Underworld Portal.jpg

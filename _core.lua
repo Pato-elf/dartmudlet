@@ -1,5 +1,5 @@
 local _Core			= {}
-local packageName	= "dartmudlet"
+local packageName	= "DartMUDlet"
 packageFolder		= getMudletHomeDir().."/"..packageName.."/"
 local modules		= {}
 local sourceName	= "core"

@@ -6,15 +6,15 @@ local sourceName                = "locations"
 
 local locationListHexes = {
     {"This is a large (open|wet) plain\\.", "HEX Plains.jpg", "HEX - Plains"}
-    ,{"You are in the hills\\.", "HEX Hills.jpg", "HEX - Hills"}
-    ,{"You are in a swamp\\.", "HEX Swamp.jpg", "HEX - Swamp"}
-    ,{"You are in open farmland\\.", "HEX Farmland.jpg", "HEX - Farmland"}
-    ,{"You are in the woods\\.", "HEX Woods.jpg", "HEX - Woods"}
-    ,{"You are in fresh water\\.", "HEX Freshwater.jpg", "HEX - Fresh Water"}
-    ,{"This is a large expanse of ocean\\.", "HEX Ocean.jpg", "HEX - Ocean"}
-    ,{"You are on the side of a (frigid|rocky) mountain\\.", "HEX Mountains.jpg", "HEX - Mountains"}
-    ,{"A barren and blasted plain covered with ash and rubble\\.", "HEX Wasteland.jpg", "HEX - Wasteland"}
-    ,{"You are in a dry desert\\.", "HEX Desert.jpg", "HEX - Desert"}
+    ,{"You are in the hills", "HEX Hills.jpg", "HEX - Hills"}
+    ,{"You are in a swamp", "HEX Swamp.jpg", "HEX - Swamp"}
+    ,{"You are in open farmland", "HEX Farmland.jpg", "HEX - Farmland"}
+    ,{"You are in the woods", "HEX Woods.jpg", "HEX - Woods"}
+    ,{"You are in fresh water", "HEX Freshwater.jpg", "HEX - Fresh Water"}
+    ,{"This is a large expanse of ocean", "HEX Ocean.jpg", "HEX - Ocean"}
+    ,{"You are on the side of a (frigid|rocky) mountain", "HEX Mountains.jpg", "HEX - Mountains"}
+    ,{"A barren and blasted plain covered with ash and rubble", "HEX Wasteland.jpg", "HEX - Wasteland"}
+    ,{"You are in a dry desert", "HEX Desert.jpg", "HEX - Desert"}
     ,{"It is pitch black\\.", "Pitch Black.jpg", "Pitch Black"}
 }
 

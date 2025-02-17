@@ -18,5 +18,5 @@ DartMUDlet will also block and queue up commands while you are performing interr
 Type /setup to initialize DartMUDlet once installed.
 Type /help for a full list of commands.
 ]]
-version = [[1.9.0]]
-created = "2025-02-16T00:00:00+0:00"
+version = [[1.9.1]]
+created = "2025-02-17T00:00:00+0:00"

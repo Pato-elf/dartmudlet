@@ -258,7 +258,7 @@ Study#A dirt road.jpg
 Decrepit old kitchen#A dirt road.jpg
 Mantoux\' Shop#A dirt road.jpg
 Catrina\'s Petshop#Catrinas Petshop.jpg
-Kennel#A dirt road.jpg
+Kennel#Kennel.jpg
 Dark, crowded street#A dirt road.jpg
 ###
 ### ERIS
@@ -277,3 +277,49 @@ Intersection of Garrison Road and Ash Street#Eris Road.jpg
 Ash Street#Eris Road.jpg
 Eris Kennel#Eris Road.jpg
 Bank of Eris#Eris Road.jpg
+###
+### SEGLIZ
+###
+Weathered Gate#Segliz.jpg
+Entrance Tunnel#Segliz.jpg
+Tunnel Checkpoint#Segliz.jpg
+Long Tunnel#Segliz.jpg
+Eastern Square#Segliz.jpg
+Rowan Garrison#Segliz.jpg
+Chaplain Pluschi\'s Office#Segliz.jpg
+Llorton\'s Alterations#Segliz.jpg
+Sewing Room#Segliz.jpg
+Segliz Bank#Segliz.jpg
+Abandoned Tower#Segliz.jpg
+Main Street#Segliz.jpg
+Harbor Way#Segliz.jpg
+Segliz Municipal Gardens#Segliz.jpg
+Miniature Garden#Segliz.jpg
+Giant Garden#Segliz.jpg
+Segliz West Municipal Gardens#Segliz.jpg
+Segliz Harbor#Segliz.jpg
+Building Interior, Main Floor#Segliz.jpg
+Building Interior, Upper Floor#Segliz.jpg
+Basement of the Harbor Warehouse#Segliz.jpg
+South Harbor Way#Segliz.jpg
+Segliz OOC Entrance#OOC Entrance General.jpg
+Grand Foyer#Segliz.jpg
+Grand Balcony#Segliz.jpg
+Grand Theater#Segliz.jpg
+Grand Stage#Segliz.jpg
+Promenade#Segliz.jpg
+Crystal Tower#Segliz.jpg
+City Hall Entrance#Segliz.jpg
+Rotunda#Segliz.jpg
+Immigration Office#Segliz.jpg
+Snack Bar#Segliz.jpg
+Segliz Communal Kitchen#Segliz.jpg
+The Segliz Library#Segliz.jpg
+Syphe\'s Gem Shop#Segliz.jpg
+Main Street, West End#Segliz.jpg
+South Mystic Way#Segliz.jpg
+Mystic Way, South End#Segliz.jpg
+Iysl\'s Scriptorium#Segliz.jpg
+North Mystic Way#Segliz.jpg
+Dilini\'s Pharmacy#Segliz.jpg
+Segliz Heart#Segliz.jpg

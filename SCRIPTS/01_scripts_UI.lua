@@ -1,10 +1,5 @@
 GUI							= GUI or {}
 aura						= "unknown"
---local windows				= {}
---local windows_ByPosition	= {}
---windows_ByPosition.topRight	= {}
---windows_ByPosition.topLeft	= {}
---windows_ByPosition.right	= {}
 
 
 
@@ -43,21 +38,6 @@ local function createUIConsole()
 	GUI.topleft:setPadding(0)
 	GUI.topright:setBorderMargin(2)
 	GUI.topright:setPadding(0)
-
--- Create the right container
---GUI.left = Adjustable.Container:new({name = "left", x=0, y=0, width="50%", height=188})
---GUI.top = Adjustable.Container:new({name = "top", y=0, height=188})
---GUI.right = Adjustable.Container:new({name = "right", x=-600, y=0, width=600, height="100%"})
-
--- Attach containers to borders
---GUI.left:attachToBorder("top")
---GUI.top:attachToBorder("left")
---GUI.right:attachToBorder("right")
-
---Connect top container to flex
---GUI.top:connectToBorder("left")
---GUI.top:connectToBorder("right")
-
 
 
 
@@ -122,10 +102,8 @@ end
 local function onWho(args)
 	selectCurrentLine()
     local copyText = copy2decho()
-    --copyText = copyText:gsub(":0,0,0>", ":0,0,0,"..Status.backgroundFade..">")
     copyText = copyText:gsub("<255,255,255:0,0,0>%[HG%]", "<0,0,0:255,255,255>%[HG%]")
     copyText = copyText:gsub(">", "><b>")
-    --copyText = copyText.."<255,255,255:0,0,0,"..Status.backgroundFade..">"..string.rep(" ", 400 - #copyText)
     decho("WhoBox","<b>"..copyText.."\n")
 	deleteLine()
 end
@@ -135,9 +113,7 @@ local function onStartWho(args)
 	selectCurrentLine()
     local copyText = copy2decho()
     copyText = copyText:gsub(">> ", ">", 1)
-    --test = test:gsub(":0,0,0>", ":0,0,0,"..Status.backgroundFade..">")
     copyText = copyText:gsub(">", "><b>")
-    --test = test.."<255,255,255:0,0,0,"..Status.backgroundFade..">"..string.rep(" ", 200 - #test)
     decho("WhoBox","<b>"..copyText.."\n")
 	Events.addListener("whoEvent", sourceName, onWho)
 	deleteLine()
@@ -147,8 +123,6 @@ local function onWhoEnd(args)
 	selectCurrentLine()
     local copyText = copy2decho()
     copyText = copyText:gsub(">", "><b>")
-    --test = test:gsub(":0,0,0>", ":0,0,0,"..Status.backgroundFade..">")
-    --test = test.."<255,255,255:0,0,0,"..Status.backgroundFade..">"..string.rep(" ", 200 - #test)
     decho("WhoBox","<b>"..copyText.."\n")
 	Events.removeListener("whoEvent", sourceName)
 	deleteLine()

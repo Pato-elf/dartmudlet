@@ -21,7 +21,11 @@ local function onNetworkOutput(args)
 		cecho("<orange>QUEUE: "..command.."\n")
 		table.insert(queue, command)
 		denyCurrentSend()
-	elseif string.match(command, "^cast ") and not (string.match(command, '^cast ?!? tell') or string.match(command, "^cast net")) or
+	elseif string.match(command, "^cast ") and not (
+            string.match(command, '^cast ?!? tell') or
+            string.match(command, '^cast ?!? t ') or
+            string.match(command, "^cast net")
+        ) or
 		string.match(command, "^invoke ") or
 		string.match(command, "^study ") or
 		string.match(command, "^hunt ") or
@@ -32,6 +36,8 @@ local function onNetworkOutput(args)
         Status.blockType = 'inscribe'
         block()
 	elseif string.match(command, "^write ") and not
+        string.match(command, "^write letter") and not
+        string.match(command, "^write note") and not
 		string.match(command, "^write color") and not
 		string.match(command, "^write name") and not
 		string.match(command, "^write sex") and not

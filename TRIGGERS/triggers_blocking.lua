@@ -8,7 +8,7 @@ local textToUnBlock = {
 	,".* aura manifests!"
 	,".* begins to glow"--
     ,"The area begins (faintly|softly|brightly|brilliantly) glowing"
-    ,"The area becomes (faintly) shrouded"
+    ,"The area becomes (faintly|deeply|distinctly) shrouded"
     ,"Your .* begins (faintly|softly|brightly|brilliantly) glowing"
     ,"Your .* becomes (faintly|deeply|distinctly) shrouded"
     ,"An arcane rune appears on the .*"

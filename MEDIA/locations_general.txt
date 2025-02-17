@@ -1,218 +1,262 @@
 ###
 ### MISC
 ###
-Balcony,Balcony.jfif
-Bank,Bank.jpg
-Barn,Barn.jpg
-Bedroom,Bedroom.jpg
-East Field,East Field.jpg
-Entry Hall,Entry Hall.jpg
-Farm,Farm.jpg
-Farmhouse,Farmhouse.jpg
-Garden,Garden.jpg
-Grove,Grove.jpg
-Hall of Mortals,Hall of Mortals.jpg
-Kitchen,Kitchen.jpg
-Landing,Landing.jpg
-Library,Library.jpg
-Millhouse,Millhouse.jpg
-North Field,North Field.jpg
-OOC Area,OOC Area.jpg
-OOC Entry Hall,OOC Entry Hall.jpg
-Pool,Pool.jpg
-Post Office,Post Office.jpg
-Sawmill,Sawmill.jpg
-Smithy,Smithy.jpg
-South Field,South Field.jpg
-Stable,Stable.jpg
-Stall,Stall.jpg
-The Chat Room,The Chat Room.jpg
-Underwater,Underwater.jpg
-Vault,Vault.jpg
-Warehouse,Warehouse.jpg
-West Field,West Field.jpg
+Balcony#Balcony.jfif
+Bank#Bank.jpg
+Barn#Barn.jpg
+Bedroom#Bedroom.jpg
+East Field#East Field.jpg
+Entry Hall#Entry Hall.jpg
+Farm#Farm.jpg
+Farmhouse#Farmhouse.jpg
+Garden#Garden.jpg
+Grove#Grove.jpg
+Hall of Mortals#Hall of Mortals.jpg
+Kitchen#Kitchen.jpg
+Landing#Landing.jpg
+Library#Library.jpg
+Millhouse#Millhouse.jpg
+North Field#North Field.jpg
+OOC Area#OOC Area.jpg
+OOC Entry Hall#OOC Entry Hall.jpg
+Pool#Pool.jpg
+Post Office#Post Office.jpg
+Sawmill#Sawmill.jpg
+Smithy#Smithy.jpg
+South Field#South Field.jpg
+Stable#Stable.jpg
+Stall#Stall.jpg
+The Chat Room#The Chat Room.jpg
+Underwater#Underwater.jpg
+Vault#Vault.jpg
+Warehouse#Warehouse.jpg
+West Field#West Field.jpg
 ###
 ### GILMORE
 ###
-Alcove,Alcove.jpg
-Anteroom,Anteroom.jpg
-Bait shop,Bait shop.jpg
-Base of the tall mountain,Base of the tall mountain.jpg
-Beside the Waterfall,Beside the Waterfall.jpg
-Bindery,Bindery.jpg
-Charlotte\'s Kitchen,Charlottes Kitchen.jpg
-Closet,Closet.jpg
-Common Room,Common Room.jpg
-Courtyard,Courtyard.jpg
-Dormitory,Dormitory.jpg
-Gavin Road,Gavin Road.jpg
-Gerald\'s General Store,Geralds General Store.jpg
-Gilmore Bank,Gilmore Bank.jpg
-Gilmore Construction Shop,Gilmore Construction Shop.jpg
-Gilmore Docks,Gilmore Docks.jpg
-Gilmore OOC Entrance,OOC Entrance General.jpg
-Gilmore Town Hall,Gilmore Town Hall.jpg
-Glassworks,Glassworks.jpg
-Guest Cottage,Guest Cottage.jpg
-Guild Chantry,Guild Chantry.jpg
-Guild Office,Guild Office.jpg
-Guild Road,Guild Road.jpg
-Intersection of Dragon and Gavin roads,Intersection of Dragon and Gavin roads.jpg
-Intersection of Dragon and Temple roads,Intersection of Dragon and Temple roads.jpg
-Ix\'s Trading Post,Ixs Trading Post.jpg
-Lobby,Lobby.jpg
-Messenger Pigeon Service,Messenger Pigeon Service.jpg
-Mountain Garden,Mountain Garden.jpg
-Nexus,Nexus.jpg
-Northeast Corner of the Gilmore Market,Northeast Corner of the Gilmore Market.jpg
-Northern Portion of the Gilmore Market,Northern Portion of the Gilmore Market.jpg
-Northwest Corner of the Gilmore Market,Northwest Corner of the Gilmore Market.jpg
-Pen,Pen.jpg
-Public Kitchen,Public Kitchen.jpg
-Refectory,Refectory.jpg
-Rocky Beach,Rocky Beach.jpg
-Seaside Ruins,Seaside Ruins.jpg
-Shaudra\'s petshop,Shaudras petshop.jpg
-Southeast Corner of the Gilmore Market,Southeast Corner of the Gilmore Market.jpg
-Southern Portion of the Gilmore Market,Southern Portion of the Gilmore Market.jpg
-Southwest Corner of the Gilmore Market,Southwest Corner of the Gilmore Market.jpg
-Stableyard,Stableyard.jpg
-Temple Road,Temple Road.jpg
-The Boardwalk,The Boardwalk.jpg
-The Inn at Gilmore Hallway,The Inn at Gilmore Hallway.jpg
-Wine Cellar,Wine Cellar.jpg
-Wooded Clearing,Wooded Clearing.jfif
+Alcove#Alcove.jpg
+Anteroom#Anteroom.jpg
+Bait shop#Bait shop.jpg
+Base of the tall mountain#Base of the tall mountain.jpg
+Beside the Waterfall#Beside the Waterfall.jpg
+Bindery#Bindery.jpg
+Charlotte\'s Kitchen#Charlottes Kitchen.jpg
+Closet#Closet.jpg
+Common Room#Common Room.jpg
+Courtyard#Courtyard.jpg
+Dormitory#Dormitory.jpg
+Gavin Road#Gavin Road.jpg
+Gerald\'s General Store#Geralds General Store.jpg
+Gilmore Bank#Gilmore Bank.jpg
+Gilmore Construction Shop#Gilmore Construction Shop.jpg
+Gilmore Docks#Gilmore Docks.jpg
+Gilmore OOC Entrance#OOC Entrance General.jpg
+Gilmore Town Hall#Gilmore Town Hall.jpg
+Glassworks#Glassworks.jpg
+Guest Cottage#Guest Cottage.jpg
+Guild Chantry#Guild Chantry.jpg
+Guild Office#Guild Office.jpg
+Guild Road#Guild Road.jpg
+Intersection of Dragon and Gavin roads#Intersection of Dragon and Gavin roads.jpg
+Intersection of Dragon and Temple roads#Intersection of Dragon and Temple roads.jpg
+Ix\'s Trading Post#Ixs Trading Post.jpg
+Lobby#Lobby.jpg
+Messenger Pigeon Service#Messenger Pigeon Service.jpg
+Mountain Garden#Mountain Garden.jpg
+Nexus#Nexus.jpg
+Northeast Corner of the Gilmore Market#Northeast Corner of the Gilmore Market.jpg
+Northern Portion of the Gilmore Market#Northern Portion of the Gilmore Market.jpg
+Northwest Corner of the Gilmore Market#Northwest Corner of the Gilmore Market.jpg
+Pen#Pen.jpg
+Public Kitchen#Public Kitchen.jpg
+Refectory#Refectory.jpg
+Rocky Beach#Rocky Beach.jpg
+Seaside Ruins#Seaside Ruins.jpg
+Shaudra\'s petshop#Shaudras petshop.jpg
+Southeast Corner of the Gilmore Market#Southeast Corner of the Gilmore Market.jpg
+Southern Portion of the Gilmore Market#Southern Portion of the Gilmore Market.jpg
+Southwest Corner of the Gilmore Market#Southwest Corner of the Gilmore Market.jpg
+Stableyard#Stableyard.jpg
+Temple Road#Temple Road.jpg
+The Boardwalk#The Boardwalk.jpg
+The Inn at Gilmore Hallway#The Inn at Gilmore Hallway.jpg
+Wine Cellar#Wine Cellar.jpg
+Wooded Clearing#Wooded Clearing.jfif
 ###
 ### SORIKTOS
 ###
-A Vacant Building,Paupers Alleyway.jpg
-A Vacant Lot,A Vacant Lot.jpg
-Al Ghali Metalworks and Armory,Al Ghali Metalworks and Armory.jpg
-Anjum\'s Jewels,Anjums Jewels.jpg
-Auditorium,Auditorium.jpg
-Azzam\'s Fine Tobaccos,Azzams Fine Tobaccos.jpg
-Barracks,Barracks.jpg
-Blind Alley,Blind Alley.jpg
-Blue Pearl Hallway,Blue Pearl Hallway.jpg
-Chalcedony Street,Chalcedony Street.jpg
-Chamber of the Flame,Chamber of the Flame.jpg
-Chantry,Chantry.jpg
-Classroom,Classroom.jpg
-Commander\'s Office,Commanders Office.jpg
-Concierge Desk,Concierge Desk.jpg
-Demetrios\' Leathers,Demetrios Leathers.jpg
-Forecourt,Forecourt.jpg
-Foreign Exchange Office,Foreign Exchange Office.jpg
-Fruit vendor\'s booth,Fruit vendors booth.jpg
-Garden Courtyard,Garden Courtyard.jpg
-Gatehouse,Gatehouse.jpg
-Gates of the Citadel,Gates of the Citadel.jpg
-Greengrocer\'s Booth,Greengrocers Booth.jpg
-Gymnasium,Gymnasium.jpg
-Habib\'s Hut,Paupers Alleyway.jpg
-Healer\'s Hall,Healers Hall.jpg
-Infirmary,Infirmary.jpg
-Inseamus\' Enchantments,Inseamus Enchantments.jpg
-Jacinth Street,Jacinth Street.jpg
-Jayr\'s Books and Stationary,Jayrs Books and Stationary.jpg
-Kalidah\'s Pottery Booth,Kalidahs Pottery Booth.jpg
-Laboratory,Laboratory.jpg
-Marja\'s Bakery,Marjas Bakery.jpg
-Meatseller\'s Booth,Meatsellers Booth.jpg
-Nuri\'s Fine Glassware and Porcelain,Nuris Fine Glassware and Porcelain.jpg
-Onyx Street,Onyx Street.jpg
-Parade Ground,Parade Ground.jpg
-Pauper\'s Alleyway,Paupers Alleyway.jpg
-Perfumer\'s Booth,Perfumers Booth.jpg
-Port Street,Port Street.jpg
-Pottery,Pottery.jpg
-Rabiye\'s Curiosities,Rabiyes Curiosities.jpg
-Rafters,Rafters.jpg
-Refuse Heap,Refuse Heap.jpg
-River Jetty,River Jetty.jpg
-Roof,Roof.jpg
-Room Eight at The Blue Pearl,Room at The Blue Pearl.jpg
-Room Eleven at The Blue Pearl,Room at The Blue Pearl.jpg
-Room Five at The Blue Pearl,Room at The Blue Pearl.jpg
-Room Four at The Blue Pearl,Room at The Blue Pearl.jpg
-Room Nine at The Blue Pearl,Room at The Blue Pearl.jpg
-Room One at The Blue Pearl,Room at The Blue Pearl.jpg
-Room Seven at The Blue Pearl,Room at The Blue Pearl.jpg
-Room Six at The Blue Pearl,Room at The Blue Pearl.jpg
-Room Ten at The Blue Pearl,Room at The Blue Pearl.jpg
-Room Three at The Blue Pearl,Room at The Blue Pearl.jpg
-Room Twelve at The Blue Pearl,Room at The Blue Pearl.jpg
-Room Two at The Blue Pearl,Room at The Blue Pearl.jpg
-Rope,Rope.jpg
-Royal Stables,Royal Stables.jpg
-Salon,Salon.jpg
-Sandy Beach,Sandy Beach.jpg
-Scrap Shop,Scrap Shop.jpg
-Sewer,Sewer.jpg
-Shipping Office,Shipping Office.jpg
-Shipyard,Shipyard.jpg
-Soriktos Dock,Soriktos Dock.jpg
-Soriktos Kennel,Soriktos Kennel.jpg
-Soriktos OOC Entrance,OOC Entrance General.jpg
-Storeroom,Storeroom.jpg
-Street of the Twisted Camel,Street of the Twisted Camel.jpg
-Sulis\' Stationers and Sorcerous Supplies,Sulis Stationers and Sorcerous Supplies.jpg
-Tax Office,Tax Office.jpg
-The Blue Pearl,The Blue Pearl.jpg
-The Souk,The Souk.jpg
-The Sultan\'s Locksmith,The Sultans Locksmith.jpg
-Vestibule,Vestibule.jpg
-Western Foregate,Western Foregate.jpg
-Wharf Street,Wharf Street.jpg
+A Vacant Building#Paupers Alleyway.jpg
+A Vacant Lot#A Vacant Lot.jpg
+Al Ghali Metalworks and Armory#Al Ghali Metalworks and Armory.jpg
+Anjum\'s Jewels#Anjums Jewels.jpg
+Auditorium#Auditorium.jpg
+Azzam\'s Fine Tobaccos#Azzams Fine Tobaccos.jpg
+Barracks#Barracks.jpg
+Blind Alley#Blind Alley.jpg
+Blue Pearl Hallway#Blue Pearl Hallway.jpg
+Chalcedony Street#Chalcedony Street.jpg
+Chamber of the Flame#Chamber of the Flame.jpg
+Chantry#Chantry.jpg
+Classroom#Classroom.jpg
+Commander\'s Office#Commanders Office.jpg
+Concierge Desk#Concierge Desk.jpg
+Demetrios\' Leathers#Demetrios Leathers.jpg
+Forecourt#Forecourt.jpg
+Foreign Exchange Office#Foreign Exchange Office.jpg
+Fruit vendor\'s booth#Fruit vendors booth.jpg
+Garden Courtyard#Garden Courtyard.jpg
+Gatehouse#Gatehouse.jpg
+Gates of the Citadel#Gates of the Citadel.jpg
+Greengrocer\'s Booth#Greengrocers Booth.jpg
+Gymnasium#Gymnasium.jpg
+Habib\'s Hut#Paupers Alleyway.jpg
+Healer\'s Hall#Healers Hall.jpg
+Infirmary#Infirmary.jpg
+Inseamus\' Enchantments#Inseamus Enchantments.jpg
+Jacinth Street#Jacinth Street.jpg
+Jayr\'s Books and Stationary#Jayrs Books and Stationary.jpg
+Kalidah\'s Pottery Booth#Kalidahs Pottery Booth.jpg
+Laboratory#Laboratory.jpg
+Marja\'s Bakery#Marjas Bakery.jpg
+Meatseller\'s Booth#Meatsellers Booth.jpg
+Nuri\'s Fine Glassware and Porcelain#Nuris Fine Glassware and Porcelain.jpg
+Onyx Street#Onyx Street.jpg
+Parade Ground#Parade Ground.jpg
+Pauper\'s Alleyway#Paupers Alleyway.jpg
+Perfumer\'s Booth#Perfumers Booth.jpg
+Port Street#Port Street.jpg
+Pottery#Pottery.jpg
+Rabiye\'s Curiosities#Rabiyes Curiosities.jpg
+Rafters#Rafters.jpg
+Refuse Heap#Refuse Heap.jpg
+River Jetty#River Jetty.jpg
+Roof#Roof.jpg
+Room Eight at The Blue Pearl#Room at The Blue Pearl.jpg
+Room Eleven at The Blue Pearl#Room at The Blue Pearl.jpg
+Room Five at The Blue Pearl#Room at The Blue Pearl.jpg
+Room Four at The Blue Pearl#Room at The Blue Pearl.jpg
+Room Nine at The Blue Pearl#Room at The Blue Pearl.jpg
+Room One at The Blue Pearl#Room at The Blue Pearl.jpg
+Room Seven at The Blue Pearl#Room at The Blue Pearl.jpg
+Room Six at The Blue Pearl#Room at The Blue Pearl.jpg
+Room Ten at The Blue Pearl#Room at The Blue Pearl.jpg
+Room Three at The Blue Pearl#Room at The Blue Pearl.jpg
+Room Twelve at The Blue Pearl#Room at The Blue Pearl.jpg
+Room Two at The Blue Pearl#Room at The Blue Pearl.jpg
+Rope#Rope.jpg
+Royal Stables#Royal Stables.jpg
+Salon#Salon.jpg
+Sandy Beach#Sandy Beach.jpg
+Scrap Shop#Scrap Shop.jpg
+Sewer#Sewer.jpg
+Shipping Office#Shipping Office.jpg
+Shipyard#Shipyard.jpg
+Soriktos Dock#Soriktos Dock.jpg
+Soriktos Kennel#Soriktos Kennel.jpg
+Soriktos OOC Entrance#OOC Entrance General.jpg
+Storeroom#Storeroom.jpg
+Street of the Twisted Camel#Street of the Twisted Camel.jpg
+Sulis\' Stationers and Sorcerous Supplies#Sulis Stationers and Sorcerous Supplies.jpg
+Tax Office#Tax Office.jpg
+The Blue Pearl#The Blue Pearl.jpg
+The Souk#The Souk.jpg
+The Sultan\'s Locksmith#The Sultans Locksmith.jpg
+Vestibule#Vestibule.jpg
+Western Foregate#Western Foregate.jpg
+Wharf Street#Wharf Street.jpg
 ###
 ### BASILICA
 ###
-Apse,Basilica of the Holy Luminaris.jpg
-Basilica of the Holy Luminaris,Basilica of the Holy Luminaris.jpg
-Chancel Aisle,Basilica of the Holy Luminaris.jpg
-Chancel,Basilica of the Holy Luminaris.jpg
-Narthex,Basilica of the Holy Luminaris.jpg
-Nave Aisle,Basilica of the Holy Luminaris.jpg
-Nave,Basilica of the Holy Luminaris.jpg
-North Tower - Second Floor,Basilica of the Holy Luminaris.jpg
-North Tower - Third Floor,Basilica of the Holy Luminaris.jpg
-North Tower,Basilica of the Holy Luminaris.jpg
-North Transept,Basilica of the Holy Luminaris.jpg
-South Tower - Second Floor,Basilica of the Holy Luminaris.jpg
-South Tower - Third Floor,Basilica of the Holy Luminaris.jpg
-South Tower,Basilica of the Holy Luminaris.jpg
-South Transept,Basilica of the Holy Luminaris.jpg
-Stairwell,Landing.jpg
-Steeple Tower,Basilica of the Holy Luminaris.jpg
-Transept Crossing,Basilica of the Holy Luminaris.jpg
-Triforium,Basilica of the Holy Luminaris.jpg
+Apse#Basilica of the Holy Luminaris.jpg
+Basilica of the Holy Luminaris#Basilica of the Holy Luminaris.jpg
+Chancel Aisle#Basilica of the Holy Luminaris.jpg
+Chancel#Basilica of the Holy Luminaris.jpg
+Narthex#Basilica of the Holy Luminaris.jpg
+Nave Aisle#Basilica of the Holy Luminaris.jpg
+Nave#Basilica of the Holy Luminaris.jpg
+North Tower - Second Floor#Basilica of the Holy Luminaris.jpg
+North Tower - Third Floor#Basilica of the Holy Luminaris.jpg
+North Tower#Basilica of the Holy Luminaris.jpg
+North Transept#Basilica of the Holy Luminaris.jpg
+South Tower - Second Floor#Basilica of the Holy Luminaris.jpg
+South Tower - Third Floor#Basilica of the Holy Luminaris.jpg
+South Tower#Basilica of the Holy Luminaris.jpg
+South Transept#Basilica of the Holy Luminaris.jpg
+Stairwell#Landing.jpg
+Steeple Tower#Basilica of the Holy Luminaris.jpg
+Transept Crossing#Basilica of the Holy Luminaris.jpg
+Triforium#Basilica of the Holy Luminaris.jpg
 ###
 ### NECROPOLIS
 ###
-Catacombs,Catacombs.jpg
-Chamber of Skulls,Chamber of Skulls.jpg
-Necropolis,Necropolis.jpg
-Outside the Temple,Outside the Temple.jpg
-Sepulchre,Sepulchre.jpg
-Temple,Temple.jpg
-Underworld Portal,Underworld Portal.jpg
+Catacombs#Catacombs.jpg
+Chamber of Skulls#Chamber of Skulls.jpg
+Necropolis#Necropolis.jpg
+Outside the Temple#Outside the Temple.jpg
+Sepulchre#Sepulchre.jpg
+Temple#Temple.jpg
+Underworld Portal#Underworld Portal.jpg
 ###
 ### TIRACHI
 ###
-A circular cave.,A circular cave..jpg
-Destroyed Wagon,Destroyed Wagon.jpg
-Krummholtz,Krummholtz.jpg
-Subterranean Chamber,Subterranean Chamber.jpg
-The cave mouth,The cave mouth.jpg
-Wolf Den,Wolf Den.jpg
+A circular cave.#A circular cave..jpg
+Destroyed Wagon#Destroyed Wagon.jpg
+Krummholtz#Krummholtz.jpg
+Subterranean Chamber#Subterranean Chamber.jpg
+The cave mouth#The cave mouth.jpg
+Wolf Den#Wolf Den.jpg
+Reef#Reef.jpg
+East Reef#Reef.jpg
+West Reef#Reef.jpg
 ###
 ### HAMLET
 ###
-Felora\'s Fibers,Feloras Fibers.jpg
-Front Yard,Front Yard.jpg
-Hamlet Square,Hamlet Square.jpg
-Narrow Path,Narrow Path.jpg
-South Street,South Street.jpg
-Stockyard,Stockyard.jpg
-Village Smithy,Village Smithy.jpg
-Whitlow\'s General Store,Whitlows General Store.jpg
+Felora\'s Fibers#Feloras Fibers.jpg
+Front Yard#Front Yard.jpg
+Hamlet Square#Hamlet Square.jpg
+Narrow Path#Narrow Path.jpg
+South Street#South Street.jpg
+Stockyard#Stockyard.jpg
+Village Smithy#Village Smithy.jpg
+Whitlow\'s General Store#Whitlows General Store.jpg
+###
+### FERDARCHI MISC
+###
+A courtyard#A courtyard.jpg
+The courtyard#A courtyard.jpg
+A somewhat small stone well#A courtyard.jpg
+A garden#A courtyard.jpg
+Inside a windmill#A courtyard.jpg
+Second floor#A courtyard.jpg
+Top floor#A courtyard.jpg
+Windmill roof#A courtyard.jpg
+The miller\'s hut#A courtyard.jpg
+A storage shed#A courtyard.jpg
+A pasture#A courtyard.jpg
+An oak tree#A courtyard.jpg
+###
+### TOBERMORE
+###
+Tobermore OOC Entrance#OOC Entrance General.jpg
+A dirt road#A dirt road.jpg
+South end of town#A dirt road.jpg
+The Smoking Weed#The Smoking Weed.jpg
+Waterfront Way#A dirt road.jpg
+Tobermore Leathers#A dirt road.jpg
+Behind the leather shop#A dirt road.jpg
+New Bank of Eris - Tobermore Branch#A dirt road.jpg
+Crowded sidestreet#A dirt road.jpg
+Outer room#A dirt road.jpg
+Chapel garden#A dirt road.jpg
+Upper Street#A dirt road.jpg
+Claudia's Flowers#A dirt road.jpg
+Doll's Place#A dirt road.jpg
+Waterfront street#A dirt road.jpg
+Overgrown yard#A dirt road.jpg
+Tobermore manor#A dirt road.jpg
+Study#A dirt road.jpg
+Decrepit old kitchen#A dirt road.jpg
+Mantoux' Shop#A dirt road.jpg
+Catrina's Petshop#A dirt road.jpg
+Kennel#A dirt road.jpg
+Dark, crowded street#A dirt road.jpg

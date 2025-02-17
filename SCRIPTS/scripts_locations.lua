@@ -109,7 +109,7 @@ local function loadFileToTable(args)
     for line in file:lines() do
         if string.sub(line, 1, 1) ~= "#" then
             columns = {}
-            for value in string.gmatch(line, '([^,]+)') do
+            for value in string.gmatch(line, '([^#]+)') do
                 table.insert(columns, value)
             end
             lines[linenum]  = columns

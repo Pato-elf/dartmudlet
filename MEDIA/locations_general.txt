@@ -71,6 +71,7 @@ Pen#Pen.jpg
 Public Kitchen#Public Kitchen.jpg
 Refectory#Refectory.jpg
 Rocky Beach#Rocky Beach.jpg
+Scriptorium#Scriptorium.jpg
 Seaside Ruins#Seaside Ruins.jpg
 Shaudra\'s petshop#Shaudras petshop.jpg
 Southeast Corner of the Gilmore Market#Southeast Corner of the Gilmore Market.jpg
@@ -277,6 +278,31 @@ Intersection of Garrison Road and Ash Street#Eris Road.jpg
 Ash Street#Eris Road.jpg
 Eris Kennel#Eris Road.jpg
 Bank of Eris#Eris Road.jpg
+Taproom#Eris Road.jpg
+Bower#Eris Road.jpg
+Office#Eris Road.jpg
+Hallway#Eris Road.jpg
+Room One#Green Gryphon Inn Room.jpg
+Room Two#Green Gryphon Inn Room.jpg
+Room Three#Green Gryphon Inn Room.jpg
+Room Four#Green Gryphon Inn Room.jpg
+Room Five#Green Gryphon Inn Room.jpg
+Room Six#Green Gryphon Inn Room.jpg
+Room Seven#Green Gryphon Inn Room.jpg
+Room Eight#Green Gryphon Inn Room.jpg
+Carriage House#Eris Road.jpg
+Farrier\'s Shop#Eris Road.jpg
+Old Market Way#Eris Road.jpg
+Eris Fairground#Eris Road.jpg
+Healer\'s Garden#Eris Road.jpg
+Ferry Landing#Eris Road.jpg
+Martricio\'s Mercantile#Eris Road.jpg
+Tricia\'s Traveling Trinkets#Eris Road.jpg
+Eris OOC Entrance#OOC Entrance General.jpg
+Registration Hall#Eris Road.jpg
+The Arena#Eris Road.jpg
+East Stands#Eris Road.jpg
+North Stands#Eris Road.jpg
 ###
 ### SEGLIZ
 ###

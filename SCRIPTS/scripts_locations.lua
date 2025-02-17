@@ -5,16 +5,36 @@ local locationTriggersHexes     = {}
 local sourceName                = "locations"
 
 local locationListHexes = {
-    {"This is a large (open|wet) plain\\.", "HEX Plains.jpg", "HEX - Plains"}
+    {"This is a large (open|wet) plain", "HEX Plains.jpg", "HEX - Plains"}
+    ,{"vast plains\\.", "HEX Plains.jpg", "HEX - Plains"}
+
     ,{"You are in the hills", "HEX Hills.jpg", "HEX - Hills"}
+    ,{"hills\\.", "HEX Hills.jpg", "HEX - Hills"}
+
     ,{"You are in a swamp", "HEX Swamp.jpg", "HEX - Swamp"}
+    ,{"swamp\\.", "HEX Swamp.jpg", "HEX - Swamp"}
+
     ,{"You are in open farmland", "HEX Farmland.jpg", "HEX - Farmland"}
+    ,{"farmland\\.", "HEX Farmland.jpg", "HEX - Farmland"}
+
     ,{"You are in the woods", "HEX Woods.jpg", "HEX - Woods"}
+    ,{"woods\\.", "HEX Woods.jpg", "HEX - Woods"}
+
     ,{"You are in fresh water", "HEX Freshwater.jpg", "HEX - Fresh Water"}
+    ,{"lake\\.", "HEX Freshwater.jpg", "HEX - Fresh Water"}
+
     ,{"This is a large expanse of ocean", "HEX Ocean.jpg", "HEX - Ocean"}
+    ,{"ocean\\.", "HEX Ocean.jpg", "HEX - Ocean"}
+
     ,{"You are on the side of a (frigid|rocky) mountain", "HEX Mountains.jpg", "HEX - Mountains"}
+    ,{"tall mountains\\.", "HEX Mountains.jpg", "HEX - Mountains"}
+
     ,{"A barren and blasted plain covered with ash and rubble", "HEX Wasteland.jpg", "HEX - Wasteland"}
+    ,{"wasteland\\.", "HEX Wasteland.jpg", "HEX - Wasteland"}
+
     ,{"You are in a dry desert", "HEX Desert.jpg", "HEX - Desert"}
+    ,{"desert\\.", "HEX Desert.jpg", "HEX - Desert"}
+
     ,{"It is pitch black\\.", "Pitch Black.jpg", "Pitch Black"}
 }
 
@@ -43,7 +63,7 @@ local function loadTriggers(args)
             locationDisplayLine = locationDisplayLine.."<b>"..locationNameFormat.."</b></div></center>"
 
     		locationTriggersGeneral[i] =
-		    tempRegexTrigger("^(?:> )*"..locationName[1].."$",
+		    tempRegexTrigger("^(?:> )*("..locationName[1].."$|"..locationName[1]..":[\\s\\S]*)",
 			    [[
                     GUI.containerLocationBox:setStyleSheet"]]..backgroundStyle..[["
                     echo("LocationBox", "]]..locationDisplayLine..[[")

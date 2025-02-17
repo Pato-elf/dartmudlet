@@ -15,6 +15,7 @@ local locationListHexes = {
     ,{"You are on the side of a (frigid|rocky) mountain\\.", "HEX Mountains.jpg", "HEX - Mountains"}
     ,{"A barren and blasted plain covered with ash and rubble\\.", "HEX Wasteland.jpg", "HEX - Wasteland"}
     ,{"You are in a dry desert\\.", "HEX Desert.jpg", "HEX - Desert"}
+    ,{"It is pitch black\\.", "Pitch Black.jpg", "Pitch Black"}
 }
 
 

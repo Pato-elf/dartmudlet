@@ -6,12 +6,12 @@ local triggers = {}
 local textToUnBlock = {
 	".* appears above your .* then"
 	,".* aura manifests!"
-	,".* begins to glow"--
-    ,"The area begins (faintly|softly|brightly|brilliantly) glowing"
-    ,"The area becomes (faintly|deeply|distinctly) shrouded"
-    ,"Your .* begins (faintly|softly|brightly|brilliantly) glowing"
-    ,"Your .* becomes (faintly|deeply|distinctly) shrouded"
-    ,"An arcane rune appears on the .*"
+	,".* begins to glow"
+	,"The .* begins (faintly|softly|brightly|brilliantly) glowing"
+	,"The .* becomes (faintly|deeply|distinctly) shrouded"
+	,"Your .* begins (faintly|softly|brightly|brilliantly) glowing"
+	,"Your .* becomes (faintly|deeply|distinctly) shrouded"
+	,"An arcane rune appears on the .*"
 	,".* believes"
 	,".* coil around you like a serpent"
 	,".* corpse isn't here"
@@ -21,24 +21,24 @@ local textToUnBlock = {
 	,".* is surrounded by a shimmering"
 	,".* lets off a real rip-roarer"
 	,".* mind is closed to you"
-    ,".* seems to go all out of focus"
+	,".* seems to go all out of focus"
 	,".* spellbooks may be obfuscated"
 	,".* sprays from your"
 	,"A cloud of .* forms above your"
 	,"A corona of .* surrounds you"
-    ,"A faint arrow appears briefly"
+	,"A faint arrow appears briefly"
 	,"A faintly glowing rune appears on"
-    ,"A flicker of light briefly illuminates"
+	,"A flicker of light briefly illuminates"
 	,"A fulminating skull of .* encircles you"
 	,"A gentle breeze stirs briefly, but nothing"
 	,"A glowing arrow pointing"
 	,"A glowing rune appears on the"
 	,"A maelstrom of .* churns around you"
-    ,"A shadow flits through the"
+	,"A shadow flits through the"
 	,"A small jet of fire leaps from your"
 	,"A staccato flicker of light briefly illuminates"
 	,"A suit of .* Starplate armor materializes around you"
-    ,"A toothy, disembodied mouth"
+	,"A toothy, disembodied mouth"
 	,"A translucent orb of"
 	,"Arguments should be "
 	,"Coruscating rays of"
@@ -48,7 +48,7 @@ local textToUnBlock = {
 	,"Light bends around you, turning you"
 	,"No effect"
 	,"No (language|target) specified"
-    ,"No such language"
+	,"No such language"
 	,"Nothing happens"
 	,"Oh no, it escaped"
 	,"Perhaps you should learn that spell more"
@@ -72,24 +72,24 @@ local textToUnBlock = {
 	,"The spell critically fails"
 	,"The spell fails"
 	,"The spell merges with the wall, and alters"
-    ,"The spell seems to have no effect"
+	,"The spell seems to have no effect"
 	,"The talisman .* disintegrates"
 	,"The wall flares up violently"
 	,"The wall of light disappears"
 	,"There's .* right here"
-    ,"There is no aura"
+	,"There is no aura"
 	,"This spell does not work on such an object"
 	,"Usage: write"
 	,"What \\?"
-    ,"Write what\\?"
+	,"Write what\\?"
 	,"Who do you wish to give the stored spell"
-    ,"You absorb the wounds from"
-    ,"You are briefly surrounded by sparks"
+	,"You absorb the wounds from"
+	,"You are briefly surrounded by sparks"
 	,"You are draped with a mantle"
 	,"You are encircled by turbulent"
 	,"You are missing"
 	,"You are momentarily surrounded by a halo"
-    ,"You are not magically armored"
+	,"You are not magically armored"
 	,"You are suddenly surrounded in bubbles"
 	,"You are surrounded by a shimmering"
 	,"You are surrounded in"
@@ -99,7 +99,7 @@ local textToUnBlock = {
 	,"You can't study a"
 	,"You can only (inscribe|learn)"
 	,"You cannot find a corpse here"
-    ,"You cannot find an enchantment"
+	,"You cannot find an enchantment"
 	,"You cannot store such a complex spell"
 	,"You cannot understand .* well enough"
 	,"You (charred|chilled)"
@@ -115,14 +115,14 @@ local textToUnBlock = {
 	,"You feel a (little|lot) better"
 	,"You feel a pocket dimension open"
 	,"You feel an anticipation in the air"
-    ,"You feel better"
+	,"You feel better"
 	,"You feel more fluent"
-    ,"You feel your power drain"
+	,"You feel your power drain"
 	,"You fill the room with"
 	,"You finish (editing|studying|work)"
 	,"You finish the incantation"
 	,"You (fried|froze)"
-    ,"You gaze deeply into"
+	,"You gaze deeply into"
 	,"You grow in size"
 	,"You have to be holding the"
 	,"You (heal|restore)"
@@ -139,7 +139,7 @@ local textToUnBlock = {
 	,"You neglected to name a target"
 	,"You notice that .* has"
 	,"You pass your"
-    ,"You raise your .* and a "
+	,"You raise your .* and a "
 	,"You raise your hands and begin to"
 	,"You regain some feeling"
 	,"You return to your normal size"
@@ -177,7 +177,7 @@ local textToUnBlock = {
 	,"Your senses adjust"
 	,"Your spellbook shimmers and vanishes"
 	,"Your surroundings disappear"
-    ,"Your vision blurs and feel yourself"
+	,"Your vision blurs and feel yourself"
 	,"You've already searched this area"
 }
 
@@ -190,20 +190,20 @@ local function setup(args)
 		tempTriggers[i] =
 		tempRegexTrigger("^(?:> )*"..v.."[\\s\\S]*",
 			[[
-                local text      = matches[1] or ""
+				local text      = matches[1] or ""
 				local arguments = {}
 
-                if not (Status.blockType == 'inscribe') then 
-                    Status.blockType = ''
-				    Events.raiseEvent("unblockEvent", arguments)
+				if not (Status.blockType == 'inscribe') then 
+					Status.blockType = ''
+					Events.raiseEvent("unblockEvent", arguments)
 
-                elseif not
-                string.find(text, "mist") and not
-                string.find(text, "gusak") or
-                string.find(text, "missing mist") then
-                    Status.blockType = ''
-                    Events.raiseEvent("unblockEvent", arguments)
-                end
+				elseif not
+				string.find(text, "mist") and not
+				string.find(text, "gusak") or
+				string.find(text, "missing mist") then
+					Status.blockType = ''
+					Events.raiseEvent("unblockEvent", arguments)
+				end
 			]])
 	end
 

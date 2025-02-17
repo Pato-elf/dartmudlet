@@ -249,14 +249,31 @@ Crowded sidestreet#A dirt road.jpg
 Outer room#A dirt road.jpg
 Chapel garden#A dirt road.jpg
 Upper Street#A dirt road.jpg
-Claudia's Flowers#A dirt road.jpg
-Doll's Place#A dirt road.jpg
+Claudia\'s Flowers#Claudias Flowers.jpg
+Doll\'s Place#Dolls Place.jpg
 Waterfront street#A dirt road.jpg
 Overgrown yard#A dirt road.jpg
 Tobermore manor#A dirt road.jpg
 Study#A dirt road.jpg
 Decrepit old kitchen#A dirt road.jpg
-Mantoux' Shop#A dirt road.jpg
-Catrina's Petshop#A dirt road.jpg
+Mantoux\' Shop#A dirt road.jpg
+Catrina\'s Petshop#Catrinas Petshop.jpg
 Kennel#A dirt road.jpg
 Dark, crowded street#A dirt road.jpg
+###
+### ERIS
+###
+Eris Road#Eris Road.jpg
+Borbor and Mujigha\'s Good Armor Fix#Eris Road.jpg
+Market#Eris Road.jpg
+A Messy Construction Site#Eris Road.jpg
+West Stands#Eris Road.jpg
+Eris Post Office#Eris Road.jpg
+Training Hall#Eris Road.jpg
+Guardroom#Eris Road.jpg
+Garrison Plaza#Eris Road.jpg
+Garrison Road#Eris Road.jpg
+Intersection of Garrison Road and Ash Street#Eris Road.jpg
+Ash Street#Eris Road.jpg
+Eris Kennel#Eris Road.jpg
+Bank of Eris#Eris Road.jpg

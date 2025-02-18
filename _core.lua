@@ -1,55 +1,89 @@
 local _Core			= {}
 local packageName	= "DartMUDlet"
+versionNumber		= "v1.9.2"
 packageFolder		= getMudletHomeDir().."/"..packageName.."/"
 local modules		= {}
 local sourceName	= "core"
 
 
 
+-- pre-setup
+-----------------------------------------------------------
+cecho("<yellow>DARTMUDLET: Version "..versionNumber.."\n")
+
+-- remove previous AdjustableContainer settings
+local folderPath = '"'..getMudletHomeDir()..'/AdjustableContainer'..'"'
+local osType = package.config:sub(1, 1)
+
+if osType == '\\' then -- Windows
+	local result = os.execute("rmdir /S /Q "..folderPath)
+
+	if result then
+		cecho("<yellow>DARTMUDLET: Reset containers successful\n")
+	else
+		cecho("<yellow>DARTMUDLET: Reset containers failed\n")
+	end
+else -- Unix-based (Linux, macOS)
+	local result = os.execute("rm -r "..folderPath)
+
+	if result then
+		cecho("<yellow>DARTMUDLET: Reset containers successful\n")
+	else
+		cecho("<yellow>DARTMUDLET: Reset containers failed\n")
+	end
+end
+
+cecho("<yellow>DARTMUDLET: Type /setup if this is a new install\n")
+cecho("<yellow>DARTMUDLET: Type /setup if you are upgrading from a previous version\n")
+
+
+
+-- main setup
+-----------------------------------------------------------
 local function setup(e, f, g)
-    local directory = ""
+	local directory = ""
 	modules         = {}
 	args            = {}
 
-    local directories = {
-        "ALIASES/",
-        "SCRIPTS/",
-        "TIMERS/",
-        "TRIGGERS/",
-        "UI/"
-    }
+	local directories = {
+		"ALIASES/",
+		"SCRIPTS/",
+		"TIMERS/",
+		"TRIGGERS/",
+		"UI/"
+	}
 
 
-    -- function to load modules
-    -----------------------------------------------------------
-    local function loadModules(directory)
-        local modules = {}
-        for file in lfs.dir(directory) do
-            if lfs.attributes(directory..file,"mode") == "file" then
-                table.insert(modules, dofile(directory..file))
-            end
-        end
-        return modules
-    end
+	-- function to load modules
+	-----------------------------------------------------------
+	local function loadModules(directory)
+		local modules = {}
+		for file in lfs.dir(directory) do
+			if lfs.attributes(directory..file,"mode") == "file" then
+				table.insert(modules, dofile(directory..file))
+			end
+		end
+		return modules
+	end
 
 
-    cecho("<yellow>DARTMUDLET: Begin setup\n")
+	cecho("<yellow>DARTMUDLET: Begin main setup\n")
 
-    -- load modules from each directory
-    for _, dir in ipairs(directories) do
-        directory = packageFolder..dir
-        local loadedModules = loadModules(directory)
-        for _, module in ipairs(loadedModules) do
-            table.insert(modules, module)
-        end
-    end
+	-- load modules from each directory
+	for _, dir in ipairs(directories) do
+		directory = packageFolder..dir
+		local loadedModules = loadModules(directory)
+		for _, module in ipairs(loadedModules) do
+			table.insert(modules, module)
+		end
+	end
 
-    -- set up each module
-    for _, module in ipairs(modules) do
-        if module.setup then
-            module.setup({directory=packageFolder})
-        end
-    end
+	-- set up each module
+	for _, module in ipairs(modules) do
+		if module.setup then
+			module.setup({directory=packageFolder})
+		end
+	end
 
 	isFirstLoad = false
 
@@ -57,9 +91,9 @@ local function setup(e, f, g)
 
 	send("score", false)
 	send("who", false)
-    send("speak", false)
-    send("set aim", false)
-    send("look", false)
+	send("speak", false)
+	send("set aim", false)
+	send("look", false)
 end
 
 
@@ -67,7 +101,7 @@ end
 -- run load functions
 -----------------------------------------------------------
 local function load()
-    systemMessage("Begin loading")
+	systemMessage("Begin main loading")
 	for _,module in ipairs(modules) do
 		if module.load then
 			module.load()
@@ -82,7 +116,7 @@ local function unsetup(e, f, g)
 	args = {}
 	args["directory"] = packageFolder
 
-    systemMessage("Begin unsetup")
+	systemMessage("Begin unsetup")
 
 	for _,module in pairs(modules) do
 		if module.unsetup then

@@ -4,8 +4,6 @@ local sourceName    = "keybinds"
 
 
 
-
-
 -- load temp keys
 -----------------------------------------------------------
 local function loadKeys(args)

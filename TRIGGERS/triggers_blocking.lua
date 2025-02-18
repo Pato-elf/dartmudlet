@@ -49,6 +49,7 @@ local textToUnBlock = {
 	,"No effect"
 	,"No (language|target) specified"
 	,"No such language"
+	,"No such thing here"
 	,"Nothing happens"
 	,"Oh no, it escaped"
 	,"Perhaps you should learn that spell more"

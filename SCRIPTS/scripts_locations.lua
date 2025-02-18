@@ -122,6 +122,8 @@ local function loadFileToTable(args)
     local file      = io.open(args, "r")
 
 
+    systemMessage("Load LOCATIONS file")
+
     if not file then
         cecho("<red>ERROR: Could not open file: "..args.."\n")
         return

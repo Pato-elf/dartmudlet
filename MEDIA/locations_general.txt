@@ -295,7 +295,7 @@ Farrier\'s Shop#Eris Road.jpg
 Old Market Way#Eris Road.jpg
 Eris Fairground#Eris Road.jpg
 Healer\'s Garden#Eris Road.jpg
-Ferry Landing#Eris Road.jpg
+Ferry Landing#Ferry Landing.jpg
 Martricio\'s Mercantile#Eris Road.jpg
 Tricia\'s Traveling Trinkets#Eris Road.jpg
 Eris OOC Entrance#OOC Entrance General.jpg

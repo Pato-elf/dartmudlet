@@ -61,28 +61,28 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 			Status.statusChannel = true
 			GUI.containerChannelButton1:setStyleSheet(StyleButtonPaleGreen:getCSS())
 
-            GUI.tabwindow1:setTabHighlight("CHANNEL","CHANNEL",true)
-            GUI.tabwindow2:setTabHighlight("CHANNEL","CHANNEL",true)
-            GUI.tabwindow3:setTabHighlight("CHANNEL","CHANNEL",true)
-            GUI.tabwindow4:setTabHighlight("CHANNEL","CHANNEL",true)
+			GUI.tabwindow1:setTabHighlight("CHANNEL","CHANNEL",true)
+			GUI.tabwindow2:setTabHighlight("CHANNEL","CHANNEL",true)
+			GUI.tabwindow3:setTabHighlight("CHANNEL","CHANNEL",true)
+			GUI.tabwindow4:setTabHighlight("CHANNEL","CHANNEL",true)
 
 			echo("ChannelButton1", "<center>CHANNEL ON</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: On\n"})
-            systemMessage("Channel On")
+			systemMessage("Channel On")
 			Status.powercastPauseisActive = false
 			send("conc", false)
 		else
 			Status.statusChannel = false
 			GUI.containerChannelButton1:setStyleSheet(StyleButtonDarkGrey:getCSS())
 
-            GUI.tabwindow1:setTabHighlight("CHANNEL","CHANNEL",false)
-            GUI.tabwindow2:setTabHighlight("CHANNEL","CHANNEL",false)
-            GUI.tabwindow3:setTabHighlight("CHANNEL","CHANNEL",false)
-            GUI.tabwindow4:setTabHighlight("CHANNEL","CHANNEL",false)
+			GUI.tabwindow1:setTabHighlight("CHANNEL","CHANNEL",false)
+			GUI.tabwindow2:setTabHighlight("CHANNEL","CHANNEL",false)
+			GUI.tabwindow3:setTabHighlight("CHANNEL","CHANNEL",false)
+			GUI.tabwindow4:setTabHighlight("CHANNEL","CHANNEL",false)
 
 			echo("ChannelButton1", "<center>CHANNEL OFF</center>")
 			Events.raiseEvent("messageEvent", {message="<yellow>Channel: Off\n"})
-            systemMessage("Channel Off")
+			systemMessage("Channel Off")
 		end
 	end
 
@@ -143,7 +143,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.containerChannelButton4 = GUI.containerChannelButton4 or
 		Geyser.Label:new({
 			name = "ChannelButton4",
-			x = -315, y = 10,
+			x = -320, y = 10,
 			fontSize = 14,
 			width = 60,
 			height = 60,
@@ -161,7 +161,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 			tempTimer(0.15, function() GUI.containerChannelButton4:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
 		end
 		Events.raiseEvent("displayStatsEvent", {detail = "share"})
-	end	
+	end
 
 
 
@@ -170,7 +170,7 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 	GUI.containerChannelButton5 = GUI.containerChannelButton5 or
 		Geyser.Label:new({
 			name = "ChannelButton5",
-			x = -315, y = 65,
+			x = -320, y = 65,
 			fontSize = 14,
 			width = 60,
 			height = 60,
@@ -207,14 +207,14 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 
 
-	-- CREATE TEXTBOX1 -> CHANNEL -> TABWINDOW2
+	-- CREATE TEXTBOX1 -> CHANNEL -> TABWINDOW2 (spell casting)
 	-------------------------------------------------------
 	GUI.containerChannelTextBox1 = GUI.containerChannelTextBox1 or
 		Geyser.Label:new({
 			name = "ChannelTextBox1",
-			x = -265, y = 33,
+			x = -270, y = 33,
 			fontSize = 11,
-			width = 260,
+			width = 270,
 			height = 17,
 			color = "black"
 		}, GUI.containerChannelBox)
@@ -223,14 +223,14 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 
 
-	-- CREATE TEXTBOX2 -> CHANNEL -> TABWINDOW2
+	-- CREATE TEXTBOX2 -> CHANNEL -> TABWINDOW2 (powercast mod)
 	-------------------------------------------------------
 	GUI.containerChannelTextBox2 = GUI.containerChannelTextBox2 or
 		Geyser.Label:new({
 			name = "ChannelTextBox2",
-			x = -265, y = 50,
+			x = -270, y = 50,
 			fontSize = 11,
-			width = 260,
+			width = 270,
 			height = 17,
 			color = "black"
 		}, GUI.containerChannelBox)
@@ -239,14 +239,14 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 
 
-	-- CREATE TEXTBOX3 -> CHANNEL -> TABWINDOW2
+	-- CREATE TEXTBOX3 -> CHANNEL -> TABWINDOW2 (powercast total)
 	-------------------------------------------------------
 	GUI.containerChannelTextBox3 = GUI.containerChannelTextBox3 or
 		Geyser.Label:new({
 			name = "ChannelTextBox3",
-			x = -265, y = 67,
+			x = -270, y = 67,
 			fontSize = 11,
-			width = 260,
+			width = 270,
 			height = 17,
 			color = "black"
 		}, GUI.containerChannelBox)
@@ -255,14 +255,14 @@ GUI.containerChannelBox:setStyleSheet(StyleBoxBlue:getCSS())
 
 
 
-	-- CREATE TEXTBOX4 -> CHANNEL -> TABWINDOW2
+	-- CREATE TEXTBOX4 -> CHANNEL -> TABWINDOW2 (powercast percentage)
 	-------------------------------------------------------
 	GUI.containerChannelTextBox4 = GUI.containerChannelTextBox4 or
 		Geyser.Label:new({
 			name = "ChannelTextBox4",
-			x = -265, y = 84,
+			x = -270, y = 84,
 			fontSize = 11,
-			width = 260,
+			width = 270,
 			height = 17,
 			color = "black"
 		}, GUI.containerChannelBox)

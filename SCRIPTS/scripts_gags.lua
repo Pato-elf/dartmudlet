@@ -308,7 +308,6 @@ local function loadTriggers(args)
                 Events.raiseEvent("emptylineEvent", arguments)
             ]])
     end
-
 end
 
 
@@ -357,7 +356,6 @@ local function killTriggers(args)
     elseif (gagset == 'gagPrompts') then
         killTrigger(promptGags)
     end
-
 end
 
 

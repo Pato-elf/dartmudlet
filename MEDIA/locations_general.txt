@@ -278,8 +278,8 @@ Intersection of Garrison Road and Ash Street#Eris Road.jpg
 Ash Street#Eris Road.jpg
 Eris Kennel#Eris Road.jpg
 Bank of Eris#Bank of Eris.jpg
-Taproom#Eris Road.jpg
-Bower#Eris Road.jpg
+Taproom#Taproom.jpg
+Bower#Bower.jpg
 Office#Eris Road.jpg
 Hallway#Eris Road.jpg
 Room One#Green Gryphon Inn Room.jpg

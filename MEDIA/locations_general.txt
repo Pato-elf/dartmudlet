@@ -320,8 +320,8 @@ Long Tunnel#Segliz.jpg
 Eastern Square#Segliz.jpg
 Rowan Garrison#Segliz.jpg
 Chaplain Pluschi\'s Office#Segliz.jpg
-Llorton\'s Alterations#Segliz.jpg
-Sewing Room#Segliz.jpg
+Llorton\'s Alterations#Llortons Alterations.jpg
+Sewing Room#Sewing Room.jpg
 Segliz Bank#Segliz Bank.jpg
 Abandoned Tower#Segliz.jpg
 Main Street#Segliz.jpg
@@ -330,7 +330,7 @@ Segliz Municipal Gardens#Segliz.jpg
 Miniature Garden#Segliz.jpg
 Giant Garden#Segliz.jpg
 Segliz West Municipal Gardens#Segliz.jpg
-Segliz Harbor#Segliz.jpg
+Segliz Harbor#Segliz Harbor.jpg
 Building Interior, Main Floor#Segliz.jpg
 Building Interior, Upper Floor#Segliz.jpg
 Basement of the Harbor Warehouse#Segliz.jpg
@@ -347,7 +347,7 @@ Rotunda#Segliz.jpg
 Immigration Office#Segliz.jpg
 Snack Bar#Segliz.jpg
 Segliz Communal Kitchen#Segliz.jpg
-The Segliz Library#Segliz.jpg
+The Segliz Library#The Segliz Library.jpg
 Syphe\'s Gem Shop#Segliz.jpg
 Main Street, West End#Segliz.jpg
 South Mystic Way#Segliz.jpg

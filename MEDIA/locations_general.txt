@@ -209,6 +209,13 @@ Wolf Den#Wolf Den.jpg
 Reef#Reef.jpg
 East Reef#Reef.jpg
 West Reef#Reef.jpg
+Dark Stairway#Conch Shell.jpg
+Fountain Chamber#Conch Shell.jpg
+North Chamber#Conch Shell.jpg
+Southwest Chamber#Conch Shell.jpg
+Southeast Chamber#Conch Shell.jpg
+Inner Sanctum#Conch Shell.jpg
+Beachcomber\'s Hut#Beachcombers Hut.jpg
 ###
 ### HAMLET
 ###
@@ -315,7 +322,7 @@ Rowan Garrison#Segliz.jpg
 Chaplain Pluschi\'s Office#Segliz.jpg
 Llorton\'s Alterations#Segliz.jpg
 Sewing Room#Segliz.jpg
-Segliz Bank#Segliz.jpg
+Segliz Bank#Segliz Bank.jpg
 Abandoned Tower#Segliz.jpg
 Main Street#Segliz.jpg
 Harbor Way#Segliz.jpg

@@ -200,7 +200,7 @@ Underworld Portal#Underworld Portal.jpg
 ###
 ### TIRACHI
 ###
-A circular cave.#A circular cave..jpg
+A circular cave\.#A circular cave..jpg
 Destroyed Wagon#Destroyed Wagon.jpg
 Krummholtz#Krummholtz.jpg
 Subterranean Chamber#Subterranean Chamber.jpg
@@ -216,6 +216,10 @@ Southwest Chamber#Conch Shell.jpg
 Southeast Chamber#Conch Shell.jpg
 Inner Sanctum#Conch Shell.jpg
 Beachcomber\'s Hut#Beachcombers Hut.jpg
+Hidden Valley#Hidden Valley.jpg
+Mountain Spring#Mountain Spring.jpg
+Path of Many Steps#Path of Many Steps.jpg
+Peaceful Grove#Peaceful Grove.jpg
 ###
 ### HAMLET
 ###
@@ -355,4 +359,4 @@ Mystic Way, South End#Segliz.jpg
 Iysl\'s Scriptorium#Segliz.jpg
 North Mystic Way#Segliz.jpg
 Dilini\'s Pharmacy#Segliz.jpg
-Segliz Heart#Segliz.jpg
+Segliz Heart#Segliz Heart.jpg

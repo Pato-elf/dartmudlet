@@ -31,6 +31,7 @@ Underwater#Underwater.jpg
 Vault#Vault.jpg
 Warehouse#Warehouse.jpg
 West Field#West Field.jpg
+Minehead#Minehead.jpg
 ###
 ### GILMORE
 ###

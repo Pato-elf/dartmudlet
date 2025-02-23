@@ -127,8 +127,8 @@ local citizenList   = {
     ,"Sylis (cries|sniffs|weeps)"
     ,"(Lulpox|Torcas) (stares|nudges|grins|chuckles|whispers|points)"
 
-    ,"(Agnesina|Agneta|Agostino|Ai|Aiko|Alberea|Alegreza|Alesia|Almaricus|Aluysio|Andrea|Anechino|Arizzo|Ascelina|Avelina|Aya) ("..citizenemotes..")"
-    ,"(Agnesina|Agneta|Agostino|Ai|Aiko|Alberea|Alegreza|Alesia|Almaricus|Aluysio|Andrea|Anechino|Arizzo|Ascelina|Avelina|Aya) ("..citizenspeaks..")"
+    ,"(Agnesina|Agneta|Agostino|Ai|Aiko|Alberea|Alegreza|Alesia|Almaricus|Aluysio|Andrea|Anechino|Arizzo|Arnulphus|Ascelina|Avelina|Aya) ("..citizenemotes..")"
+    ,"(Agnesina|Agneta|Agostino|Ai|Aiko|Alberea|Alegreza|Alesia|Almaricus|Aluysio|Andrea|Anechino|Arizzo|Arnulphus|Ascelina|Avelina|Aya) ("..citizenspeaks..")"
     ,"(Barbus|Bartolomeo|Benevenuta|Bertucio|Blancha|Bolezino|Borbrator|Brother|Bucello) ("..citizenemotes..")"
     ,"(Barbus|Bartolomeo|Benevenuta|Bertucio|Blancha|Bolezino|Borbrator|Brother|Bucello) ("..citizenspeaks..")"
     ,"(Claricia|Colette) ("..citizenemotes..")"

@@ -173,9 +173,11 @@ Status.trackingInterval     = 1
 Status.trackingCurrentTime  = 0
 
 
+
 -- misc variables
 -----------------------------------------------------------
-Status.Announce				= 'on'
+Status.statusAnnounce		= 'on'
+Status.statusAnnouncePet	= 'on'
 Status.statusAntiSpam		= 'off'
 Status.statusAura			= 'off'
 Status.statusConc			= 'off'

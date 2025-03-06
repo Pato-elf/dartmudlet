@@ -12,9 +12,10 @@ local function announceImprove(args)
 	local name = args["name"]
 	local skillcount = 0
 
-	if(Status.statusAnnounce ~= 'off') then
 
-		if(Status.statusAnnounce == 'verbose') then
+	-- announce player improve
+	if (name == Status.name) and (Status.statusAnnounce ~= 'off') then
+		if (Status.statusAnnounce == 'verbose') then
 			local results = dba.query('SELECT count FROM improves WHERE who="'..name..'" AND skill="'..skill_name..'"')[1]
 
 			if results then
@@ -22,26 +23,28 @@ local function announceImprove(args)
 			else
 				skillcount = 1
 			end
-
-			if name == Status.name then
-				send("ooc "..skill_name.."+ ("..skillcount..")")
-			else
-				send("ooc "..name.."'s "..skill_name.."+ ("..skillcount..")")
-			end
-
-		elseif(Status.statusAnnounce == 'brief') then
-			if name == Status.name then
-				send("ooc +")
-			else
-				send("ooc "..name.." +")
-			end
-
+			send("ooc "..skill_name.."+ ("..skillcount..")")
+		elseif (Status.statusAnnounce == 'brief') then
+			send("ooc +")
 		else
-			if name == Status.name then
-				send("ooc "..skill_name.."+")
+			send("ooc "..skill_name.."+")
+		end
+
+	-- announce pet improve
+	elseif (name ~= Status.name) and (Status.statusAnnouncePet ~= 'off') then
+		if (Status.statusAnnouncePet == 'verbose') then
+			local results = dba.query('SELECT count FROM improves WHERE who="'..name..'" AND skill="'..skill_name..'"')[1]
+
+			if results then
+				skillcount = tonumber(results.count) + 1
 			else
-				send("ooc "..name.."'s "..skill_name.."+")
+				skillcount = 1
 			end
+			send("ooc "..name.."'s "..skill_name.."+ ("..skillcount..")")
+		elseif (Status.statusAnnouncePet == 'brief') then
+			send("ooc "..name.." +")
+		else
+			send("ooc "..name.."'s "..skill_name.."+")
 		end
 	end
 end
@@ -152,6 +155,40 @@ local function antispamOff(args)
     systemMessage("AntiSpam Off")
 	Events.raiseEvent("messageEvent", {message="<yellow>AntiSpam Off.\n"})
 	Events.removeListener("anyEvent", sourceName)
+end
+
+
+
+-- toggle pet announce
+-----------------------------------------------------------
+local function announcePet(args)
+	local detail = string.lower(args["detail"])
+
+	if not ((detail == "off") or (detail == "on") or (detail == "verbose") or (detail == "brief") or (detail == "help")) then
+		cecho("<yellow>USAGE: /announce pet off|on|brief|verbose - Announce improves for pets (current setting: "..Status.statusAnnouncePet..")\n")
+	elseif (detail == "help") then
+        Events.raiseEvent("showHelpEvent", {detail = "announce"})
+	else
+		if detail == "off" then
+            systemMessage("Announce pets Off")
+			Events.raiseEvent("messageEvent", {message="<yellow>Announce: pets Off\n"})
+			Status.statusAnnouncePet = "off"
+		elseif detail == "on" then
+            systemMessage("Announce pets On")
+			Events.raiseEvent("messageEvent", {message="<yellow>Announce: pets On\n"})
+			Status.statusAnnouncePet = "on"
+		elseif detail == "brief" then
+            systemMessage("Announce pets Brief")
+			Events.raiseEvent("messageEvent", {message="<yellow>Announce: pets Brief\n"})
+			Status.statusAnnouncePet = "brief"
+		else
+            systemMessage("Announce pets Verbose")
+			Events.raiseEvent("messageEvent", {message="<yellow>Announce: pets Verbose\n"})
+			Status.statusAnnouncePet = "verbose"
+		end
+
+		dba.execute('UPDATE settings SET statusAnnouncePet="'..Status.statusAnnouncePet..'"')
+	end
 end
 
 
@@ -354,6 +391,7 @@ local function checkSettingsTable(args)
 		scrollCurrentPower INTEGER DEFAULT 100,
 		scrollCurrentSpell VARCHAR(16) DEFAULT "",
 		statusAnnounce VARCHAR(16) DEFAULT "on",
+		statusAnnouncePet VARCHAR(16) DEFAULT "on",
 		statusAntiSpam VARCHAR(16) DEFAULT "off",
 		statusAura VARCHAR(16) DEFAULT "off",
 		statusConc VARCHAR(16) DEFAULT "off",
@@ -395,6 +433,12 @@ local function checkSettingsTable(args)
 		dba.execute('ALTER TABLE settings ADD COLUMN statusKeypad VARCHAR(16) DEFAULT "on"')
         dba.execute('UPDATE settings SET statusKeypad = "on"')
 	end
+
+	if not temp.statusAnnouncePet then
+        systemMessage("Update SETTINGS table")
+		dba.execute('ALTER TABLE settings ADD COLUMN statusAnnouncePet VARCHAR(16) DEFAULT "on"')
+        dba.execute('UPDATE settings SET statusAnnouncePet = "on"')
+	end
 end
 
 
@@ -413,6 +457,7 @@ local function load()
 	Status.scrollCurrentPower   = result.scrollCurrentPower
 	Status.scrollCurrentSpell   = result.scrollCurrentSpell
 	Status.statusAnnounce       = result.statusAnnounce
+	Status.statusAnnouncePet	= result.statusAnnouncePet
 	Status.statusAntiSpam       = result.statusAntiSpam
 	Status.statusAura           = result.statusAura
 	Status.statusConc           = result.statusConc
@@ -444,6 +489,7 @@ local function setup(args)
 	Events.addListener("announceVerboseEvent",sourceName,announceVerbose)
 	Events.addListener("announceBriefEvent",sourceName,announceBrief)
 	Events.addListener("announceOffEvent",sourceName,announceOff)
+	Events.addListener("announcePetEvent",sourceName,announcePet)
 	Events.addListener("setAuraEvent", sourceName, setAura)
 	Events.addListener("setConcEvent", sourceName, setConc)
 	Events.addListener("setContentsEvent", sourceName, setContents)
@@ -459,6 +505,7 @@ local function unsetup(args)
 	Events.removeListener("announceVerboseEvent",sourceName)
 	Events.removeListener("announceBriefEvent",sourceName)
 	Events.removeListener("announceOffEvent",sourceName)
+	Events.removeListener("announcePetEvent",sourceName)
 	Events.removeListener("setAuraEvent", sourceName)
 	Events.removeListener("setConcEvent", sourceName)
 	Events.removeListener("setContentsEvent", sourceName)

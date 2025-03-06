@@ -304,14 +304,18 @@ local function showHelpAnnounce(args)
 
 	cecho(preText.."DARTMUDLET: announce\n")
 	cecho(preText.."USAGE: /announce <on|off|brief|verbose>\n")
+	cecho(preText.."USAGE: /announce pet <on|off|brief|verbose>\n")
     cecho(preText.."\n")
-    cecho(preText.."This command will automatically OOC announce your skill improvements to the room.\n")
+    cecho(preText.."This command will automatically OOC announce skill improvements to the room.\n")
+	cecho(preText.."Announce status for the player and their pets can be set independently.\n")
     cecho(preText.."You can choose from various announce formats:\n\n")
     cecho(preText.."brief:   You say (OOC), '+'\n")
     cecho(preText.."on:      You say (OOC), 'skill_name+'\n")
     cecho(preText.."verbose: You say (OOC), 'skill_name+ (1234)'\n")
     cecho(preText.."\n")
-    cecho(preText.."(Default setting is ON)\n")
+    cecho(preText.."(Default settings are ON)\n")
+	cecho(preText.."(Current player setting: "..Status.statusAnnounce..")\n")
+	cecho(preText.."(Current pets setting:   "..Status.statusAnnouncePet..")\n")
 end
 
 

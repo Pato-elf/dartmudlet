@@ -43,11 +43,24 @@ local function setup(args)
 
 
     tempAliases.announceHelp =
-	tempAlias("^\\/announce help",
+	tempAlias("^\\/announce (help|pet|pets|player|players)$",
 		[[
 			local arguments = {detail = "announce"}
             Events.raiseEvent("showHelpEvent", arguments)
 		]])
+
+
+
+	-- /announce pets
+	-------------------------------------------------------
+	tempAliases.announcePets =
+	tempAlias('^\\/announce (pet|pets) (.*)$',
+		[[
+			local detail = matches[3]
+			local arguments = {detail = detail, who = Status.name}
+			Events.raiseEvent('announcePetEvent', arguments)
+		]])
+
 
 	aliases = tempAliases
 end

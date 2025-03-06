@@ -4,14 +4,14 @@ sourceName			= "inscribing"
 
 
 local function inscribe(args)
-	send("inscribe "..Status.scrollCurrentSpell.. " "..Status.scrollCurrentPower)
+	send("inscribe "..Status.scrollCurrentSpell.." "..Status.scrollCurrentPower)
 end
 
 
 
 local function invoke(args)
 	local command = "invoke "..Status.scrollCurrentSpell.." !"
-	tempTimer(0.7, [[send(command)]])
+	tempTimer(0.7, [[send("]]..command..[[")]])
 end
 
 
@@ -24,29 +24,29 @@ local function inscribeSetup(args)
 	Status.scrollCurrentPower = power
 	dba.execute('UPDATE settings SET scrollCurrentSpell="'..Status.scrollCurrentSpell..'", scrollCurrentPower='..Status.scrollCurrentPower)
 
-	cecho("<yellow>Inscribing "..Status.scrollCurrentSpell.." "..Status.scrollCurrentPower.."\n")
+	systemMessage("Inscribing "..Status.scrollCurrentSpell.." "..Status.scrollCurrentPower)
 	Events.addListener("BEBTconcEvent", sourceName, inscribe)
-	Events.addListener("finishedInscriptionEvent",sourceName,invoke)
-	send("conc")
-
+	Events.addListener("finishedInscriptionEvent", sourceName, invoke)
+	send("conc", false)
 end
 
 
 
 local function inscribeOff(args)
-	Events.removeListener("BEBTconcEvent",sourceName)
-	Events.removeListener("finishedInscriptionEvent",sourceName)
-	cecho("<yellow>Stopped inscribing\n")
+	Events.removeListener("BEBTconcEvent", sourceName)
+	Events.removeListener("finishedInscriptionEvent", sourceName)
+	systemMessage("Inscribe Off")
 end
 
 
 
 local function adjustPower(args)
-	local power = args["power"]
+	local power = tonumber(args["power"])
 
+	if power < 100 then power = 100 end
 	Status.scrollCurrentPower = power
 	dba.execute('UPDATE settings SET scrollCurrentPower='..Status.scrollCurrentPower)
-	cecho("<yellow>Inscribing "..Status.scrollCurrentSpell.." "..Status.scrollCurrentPower.."\n")
+	systemMessage("Inscribing "..Status.scrollCurrentSpell.." "..Status.scrollCurrentPower)
 end
 
 

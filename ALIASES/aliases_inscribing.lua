@@ -14,7 +14,12 @@ local function setup(args)
 			local spell = matches[2]
 			local power = tonumber(matches[3]) or 100
 			local arguments = {spell = spell, power = power}
-			Events.raiseEvent("practiceInscribingEvent", arguments)
+
+			if (matches[2] == "power") then
+				Events.raiseEvent("practiceInscribingAdjustPowerEvent", arguments)
+			else
+				Events.raiseEvent("practiceInscribingEvent", arguments)
+			end	
 		]])
 
 
@@ -27,16 +32,6 @@ local function setup(args)
 			Events.raiseEvent("practiceInscribingOffEvent", arguments)
 		]])
 
-
-
-	-- adjust power for scroll writing
-	tempAliases.inscribeAdjustPower =
-	tempAlias("^\\/[Ii][Nn][Ss][Cc][Rr][Ii][Bb][Ee] [Pp][Oo][Ww][Ee][Rr] (\\d+)",
-		[[
-			local power = tonumber(matches[2]) or 100
-			local arguments = {power = power}
-			Events.raiseEvent("practiceInscribingAdjustPowerEvent", arguments)
-		]])
 
 	aliases = tempAliases
 end

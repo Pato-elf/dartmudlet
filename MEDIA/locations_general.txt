@@ -10,6 +10,7 @@ Entry Hall#Entry Hall.jpg
 Farm#Farm.jpg
 Farmhouse#Farmhouse.jpg
 Garden#Garden.jpg
+Grotto#Grotto.jpg
 Grove#Grove.jpg
 Hall of Mortals#Hall of Mortals.jpg
 Kitchen#Kitchen.jpg
@@ -82,6 +83,7 @@ Stableyard#Stableyard.jpg
 Temple Road#Temple Road.jpg
 The Boardwalk#The Boardwalk.jpg
 Tower Roof#Tower Roof.jpg
+Aerie#Aerie.jpg
 The Inn at Gilmore Hallway#The Inn at Gilmore Hallway.jpg
 Wine Cellar#Wine Cellar.jpg
 Wooded Clearing#Wooded Clearing.jfif

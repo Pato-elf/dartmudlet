@@ -93,8 +93,8 @@ local skills_fighter = {
 local skills_mage = {
     {num = 1,   name = "spell casting",     count = 0,  abbr = ""},
     {num = 2,   name = "channelling",       count = 0,  abbr = ""},
-    {num = 3,   name = "scroll reading",    count = 0,  abbr = ""},
-    {num = 4,   name = "scroll writing",    count = 0,  abbr = ""},
+    {num = 3,   name = "magic theory",    count = 0,  abbr = ""},
+    {num = 4,   name = "inscription",    count = 0,  abbr = ""},
     {num = 5,   name = "language#magic",    count = 0,  abbr = ""}
 }
 
@@ -462,11 +462,86 @@ end
 
 
 
+-- build or update the table during setup
+-----------------------------------------------------------
+local function checkImprovesTable(args)
+
+
+	-- build database if needed
+	dba.execute([[CREATE TABLE IF NOT EXISTS "improves" (
+		_row_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+		skill TEXT,
+		count INTEGER DEFAULT 1,
+		notes TEXT,
+		last_imp TIMESTAMP,
+		who VARCHAR(16),
+		abbr TEXT,
+		weight TEXT,
+		power INTEGER
+	);]])
+
+
+	-- update legacy "scroll reading" skill to "magic theory"
+	local temp1 = dba.query('SELECT * FROM improves WHERE skill = "scroll reading"')[1]
+	if temp1 then
+		systemMessage("Update IMPROVES table")
+		dba.execute('UPDATE improves SET skill = "magic theory" WHERE skill = "scroll reading"')
+	end
+
+	-- remove duplicate magic theory skills
+	local temp2 = dba.query('SELECT * FROM improves WHERE skill = "magic theory" GROUP BY who HAVING COUNT(*) > 1')[1]
+	if temp2 then
+		systemMessage("Update IMPROVES table")
+		dba.execute([[DELETE FROM improves
+			WHERE _row_id = (
+				SELECT _row_id FROM improves
+				WHERE skill = "magic theory"
+		  		AND who IN (
+				  	SELECT who FROM improves
+			  		WHERE skill = "magic theory"
+			  		GROUP BY who
+			  		HAVING COUNT(*) > 1
+		  		)
+			ORDER BY count ASC
+			LIMIT 1
+		)]])
+	end
+
+
+	-- update legacy "scroll writing" skill to "inscription"
+	local temp3 = dba.query('SELECT * FROM improves WHERE skill = "scroll writing"')[1]
+	if temp3 then
+		systemMessage("Update IMPROVES table")
+		dba.execute('UPDATE improves SET skill = "inscription" WHERE skill = "scroll writing"')
+	end
+
+	-- remove duplicate inscription skills
+	local temp4 = dba.query('SELECT * FROM improves WHERE skill = "inscription" GROUP BY who HAVING COUNT(*) > 1')[1]
+	if temp4 then
+		systemMessage("Update IMPROVES table")
+		dba.execute([[DELETE FROM improves
+			WHERE _row_id = (
+				SELECT _row_id FROM improves
+				WHERE skill = "inscription"
+		  		AND who IN (
+				  	SELECT who FROM improves
+			  		WHERE skill = "inscription"
+			  		GROUP BY who
+			  		HAVING COUNT(*) > 1
+		  		)
+			ORDER BY count ASC
+			LIMIT 1
+		)]])
+	end
+
+end
+
+
+
 -- setup
 -----------------------------------------------------------
 local function setup(args)
-	-- build database if needed
-	dba.execute('CREATE TABLE IF NOT EXISTS "improves" (_row_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, skill TEXT, count INTEGER DEFAULT 1, notes TEXT, last_imp TIMESTAMP, who VARCHAR(16), abbr TEXT, weight TEXT, power INTEGER);');
+	checkImprovesTable()
 	local directory = args["directory"]
 	directory = directory.."/SCRIPTS/"
 

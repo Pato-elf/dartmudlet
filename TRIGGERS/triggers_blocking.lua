@@ -60,7 +60,7 @@ local textToUnBlock = {
 	,"That isn't alive"
 	,"That person is not plagued"
 	,"The .* disintegrates"
-	,"The .* glows .*"
+	,"The .* glows .*(red|orange|yellow|green|blue|indigo|violet|octarine|scintillating|moment)\\." --focus
 	,"The area becomes a bit darker"
 	,"The aura remains hidden"
 	,"The book is already obfuscated"

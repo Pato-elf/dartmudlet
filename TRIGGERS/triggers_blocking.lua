@@ -66,6 +66,7 @@ local textToUnBlock = {
 	,"The book is already obfuscated"
 	,"The clues lead out of this area"
 	,"The enchantment on .* holds"
+	,"The incantations contain a formulae" --ae
 	,"The jar isn't open"
 	,"The pattern contains"
 	,"The power of the spell is snatched from your"
@@ -79,9 +80,12 @@ local textToUnBlock = {
 	,"The wall of light disappears"
 	,"There's .* right here"
 	,"There is no aura"
+	,"This book makes no sense" --gibberish book
+	,"This spell can only be cast on foci" --mi
 	,"This spell does not work on such an object"
 	,"Usage: write"
 	,"What \\?"
+	,"What focus do you wish to imbed" --mi
 	,"Write what\\?"
 	,"Who do you wish to give the stored spell"
 	,"You absorb the wounds from"
@@ -135,6 +139,7 @@ local textToUnBlock = {
 	,"You make a few gestures"
 	,"You must have mispronounced a lot"
 	,"You need 1 ounce of holy water"
+	,"You need 1 pinch of gemstone powder" --bmr
 	,"You need some ink"
 	,"You need to be holding a blank scroll"
 	,"You neglected to name a target"
@@ -179,6 +184,7 @@ local textToUnBlock = {
 	,"Your spellbook shimmers and vanishes"
 	,"Your surroundings disappear"
 	,"Your vision blurs and feel yourself"
+	,"You're not holding a " --mi
 	,"You've already searched this area"
 }
 

@@ -197,7 +197,7 @@ local sparringList = {
     ,"(Aegnor|Aloysius) (listens|peers|hums|leans)"
     ,"Hassan (asks|exclaims|ignores|says|smiles|smirks)"
     ,"Armando (paces|pats)"
-    ,"Khash (grins|kicks|spits)"
+    ,"Khash (grins|kicks|punches|spits)"
     ,"Ozzo (asks|exclaims)"
     ,"Pell (spins|reverses)"
     ,"Gudz says in common, \\'Leave now"

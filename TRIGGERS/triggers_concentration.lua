@@ -12,7 +12,6 @@ local function setup(args)
 			local conc = matches[2]
 			local arguments = {full = full, conc = conc}
 
-			Events.raiseEvent("BEBTconcEvent", arguments)
 			Events.raiseEvent("concEvent", arguments)
 			Events.raiseEvent("concAutoEvent", arguments)
 		]])

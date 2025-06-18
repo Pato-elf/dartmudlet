@@ -62,11 +62,23 @@ end
 local function processAutomation(args)
 
 
-    if (Status.repeatCurrentActive > 0) then
+	if (Status.statusChannel) or (Status.powercastisForce) or (Status.powercastPauseisActive) then
+		if (conc == "You're bright-eyed and bushy-tailed.") then --and (aura == "scintillating") then
+			if Status.powercastisForce or Status.powercastPauseisActive then
+				Events.raiseEvent("processPowercastEvent", {input = aura})
+			elseif  (Status.focusTotal >= Status.powercastAmount) and ((Status.channelMode == "POWERCAST") or (Status.channelMode == "PC + TEACH")) then
+				Events.raiseEvent("processPowercastEvent", {input = aura})
+			else
+				if ((Status.channelMode == "FEED AURA") and (aura == "scintillating")) or (Status.channelMode ~= "FEED AURA") then
+					Events.raiseEvent("processChannelEvent", {input = aura})
+				end
+			end
+		end
+
+	elseif (Status.repeatCurrentActive > 0) then
         if (conc == "You're bright-eyed and bushy-tailed.") then
             Events.raiseEvent("processRepeatEvent", {type = "auto"})
         end
-
 
     elseif Status.statusRefresh then
 		if (conc == "You're bright-eyed and bushy-tailed.") then
@@ -78,21 +90,9 @@ local function processAutomation(args)
 			end
 		end
 
-
-	elseif (Status.statusChannel) or (Status.powercastisForce) or (Status.powercastPauseisActive) then
-		if (conc == "You're bright-eyed and bushy-tailed.") then --and (aura == "scintillating") then
-			if Status.powercastisForce or Status.powercastPauseisActive then
-				Events.raiseEvent("processPowercastEvent", {input = aura})
-			elseif  (Status.focusTotal >= Status.powercastAmount) and ((Status.channelMode == "POWERCAST") or (Status.channelMode == "PC + TEACH")) then
-					Events.raiseEvent("processPowercastEvent", {input = aura})
-			else
-				if ((Status.channelMode == "FEED AURA") and (aura == "scintillating")) or (Status.channelMode ~= "FEED AURA") then
-					Events.raiseEvent("processChannelEvent", {input = aura})
-				end
-			end
-		end
+	elseif (Status.statusAutocast) then
+		Events.raiseEvent("processAutocastEvent")
 	end
-
 end
 
 

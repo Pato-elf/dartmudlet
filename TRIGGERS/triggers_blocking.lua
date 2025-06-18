@@ -152,9 +152,10 @@ local textToUnBlock = {
 	,"You (scalded|seared|shocked|singed)"
 	,"You see the .* It hasn't noticed you"
 	,"You see the .* It stares back at you"
-	,"You sense a deep affection"
+	,"You sense a bond between" --ds
+	,"You sense a deep affection" --ds
 	,"You sense its aura to be"
-	,"You sense that .* has no disease"
+	,"You sense that .* has no disease" --dd
 	,"You sense the spell becoming active"
 	,"You shrink in size"
 	,"You stop hunting\\."

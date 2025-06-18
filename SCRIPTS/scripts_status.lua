@@ -13,9 +13,18 @@ Status.allocsTable			= {}
 
 -- casting system variables
 -----------------------------------------------------------
-Status.castCurrentArgs	= ''
-Status.castCurrentPower	= 100
-Status.castCurrentSpell	= 'lg'
+Status.autocastCurrentSpell	= "lirrin's_glow"
+Status.autocastCurrentPower	= 100
+Status.autocastCurrentArgs	= ''
+Status.autocastCurrentNote	= 'note'
+Status.autocastAdjustDown	= 1
+Status.autocastAdjustUp		= 1
+Status.autocastChannelAmt	= 1
+
+-- unsaved autocast variables
+Status.statusAutocast			= false
+Status.statusIsAutocasting		= false
+Status.autocastCurrentDisplay	= 1
 
 
 
@@ -40,7 +49,6 @@ Status.statusChanShare			= 'on'
 Status.statusFocusTotal			= 'off'
 Status.statusPlaySound			= 'on'
 Status.powercastPause			= 'on'
-
 
 -- unsaved channelling variables
 Status.powercastPercent			= 0
@@ -233,6 +241,9 @@ local function setVariables()
 
 	-- REFRESH BOX
     Events.raiseEvent("showRefreshDataEvent")
+
+	-- CASTING BOX
+    Events.raiseEvent("showAutocastDataEvent")
 
 	-- ALLOCS BOX
 	Allocs.showAllocsCurrentFields(Status.allocCurrentDisplay)

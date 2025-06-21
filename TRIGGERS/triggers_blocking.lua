@@ -138,7 +138,7 @@ local textToUnBlock = {
 	,"You magically cool down"
 	,"You make a few gestures"
 	,"You must have mispronounced a lot"
-	,"You need 1 ounce of holy water"
+	,"You need 1 ounce of holy water" --cu
 	,"You need 1 pinch of gemstone powder" --bmr
 	,"You need some ink"
 	,"You need to be holding a blank scroll"
@@ -150,8 +150,8 @@ local textToUnBlock = {
 	,"You regain some feeling"
 	,"You return to your normal size"
 	,"You (scalded|seared|shocked|singed)"
-	,"You see the .* It hasn't noticed you"
-	,"You see the .* It stares back at you"
+	,"You see the .* It hasn't noticed you" --hunt
+	,"You see the .* It stares back at you" --hunt
 	,"You sense a bond between" --ds
 	,"You sense a deep affection" --ds
 	,"You sense its aura to be"
@@ -172,7 +172,7 @@ local textToUnBlock = {
 	,"Your abilities return to normal"
 	,"Your aura is too weak"
 	,"Your body adjusts to its new abilities"
-	,"Your concentration is disrupted"
+	,"Your concentration is (broken|disrupted)"
 	,"Your eyes adjust"
 	,"Your hands are momentarily"
 	,"Your hands (crackle|glow)"

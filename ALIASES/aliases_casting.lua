@@ -7,25 +7,25 @@ local function setup(args)
 	tempAliases = {}
 
 	-- begin practice casting
-	tempAliases.practiceCast =
-	tempAlias("^\\/[Cc][Aa][Ss][Tt] (\\w+) (\\d+)(?: ([\\w,\\s]+))?",
-		[[
-			local spellName = string.lower(matches[2])
-			local power = tonumber(matches[3]) or 100
-			local spellArguments = matches[4] or ""
-			local arguments = {spellName = spellName, power = power, spellArguments = spellArguments}
-			Events.raiseEvent("practiceCastEvent", arguments)
-		]])
+	--tempAliases.practiceCast =
+	--tempAlias("^\\/[Cc][Aa][Ss][Tt] (\\w+) (\\d+)(?: ([\\w,\\s]+))?",
+	--	[[
+	--		local spellName = string.lower(matches[2])
+	--		local power = tonumber(matches[3]) or 100
+	--		local spellArguments = matches[4] or ""
+	--		local arguments = {spellName = spellName, power = power, spellArguments = spellArguments}
+	--		Events.raiseEvent("practiceCastEvent", arguments)
+	--	]])
 
 
 
 	-- stop practice casting
-	tempAliases.practiceCastOff =
-	tempAlias("^\\/[Cc][Aa][Ss][Tt] [Oo][Ff][Ff]",
-		[[
-			local arguments = {}
-			Events.raiseEvent("practiceCastOffEvent", arguments)
-		]])
+	--tempAliases.practiceCastOff =
+	--tempAlias("^\\/[Cc][Aa][Ss][Tt] [Oo][Ff][Ff]",
+	--	[[
+	--		local arguments = {}
+	--		Events.raiseEvent("practiceCastOffEvent", arguments)
+	--	]])
 
 
 
@@ -34,8 +34,9 @@ local function setup(args)
 	tempAlias("^\\/[Cc][Aa][Ss][Tt] [Pp][Oo][Ww][Ee][Rr] (\\d+)",
 		[[
 			local power = tonumber(matches[2]) or 100
-			local arguments = {power = power}
-			Events.raiseEvent("castPowerAdjustEvent", arguments)
+			local arguments = {save = true, input = power}
+			Events.raiseEvent("setAutocastPowerEvent", arguments)
+			GUI.commandlineCasting2:print(Status.autocastCurrentPower)
 		]])
 
 

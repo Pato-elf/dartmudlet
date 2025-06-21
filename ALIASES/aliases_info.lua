@@ -12,8 +12,9 @@ local function setup(args)
 	tempAliases.repeatCommand =
 	tempAlias("^#(\\d+) (.*)$",
 		[[
+			local repeatCommand = matches[3]
 			for i = 1, tonumber(matches[2]) do
-				expandAlias(matches[3])
+				expandAlias(repeatCommand)
 			end
 		]])
 

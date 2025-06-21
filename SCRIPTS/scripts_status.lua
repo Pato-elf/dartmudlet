@@ -14,9 +14,10 @@ Status.allocsTable			= {}
 -- casting system variables
 -----------------------------------------------------------
 Status.autocastCurrentSpell	= "lirrin's_glow"
-Status.autocastCurrentPower	= 100
+Status.autocastCurrentPower	= 500
 Status.autocastCurrentArgs	= ''
-Status.autocastCurrentNote	= 'note'
+Status.autocastCurrentNote	= 'spell notes'
+Status.autocastAddonCmd		= ''
 Status.autocastAdjustDown	= 1
 Status.autocastAdjustUp		= 1
 Status.autocastChannelAmt	= 1
@@ -212,7 +213,6 @@ Status.locationFile1        = 'locations_general.txt'
 
 local function setVariables()
 
-
 	-- CHANNEL BOX
 	echo("Dropdown1", "<center><span style='color: white;'>"..Status.channelMode.."</span></center>")
 	cecho("ChannelTextBox1", Info.showSpellCasting())
@@ -264,6 +264,7 @@ local function setVariables()
 
     -- TRACKING BOX
     GUI.textboxTracking8:echo(Status.name,"yellow","l")
+
 end
 
 
@@ -330,8 +331,8 @@ end
 
 
 local function login(args)
-	send("score")
-	send("who")
+	send("score", false)
+	send("who", false)
 end
 
 

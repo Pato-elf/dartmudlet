@@ -28,6 +28,7 @@ local function onNetworkOutput(args)
         ) or
 		string.match(command, "^invoke ") or
 		string.match(command, "^study ") or
+		string.match(command, "^learn book ") or
 		string.match(command, "^hunt ") or
 		string.match(command, "^revise ") or
 		string.match(command, "^summon armor") then
@@ -70,6 +71,7 @@ local function isBlocker(args)
         string.match(command, "^inscribe ") or
 		string.match(command, "^invoke ") or
 		string.match(command, "^study ") or
+		string.match(command, "^learn book") or
 		string.match(command, "^hunt ") or
 		string.match(command, "^revise ") or
 		string.match(command, "^summon armor") then

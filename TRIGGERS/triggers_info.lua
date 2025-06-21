@@ -30,6 +30,32 @@ local function setup(args)
 
 
 
+	-- create hyperlinks
+	---------------------------------------------------------------------
+	tempTriggers.createHyperlink =
+	--tempRegexTrigger("(http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?",
+	tempRegexTrigger("([Hh][Tt][Tt][Pp][Ss]?://[^\\s]+)",
+		[[
+			local linkURL = matches[1]:gsub("[\"')%],%.]+$", "")
+			selectString(linkURL, 1)
+			setFgColor(255, 255, 255)
+			setUnderline(true)
+
+	setLink("openWebPage('"..linkURL.."')", "Click to open in your browser")
+		]])
+
+
+
+	-- display voting text
+	---------------------------------------------------------------------
+	tempTriggers.displayVoting =
+	tempRegexTrigger("^--- End of MOTD ---",
+		[[
+			Events.raiseEvent("votingEvent", arguments)
+		]])
+
+
+
 	-- capture current aiming target version 1
 	---------------------------------------------------------------------
 	tempTriggers.captureAim1 =

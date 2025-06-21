@@ -42,11 +42,6 @@ In addition to the automatic features described above, there are a number of thi
            For when you MUST interrupt your previous action (e.g. to run from that dragon NOW).
 ```
 ```
-/cast <spell> <power> <args>     - Repeat practice casting a spell
-/cast power <power>              - Change power you are using for practice casting
-/cast off                        - Stop repeat practice casting
-```
-```
 /chan <num>                      - Manually channel an amount to the channelling system
 /chan info                       - Display full channelling stats on screen
 /chan pause on|off               - Pause powercast to wait for full concentration
@@ -70,6 +65,7 @@ In addition to the automatic features described above, there are a number of thi
 /alloc copy <num> <num>          - Copy one allocation set over to another
 /antispam on|off                 - Suppress repeated lines
 /aura on|off|scint               - Show aura on screen (default off)
+/cast power <power>              - Change the autocast power via keyboard command
 /conc on|off|bright              - Show concentration on screen (default off)
 /contents on|off                 - Show expanded contents view for containers (default on)
 /date <now> <+|-><num><h|d>      - Show game dates for the past, now, or future

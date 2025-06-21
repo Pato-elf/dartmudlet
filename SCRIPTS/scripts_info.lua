@@ -148,10 +148,6 @@ local function showHelpBase(args)
 	cecho(preText.."/block   - Block and queue new commands from being sent to DartMUD\n")
 	cecho(preText.."/unblock - Resume sending commands to DartMUD, including queued ones first\n")
 	cecho(preText.."\n")
-	cecho(preText.."/cast <spell> <power> <args>     - Repeat practice casting a spell\n")
-	cecho(preText.."/cast power <power>              - Change power you are using for practice casting\n")
-	cecho(preText.."/cast off                        - Stop repeat practice casting\n")
-	cecho(preText.."\n")
     cecho(preText.."/chan <num>                      - Manually channel amount to the channelling system\n")
 	cecho(preText.."/chan info                       - Display full channelling stats on screen\n")
 	cecho(preText.."/chan pause on|off               - Pause powercast to wait for full concentration\n")
@@ -172,6 +168,7 @@ local function showHelpBase(args)
 	cecho(preText.."/alloc copy <num> <num>          - Copy one allocation set over to another\n")
 	cecho(preText.."/antispam on|off                 - Suppress repeated lines\n")
 	cecho(preText.."/aura on|off|scint               - Show aura on screen (default off)\n")
+	cecho(preText.."/cast power <power>              - Change the autocast power via keyboard command\n")
 	cecho(preText.."/conc on|off|bright              - Show concentration on screen (default off)\n")
 	cecho(preText.."/contents on|off                 - Show expanded contents view for containers\n")
     cecho(preText.."/date <now> <+|-><num><h|d>      - Show game dates for the past, now, or future\n")
@@ -865,6 +862,30 @@ end
 
 
 
+-- display the voting links on login
+-----------------------------------------------------------
+local function showVoting()
+
+	local linkList = {
+		{ url = "https://www.mudverse.com/vote/619",                            label = "Vote on MudVerse:       " },
+		{ url = "https://browsermmorpg.com/vote.php?id=1702",                   label = "Vote on Browser MMORPG: " },
+		{ url = "https://topwebgames.com/game/dartmud-lands-of-ferdarchi/vote", label = "Vote on Top Web Games:  " }
+	}
+
+	--echo("\n")
+	cecho("\n<yellow>VOTE FOR DARTMUD!\n")
+	cecho("<yellow>--------------------------------------------------------------------------------\n")
+	for _, link in ipairs(linkList) do
+		cecho("<cyan>"..link.label.."<u><white>"..link.url.."\n")
+		selectString(link.url, 1)
+		setUnderline(true)
+		setLink("openWebPage('"..link.url.."')", "Click to open voting site")
+	end
+	cecho("<yellow>--------------------------------------------------------------------------------\n")
+end
+
+
+
 -- delete prompt only lines
 -----------------------------------------------------------
 local function emptyLine(args)
@@ -880,6 +901,7 @@ function setup(args)
 	Events.addListener("showLevelsEvent", sourceName, showLevels)
     Events.addListener("showDateEvent", sourceName, showDate)
 	Events.addListener("emptylineEvent", sourceName, emptyLine)
+	Events.addListener("votingEvent", sourceName, showVoting)
 end
 
 
@@ -891,6 +913,7 @@ function unsetup(args)
 	Events.removeListener("showLevelsEvent", sourceName)
     Events.removeListener("showDateEvent", sourceName)
 	Events.removeListener("emptylineEvent", sourceName)
+	Events.removeListener("votingEvent", sourceName)
 end
 
 

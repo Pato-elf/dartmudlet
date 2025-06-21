@@ -13,6 +13,7 @@ Garden#Garden.jpg
 Grotto#Grotto.jpg
 Grove#Grove.jpg
 Hall of Mortals#Hall of Mortals.jpg
+Hallway#The Inn at Gilmore Hallway.jpg
 Kitchen#Kitchen.jpg
 Landing#Landing.jpg
 Library#Library.jpg
@@ -30,9 +31,14 @@ Stall#Stall.jpg
 The Chat Room#The Chat Room.jpg
 Underwater#Underwater.jpg
 Vault#Vault.jpg
+Vortex Tunnel#OOC Area.jpg
+Purgatory#Purgatory.jpg
 Warehouse#Warehouse.jpg
 West Field#West Field.jpg
 Minehead#Minehead.jpg
+Workshop#Laboratory.jpg
+Council Chamber#Auditorium.jpg
+Robing Room#Forecourt.jpg
 ###
 ### GILMORE
 ###
@@ -250,6 +256,16 @@ The miller\'s hut#A courtyard.jpg
 A storage shed#A courtyard.jpg
 A pasture#A courtyard.jpg
 An oak tree#A courtyard.jpg
+Lighthouse Clearing#Lighthouse Clearing.jpg
+Outside the Lighthouse#Outside the Lighthouse.jpg
+The Keeper\'s Study#Outside the Lighthouse.jpg
+The Keeper\'s Kitchen#Outside the Lighthouse.jpg
+Lighthouse, Ground Floor#Outside the Lighthouse.jpg
+Lighthouse, Stairwell#Outside the Lighthouse.jpg
+Lighthouse, Lamp Room#Outside the Lighthouse.jpg
+Lighthouse, Catwalk#Outside the Lighthouse.jpg
+Oily Ladder#Outside the Lighthouse.jpg
+A Cistern#Outside the Lighthouse.jpg
 ###
 ### TOBERMORE
 ###
@@ -296,7 +312,6 @@ Bank of Eris#Bank of Eris.jpg
 Taproom#Taproom.jpg
 Bower#Bower.jpg
 Office#Eris Road.jpg
-Hallway#Eris Road.jpg
 Room One#Green Gryphon Inn Room.jpg
 Room Two#Green Gryphon Inn Room.jpg
 Room Three#Green Gryphon Inn Room.jpg
@@ -318,6 +333,7 @@ Registration Hall#Eris Road.jpg
 The Arena#Eris Road.jpg
 East Stands#Eris Road.jpg
 North Stands#Eris Road.jpg
+Wuffa\'s Specialty Barding#Eris Road.jpg
 ###
 ### SEGLIZ
 ###

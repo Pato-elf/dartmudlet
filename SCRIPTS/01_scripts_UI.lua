@@ -6,8 +6,8 @@ aura						= "unknown"
 -- CREATE GUI
 -----------------------------------------------------------
 local function createUIConsole()
-	GUI.top = Adjustable.Container:new({name = "top", x=0, y=0, height=256})
-	GUI.right = Adjustable.Container:new({name = "right", x=-570, y=0, width=570, height="100%"})
+	GUI.top		= Adjustable.Container:new({name = "top", x=0, y=0, height=256})
+	GUI.right	= Adjustable.Container:new({name = "right", x=-570, y=0, width=570, height="100%"})
 
 	GUI.top:attachToBorder("top")
 	GUI.right:attachToBorder("right")
@@ -23,8 +23,8 @@ local function createUIConsole()
 
 
 
-    GUI.topleft = Adjustable.Container:new({name = "topleft", x=0, y=0, width="100%-384", height="100%", adjLabelstyle = [[border: none;]]},GUI.top)
-    GUI.topright = Adjustable.Container:new({name = "topright", x=-384, y=0, width=384, height="100%", adjLabelstyle = [[border: none;]]},GUI.top)
+    GUI.topleft		= Adjustable.Container:new({name = "topleft", x=0, y=0, width="100%-384", height="100%", adjLabelstyle = [[border: none;]]},GUI.top)
+    GUI.topright	= Adjustable.Container:new({name = "topright", x=-384, y=0, width=384, height="100%", adjLabelstyle = [[border: none;]]},GUI.top)
 
     GUI.topleft:attachToBorder("right")
 	GUI.topright:attachToBorder("right")
@@ -152,18 +152,18 @@ local function onImprove(args)
 	if args["text"] ~= nil then
 		output = timestamp.." "..args["text"]
 	else
-
 		local skillVar = Skills.getSkill({who = who, skill_name = skill_name})
 
-		if skillVar ~= -1 then
+		if (skillVar ~= -1) then
 			count = tonumber(skillVar.count)
 		else
 			count = 1
 		end
 
-		local level = Skills.imp2lvl(count)
-		local nextLevel = level.next_level
-		if nextLevel == nil then
+		local level		= Skills.imp2lvl(count)
+		local nextLevel	= level.next_level
+
+		if (nextLevel == nil) then
 			if(who ~= Status.name) then
 				output = timestamp.." ("..who..") "..skill_name.." - "..count.." ("..level.abbr..")"
 			else
@@ -187,12 +187,11 @@ local function onImprove(args)
 		cecho("ChannelTextBox3", "<yellow>POWERCAST TOTAL: "..Status.powercastTotal.." ("..Status.powercastSuccess..")")
 		cecho("ChannelTextBox4", Info.showPowercastPercentage())
 
-		local query = 'UPDATE channel '
-		query = query..'SET powercastTotal='..Status.powercastTotal..', '
-		query = query..'powercastSuccess='..Status.powercastSuccess
+		local query	= 'UPDATE channel '
+		query		= query..'SET powercastTotal='..Status.powercastTotal..', '
+		query		= query..'powercastSuccess='..Status.powercastSuccess
 		dba.execute(query)
 	end
-
 end
 
 local function onSkillMistake(args)
@@ -211,9 +210,9 @@ local function onName(args)
 	local name_table2
 
 
-	showname = name_table[2]
-	name_table2 = showname:split("%. ")
-	showname = name_table2[1]
+	showname	= name_table[2]
+	name_table2	= showname:split("%. ")
+	showname	= name_table2[1]
 
 	cecho("\n"..showname)
 	clearWindow("NameBox")
@@ -229,11 +228,18 @@ end
 local function onAge(args)
 	local years		= args["years"] or ""
 	local months	= args["months"] or ""
+	local minutes	= args["minutes"] or ""
 
+	if months == "" then months = "0" end
 
 	clearWindow("AgeBox")
-	if months == "" then months = "0" end
-	cecho("AgeBox", "Age: "..years.." years, "..months.." months")
+
+	if (minutes == 0) then
+		cecho("AgeBox", "Age: "..years.." years, "..months.." months")
+	else
+		cecho("AgeBox", "Age: "..minutes.." minutes")
+	end
+
 	deleteLine()
 end
 

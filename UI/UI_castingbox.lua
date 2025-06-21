@@ -5,21 +5,22 @@ function createCastingBox()
 
 
 	local x1	= 10
-    local x2    = 250
-    local x3    = 305
-    local x4    = 360
-	local x5	= 415
+    local x2    = -265
+    local x3    = -210
+    local x4    = -155
+	local x5	= -100
 	local x6    = -306
-	local x7	= 80
-	local x8	= -400
+	local x7	= 105
+	local x8	= -410
+	local x9	= 0
 
     local y1    = 10
 	local y2	= 51
 	local y3	= 92
-	local y5    = 150
-	local y6    = 180
-	local y7    = 210
-	local y8    = 240
+	local y5    = 200
+	local y6    = 230
+	local y7    = 260
+	local y8    = 290
 	--local y9	= 270
 	--local y10	= 300
 	--local y11	= 330
@@ -38,6 +39,10 @@ function createCastingBox()
 	local tooltip_casting9	= "Arguments to use while practicing spell"
 	local tooltip_casting10	= "Notes about practicing this spell"
 	local tooltip_casting11	= "Send a command of your choice after each cast\nLeave blank if not needed"
+	local tooltip_casting12	= "Current spell power"
+	local tooltip_casting13	= "Adjust power down when succeeding a spell practice\nSet to 0 if not needed"
+	local tooltip_casting14	= "Adjust power up when failing a spell practice\nSet to 0 if not needed"
+	local tooltip_casting15	= "Amount to channel to your focus target after each cast\nSet to 0 if not needed"
 
 
 
@@ -89,13 +94,13 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 			name = "textboxCasting1",
 			x = x8, y = y5+6,
 			fontSize = 11,
-			width = 100,
+			width = 110,
 			height = 17,
 			color = "black"
 		}, GUI.containerCastingBox)
 
 	GUI.textboxCasting1:setStyleSheet(StyleTextBlue:getCSS())
-	cecho("textboxCasting1", "<yellow>FULL NAME")
+	cecho("textboxCasting1", "<yellow>SPELLNAME")
 	GUI.textboxCasting1:setToolTip(tooltip_casting8,Status.tooltipTime)
 
 
@@ -107,7 +112,7 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 			name = "textboxCasting2",
 			x = x8, y = y6+6,
 			fontSize = 11,
-			width = 100,
+			width = 110,
 			height = 17,
 			color = "black"
 		}, GUI.containerCastingBox)
@@ -125,7 +130,7 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 			name = "textboxCasting3",
 			x = x8, y = y7+6,
 			fontSize = 11,
-			width = 100,
+			width = 110,
 			height = 17,
 			color = "black"
 		}, GUI.containerCastingBox)
@@ -143,7 +148,7 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 			name = "textboxCasting4",
 			x = x8, y = y8+6,
 			fontSize = 11,
-			width = 100,
+			width = 110,
 			height = 17,
 			color = "black"
 		}, GUI.containerCastingBox)
@@ -152,6 +157,77 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 	cecho("textboxCasting4", "<yellow>ADDON CMD")
 	GUI.textboxCasting4:setToolTip(tooltip_casting11,Status.tooltipTime)
 
+
+
+	-- CREATE TEXTBOX5 -> CASTING -> TABWINDOW2 (power box)
+	-------------------------------------------------------
+	GUI.textboxCasting5 = GUI.textboxCasting5 or
+		Geyser.Label:new({
+			name = "textboxCasting5",
+			x = x9, y = y5+6,
+			fontSize = 11,
+			width = 110,
+			height = 17,
+			color = "black"
+		}, GUI.containerCastingBox)
+
+	GUI.textboxCasting5:setStyleSheet(StyleTextBlue:getCSS())
+	cecho("textboxCasting5", "<yellow>SPELL PWR")
+	GUI.textboxCasting5:setToolTip(tooltip_casting12,Status.tooltipTime)
+
+
+
+	-- CREATE TEXTBOX6 -> CASTING -> TABWINDOW2 (power down box)
+	-------------------------------------------------------
+	GUI.textboxCasting6 = GUI.textboxCasting6 or
+		Geyser.Label:new({
+			name = "textboxCasting6",
+			x = x9, y = y6+6,
+			fontSize = 11,
+			width = 110,
+			height = 17,
+			color = "black"
+		}, GUI.containerCastingBox)
+
+	GUI.textboxCasting6:setStyleSheet(StyleTextBlue:getCSS())
+	cecho("textboxCasting6", "<yellow>PWR DOWN")
+	GUI.textboxCasting6:setToolTip(tooltip_casting13,Status.tooltipTime)
+
+
+
+	-- CREATE TEXTBOX7 -> CASTING -> TABWINDOW2 (power up box)
+	-------------------------------------------------------
+	GUI.textboxCasting7 = GUI.textboxCasting7 or
+		Geyser.Label:new({
+			name = "textboxCasting7",
+			x = x9, y = y7+6,
+			fontSize = 11,
+			width = 110,
+			height = 17,
+			color = "black"
+		}, GUI.containerCastingBox)
+
+	GUI.textboxCasting7:setStyleSheet(StyleTextBlue:getCSS())
+	cecho("textboxCasting7", "<yellow>PWR UP")
+	GUI.textboxCasting7:setToolTip(tooltip_casting14,Status.tooltipTime)
+
+
+
+	-- CREATE TEXTBOX8 -> CASTING -> TABWINDOW2 (channel addon box)
+	-------------------------------------------------------
+	GUI.textboxCasting8 = GUI.textboxCasting8 or
+		Geyser.Label:new({
+			name = "textboxCasting8",
+			x = x9, y = y8+6,
+			fontSize = 11,
+			width = 110,
+			height = 17,
+			color = "black"
+		}, GUI.containerCastingBox)
+
+	GUI.textboxCasting8:setStyleSheet(StyleTextBlue:getCSS())
+	cecho("textboxCasting8", "<yellow>CHANNEL")
+	GUI.textboxCasting8:setToolTip(tooltip_casting15,Status.tooltipTime)
 
 
 
@@ -185,7 +261,7 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.commandlineCasting1:setAction(
         function(command)
-            Events.raiseEvent("setAutocastSpellEvent", {input = command})
+            Events.raiseEvent("setAutocastSpellEvent", {save = true, input = command})
 			GUI.buttonCasting7:setStyleSheet(StyleButtonPaleBlue:getCSS())
 			tempTimer(0.15, function() GUI.buttonCasting7:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
         end
@@ -206,7 +282,7 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.commandlineCasting2:setAction(
         function(command)
-            Events.raiseEvent("setAutocastPowerEvent", {input = command})
+            Events.raiseEvent("setAutocastPowerEvent", {save = true, input = command})
 			GUI.buttonCasting7:setStyleSheet(StyleButtonPaleBlue:getCSS())
 			tempTimer(0.15, function() GUI.buttonCasting7:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
         end
@@ -227,7 +303,7 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.commandlineCasting3:setAction(
         function(command)
-            Events.raiseEvent("setAutocastAdjustDownEvent", {input = command})
+            Events.raiseEvent("setAutocastAdjustDownEvent", {save = true, input = command})
 			GUI.buttonCasting7:setStyleSheet(StyleButtonPaleBlue:getCSS())
 			tempTimer(0.15, function() GUI.buttonCasting7:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
         end
@@ -248,7 +324,7 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.commandlineCasting4:setAction(
         function(command)
-            Events.raiseEvent("setAutocastAdjustUpEvent", {input = command})
+            Events.raiseEvent("setAutocastAdjustUpEvent", {save = true, input = command})
 			GUI.buttonCasting7:setStyleSheet(StyleButtonPaleBlue:getCSS())
 			tempTimer(0.15, function() GUI.buttonCasting7:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
         end
@@ -269,7 +345,7 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.commandlineCasting5:setAction(
         function(command)
-            Events.raiseEvent("setAutocastArgsEvent", {input = command})
+            Events.raiseEvent("setAutocastArgsEvent", {save = true, input = command})
 			GUI.buttonCasting7:setStyleSheet(StyleButtonPaleBlue:getCSS())
 			tempTimer(0.15, function() GUI.buttonCasting7:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
         end
@@ -290,7 +366,7 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.commandlineCasting6:setAction(
         function(command)
-            --Events.raiseEvent("setAutocastAdjustUpEvent", {input = command})
+            Events.raiseEvent("setAutocastNoteEvent", {save = true, input = command})
 			GUI.buttonCasting7:setStyleSheet(StyleButtonPaleBlue:getCSS())
 			tempTimer(0.15, function() GUI.buttonCasting7:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
         end
@@ -311,7 +387,7 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.commandlineCasting7:setAction(
         function(command)
-            Events.raiseEvent("setAutocastChannelAmtEvent", {input = command})
+            Events.raiseEvent("setAutocastChannelAmtEvent", {save = true, input = command})
 			GUI.buttonCasting7:setStyleSheet(StyleButtonPaleBlue:getCSS())
 			tempTimer(0.15, function() GUI.buttonCasting7:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
         end
@@ -332,7 +408,7 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 
     GUI.commandlineCasting8:setAction(
         function(command)
-            Events.raiseEvent("setAutocastChannelAmtEvent", {input = command})
+            Events.raiseEvent("setAutocastAddonCmdEvent", {save = true, input = command})
 			GUI.buttonCasting7:setStyleSheet(StyleButtonPaleBlue:getCSS())
 			tempTimer(0.15, function() GUI.buttonCasting7:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
         end
@@ -371,10 +447,10 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 			color = "black"
 		}, GUI.containerCastingBox)
 
-	GUI.buttonCasting1:setStyleSheet(StyleButtonLightGrey:getCSS())
+	GUI.buttonCasting1:setStyleSheet(StyleButtonDarkGrey:getCSS())
 	echo("buttonCasting1", "<center><span style='font-size: 25pt;'>&#9664;&#9664;</span></center>")
 	GUI.buttonCasting1:setToolTip(tooltip_casting1,Status.tooltipTime)
-	GUI.buttonCasting1:setClickCallback("buttonCasting1_click")
+	--GUI.buttonCasting1:setClickCallback("buttonCasting1_click")
 
 	function buttonCasting1_click()
 		GUI.buttonCasting1:setStyleSheet(StyleButtonPaleBlue:getCSS())
@@ -396,10 +472,10 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
         color = "black"
     }, GUI.containerCastingBox)
 
-    GUI.buttonCasting2:setStyleSheet(StyleButtonLightGrey:getCSS())
+    GUI.buttonCasting2:setStyleSheet(StyleButtonDarkGrey:getCSS())
     echo("buttonCasting2", "<center><span style='font-size: 25pt;'>&#9664;</span></center>")
     GUI.buttonCasting2:setToolTip(tooltip_casting2,Status.tooltipTime)
-    GUI.buttonCasting2:setClickCallback("buttonCasting2_click")
+    --GUI.buttonCasting2:setClickCallback("buttonCasting2_click")
 
     function buttonCasting2_click()
         GUI.buttonCasting2:setStyleSheet(StyleButtonPaleBlue:getCSS())
@@ -421,10 +497,10 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
         color = "black"
     }, GUI.containerCastingBox)
 
-    GUI.buttonCasting3:setStyleSheet(StyleButtonLightGrey:getCSS())
+    GUI.buttonCasting3:setStyleSheet(StyleButtonDarkGrey:getCSS())
     echo("buttonCasting3", "<center><span style='font-size: 25pt;'>&#9654;</span></center>")
     GUI.buttonCasting3:setToolTip(tooltip_casting3,Status.tooltipTime)
-    GUI.buttonCasting3:setClickCallback("buttonCasting3_click")
+    --GUI.buttonCasting3:setClickCallback("buttonCasting3_click")
 
     function buttonCasting3_click()
         GUI.buttonCasting3:setStyleSheet(StyleButtonPaleBlue:getCSS())
@@ -446,10 +522,10 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
         color = "black"
     }, GUI.containerCastingBox)
 
-    GUI.buttonCasting4:setStyleSheet(StyleButtonLightGrey:getCSS())
+    GUI.buttonCasting4:setStyleSheet(StyleButtonDarkGrey:getCSS())
     echo("buttonCasting4", "<center><span style='font-size: 25pt;'>&#9654;&#9654;</span></center>")
     GUI.buttonCasting4:setToolTip(tooltip_casting4,Status.tooltipTime)
-    GUI.buttonCasting4:setClickCallback("buttonCasting4_click")
+    --GUI.buttonCasting4:setClickCallback("buttonCasting4_click")
 
     function buttonCasting4_click()
         GUI.buttonCasting4:setStyleSheet(StyleButtonPaleBlue:getCSS())
@@ -494,10 +570,10 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 			color = "black"
 		}, GUI.containerCastingBox)
 
-	GUI.buttonCasting6:setStyleSheet(StyleButtonLightGrey:getCSS())
+	GUI.buttonCasting6:setStyleSheet(StyleButtonDarkGrey:getCSS())
 	echo("buttonCasting6", "<center>RESET STATS</center>")
 	GUI.buttonCasting6:setToolTip(tooltip_casting6,Status.tooltipTime)
-	GUI.buttonCasting6:setClickCallback("ButtonCasting6_click")
+	--GUI.buttonCasting6:setClickCallback("ButtonCasting6_click")
 
 	function ButtonCasting6_click()
 		GUI.buttonCasting6:setStyleSheet(StyleButtonPaleBlue:getCSS())
@@ -527,7 +603,7 @@ GUI.containerCastingBox:setStyleSheet(StyleBoxBlue:getCSS())
 	function ButtonCasting7_click()
 		GUI.buttonCasting7:setStyleSheet(StyleButtonPaleBlue:getCSS())
 		tempTimer(0.15, function() GUI.buttonCasting7:setStyleSheet(StyleButtonLightGrey:getCSS()) end)
-		--Events.raiseEvent("saveChannelSettingsEvent", {input = ""})
+		Events.raiseEvent("saveAutocastSettingsEvent")
 	end
 
 

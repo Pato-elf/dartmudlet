@@ -331,23 +331,23 @@ local function load()
 
     systemMessage("Load REFRESH table")
 	result = dba.query('SELECT * FROM refresh')[1]
-	Status.refreshPower1 = result.refreshPower1
-	Status.refreshPower2 = result.refreshPower2
-	Status.refreshTarget1 = result.refreshTarget1
-	Status.refreshTarget2 = result.refreshTarget2
-    Status.nudgeisActive = (result.nudgeisActive == 1)
-    Status.nudgeAll = (result.nudgeAll == 1)
-    Status.nudgePower = result.nudgePower
-    Status.nudgeTarget1 = result.nudgeTarget1
-    Status.nudgeTarget2 = result.nudgeTarget2
-    Status.nudgeTarget3 = result.nudgeTarget3
-    Status.nudgeTarget4 = result.nudgeTarget4
-    Status.nudgeTarget5 = result.nudgeTarget5
-    Status.nudgeTarget6 = result.nudgeTarget6
-    Status.nudgeTarget7 = result.nudgeTarget7
-    Status.nudgeTarget8 = result.nudgeTarget8
-    Status.nudgeTarget9 = result.nudgeTarget9
-    Status.nudgeTarget10 = result.nudgeTarget10
+	Status.refreshPower1	= result.refreshPower1
+	Status.refreshPower2	= result.refreshPower2
+	Status.refreshTarget1	= result.refreshTarget1
+	Status.refreshTarget2	= result.refreshTarget2
+    Status.nudgeisActive	= (result.nudgeisActive == 1)
+    Status.nudgeAll			= (result.nudgeAll == 1)
+    Status.nudgePower		= result.nudgePower
+    Status.nudgeTarget1		= result.nudgeTarget1
+    Status.nudgeTarget2		= result.nudgeTarget2
+    Status.nudgeTarget3		= result.nudgeTarget3
+    Status.nudgeTarget4		= result.nudgeTarget4
+    Status.nudgeTarget5		= result.nudgeTarget5
+    Status.nudgeTarget6		= result.nudgeTarget6
+    Status.nudgeTarget7		= result.nudgeTarget7
+    Status.nudgeTarget8		= result.nudgeTarget8
+    Status.nudgeTarget9		= result.nudgeTarget9
+    Status.nudgeTarget10	= result.nudgeTarget10
 end
 
 

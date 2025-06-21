@@ -6,12 +6,12 @@ local sourceName	= "casting"
 
 
 
-
+-- perform a practice cast
+-----------------------------------------------------------
 local function practiceCast(args)
 	if (Status.statusAutocast) and (not Status.statusIsAutocasting) then
 		send("cast ! "..Status.autocastCurrentSpell.." @".. Status.autocastCurrentPower.. " "..Status.autocastCurrentArgs)--,false)
 		Status.statusIsAutocasting	= true
-		--Events.addListener("BEBTconcEvent", sourceName, practiceCast)
 	end
 end
 
@@ -20,55 +20,23 @@ end
 -- turning the autocast on
 -----------------------------------------------------------
 local function setAutocastOn(args)
-	--local spellName = args["spellName"]
-	--local power = args["power"]
-	--local spellArguments = args["spellArguments"]
-	--isActive = true
-
-	--Status.castCurrentSpell = "mi"
-	--Status.castCurrentPower = 460
-	--Status.castCurrentArgs = "talisman"
 
 	if Status.autocastCurrentPower < 50 then Status.autocastCurrentPower = 50 end
-
-	local query = 'UPDATE casting '
-	query = query..'SET castCurrentSpell="'..Status.autocastCurrentSpell..'", '
-	query = query..'castCurrentPower='..Status.autocastCurrentPower..', '
-	query = query..'castCurrentArgs="'..Status.autocastCurrentArgs..'"'
-	dba.execute(query)
-
 	Events.raiseEvent("messageEvent", {message="<yellow>Practice cast "..Status.autocastCurrentSpell.." @ "..Status.autocastCurrentPower.." "..Status.autocastCurrentArgs.."\n"})
-	--Events.addListener("BEBTconcEvent", sourceName, practiceCast)
-
 	send("conc", false)
 end
-
-
-
--- change the power level
---local function changePower(args)
---	local spellPower = args["power"]
-
---	if (spellPower < 50) or not (tonumber(spellPower)) then
---		cecho("<red>ERROR: Invalid /cast power value\n")
---	else
---		Status.castCurrentPower = spellPower
---		dba.execute('UPDATE casting SET castCurrentPower='..Status.castCurrentPower)
---		cecho("<yellow>Autocast: /cast power value updated\n")
---		Events.raiseEvent("messageEvent", {message="<yellow>Practice casting "..Status.castCurrentSpell.." @ "..Status.castCurrentPower.." "..Status.castCurrentArgs.."\n"})
---	end
-
---end
 
 
 
 -- set the spell for autocast
 -----------------------------------------------------------
 local function setAutocastSpell(args)
-	local spellName = args["input"]
+	local spellName	= args["input"]
+	local saveflag	= args["save"]
 
 	Status.autocastCurrentSpell = spellName
 	dba.execute('UPDATE casting SET castCurrentSpell="'..Status.autocastCurrentSpell..'"')
+	if saveflag then systemMessage("Autocast Spell Updated") end
 end
 
 
@@ -77,9 +45,37 @@ end
 -----------------------------------------------------------
 local function setAutocastArgs(args)
 	local spellArgs = args["input"]
+	local saveflag	= args["save"]
 
 	Status.autocastCurrentArgs = spellArgs
 	dba.execute('UPDATE casting SET castCurrentArgs="'..Status.autocastCurrentArgs..'"')
+	if saveflag then systemMessage("Autocast Arguments Updated") end
+end
+
+
+
+-- set the spell notes for autocast
+-----------------------------------------------------------
+local function setAutocastNote(args)
+	local spellNote = args["input"]
+	local saveflag	= args["save"]
+
+	Status.autocastCurrentNote = spellNote
+	dba.execute('UPDATE casting SET castCurrentNote="'..Status.autocastCurrentNote..'"')
+	if saveflag then systemMessage("Autocast Note Updated") end
+end
+
+
+
+-- set optional addon command
+-----------------------------------------------------------
+local function setAutocastAddonCmd(args)
+	local addonCmd = args["input"]
+	local saveflag	= args["save"]
+
+	Status.autocastAddonCmd = addonCmd
+	dba.execute('UPDATE casting SET castAddonCmd="'..Status.autocastAddonCmd..'"')
+	if saveflag then systemMessage("Autocast Addon Command Updated") end
 end
 
 
@@ -87,18 +83,118 @@ end
 -- turning the autocast off
 -----------------------------------------------------------
 local function setAutocastOff(args)
-	--isActive = false
-	--Events.raiseEvent("messageEvent", {message="<yellow>Stopped casting\n"})
-	--Events.removeListener("BEBTconcEvent", sourceName)
+
 end
 
 
 
---local function finishPracticing(args)
---	if isActive then
---		Events.addListener("BEBTconcEvent", sourceName, practiceCast)
---	end
---end
+-- update the autocast power in db and display 
+-----------------------------------------------------------
+local function setAutocastPower(args)
+	local spellpower	= tonumber(args["input"])
+	local saveflag		= args["save"]
+
+
+	if not spellpower then
+		cecho("<red>ERROR: Invalid autocast power value\n")
+		return 0
+	elseif (spellpower < 50) then
+		cecho("<red>ERROR: Autocast power must be equal to or greater than 50\n")
+		return 0
+	else
+		Status.autocastCurrentPower = spellpower
+		dba.execute('UPDATE casting SET castCurrentPower='..Status.autocastCurrentPower)
+		if saveflag then systemMessage("Autocast Power Updated") end
+		return 1
+	end
+end
+
+
+
+-- update the autocast channel amount
+-----------------------------------------------------------
+local function setAutocastChannelAmt(args)
+	local channelamt	= tonumber(args["input"])
+	local saveflag		= args["save"]
+
+
+	if not channelamt then channelamt = 0 end
+
+	if (channelamt < 0) then
+		cecho("<red>ERROR: Autocast channel amount cannot be negative\n")
+		return 0
+	elseif (channelamt > 100) then
+		cecho("<red>ERROR: Autocast channel amount cannot be greater than 100\n")
+		return 0
+	else
+		Status.autocastChannelAmt = channelamt
+		dba.execute('UPDATE casting SET castChannelAmt='..Status.autocastChannelAmt)
+		if saveflag then systemMessage("Autocast Channel Amount Updated") end
+		return 1
+	end
+end
+
+
+
+-- update the autocast down adjustment
+-----------------------------------------------------------
+local function setAutocastAdjustDown(args)
+	local adjust		= tonumber(args["input"])
+	local saveflag		= args["save"]
+
+
+	if not adjust then adjust = 0 end
+
+	if (adjust < 0) then
+		cecho("<red>ERROR: Autocast down adjustment must be equal to or greater than zero\n")
+		return 0
+	else
+		Status.autocastAdjustDown = adjust
+		dba.execute('UPDATE casting SET castAdjustDown='..Status.autocastAdjustDown)
+		if saveflag then systemMessage("Autocast Adjust Value Updated") end
+		return 1
+	end
+end
+
+
+
+-- update the autocast up adjustment
+-----------------------------------------------------------
+local function setAutocastAdjustUp(args)
+	local adjust		= tonumber(args["input"])
+	local saveflag		= args["save"]
+
+
+	if not adjust then adjust = 0 end
+
+	if (adjust < 0) then
+		cecho("<red>ERROR: Autocast up adjustment must be equal to or greater than zero\n")
+		return 0
+	else
+		Status.autocastAdjustUp = adjust
+		dba.execute('UPDATE casting SET castAdjustUp='..Status.autocastAdjustUp)
+		if saveflag then systemMessage("Autocast Adjust Value Updated") end
+		return 1
+	end
+end
+
+
+
+-- attempt to save each data field
+-----------------------------------------------------------
+local function saveAutocastSettings(args)
+
+    setAutocastSpell({save = false, input = GUI.commandlineCasting1:getText()})
+	if(setAutocastPower({save = false, input = GUI.commandlineCasting2:getText()}) == 0) then return 0 end
+	if(setAutocastAdjustDown({save = false, input = GUI.commandlineCasting3:getText()}) == 0) then return 0 end
+	if(setAutocastAdjustUp({save = false, input = GUI.commandlineCasting4:getText()}) == 0) then return 0 end
+	setAutocastArgs({save = false, input = GUI.commandlineCasting5:getText()})
+	setAutocastNote({save = false, input = GUI.commandlineCasting6:getText()})
+	if(setAutocastChannelAmt({save = false, input = GUI.commandlineCasting7:getText()}) == 0) then return 0 end
+	setAutocastAddonCmd({save = false, input = GUI.commandlineCasting8:getText()})
+
+	systemMessage("Autocast Values Updated")
+end
 
 
 
@@ -112,88 +208,7 @@ local function showAutocastData()
 	GUI.commandlineCasting5:print(Status.autocastCurrentArgs)
 	GUI.commandlineCasting6:print(Status.autocastCurrentNote)
 	GUI.commandlineCasting7:print(Status.autocastChannelAmt)
-end
-
-
-
--- update the autocast power in db and display 
------------------------------------------------------------
-local function setAutocastPower(args)
-	--local tabs = args["number"]
-	local spellpower = tonumber(args["input"])
-
-	if not spellpower then
-		cecho("<red>ERROR: Invalid autocast power value\n")
-	elseif (spellpower < 50) then
-		cecho("<red>ERROR: Autocast power must be equal to or greater than 50\n")
-	else
-	--if tabs == 3 then
-	--	cecho("<orange>\t\t\tPOWER("..Status.castCurrentPower..") ")
-	--else
-	--	cecho("<orange>\t\t\t\t\tPOWER("..Status.castCurrentPower..") ")
-	--end
-		Status.autocastCurrentPower = spellpower
-		dba.execute('UPDATE casting SET castCurrentPower='..Status.autocastCurrentPower)
-		showAutocastData()
-		--Events.raiseEvent("showAutocastDataEvent")
-	end
-end
-
-
-
--- update the autocast channel amount
------------------------------------------------------------
-local function setAutocastChannelAmt(args)
-	local channelamt = tonumber(args["input"])
-
-	if not channelamt then
-		cecho("<red>ERROR: Invalid autocast channel amount\n")
-	elseif (channelamt < 0) then
-		cecho("<red>ERROR: Autocast channel amount cannot be negative\n")
-	elseif (channelamt > 100) then
-		cecho("<red>ERROR: Autocast channel amount cannot be greater than 100\n")
-	else
-		Status.autocastChannelAmt = channelamt
-		--dba.execute('UPDATE casting SET castCurrentPower='..Status.autocastCurrentPower)
-		showAutocastData()
-		--Events.raiseEvent("showAutocastDataEvent")
-	end
-end
-
-
-
--- update the autocast down adjustment
------------------------------------------------------------
-local function setAutocastAdjustDown(args)
-	local adjust = tonumber(args["input"])
-
-	if not adjust then
-		cecho("<red>ERROR: Invalid autocast down adjustment\n")
-	elseif (adjust < 0) then
-		cecho("<red>ERROR: Autocast down adjustment must be equal to or greater than zero\n")
-	else
-		Status.autocastAdjustDown = adjust
-		--dba.execute('UPDATE casting SET castCurrentPower='..Status.castCurrentPower)
-		showAutocastData()
-	end
-end
-
-
-
--- update the autocast up adjustment
------------------------------------------------------------
-local function setAutocastAdjustUp(args)
-	local adjust = tonumber(args["input"])
-
-	if not adjust then
-		cecho("<red>ERROR: Invalid autocast down adjustment\n")
-	elseif (adjust < 0) then
-		cecho("<red>ERROR: Autocast down adjustment must be equal to or greater than zero\n")
-	else
-		Status.autocastAdjustUp = adjust
-		--dba.execute('UPDATE casting SET castCurrentPower='..Status.castCurrentPower)
-		showAutocastData()
-	end
+	GUI.commandlineCasting8:print(Status.autocastAddonCmd)
 end
 
 
@@ -226,6 +241,10 @@ local function loadTriggers(args)
 			if (Status.autocastChannelAmt > 0) then
 				expandAlias("/chan "..Status.autocastChannelAmt,false)
 			end
+
+			if (Status.autocastAddonCmd:match("%S")) then
+				expandAlias(Status.autocastAddonCmd,false)
+			end
 		]])
 
 		triggers.autocast2 = tempRegexTrigger("^(?:> )*You think you would have succeeded[\\s\\S]*",
@@ -246,20 +265,26 @@ local function setAutocastActive()
 
 
 	if not Status.statusAutocast then
-		Status.statusAutocast = true
-		GUI.buttonCasting5:setStyleSheet(StyleButtonPaleGreen:getCSS())
 
-		GUI.tabwindow1:setTabHighlight("CASTING","CASTING",true)
-		GUI.tabwindow2:setTabHighlight("CASTING","CASTING",true)
-		GUI.tabwindow3:setTabHighlight("CASTING","CASTING",true)
-		GUI.tabwindow4:setTabHighlight("CASTING","CASTING",true)
+		if(saveAutocastSettings() == 0) then
+			GUI.buttonCasting5:setStyleSheet(StyleButtonDarkGrey:getCSS())
+			cecho("<red>ERROR: Unable to begin Autocast\n")
+		else
+			Status.statusAutocast = true
+			GUI.buttonCasting5:setStyleSheet(StyleButtonPaleGreen:getCSS())
 
-		echo("buttonCasting5", "<center>AUTOCAST ON</center>")
-		Events.raiseEvent("messageEvent", {message="<yellow>Autocast: On\n"})
-		systemMessage("Autocast On")
+			GUI.tabwindow1:setTabHighlight("CASTING","CASTING",true)
+			GUI.tabwindow2:setTabHighlight("CASTING","CASTING",true)
+			GUI.tabwindow3:setTabHighlight("CASTING","CASTING",true)
+			GUI.tabwindow4:setTabHighlight("CASTING","CASTING",true)
 
-		loadTriggers()
-		setAutocastOn()
+			echo("buttonCasting5", "<center>AUTOCAST ON</center>")
+			Events.raiseEvent("messageEvent", {message="<yellow>Autocast: On\n"})
+			systemMessage("Autocast On")
+
+			loadTriggers()
+			setAutocastOn()
+		end
 	else
 		Status.statusAutocast		= false
 		Status.statusIsAutocasting	= false
@@ -288,8 +313,13 @@ local function checkCastingTable(args)
 	dba.execute([[CREATE TABLE IF NOT EXISTS casting (
 		id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 		castCurrentArgs VARCHAR(64) DEFAULT "",
-		castCurrentPower INTEGER DEFAULT 100,
-		castCurrentSpell VARCHAR(16) DEFAULT "lg"
+		castCurrentPower INTEGER DEFAULT 500,
+		castCurrentSpell VARCHAR(32) DEFAULT "lirrin's_glow",
+		castCurrentNote VARCHAR(32) DEFAULT "spell note",
+		castAddonCmd VARCHAR(32) DEFAULT "",
+		castAdjustDown INTEGER DEFAULT 10,
+		castAdjustUp INTEGER DEFAULT 10,
+		castChannelAmt INTEGER DEFAULT 0
 	);]])
 
 	local results = dba.query('SELECT id FROM casting')
@@ -298,6 +328,37 @@ local function checkCastingTable(args)
 		dba.execute('INSERT INTO casting DEFAULT VALUES')
 	end
 
+	-- add any missing fields
+	local temp = dba.query('SELECT * FROM casting')[1]
+	if not temp.castCurrentNote then
+        systemMessage("Update CASTING table")
+		dba.execute('ALTER TABLE casting ADD COLUMN castCurrentNote VARCHAR(32) DEFAULT "spell note"')
+        dba.execute('UPDATE casting SET castCurrentNote = "spell note"')
+	end
+
+	if not temp.castAdjustDown then
+        systemMessage("Update CASTING table")
+		dba.execute('ALTER TABLE casting ADD COLUMN castAdjustDown INTEGER DEFAULT 10')
+        dba.execute('UPDATE casting SET castAdjustDown = 10')
+	end
+
+	if not temp.castAdjustUp then
+        systemMessage("Update CASTING table")
+		dba.execute('ALTER TABLE casting ADD COLUMN castAdjustUp INTEGER DEFAULT 10')
+        dba.execute('UPDATE casting SET castAdjustUp = 10')
+	end
+
+	if not temp.castChannelAmt then
+        systemMessage("Update CASTING table")
+		dba.execute('ALTER TABLE casting ADD COLUMN castChannelAmt INTEGER DEFAULT 0')
+        dba.execute('UPDATE casting SET castChannelAmt = 0')
+	end
+
+	if not temp.castAddonCmd then
+        systemMessage("Update CASTING table")
+		dba.execute('ALTER TABLE casting ADD COLUMN castAddonCmd VARCHAR(32) DEFAULT ""')
+        dba.execute('UPDATE casting SET castAddonCmd = ""')
+	end
 end
 
 
@@ -308,9 +369,14 @@ local function load()
 
     systemMessage("Load CASTING table")
 	result = dba.query('SELECT * FROM casting')[1]
-	Status.autocastCurrentArgs = result.castCurrentArgs
-	Status.autocastCurrentPower = result.castCurrentPower
-	Status.autocastCurrentSpell = result.castCurrentSpell
+	Status.autocastCurrentArgs	= result.castCurrentArgs
+	Status.autocastCurrentPower	= result.castCurrentPower
+	Status.autocastCurrentSpell	= result.castCurrentSpell
+	Status.autocastCurrentNote	= result.castCurrentNote
+	Status.autocastAdjustDown	= result.castAdjustDown
+	Status.autocastAdjustUp		= result.castAdjustUp
+	Status.autocastChannelAmt	= result.castChannelAmt
+	Status.autocastAddonCmd		= result.castAddonCmd
 end
 
 
@@ -327,12 +393,14 @@ local function setup(args)
 	Events.addListener("setAutocastPowerEvent", sourceName, setAutocastPower)
 	Events.addListener("setAutocastSpellEvent", sourceName, setAutocastSpell)
 	Events.addListener("setAutocastArgsEvent", sourceName, setAutocastArgs)
+	Events.addListener("setAutocastNoteEvent", sourceName, setAutocastNote)
 	Events.addListener("setAutocastAdjustDownEvent", sourceName, setAutocastAdjustDown)
 	Events.addListener("setAutocastAdjustUpEvent", sourceName, setAutocastAdjustUp)
 	Events.addListener("setAutocastChannelAmtEvent", sourceName, setAutocastChannelAmt)
+	Events.addListener("setAutocastAddonCmdEvent", sourceName, setAutocastAddonCmd)
 	Events.addListener("showAutocastDataEvent", sourceName, showAutocastData)
+	Events.addListener("saveAutocastSettingsEvent", sourceName, saveAutocastSettings)
 	Events.addListener("processAutocastEvent", sourceName, practiceCast)
-	--Events.addListener("castPowerAdjustEvent",sourceName, changePower)
 end
 
 
@@ -342,12 +410,14 @@ local function unsetup(args)
 	Events.removeListener("setAutocastPowerEvent",sourceName)
 	Events.removeListener("setAutocastSpellEvent",sourceName)
 	Events.removeListener("setAutocastArgsEvent",sourceName)
+	Events.removeListener("setAutocastNoteEvent",sourceName)
 	Events.removeListener("setAutocastAdjustDownEvent",sourceName)
 	Events.removeListener("setAutocastAdjustUpEvent",sourceName)
 	Events.removeListener("setAutocastChannelAmtEvent",sourceName)
+	Events.removeListener("setAutocastAddonCmdEvent",sourceName)
 	Events.removeListener("showAutocastDataEvent",sourceName)
+	Events.removeListener("saveAutocastSettingsEvent",sourceName)
 	Events.removeListener("processAutocastEvent",sourceName)
-	--Events.removeListener("castPowerAdjustEvent",sourceName)
 	killTriggers()
 end
 

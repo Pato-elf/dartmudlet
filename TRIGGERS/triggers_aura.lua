@@ -19,6 +19,18 @@ local function setup(args)
         ]])
 
 
+	tempTriggers.NoAura =
+    tempRegexTrigger("^(?:> )*(?:Aura          : )?You appear to have no aura\\.",
+        [[
+			local full = matches[1]
+			local aura = matches[2]
+			local arguments  = {full = full, aura = aura}
+
+            --Events.raiseEvent("NoauraEvent", arguments)
+            Events.raiseEvent("auraEvent", arguments)
+        ]])
+
+
 
     tempTriggers.VeryDimRed =
     tempRegexTrigger("^(?:> )*(?:Aura          : )?Your aura appears to be (very dim red)\\.",

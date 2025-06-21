@@ -103,6 +103,7 @@ local function setAutocastPower(args)
 		return 0
 	else
 		Status.autocastCurrentPower = spellpower
+		GUI.commandlineCasting2:print(Status.autocastCurrentPower)
 		dba.execute('UPDATE casting SET castCurrentPower='..Status.autocastCurrentPower)
 		if saveflag then systemMessage("Autocast Power Updated") end
 		return 1
@@ -252,6 +253,7 @@ local function loadTriggers(args)
 			if (Status.autocastAdjustUp > 0) or (Status.autocastAdjustDown > 0) then
             	Status.autocastCurrentPower = Status.autocastCurrentPower - Status.autocastAdjustUp
 				Status.autocastCurrentPower = Status.autocastCurrentPower - Status.autocastAdjustDown
+				if (Status.autocastCurrentPower < 50) then Status.autocastCurrentPower = 50 end
 				Events.raiseEvent("setAutocastPowerEvent",{input = Status.autocastCurrentPower})
 			end
 		]])

@@ -86,7 +86,7 @@ local function setup(args)
 
 
 
-    tempTriggers.StepSpring =
+    tempTriggers.MovementStepSpring =
     tempRegexTrigger("^(?:> )*(?:Movement      : )?(You have spring in your step\\.)",
         [[
             local movement = matches[2]
@@ -103,6 +103,25 @@ local function setup(args)
             arguments = {movement = movement}
             Events.raiseEvent("movementEvent", arguments)
         ]])
+
+
+		tempTriggers.MovementExhausted =
+		tempRegexTrigger("^(?:> )*(?:Movement      : )?(You are completely exhausted\\.)",
+			[[
+				local movement = matches[2]
+				arguments = {movement = movement}
+				Events.raiseEvent("movementEvent", arguments)
+			]])
+
+
+
+		tempTriggers.MovementBreak =
+		tempRegexTrigger("^(?:> )*(?:Movement      : )?(You could use a break\\.)",
+			[[
+				local movement = matches[2]
+				arguments = {movement = movement}
+				Events.raiseEvent("movementEvent", arguments)
+			]])
 
     triggers = tempTriggers
 end

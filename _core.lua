@@ -35,6 +35,7 @@ end
 
 cecho("<yellow>DARTMUDLET: Type /setup if this is a new install\n")
 cecho("<yellow>DARTMUDLET: Type /setup if you are upgrading from a previous version\n")
+cecho("<yellow>DARTMUDLET: Type lua resetProfile() to reset your layout if needed\n")
 
 
 
@@ -67,7 +68,7 @@ local function setup(e, f, g)
 	end
 
 
-	cecho("<yellow>DARTMUDLET: Begin main setup\n")
+	cecho("<yellow>DARTMUDLET: Begin main setup...please wait\n")
 
 	-- load modules from each directory
 	for _, dir in ipairs(directories) do

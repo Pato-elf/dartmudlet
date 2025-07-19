@@ -7,6 +7,7 @@ local textToUnBlock = {
 	".* appears above your .* then"
 	,".* aura manifests!"
 	,".* begins to glow"
+	,".* (begin|begins) .* glowing\\."
 	,"The .* begins (faintly|softly|brightly|brilliantly) glowing"
 	,"The .* becomes (faintly|deeply|distinctly) shrouded"
 	,"Your .* begins (faintly|softly|brightly|brilliantly) glowing"
@@ -22,6 +23,7 @@ local textToUnBlock = {
 	,".* lets off a real rip-roarer"
 	,".* mind is closed to you"
 	,".* seems to go all out of focus"
+	,".* shivers\\." --ch
 	,".* spellbooks may be obfuscated"
 	,".* sprays from your"
 	,"A cloud of .* forms above your"
@@ -36,7 +38,7 @@ local textToUnBlock = {
 	,"A maelstrom of .* churns around you"
 	,"A shadow flits through the"
 	,"A small jet of fire leaps from your"
-	,"A staccato flicker of light briefly illuminates"
+	,"A staccato (flash|flicker) of light briefly illuminates"
 	,"A suit of .* Starplate armor materializes around you"
 	,"A toothy, disembodied mouth"
 	,"A translucent orb of"
@@ -48,8 +50,7 @@ local textToUnBlock = {
 	,"Light bends around you, turning you"
 	,"No effect"
 	,"No (language|target) specified"
-	,"No such language"
-	,"No such thing here"
+	,"No such (language|target around|thing here)"
 	,"Nothing happens"
 	,"Oh no, it escaped"
 	,"Perhaps you should learn that spell more"
@@ -63,11 +64,12 @@ local textToUnBlock = {
 	,"The .* glows .*(red|orange|yellow|green|blue|indigo|violet|octarine|scintillating|moment)\\." --focus
 	,"The area becomes a bit darker"
 	,"The aura remains hidden"
-	,"The book is already obfuscated"
+	,"The book is already obfuscated" --os
 	,"The clues lead out of this area"
 	,"The enchantment on .* holds"
 	,"The incantations contain a formulae" --ae
 	,"The jar isn't open"
+	,"The pages of the book disintegrate before your eyes" --study
 	,"The pattern contains"
 	,"The power of the spell is snatched from your"
 	,"The rune on the .* crackles with electricity"
@@ -98,7 +100,9 @@ local textToUnBlock = {
 	,"You are suddenly surrounded in bubbles"
 	,"You are surrounded by a shimmering"
 	,"You are surrounded in"
+	,"You attempt to manipulate" --bd
 	,"You (battered|bludgeoned|burned)"
+	,"You begin .* glowing"
 	,"You begin to waver"
 	,"You can't hunt in here"
 	,"You can't study a"
@@ -140,6 +144,7 @@ local textToUnBlock = {
 	,"You must have mispronounced a lot"
 	,"You need 1 ounce of holy water" --cu
 	,"You need 1 pinch of gemstone powder" --bmr
+	,"You need rose for this spell" --gl
 	,"You need some ink"
 	,"You need to be holding a blank scroll"
 	,"You neglected to name a target"

@@ -342,11 +342,11 @@ local function showHelpFontsize(args)
 
 
 	cecho(preText.."DARTMUDLET: fontsize\n")
-	cecho(preText.."USAGE: /set fontsize <option> <8-16>\n")
+	cecho(preText.."USAGE: /set fontsize <option> <8-20>\n")
     cecho(preText.."\n")
     cecho(preText.."This command allows you to manually set the fontsize for various DartMUDlet tabs.\n")
     cecho(preText.."Current tab options are: all, chat, improves, message, who\n")
-    cecho(preText.."Current font sizes are: 8 to 16\n")
+    cecho(preText.."Current font sizes are: 8 to 20\n")
     cecho(preText.."\n")
     cecho(preText.."(Default setting is 10)\n")
 end

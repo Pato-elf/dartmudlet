@@ -47,6 +47,13 @@ local function setup(args)
 			Events.raiseEvent("whoEvent", args)
 		]])
 
+		tempTriggers.whoWhere2 =
+		tempRegexTrigger("^(?:> )* *Most people seem to be in the (?:\\w+) right now\\."
+			,[[
+				args = {}
+				Events.raiseEvent("whoEvent", args)
+			]])
+
 	tempTriggers.activePlayers =
 	tempRegexTrigger("^(?:> )* *Estimated active characters: \\d+ this month, \\d+ today."
 		,[[

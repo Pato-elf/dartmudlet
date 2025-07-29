@@ -20,6 +20,7 @@ local textToUnBlock = {
 	,".* is draped with a mantle of"
 	,".* is encircled by turbulent"
 	,".* is surrounded by a shimmering"
+	,".* is surrounded in a tranquil mist" --
 	,".* lets off a real rip-roarer"
 	,".* mind is closed to you"
 	,".* seems to go all out of focus"
@@ -92,13 +93,15 @@ local textToUnBlock = {
 	,"Who do you wish to give the stored spell"
 	,"You absorb the wounds from"
 	,"You are briefly surrounded by sparks"
-	,"You are draped with a mantle"
-	,"You are encircled by turbulent"
+	,"You are draped with a mantle" --fire armor
+	,"You are encased in thick slabs" --earth armor
+	,"You are encircled by turbulent" --air armor
+	,"You are immersed in .* bubble" --water armor
 	,"You are missing"
 	,"You are momentarily surrounded by a halo"
 	,"You are not magically armored"
 	,"You are suddenly surrounded in bubbles"
-	,"You are surrounded by a shimmering"
+	,"You are surrounded by a shimmering" --arcane armor
 	,"You are surrounded in"
 	,"You attempt to manipulate" --bd
 	,"You (battered|bludgeoned|burned)"
@@ -144,6 +147,7 @@ local textToUnBlock = {
 	,"You must have mispronounced a lot"
 	,"You need 1 ounce of holy water" --cu
 	,"You need 1 pinch of gemstone powder" --bmr
+	,"You need a bound device for that" --ae
 	,"You need rose for this spell" --gl
 	,"You need some ink"
 	,"You need to be holding a blank scroll"

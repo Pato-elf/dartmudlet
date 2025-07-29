@@ -3,12 +3,16 @@ sourceName			= "inscribing"
 
 
 
+-- inscribe
+-----------------------------------------------------------
 local function inscribe(args)
 	send("inscribe "..Status.scrollCurrentSpell.." "..Status.scrollCurrentPower)
 end
 
 
 
+-- invoke the written scroll
+-----------------------------------------------------------
 local function invoke(args)
 	local command = "invoke "..Status.scrollCurrentSpell.." !"
 	tempTimer(0.7, [[send("]]..command..[[")]])
@@ -16,6 +20,8 @@ end
 
 
 
+-- begin inscribing system
+-----------------------------------------------------------
 local function inscribeSetup(args)
 	local spell = args["spell"]
 	local power = args["power"]
@@ -32,6 +38,8 @@ end
 
 
 
+-- turn off inscribing system
+-----------------------------------------------------------
 local function inscribeOff(args)
 	Events.removeListener("BEBTconcEvent", sourceName)
 	Events.removeListener("finishedInscriptionEvent", sourceName)
@@ -40,6 +48,8 @@ end
 
 
 
+-- adjust the inscribe power
+-----------------------------------------------------------
 local function adjustPower(args)
 	local power = tonumber(args["power"])
 

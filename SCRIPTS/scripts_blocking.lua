@@ -77,6 +77,8 @@ local function isBlocker(args)
 		string.match(command, "^summon armor") then
 		return true
 	elseif string.match(command, "^write ") and not
+		string.match(command, "^write letter") and not
+        string.match(command, "^write note") and not
 		string.match(command, "^write color") and not
 		string.match(command, "^write name") and not
 		string.match(command, "^write sex") and not

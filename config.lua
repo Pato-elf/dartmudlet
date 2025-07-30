@@ -19,4 +19,4 @@ Type /setup to initialize DartMUDlet once installed.
 Type /help for a full list of commands.
 ]]
 version = [[1.10.1]]
-created = "2025-07-23T00:00:00+0:00"
+created = "2025-07-30T00:00:00+0:00"

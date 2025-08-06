@@ -43,6 +43,7 @@ local textToUnBlock = {
 	,"A suit of .* Starplate armor materializes around you"
 	,"A toothy, disembodied mouth"
 	,"A translucent orb of"
+	,"Ah, that would be" --search
 	,"Arguments should be "
 	,"Coruscating rays of"
 	,"How rude!"
@@ -56,6 +57,7 @@ local textToUnBlock = {
 	,"Oh no, it escaped"
 	,"Perhaps you should learn that spell more"
 	,"Sparks shoot out of your"
+	,"Standing stones do not gather moss" --gather
 	,"Subject line too long\\.  Please limit"
 	,"Submitted\\.  Thank you"
 	,"Tendrils of .* lash out wildly around you"
@@ -118,6 +120,7 @@ local textToUnBlock = {
 	,"You come face to face with the"
 	,"You didn't specify a target"
 	,"You disintegrated"
+	,"You don't find anything" --search
 	,"You don't have a scroll"
 	,"You don't have (any|enough)"
 	,"You don't know such a spell"
@@ -131,8 +134,10 @@ local textToUnBlock = {
 	,"You feel more fluent"
 	,"You feel your power drain"
 	,"You fill the room with"
+	,"You find " --search/gather
 	,"You finish (editing|studying|work)"
 	,"You finish the incantation"
+	,"You found no " --gather
 	,"You (fried|froze)"
 	,"You gaze deeply into"
 	,"You grow in size"
@@ -167,6 +172,7 @@ local textToUnBlock = {
 	,"You sense that .* has no disease" --dd
 	,"You sense the spell becoming active"
 	,"You shrink in size"
+	,"You spot (it|him|her|them)!" --search
 	,"You stop hunting\\."
 	,"You torched"
 	,"You try to touch [A-Za-z]+, but you"

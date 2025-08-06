@@ -38,7 +38,7 @@ West Field#West Field.jpg
 Minehead#Minehead.jpg
 Workshop#Laboratory.jpg
 Council Chamber#Auditorium.jpg
-Robing Room#Forecourt.jpg
+Robing Room#Robing Room.jpg
 ###
 ### GILMORE
 ###
@@ -175,6 +175,7 @@ The Sultan\'s Locksmith#The Sultans Locksmith.jpg
 Vestibule#Vestibule.jpg
 Western Foregate#Western Foregate.jpg
 Wharf Street#Wharf Street.jpg
+Prepare for Adventure#Prepare for Adventure.jpg
 ###
 ### BASILICA
 ###
@@ -230,6 +231,7 @@ Hidden Valley#Hidden Valley.jpg
 Mountain Spring#Mountain Spring.jpg
 Path of Many Steps#Path of Many Steps.jpg
 Peaceful Grove#Peaceful Grove.jpg
+Approaching the temple#Approaching the temple.jpg
 ###
 ### HAMLET
 ###
@@ -264,8 +266,8 @@ Lighthouse, Ground Floor#Outside the Lighthouse.jpg
 Lighthouse, Stairwell#Outside the Lighthouse.jpg
 Lighthouse, Lamp Room#Outside the Lighthouse.jpg
 Lighthouse, Catwalk#Outside the Lighthouse.jpg
-Oily Ladder#Outside the Lighthouse.jpg
-A Cistern#Outside the Lighthouse.jpg
+Oily Ladder#Oily Ladder.jpg
+A Cistern#A Cistern.jpg
 ###
 ### TOBERMORE
 ###

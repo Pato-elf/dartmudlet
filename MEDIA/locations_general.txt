@@ -12,6 +12,7 @@ Farmhouse#Farmhouse.jpg
 Garden#Garden.jpg
 Grotto#Grotto.jpg
 Grove#Grove.jpg
+Cave#Cave.jpg
 Hall of Mortals#Hall of Mortals.jpg
 Hallway#The Inn at Gilmore Hallway.jpg
 Kitchen#Kitchen.jpg

@@ -39,6 +39,7 @@ Minehead#Minehead.jpg
 Workshop#Laboratory.jpg
 Council Chamber#Auditorium.jpg
 Robing Room#Robing Room.jpg
+Scholar\'s Chamber#Scholars Chamber.jpg
 ###
 ### GILMORE
 ###
@@ -294,6 +295,25 @@ Mantoux\' Shop#A dirt road.jpg
 Catrina\'s Petshop#Catrinas Petshop.jpg
 Kennel#Kennel.jpg
 Dark, crowded street#A dirt road.jpg
+A dirt track#A dirt road.jpg
+Foyer#A dirt road.jpg
+Meeting Chamber#A dirt road.jpg
+Training Room#A dirt road.jpg
+Gym#A dirt road.jpg
+Practice Room#A dirt road.jpg
+Tobermore Blacksmith#A dirt road.jpg
+Tobermore General Store#A dirt road.jpg
+Town Dock#A dirt road.jpg
+North Pier#A dirt road.jpg
+Oar Deck#A dirt road.jpg
+The Bait Shop#A dirt road.jpg
+Stone Bridge#A dirt road.jpg
+Shady Islet#A dirt road.jpg
+Beach#A dirt road.jpg
+Under the Dock#A dirt road.jpg
+Piling#A dirt road.jpg
+Boat Construction Shed#A dirt road.jpg
+Lumberyard#A dirt road.jpg
 ###
 ### ERIS
 ###

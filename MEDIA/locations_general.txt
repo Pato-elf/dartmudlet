@@ -13,6 +13,7 @@ Garden#Garden.jpg
 Grotto#Grotto.jpg
 Grove#Grove.jpg
 Cave#Cave.jpg
+Cliff#Cliff.jpg
 Hall of Mortals#Hall of Mortals.jpg
 Hallway#The Inn at Gilmore Hallway.jpg
 Kitchen#Kitchen.jpg
@@ -262,12 +263,12 @@ A pasture#A courtyard.jpg
 An oak tree#A courtyard.jpg
 Lighthouse Clearing#Lighthouse Clearing.jpg
 Outside the Lighthouse#Outside the Lighthouse.jpg
-The Keeper\'s Study#Outside the Lighthouse.jpg
-The Keeper\'s Kitchen#Outside the Lighthouse.jpg
-Lighthouse, Ground Floor#Outside the Lighthouse.jpg
-Lighthouse, Stairwell#Outside the Lighthouse.jpg
-Lighthouse, Lamp Room#Outside the Lighthouse.jpg
-Lighthouse, Catwalk#Outside the Lighthouse.jpg
+The Keeper\'s Study#The Keepers Study.jpg
+The Keeper\'s Kitchen#The Keepers Kitchen.jpg
+Lighthouse, Ground Floor#Lighthouse Ground Floor.jpg
+Lighthouse, Stairwell#Lighthouse Stairwell.jpg
+Lighthouse, Lamp Room#Lighthouse Lamp Room.jpg
+Lighthouse, Catwalk#Lighthouse Catwalk.jpg
 Oily Ladder#Oily Ladder.jpg
 A Cistern#A Cistern.jpg
 ###

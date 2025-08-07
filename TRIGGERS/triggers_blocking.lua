@@ -134,7 +134,7 @@ local textToUnBlock = {
 	,"You feel more fluent"
 	,"You feel your power drain"
 	,"You fill the room with"
-	,"You find " --search/gather
+	,"You (find|found) " --search/gather
 	,"You finish (editing|studying|work)"
 	,"You finish the incantation"
 	,"You found no " --gather

@@ -235,6 +235,7 @@ Mountain Spring#Mountain Spring.jpg
 Path of Many Steps#Path of Many Steps.jpg
 Peaceful Grove#Peaceful Grove.jpg
 Approaching the temple#Approaching the temple.jpg
+Inside the Temple#Inside the Temple.jpg
 ###
 ### HAMLET
 ###
@@ -271,6 +272,23 @@ Lighthouse, Lamp Room#Lighthouse Lamp Room.jpg
 Lighthouse, Catwalk#Lighthouse Catwalk.jpg
 Oily Ladder#Oily Ladder.jpg
 A Cistern#A Cistern.jpg
+Landing Slip#Landing Slip.jpg
+Foredeck#Landing Slip.jpg
+Gaming Room#Landing Slip.jpg
+Aft Deck#Landing Slip.jpg
+Exchequer's Office#Landing Slip.jpg
+Massive Ruin Gates#Massive Ruin Gates.jpg
+Ancient road in the Ruins#Massive Ruin Gates.jpg
+Bend in the Ruined City Street#Massive Ruin Gates.jpg
+Strange Ruined Building#Massive Ruin Gates.jpg
+Crossing in the Ruined City Street#Massive Ruin Gates.jpg
+Overlook#Massive Ruin Gates.jpg
+Entrance to an Ancient Temple#Massive Ruin Gates.jpg
+Temple Antechamber#Massive Ruin Gates.jpg
+Eye of the Temple#Massive Ruin Gates.jpg
+Viewing Stand#Massive Ruin Gates.jpg
+Sanctum#Massive Ruin Gates.jpg
+The Dens#Massive Ruin Gates.jpg
 ###
 ### TOBERMORE
 ###
@@ -324,14 +342,14 @@ Borbor and Mujigha\'s Good Armor Fix#Eris Road.jpg
 Market#Eris Road.jpg
 A Messy Construction Site#Eris Road.jpg
 West Stands#Eris Road.jpg
-Eris Post Office#Eris Road.jpg
+Eris Post Office#Eris Post Office.jpg
 Training Hall#Eris Road.jpg
 Guardroom#Eris Road.jpg
 Garrison Plaza#Eris Road.jpg
 Garrison Road#Eris Road.jpg
 Intersection of Garrison Road and Ash Street#Eris Road.jpg
 Ash Street#Eris Road.jpg
-Eris Kennel#Eris Road.jpg
+Eris Kennel#Eris Kennel.jpg
 Bank of Eris#Bank of Eris.jpg
 Taproom#Taproom.jpg
 Bower#Bower.jpg

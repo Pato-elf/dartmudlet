@@ -313,29 +313,29 @@ Upper Street#A dirt road.jpg
 Claudia\'s Flowers#Claudias Flowers.jpg
 Doll\'s Place#Dolls Place.jpg
 Waterfront street#A dirt road.jpg
-Overgrown yard#A dirt road.jpg
-Tobermore manor#A dirt road.jpg
-Study#A dirt road.jpg
-Decrepit old kitchen#A dirt road.jpg
-Mantoux\' Shop#A dirt road.jpg
+Overgrown yard#Overgrown yard.jpg
+Tobermore manor#Overgrown yard.jpg
+Study#Overgrown yard.jpg
+Decrepit old kitchen#Overgrown yard.jpg
+Mantoux\' Shop#Mantoux Shop.jpg
 Catrina\'s Petshop#Catrinas Petshop.jpg
 Kennel#Kennel.jpg
 Dark, crowded street#A dirt road.jpg
 A dirt track#A dirt road.jpg
-Foyer#A dirt road.jpg
-Meeting Chamber#A dirt road.jpg
-Training Room#A dirt road.jpg
-Gym#A dirt road.jpg
-Practice Room#A dirt road.jpg
+Foyer#Foyer.jpg
+Meeting Chamber#Foyer.jpg
+Training Room#Foyer.jpg
+Gym#Foyer.jpg
+Practice Room#Foyer.jpg
 Tobermore Blacksmith#A dirt road.jpg
 Tobermore General Store#A dirt road.jpg
 Town Dock#A dirt road.jpg
 North Pier#A dirt road.jpg
 Oar Deck#A dirt road.jpg
-The Bait Shop#A dirt road.jpg
+The Bait Shop#The Bait Shop.jpg
 Stone Bridge#A dirt road.jpg
 Shady Islet#A dirt road.jpg
-Beach#A dirt road.jpg
+Beach#Beach.jpg
 Under the Dock#A dirt road.jpg
 Piling#A dirt road.jpg
 Boat Construction Shed#A dirt road.jpg

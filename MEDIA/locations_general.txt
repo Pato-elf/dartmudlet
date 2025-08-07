@@ -289,6 +289,12 @@ Eye of the Temple#Massive Ruin Gates.jpg
 Viewing Stand#Massive Ruin Gates.jpg
 Sanctum#Massive Ruin Gates.jpg
 The Dens#Massive Ruin Gates.jpg
+Clearing#Clearing.jpg
+Cavern#Clearing.jpg
+Damp room#Clearing.jpg
+Pit#Clearing.jpg
+Tall cave#Clearing.jpg
+Office#Office.jpg
 ###
 ### TOBERMORE
 ###

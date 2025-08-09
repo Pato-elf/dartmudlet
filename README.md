@@ -24,14 +24,14 @@ DartMUDlet has many useful features to make your DartMUD experience more efficie
 In addition to the automatic features described above, there are a number of things you can control by typing commands:
 
 ```
-   **Critical Commands**
+   __Critical Commands__
    /setup            - Initialize variables, customize display, start improve tracking
    /block            - Block and queue new commands from being sent to DartMUD
    /unblock          - Resume sending commands to DartMUD, including queued ones first
    /help <topic>     - Get detailed help for most DartMUDlet commands
 ```
 ```
-   **Skill Announce System**
+   __Skill Announce System__
    /announce on            - Announce improves in standard mode (skill name+)
    /announce brief         - Announce improves in brief mode (plus only, no skill name)
    /announce verbose       - Announce improves in verbose mode (skill and actual value)

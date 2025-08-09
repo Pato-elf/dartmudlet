@@ -14,16 +14,16 @@ function createRefreshBox()
     local x7    = -138
     local x8    = -250
 
-    local y1    = 170
-    local y2    = 149
+    local y1    = 166
+    local y2    = 145
     local y3    = 24
     local y4    = 54
-    local y5    = 207
-    local y6    = 237
-    local y7    = 267
-    local y8    = 297
-    local y9    = 327
-    local y10   = 177
+    local y5    = 203
+    local y6    = 233
+    local y7    = 263
+    local y8    = 293
+    local y9    = 323
+    local y10   = 173
 
 
     local tooltip_refresh1  = "Turn automatic refresh on/off"

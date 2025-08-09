@@ -60,36 +60,36 @@ local function setup(args)
 
 
 
-	-- /conc command
+	-- /set conc command
 	-------------------------------------------------------
 	tempAliases.setConc =
-	tempAlias('^\\/conc (.*)$',
+	tempAlias('^\\/(set conc|conc) (.*)$',
 		[[
-			local detail = matches[2]
+			local detail = matches[3]
 			local arguments = {detail = detail, who = Status.name}
 			Events.raiseEvent('setConcEvent', arguments)
 		]])
 
 
 
-	-- /aura command
+	-- /set aura
 	-------------------------------------------------------
 	tempAliases.setAura =
-	tempAlias('^\\/aura (.*)$',
+	tempAlias('^\\/(set aura|aura) (.*)$',
 		[[
-			local detail = matches[2]
+			local detail = matches[3]
 			local arguments = {detail = detail, who = Status.name}
 			Events.raiseEvent('setAuraEvent', arguments)
 		]])
 
 
 
-	-- /contents command
+	-- /set contents
 	-------------------------------------------------------
 	tempAliases.setContents =
-	tempAlias('^\\/contents (.*)$',
+	tempAlias('^\\/(set contents|contents) (.*)$',
 		[[
-			local detail = matches[2]
+			local detail = matches[3]
 			local arguments = {detail = detail, who = Status.name}
 			Events.raiseEvent('setContentsEvent', arguments)
 		]])
@@ -133,6 +133,18 @@ local function setup(args)
 
 
 
+	-- /set alignment
+	-------------------------------------------------------
+	tempAliases.setAlignment =
+	tempAlias('^\\/set alignment (.*)$',
+		[[
+			local detail = matches[2]
+			local arguments = {detail = detail, who = Status.name}
+			Events.raiseEvent('setAlignmentEvent', arguments)
+		]])
+
+
+
     -- /set keypad
     -------------------------------------------------------
 	tempAliases.setKeypad =
@@ -141,6 +153,17 @@ local function setup(args)
 			local detail = matches[2]
 			local arguments = {detail = detail}
 			Events.raiseEvent('setKeypadEvent', arguments)
+		]])
+
+
+
+	-- /set help
+    -------------------------------------------------------
+	tempAliases.setHelp =
+	tempAlias('^\\/(set|set help)$',
+		[[
+			local arguments = {detail = "set"}
+			Events.raiseEvent('showHelpEvent', arguments)
 		]])
 
 

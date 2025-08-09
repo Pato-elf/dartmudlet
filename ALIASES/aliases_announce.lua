@@ -7,7 +7,7 @@ local function setup(args)
 	tempAliases = {}
 
 	tempAliases.announceOn =
-	tempAlias("^\\/announce on",
+	tempAlias("^\\/(set announce|announce) on",
 		[[
 			local arguments = {}
 			Events.raiseEvent("announceOnEvent", arguments)
@@ -16,7 +16,7 @@ local function setup(args)
 
 
 	tempAliases.announceBrief =
-	tempAlias("^\\/announce brief",
+	tempAlias("^\\/(set announce|announce) brief",
 		[[
 			local arguments = {}
 			Events.raiseEvent("announceBriefEvent", arguments)
@@ -25,7 +25,7 @@ local function setup(args)
 
 
 	tempAliases.announceVerbose =
-	tempAlias("^\\/announce verbose",
+	tempAlias("^\\/(set announce|announce) verbose",
 		[[
 			local arguments = {}
 			Events.raiseEvent("announceVerboseEvent", arguments)
@@ -34,7 +34,7 @@ local function setup(args)
 
 
 	tempAliases.announceOff =
-	tempAlias("^\\/announce off",
+	tempAlias("^\\/(set announce|announce) off",
 		[[
 			local arguments = {}
 			Events.raiseEvent("announceOffEvent", arguments)
@@ -43,7 +43,7 @@ local function setup(args)
 
 
     tempAliases.announceHelp =
-	tempAlias("^\\/announce (help|pet|pets|player|players)$",
+	tempAlias("^\\/(set announce|announce) (help|pet|pets|player|players)$",
 		[[
 			local arguments = {detail = "announce"}
             Events.raiseEvent("showHelpEvent", arguments)
@@ -51,12 +51,12 @@ local function setup(args)
 
 
 
-	-- /announce pets
+	-- /set announce pets
 	-------------------------------------------------------
 	tempAliases.announcePets =
-	tempAlias('^\\/announce (pet|pets) (.*)$',
+	tempAlias('^\\/(set announce|announce) (pet|pets) (.*)$',
 		[[
-			local detail = matches[3]
+			local detail = matches[4]
 			local arguments = {detail = detail, who = Status.name}
 			Events.raiseEvent('announcePetEvent', arguments)
 		]])

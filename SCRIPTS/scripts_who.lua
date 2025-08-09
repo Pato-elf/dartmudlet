@@ -15,18 +15,19 @@ end
 
 
 
--- build who timers
+-- build auto timers for who and show alignment
 -----------------------------------------------------------
 local function loadTimers(args)
 
-        send("who")
-        if (Status.statusWho == 'on') then
+	if (Status.statusWho == 'on') then send("who",false) end
+	if (Status.statusAlignment == 'on') then send("show alignment",false) end
+        --if (Status.statusWho == 'on') then
             timers.who = tempTimer(300,
 	    	    [[
 	    		    local args = {}
-	    		    Events.raiseEvent("whoTimerEvent", args)
+	    		    Events.raiseEvent("autoTimerEvent", args)
 	    	    ]])
-        end
+        --end
 end
 
 
@@ -38,7 +39,7 @@ local function whoOff(args)
     if (Status.statusWho ~= 'off') then
         Status.statusWho = 'off'
         dba.execute('UPDATE settings SET statusWho = "off"')
-        killTimers()
+        --killTimers()
     end
     systemMessage("Who Off")
 end
@@ -52,9 +53,9 @@ local function whoOn(args)
     if (Status.statusWho ~= 'on') then
         Status.statusWho = 'on'
         dba.execute('UPDATE settings SET statusWho = "on"')
-        loadTimers()
+        --loadTimers()
     else
-        send("who")
+        send("who", false)
     end
     systemMessage("Who On")
 end
@@ -62,7 +63,7 @@ end
 
 
 local function setup(args)
-	Events.addListener("whoTimerEvent", sourceName, loadTimers)
+	Events.addListener("autoTimerEvent", sourceName, loadTimers)
 	Events.addListener("whoOnEvent", sourceName, whoOn)
 	Events.addListener("whoOffEvent", sourceName, whoOff)
 end
@@ -70,7 +71,7 @@ end
 
 
 local function unsetup(args)
-	Events.removeListener("whoTimerEvent", sourceName)
+	Events.removeListener("autoTimerEvent", sourceName)
 	Events.removeListener("whoOnEvent", sourceName)
 	Events.removeListener("whoOffEvent", sourceName)
     killTimers()

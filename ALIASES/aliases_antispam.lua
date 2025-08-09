@@ -7,7 +7,7 @@ local function setup(args)
 	local tempAliases = {}
 
 	tempAliases.AntiSpamOn =
-	tempAlias("^\\/[Aa][Nn][Tt][Ii][Ss][Pp][Aa][Mm] [Oo][Nn]",
+	tempAlias("^\\/(set antispam|antispam) [Oo][Nn]",
 		[[
 			local arguments = {}
 			Events.raiseEvent("antiSpamOnEvent", arguments)
@@ -16,7 +16,7 @@ local function setup(args)
 
 
 	tempAliases.AntiSpamOff =
-	tempAlias("^\\/[Aa][Nn][Tt][Ii][Ss][Pp][Aa][Mm] [Oo][Ff][Ff]",
+	tempAlias("^\\/(set antispam|antispam) [Oo][Ff][Ff]",
 		[[
 			local arguments = {}
 			Events.raiseEvent("antiSpamOffEvent", arguments)

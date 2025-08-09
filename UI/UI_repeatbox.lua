@@ -8,15 +8,15 @@ function createRepeatBox()
     local x2    = 35
     local x3    = -65
 
-    local y1    = 80
-    local y2    = 120
-    local y3    = 150
-    local y4    = 180
-    local y5    = 210
-    local y6    = 240
-    local y7    = 270
-    local y8    = 300
-    local y9    = 330
+    local y1    = 75
+    local y2    = 113
+    local y3    = 143
+    local y4    = 173
+    local y5    = 203
+    local y6    = 233
+    local y7    = 263
+    local y8    = 293
+    local y9    = 323
 
     local width1    = 408
 

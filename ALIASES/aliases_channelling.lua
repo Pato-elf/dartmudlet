@@ -64,9 +64,9 @@ local function setup(args)
 
 	--change focus display setting
 	tempAliases.focusTotal =
-	tempAlias("^\\/focus ([\\w]+)",
+	tempAlias("^\\/(set focus|focus) ([\\w]+)",
 		[[
-			local detail = matches[2]
+			local detail = matches[3]
 			local arguments = {detail = detail}
 			Events.raiseEvent("setFocusTotalEvent", arguments)
 		]])

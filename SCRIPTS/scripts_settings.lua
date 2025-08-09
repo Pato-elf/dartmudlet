@@ -284,6 +284,35 @@ end
 
 
 
+-- set the alignment setting
+-----------------------------------------------------------
+local function setAlignment(args)
+	local detail = string.lower(args["detail"])
+
+
+	if not ((detail == "off") or (detail == "on") or (detail == "help")) then
+		cecho("<red>ERROR: Usage: /set alignment <on|off>\n")
+	elseif (detail == "help") then
+		cecho("<yellow>USAGE: /set alignment on|off - Set reporting of alignment on|off (current setting: "..Status.statusAlignment..")\n")
+	else
+		if detail == "off" then
+            systemMessage("Alignment Off")
+			Events.raiseEvent("messageEvent", {message="<yellow>Alignment: Off\n"})
+			Status.statusAlignment = "off"
+		else
+            systemMessage("Alignment On")
+			Events.raiseEvent("messageEvent", {message="<yellow>Alignment: On\n"})
+			send("show alignment",false)
+			Status.statusAlignment = "on"
+		end
+
+		dba.execute('UPDATE settings SET statusAlignment="'..Status.statusAlignment..'"')
+	end
+
+end
+
+
+
 -- set the repeat echo setting
 -----------------------------------------------------------
 local function setRepeatEcho(args)
@@ -320,9 +349,9 @@ local function setFontSize(args)
 
 
 	if (detail == "help") then
-		cecho("<yellow>USAGE: /set fontsize <all|chat|improves|message|who> <8-20> - Set the fontsize for one or all valid tabs\n")
-	elseif (tonumber(size) < 8) or (tonumber(size) > 20) then
-		cecho("<red>ERROR: Usage: /set fontsize <all|chat|improves|message|who> <8-20> - Set the fontsize for one or all valid tabs\n")
+		cecho("<yellow>USAGE: /set fontsize <all|chat|improves|message|who> <6-20> - Set the fontsize for one or all valid tabs\n")
+	elseif (tonumber(size) < 6) or (tonumber(size) > 20) then
+		cecho("<red>ERROR: Usage: /set fontsize <all|chat|improves|message|who> <6-20> - Set the fontsize for one or all valid tabs\n")
 	elseif (detail == "chat") then
 		Status.fontSizeChat = tonumber(size)
 		dba.execute('UPDATE settings SET fontSizeChat="'..Status.fontSizeChat..'"')
@@ -368,7 +397,7 @@ local function setFontSize(args)
         systemMessage("Fontsize ALL "..size)
 		Events.raiseEvent("messageEvent", {message="<yellow>Fontsize: ALL "..size.."\n"})
 	else
-		cecho("<red>ERROR: Usage: /set fontsize <all|chat|improves|message|who> <8-20> - Set the fontsize for one or all valid tabs\n")
+		cecho("<red>ERROR: Usage: /set fontsize <all|chat|improves|message|who> <6-20> - Set the fontsize for one or all valid tabs\n")
 	end
 
 end
@@ -398,7 +427,8 @@ local function checkSettingsTable(args)
 		statusContents VARCHAR(16) DEFAULT "on",
         statusKeypad VARCHAR(16) DEFAULT "on",
         statusRepeatEcho VARCHAR(16) DEFAULT "off",
-        statusWho VARCHAR(16) DEFAULT "on"
+        statusWho VARCHAR(16) DEFAULT "on",
+		statusAlignment VARCHAR(16) DEFAULT "on"
 	);]])
 	local results = dba.query('SELECT id FROM settings')
 	if results.count() == 0 then
@@ -439,6 +469,12 @@ local function checkSettingsTable(args)
 		dba.execute('ALTER TABLE settings ADD COLUMN statusAnnouncePet VARCHAR(16) DEFAULT "on"')
         dba.execute('UPDATE settings SET statusAnnouncePet = "on"')
 	end
+
+	if not temp.statusAlignment then
+        systemMessage("Update SETTINGS table")
+		dba.execute('ALTER TABLE settings ADD COLUMN statusAlignment VARCHAR(16) DEFAULT "on"')
+        dba.execute('UPDATE settings SET statusAlignment = "on"')
+	end
 end
 
 
@@ -465,13 +501,14 @@ local function load()
     Status.statusKeypad         = result.statusKeypad
     Status.statusRepeatEcho     = result.statusRepeatEcho
     Status.statusWho            = result.statusWho
+	Status.statusAlignment		= result.statusAlignment
 
 	GUI.containerChatBox:setFontSize(Status.fontSizeChat)
 	GUI.containerImproveBox:setFontSize(Status.fontSizeImproves)
 	GUI.containerMessageBox:setFontSize(Status.fontSizeMessage)
 	GUI.containerWhoBox:setFontSize(Status.fontSizeWho)
 
-    Events.raiseEvent("whoTimerEvent")
+    Events.raiseEvent("autoTimerEvent")
 end
 
 
@@ -494,6 +531,7 @@ local function setup(args)
 	Events.addListener("setConcEvent", sourceName, setConc)
 	Events.addListener("setContentsEvent", sourceName, setContents)
 	Events.addListener("setFontSizeEvent", sourceName, setFontSize)
+	Events.addListener("setAlignmentEvent", sourceName, setAlignment)
     Events.addListener("setRepeatEchoEvent", sourceName, setRepeatEcho)
 	Events.addListener("antiSpamOnEvent",sourceName, antispamOn)
 	Events.addListener("antiSpamOffEvent",sourceName, antispamOff)
@@ -510,6 +548,7 @@ local function unsetup(args)
 	Events.removeListener("setConcEvent", sourceName)
 	Events.removeListener("setContentsEvent", sourceName)
 	Events.removeListener("setFontSizeEvent", sourceName)
+	Events.removeListener("setAlignmentEvent", sourceName)
     Events.removeListener("setRepeatEchoEvent", sourceName)
 	Events.removeListener("antiSpamOnEvent",sourceName)
 	Events.removeListener("antiSpamOffEvent",sourceName)

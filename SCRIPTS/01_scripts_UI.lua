@@ -3,6 +3,22 @@ aura						= "unknown"
 
 
 
+
+-- adjust the layout initially and on resize
+-----------------------------------------------------------
+function adjustLayout()
+	local totalH	= GUI.right and GUI.right.get_height and GUI.right:get_height()
+	local h2		= 390
+	local h3		= 300
+
+	local h1 = totalH - h2 - h3 - 6
+
+	GUI.tabwindow1:move(0, 0)
+	GUI.tabwindow1:resize("100%", h1)
+end
+
+
+
 -- CREATE GUI
 -----------------------------------------------------------
 local function createUIConsole()
@@ -42,6 +58,8 @@ local function createUIConsole()
 
 
 	createTabwindows()
+	adjustLayout()
+	registerAnonymousEventHandler("sysWindowResizeEvent", "adjustLayout")
 
 	-- TABWINDOW1
 	-------------------------
@@ -79,8 +97,6 @@ local function createUIConsole()
 --GUI.tabwindow1:load()
 
 end --createUIConsole
-
-
 
 
 
@@ -286,6 +302,29 @@ local function onThirst(args)
 
 	clearWindow("ThirstBox")
 	cecho("ThirstBox", "Thirst: "..thirst)
+	deleteLine()
+	moveCursorEnd()
+end
+
+
+
+-- update alignment box
+-----------------------------------------------------------
+local function onAlignment(args)
+	local alignment		= args["alignment"] or ""
+	local conviction	= args["conviction"] or ""
+	local removetext	= "a philosophy somewhere between "
+
+	if alignment:sub(1, #removetext) == removetext then
+		alignment = alignment:sub(#removetext + 1)
+	end
+
+	clearWindow("AlignmentBox")
+	if(conviction == "none") then
+		cecho("AlignmentBox", "Alignment: "..alignment)
+	else
+		cecho("AlignmentBox", "Alignment: "..utils.capitalize(conviction).." in "..alignment)
+	end
 	deleteLine()
 	moveCursorEnd()
 end
@@ -503,6 +542,7 @@ local function setup(args)
 	Events.addListener("auraEvent", sourceName, onAura)
 	Events.addListener("showLanguageEvent", sourceName, onSpeak)
     Events.addListener("showAimEvent", sourceName, onAim)
+	Events.addListener("alignmentEvent", sourceName, onAlignment)
 end
 
 local function unsetup(args)
@@ -521,6 +561,7 @@ local function unsetup(args)
 	Events.removeListener("concEvent", sourceName)
 	Events.removeListener("auraEvent", sourceName)
 	Events.removeListener("showAimEvent", sourceName)
+	Events.removeListener("alignmentEvent", sourceName)
 end
 
 

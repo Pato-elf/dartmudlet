@@ -193,6 +193,7 @@ Status.statusConc			= 'off'
 Status.statusContents		= 'on'
 Status.statusKeypad         = 'on'
 Status.statusWho            = 'on'
+Status.statusAlignment		= 'on'
 Status.fontSizeChat			= 10
 Status.fontSizeImproves		= 10
 Status.fontSizeMessage		= 10

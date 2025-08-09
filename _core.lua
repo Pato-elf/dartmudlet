@@ -1,6 +1,6 @@
 local _Core			= {}
 local packageName	= "DartMUDlet"
-versionNumber		= "v1.10.1"
+versionNumber		= "v1.11.0"
 packageFolder		= getMudletHomeDir().."/"..packageName.."/"
 local modules		= {}
 local sourceName	= "core"
@@ -93,9 +93,9 @@ local function setup(e, f, g)
 	send("set word wrap to off", false)
 	send("score", false)
 	send("who", false)
+	send("show alignment",false)
 	send("speak", false)
 	send("set aim", false)
-	--Events.raiseEvent("votingEvent")
 	send("look", false)
 end
 

@@ -1,6 +1,8 @@
 Info				= {}
 local sourceName	= "info"
-local colorHelp		= "yellow"
+local colorHelp		= "grey"
+local colorHead		= "cyan"
+local colorTips		= "yellow"
 local spacerHelp	= "   "
 local levels		= {"mythic","legendary","a grand master","a virtuoso","consummate","a high master","renowned","an adept","eminent",
 					"a master","superb","an expert","excellent","very good","adroit","good","proficient","fair","able","above average",
@@ -42,8 +44,8 @@ local function showRandom(args)
 	elseif (randomrange == "help") then
         Events.raiseEvent("showHelpEvent", {detail = "random"})
     else
-		cecho("<yellow>USAGE: /random <num> - Generate a random number between 1 and a number of your choosing\n")
-		cecho("<yellow>USAGE: /random <value,value,value> - Pick a random value from a list of values\n")
+		cecho("<"..colorTips..">USAGE: /random <num> - Generate a random number between 1 and a number of your choosing\n")
+		cecho("<"..colorTips..">USAGE: /random <value,value,value> - Pick a random value from a list of values\n")
 	end
 end
 
@@ -134,43 +136,40 @@ end
 -----------------------------------------------------------
 local function showHelpBase(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."                          DartMUDlet - Pato Edition "..versionNumber.."\n")
-	cecho(preText.."==================================================================================\n")
-	cecho(preText.."/setup   - Initialize variables, customize display, start improve tracking\n")
-	cecho(preText.."\n")
+	cecho(preHead.."                         DartMUDlet - Pato Edition "..versionNumber.."\n")
+	cecho(preHead.."==================================================================================\n")
+	cecho(preHead.."Critical Commands\n")
+	cecho(preText.."/setup            - Initialize variables, customize display, start improve tracking\n")
+	cecho(preText.."/block            - Block and queue new commands from being sent to DartMUD\n")
+	cecho(preText.."/unblock          - Resume sending commands to DartMUD, including queued ones first\n")
+	cecho(preText.."/help <topic>     - Get detailed help for most DartMUDlet commands\n")
+	cecho(preHead.."Skill Announce System\n")
 	cecho(preText.."/announce on      - Announce improves in standard mode (skill name+)\n")
 	cecho(preText.."/announce brief   - Announce improves in brief mode (plus only, no skill name)\n")
 	cecho(preText.."/announce verbose - Announce improves in verbose mode (skill and actual value)\n")
 	cecho(preText.."/announce off     - No announcement of improves\n")
-	cecho(preText.."\n")
-	cecho(preText.."/block   - Block and queue new commands from being sent to DartMUD\n")
-	cecho(preText.."/unblock - Resume sending commands to DartMUD, including queued ones first\n")
-	cecho(preText.."\n")
+	cecho(preHead.."Channelling System\n")
     cecho(preText.."/chan <num>                      - Manually channel amount to the channelling system\n")
 	cecho(preText.."/chan info                       - Display full channelling stats on screen\n")
 	cecho(preText.."/chan pause on|off               - Pause powercast to wait for full concentration\n")
 	cecho(preText.."/chan share on|off|brief         - Change settings of the channel share button\n")
 	cecho(preText.."/chan sound on|off               - Play notification sound before powercast\n")
-	cecho(preText.."/focus on|off                    - Show running focus total in main window (default off)\n")
-	cecho(preText.."\n")
+	cecho(preHead.."Inscribe System\n")
 	cecho(preText.."/inscribe <spell> <power>        - Start practice inscribing a spell\n")
 	cecho(preText.."/inscribe power <power>          - Change power you are using for practice inscribe\n")
 	cecho(preText.."/inscribe off                    - Stop practice inscribing a spell\n")
-	cecho(preText.."\n")
+	cecho(preHead.."Skill Display System\n")
 	cecho(preText.."/info <who> <skill>              - Show current improves/level for a skill\n")
     cecho(preText.."/share <who> <skill>             - OOC share current improves/level for a skill\n")
 	cecho(preText.."/insert <who> <skill> <improves> - Manually insert a new skill into database\n")
 	cecho(preText.."/update <who> <skill> <improves> - Manually set improves for you|pet's skill\n")
-	cecho(preText.."\n")
+	cecho(preHead.."Other Commands\n")
 	cecho(preText.."/alloc clear <num>               - Clear the contents of an allocation set\n")
 	cecho(preText.."/alloc copy <num> <num>          - Copy one allocation set over to another\n")
-	cecho(preText.."/antispam on|off                 - Suppress repeated lines\n")
-	cecho(preText.."/aura on|off|scint               - Show aura on screen (default off)\n")
 	cecho(preText.."/cast power <power>              - Change the autocast power via keyboard command\n")
-	cecho(preText.."/conc on|off|bright              - Show concentration on screen (default off)\n")
-	cecho(preText.."/contents on|off                 - Show expanded contents view for containers\n")
     cecho(preText.."/date <now> <+|-><num><h|d>      - Show game dates for the past, now, or future\n")
 	cecho(preText.."/levels                          - Display a list of skill levels\n")
 	cecho(preText.."/random <num>                    - Generate a random number between 1 and a number\n")
@@ -178,13 +177,14 @@ local function showHelpBase(args)
 	cecho(preText.."/repeat clear <num>              - Clear the contents of a repeat set\n")
 	cecho(preText.."/repeat copy <num> <num>         - Copy one repeat set over to another\n")
     cecho(preText.."/repeat echo on|off              - Echo repeat commands to the screen (default off)\n")
-	cecho(preText.."/set fontsize <option> <8-20>    - Set fontsize for tabs (all|chat|improves|message|who)\n")
-    cecho(preText.."/set keypad on|off|help          - Enable the keypad for directional movement\n")
     cecho(preText.."/track <option>                  - Command line control of the tracking system\n")
-	cecho(preText.."/who on|off                      - Auto check the who list every 5 minutes\n")
-	cecho(preText.."#num repeat                      - Repeat commands (e.g. #3 say hi)\n")
+	cecho(preText.."#num <command>                   - Basic repeat commands (e.g. #3 say hi)\n")
     cecho(preText.."#Wnum <command>                  - Delay command for num seconds (e.g. #W4 smoke pipe)\n")
-	cecho(preText.."/help <topic>                    - Get detailed help for most DartMUDlet commands\n")
+	cecho(preText.."\n")
+	cecho(preHead.."The /set command allows several defaults to be set\n")
+	cecho(preHead.."Use /help set <option> for more information. Current settings include:\n")
+	cecho(preText.."alignment      announce       antispam       aura           conc\n")
+	cecho(preText.."contents       focus          fontsize       keypad         who\n")
 end
 
 
@@ -193,10 +193,11 @@ end
 -----------------------------------------------------------
 local function showHelpLevels(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: levels\n")
-	cecho(preText.."USAGE: /levels\n")
+	cecho(preHead.."DARTMUDLET: levels\n")
+	cecho(preHead.."USAGE: /levels\n")
     cecho(preText.."\n")
     cecho(preText.."Displays a full list of skill levels on the screen along with the size of\n")
     cecho(preText.."each skill.\n")
@@ -208,15 +209,16 @@ end
 -----------------------------------------------------------
 local function showHelpWho(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: who\n")
-	cecho(preText.."USAGE: /who <on|off>\n")
+	cecho(preHead.."DARTMUDLET: who\n")
+	cecho(preHead.."USAGE: /set who <on|off>\n")
     cecho(preText.."\n")
     cecho(preText.."Setting this to on will automatically update the WHO tab every five minutes.\n")
-    cecho(preText.."Having this on will also keep you from idling out of the game.\n")
+    cecho(preText.."Having this on will also keep the player from idling out of the game.\n")
     cecho(preText.."\n")
-    cecho(preText.."(Default setting is ON)\n")
+    cecho(preText.."(Current setting is "..string.upper(Status.statusWho)..")\n")
 end
 
 
@@ -225,17 +227,18 @@ end
 -----------------------------------------------------------
 local function showHelpContents(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: contents\n")
-	cecho(preText.."USAGE: /contents <on|off>\n")
+	cecho(preHead.."DARTMUDLET: contents\n")
+	cecho(preHead.."USAGE: /set contents <on|off>\n")
     cecho(preText.."\n")
     cecho(preText.."Lists container contents out in an alphabetical, \"contents\" style view.\n")
     cecho(preText.."It also groups single items together to show them in the same way as stackable\n")
     cecho(preText.."items. Works with many containers such as bins, tables, packs, bookshelves etc.\n")
     cecho(preText.."Also works with fishing nets.\n")
     cecho(preText.."\n")
-    cecho(preText.."(Default setting is ON)\n")
+    cecho(preText.."(Current setting is "..string.upper(Status.statusContents)..")\n")
 end
 
 
@@ -244,16 +247,17 @@ end
 -----------------------------------------------------------
 local function showHelpAura(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: aura\n")
-	cecho(preText.."USAGE: /aura <on|off|scint>\n")
+	cecho(preHead.."DARTMUDLET: aura\n")
+	cecho(preHead.."USAGE: /set aura <on|off|scint>\n")
     cecho(preText.."\n")
     cecho(preText.."Displays aura output to the screen in addition to the auto updating aura box.\n")
     cecho(preText.."Setting the value to on will show all aura changes to the screen, while setting\n")
     cecho(preText.."the value to scint will only show when aura becomes scintillating on the screen.\n")
     cecho(preText.."\n")
-    cecho(preText.."(Default setting is OFF)\n")
+    cecho(preText.."(Current setting is "..string.upper(Status.statusAura)..")\n")
 end
 
 
@@ -262,16 +266,17 @@ end
 -----------------------------------------------------------
 local function showHelpConc(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: conc\n")
-	cecho(preText.."USAGE: /conc <on|off|bright>\n")
+	cecho(preHead.."DARTMUDLET: conc\n")
+	cecho(preHead.."USAGE: /set conc <on|off|bright>\n")
     cecho(preText.."\n")
     cecho(preText.."Displays concentration output to the screen in addition to the auto updating\n")
     cecho(preText.."concentration box. Setting the value to on will show all conc changes to the screen,\n")
     cecho(preText.."while setting the value to bright will only show when conc becomes bright-eyed.\n")
     cecho(preText.."\n")
-    cecho(preText.."(Default setting is OFF)\n")
+    cecho(preText.."(Current setting is "..string.upper(Status.statusConc)..")\n")
 end
 
 
@@ -280,10 +285,11 @@ end
 -----------------------------------------------------------
 local function showHelpSetup(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: setup\n")
-	cecho(preText.."USAGE: /setup\n")
+	cecho(preHead.."DARTMUDLET: setup\n")
+	cecho(preHead.."USAGE: /setup\n")
     cecho(preText.."\n")
     cecho(preText.."This command sets up a new instance of DartMUDlet. It does things like customize the\n")
     cecho(preText.."display, build database tables if they don't exist, and update existing database tables\n")
@@ -297,11 +303,12 @@ end
 -----------------------------------------------------------
 local function showHelpAnnounce(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: announce\n")
-	cecho(preText.."USAGE: /announce <on|off|brief|verbose>\n")
-	cecho(preText.."USAGE: /announce pet <on|off|brief|verbose>\n")
+	cecho(preHead.."DARTMUDLET: announce\n")
+	cecho(preHead.."USAGE: /set announce <on|off|brief|verbose>\n")
+	cecho(preHead.."USAGE: /set announce pet <on|off|brief|verbose>\n")
     cecho(preText.."\n")
     cecho(preText.."This command will automatically OOC announce skill improvements to the room.\n")
 	cecho(preText.."Announce status for the player and their pets can be set independently.\n")
@@ -310,9 +317,8 @@ local function showHelpAnnounce(args)
     cecho(preText.."on:      You say (OOC), 'skill_name+'\n")
     cecho(preText.."verbose: You say (OOC), 'skill_name+ (1234)'\n")
     cecho(preText.."\n")
-    cecho(preText.."(Default settings are ON)\n")
-	cecho(preText.."(Current player setting: "..Status.statusAnnounce..")\n")
-	cecho(preText.."(Current pets setting:   "..Status.statusAnnouncePet..")\n")
+	cecho(preText.."(Current player setting: "..string.upper(Status.statusAnnounce)..")\n")
+	cecho(preText.."(Current pets setting:   "..string.upper(Status.statusAnnouncePet)..")\n")
 end
 
 
@@ -321,16 +327,17 @@ end
 -----------------------------------------------------------
 local function showHelpAntispam(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: antispam\n")
-	cecho(preText.."USAGE: /antispam <on|off>\n")
+	cecho(preHead.."DARTMUDLET: antispam\n")
+	cecho(preHead.."USAGE: /set antispam <on|off>\n")
     cecho(preText.."\n")
     cecho(preText.."This command will attempt to suppress repeating lines to cut down on the amount\n")
     cecho(preText.."spam on the screen. This setting can also be toggled on and off from the GAGS\n")
     cecho(preText.."menu. Recommended keeping off unless needed.\n")
     cecho(preText.."\n")
-    cecho(preText.."(Default setting is OFF)\n")
+    cecho(preText.."(Current setting is "..string.upper(Status.statusAntiSpam)..")\n")
 end
 
 
@@ -339,14 +346,15 @@ end
 -----------------------------------------------------------
 local function showHelpFontsize(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: fontsize\n")
-	cecho(preText.."USAGE: /set fontsize <option> <8-20>\n")
+	cecho(preHead.."DARTMUDLET: fontsize\n")
+	cecho(preHead.."USAGE: /set fontsize <option> <6-20>\n")
     cecho(preText.."\n")
     cecho(preText.."This command allows you to manually set the fontsize for various DartMUDlet tabs.\n")
     cecho(preText.."Current tab options are: all, chat, improves, message, who\n")
-    cecho(preText.."Current font sizes are: 8 to 20\n")
+    cecho(preText.."Current font sizes are: 6 to 20\n")
     cecho(preText.."\n")
     cecho(preText.."(Default setting is 10)\n")
 end
@@ -357,11 +365,12 @@ end
 -----------------------------------------------------------
 local function showHelpBlock(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: block, unblock\n")
-	cecho(preText.."USAGE: /block\n")
-    cecho(preText.."USAGE: /unblock\n")
+	cecho(preHead.."DARTMUDLET: block, unblock\n")
+	cecho(preHead.."USAGE: /block\n")
+    cecho(preHead.."USAGE: /unblock\n")
     cecho(preText.."\n")
     cecho(preText.."The /block command blocks new commands from being sent to the game. It puts these\n")
     cecho(preText.."commands into a queue while you are performing interruptable actions such as casting\n")
@@ -382,11 +391,12 @@ end
 -----------------------------------------------------------
 local function showHelpDate(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: date\n")
-	cecho(preText.."USAGE: /date <now>\n")
-    cecho(preText.."USAGE: /date <+|-><num><h|d>\n")
+	cecho(preHead.."DARTMUDLET: date\n")
+	cecho(preHead.."USAGE: /date <now>\n")
+    cecho(preHead.."USAGE: /date <+|-><num><h|d>\n")
     cecho(preText.."\n")
     cecho(preText.."This command will display the ingame dates for the common, adachian, and thorpian\n")
     cecho(preText.."calendars. It can show dates for the past, present, and future. Some examples of\n")
@@ -405,11 +415,12 @@ end
 -----------------------------------------------------------
 local function showHelpRandom(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: random\n")
-	cecho(preText.."USAGE: /random <num>\n")
-    cecho(preText.."USAGE: /random <value,value,value>\n")
+	cecho(preHead.."DARTMUDLET: random\n")
+	cecho(preHead.."USAGE: /random <num>\n")
+    cecho(preHead.."USAGE: /random <value,value,value>\n")
     cecho(preText.."\n")
     cecho(preText.."This command can be used to generate a random number between 1 and a number of\n")
     cecho(preText.."your choosing to broadcast to the room. It can also be used to pick a random item\n")
@@ -426,17 +437,18 @@ end
 -----------------------------------------------------------
 local function showHelpFocus(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: focus\n")
-	cecho(preText.."USAGE: /focus <on|off>\n")
+	cecho(preHead.."DARTMUDLET: focus\n")
+	cecho(preHead.."USAGE: /set focus <on|off>\n")
     cecho(preText.."\n")
     cecho(preText.."Use this command to show your running focus total in the main window. The focus\n")
     cecho(preText.."total will already update in the channel tab as you use the channelling system and\n")
     cecho(preText.."the /chan command. Turning this command on will also show the focus total in the\n")
     cecho(preText.."main window.\n")
     cecho(preText.."\n")
-    cecho(preText.."(Default setting is OFF)\n")
+    cecho(preText.."(Current setting is "..string.upper(Status.statusFocusTotal)..")\n")
 end
 
 
@@ -445,10 +457,11 @@ end
 -----------------------------------------------------------
 local function showHelpKeypad(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: keypad\n")
-	cecho(preText.."USAGE: /set keypad <on|off|help>\n")
+	cecho(preHead.."DARTMUDLET: keypad\n")
+	cecho(preHead.."USAGE: /set keypad <on|off|help>\n")
     cecho(preText.."\n")
     cecho(preText.."Use this command to enable directional movement using the keypad. The numlock key should\n")
     cecho(preText.."be enabled to use this. Four different variations of keypad movement are possible:\n")
@@ -478,7 +491,6 @@ local function showHelpKeypad(args)
     cecho(preText.."Keypad .        - enter gate\n")
     cecho(preText.."Keypad enter    - enter castle\n")
     cecho(preText.."\n")
-    cecho(preText.."(Default setting is ON)\n")
     cecho(preText.."(Current setting is "..string.upper(Status.statusKeypad)..")\n")
 end
 
@@ -488,11 +500,12 @@ end
 -----------------------------------------------------------
 local function showHelpInfo(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: info, share\n")
-	cecho(preText.."USAGE: /info <who> <skill> [<>]\n")
-    cecho(preText.."USAGE: /share <who> <skill> [<>]\n")
+	cecho(preHead.."DARTMUDLET: info, share\n")
+	cecho(preHead.."USAGE: /info <who> <skill> [<>]\n")
+    cecho(preHead.."USAGE: /share <who> <skill> [<>]\n")
     cecho(preText.."\n")
     cecho(preText.."The /info and /share commands will list one or more skills out for you or your pets.\n")
     cecho(preText.."Info will display skills to the screen and share will OOC share them with the room.\n")
@@ -500,13 +513,13 @@ local function showHelpInfo(args)
     cecho(preText.."These commands function similar to the show skills command available in game. Some\n")
     cecho(preText.."examples of things you can do with these commands:\n")
     cecho(preText.."\n")
-    cecho(preText.."/info playername herbalism         -- show info for the player's herbalism skill\n")
-    cecho(preText.."/info playername yellow*           -- show player's skills that start with yellow\n")
-    cecho(preText.."/info petname <                    -- show ALL a pet's skills in decreasing order\n")
-    cecho(preText.."/info playername fighter           -- show player's skills of type 'fighter'\n")
-    cecho(preText.."/share petname channelling         -- share a pet's channelling skill with the room\n")
-    cecho(preText.."/share playername move >           -- share player's 'move' skills in increasing order\n")
-    cecho(preText.."/share playername *other           -- share player's skills ending in other with room\n")
+    cecho(preText.."/info playername herbalism        -- show info for the player's herbalism skill\n")
+    cecho(preText.."/info playername yellow*          -- show player's skills that start with yellow\n")
+    cecho(preText.."/info petname <                   -- show ALL a pet's skills in decreasing order\n")
+    cecho(preText.."/info playername fighter          -- show player's skills of type 'fighter'\n")
+    cecho(preText.."/share petname channelling        -- share a pet's channelling skill with the room\n")
+    cecho(preText.."/share playername move >          -- share player's 'move' skills in increasing order\n")
+    cecho(preText.."/share playername *other          -- share player's skills ending in other with room\n")
     cecho(preText.."\n")
     cecho(preText.."Valid skill categories are: fighter, mage, thief, crafts, movement (or move)\n")
 end
@@ -517,21 +530,184 @@ end
 -----------------------------------------------------------
 local function showHelpUpdate(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: update, insert\n")
-	cecho(preText.."USAGE: /update <who> <skillname> <num>\n")
-    cecho(preText.."USAGE: /insert <who> <skillname> <num>\n")
+	cecho(preHead.."DARTMUDLET: update, insert\n")
+	cecho(preHead.."USAGE: /update <who> <skillname> <num>\n")
+    cecho(preHead.."USAGE: /insert <who> <skillname> <num>\n")
     cecho(preText.."\n")
     cecho(preText.."The /update command will update an existing skill for you or your pets. The skill\n")
     cecho(preText.."must already be in the database for it to work.\n")
     cecho(preText.."The /insert command will add a new skill into the database for you or your pets at\n")
     cecho(preText.."the initial number you select. Some examples:\n")
     cecho(preText.."\n")
-    cecho(preText.."/update playername herbalism 100     -- update the player's herbalism skill to 100\n")
-    cecho(preText.."/update petname fighting 200         -- update a pet's fighting skill to 200\n")
-    cecho(preText.."/insert playername shield use 10     -- insert shield use skill for player at skill 10\n")
-    cecho(preText.."/insert petname channelling 1        -- insert channelling skill for pet at skill 1\n")
+    cecho(preText.."/update playername herbalism 100    -- update the player's herbalism skill to 100\n")
+    cecho(preText.."/update petname fighting 200        -- update a pet's fighting skill to 200\n")
+    cecho(preText.."/insert playername shield use 10    -- insert shield use skill for player at skill 10\n")
+    cecho(preText.."/insert petname channelling 1       -- insert channelling skill for pet at skill 1\n")
+end
+
+
+
+-- /help chan, channel
+-----------------------------------------------------------
+local function showHelpChan(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
+
+
+	cecho(preHead.."DARTMUDLET: chan, channel\n")
+	cecho(preHead.."USAGE: /chan <num>\n")
+    cecho(preHead.."USAGE: /chan info\n")
+	cecho(preHead.."USAGE: /chan pause on|off\n")
+	cecho(preHead.."USAGE: /chan share on|off|brief\n")
+	cecho(preHead.."USAGE: /chan sound on|off\n")
+    cecho(preText.."\n")
+    cecho(preText.."The /chan commands help you control the channelling system alongside the CHANNEL\n")
+    cecho(preText.."tab window. Available commands are:\n")
+    cecho(preText.."\n")
+    cecho(preText.."/chan <num>                    - Manually channel amount to the channelling system\n")
+    cecho(preText.."/chan info                     - Display full channelling stats on screen\n")
+    cecho(preText.."/chan pause on|off             - Pause powercast to wait for full concentration\n")
+    cecho(preText.."/chan share on|off|brief       - Change settings of the channel share button\n")
+	cecho(preText.."/chan sound on|off             - Play notification sound before powercast\n")
+	cecho(preText.."\n")
+	cecho(preText.."(Current pause setting is "..string.upper(Status.powercastPause)..")\n")
+	cecho(preText.."(Current share setting is "..string.upper(Status.statusChanShare)..")\n")
+	cecho(preText.."(Current sound setting is "..string.upper(Status.statusPlaySound)..")\n")
+end
+
+
+
+-- /help repeat, repeats
+-----------------------------------------------------------
+local function showHelpRepeat(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
+
+
+	cecho(preHead.."DARTMUDLET: repeat\n")
+	cecho(preHead.."USAGE: /repeat clear <num>\n")
+    cecho(preHead.."USAGE: /repeat copy <num> <num>\n")
+	cecho(preHead.."USAGE: /repeat echo on|off \n")
+    cecho(preText.."\n")
+    cecho(preText.."The /repeat commands help you control the repeat command system alongside the REPEAT\n")
+    cecho(preText.."tab window. Available commands are:\n")
+    cecho(preText.."\n")
+    cecho(preText.."/repeat clear <num>              - Clear the contents of a repeat set\n")
+    cecho(preText.."/repeat copy <num> <num>         - Copy one repeat set over to another\n")
+    cecho(preText.."/repeat echo on|off              - Echo repeat commands to the screen (default off)\n")
+	cecho(preText.."#num <command>                   - Basic repeat commands (e.g. #3 say hi)\n")
+	cecho(preText.."\n")
+	cecho(preText.."(Current repeat echo setting is "..string.upper(Status.statusRepeatEcho)..")\n")
+end
+
+
+
+-- /help alloc, allocs
+-----------------------------------------------------------
+local function showHelpAlloc(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
+
+
+	cecho(preHead.."DARTMUDLET: alloc, allocs\n")
+	cecho(preHead.."USAGE: /alloc clear <num>\n")
+    cecho(preHead.."USAGE: /alloc copy <num> <num>\n")
+    cecho(preText.."\n")
+    cecho(preText.."The /alloc commands help you control the allocation system alongside the ALLOCS\n")
+    cecho(preText.."tab window. Available commands are:\n")
+    cecho(preText.."\n")
+    cecho(preText.."/alloc clear <num>               - Clear the contents of an allocation set\n")
+    cecho(preText.."/alloc copy <num> <num>          - Copy one allocation set over to another\n")
+end
+
+
+
+-- /help cast, casting
+-----------------------------------------------------------
+local function showHelpCast(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
+
+
+	cecho(preHead.."DARTMUDLET: cast, casting\n")
+	cecho(preHead.."USAGE: /cast power <num>\n")
+    cecho(preText.."\n")
+    cecho(preText.."The /cast commands help you control the spell practice system alongside the CASTING\n")
+    cecho(preText.."tab window. Available commands are:\n")
+    cecho(preText.."\n")
+    cecho(preText.."/cast power <power>             - Change the autocast power via keyboard command\n")
+end
+
+
+
+-- /help inscribe, scrolls
+-----------------------------------------------------------
+local function showHelpInscribe(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
+
+
+	cecho(preHead.."DARTMUDLET: inscribe, scrolls\n")
+	cecho(preHead.."USAGE: /inscribe <spell> <power>\n")
+    cecho(preHead.."USAGE: /inscribe power <power>\n")
+	cecho(preHead.."USAGE: /inscribe off\n")
+    cecho(preText.."\n")
+    cecho(preText.."The /inscribe commands help you control the scroll practice system. This system will\n")
+    cecho(preText.."take a blank scroll held by the player and automatically inscribe and practice invoke\n")
+    cecho(preText.."with it. Available commands are:\n")
+	cecho(preText.."\n")
+    cecho(preText.."/inscribe <spell> <power>        - Start practice inscribing a spell\n")
+    cecho(preText.."/inscribe power <power>          - Change power you are using for practice inscribe\n")
+    cecho(preText.."/inscribe off                    - Stop practice inscribing a spell\n")
+end
+
+
+
+-- /help alignment
+-----------------------------------------------------------
+local function showHelpAlignment(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
+
+
+	cecho(preHead.."DARTMUDLET: alignment\n")
+	cecho(preHead.."USAGE: /set alignment <on|off>\n")
+    cecho(preText.."\n")
+    cecho(preText.."Use this command to change the auto update status of the player's alignment.\n")
+    cecho(preText.."When activated, alignment will automatically be checked every 5 minutes on the\n")
+    cecho(preText.."same cycle as the automatic 'who' command. Like the 'who' command, this\n")
+    cecho(preText.."will prevent a player from idling out of the game.\n")
+    cecho(preText.."\n")
+    cecho(preText.."(Current setting is "..string.upper(Status.statusAlignment)..")\n")
+end
+
+
+
+-- /help set, settings
+-----------------------------------------------------------
+local function showHelpSet(args)
+	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
+
+
+	cecho(preHead.."DARTMUDLET: set, settings\n")
+	cecho(preHead.."USAGE: /set <options>\n")
+    cecho(preHead.."USAGE: /help set <option> - for more information.\n")
+    cecho(preText.."\n")
+    cecho(preText.."Current list of /set options include:\n")
+	cecho(preText.."alignment          Turn auto alignment updates on/off\n")
+	cecho(preText.."announce           Automatically OOC announce skill improvements to the room\n")
+	cecho(preText.."antispam           Suppress repeating lines to cut down on screen spam\n")
+	cecho(preText.."aura               Displays aura status to the screen in addition to aura box\n")
+	cecho(preText.."conc               Displays concentration status to the screen in addition to conc box\n")
+	cecho(preText.."contents           List container contents out in combined, alphabetical view\n")
+	cecho(preText.."focus              Show your running focus total in the main window\n")
+    cecho(preText.."fontsize           Set the font size for various DartMUDlet windows\n")
+    cecho(preText.."keypad             Turn keypad movement on/off\n")
+	cecho(preText.."who                Automatically update who tab every five minutes\n")
 end
 
 
@@ -540,10 +716,11 @@ end
 -----------------------------------------------------------
 local function showHelpTracking(args)
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."DARTMUDLET: tracking\n")
-	cecho(preText.."USAGE: /track <name|on|off|toggle|reset>\n")
+	cecho(preHead.."DARTMUDLET: tracking\n")
+	cecho(preHead.."USAGE: /track <name|on|off|toggle|reset>\n")
     cecho(preText.."\n")
     cecho(preText.."NAME: Displays detailed statistics for skills gained while tracking system is active.\n")
     cecho(preText.."This can be for the player or for any pets that gained skills during this time.\n")
@@ -586,7 +763,7 @@ local function showHelp(args)
         showHelpSetup()
     elseif (detail == "announce") or (detail == "verbose") then
         showHelpAnnounce()
-    elseif (detail == "antispam") or (detail == "anti spam") then
+    elseif (detail == "antispam") or (detail == "set antispam") then
         showHelpAntispam()
     elseif (detail == "fontsize") or (detail == "set fontsize") then
         showHelpFontsize()
@@ -602,10 +779,25 @@ local function showHelp(args)
         showHelpInfo()
     elseif (detail == "update") or (detail == "insert") then
         showHelpUpdate()
-    elseif (detail == "keypad") or (detail == "key pad") then
+    elseif (detail == "keypad") or (detail == "set keypad") then
         showHelpKeypad()
+	elseif (detail == "set") or (detail == "settings") then
+        showHelpSet()
+	elseif (detail == "alignment") or (detail == "set alignment") then
+        showHelpAlignment()
+	elseif (detail == "chan") or (detail == "channel") then
+        showHelpChan()
+	elseif (detail == "inscribe") or (detail == "scrolls") then
+        showHelpInscribe()
+	elseif (detail == "alloc") or (detail == "allocs") then
+        showHelpAlloc()
+	elseif (detail == "cast") or (detail == "casting") then
+        showHelpCast()
+	elseif (detail == "repeat") or (detail == "repeats") then
+        showHelpRepeat()
+	else
+		cecho("<"..colorTips..">HELP: Unknown help topic\n")
     end
-
 end
 
 
@@ -616,10 +808,11 @@ local function showLevels(args)
 	local skillnumPosition = 24
 	local skillsizePosition = 44
 	local preText = "<"..colorHelp..">"..spacerHelp
+	local preHead = "<"..colorHead..">"..spacerHelp
 
 
-	cecho(preText.."Skill Name              Level               Size\n")
-	cecho(preText.."================================================\n")	
+	cecho(preHead.."Skill Name              Level               Size\n")
+	cecho(preHead.."================================================\n")	
 	for i,v in pairs(levels) do
 		local skillSize    = ""
 		local currentSkill = name2lvl(v)
@@ -746,8 +939,8 @@ local function showDate(args)
         print("Date(Thorpian): "..date.format(os.time(), 3, "thorpian"))
         print("===============================================")
     elseif (detail == "") or (detail == "help") or ((not direction) or (not timemod) or (not timetype)) then
-        cecho("<yellow>USAGE: /date now                -- Show current game dates\n")
-        cecho("<yellow>USAGE: /date <+|-><num><h|d>    -- Show game dates in the past or future\n")
+        cecho("<"..colorTips..">USAGE: /date now                -- Show current game dates\n")
+        cecho("<"..colorTips..">USAGE: /date <+|-><num><h|d>    -- Show game dates in the past or future\n")
     else
         local timechange    = 0
         local timetotal     = os.time()

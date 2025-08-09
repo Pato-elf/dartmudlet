@@ -16,74 +16,72 @@ DartMUDlet has many useful features to make your DartMUD experience more efficie
 &nbsp;
 ## Installation
 1. &nbsp;Visit the project [release page](https://github.com/Pato-elf/dartmudlet/releases) and download the latest dartmudlet.zip under Assets.
-2. &nbsp;Launch [Mudlet](https://www.mudlet.org/) and connect to your [DartMUD](http://dartmud.com) profile.
+2. &nbsp;Launch [Mudlet](https://www.mudlet.org/) and connect to your [DartMUD](http://ferdarchi.com) profile.
 3. &nbsp;Open the Mudlet Package Manager, click "Install new package" and select the package you downloaded.
 4. &nbsp;Type `/setup` on the command line to get things set up.
-5. &nbsp;Type `/announce on` to turn on improve announcements.
-6. &nbsp;Type `/help` for a full list of commands.
+5. &nbsp;Type `/help` for a full list of commands.
 
 &nbsp;
 ## How to use?
 In addition to the automatic features described above, there are a number of things you can control by typing commands:
 
 ```
-/setup   - Initialize variables, customize the display, start improve tracking database.
+   Critical Commands
+   /setup            - Initialize variables, customize display, start improve tracking
+   /block            - Block and queue new commands from being sent to DartMUD
+   /unblock          - Resume sending commands to DartMUD, including queued ones first
+   /help <topic>     - Get detailed help for most DartMUDlet commands
 ```
 ```
-/announce on      - Announce improvements in standard mode (skill name+)
-/announce brief   - Announce improvements in brief mode (+ only, no skill name)
-/announce verbose - Announce improvements in verbose mode (skill name+, and actual skill number)
-/announce off     - No announcement of improvements
+   Skill Announce System
+   /announce on      - Announce improves in standard mode (skill name+)
+   /announce brief   - Announce improves in brief mode (plus only, no skill name)
+   /announce verbose - Announce improves in verbose mode (skill and actual value)
+   /announce off     - No announcement of improves
 ```
 ```
-/block   - Start blocking new commands from being sent to the MUD, queue them to be sent later.
-           Typically blocking is initiated automatically when you begin an interruptable action.
-/unblock - Resume sending commands to the MUD starting with any that were queued while blocking.
-           For when you MUST interrupt your previous action (e.g. to run from that dragon NOW).
+   Channelling System
+   /chan <num>                      - Manually channel amount to the channelling system
+   /chan info                       - Display full channelling stats on screen
+   /chan pause on|off               - Pause powercast to wait for full concentration
+   /chan share on|off|brief         - Change settings of the channel share button
+   /chan sound on|off               - Play notification sound before powercast
 ```
 ```
-/chan <num>                      - Manually channel an amount to the channelling system
-/chan info                       - Display full channelling stats on screen
-/chan pause on|off               - Pause powercast to wait for full concentration
-/chan share on|off|brief         - Change settings of the channel share button
-/chan sound on|off               - Play notification sound before powercast
-/focus on|off                    - Show running focus total in main window (default off)
+   Inscribe System
+   /inscribe <spell> <power>        - Start practice inscribing a spell
+   /inscribe power <power>          - Change power you are using for practice inscribe
+   /inscribe off                    - Stop practice inscribing a spell
 ```
 ```
-/inscribe <spell> <power>        - Repeat practice inscribing a spell at the given power
-/inscribe power <power>          - Change the power you are using for scroll practice
-/inscribe off                    - Stop practice inscribing 
+   Skill Display System
+   /info <who> <skill>              - Show current improves/level for a skill
+   /share <who> <skill>             - OOC share current improves/level for a skill
+   /insert <who> <skill> <improves> - Manually insert a new skill into database
+   /update <who> <skill> <improves> - Manually set improves for you|pet's skill
 ```
 ```
-/info <who> <skill>              - Show current improves/level for a skill
-/share <who> <skill>             - OOC share current improves/level for a skill
-/insert <who> <skill> <improves> - Manually insert a new skill into the database
-/update <who> <skill> <improves> - Set improves for your (or pet's) skill to given total
+   Other Commands
+   /alloc clear <num>               - Clear the contents of an allocation set
+   /alloc copy <num> <num>          - Copy one allocation set over to another
+   /cast power <power>              - Change the autocast power via keyboard command
+   /date <now> <+|-><num><h|d>      - Show game dates for the past, now, or future
+   /levels                          - Display a list of skill levels
+   /random <num>                    - Generate a random number between 1 and a number
+   /random <value,value,value>      - Pick a random value from a list of values
+   /repeat clear <num>              - Clear the contents of a repeat set
+   /repeat copy <num> <num>         - Copy one repeat set over to another
+   /repeat echo on|off              - Echo repeat commands to the screen (default off)
+   /track <option>                  - Command line control of the tracking system
+   #num <command>                   - Basic repeat commands (e.g. #3 say hi)
+   #Wnum <command>                  - Delay command for num seconds (e.g. #W4 smoke pipe)
 ```
 ```
-/alloc clear <num>               - Clear the contents of an allocation set
-/alloc copy <num> <num>          - Copy one allocation set over to another
-/antispam on|off                 - Suppress repeated lines
-/aura on|off|scint               - Show aura on screen (default off)
-/cast power <power>              - Change the autocast power via keyboard command
-/conc on|off|bright              - Show concentration on screen (default off)
-/contents on|off                 - Show expanded contents view for containers (default on)
-/date <now> <+|-><num><h|d>      - Show game dates for the past, now, or future
-/levels                          - Display a list of skill levels
-/random <num>                    - Generate a random number between 1 and a number
-/random <value,value,value>      - Pick a random value from a list of values
-/repeat clear <num>              - Clear the contents of a repeat set
-/repeat copy <num> <num>         - Copy one repeat set over to another
-/repeat echo on|off              - Echo repeat commands to the screen (default off)
-/set fontsize <option> <8-20>    - Set the fontsize for tabs (all|chat|improves|message|who)
-/set keypad on|off|help          - Enable the keypad for directional movement
-/track <option>                  - Command line control of the tracking system
-/who on|off                      - Auto check the who list every 5 minutes
-#num repeat                      - Repeat commands from the command line (e.g. #3 say hi)
-#Wnum <command>                  - Delay command for num seconds (e.g. #W4 smoke pipe)
-/help <topic>                    - Get detailed help for most DartMUDlet commands
+   The /set command allows several defaults to be set
+   Use /help set <option> for more information. Current settings include:
+   alignment      announce       antispam       aura           conc
+   contents       focus          fontsize       keypad         who
 ```
-
 &nbsp;
 ## Credits
 - The core of this package began as zMud scripts authored by Gaborn and shared with the player community.

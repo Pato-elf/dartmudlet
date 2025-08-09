@@ -27,6 +27,16 @@ GUI.containerInfoBox:setStyleSheet([[
 
 
 
+
+
+-------------------------------------------------------------------------------
+-- TEXT LABELS
+-------------------------------------------------------------------------------
+
+
+
+
+
 	-- CREATE NAME BOX -> INFO -> TABWINDOW3
 	-------------------------------------------------------
 	GUI.containerNameBox = GUI.containerNameBox or
@@ -38,7 +48,7 @@ GUI.containerInfoBox:setStyleSheet([[
 			height = 17,
 			color = "black"
 		}, GUI.containerInfoBox)
-		
+
 	GUI.containerNameBox:setStyleSheet(StyleTextDefault:getCSS())
 
 
@@ -70,7 +80,7 @@ GUI.containerInfoBox:setStyleSheet([[
 			height = 17,
 			color = "black"
 		}, GUI.containerInfoBox)
-		
+
 	GUI.containerHungerBox:setStyleSheet(StyleTextDefault:getCSS())
 
 
@@ -91,12 +101,28 @@ GUI.containerInfoBox:setStyleSheet([[
 
 
 
+	-- CREATE ALIGNMENT BOX -> INFO -> TABWINDOW3
+	-------------------------------------------------------
+	GUI.containerAlignmentBox = GUI.containerAlignmentBox or
+		Geyser.Label:new({
+			name = "AlignmentBox",
+			x = 0, y = 76,
+			fontSize = 11,
+			width = "100%",
+			height = 17,
+			color = "black"
+		}, GUI.containerInfoBox)
+
+	GUI.containerAlignmentBox:setStyleSheet(StyleTextDefault:getCSS())
+
+
+
 	-- CREATE ENCUMBRANCE BOX -> INFO -> TABWINDOW3
 	-------------------------------------------------------
 	GUI.containerEncumbranceBox = GUI.containerEncumbranceBox or
 		Geyser.Label:new({
 			name = "EncumbranceBox",
-			x = 0, y = 76,
+			x = 0, y = 93,--76,
 			fontSize = 11,
 			width = "100%",
 			height = 17,
@@ -112,7 +138,7 @@ GUI.containerInfoBox:setStyleSheet([[
 	GUI.containerMovementBox = GUI.containerMovementBox or
 		Geyser.Label:new({
 			name = "MovementBox",
-			x = 0, y = 93,
+			x = 0, y = 110,--93,
 			fontSize = 11,
 			width = "100%",
 			height = 17,
@@ -128,7 +154,7 @@ GUI.containerInfoBox:setStyleSheet([[
 	GUI.containerDateBox = GUI.containerDateBox or
 		Geyser.Label:new({
 			name = "DateBox",
-			x = 0, y = 110,
+			x = 0, y = 127,--110,
 			fontSize = 11,
 			width = 360,
 			height = 34,
@@ -144,7 +170,7 @@ GUI.containerInfoBox:setStyleSheet([[
 	GUI.containerAimBox = GUI.containerAimBox or
     Geyser.Label:new({
         name = "AimBox",
-        x = -235, y = 110,
+        x = -235, y = 127,--110,
         fontSize = 11,
         width = 235,
         height = 17,
@@ -160,7 +186,7 @@ GUI.containerInfoBox:setStyleSheet([[
 	GUI.containerSpeakBox = GUI.containerSpeakBox or
 		Geyser.Label:new({
 			name = "SpeakBox",
-			x = -235, y = 127,
+			x = -235, y = 144,--127,
 			fontSize = 11,
 			width = 235,
 			height = 17,
@@ -171,15 +197,26 @@ GUI.containerInfoBox:setStyleSheet([[
 
 
 
+
+
+
+-------------------------------------------------------------------------------
+-- AURA AND CONC BOXES
+-------------------------------------------------------------------------------
+
+
+
+
+
 	-- CREATE HOLDER BOX -> INFO -> TABWINDOW3
 	-------------------------------------------------------
 	GUI.containerHolderBox = GUI.containerHolderBox or
 		Geyser.Label:new({
 			name = "HolderBox",
-			x = 0, y = -133,
+			x = 0, y = -115,---133,
 			fontSize = 24,
 			width = "100%",
-			height = 133,
+			height = 115,--133,
 			color = "black"
 		}, GUI.containerInfoBox)
 
@@ -203,7 +240,7 @@ GUI.containerInfoBox:setStyleSheet([[
 				x = 0, y = 2,
 				fontSize = 24,
 				width = "100%",
-				height = 58,
+				height = 49,--58,
 				color = "black"
 			}, GUI.containerHolderBox)
 
@@ -225,10 +262,10 @@ GUI.containerInfoBox:setStyleSheet([[
 			Geyser.Label:new({
 				name = "ConcBox",
 				message = [[<center>unknown concentration</center>]],
-				x = 0, y = 60,
+				x = 0, y = 51,--60,
 				fontSize = 22,
 				width = "100%",
-				height = 62,
+				height = 53,--62,
 				color = "black"
 			}, GUI.containerHolderBox)
 

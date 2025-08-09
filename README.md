@@ -24,21 +24,21 @@ DartMUDlet has many useful features to make your DartMUD experience more efficie
 In addition to the automatic features described above, there are a number of things you can control by typing commands:
 
 ```
-   __Critical Commands__
+   Critical Commands
    /setup            - Initialize variables, customize display, start improve tracking
    /block            - Block and queue new commands from being sent to DartMUD
    /unblock          - Resume sending commands to DartMUD, including queued ones first
    /help <topic>     - Get detailed help for most DartMUDlet commands
 ```
 ```
-   __Skill Announce System__
+   Skill Announce System
    /announce on            - Announce improves in standard mode (skill name+)
    /announce brief         - Announce improves in brief mode (plus only, no skill name)
    /announce verbose       - Announce improves in verbose mode (skill and actual value)
    /announce off           - No announcement of improves
 ```
 ```
-   **Channelling System**
+   Channelling System
    /chan <num>                      - Manually channel amount to the channelling system
    /chan info                       - Display full channelling stats on screen
    /chan pause on|off               - Pause powercast to wait for full concentration
@@ -46,20 +46,20 @@ In addition to the automatic features described above, there are a number of thi
    /chan sound on|off               - Play notification sound before powercast
 ```
 ```
-   **Inscribe System**
+   Inscribe System
    /inscribe <spell> <power>        - Start practice inscribing a spell
    /inscribe power <power>          - Change power you are using for practice inscribe
    /inscribe off                    - Stop practice inscribing a spell
 ```
 ```
-   **Skill Display System**
+   Skill Display System
    /info <who> <skill>              - Show current improves/level for a skill
    /share <who> <skill>             - OOC share current improves/level for a skill
    /insert <who> <skill> <improves> - Manually insert a new skill into database
    /update <who> <skill> <improves> - Manually set improves for you|pet's skill
 ```
 ```
-   **Other Commands**
+   Other Commands
    /alloc clear <num>               - Clear the contents of an allocation set
    /alloc copy <num> <num>          - Copy one allocation set over to another
    /cast power <power>              - Change the autocast power via keyboard command

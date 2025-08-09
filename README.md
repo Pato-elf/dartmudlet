@@ -34,10 +34,10 @@ In addition to the automatic features described above, there are a number of thi
 ```
 ```
    Skill Announce System
-   /announce on      - Announce improves in standard mode (skill name+)
-   /announce brief   - Announce improves in brief mode (plus only, no skill name)
-   /announce verbose - Announce improves in verbose mode (skill and actual value)
-   /announce off     - No announcement of improves
+   /announce on            - Announce improves in standard mode (skill name+)
+   /announce brief         - Announce improves in brief mode (plus only, no skill name)
+   /announce verbose       - Announce improves in verbose mode (skill and actual value)
+   /announce off           - No announcement of improves
 ```
 ```
    Channelling System

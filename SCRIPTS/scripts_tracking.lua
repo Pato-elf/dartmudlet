@@ -170,6 +170,7 @@ end
 -----------------------------------------------------------
 local function showTrackingDetail(args)
     local name              = args["name"]
+	local shareCommand		= " share"
     local tempSkills        = {}
     local tempSkillName     = ""
     local tempName          = ""
@@ -180,6 +181,7 @@ local function showTrackingDetail(args)
     local tempHourRate      = 0
     local char_length1      = 26
     local char_fill1        = 0
+	local isShare			= false
     name                    = string.lower(name)
 
 
@@ -204,6 +206,13 @@ local function showTrackingDetail(args)
         Events.raiseEvent("setTrackingActiveEvent")
         return
     end
+
+
+	-- check for and strip off share command
+	if string.sub(name, -string.len(shareCommand)) == shareCommand then
+		isShare = true
+		name = string.sub(name, 1, -string.len(shareCommand) - 1)
+	end
 
 
     name            = utils.capitalize(name)
@@ -240,9 +249,16 @@ local function showTrackingDetail(args)
 
 
     -- print out skills list
-    print(name.." detailed tracking stats ("..timeFormatted..")")
-    print("SKILL                       IMPS     IMPS/MIN      IMPS/HR")
-    print("==========================================================")
+	if not isShare then
+    	print(name.." detailed tracking stats ("..timeFormatted..")")
+    	print("SKILL                       IMPS     IMPS/MIN      IMPS/HR")
+    	print("==========================================================")
+	else
+		send("ooc "..name.." detailed tracking stats ("..timeFormatted..")",false)
+		send("ooc SKILL                       IMPS     IMPS/MIN      IMPS/HR",false)
+		send("ooc ==========================================================",false)
+	end
+
     for _, skill in ipairs(tempSkills) do
 
         tempTotal = tempTotal + skill[2]
@@ -264,9 +280,18 @@ local function showTrackingDetail(args)
         tempLine = tempLine.."     "..string.format("%8.1f", tempMinuteRate).."     "
         tempLine = tempLine..string.format("%8.1f", tempHourRate)
 
-        print(tempLine)
+		if not isShare then
+        	print(tempLine)
+		else
+			send("ooc "..tempLine,false)
+		end
     end
-    print("==========================================================")
+
+	if not isShare then
+    	print("==========================================================")
+	else
+		send("ooc ==========================================================",false)
+	end
 
 
     -- print out total line
@@ -285,7 +310,12 @@ local function showTrackingDetail(args)
     tempLine = "TOTAL                     "..string.format("%6d", tempTotal)
     tempLine = tempLine.."     "..string.format("%8.1f", tempMinuteRate).."     "
     tempLine = tempLine..string.format("%8.1f", tempHourRate)
-    print(tempLine)
+
+	if not isShare then
+		print(tempLine)
+	else
+		send("ooc "..tempLine,false)
+	end
 end
 
 

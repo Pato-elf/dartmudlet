@@ -233,7 +233,7 @@ local function setup(args)
     -- /track command
 	-------------------------------------------------------
 	tempAliases.track =
-	tempAlias('^\\/track ([\\w]+)',
+	tempAlias('^\\/track (.*)$',
 		[[
 			local name = matches[2]
             

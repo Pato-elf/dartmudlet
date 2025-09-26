@@ -271,6 +271,7 @@ local function onHunger(args)
 	elseif hunger == "not hungry" then hunger = "<pale_green>"..hunger
 	elseif hunger == "slightly hungry" then hunger = "<yellow>"..hunger
 	elseif hunger == "hungry" then hunger = "<yellow>"..hunger
+	elseif hunger == "quite hungry" then hunger = "<yellow>"..hunger
 	elseif hunger == "famished" then hunger = "<red>"..hunger
 	elseif hunger == "faint from hunger" then hunger = "<red>"..hunger
 	elseif hunger == "starving" then hunger = "<red>"..hunger
@@ -294,6 +295,7 @@ local function onThirst(args)
 	elseif thirst == "not thirsty" then thirst = "<pale_green>"..thirst
 	elseif thirst == "slightly thirsty" then thirst = "<yellow>"..thirst
 	elseif thirst == "thirsty" then thirst = "<yellow>"..thirst
+	elseif thirst == "quite thirsty" then thirst = "<yellow>"..thirst
 	elseif thirst == "parched" then thirst = "<red>"..thirst
 	elseif thirst == "faint from thirst" then thirst = "<red>"..thirst
 	elseif thirst == "completely dehydrated" then thirst = "<red>"..thirst

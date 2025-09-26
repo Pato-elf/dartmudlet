@@ -49,6 +49,16 @@ local function setup(args)
         ]])
 
 
+	tempTriggers.QuiteThirsty =
+	tempRegexTrigger("^(?:> )*You are (quite thirsty)\\.",
+		[[
+			local thirst = matches[2]
+			local arguments = {thirst = thirst}
+			deleteLine()
+			Events.raiseEvent("thirstEvent", arguments)
+		]])
+
+
 
     tempTriggers.Parched =
     tempRegexTrigger("^(?:> )*You are (parched)\\.",

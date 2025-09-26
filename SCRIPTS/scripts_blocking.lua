@@ -31,7 +31,8 @@ local function onNetworkOutput(args)
 		string.match(command, "^learn book ") or
 		string.match(command, "^hunt ") or
 		string.match(command, "^revise ") or
-		string.match(command, "^gather ") or
+		string.match(command, "^gather ") and not (string.match(command, '^gather mist')) or
+		--string.match(command, "^gather ") or
 		string.match(command, "^search ") or
 		string.match(command, "^summon armor") then
 		block()
@@ -76,7 +77,8 @@ local function isBlocker(args)
 		string.match(command, "^learn book") or
 		string.match(command, "^hunt ") or
 		string.match(command, "^revise ") or
-		string.match(command, "^gather ") or
+		string.match(command, "^gather ") and not (string.match(command, '^gather mist')) or
+		--string.match(command, "^gather ") or
 		string.match(command, "^search ") or
 		string.match(command, "^summon armor") then
 		return true

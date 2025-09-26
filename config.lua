@@ -1,6 +1,6 @@
 mpackage = [[DartMUDlet]]
 author = [[Pato]]
-icon = [[dartmud_icon_512.png]]
+icon = [[dartmud_icon_512_NEW.png]]
 title = [[DartMUDlet has many useful features to make your DartMUD experience more efficient and enjoyable (dartmud.com:2525)]]
 description = [[### Description
 

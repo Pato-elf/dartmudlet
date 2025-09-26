@@ -7,9 +7,11 @@ local textToUnBlock = {
 	".* appears above your .* then"
 	,".* aura manifests!"
 	,".* begins to glow"
-	,".* (begin|begins) .* glowing\\."
+	,".* begin .* glowing\\."
+	,"(\\w+) begins (faintly|softly|brightly|brilliantly) glowing"
+	,"(\\w+) becomes (faintly|deeply|distinctly) shrouded" --pols
 	,"The .* begins (faintly|softly|brightly|brilliantly) glowing"
-	,"The .* becomes (faintly|deeply|distinctly) shrouded"
+	,"The .* becomes (faintly|deeply|distinctly) shrouded" --pols
 	,"Your .* begins (faintly|softly|brightly|brilliantly) glowing"
 	,"Your .* becomes (faintly|deeply|distinctly) shrouded"
 	,"An arcane rune appears on the .*"
@@ -38,7 +40,7 @@ local textToUnBlock = {
 	,"A glowing rune appears on the"
 	,"A maelstrom of .* churns around you"
 	,"A shadow flits through the"
-	,"A small jet of fire leaps from your"
+	,"A small jet of fire leaps from your" --ignite
 	,"A staccato (flash|flicker) of light briefly illuminates"
 	,"A suit of .* Starplate armor materializes around you"
 	,"A toothy, disembodied mouth"
@@ -46,8 +48,8 @@ local textToUnBlock = {
 	,"Ah, that would be" --search
 	,"Arguments should be "
 	,"Coruscating rays of"
-	,"How rude!"
-	,"Hunting cattle would be too easy"
+	,"How rude!" --df
+	,"Hunting cattle would be too easy" --hunt
 	,"Incandescent .* erupt from your"
 	,"Light bends around you, turning you"
 	,"No effect"
@@ -117,7 +119,7 @@ local textToUnBlock = {
 	,"You cannot store such a complex spell"
 	,"You cannot understand .* well enough"
 	,"You (charred|chilled)"
-	,"You come face to face with the"
+	,"You come face to face with the" --hunt
 	,"You didn't specify a target"
 	,"You disintegrated"
 	,"You don't find anything" --search
@@ -127,14 +129,14 @@ local textToUnBlock = {
 	,"You fail at casting the spell"
 	,"You fail to sense"
 	,"You failed to cast the spell"
-	,"You feel a (little|lot) better"
+	,"You feel a (little bit|little|lot) better" --mhs lhs ghs 
 	,"You feel a pocket dimension open"
 	,"You feel an anticipation in the air"
-	,"You feel better"
+	,"You feel better" --hs
 	,"You feel more fluent"
 	,"You feel your power drain"
 	,"You fill the room with"
-	,"You (find|found) " --search/gather
+	,"You (find|found) (?!the inscription)" --search/gather
 	,"You finish (editing|studying|work)"
 	,"You finish the incantation"
 	,"You found no " --gather
@@ -162,13 +164,14 @@ local textToUnBlock = {
 	,"You raise your .* and a "
 	,"You raise your hands and begin to"
 	,"You regain some feeling"
+	,"You retrieve the soul of " --reinc
 	,"You return to your normal size"
 	,"You (scalded|seared|shocked|singed)"
 	,"You see the .* It hasn't noticed you" --hunt
 	,"You see the .* It stares back at you" --hunt
 	,"You sense a bond between" --ds
 	,"You sense a deep affection" --ds
-	,"You sense its aura to be"
+	,"You sense (its|his|her) aura to be" --sa
 	,"You sense that .* has no disease" --dd
 	,"You sense the spell becoming active"
 	,"You shrink in size"
@@ -180,7 +183,7 @@ local textToUnBlock = {
 	,"Your .* begins to manifest its aura"
 	,"Your .* bursts"
 	,"Your (\\w+) disappears"
-	,"Your .* feels"
+	,"Your .* feels" --heals
 	,"Your .* is wreathed"
 	,"Your .* return to normal"
 	,"Your .* tingles"
@@ -188,6 +191,7 @@ local textToUnBlock = {
 	,"Your aura is too weak"
 	,"Your body adjusts to its new abilities"
 	,"Your concentration is (broken|disrupted)"
+	,"Your earthen shield crumbles"
 	,"Your eyes adjust"
 	,"Your hands are momentarily"
 	,"Your hands (crackle|glow)"

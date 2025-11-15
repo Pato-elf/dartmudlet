@@ -28,10 +28,14 @@ function createCastingBox()
 	local w1	= 290
 	local w2	= 45
 
-	local tooltip_casting1	= "Jump back by 10 spells"
-	local tooltip_casting2	= "Go to previous spell"
-	local tooltip_casting3	= "Go to next spell"
-	local tooltip_casting4	= "Jump forward by 10 spells"
+	--local tooltip_casting1	= "Jump back by 10 spells"
+	--local tooltip_casting2	= "Go to previous spell"
+	--local tooltip_casting3	= "Go to next spell"
+	--local tooltip_casting4	= "Jump forward by 10 spells"
+	local tooltip_casting1	= "Not yet implemented"
+	local tooltip_casting2	= "Not yet implemented"
+	local tooltip_casting3	= "Not yet implemented"
+	local tooltip_casting4	= "Not yet implemented"
 	local tooltip_casting5  = "Turn autocast system on/off"
 	local tooltip_casting6	= "Reset the autocast stats"
 	local tooltip_casting7	= "Save the current autocast settings"

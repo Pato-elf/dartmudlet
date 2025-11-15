@@ -521,7 +521,7 @@ local function showHelpInfo(args)
     cecho(preText.."/share playername move >          -- share player's 'move' skills in increasing order\n")
     cecho(preText.."/share playername *other          -- share player's skills ending in other with room\n")
     cecho(preText.."\n")
-    cecho(preText.."Valid skill categories are: fighter, mage, thief, crafts, movement (or move)\n")
+    cecho(preText.."Valid skill categories are: fighter, mage, thief, spells, crafts, movement (or move)\n")
 end
 
 

@@ -85,7 +85,9 @@ local skills_fighter = {
     {num = 13,  name = "multiple attacks",  count = 0,  abbr = ""},
     {num = 14,  name = "two-handed hafted", count = 0,  abbr = ""},
     {num = 15,  name = "two-handed sword",  count = 0,  abbr = ""},
-    {num = 16,  name = "thrown",            count = 0,  abbr = ""}
+    {num = 16,  name = "thrown",            count = 0,  abbr = ""},
+	{num = 17,  name = "archery",           count = 0,  abbr = ""},
+	{num = 18,  name = "dodge",             count = 0,  abbr = ""}
 }
 
 
@@ -131,7 +133,8 @@ local skills_crafts = {
     {num = 15,   name = "construction",     count = 0,  abbr = ""},
     {num = 16,   name = "lumbering",        count = 0,  abbr = ""},
     {num = 17,   name = "mining",           count = 0,  abbr = ""},
-    {num = 18,   name = "brewing",          count = 0,  abbr = ""}
+    {num = 18,   name = "brewing",          count = 0,  abbr = ""},
+	{num = 19,   name = "stone working",    count = 0,  abbr = ""}
 }
 
 
@@ -141,6 +144,124 @@ local skills_thief = {
     {num = 2,   name = "hiding",        count = 0,  abbr = ""},
     {num = 3,   name = "sneaking",      count = 0,  abbr = ""},
     {num = 4,   name = "pilfer",        count = 0,  abbr = ""},
+	{num = 5,   name = "ambush",        count = 0,  abbr = ""}
+}
+
+
+
+local skills_spells = {
+	{num = 1,   name = "ambrosius's_encouragement",		count = 0,  abbr = ""},
+	{num = 2,   name = "astral_guidance",				count = 0,  abbr = ""},
+	{num = 3,   name = "blackthorn's_cold_cure",		count = 0,  abbr = ""},
+	{num = 4,   name = "blackthorn's_mass_recall",		count = 0,  abbr = ""},
+	{num = 5,   name = "blue_armor",					count = 0,  abbr = ""},
+	{num = 6,   name = "blue_bolt",						count = 0,  abbr = ""},
+	{num = 7,   name = "blue_focus",					count = 0,  abbr = ""},
+	{num = 8,   name = "blur",							count = 0,  abbr = ""},
+	{num = 9,   name = "blur_other",					count = 0,  abbr = ""},
+	{num = 10,   name = "bor's_doom",					count = 0,  abbr = ""},
+	{num = 11,   name = "buzz_animal_invisibility",		count = 0,  abbr = ""},
+	{num = 12,   name = "chanakae's_unction",			count = 0,  abbr = ""},
+	{num = 13,   name = "chill",						count = 0,  abbr = ""},
+	{num = 14,   name = "dannika's_calm",				count = 0,  abbr = ""},
+	{num = 15,   name = "daring's_rage",				count = 0,  abbr = ""},
+	{num = 16,   name = "deepen",						count = 0,  abbr = ""},
+	{num = 17,   name = "delior's_pocket_dimension",	count = 0,  abbr = ""},
+	{num = 18,   name = "detect_alignment",				count = 0,  abbr = ""},
+	{num = 19,   name = "detect_disease",				count = 0,  abbr = ""},
+	{num = 20,   name = "detect_magic",					count = 0,  abbr = ""},
+	{num = 21,   name = "detect_soul",					count = 0,  abbr = ""},
+	{num = 22,   name = "detect_spell",					count = 0,  abbr = ""},
+	{num = 23,   name = "dispel_spell",					count = 0,  abbr = ""},
+	{num = 24,   name = "dog_fart",						count = 0,  abbr = ""},
+	{num = 25,   name = "enlarge",						count = 0,  abbr = ""},
+	{num = 26,   name = "enlarge_other",				count = 0,  abbr = ""},
+	{num = 27,   name = "flameblade",					count = 0,  abbr = ""},
+	{num = 28,   name = "flare",						count = 0,  abbr = ""},
+	{num = 29,   name = "flash",						count = 0,  abbr = ""},
+	{num = 30,   name = "flynn's_flimflam",				count = 0,  abbr = ""},
+	{num = 31,   name = "frostaxe",						count = 0,  abbr = ""},
+	{num = 32,   name = "gered's_tongues",				count = 0,  abbr = ""},
+	{num = 33,   name = "greater_heal_other",			count = 0,  abbr = ""},
+	{num = 34,   name = "greater_heal_self",			count = 0,  abbr = ""},
+	{num = 35,   name = "greater_wound_transfer",		count = 0,  abbr = ""},
+	{num = 36,   name = "green_armor",					count = 0,  abbr = ""},
+	{num = 37,   name = "green_bolt",					count = 0,  abbr = ""},
+	{num = 38,   name = "green_focus",					count = 0,  abbr = ""},
+	{num = 39,   name = "guiding_light",				count = 0,  abbr = ""},
+	{num = 40,   name = "heal_other",					count = 0,  abbr = ""},
+	{num = 41,   name = "heal_self",					count = 0,  abbr = ""},
+	{num = 42,   name = "ignite",						count = 0,  abbr = ""},
+	{num = 43,   name = "influenza_cure",				count = 0,  abbr = ""},
+	{num = 44,   name = "jonathan's_ears",				count = 0,  abbr = ""},
+	{num = 45,   name = "jonathan's_fareyes",			count = 0,  abbr = ""},
+	{num = 46,   name = "jonathan's_neareyes",			count = 0,  abbr = ""},
+	{num = 47,   name = "jonathan's_nighteyes",			count = 0,  abbr = ""},
+	{num = 48,   name = "jonathan's_nose",				count = 0,  abbr = ""},
+	{num = 49,   name = "lesser_heal_other",			count = 0,  abbr = ""},
+	{num = 50,   name = "lesser_heal_self",				count = 0,  abbr = ""},
+	{num = 51,   name = "lesser_portal",				count = 0,  abbr = ""},
+	{num = 52,   name = "lesser_summon_animal",			count = 0,  abbr = ""},
+	{num = 53,   name = "lesser_wound_transfer",		count = 0,  abbr = ""},
+	{num = 54,   name = "lirrin's_candle",				count = 0,  abbr = ""},
+	{num = 55,   name = "lirrin's_glow",				count = 0,  abbr = ""},
+	{num = 56,   name = "lirrin's_light",				count = 0,  abbr = ""},
+	{num = 57,   name = "lirrin's_sun",					count = 0,  abbr = ""},
+	{num = 58,   name = "lirrin's_torch",				count = 0,  abbr = ""},
+	{num = 59,   name = "major_heal_other",				count = 0,  abbr = ""},
+	{num = 60,   name = "major_heal_self",				count = 0,  abbr = ""},
+	{num = 61,   name = "mark",							count = 0,  abbr = ""},
+	{num = 62,   name = "mend",							count = 0,  abbr = ""},
+	{num = 63,   name = "minor_dispel",					count = 0,  abbr = ""},
+	{num = 64,   name = "minor_heal_other",				count = 0,  abbr = ""},
+	{num = 65,   name = "minor_heal_self",				count = 0,  abbr = ""},
+	{num = 66,   name = "minor_imbed",					count = 0,  abbr = ""},
+	{num = 67,   name = "minor_summon_animal",			count = 0,  abbr = ""},
+	{num = 68,   name = "murak's_permiable_field",		count = 0,  abbr = ""},
+	{num = 69,   name = "mystic_arrow",					count = 0,  abbr = ""},
+	{num = 70,   name = "nials_nibble",					count = 0,  abbr = ""},
+	{num = 71,   name = "obfuscate_scroll",				count = 0,  abbr = ""},
+	{num = 72,   name = "orange_armor",					count = 0,  abbr = ""},
+	{num = 73,   name = "orange_bolt",					count = 0,  abbr = ""},
+	{num = 74,   name = "orange_dragon_fire",			count = 0,  abbr = ""},
+	{num = 75,   name = "orange_focus",					count = 0,  abbr = ""},
+	{num = 76,   name = "orella's_deep_storage",		count = 0,  abbr = ""},
+	{num = 77,   name = "other_spell_store",			count = 0,  abbr = ""},
+	{num = 78,   name = "pol's_darkness",				count = 0,  abbr = ""},
+	{num = 79,   name = "pol's_death_curse",			count = 0,  abbr = ""},
+	{num = 80,   name = "pol's_gloom",					count = 0,  abbr = ""},
+	{num = 81,   name = "pol's_impenetrable_blackness",	count = 0,  abbr = ""},
+	{num = 82,   name = "pol's_shadows",				count = 0,  abbr = ""},
+	{num = 83,   name = "pol's_twilight",				count = 0,  abbr = ""},
+	{num = 84,   name = "preserve_corpse",				count = 0,  abbr = ""},
+	{num = 85,   name = "quest's_vigor",				count = 0,  abbr = ""},
+	{num = 86,   name = "recall",						count = 0,  abbr = ""},
+	{num = 87,   name = "red_armor",					count = 0,  abbr = ""},
+	{num = 88,   name = "red_bolt",						count = 0,  abbr = ""},
+	{num = 89,   name = "red_dragon_fire",				count = 0,  abbr = ""},
+	{num = 90,   name = "red_focus",					count = 0,  abbr = ""},
+	{num = 91,   name = "refresh_other",				count = 0,  abbr = ""},
+	{num = 92,   name = "reincarnation",				count = 0,  abbr = ""},
+	{num = 93,   name = "restore_other_limb",			count = 0,  abbr = ""},
+	{num = 94,   name = "restore_self_limb",			count = 0,  abbr = ""},
+	{num = 95,   name = "resurrection",					count = 0,  abbr = ""},
+	{num = 96,   name = "reveal_aura",					count = 0,  abbr = ""},
+	{num = 97,   name = "sanctuary",					count = 0,  abbr = ""},
+	{num = 98,   name = "sense_aura",					count = 0,  abbr = ""},
+	{num = 99,   name = "shillelagh",					count = 0,  abbr = ""},
+	{num = 100,   name = "shrink",						count = 0,  abbr = ""},
+	{num = 101,   name = "shrink_other",				count = 0,  abbr = ""},
+	{num = 102,   name = "skyrdin's_zephyr",			count = 0,  abbr = ""},
+	{num = 103,   name = "sulamar's_final_breath",		count = 0,  abbr = ""},
+	{num = 104,   name = "sulamar's_spark",				count = 0,  abbr = ""},
+	{num = 105,   name = "tell",						count = 0,  abbr = ""},
+	{num = 106,   name = "thunderhammer",				count = 0,  abbr = ""},
+	{num = 107,   name = "troy's_helping_hand",			count = 0,  abbr = ""},
+	{num = 108,   name = "warm",						count = 0,  abbr = ""},
+	{num = 109,   name = "wizard_eye",					count = 0,  abbr = ""},
+	{num = 110,   name = "yellow_armor",				count = 0,  abbr = ""},
+	{num = 111,   name = "yellow_bolt",					count = 0,  abbr = ""},
+	{num = 112,   name = "yellow_focus",				count = 0,  abbr = ""},
 }
 
 
@@ -208,16 +329,18 @@ end
 -- skill info command
 -----------------------------------------------------------
 local function skillInfo(args)
-	local skill_name    = string.lower(args["skill_name"])
-	local who           = args["who"]
-    local type          = args["type"]
-    local skill_list    = {}
-    local char_length1  = 26
-    local char_length2  = 52
-    local char_fill1    = 0
-    local char_fill2    = 0
-    local tilNext       = 0
-    local output        = ""
+	local skill_name		= string.lower(args["skill_name"])
+	local who				= args["who"]
+    local type				= args["type"]
+    local skill_list		= {}
+    local char_length1		= 26
+    local char_length2		= 52
+    local char_fill1		= 0
+    local char_fill2		= 0
+    local tilNext			= 0
+	local total_count		= 0
+	local printed_skills	= 0
+    local output			= ""
     local level
     local nextLevel
     local sort_type
@@ -244,8 +367,10 @@ local function skillInfo(args)
         skill_list = skills_move
     elseif (skill_name == "craft") or (skill_name == "crafts") or (skill_name == "crafting") then
         skill_list = skills_crafts
-    elseif (skill_name == "thief") then
+    elseif (skill_name == "thief") or (skill_name == "theif") then
         skill_list = skills_thief
+	elseif (skill_name == "spells") or (skill_name == "spell") then
+        skill_list = skills_spells
     else
         local search_flag = skill_name
         search_flag = string.gsub(search_flag, "^%*", "%%")
@@ -295,12 +420,15 @@ local function skillInfo(args)
     for i,v in ipairs(skill_list) do
 
         if v.count > 0 then
-            char_fill1 = char_length1 - string.len(skill_list[i].name) - 1
-            char_fill2 = char_length2 - string.len(skill_list[i].name) - 3 - char_fill1 - string.len(v.abbr) - #tostring(v.count)
+            char_fill1		= char_length1 - string.len(skill_list[i].name) - 1
+            char_fill2		= char_length2 - string.len(skill_list[i].name) - 3 - char_fill1 - string.len(v.abbr) - #tostring(v.count)
+			total_count		= total_count + v.count
+			printed_skills	= printed_skills + 1
 
-            level = imp2lvl(v.count)
-            nextLevel = level.next_level
-            output = ""
+
+            level		= imp2lvl(v.count)
+            nextLevel	= level.next_level
+            output		= ""
 
             if nextLevel ~= nil then
                 tilNext = level.next_level.min - v.count
@@ -315,6 +443,21 @@ local function skillInfo(args)
         end
     end
 
+	if printed_skills >= 2 then
+    	local total_label = "TOTAL"
+    	char_fill1 = char_length1 - string.len(total_label) - 1
+    	char_fill2 = char_length2 - string.len(total_label) - 3 - char_fill1 - string.len(tostring(total_count))
+
+    	local output = who..":   "..total_label..":"..string.rep(" ", char_fill1).."("..total_count..")"..string.rep(" ", char_fill2).." across "..printed_skills.." skills"
+
+    	if type == "share" then
+			send("ooc ==============================================================================", false)
+        	send("ooc "..output, false)
+    	else
+			cecho("==============================================================================\n")
+        	cecho(output.."\n")
+    	end
+	end
 end
 
 
